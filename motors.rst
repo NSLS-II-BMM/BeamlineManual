@@ -20,18 +20,22 @@ These stages sit on top of the XAFS optical table.  The nickname is a
 short string that can be used in the ``linescan()`` plan and certain
 other places instead of writing out the BlueSky's name for the motor.
 
-========== ========= ===========  =========  ===================  ===========
-motor      nickname  type         units      notes                directions
-========== ========= ===========  =========  ===================  ===========
-xafs_linx  x         linear       mm         main sample stage    |plus| = outboard, - = inboard
-xafs_liny  y         linear       mm         main sample stage    |plus| = up, - = down
-xafs_linxs xs        linear       mm         reference stage      |plus| = up, - = down
-xafs_pitch pitch     tilt         degrees    Huber tilt stage     |plus| = more positive
-xafs_roll  roll      tilt         degrees    Huber tilt stage     |plus| = more positive
-xafs_roth  rh        rotary       degrees    Huber circle         |plus| = more positive
-xafs_rotb  rb        rotary       degrees    large rotary stage   |plus| = more positive
-xafs_rots  rs        rotary       degrees    small rotary stage   |plus| = more positive
-========== ========= ===========  =========  ===================  ===========
+.. table:: XAFS sample stages
+   :name:  xafs-stages
+   :widths: auto
+
+   ========== ========= ===========  =========  ===================  ===========
+   motor      nickname  type         units      notes                directions
+   ========== ========= ===========  =========  ===================  ===========
+   xafs_linx  x         linear       mm         main sample stage    |plus| = outboard, - = inboard
+   xafs_liny  y         linear       mm         main sample stage    |plus| = up, - = down
+   xafs_linxs xs        linear       mm         reference stage      |plus| = up, - = down
+   xafs_pitch pitch     tilt         degrees    Huber tilt stage     |plus| = more positive
+   xafs_roll  roll      tilt         degrees    Huber tilt stage     |plus| = more positive
+   xafs_roth  rh        rotary       degrees    Huber circle         |plus| = more positive
+   xafs_rotb  rb        rotary       degrees    large rotary stage   |plus| = more positive
+   xafs_rots  rs        rotary       degrees    small rotary stage   |plus| = more positive
+   ========== ========= ===========  =========  ===================  ===========
 
 Configuration and position of the motors can be queried easily.  In
 the following examples, the ``xafs_liny`` motor is used.  The commands
