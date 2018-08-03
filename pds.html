@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Photon Delivery System &#8212; BMM User Manual 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/atoms.ico"/>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Sample position scans" href="linescans.html" />
+    <link rel="prev" title="2. Moving and querying motors" href="motors.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="linescans.html" title="4. Sample position scans"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="motors.html" title="2. Moving and querying motors"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="photon-delivery-system">
+<span id="pds"></span><h1>3. Photon Delivery System<a class="headerlink" href="#photon-delivery-system" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="shutters">
+<h2>3.1. Shutters<a class="headerlink" href="#shutters" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>Open and close the photon shutter</strong></dt>
+<dd><p class="first">In the nomenclature of BMM, the photon shutter is <code class="docutils literal"><span class="pre">shb</span></code>.  Open
+and close this shutter with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">shb</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<span class="n">shb</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you wish to open or close the photon shutter in a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro
+(Section 5.4)</span></a>, do:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">shb</span><span class="o">.</span><span class="n">open_plan</span><span class="p">()</span>
+<span class="k">yield from</span> <span class="n">shb</span><span class="o">.</span><span class="n">close_plan</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>Open and close the safety shutter</strong></dt>
+<dd><p class="first">This is the front-end shutter.  Closing it takes light off the
+monochromator, which is not something you typically want to do
+during an experiment.  That said, the safety shutter is <code class="docutils literal"><span class="pre">sha</span></code> in
+the BMM nomenclature:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">sha</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<span class="n">sha</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="monochromator">
+<h2>3.2. Monochromator<a class="headerlink" href="#monochromator" title="Permalink to this headline">¶</a></h2>
+<p>The monochromator consists of 8 motors.  It should never be necessary
+to interact directly with any of the motors.  Plans exist for
+facilitating any actions a user should ever need.</p>
+<p><strong>Query the current energy</strong></p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dcm</span><span class="o">.</span><span class="n">wh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This returns a short report like this:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>output example for
+the dcm.wh() command
+</pre></div>
+</div>
+<p>This report shows the current energy, the crystal set currently in
+use, and the position of the parallel and perpendicular motors of
+the second crystal carriage.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Move to a new energy</strong></dt>
+<dd><p class="first">The <code class="docutils literal"><span class="pre">dcm.energy</span></code> virtual motor coordinates the Bragg, parallel,
+and perpendicular motors to maintain a fixed exit height and set
+the energy of the mono.  To move to the copper K edge energy:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8979</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>To move 50 eV above the copper K edge energy:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8979</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="last">Note that the BlueSky command line is able to do simple
+arithmetic (and a whole lot more!).  It is a good idea to leave the
+arithmetic to the computer.</p>
+</dd>
+<dt><strong>Move to a new energy in a macro</strong></dt>
+<dd><p class="first">An energy change can be a part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.4)</span></a>.  Simply do:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8979</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>Tune the second crystal of the mono</strong></dt>
+<dd><p class="first">After a long move, you might need to retune the second crystal.  To
+find the peak of the rocking curve and move to that peak:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This will run a scan of the pitch of the second crystal.  At the
+end of the scan, it moves to the ceiling of the measured intensity
+profile.</p>
+<p>You can tune the second crystal by hand with these commands:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tu</span><span class="p">()</span>
+<span class="n">td</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="last">Those stand for “tune up” and “tune down”.  Do not
+think that “up” and “down” refer to measured
+intensity.  Rather, they refer to the direction of motion of the
+motor which adjusts the second crystal pitch.  When you move to
+higher energy, you usually need to tune in <code class="docutils literal"><span class="pre">td()</span></code> direction.
+When you move to a lower energy, you usually need to tune in the
+<code class="docutils literal"><span class="pre">tu()</span></code> direction.  Obviously.....</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="mirrors">
+<h2>3.3. Mirrors<a class="headerlink" href="#mirrors" title="Permalink to this headline">¶</a></h2>
+<p>Mirrors are set as part of the mode changing plan.  Unless you know
+exactly what you are doing, you should never move the mirrors.
+Adjusting mirrors by hand is a poor idea.  Changing the mirror
+positions in any way changes the height and inclination of the beam as
+it enters the end station.  This requires changes in positions of the
+slits, the XAFS table, and other parts of the photon delivery system.</p>
+<p><cite>In short, don't move the mirror motors.</cite></p>
+<p>That said, if you want to know the current positions of the motors on
+the focusing mirror <code class="docutils literal"><span class="pre">m2.wh()</span></code></p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>output example for
+the m2.wh() command
+</pre></div>
+</div>
+<p>and on the harmonic rejection mirror <code class="docutils literal"><span class="pre">m3.wh()</span></code></p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>output example for
+the m3.wh() command
+</pre></div>
+</div>
+
+<br>
+
+<br>
+<hr class="docutils" />
+<p>This manual is copyright © 2018 Bruce Ravel</p>
+<p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
+<p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
+Creative Commons</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/atoms.png" alt="Logo"/>
+            </a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motors.html">2. Moving and querying motors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Photon Delivery System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#shutters">3.1. Shutters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monochromator">3.2. Monochromator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mirrors">3.3. Mirrors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pds.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="linescans.html" title="4. Sample position scans"
+             >next</a></li>
+        <li class="right" >
+          <a href="motors.html" title="2. Moving and querying motors"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Bruce Ravel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

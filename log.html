@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. Experimental Log &#8212; BMM User Manual 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/atoms.ico"/>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="5. XAFS scans" href="xafs.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="xafs.html" title="5. XAFS scans"
+             accesskey="P">previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="experimental-log">
+<span id="log"></span><h1>6. Experimental Log<a class="headerlink" href="#experimental-log" title="Permalink to this headline">¶</a></h1>
+<p>At BMM, we are trying to run the system in a way that automatically
+generates a useful electronic log book.  This is meant to supplement,
+not replace, a paper log book or a fancy online service like <a class="reference external" href="http://olog.github.io/2.2.7-SNAPSHOT/">Olog</a>.</p>
+<p>The point of the BMM experimental log is to capture with time stamps
+all the significant actions at the beamline.  In part, this provides a
+record of the actions in an experimental campaign.  It also is an
+attempt to provide enough information to recover from mistakes and
+confusions about sample positions and other experimental issues.</p>
+<div class="section" id="snapshots">
+<h2>6.1. Snapshots<a class="headerlink" href="#snapshots" title="Permalink to this headline">¶</a></h2>
+<p>The XAFS scan plan described in <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">Section 5</span></a> includes a step where
+snapshots are taken from the XAS webcam and the small analog camera.
+These photos are written to JPG files with names related to the XAS
+data file written as part of the call to the <code class="docutils literal"><span class="pre">xafs()</span></code> plan.  This
+provides automated photographic documentation of the state of the
+measurement as it is being made.</p>
+<p>Snapshots can be taken at any time using this command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">snap</span><span class="p">(</span><span class="s1">&#39;&lt;camera&gt;&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;/path/to/image.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The choices for <code class="docutils literal"><span class="pre">&lt;camera&gt;</span></code> are</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">XAS</span></code></dt>
+<dd>Take a snapshot from the XAS webcam</dd>
+<dt><code class="docutils literal"><span class="pre">XRD</span></code></dt>
+<dd>Take a snapshot from the XRD webcam</dd>
+<dt><code class="docutils literal"><span class="pre">analog</span></code></dt>
+<dd>Take a snapshot of the image currently displayed on the monitor to
+the left of the control station.</dd>
+</dl>
+<p>The image will then be written to the file specified by the
+<code class="docutils literal"><span class="pre">filename=</span></code> argument.</p>
+<p>The <code class="docutils literal"><span class="pre">xafs()</span></code> plan calls this function twice, once for the XAS webcam
+and once for the analog camera.</p>
+<p>Note that this function is <cite>not</cite> run through the Run Engine.</p>
+<p>The name of the snapshot file and the camera used are written to the
+experimental log.</p>
+</div>
+<div class="section" id="log-file">
+<h2>6.2. Log file<a class="headerlink" href="#log-file" title="Permalink to this headline">¶</a></h2>
+<p>At the beginning of a user experiment, run this command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BMM_user_log</span><span class="p">(</span><span class="s1">&#39;/path/to/data/folder/experiment.log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This instruments the logger to maintain a log file specifically for
+the current experiment.  The logger also maintains a master log file
+which is, effectively, a concatenation of all the individual
+experimental logs.</p>
+<p>The log is an attempt to capture a record of all significant actions
+taken during an experimental campaign.  It errs of the conservative
+side in that it likely captures way too much information.</p>
+<p>Experimental events are captures with a time stamp and a brief
+explanation of what happened.  For example, when a motor is moved, the
+motor name and target position are written to the log with a time
+stamp.</p>
+<p>Similarly, a line scan or an XAFS scan is captured with enough
+information to understand what the scan accomplished.  For a line
+scan, the motor name, scan range, and starting position are captured.
+For an XAFS scan, the contents of the <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">INI file (See Section
+5)</span></a> are written to the log along with the motor positions as
+reported by the <code class="docutils literal"><span class="pre">ms()</span></code> command <a class="reference internal" href="motors.html#motors"><span class="std std-numref">(see Section 2)</span></a>.
+The names of the output data files are recorded with timestamps
+indicating when they were written.</p>
+<p>Several other activities specific to BMM also record to the log file.
+The snapshot tool described above is an example.</p>
+<p>Writing to the log file is accomplished in two ways.  This function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BMM_log_info</span><span class="p">(</span><span class="s1">&#39;text of message&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>is used to insert most messages into the log.  <code class="docutils literal"><span class="pre">BMM_log_info()</span></code> can
+be called at any time from the command line to insert any message into
+the log.</p>
+<p>The other tool uses <a class="reference external" href="https://nsls-ii.github.io/bluesky/debugging.html#message-hook">Bluesky's msg_hook</a>.
+This is how <code class="docutils literal"><span class="pre">mv()</span></code> and <code class="docutils literal"><span class="pre">mvr()</span></code> commands are captured in the log.
+This bespoke message hook parses the document returned by BlueSky for
+specific kinds of events and captures a log message when appropriate.</p>
+
+<br>
+
+<br>
+<hr class="docutils" />
+<p>This manual is copyright © 2018 Bruce Ravel</p>
+<p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
+<p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
+Creative Commons</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/atoms.png" alt="Logo"/>
+            </a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motors.html">2. Moving and querying motors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Experimental Log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#snapshots">6.1. Snapshots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#log-file">6.2. Log file</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/log.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="xafs.html" title="5. XAFS scans"
+             >previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Bruce Ravel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Moving and querying motors &#8212; BMM User Manual 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/atoms.ico"/>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Photon Delivery System" href="pds.html" />
+    <link rel="prev" title="1. Introduction to BMM" href="intro.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="pds.html" title="3. Photon Delivery System"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="intro.html" title="1. Introduction to BMM"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="moving-and-querying-motors">
+<span id="motors"></span><h1>2. Moving and querying motors<a class="headerlink" href="#moving-and-querying-motors" title="Permalink to this headline">¶</a></h1>
+<p>To get an overview of the state of the beamline motors do <code class="docutils literal"><span class="pre">ms()</span></code> at
+the bsui command line.  Here is an example:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>output example for
+the ms() command
+</pre></div>
+</div>
+<div class="section" id="sample-stages">
+<h2>2.1. Sample stages<a class="headerlink" href="#sample-stages" title="Permalink to this headline">¶</a></h2>
+<p>These stages sit on top of the XAFS optical table.  The nickname is a
+short string that can be used in the <code class="docutils literal"><span class="pre">linescan()</span></code> plan and certain
+other places instead of writing out the BlueSky's name for the motor.</p>
+<table border="1" class="docutils" id="xafs-stages">
+<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">XAFS sample stages</span><a class="headerlink" href="#xafs-stages" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="11%" />
+<col width="10%" />
+<col width="12%" />
+<col width="10%" />
+<col width="21%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">motor</th>
+<th class="head">nickname</th>
+<th class="head">type</th>
+<th class="head">units</th>
+<th class="head">notes</th>
+<th class="head">directions</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>xafs_linx</td>
+<td>x</td>
+<td>linear</td>
+<td>mm</td>
+<td>main sample stage</td>
+<td>+ = outboard, - = inboard</td>
+</tr>
+<tr class="row-odd"><td>xafs_liny</td>
+<td>y</td>
+<td>linear</td>
+<td>mm</td>
+<td>main sample stage</td>
+<td>+ = up, - = down</td>
+</tr>
+<tr class="row-even"><td>xafs_linxs</td>
+<td>xs</td>
+<td>linear</td>
+<td>mm</td>
+<td>reference stage</td>
+<td>+ = up, - = down</td>
+</tr>
+<tr class="row-odd"><td>xafs_pitch</td>
+<td>pitch</td>
+<td>tilt</td>
+<td>degrees</td>
+<td>Huber tilt stage</td>
+<td>+ = more positive</td>
+</tr>
+<tr class="row-even"><td>xafs_roll</td>
+<td>roll</td>
+<td>tilt</td>
+<td>degrees</td>
+<td>Huber tilt stage</td>
+<td>+ = more positive</td>
+</tr>
+<tr class="row-odd"><td>xafs_roth</td>
+<td>rh</td>
+<td>rotary</td>
+<td>degrees</td>
+<td>Huber circle</td>
+<td>+ = more positive</td>
+</tr>
+<tr class="row-even"><td>xafs_rotb</td>
+<td>rb</td>
+<td>rotary</td>
+<td>degrees</td>
+<td>large rotary stage</td>
+<td>+ = more positive</td>
+</tr>
+<tr class="row-odd"><td>xafs_rots</td>
+<td>rs</td>
+<td>rotary</td>
+<td>degrees</td>
+<td>small rotary stage</td>
+<td>+ = more positive</td>
+</tr>
+</tbody>
+</table>
+<p>Configuration and position of the motors can be queried easily.  In
+the following examples, the <code class="docutils literal"><span class="pre">xafs_liny</span></code> motor is used.  The commands
+are the same for all sample stage motors.</p>
+<dl class="docutils">
+<dt><strong>Querying position</strong></dt>
+<dd>The position of any motor can be queried with a command line like
+<code class="docutils literal"><span class="pre">xafs_liny.wh()</span></code>.</dd>
+<dt><strong>Moving to a new position</strong></dt>
+<dd><p class="first">Always move motors through the run engine, for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">mvr</span></code> is the relative move command – the numerical argument is
+the amount to move from the current position. <code class="docutils literal"><span class="pre">mv</span></code>, as in:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">37.63</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>is the absolute move command.  The numerical argument is the
+position to which the motor will move.</p>
+<p class="last">All movements are logged in the <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log (Section 6)</span></a></p>
+</dd>
+<dt><strong>Moving to a new position in a plan</strong> To move a sample stage as part</dt>
+<dd><p class="first">of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.4)</span></a> , do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can combine motions of two or more motors in a single
+synchronous movement:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">,</span> <span class="n">xafs_linx</span><span class="p">,</span> <span class="mf">15.79</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>Querying soft limits</strong></dt>
+<dd>To know the soft limits on a sample stage, do <code class="docutils literal"><span class="pre">xafs_liny.llm</span></code> or
+<code class="docutils literal"><span class="pre">xafs_liny.hlm</span></code> for the low or high limit.</dd>
+<dt><strong>Setting soft limits</strong></dt>
+<dd>To set the soft limits on a sample stage, do something like
+<code class="docutils literal"><span class="pre">xafs_liny.llm</span> <span class="pre">=</span> <span class="pre">5</span></code> or <code class="docutils literal"><span class="pre">xafs_liny.hlm</span> <span class="pre">=</span> <span class="pre">85</span></code></dd>
+<dt><strong>Reference stage</strong></dt>
+<dd><p class="first">The reference stage is calibrated such that the beam passes through
+the center of a slot every 45 mm.  Thus the five positions, from
+top to bottom, are -90, -45, 0, 45, and 90.  Move to a new
+positions by:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_linxs</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>As part of a macro that changes energies, you might do something
+like:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">11564</span><span class="p">)</span> <span class="c1"># the Pt K edge energy</span>
+<span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_linxs</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>    <span class="c1"># the position of the Pt foil in the foil holder</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="sample-spinner">
+<h2>2.2. Sample spinner<a class="headerlink" href="#sample-spinner" title="Permalink to this headline">¶</a></h2>
+<p>The sample spinner is a 12 volt CPU cooling fan mounted on a plate
+which is mounted on the tilt stage.  It is used to spin crystalline
+samples in an effort to suppress Bragg peaks which might enter the
+fluorescence detector.</p>
+<p>To turn the spinner on and off:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fan</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+<span class="n">fan</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To turn the spinner on or off in a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.4)</span></a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">fan</span><span class="o">.</span><span class="n">on_plan</span><span class="p">()</span>
+<span class="k">yield from</span> <span class="n">fan</span><span class="o">.</span><span class="n">off_plan</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The spinner should <strong>always</strong> be turned off before entering the end
+station.  It is a good idea to always have a camera pointed at the
+spinner while it is use.</p>
+</div>
+<div class="section" id="table-motors">
+<h2>2.3. Table motors<a class="headerlink" href="#table-motors" title="Permalink to this headline">¶</a></h2>
+<p>Typically, table motors are not moved individually.  When changing
+photon delivery system modes (see.....), the table should be put into
+the correct orientation such that the beam passes through the center
+of the ion chambers.</p>
+<p>The lateral table motors are normally disabled.</p>
+<table border="1" class="docutils" id="xafs-table">
+<caption><span class="caption-number">Table 2.2 </span><span class="caption-text">XAFS table motors</span><a class="headerlink" href="#xafs-table" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="15%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">motor</th>
+<th class="head">units</th>
+<th class="head">notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>xafs_yu</td>
+<td>mm</td>
+<td>upstream table jack</td>
+</tr>
+<tr class="row-odd"><td>xafs_ydi</td>
+<td>mm</td>
+<td>downstream, inboard table jack</td>
+</tr>
+<tr class="row-even"><td>xafs_ydo</td>
+<td>mm</td>
+<td>downstream, outboard table jack</td>
+</tr>
+<tr class="row-odd"><td>xafs_vertical</td>
+<td>mm</td>
+<td>coordinate linear motion</td>
+</tr>
+<tr class="row-even"><td>xafs_pitch</td>
+<td>degrees</td>
+<td>coordinate table pitch</td>
+</tr>
+<tr class="row-odd"><td>xafs_roll</td>
+<td>degrees</td>
+<td>coordinate table roll</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>Querying table position</strong></dt>
+<dd>The position of any motor can be queried with a command line like
+<code class="docutils literal"><span class="pre">xafs_table.wh()</span></code>.</dd>
+<dt><strong>Moving table motors</strong></dt>
+<dd><p class="first">The normal movement commands work on the real and virtual motors,
+e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">xafs_ydi</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_vertical</span><span class="p">,</span> <span class="mi">107</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Again, this is rarely necessary.  The mode changing plan should
+leave the table in the correct location for your experiment.</p>
+<p class="last">All table movements are recorded in the experimental log.</p>
+</dd>
+</dl>
+
+<br>
+
+<br>
+<hr class="docutils" />
+<p>This manual is copyright © 2018 Bruce Ravel</p>
+<p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
+<p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
+Creative Commons</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/atoms.png" alt="Logo"/>
+            </a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Moving and querying motors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sample-stages">2.1. Sample stages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-spinner">2.2. Sample spinner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#table-motors">2.3. Table motors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/motors.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="pds.html" title="3. Photon Delivery System"
+             >next</a></li>
+        <li class="right" >
+          <a href="intro.html" title="1. Introduction to BMM"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Bruce Ravel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>
