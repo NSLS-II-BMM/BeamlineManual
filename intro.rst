@@ -4,10 +4,29 @@
    http://creativecommons.org/licenses/by-sa/3.0/
 
 
+.. _intro:
+
 Introduction to BMM
 ===================
 
 At the command line, `bsui`
+
+``su()``
+
+.. code-block:: text
+
+   output example for
+   the su() command
+
+
+``ms()``
+
+.. code-block:: text
+
+   output example for
+   the ms() command
+
+
 
 
 A Bit about BMM

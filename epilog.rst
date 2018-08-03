@@ -6,13 +6,9 @@
 		      
 --------------
 
-This tutorial is copyright |copy| 2018 Bruce Ravel
+This manual is copyright |copy| 2018 Bruce Ravel
 
-.. :mark:`somerights,.`
-
-This document is licensed under `The Creative Commons Attribution-ShareAlike License <https://creativecommons.org/licenses/by-sa/3.0/>`__.
-
-.. linebreak
+:mark:`somerights,.`  This document is licensed under `The Creative Commons Attribution-ShareAlike License <https://creativecommons.org/licenses/by-sa/3.0/>`__.
 
 If this document is useful to you, please consider `supporting The
 Creative Commons <https://creativecommons.org/donate/>`__.

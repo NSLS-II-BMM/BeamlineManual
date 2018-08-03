@@ -3,6 +3,8 @@
    The Creative Commons Attribution-ShareAlike License
    http://creativecommons.org/licenses/by-sa/3.0/
 
+.. _linescan:
+
 Sample position scans
 =====================
 
@@ -89,12 +91,21 @@ Retrieve data from the database using the database key or scan ID::
 
    ls2dat('/path/to/output.file', '<id>')
 
-Writes from database to output file.  File is simple column data file
-without header or metadata.
+This writes from the database to an output file.  The output file is a
+simple column data file without header or metadata.
+
+The first argument is the name of the output data file.  The second
+argument is either the scan's unique ID |nd| something like 
+``f6619ed7-a8e5-41c2-a499-f793b0fcacec`` |nd| or the scan's transient
+id number.  Both the unique and transient ids can be found in the
+experimental log.
 
 
 Special purpose line scans
 --------------------------
+
+A number of line scan types are so common and so often performed with
+the same arguments that they have special names.
 
 **Rocking curve scan**
    This command::
@@ -125,5 +136,6 @@ Special purpose line scans
 Area scans
 ----------
 
-.. todo:: Bespoke area scan plan based on ``rel_grid_scan()``
+.. todo:: Bespoke area scan plan based on ``rel_grid_scan()`` with
+	  logging, plucking, etc.
 

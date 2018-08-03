@@ -4,13 +4,19 @@
    http://creativecommons.org/licenses/by-sa/3.0/
 
 
+.. _motors:
+
 Moving and querying motors
 ==========================
 
 To get an overview of the state of the beamline motors do ``ms()`` at
 the bsui command line.  Here is an example:
 
-`fill me in`
+.. code-block:: text
+
+   output example for
+   the ms() command
+
 
 
 Sample stages
@@ -24,9 +30,9 @@ other places instead of writing out the BlueSky's name for the motor.
    :name:  xafs-stages
    :widths: auto
 
-   ========== ========= ===========  =========  ===================  ===========
+   ========== ========= ===========  =========  ===================  ===============================
    motor      nickname  type         units      notes                directions
-   ========== ========= ===========  =========  ===================  ===========
+   ========== ========= ===========  =========  ===================  ===============================
    xafs_linx  x         linear       mm         main sample stage    |plus| = outboard, - = inboard
    xafs_liny  y         linear       mm         main sample stage    |plus| = up, - = down
    xafs_linxs xs        linear       mm         reference stage      |plus| = up, - = down
@@ -35,7 +41,7 @@ other places instead of writing out the BlueSky's name for the motor.
    xafs_roth  rh        rotary       degrees    Huber circle         |plus| = more positive
    xafs_rotb  rb        rotary       degrees    large rotary stage   |plus| = more positive
    xafs_rots  rs        rotary       degrees    small rotary stage   |plus| = more positive
-   ========== ========= ===========  =========  ===================  ===========
+   ========== ========= ===========  =========  ===================  ===============================
 
 Configuration and position of the motors can be queried easily.  In
 the following examples, the ``xafs_liny`` motor is used.  The commands
@@ -58,10 +64,10 @@ are the same for all sample stage motors.
    is the absolute move command.  The numerical argument is the
    position to which the motor will move.
 
-   All movements are logged in the experimental log.  (See...)
+   All movements are logged in the :numref:`experimental log (Section %s) <log>`
 
-**Moving to a new position in a plan**
-   To move a sample stage as part of a macro, do::
+**Moving to a new position in a plan** To move a sample stage as part
+   of a :numref:`macro (Section %s) <macro>` , do::
 
      yield from mv(xafs_liny, 37.36)
 
@@ -97,7 +103,7 @@ Sample spinner
 --------------
 
 The sample spinner is a 12 volt CPU cooling fan mounted on a plate
-which is mounted on the tiult stage.  It is used to spin crystalline
+which is mounted on the tilt stage.  It is used to spin crystalline
 samples in an effort to suppress Bragg peaks which might enter the
 fluorescence detector.
 
@@ -106,7 +112,7 @@ To turn the spinner on and off::
    fan.on()
    fan.off()
 
-To turn the spinner on or off in a macro::
+To turn the spinner on or off in a :numref:`macro (Section %s) <macro>`::
 
    yield from fan.on_plan()
    yield from fan.off_plan()
@@ -126,16 +132,20 @@ of the ion chambers.
 The lateral table motors are normally disabled.
 
 
-==============   ========  =================================
-motor            units     notes
-==============   ========  =================================
-xafs_yu          mm        upstream table jack
-xafs_ydi         mm        downstream, inboard table jack
-xafs_ydo         mm        downstream, outboard table jack
-xafs_vertical    mm        coordinate linear motion
-xafs_pitch       degrees   coordinate table pitch
-xafs_roll        degrees   coordinate table roll
-==============   ========  =================================
+.. table:: XAFS table motors
+   :name:  xafs-table
+   :widths: auto
+
+   ==============   ========  =================================
+   motor            units     notes
+   ==============   ========  =================================
+   xafs_yu          mm        upstream table jack
+   xafs_ydi         mm        downstream, inboard table jack
+   xafs_ydo         mm        downstream, outboard table jack
+   xafs_vertical    mm        coordinate linear motion
+   xafs_pitch       degrees   coordinate table pitch
+   xafs_roll        degrees   coordinate table roll
+   ==============   ========  =================================
 
 
 **Querying table position**

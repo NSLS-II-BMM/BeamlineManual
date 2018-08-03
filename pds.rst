@@ -3,6 +3,8 @@
    The Creative Commons Attribution-ShareAlike License
    http://creativecommons.org/licenses/by-sa/3.0/
 
+.. _pds:
+
 Photon Delivery System
 ======================
 
@@ -10,16 +12,17 @@ Shutters
 --------
 
 **Open and close the photon shutter**
-   In the nomenclature of BMM, this is ``shb``.  Open and close this
-   shutter with::
+   In the nomenclature of BMM, the photon shutter is ``shb``.  Open
+   and close this shutter with::
 
-       shb.open()
-       shb,close()
+     shb.open()
+     shb.close()
 
-   If you wish to open or close the photon shutter in a macro, do::
+   If you wish to open or close the photon shutter in a :numref:`macro
+   (Section %s) <macro>`, do::
 
-       yield from shb.open_plan() 
-       yield from shb.close_plan() 
+     yield from shb.open_plan() 
+     yield from shb.close_plan() 
 
 **Open and close the safety shutter**
    This is the front-end shutter.  Closing it takes light off the
@@ -27,8 +30,8 @@ Shutters
    during an experiment.  That said, the safety shutter is ``sha`` in
    the BMM nomenclature::
 
-       sha.open()
-       sha.close()
+     sha.open()
+     sha.close()
 
 Monochromator
 -------------
@@ -43,10 +46,13 @@ facilitating any actions a user should ever need.
 
      dcm.wh()
 
-   This returns a short report like this::
+   This returns a short report like this:
 
-     blah
-     blah
+   .. code-block:: text
+
+      output example for
+      the dcm.wh() command
+
 
    This report shows the current energy, the crystal set currently in
    use, and the position of the parallel and perpendicular motors of
@@ -68,7 +74,8 @@ facilitating any actions a user should ever need.
    arithmetic to the computer.
 
 **Move to a new energy in a macro**
-   An energy change can be a part of a macro.  Simply do::
+   An energy change can be a part of a :numref:`macro (Section %s)
+   <macro>`.  Simply do::
 
      yield from mv(dcm.energy, 8979+50))
 
@@ -76,23 +83,24 @@ facilitating any actions a user should ever need.
    After a long move, you might need to retune the second crystal.  To
    find the peak of the rocking curve and move to that peak::
 
-      RE(rocking_curve())
+     RE(rocking_curve())
 
    This will run a scan of the pitch of the second crystal.  At the
    end of the scan, it moves to the ceiling of the measured intensity
    profile. 
 
-   You can tune the second crystal with these commands::
+   You can tune the second crystal by hand with these commands::
 
-      tu()
-      td()
+     tu()
+     td()
 
-   Those stand for "tune up" and "tune down".  Do not think that "up"
-   and "down" refer to measured intensity.  Rather, they refer to the
-   direction of motion of the motor which adjusts the second crystal
-   pitch.  In general, when you move to higher energy, you need to
-   tune in ``td()`` direction.  When you move to a lower energy, you
-   need to tune in th ``td()`` direction.  Obviously.....
+   Those stand for :quoted:`tune up` and :quoted:`tune down`.  Do not
+   think that :quoted:`up` and :quoted:`down` refer to measured
+   intensity.  Rather, they refer to the direction of motion of the
+   motor which adjusts the second crystal pitch.  When you move to
+   higher energy, you usually need to tune in ``td()`` direction.
+   When you move to a lower energy, you usually need to tune in the
+   ``tu()`` direction.  Obviously.....
 
 Mirrors
 -------
@@ -107,15 +115,21 @@ slits, the XAFS table, and other parts of the photon delivery system.
 `In short, don't move the mirror motors.`
 
 That said, if you want to know the current positions of the motors on
-the focusing mirror::
+the focusing mirror ``m2.wh()``
 
-    m2.wh()
 
-and on the harmonic rejection mirror::
+.. code-block:: text
 
-    m3.wh()
+   output example for
+   the m2.wh() command
 
-`examples...`
+and on the harmonic rejection mirror ``m3.wh()``
+
+.. code-block:: text
+
+   output example for
+   the m3.wh() command
+
 
 
 
