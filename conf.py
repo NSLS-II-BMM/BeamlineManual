@@ -40,7 +40,7 @@ extensions = [
 # from sphinxtr
 extensions.extend([
     'fix_equation_ref',
-    'subfig',
+    #'subfig',
     #'numfig',
     'numsec',
     'figtable',
@@ -48,7 +48,7 @@ extensions.extend([
     'singletext',
     #'sphinx_clatex',
     'demeterdocs',
-    'sphinxcontrib.bibtex',
+    #'sphinxcontrib.bibtex',
     #'sphinxcontrib.images'
 ])
 
@@ -234,7 +234,7 @@ html_show_sourcelink = True
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Athenadoc'
+htmlhelp_basename = 'BMM_Manual'
 
 
 # -- Options for LaTeX output ---------------------------------------------

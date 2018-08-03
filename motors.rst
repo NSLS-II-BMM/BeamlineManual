@@ -28,7 +28,6 @@ other places instead of writing out the BlueSky's name for the motor.
 
 .. table:: XAFS sample stages
    :name:  xafs-stages
-   :widths: auto
 
    ========== ========= ===========  =========  ===================  ===============================
    motor      nickname  type         units      notes                directions
@@ -134,7 +133,6 @@ The lateral table motors are normally disabled.
 
 .. table:: XAFS table motors
    :name:  xafs-table
-   :widths: auto
 
    ==============   ========  =================================
    motor            units     notes
