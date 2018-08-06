@@ -14,8 +14,32 @@ the bsui command line.  Here is an example:
 
 .. code-block:: text
 
-   output example for
-   the ms() command
+   In [1897]: ms()
+   ==============================================================================
+   Energy = 19300.1   reflection = Si(111)   mode = fixed
+        Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
+   M2
+        vertical =   6.000 mm           YU  =   6.000
+        lateral  =   0.000 mm           YDO =   6.000
+        pitch    =   0.000 mrad         YDI =   6.000
+        roll     =  -0.001 mrad         XU  =  -0.129
+        yaw      =   0.200 mrad         XD  =   0.129
+   M3
+        vertical =   0.000 mm           YU  =  -1.167
+        lateral  =  15.001 mm           YDO =   1.167
+        pitch    =   3.500 mrad         YDI =   1.167
+        roll     =   0.000 mrad         XU  =  15.001
+        yaw      =   0.001 mrad         XD  =  15.001
+   Slits3:   vsize  vcenter  hsize   hcenter     top    bottom    outboard  inboard
+          1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
+   DM3_BCT:  45.004 mm
+   XAFS table:
+        vertical  pitch    roll   YU     YDO     YDI
+        132.000   0.000   0.000 132.000 132.000 132.000
+   XAFS stages:
+           linx     liny    roll    pitch    linxs    roth     rotb     rots
+           9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
+   ==============================================================================
 
 
 

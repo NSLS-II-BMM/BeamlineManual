@@ -15,17 +15,67 @@ At the command line, `bsui`
 
 .. code-block:: text
 
-   output example for
-   the su() command
+   In [1898]: su()
+   Monday 06 August, 2018 10:24 AM
 
+   BMPS: open            IDPS: closed            Photon Shutter: closed
+
+   Thermocouple               Temperature         Valve   state          Vacuum section       pressure     current
+   =======================================================================================================================
+     Mirror 1, inboard fin            33.5 C        FEGV1   open          Diagnostic Module 1   8.60E-09     20.0 μA
+     Mirror 1, disaster mask          32.4 C        FEGV3   open          Monochromator         5.00E-08    320.0 μA
+     Mirror 1, outboard fin           33.2 C        FEGV2   open          Diagnostic Module 2   3.60E-09     86.0 μA
+     First fluorescent screen         29.0 C        GV1     open          Focusing Mirror       3.10E-09     15.0 μA
+     111 first crystal                28.7 C        GV2     open          Harmonic Rej. Mirror  2.20E-09      8.9 μA
+     311 first crystal                29.4 C        GV3     open          Transport Pipe        2.10E-09      2.7 μA
+     Compton shield                   29.2 C        GV4     open          Diagnostic Module 3   2.70E-09      7.4 μA
+     Second crystal pitch             27.9 C        GV5     open          Flight Path           7.20E+02   
+     Second crystal roll              27.9 C        GV6     open  
+     Second crystal perpendicular     27.6 C
+     Second crystal parallel          25.5 C
+     Mirror 2 upstream                26.4 C
+     Mirror 2 downstream              25.9 C
+     Mirror 3 upstream                26.0 C
+     Mirror 3 downstream              25.5 C
+     Filter assembly 1, slot 1        28.8 C
+     Filter assembly 1, slot 2        28.6 C
+     Filter assembly 1, slot 3        28.5 C
+     Filter assembly 1, slot 4        29.0 C
+     Filter assembly 2, slot 1        28.7 C
+     Filter assembly 2, slot 2        28.7 C
+     Filter assembly 2, slot 3        28.6 C
+     Filter assembly 2, slot 4        28.7 C
 
 ``ms()``
 
 .. code-block:: text
 
-   output example for
-   the ms() command
-
+   In [1897]: ms()
+   ==============================================================================
+   Energy = 19300.1   reflection = Si(111)   mode = fixed
+        Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
+   M2
+        vertical =   6.000 mm           YU  =   6.000
+        lateral  =   0.000 mm           YDO =   6.000
+        pitch    =   0.000 mrad         YDI =   6.000
+        roll     =  -0.001 mrad         XU  =  -0.129
+        yaw      =   0.200 mrad         XD  =   0.129
+   M3
+        vertical =   0.000 mm           YU  =  -1.167
+        lateral  =  15.001 mm           YDO =   1.167
+        pitch    =   3.500 mrad         YDI =   1.167
+        roll     =   0.000 mrad         XU  =  15.001
+        yaw      =   0.001 mrad         XD  =  15.001
+   Slits3:   vsize  vcenter  hsize   hcenter     top    bottom    outboard  inboard
+          1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
+   DM3_BCT:  45.004 mm
+   XAFS table:
+        vertical  pitch    roll   YU     YDO     YDI
+        132.000   0.000   0.000 132.000 132.000 132.000
+   XAFS stages:
+           linx     liny    roll    pitch    linxs    roth     rotb     rots
+           9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
+   ==============================================================================
 
 
 

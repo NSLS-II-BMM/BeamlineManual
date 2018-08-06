@@ -21,8 +21,8 @@ Shutters
    If you wish to open or close the photon shutter in a :numref:`macro
    (Section %s) <macro>`, do::
 
-     yield from shb.open_plan() 
-     yield from shb.close_plan() 
+     yield from shb.open_plan()
+     yield from shb.close_plan()
 
 **Open and close the safety shutter**
    This is the front-end shutter.  Closing it takes light off the
@@ -50,8 +50,8 @@ facilitating any actions a user should ever need.
 
    .. code-block:: text
 
-      output example for
-      the dcm.wh() command
+      Energy = 19300.1   reflection = Si(111)
+      current: Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
 
 
    This report shows the current energy, the crystal set currently in
@@ -87,7 +87,7 @@ facilitating any actions a user should ever need.
 
    This will run a scan of the pitch of the second crystal.  At the
    end of the scan, it moves to the ceiling of the measured intensity
-   profile. 
+   profile.
 
    You can tune the second crystal by hand with these commands::
 
@@ -110,7 +110,7 @@ exactly what you are doing, you should never move the mirrors.
 Adjusting mirrors by hand is a poor idea.  Changing the mirror
 positions in any way changes the height and inclination of the beam as
 it enters the end station.  This requires changes in positions of the
-slits, the XAFS table, and other parts of the photon delivery system.  
+slits, the XAFS table, and other parts of the photon delivery system.
 
 `In short, don't move the mirror motors.`
 
@@ -120,16 +120,23 @@ the focusing mirror ``m2.wh()``
 
 .. code-block:: text
 
-   output example for
-   the m2.wh() command
+   In [1903]: m2.wh()
+   M2:
+        vertical =   6.000 mm           YU  =   6.000
+        lateral  =   0.000 mm           YDO =   6.000
+        pitch    =   0.000 mrad         YDI =   6.000
+        roll     =  -0.001 mrad         XU  =  -0.129
+        yaw      =   0.200 mrad         XD  =   0.129
+        bender   =  163789.0 steps
 
 and on the harmonic rejection mirror ``m3.wh()``
 
 .. code-block:: text
 
-   output example for
-   the m3.wh() command
-
-
-
-
+   In [1904]: m3.wh()
+   M3: (Rh/Pt stripe)
+        vertical =   0.000 mm           YU  =  -1.167
+        lateral  =  15.001 mm           YDO =   1.167
+        pitch    =   3.500 mrad         YDI =   1.167
+        roll     =   0.000 mrad         XU  =  15.001
+        yaw      =   0.001 mrad         XD  =  15.001
