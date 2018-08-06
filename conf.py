@@ -40,7 +40,7 @@ extensions = [
 # from sphinxtr
 extensions.extend([
     'fix_equation_ref',
-    #'subfig',
+    'subfig',
     #'numfig',
     'numsec',
     'figtable',

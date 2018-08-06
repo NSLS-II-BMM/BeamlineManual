@@ -71,7 +71,7 @@ Here is a complete explanation of the contents of the INI file.
    The edge energy for the element and edge of this measurement.  This
    is the energy reference for the ``bounds``.  
 
-   .. todo:: Look up E0 given the element and edge symbols
+   .. todo:: Look up E0 given the element and edge symbols, remove ``e0`` keyword
 
 ``element`` (line 7)
    The one- or two-letter symbol for the element.
@@ -273,8 +273,8 @@ metadata items specific to the sample.
       BMM_info('Scan sequence finished')
 
 Any keyword form the INI file can be used as command argument in the
-call to ``xafs()``.  Arguments to ``xafs()`` tak priority over values
-in the INI file.
+call to ``xafs()``.  Arguments to ``xafs()`` will take priority over
+values in the INI file.
 
 
 Once you have prepared the macro file, you must reload the macro into

@@ -22,12 +22,12 @@ confusions about sample positions and other experimental issues.
 Snapshots
 ---------
 
-The XAFS scan plan described in :numref:`Section %s <xafs>` includes a step where
-snapshots are taken from the XAS webcam and the small analog camera.
-These photos are written to JPG files with names related to the XAS
-data file written as part of the call to the ``xafs()`` plan.  This
-provides automated photographic documentation of the state of the
-measurement as it is being made.
+The XAFS scan plan described in :numref:`Section %s <xafs>` includes a
+step where snapshots are taken from the XAS webcam and the small
+analog camera.  These photos are written to JPG files with names
+related to the XAS data file written as part of the call to the
+``xafs()`` plan.  This provides automated photographic documentation
+of the state of the measurement as it is being made.
 
 Snapshots can be taken at any time using this command::
 
@@ -55,6 +55,41 @@ Note that this function is `not` run through the Run Engine.
 
 The name of the snapshot file and the camera used are written to the
 experimental log.
+
+
+.. table::
+   :class: borderless 
+
+   +---------------------------------------+----------------------------------------+
+   |.. _fig-anacam:                        |.. _fig-xascam:                         |
+   |                                       |                                        |
+   |.. image:: _images/analog.jpg          |.. image:: _images/XASwebcam.jpg        |
+   |   :width: 95 %                        |   :width: 95 %                         |
+   |   :align: center                      |   :align: center                       |
+   |                                       |                                        |
+   |Snapshot taken with the analog camera  |Snapshot taken with the XAS web camera  |
+   +---------------------------------------+----------------------------------------+ 
+
+..
+   .. subfigstart::
+
+   .. _fig-anacam:
+   .. figure::  _images/analog.jpg
+      :target: _images/analog.jpg
+      :width: 100%
+
+      Snapshot taken with the analog camera
+
+   .. _fig-xascam:
+   .. figure::  _images/XASwebcam.jpg
+      :target: _images/XASwebcam.jpg
+      :width: 100%
+
+      Snapshot taken with the XAS web camera
+
+   .. subfigend::
+      :width: 0.45
+      :label: _fig-snapshots
 
 
 Log file

@@ -31,7 +31,7 @@ the bsui command line.  Here is an example:
         roll     =   0.000 mrad         XU  =  15.001
         yaw      =   0.001 mrad         XD  =  15.001
    Slits3:   vsize  vcenter  hsize   hcenter     top    bottom    outboard  inboard
-          1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
+             1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
    DM3_BCT:  45.004 mm
    XAFS table:
         vertical  pitch    roll   YU     YDO     YDI
