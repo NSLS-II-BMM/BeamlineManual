@@ -132,7 +132,7 @@ are written and is called by name when running an XAFS scan.</p>
 is the energy reference for the <code class="docutils literal"><span class="pre">bounds</span></code>.</p>
 <div class="admonition-todo last admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
-<p class="last">Look up E0 given the element and edge symbols</p>
+<p class="last">Look up E0 given the element and edge symbols, remove <code class="docutils literal"><span class="pre">e0</span></code> keyword</p>
 </div>
 </dd>
 <dt><code class="docutils literal"><span class="pre">element</span></code> (line 7)</dt>
@@ -313,8 +313,8 @@ metadata items specific to the sample.</p>
 </pre></div>
 </td></tr></table></div>
 <p>Any keyword form the INI file can be used as command argument in the
-call to <code class="docutils literal"><span class="pre">xafs()</span></code>.  Arguments to <code class="docutils literal"><span class="pre">xafs()</span></code> tak priority over values
-in the INI file.</p>
+call to <code class="docutils literal"><span class="pre">xafs()</span></code>.  Arguments to <code class="docutils literal"><span class="pre">xafs()</span></code> will take priority over
+values in the INI file.</p>
 <p>Once you have prepared the macro file, you must reload the macro into
 the running BlueSky session:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;/path/to/macro.py&#39;</span>
@@ -361,6 +361,15 @@ Creative Commons</a>.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
 </ul>
+<h3>Helpful Links</h3>
+<ul>
+  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+  <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+  <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+  <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+</ul>
+<p>
 
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>

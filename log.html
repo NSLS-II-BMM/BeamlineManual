@@ -56,12 +56,12 @@ attempt to provide enough information to recover from mistakes and
 confusions about sample positions and other experimental issues.</p>
 <div class="section" id="snapshots">
 <h2>6.1. Snapshots<a class="headerlink" href="#snapshots" title="Permalink to this headline">¶</a></h2>
-<p>The XAFS scan plan described in <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">Section 5</span></a> includes a step where
-snapshots are taken from the XAS webcam and the small analog camera.
-These photos are written to JPG files with names related to the XAS
-data file written as part of the call to the <code class="docutils literal"><span class="pre">xafs()</span></code> plan.  This
-provides automated photographic documentation of the state of the
-measurement as it is being made.</p>
+<p>The XAFS scan plan described in <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">Section 5</span></a> includes a
+step where snapshots are taken from the XAS webcam and the small
+analog camera.  These photos are written to JPG files with names
+related to the XAS data file written as part of the call to the
+<code class="docutils literal"><span class="pre">xafs()</span></code> plan.  This provides automated photographic documentation
+of the state of the measurement as it is being made.</p>
 <p>Snapshots can be taken at any time using this command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">snap</span><span class="p">(</span><span class="s1">&#39;&lt;camera&gt;&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;/path/to/image.jpg&#39;</span><span class="p">)</span>
 </pre></div>
@@ -83,6 +83,21 @@ and once for the analog camera.</p>
 <p>Note that this function is <cite>not</cite> run through the Run Engine.</p>
 <p>The name of the snapshot file and the camera used are written to the
 experimental log.</p>
+<table border="1" class="borderless docutils">
+<colgroup>
+<col width="49%" />
+<col width="51%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="first reference internal image-reference" href="_images/analog.jpg" id="fig-anacam"><img alt="_images/analog.jpg" class="align-center" id="fig-anacam" src="_images/analog.jpg" style="width: 95%;" /></a>
+<p class="last">Snapshot taken with the analog camera</p>
+</td>
+<td><a class="first reference internal image-reference" href="_images/XASwebcam.jpg" id="fig-xascam"><img alt="_images/XASwebcam.jpg" class="align-center" id="fig-xascam" src="_images/XASwebcam.jpg" style="width: 95%;" /></a>
+<p class="last">Snapshot taken with the XAS web camera</p>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="log-file">
 <h2>6.2. Log file<a class="headerlink" href="#log-file" title="Permalink to this headline">¶</a></h2>
@@ -156,6 +171,15 @@ Creative Commons</a>.</p>
 </ul>
 </li>
 </ul>
+<h3>Helpful Links</h3>
+<ul>
+  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+  <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+  <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+  <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+</ul>
+<p>
 
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>

@@ -90,8 +90,8 @@ facilitating any actions a user should ever need.</p>
 </pre></div>
 </div>
 <p>This returns a short report like this:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>output example for
-the dcm.wh() command
+<div class="highlight-text"><div class="highlight"><pre><span></span>Energy = 19300.1   reflection = Si(111)
+current: Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
 </pre></div>
 </div>
 <p>This report shows the current energy, the crystal set currently in
@@ -110,9 +110,9 @@ the energy of the mono.  To move to the copper K edge energy:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8979</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
 </pre></div>
 </div>
-<p class="last">Note that the BlueSky command line is able to do simple
-arithmetic (and a whole lot more!).  It is a good idea to leave the
-arithmetic to the computer.</p>
+<p class="last">Note that the BlueSky command line is able to do simple arithmetic
+(and a whole lot more!).  It is a good idea to leave the arithmetic
+to the computer.</p>
 </dd>
 <dt><strong>Move to a new energy in a macro</strong></dt>
 <dd><p class="first">An energy change can be a part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.4)</span></a>.  Simply do:</p>
@@ -154,16 +154,188 @@ it enters the end station.  This requires changes in positions of the
 slits, the XAFS table, and other parts of the photon delivery system.</p>
 <p><cite>In short, don't move the mirror motors.</cite></p>
 <p>That said, if you want to know the current positions of the motors on
-the focusing mirror <code class="docutils literal"><span class="pre">m2.wh()</span></code></p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>output example for
-the m2.wh() command
+the focusing mirror, use <code class="docutils literal"><span class="pre">m2.wh()</span></code></p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1903]: m2.wh()
+M2:
+     vertical =   6.000 mm           YU  =   6.000
+     lateral  =   0.000 mm           YDO =   6.000
+     pitch    =   0.000 mrad         YDI =   6.000
+     roll     =  -0.001 mrad         XU  =  -0.129
+     yaw      =   0.200 mrad         XD  =   0.129
+     bender   =  163789.0 steps
 </pre></div>
 </div>
-<p>and on the harmonic rejection mirror <code class="docutils literal"><span class="pre">m3.wh()</span></code></p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>output example for
-the m3.wh() command
+<p>For the harmonic rejection mirror, use <code class="docutils literal"><span class="pre">m3.wh()</span></code></p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1904]: m3.wh()
+M3: (Rh/Pt stripe)
+     vertical =   0.000 mm           YU  =  -1.167
+     lateral  =  15.001 mm           YDO =   1.167
+     pitch    =   3.500 mrad         YDI =   1.167
+     roll     =   0.000 mrad         XU  =  15.001
+     yaw      =   0.001 mrad         XD  =  15.001
 </pre></div>
 </div>
+</div>
+<div class="section" id="end-station-slits">
+<h2>3.4. End station slits<a class="headerlink" href="#end-station-slits" title="Permalink to this headline">¶</a></h2>
+<p>Near the end of the photon delivery system, in Diagnostic Module 3 in
+the end station, there is a four-blade slit system.  These are used
+to define the beam size on the sample.</p>
+<table border="1" class="docutils" id="slits3-motors">
+<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">End station slit motors</span><a class="headerlink" href="#slits3-motors" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="24%" />
+<col width="13%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">motor</th>
+<th class="head">units</th>
+<th class="head">notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>slits3_top</td>
+<td>mm</td>
+<td>top blade position</td>
+</tr>
+<tr class="row-odd"><td>slits3_bottom</td>
+<td>mm</td>
+<td>bottom blade position</td>
+</tr>
+<tr class="row-even"><td>slits3_inboard</td>
+<td>mm</td>
+<td>inboard blade position</td>
+</tr>
+<tr class="row-odd"><td>slits3_outboard</td>
+<td>mm</td>
+<td>outboard blade position</td>
+</tr>
+<tr class="row-even"><td>slits3_hsize</td>
+<td>mm</td>
+<td>horizontal size, coordinated motion</td>
+</tr>
+<tr class="row-odd"><td>slits3_hcenter</td>
+<td>mm</td>
+<td>horizontal center, coordinated motion</td>
+</tr>
+<tr class="row-even"><td>slits3_vsize</td>
+<td>mm</td>
+<td>vertical size, coordinated motion</td>
+</tr>
+<tr class="row-odd"><td>slits3_vcenter</td>
+<td>mm</td>
+<td>vertical center, coordinated motion</td>
+</tr>
+</tbody>
+</table>
+<p>The individual blades are moved like any other motor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">slits3</span><span class="o">.</span><span class="n">outboard</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">slits3</span><span class="o">.</span><span class="n">top</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Coordinated motions are moved the same way:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">slits3</span><span class="o">.</span><span class="n">hsize</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">slits3</span><span class="o">.</span><span class="n">vcenter</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>To know the current positions of the slit blades and their coordinated
+motions, use <code class="docutils literal"><span class="pre">slits3.wh()</span></code></p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1966]: slits3.wh()
+SLITS3:
+     vertical   size   =   1.350 mm          Top      =   0.675
+     vertical   center =   0.000 mm          Bottom   =  -0.675
+     horizontal size   =   8.000 mm          Outboard =   4.000
+     horizontal center =   0.000 mm          Inboard  =  -4.000
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-configurations">
+<h2>3.5. Changing configurations<a class="headerlink" href="#changing-configurations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="photon-delivery-modes">
+<span id="change-mode"></span><h3>3.5.1. Photon delivery modes<a class="headerlink" href="#photon-delivery-modes" title="Permalink to this headline">¶</a></h3>
+<p>A look-up table is used to move the elements of the photon delivery
+system to their correct locations for the different energy ranges and
+focusing conditions.  Here is a table of different photon delivery
+modes.  Modes A-F are for delivery of light to the XAS end station.
+Mode XRD delivers high energy, focused beam to the goniometer.</p>
+<table border="1" class="docutils" id="pds-modes">
+<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Photon delivery modes</span><a class="headerlink" href="#pds-modes" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="14%" />
+<col width="28%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Mode</th>
+<th class="head">focused</th>
+<th class="head">energy range</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>✓</td>
+<td>above 8 keV</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>✓</td>
+<td>below 6 keV</td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td>✓</td>
+<td>6 keV – 8 keV</td>
+</tr>
+<tr class="row-odd"><td>D</td>
+<td>✗</td>
+<td>above 8 keV</td>
+</tr>
+<tr class="row-even"><td>E</td>
+<td>✗</td>
+<td>below 6 keV</td>
+</tr>
+<tr class="row-odd"><td>F</td>
+<td>✗</td>
+<td>6 keV – 8 keV</td>
+</tr>
+<tr class="row-even"><td>XRD</td>
+<td>✓</td>
+<td>above 8 keV</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Lookup table for low energy delivery of light to goniometer</p>
+</div>
+<p>To move between modes, do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_mode</span><span class="p">(</span><span class="s1">&#39;&lt;mode&gt;&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">&lt;mode&gt;</span></code> is one of the strings in the first column of
+<a class="reference internal" href="#pds-modes"><span class="std std-numref">Table 3.2</span></a>.  For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_modes</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This will move 17 motors all at the same time and should take less
+than 2 minutes.</p>
+</div>
+<div class="section" id="monochromator-crystals">
+<span id="change-crystals"></span><h3>3.5.2. Monochromator crystals<a class="headerlink" href="#monochromator-crystals" title="Permalink to this headline">¶</a></h3>
+<p>To change between the Si(111) and Si(311) crystals, do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_crystals</span><span class="p">(</span><span class="s1">&#39;111&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_crystals</span><span class="p">(</span><span class="s1">&#39;311&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This will move the lateral motor of the monochromator between the two
+crystal sets and adjust the pitch of the second crystal to be nearly
+in tune and the roll to deliver the beam to nearly the same location
+for both crystals.  This also should take less than 3 minutes.</p>
+<p>The <code class="docutils literal"><span class="pre">change_xtals()</span></code> plan also runs the <a class="reference internal" href="linescans.html#special-linescans"><span class="std std-numref">rocking curve
+(Section 4.4)</span></a> macro to fix the tuning of the
+second crystal.</p>
 
 <br>
 
@@ -173,6 +345,7 @@ the m3.wh() command
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>
+</div>
 </div>
 </div>
 
@@ -193,12 +366,23 @@ Creative Commons</a>.</p>
 <li class="toctree-l2"><a class="reference internal" href="#shutters">3.1. Shutters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#monochromator">3.2. Monochromator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mirrors">3.3. Mirrors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#end-station-slits">3.4. End station slits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-configurations">3.5. Changing configurations</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
 </ul>
+<h3>Helpful Links</h3>
+<ul>
+  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+  <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+  <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+  <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+</ul>
+<p>
 
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>

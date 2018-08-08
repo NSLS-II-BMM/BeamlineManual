@@ -101,6 +101,8 @@ id number.  Both the unique and transient ids can be found in the
 experimental log.
 
 
+.. _special-linescans:
+
 Special purpose line scans
 --------------------------
 
