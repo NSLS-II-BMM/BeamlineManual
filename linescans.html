@@ -6,15 +6,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4. Sample position scans &#8212; BMM User Manual 0.0.0 documentation</title>
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>4. Sample position scans &#8212; BMM User Manual 0.1 documentation</title>
     
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.0',
+        VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -27,7 +36,12 @@
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="5. XAFS scans" href="xafs.html" />
-    <link rel="prev" title="3. Photon Delivery System" href="pds.html" /> 
+    <link rel="prev" title="3. Photon Delivery System" href="pds.html" />
+
+    <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
+    <link rel="stylesheet" type="text/css" href="_static/keys.css" />
+    <link rel="stylesheet" type="text/css" href="_static/program.css" />
+
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -39,14 +53,85 @@
         <li class="right" >
           <a href="pds.html" title="3. Photon Delivery System"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.0.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.1 documentation</a> &#187;</li> 
       </ul>
-    </div>  
+    </div>
+    <div class="container-wrapper">
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motors.html">2. Moving and querying motors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Sample position scans</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-line-scans">4.1. General line scans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plucking-a-point-from-a-scan">4.2. Plucking a point from a scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#revisit-a-line-scan">4.3. Revisit a line scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#special-purpose-line-scans">4.4. Special purpose line scans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#area-scans">4.5. Area scans</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+</ul>
+
+    
+  </div>
+</div><h3>Helpful Links</h3>
+<ul>
+  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+  <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+  <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+  <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+</ul>
+<p>
+
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/linescans.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+      
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Docs</a></li>
+              
+              <li>4. Sample position scans</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
             
   <div class="section" id="sample-position-scans">
 <span id="linescan"></span><h1>4. Sample position scans<a class="headerlink" href="#sample-position-scans" title="Permalink to this headline">¶</a></h1>
@@ -187,59 +272,21 @@ Creative Commons</a>.</p>
 
 
           </div>
-        </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-default" href="pds.html" title="previous chapter (use the left arrow)">3. Photon Delivery System</a>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/atoms.png" alt="Logo"/>
-            </a></p>
-<h3><a href="index.html">Table Of Contents</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motors.html">2. Moving and querying motors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Sample position scans</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#general-line-scans">4.1. General line scans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plucking-a-point-from-a-scan">4.2. Plucking a point from a scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#revisit-a-line-scan">4.3. Revisit a line scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#special-purpose-line-scans">4.4. Special purpose line scans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#area-scans">4.5. Area scans</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
-</ul>
-<h3>Helpful Links</h3>
-<ul>
-  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
-  <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
-  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
-  <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
-  <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
-</ul>
-<p>
-
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/linescans.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-        </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-default" href="xafs.html" title="next chapter (use the right arrow)">5. XAFS scans</a>
       </div>
-      <div class="clearer"></div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
     </div>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -250,12 +297,17 @@ Creative Commons</a>.</p>
         <li class="right" >
           <a href="pds.html" title="3. Photon Delivery System"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.0.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2018, Bruce Ravel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
-    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2018, Bruce Ravel. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
   </body>
 </html>
