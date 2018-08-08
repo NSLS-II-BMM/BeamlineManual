@@ -146,26 +146,37 @@ End station slits
 -----------------
 
 Near the end of the photon delivery system, in Diagnostic Module 3 in
-the end station, there is a four-blade slits system.  These are used
+the end station, there is a four-blade slit system.  These are used
 to define the beam size on the sample.
+
+
+.. table:: End station slit motors
+   :name:  slits3-motors
+
+   ===============   ========  =======================================
+   motor             units     notes
+   ===============   ========  =======================================
+   slits3_top        mm        top blade position
+   slits3_bottom     mm        bottom blade position
+   slits3_inboard    mm        inboard blade position
+   slits3_outboard   mm        outboard blade position
+   slits3_hsize      mm        horizontal size, coordinated motion
+   slits3_hcenter    mm        horizontal center, coordinated motion
+   slits3_vsize      mm        vertical size, coordinated motion
+   slits3_vcenter    mm        vertical center, coordinated motion
+   ===============   ========  =======================================
+
 
 The individual blades are moved like any other motor::
 
   RE(mv(slits3.outboard, -0.5))
   RE(mvr(slits3.top, -0.1))
 
-The slits are called ``slits3.top``, ``slits3.bottom``,
-``slits3.inboard``, and ``slits3.outboard``.
 
-Coordinated motions of the slits are also possible::
+Coordinated motions are moved the same way::
 
   RE(mv(slits3.hsize, 6))
-  RE(mv(slits3.hcenter, 0.25))
-  RE(mv(slits3.vsize, 0.5))
-  RE(mv(slits3.vcenter, -0.1))
-
-Those commands move pairs of motors to adjust the size and center in
-the horizontal and vertical directions.
+  RE(mvr(slits3.vcenter, -0.1))
 
 To know the current positions of the slit blades and their coordinated
 motions, use ``slits3.wh()``

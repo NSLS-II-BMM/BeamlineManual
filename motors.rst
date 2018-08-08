@@ -164,9 +164,9 @@ The lateral table motors are normally disabled.
    xafs_yu          mm        upstream table jack
    xafs_ydi         mm        downstream, inboard table jack
    xafs_ydo         mm        downstream, outboard table jack
-   xafs_vertical    mm        coordinate linear motion
-   xafs_pitch       degrees   coordinate table pitch
-   xafs_roll        degrees   coordinate table roll
+   xafs_vertical    mm        coordinated linear motion
+   xafs_pitch       degrees   coordinated table pitch
+   xafs_roll        degrees   coordinated table roll
    ==============   ========  =================================
 
 
