@@ -36,3 +36,5 @@
 .. |ouml|    unicode:: U+00F6 .. LATIN SMALL LETTER O WITH DIAERESIS
 .. |tilde|    unicode:: U+223C .. TILDE
 .. |plus|    unicode:: U+002B .. PLUS SIGN
+.. |checkmark| unicode:: U+2713 .. CHECK MARK
+.. |xmark|     unicode:: U+2717 .. BALLOT X

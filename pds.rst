@@ -183,4 +183,25 @@ motions, use ``slits3.wh()``
 
 .. code-block:: text
 
-   In [1904]: slits3.wh()
+   In [1966]: slits3.wh()
+   SLITS3:
+        vertical   size   =   1.350 mm          Top      =   0.675
+        vertical   center =   0.000 mm          Bottom   =  -0.675
+        horizontal size   =   8.000 mm          Outboard =   4.000
+        horizontal center =   0.000 mm          Inboard  =  -4.000
+
+Changing configurations
+-----------------------
+
+.. table:: Photon delivery modes
+   :name:  pds-modes
+
+   ====== ===========
+   Mode   focused
+   ====== ===========
+   A
+   B
+   C
+   D
+   E
+   F
