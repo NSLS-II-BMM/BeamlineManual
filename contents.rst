@@ -14,3 +14,4 @@ Table of Contents
    linescans.rst
    xafs.rst
    log.rst
+   manage.rst

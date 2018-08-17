@@ -193,15 +193,66 @@ motions, use ``slits3.wh()``
 Changing configurations
 -----------------------
 
+.. _change-mode:
+
+Photon delivery modes
+~~~~~~~~~~~~~~~~~~~~~
+
+A look-up table is used to move the elements of the photon delivery
+system to their correct locations for the different energy ranges and
+focusing conditions.  Here is a table of different photon delivery
+modes.  Modes A-F are for delivery of light to the XAS end station.
+Mode XRD delivers high energy, focused beam to the goniometer.
+
+
 .. table:: Photon delivery modes
    :name:  pds-modes
 
-   ====== ===========
-   Mode   focused
-   ====== ===========
-   A
-   B
-   C
-   D
-   E
-   F
+   ====== ============ ========================= 
+   Mode   focused      energy range
+   ====== ============ ========================= 
+   A      |checkmark|  above 8 keV
+   B      |checkmark|  below 6 keV
+   C      |checkmark|  6 keV |nd| 8 keV
+   D      |xmark|      above 8 keV
+   E      |xmark|      below 6 keV
+   F      |xmark|      6 keV |nd| 8 keV
+   XRD    |checkmark|  above 8 keV
+   ====== ============ ========================= 
+
+.. todo:: Lookup table for low energy delivery of light to goniometer
+
+To move between modes, do::
+
+  RE(change_mode('<mode>'))
+
+where ``<mode>`` is one of the strings in the first column of
+:numref:`Table %s <pds-modes>`.  For example::
+
+  RE(change_modes('D'))
+
+This will move 17 motors all at the same time and should take less
+than 2 minutes.
+
+.. _change-crystals:
+
+Monochromator crystals
+~~~~~~~~~~~~~~~~~~~~~~
+
+To change between the Si(111) and Si(311) crystals, do::
+
+  RE(change_crystals('111'))
+
+or::
+
+  RE(change_crystals('311'))
+
+This will move the lateral motor of the monochromator between the two
+crystal sets and adjust the pitch of the second crystal to be nearly
+in tune and the roll to deliver the beam to nearly the same location
+for both crystals.  This also should take less than 3 minutes.
+
+The ``change_xtals()`` plan also runs the :numref:`rocking curve
+(Section %s) <special-linescans>` macro to fix the tuning of the
+second crystal.
+

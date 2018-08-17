@@ -11,7 +11,7 @@ XAFS scans
 The BMM step scan plan starts by editing an `INI file
 <https://en.wikipedia.org/wiki/INI_file>`_.  This is a simple
 keyword/value system where the keyword is separated from the value by
-an equals sign and a line contains a single keyword/value pair.
+an equals sign and each line contains a single keyword/value pair.
 
 This file captures the set of metadata that the user supplies to
 specify the details of the step scan, the basic configuration of the
@@ -41,10 +41,6 @@ are written and is called by name when running an XAFS scan.
    start      = 1
 
    snapshots  = True
-   bothways   = False
-   channelcut = True
-   focus      = False
-   hr         = True
 
    # mode is transmission, fluorescence, both, or reference
    mode = transmission
@@ -103,22 +99,7 @@ Here is a complete explanation of the contents of the INI file.
    before beginning the scan sequence.  ``False`` to skip the
    snapshots
 
-``bothways`` (line 17)
-   *Experimental feature* |nd| ``True`` to measure in both monochromator
-   directions, ``False`` to only measure in the increasing-energy
-   (decreasing angle) direction.
-
-``channelcut`` (line 18)
-   *Work in progress* |nd| ``True`` to measure XAFS in
-   pseudo-channel-cut mode, ``False`` to measure in fixed-exit mode.
-
-``focus`` (line 19)
-   ``True`` when the focusing mirror is in use.
-
-``hr`` (line 20)
-   ``True`` when the harmonic rejection mirror is in use.
-
-``mode`` (line 23)
+``mode`` (line 19)
    Indicate how data should be displayed on screen during a scan.  The
    options are ``transmission``, ``fluorescence``, ``both``, or
    ``reference``.  ``both`` means to display *both* the transmission
@@ -131,7 +112,7 @@ Scan regions
 In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The ``bounds``,
-``steps``, and ``times`` keywords (lines 27-29) are used to set this
+``steps``, and ``times`` keywords (lines 23-25) are used to set this
 grid.
 
 
@@ -162,6 +143,27 @@ function of wavenumber above the edge.  I.e., a value of ``0.25k``
 means that the dwell time will be 1 second at 4 |AA|:sup:`-1`, 2
 seconds at 8 |AA|:sup:`-1`, and so on.
 
+.. todo:: Much more sanity checking & sanitizing of input
+
+Scan run time
+-------------
+
+To get an approximation of the time a scan will take, do::
+
+  howlong('/path/to/scan.ini')
+
+The argument is the path to the INI file described above.
+
+This will make a guess of scan time for an individual scan using a
+rather crude heuristic for scan overhead.  It will also multiply by
+the number of scans to give a total time in hours for the scan
+sequence.
+
+.. code-block:: text
+
+   example output...
+
+.. todo:: Improve heuristic by doing statistics on scans
 
 
 Running an XAFS scan
@@ -190,18 +192,26 @@ It does the following chores:
 #. Generates a plotting subscription appropriate to the value of
    ``mode`` in the INI file
 
+#. Enables a set of suspenders which will suspend the current XAFS
+   scan in the event of a beam dump or a shutter closing (the
+   suspenders are disabled at the end of the scan sequence)
+
 #. Moves to the beginning of the scan range and begin taking scans
-   using the ``scan_n()`` plan and cyclers for energy values and dwell
-   times constructed form the ``bounds``, ``steps``, and ``times`` in
+   using the ``scan_nd()`` plan and cyclers for energy values and dwell
+   times constructed from ``bounds``, ``steps``, and ``times`` in
    the INI file
+
+#. For each scan, notes the start and end times of the scan in the
+   experimental log along with the unique and transient IDs of the
+   scan in the beamline archive database
 
 #. After each scan, extracts the data table from the database and wrote
    an ASCII file in the `XDI format
    <https://github.com/XraySpectroscopy/XAS-Data-Interchange>`_
 
-The plan also provides some tools to cleanup correctly after a scan
-sequence (i.e. kill certain motors, reset certain parameters) ends or
-is terminated.
+The plan also provides some tools to cleanup correctly (i.e. kill
+certain motors, reset certain parameters) after a scan sequence ends
+or is terminated.
 
 Revisiting an XAFS scan
 -----------------------
@@ -272,7 +282,7 @@ metadata items specific to the sample.
       BMM_xsp.prompt = True
       BMM_info('Scan sequence finished')
 
-Any keyword form the INI file can be used as command argument in the
+Any keyword from the INI file can be used as a command argument in the
 call to ``xafs()``.  Arguments to ``xafs()`` will take priority over
 values in the INI file.
 
@@ -287,3 +297,81 @@ run engine::
 
   RE(scan_sequence())
 
+XAFS data file
+--------------
+
+XAFS data files are written to the `XDI format
+<https://github.com/XraySpectroscopy/XAS-Data-Interchange>`_.  Here is
+an example.  You can see how the metadata from the INI file and
+elsewhere is captured in the output XDI file.
+
+.. code-block:: text
+
+   # XDI/1.0 BlueSky/1.3.0
+   # Beamline.name: BMM (06BM) -- Beamline for Materials Measurement
+   # Beamline.xray_source: NSLS-II three-pole wiggler
+   # Beamline.collimation: paraboloid mirror, 5 nm Rh on 30 nm Pt
+   # Beamline.focusing: torroidal mirror with bender, 5 nm Rh on 30 nm Pt
+   # Beamline.harmonic_rejection: none
+   # Detector.I0: 10 cm N2
+   # Detector.I1: 25 cm N2
+   # Detector.I2: 25 cm N2
+   # Detector.fluorescence: SII Vortex ME4 (4-element silicon drift)
+   # Element.symbol: Mo
+   # Element.edge: K
+   # Facility.name: NSLS-II
+   # Facility.current: 374.3 mA
+   # Facility.energy: 3.0 GeV
+   # Facility.mode: top-off
+   # Mono.name: Si(311)
+   # Mono.d_spacing: 1.6376385 Å
+   # Mono.encoder_resolution: 0.0000050 deg/ct
+   # Mono.angle_offset: 15.9943932 deg
+   # Mono.scan_mode: pseudo channel cut
+   # Mono.scan_type: step
+   # Mono.direction: forward in energy
+   # Mono.first_crystal_temperature: 30.2 C
+   # Mono.compton_shield_temperature: 30.5 C
+   # Sample.name: Sedovite
+   # Sample.prep: speck of mineral in a holder in a gel cap
+   # Sample.x_position: 2.750
+   # Sample.y_position: 147.670
+   # Scan.edge_energy: 20000.0
+   # Scan.start_time: 2018-07-08T16:26:49
+   # Scan.end_time: 2018-07-08T16:44:22
+   # Scan.transient_id: 1447
+   # Scan.uid: 442bb882-1e46-4607-a12d-1bca2efa74af
+   # Scan.plot_hint: (DTC1 + DTC2 + DTC3 + DTC4) / I0  --  ($7+$8+$9+$10) / $4
+   # Column.1: energy eV
+   # Column.2: requested_energy eV
+   # Column.3: measurement_time seconds
+   # Column.4: I0 nA
+   # Column.5: It nA
+   # Column.6: Ir nA
+   # Column.7: DTC1 
+   # Column.8: DTC2 
+   # Column.9: DTC3 
+   # Column.10: DTC4 
+   # Column.11: ROI1 counts
+   # Column.12: ICR1 counts
+   # Column.13: OCR1 counts
+   # Column.14: ROI2 counts
+   # Column.15: ICR2 counts
+   # Column.16: OCR2 counts
+   # Column.17: ROI3 counts
+   # Column.18: ICR3 counts
+   # Column.19: OCR3 counts
+   # Column.20: ROI4 counts
+   # Column.21: ICR4 counts
+   # Column.22: OCR4 counts
+   # ///////////
+   # focused beam, Kyzylsai Dep., Chu-lli Mts., Zhambyl Dist., Kazakhstan 3852
+   # -----------
+   # energy  requested_energy  measurement_time  I0  It  Ir  DTC1  DTC2  DTC3  DTC4  ROI1  ICR1  OCR1  ROI2  ICR2  OCR2  ROI3  ICR3  OCR3  ROI4  ICR4  OCR4
+   19809.967  19810.000  0.500  22.780277  28.026418  5.844915  3393.671531  3512.331211  2189.485830  2294.254018  2984.0  86162.0  79706.0  3085.0  86771.0  80213.0  2018.0  57884.0  55169.0  2085.0  64398.0  60757.0
+   19820.016  19820.000  0.500  23.017712  28.316410  5.912596  3607.981130  3515.807498  2272.542220  2255.901234  3160.0  87991.0  81171.0  3088.0  87790.0  81205.0  2093.0  58242.0  55481.0  2036.0  66029.0  61927.0
+   19830.022  19830.000  0.500  23.191409  28.546075  5.971688  3398.408050  3343.071835  2237.827496  2348.453171  2983.0  88018.0  81376.0  2930.0  88064.0  81298.0  2061.0  59218.0  56443.0  2120.0  66896.0  62787.0
+   19840.073  19840.000  0.500  23.022700  28.346179  5.941913  3424.112880  3464.005608  2199.187023  2294.868496  3007.0  87171.0  80589.0  3042.0  87734.0  81137.0  2023.0  58516.0  55684.0  2075.0  66318.0  62324.0
+   .
+    .
+     .
