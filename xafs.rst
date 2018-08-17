@@ -65,7 +65,7 @@ Here is a complete explanation of the contents of the INI file.
 
 ``e0`` (line 6)
    The edge energy for the element and edge of this measurement.  This
-   is the energy reference for the ``bounds``.  
+   is the energy reference for the ``bounds``.
 
    .. todo:: Look up E0 given the element and edge symbols, remove ``e0`` keyword
 
@@ -161,7 +161,10 @@ sequence.
 
 .. code-block:: text
 
-   example output...
+   reading ini file: /home/bravel/BMM_Data/303169/scan.ini
+
+   Each scan will take about 17.9 minutes
+   The sequence of 6 scans will take about 1.8 hours
 
 .. todo:: Improve heuristic by doing statistics on scans
 
@@ -221,7 +224,7 @@ Grab database entry and write it to an XDI file::
   db2xdi('/path/to/data/file', '<id>')
 
 The first argument is the name of the output data file.  The second
-argument is either the scan's unique ID |nd| something like 
+argument is either the scan's unique ID |nd| something like
 ``f6619ed7-a8e5-41c2-a499-f793b0fcacec`` |nd| or the scan's transient
 id number.  Both the unique and transient ids can be found in the
 experimental log.
@@ -348,10 +351,10 @@ elsewhere is captured in the output XDI file.
    # Column.4: I0 nA
    # Column.5: It nA
    # Column.6: Ir nA
-   # Column.7: DTC1 
-   # Column.8: DTC2 
-   # Column.9: DTC3 
-   # Column.10: DTC4 
+   # Column.7: DTC1
+   # Column.8: DTC2
+   # Column.9: DTC3
+   # Column.10: DTC4
    # Column.11: ROI1 counts
    # Column.12: ICR1 counts
    # Column.13: OCR1 counts
