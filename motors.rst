@@ -9,7 +9,7 @@
 Moving and querying motors
 ==========================
 
-To get an overview of the state of the beamline motors do ``ms()`` at
+To get an overview of the state of the beamline motors, do ``ms()`` at
 the bsui command line.  Here is an example:
 
 .. code-block:: text
@@ -56,14 +56,14 @@ other places instead of writing out the BlueSky's name for the motor.
    ========== ========= ===========  =========  ===================  ===============================
    motor      nickname  type         units      notes                directions
    ========== ========= ===========  =========  ===================  ===============================
-   xafs_linx  x         linear       mm         main sample stage    |plus| = outboard, - = inboard
-   xafs_liny  y         linear       mm         main sample stage    |plus| = up, - = down
-   xafs_linxs xs        linear       mm         reference stage      |plus| = up, - = down
-   xafs_pitch pitch     tilt         degrees    Huber tilt stage     |plus| = more positive
-   xafs_roll  roll      tilt         degrees    Huber tilt stage     |plus| = more positive
-   xafs_roth  rh        rotary       degrees    Huber circle         |plus| = more positive
-   xafs_rotb  rb        rotary       degrees    large rotary stage   |plus| = more positive
-   xafs_rots  rs        rotary       degrees    small rotary stage   |plus| = more positive
+   xafs_linx  x         linear       mm         main sample stage    |plus| outboard, - inboard
+   xafs_liny  y         linear       mm         main sample stage    |plus| up, - down
+   xafs_linxs xs        linear       mm         reference stage      |plus| up, - down
+   xafs_pitch pitch     tilt         degrees    Huber tilt stage     |plus| more positive
+   xafs_roll  roll      tilt         degrees    Huber tilt stage     |plus| more positive
+   xafs_roth  rh        rotary       degrees    Huber circle         |plus| more positive
+   xafs_rotb  rb        rotary       degrees    large rotary stage   |plus| more positive
+   xafs_rots  rs        rotary       degrees    small rotary stage   |plus| more positive
    ========== ========= ===========  =========  ===================  ===============================
 
 Configuration and position of the motors can be queried easily.  In
@@ -89,8 +89,9 @@ are the same for all sample stage motors.
 
    All movements are logged in the :numref:`experimental log (Section %s) <log>`
 
-**Moving to a new position in a plan** To move a sample stage as part
-   of a :numref:`macro (Section %s) <macro>` , do::
+**Moving to a new position in a plan**
+   To move a sample stage as part of a :numref:`macro (Section %s)
+   <macro>` , do::
 
      yield from mv(xafs_liny, 37.36)
 
@@ -148,9 +149,9 @@ Table motors
 ------------
 
 Typically, table motors are not moved individually.  When changing
-photon delivery system modes (see.....), the table should be put into
-the correct orientation such that the beam passes through the center
-of the ion chambers.
+:numref:`photon delivery system modes (Section %s) <change-mode>`, the
+table should be put into the correct orientation such that the beam
+passes through the center of the ion chambers.
 
 The lateral table motors are normally disabled.
 
@@ -184,4 +185,5 @@ The lateral table motors are normally disabled.
    Again, this is rarely necessary.  The mode changing plan should
    leave the table in the correct location for your experiment.
 
-   All table movements are recorded in the experimental log.
+   All table movements are recorded in the :numref:`experimental log
+   (Section %s) <log>`.

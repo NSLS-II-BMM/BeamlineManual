@@ -25,7 +25,7 @@ this::
 The arguments are:
 
 #. The motor axis to be scanned.  This can be either the motor's
-   BlueSky name or the nickname in the :ref:`xafs-stages` table.  So,
+   BlueSky name or the nickname in :numref:`Table %s <xafs-stages>`.  So,
    these are equivalent::
 
      RE(linescan('x', 'it', -4, 4, 81))

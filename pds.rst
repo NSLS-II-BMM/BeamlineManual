@@ -18,8 +18,15 @@ Shutters
      shb.open()
      shb.close()
 
-   If you wish to open or close the photon shutter in a :numref:`macro
-   (Section %s) <macro>`, do::
+   These plans are somewhat more elaborate than simply toggling the
+   state of the shutters.  It happens from time to time that the
+   shutter does not trigger when told to open or close.  So, these
+   plans try up to three times to open or close the photon shutter,
+   with a 1.5 second pause between attempts.
+
+   If you wish to open or close the photon shutter (using the same
+   multiple attempt algorithm) in a :numref:`macro (Section %s)
+   <macro>`, do::
 
      yield from shb.open_plan()
      yield from shb.close_plan()
@@ -41,10 +48,11 @@ to interact directly with any of the motors.  Plans exist for
 facilitating any actions a user should ever need.
 
 **Query the current energy**
+   To know the position and energy of the monochrmomator:
 
-   ::
+   .. code-block:: text
 
-     dcm.wh()
+      dcm.wh()
 
    This returns a short report like this:
 

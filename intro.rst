@@ -9,9 +9,55 @@
 Introduction to BMM
 ===================
 
-At the command line, `bsui`
+At the unix command line, type ``bsui`` to start the BlueSky user
+interface.  bsui is simply an `Ipython shell <https://ipython.org/>`_
+with some customizations specific to BlueSky.  On top of that, there
+are a number of customizations specific to BMM.
 
-``su()``
+There are some commands that give a broad overview of the state of the
+beamline.  To see the locations of the motors that matter most to most
+experiments, do::
+
+  ms()
+
+This will print the following report to the screen:
+
+.. code-block:: text
+
+   In [1897]: ms()
+   ==============================================================================
+   Energy = 19300.1   reflection = Si(111)   mode = fixed
+        Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
+   M2
+        vertical =   6.000 mm           YU  =   6.000
+        lateral  =   0.000 mm           YDO =   6.000
+        pitch    =   0.000 mrad         YDI =   6.000
+        roll     =  -0.001 mrad         XU  =  -0.129
+        yaw      =   0.200 mrad         XD  =   0.129
+   M3
+        vertical =   0.000 mm           YU  =  -1.167
+        lateral  =  15.001 mm           YDO =   1.167
+        pitch    =   3.500 mrad         YDI =   1.167
+        roll     =   0.000 mrad         XU  =  15.001
+        yaw      =   0.001 mrad         XD  =  15.001
+   Slits3:   vsize  vcenter  hsize   hcenter     top    bottom    outboard  inboard
+             1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
+   DM3_BCT:  45.004 mm
+   XAFS table:
+        vertical  pitch    roll   YU     YDO     YDI
+        132.000   0.000   0.000 132.000 132.000 132.000
+   XAFS stages:
+           linx     liny    roll    pitch    linxs    roth     rotb     rots
+           9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
+   ==============================================================================
+
+
+To get an overview of the status of the beamline utilities |nd|
+i.e. things like temperatures and gate vale states |nd| do::
+
+  su()
+
+This will print this report to the screen:
 
 .. code-block:: text
 
@@ -46,38 +92,46 @@ At the command line, `bsui`
      Filter assembly 2, slot 3        28.6 C
      Filter assembly 2, slot 4        28.7 C
 
-``ms()``
-
-.. code-block:: text
-
-   In [1897]: ms()
-   ==============================================================================
-   Energy = 19300.1   reflection = Si(111)   mode = fixed
-        Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
-   M2
-        vertical =   6.000 mm           YU  =   6.000
-        lateral  =   0.000 mm           YDO =   6.000
-        pitch    =   0.000 mrad         YDI =   6.000
-        roll     =  -0.001 mrad         XU  =  -0.129
-        yaw      =   0.200 mrad         XD  =   0.129
-   M3
-        vertical =   0.000 mm           YU  =  -1.167
-        lateral  =  15.001 mm           YDO =   1.167
-        pitch    =   3.500 mrad         YDI =   1.167
-        roll     =   0.000 mrad         XU  =  15.001
-        yaw      =   0.001 mrad         XD  =  15.001
-   Slits3:   vsize  vcenter  hsize   hcenter     top    bottom    outboard  inboard
-             1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
-   DM3_BCT:  45.004 mm
-   XAFS table:
-        vertical  pitch    roll   YU     YDO     YDI
-        132.000   0.000   0.000 132.000 132.000 132.000
-   XAFS stages:
-           linx     liny    roll    pitch    linxs    roth     rotb     rots
-           9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
-   ==============================================================================
 
 
+The user experience
+-------------------
+
+The Ipython/bsui prompt at BMM is heavily modified to give important
+at-a-glance information about the state of the beamline.
+
+.. _fig-prompt:
+.. figure::  _images/prompt.png
+   :target: _images/prompt.png
+   :width: 30%
+   :align: center
+
+   The BlueSky user prompt at BMM
+
+The white characters at the beginning of the prompt show the
+:numref:`photon delivery system mode (Section %s) <change-mode>` |nd|
+currently :quoted:`XRD` |nd| and the :numref:`monochromator crystals
+(Section %s) <change-crystals>` currently in use |nd| currently
+Si(311).
+
+The red :quoted:`A` and :quoted:`B` indicate that the A and B (front
+end and photon) shutters are currently closed.  When open these
+letters are blue.  The italicized blue text gives the beam current.
+(This picture was made during a maintenance period.)
+
+When a new experiment begins, run the command::
+
+  new_experiment(folder)
+
+This will create ``folder`` and populate it with an
+:numref:`experimental log (Section %s) <log>`, a template for a
+:numref:`scan.ini file (Section %s) <xafs>`, and a template for
+:numref:`a macro file (Section %s) <macro>`.
+
+
+The day will come that we have a GUI for running XAFS experiments at
+BMM.  For now, we have the command line.  Read on |nd| it's not too
+difficult!
 
 A Bit about BMM
 ---------------

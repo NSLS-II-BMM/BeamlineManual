@@ -19,6 +19,8 @@ record of the actions in an experimental campaign.  It also is an
 attempt to provide enough information to recover from mistakes and
 confusions about sample positions and other experimental issues.
 
+.. _snap:
+
 Snapshots
 ---------
 
@@ -78,17 +80,22 @@ experimental log.
    :label: _fig-snapshots
 
 
+.. todo:: Have database consume snapshots with pointers from each scan
+          connected with the snapshot
+
+.. _logfile:
+
 Log file
 --------
 
 At the beginning of a user experiment, run this command::
 
-  BMM_user_log('/path/to/data/folder/experiment.log')
+  new_experiment('/path/to/data/folder')
 
-This instruments the logger to maintain a log file specifically for
-the current experiment.  The logger also maintains a master log file
-which is, effectively, a concatenation of all the individual
-experimental logs.
+Among other things, this instruments the logger to maintain a log file
+specifically for the current experiment.  The logger also maintains a
+master log file which is, effectively, a concatenation of all the
+individual experimental logs.
 
 The log is an attempt to capture a record of all significant actions
 taken during an experimental campaign.  It errs of the conservative
@@ -108,7 +115,7 @@ reported by the ``ms()`` command :numref:`(see Section %s) <motors>`.
 The names of the output data files are recorded with timestamps
 indicating when they were written.
 
-Several other activities specific to BMM also record to the log file.
+Several other activities specific to BMM also recorded to the log file.
 The snapshot tool described above is an example.
 
 Writing to the log file is accomplished in two ways.  This function::
@@ -119,7 +126,7 @@ is used to insert most messages into the log.  ``BMM_log_info()`` can
 be called at any time from the command line to insert any message into
 the log.
 
-The other tool uses `Bluesky's msg_hook
+BMM also uses `Bluesky's msg_hook
 <https://nsls-ii.github.io/bluesky/debugging.html#message-hook>`_.
 This is how ``mv()`` and ``mvr()`` commands are captured in the log.
 This bespoke message hook parses the document returned by BlueSky for

@@ -67,7 +67,8 @@ Here is a complete explanation of the contents of the INI file.
    The edge energy for the element and edge of this measurement.  This
    is the energy reference for the ``bounds``.
 
-   .. todo:: Look up E0 given the element and edge symbols, remove ``e0`` keyword
+   .. todo:: Look up E0 given the element and edge symbols, remove or
+	     make optional the ``e0`` keyword
 
 ``element`` (line 7)
    The one- or two-letter symbol for the element.
@@ -94,10 +95,17 @@ Here is a complete explanation of the contents of the INI file.
    extension is always a zero-padded, three-digit number,
    e.g. :file:`cufoil.001`, :file:`cufoil.002`, and so on.
 
+   ``start`` is normally a positive integer but can also be the word
+   ``next``, in which case the ``folder`` will be searched for
+   files starting with ``filename`` and ending in a number.  The
+   subsequent number will be used.  E.g. if ``cuedge.007`` is the
+   highest numbered file in the ``cuedge`` sequence, running XAFS
+   again using the same INI file will start with ``cuedge.008``.
+
 ``snapshots`` (line 16)
-   ``True`` to take snapshots from the XAS webcam and analog camera
-   before beginning the scan sequence.  ``False`` to skip the
-   snapshots
+   ``True`` to take :numref:`snapshots (Section %s) <snap>` from the
+   XAS webcam and analog camera before beginning the scan sequence.
+   ``False`` to skip the snapshots
 
 ``mode`` (line 19)
    Indicate how data should be displayed on screen during a scan.  The
@@ -187,7 +195,8 @@ It does the following chores:
 #. Makes an entry in the experimental log indicating the INI contents
    and the current motor positions of all the important motors
 
-#. Takes snapshots of the XAS webcam and the analog camera near the sample
+#. Takes :numref:`snapshots (Section %s) <snap>` of the XAS webcam and
+   the analog camera near the sample
 
 #. Moves to the center of the angular range of motion of the scan and
    enter pseudo-channel-cut mode
@@ -205,8 +214,8 @@ It does the following chores:
    the INI file
 
 #. For each scan, notes the start and end times of the scan in the
-   experimental log along with the unique and transient IDs of the
-   scan in the beamline archive database
+   :numref:`experimental log (Section %s) <logfile>` along with the
+   unique and transient IDs of the scan in the beamline archive database
 
 #. After each scan, extracts the data table from the database and wrote
    an ASCII file in the `XDI format
