@@ -21,3 +21,4 @@ BMM Users Manual
    linescans.rst
    xafs.rst
    log.rst
+   manage.rst

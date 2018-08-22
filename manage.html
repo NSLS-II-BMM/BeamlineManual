@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>7. Managing the beamline &#8212; BMM User Manual 0.1</title>
+    
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/atoms.ico"/>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="6. Experimental Log" href="log.html" />
+
+    <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
+    <link rel="stylesheet" type="text/css" href="_static/keys.css" />
+    <link rel="stylesheet" type="text/css" href="_static/program.css" />
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="log.html" title="6. Experimental Log"
+             accesskey="P">previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motors.html">2. Moving and querying motors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Managing the beamline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-large-change-of-energy">7.1. A large change of energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-change-of-mode">7.2. A change of mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-change-of-monochromator-crystals">7.3. A change of monochromator crystals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-change-from-xas-to-xrd">7.4. A change from XAS to XRD</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  </div>
+</div><div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Helpful Links</h2>
+  </div>
+  <ul>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+    <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+    <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+    <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+  </ul>
+  <p>
+</div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Docs</a></li>
+              
+              <li>7. Managing the beamline</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="managing-the-beamline">
+<span id="manage"></span><h1>7. Managing the beamline<a class="headerlink" href="#managing-the-beamline" title="Permalink to this headline">¶</a></h1>
+<p>In this section, some recipes are provided for managing the beamline
+and meeting the needs and expectations of different experiments.</p>
+<p>As a reminder, here is the table of operating modes.</p>
+<table border="1" class="docutils" id="pds-modes2">
+<caption><span class="caption-number">Table 7.1 </span><span class="caption-text">Photon delivery modes</span><a class="headerlink" href="#pds-modes2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="14%" />
+<col width="28%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Mode</th>
+<th class="head">focused</th>
+<th class="head">energy range</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>✓</td>
+<td>above 8 keV</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>✓</td>
+<td>below 6 keV</td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td>✓</td>
+<td>6 keV – 8 keV</td>
+</tr>
+<tr class="row-odd"><td>D</td>
+<td>✗</td>
+<td>above 8 keV</td>
+</tr>
+<tr class="row-even"><td>E</td>
+<td>✗</td>
+<td>below 6 keV</td>
+</tr>
+<tr class="row-odd"><td>F</td>
+<td>✗</td>
+<td>6 keV – 8 keV</td>
+</tr>
+<tr class="row-even"><td>XRD</td>
+<td>✓</td>
+<td>above 8 keV</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="a-large-change-of-energy">
+<h2>7.1. A large change of energy<a class="headerlink" href="#a-large-change-of-energy" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that you want to move the monochromator from 8 keV to 15 keV.
+This is a fairly low-overhead change to beamline configuration as both
+energies are suitable for modes A or D.</p>
+<p>This is a three-step process.  First move the DCM to the new energy
+position, then run a rocking curve scan to tune up the second crystal,
+finally verify the slit height.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">15000</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>A couple of caveats about this.</p>
+<ol class="arabic simple">
+<li>Currently there are errors both in the mode look-up table and in
+the configuration of the mono.  In principle, there should be no
+change in beam height when changing energy.  In practice, the beam
+position changes a bit, so it is prudent to verify the slit height.</li>
+<li>If the slit height changes sufficiently, it may be prudent to
+re-run the rocking curve scan.  If the slit height was off by
+enough that the tuned beam is not centered on the slits, then an
+iteration of the rocking curve optimization is necessary.</li>
+</ol>
+</div>
+<div class="section" id="a-change-of-mode">
+<h2>7.2. A change of mode<a class="headerlink" href="#a-change-of-mode" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that you want to change from high-energy, unfocused operations
+to low energy, focused.  That is, you are changing from mode D to mode
+B, for example moving from a large sample at the yttrium K edge to a
+small sample at the vanadium K edge.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_mode</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">5465</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">We are still working on optimizing the mode look-up table.
+At this time, some additional adjustments of the mirrors
+will be required to optimize focus at the XAS position.</p>
+</div>
+<ol class="arabic simple">
+<li>If the beam has recently been focused at the XRD station, you may
+also need to adjust the bender on M2 to optimize vertical focus at
+the XAS station.  This is best done with the small CCD camera
+sitting in the XAS sample stage.</li>
+<li>Again, iterating the optimization of the rocking curve and slit
+height might be necessary.</li>
+</ol>
+</div>
+<div class="section" id="a-change-of-monochromator-crystals">
+<h2>7.3. A change of monochromator crystals<a class="headerlink" href="#a-change-of-monochromator-crystals" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you wanted to change from the Pt L3 edge (11564 eV) on the
+Si(111) crystal to the same energy on the Si(311) crystal.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_xtal</span><span class="p">(</span><span class="s1">&#39;311&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This will move the lateral motor of the DCM and optimize the roll and
+pitch of the second crystal.  It will leave the DCM at 22143.4 eV, so
+move back to the correct energy and rerun the rocking curve scan.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">11564</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Note that some of these motions can be a bit surprising in the sense
+that the monochromator will end up outside the normal operating range
+of the beamline.</p>
+<p>For example, starting much higher in energy on the Si(111)
+monochromator will leave the beamline above the energy cut-off imposed
+by the collimating mirror.  In that case, the signal will be quite
+feeble and the rocking curve scan that is part of the
+<code class="docutils literal"><span class="pre">change_xtal()</span></code> command might be hard to interpret.</p>
+<p>Another example: changing from a rather low energy on the Si(311)
+crystal might leave the mono well below 5000 eV.  In that case the
+fundemnatal will be significantly attenuated by the Be windows and by
+the air, while the harmonics may not be well removed by the flat
+mirror.  Again, the rocking curve scan will be hard to interpret in
+that case.</p>
+<p>In both examples, move the monochromator back to the desired energy
+before exploring the rocking curve.</p>
+</div>
+<div class="section" id="a-change-from-xas-to-xrd">
+<h2>7.4. A change from XAS to XRD<a class="headerlink" href="#a-change-from-xas-to-xrd" title="Permalink to this headline">¶</a></h2>
+<p>Begin this transition by leaving the I0 chamber in place to monitor
+the incidence flux.  Do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_mode</span><span class="p">(</span><span class="s1">&#39;XRD&#39;</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8000</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This change of mode should have the beam in good focus at the position
+of the goniometer.  8000 eV is the nominal operating energy for the
+goniometer.  If a higher energy is required, substitute the correct
+energy for <code class="docutils literal"><span class="pre">8000</span></code> in the second line.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Determine look-up table for lower energy operations using
+both M2 and M3.</p>
+</div>
+<p>Once the photon delivery system is set, remove the ion chambers and
+insert the XRD flight path into its place.</p>
+
+<br>
+
+<br>
+<hr class="docutils" />
+<p>This manual is copyright © 2018 Bruce Ravel</p>
+<p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
+<p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
+Creative Commons</a>.</p>
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-default" href="log.html" title="previous chapter (use the left arrow)">6. Experimental Log</a>
+      </div>
+    
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="log.html" title="6. Experimental Log"
+             >previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2018, Bruce Ravel. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>

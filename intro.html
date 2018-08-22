@@ -15,7 +15,7 @@
   <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>1. Introduction to BMM &#8212; BMM User Manual 0.1 documentation</title>
+    <title>1. Introduction to BMM &#8212; BMM User Manual 0.1</title>
     
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -53,7 +53,7 @@
         <li class="right" >
           <a href="index.html" title="BMM Users Manual"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -72,7 +72,8 @@
     
       <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction to BMM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#a-bit-about-bmm">1.1. A Bit about BMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-user-experience">1.1. The user experience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-bit-about-bmm">1.2. A Bit about BMM</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="motors.html">2. Moving and querying motors</a></li>
@@ -80,20 +81,24 @@
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
 </ul>
 
     
   </div>
-</div><h3>Helpful Links</h3>
-<ul>
-  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
-  <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
-  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
-  <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
-  <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
-</ul>
-<p>
-
+</div><div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Helpful Links</h2>
+  </div>
+  <ul>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+    <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+    <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+    <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+  </ul>
+  <p>
+</div>
 <div class="sidebar-block">
   <div class="sidebar-wrapper">
     <div id="main-search">
@@ -107,13 +112,6 @@
     </div>
   </div>
 </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/intro.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
       
     </div>
   </div>
@@ -131,8 +129,51 @@
             
   <div class="section" id="introduction-to-bmm">
 <span id="intro"></span><h1>1. Introduction to BMM<a class="headerlink" href="#introduction-to-bmm" title="Permalink to this headline">¶</a></h1>
-<p>At the command line, <cite>bsui</cite></p>
-<p><code class="docutils literal"><span class="pre">su()</span></code></p>
+<p>At the unix command line, type <code class="docutils literal"><span class="pre">bsui</span></code> to start the BlueSky user
+interface.  bsui is simply an <a class="reference external" href="https://ipython.org/">Ipython shell</a>
+with some customizations specific to BlueSky.  On top of that, there
+are a number of customizations specific to BMM.</p>
+<p>There are some commands that give a broad overview of the state of the
+beamline.  To see the locations of the motors that matter most to most
+experiments, do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ms</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will print the following report to the screen:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1897]: ms()
+==============================================================================
+Energy = 19300.1   reflection = Si(111)   mode = fixed
+     Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
+M2
+     vertical =   6.000 mm           YU  =   6.000
+     lateral  =   0.000 mm           YDO =   6.000
+     pitch    =   0.000 mrad         YDI =   6.000
+     roll     =  -0.001 mrad         XU  =  -0.129
+     yaw      =   0.200 mrad         XD  =   0.129
+M3
+     vertical =   0.000 mm           YU  =  -1.167
+     lateral  =  15.001 mm           YDO =   1.167
+     pitch    =   3.500 mrad         YDI =   1.167
+     roll     =   0.000 mrad         XU  =  15.001
+     yaw      =   0.001 mrad         XD  =  15.001
+Slits3:   vsize  vcenter  hsize   hcenter     top    bottom    outboard  inboard
+          1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
+DM3_BCT:  45.004 mm
+XAFS table:
+     vertical  pitch    roll   YU     YDO     YDI
+     132.000   0.000   0.000 132.000 132.000 132.000
+XAFS stages:
+        linx     liny    roll    pitch    linxs    roth     rotb     rots
+        9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
+==============================================================================
+</pre></div>
+</div>
+<p>To get an overview of the status of the beamline utilities –
+i.e. things like temperatures and gate vale states – do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">su</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will print this report to the screen:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>In [1898]: su()
 Monday 06 August, 2018 10:24 AM
 
@@ -165,37 +206,37 @@ Thermocouple               Temperature         Valve   state          Vacuum sec
   Filter assembly 2, slot 4        28.7 C
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">ms()</span></code></p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>In [1897]: ms()
-==============================================================================
-Energy = 19300.1   reflection = Si(111)   mode = fixed
-     Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
-M2
-     vertical =   6.000 mm           YU  =   6.000
-     lateral  =   0.000 mm           YDO =   6.000
-     pitch    =   0.000 mrad         YDI =   6.000
-     roll     =  -0.001 mrad         XU  =  -0.129
-     yaw      =   0.200 mrad         XD  =   0.129
-M3
-     vertical =   0.000 mm           YU  =  -1.167
-     lateral  =  15.001 mm           YDO =   1.167
-     pitch    =   3.500 mrad         YDI =   1.167
-     roll     =   0.000 mrad         XU  =  15.001
-     yaw      =   0.001 mrad         XD  =  15.001
-Slits3:   vsize  vcenter  hsize   hcenter     top    bottom    outboard  inboard
-          1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
-DM3_BCT:  45.004 mm
-XAFS table:
-     vertical  pitch    roll   YU     YDO     YDI
-     132.000   0.000   0.000 132.000 132.000 132.000
-XAFS stages:
-        linx     liny    roll    pitch    linxs    roth     rotb     rots
-        9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
-==============================================================================
+<div class="section" id="the-user-experience">
+<h2>1.1. The user experience<a class="headerlink" href="#the-user-experience" title="Permalink to this headline">¶</a></h2>
+<p>The Ipython/bsui prompt at BMM is heavily modified to give important
+at-a-glance information about the state of the beamline.</p>
+<div class="figure align-center" id="id1">
+<span id="fig-prompt"></span><a class="reference external image-reference" href="_images/prompt.png"><img alt="_images/prompt.png" src="_images/prompt.png" style="width: 30%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1.1 </span><span class="caption-text">The BlueSky user prompt at BMM</span></p>
+</div>
+<p>The white characters at the beginning of the prompt show the
+<a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">photon delivery system mode (Section 3.5.1)</span></a> –
+currently “XRD” – and the <a class="reference internal" href="pds.html#change-crystals"><span class="std std-numref">monochromator crystals
+(Section 3.5.2)</span></a> currently in use – currently
+Si(311).</p>
+<p>The red “A” and “B” indicate that the A and B (front
+end and photon) shutters are currently closed.  When open these
+letters are blue.  The italicized blue text gives the beam current.
+(This picture was made during a maintenance period.)</p>
+<p>When a new experiment begins, run the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">new_experiment</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>This will create <code class="docutils literal"><span class="pre">folder</span></code> and populate it with an
+<a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log (Section 6)</span></a>, a template for a
+<a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">scan.ini file (Section 5)</span></a>, and a template for
+<a class="reference internal" href="xafs.html#macro"><span class="std std-numref">a macro file (Section 5.5)</span></a>.</p>
+<p>The day will come that we have a GUI for running XAFS experiments at
+BMM.  For now, we have the command line.  Read on – it's not too
+difficult!</p>
+</div>
 <div class="section" id="a-bit-about-bmm">
-<h2>1.1. A Bit about BMM<a class="headerlink" href="#a-bit-about-bmm" title="Permalink to this headline">¶</a></h2>
+<h2>1.2. A Bit about BMM<a class="headerlink" href="#a-bit-about-bmm" title="Permalink to this headline">¶</a></h2>
 <p>BMM is an XAS beamline.  As such it is on the simpler end of things at
 NSLS-II.  We use an NSLS-II <a class="reference external" href="https://www.bnl.gov/nsls2/project/source_properties.asp">three-pole wiggler (3PW)</a> as our
 photon source.  This provides broadband radiation throughout the hard
@@ -278,7 +319,7 @@ Creative Commons</a>.</p>
         <li class="right" >
           <a href="index.html" title="BMM Users Manual"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
     </div>
 <script type="text/javascript">

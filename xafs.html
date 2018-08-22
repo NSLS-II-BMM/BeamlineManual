@@ -15,7 +15,7 @@
   <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>5. XAFS scans &#8212; BMM User Manual 0.1 documentation</title>
+    <title>5. XAFS scans &#8212; BMM User Manual 0.1</title>
     
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -53,7 +53,7 @@
         <li class="right" >
           <a href="linescans.html" title="4. Sample position scans"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -77,26 +77,32 @@
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. XAFS scans</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#scan-regions">5.1. Scan regions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-an-xafs-scan">5.2. Running an XAFS scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#revisiting-an-xafs-scan">5.3. Revisiting an XAFS scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scan-sequence-macro">5.4. Scan sequence macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-run-time">5.2. Scan run time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-an-xafs-scan">5.3. Running an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#revisiting-an-xafs-scan">5.4. Revisiting an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-sequence-macro">5.5. Scan sequence macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xafs-data-file">5.6. XAFS data file</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
 </ul>
 
     
   </div>
-</div><h3>Helpful Links</h3>
-<ul>
-  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
-  <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
-  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
-  <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
-  <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
-</ul>
-<p>
-
+</div><div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Helpful Links</h2>
+  </div>
+  <ul>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+    <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+    <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+    <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+  </ul>
+  <p>
+</div>
 <div class="sidebar-block">
   <div class="sidebar-wrapper">
     <div id="main-search">
@@ -110,13 +116,6 @@
     </div>
   </div>
 </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/xafs.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
       
     </div>
   </div>
@@ -136,7 +135,7 @@
 <span id="xafs"></span><h1>5. XAFS scans<a class="headerlink" href="#xafs-scans" title="Permalink to this headline">¶</a></h1>
 <p>The BMM step scan plan starts by editing an <a class="reference external" href="https://en.wikipedia.org/wiki/INI_file">INI file</a>.  This is a simple
 keyword/value system where the keyword is separated from the value by
-an equals sign and a line contains a single keyword/value pair.</p>
+an equals sign and each line contains a single keyword/value pair.</p>
 <p>This file captures the set of metadata that the user supplies to
 specify the details of the step scan, the basic configuration of the
 beamline, and some details about the sample preparation.  Most of this
@@ -168,11 +167,7 @@ are written and is called by name when running an XAFS scan.</p>
 22
 23
 24
-25
-26
-27
-28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">[scan]</span>
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">[scan]</span>
 <span class="na">folder</span>        <span class="o">=</span> <span class="s">/home/bravel/BMM_Data/303200</span>
 <span class="na">filename</span>      <span class="o">=</span> <span class="s">cufoil</span>
 <span class="na">experimenters</span> <span class="o">=</span> <span class="s">Betty Cooper, Veronica Lodge, Archibald Andrews</span>
@@ -188,10 +183,6 @@ are written and is called by name when running an XAFS scan.</p>
 <span class="na">start</span>      <span class="o">=</span> <span class="s">1</span>
 
 <span class="na">snapshots</span>  <span class="o">=</span> <span class="s">True</span>
-<span class="na">bothways</span>   <span class="o">=</span> <span class="s">False</span>
-<span class="na">channelcut</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">focus</span>      <span class="o">=</span> <span class="s">False</span>
-<span class="na">hr</span>         <span class="o">=</span> <span class="s">True</span>
 
 <span class="c1"># mode is transmission, fluorescence, both, or reference</span>
 <span class="na">mode</span> <span class="o">=</span> <span class="s">transmission</span>
@@ -216,7 +207,8 @@ are written and is called by name when running an XAFS scan.</p>
 is the energy reference for the <code class="docutils literal"><span class="pre">bounds</span></code>.</p>
 <div class="admonition-todo last admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
-<p class="last">Look up E0 given the element and edge symbols, remove <code class="docutils literal"><span class="pre">e0</span></code> keyword</p>
+<p class="last">Look up E0 given the element and edge symbols, remove or
+make optional the <code class="docutils literal"><span class="pre">e0</span></code> keyword</p>
 </div>
 </dd>
 <dt><code class="docutils literal"><span class="pre">element</span></code> (line 7)</dt>
@@ -233,27 +225,23 @@ prepared for measurement.</dd>
 <dt><code class="docutils literal"><span class="pre">comment</span></code> (line 11)</dt>
 <dd>This is for anything else you might want to say about your sample.</dd>
 <dt><code class="docutils literal"><span class="pre">nscans</span></code> and <code class="docutils literal"><span class="pre">start</span></code> (lines 13 - 14)</dt>
-<dd>These are used to form the file extension of the output data file.
+<dd><p class="first">These are used to form the file extension of the output data file.
 They indicate the starting value of the number used as the file
 extension and how many repetitions of the scan to make.  The file
 extension is always a zero-padded, three-digit number,
-e.g. <code class="file docutils literal"><span class="pre">cufoil.001</span></code>, <code class="file docutils literal"><span class="pre">cufoil.002</span></code>, and so on.</dd>
+e.g. <code class="file docutils literal"><span class="pre">cufoil.001</span></code>, <code class="file docutils literal"><span class="pre">cufoil.002</span></code>, and so on.</p>
+<p class="last"><code class="docutils literal"><span class="pre">start</span></code> is normally a positive integer but can also be the word
+<code class="docutils literal"><span class="pre">next</span></code>, in which case the <code class="docutils literal"><span class="pre">folder</span></code> will be searched for
+files starting with <code class="docutils literal"><span class="pre">filename</span></code> and ending in a number.  The
+subsequent number will be used.  E.g. if <code class="docutils literal"><span class="pre">cuedge.007</span></code> is the
+highest numbered file in the <code class="docutils literal"><span class="pre">cuedge</span></code> sequence, running XAFS
+again using the same INI file will start with <code class="docutils literal"><span class="pre">cuedge.008</span></code>.</p>
+</dd>
 <dt><code class="docutils literal"><span class="pre">snapshots</span></code> (line 16)</dt>
-<dd><code class="docutils literal"><span class="pre">True</span></code> to take snapshots from the XAS webcam and analog camera
-before beginning the scan sequence.  <code class="docutils literal"><span class="pre">False</span></code> to skip the
-snapshots</dd>
-<dt><code class="docutils literal"><span class="pre">bothways</span></code> (line 17)</dt>
-<dd><em>Experimental feature</em> – <code class="docutils literal"><span class="pre">True</span></code> to measure in both monochromator
-directions, <code class="docutils literal"><span class="pre">False</span></code> to only measure in the increasing-energy
-(decreasing angle) direction.</dd>
-<dt><code class="docutils literal"><span class="pre">channelcut</span></code> (line 18)</dt>
-<dd><em>Work in progress</em> – <code class="docutils literal"><span class="pre">True</span></code> to measure XAFS in
-pseudo-channel-cut mode, <code class="docutils literal"><span class="pre">False</span></code> to measure in fixed-exit mode.</dd>
-<dt><code class="docutils literal"><span class="pre">focus</span></code> (line 19)</dt>
-<dd><code class="docutils literal"><span class="pre">True</span></code> when the focusing mirror is in use.</dd>
-<dt><code class="docutils literal"><span class="pre">hr</span></code> (line 20)</dt>
-<dd><code class="docutils literal"><span class="pre">True</span></code> when the harmonic rejection mirror is in use.</dd>
-<dt><code class="docutils literal"><span class="pre">mode</span></code> (line 23)</dt>
+<dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> from the
+XAS webcam and analog camera before beginning the scan sequence.
+<code class="docutils literal"><span class="pre">False</span></code> to skip the snapshots</dd>
+<dt><code class="docutils literal"><span class="pre">mode</span></code> (line 19)</dt>
 <dd>Indicate how data should be displayed on screen during a scan.  The
 options are <code class="docutils literal"><span class="pre">transmission</span></code>, <code class="docutils literal"><span class="pre">fluorescence</span></code>, <code class="docutils literal"><span class="pre">both</span></code>, or
 <code class="docutils literal"><span class="pre">reference</span></code>.  <code class="docutils literal"><span class="pre">both</span></code> means to display <em>both</em> the transmission
@@ -264,7 +252,7 @@ and fluorescence during the scan.</dd>
 <p>In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The <code class="docutils literal"><span class="pre">bounds</span></code>,
-<code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> keywords (lines 27-29) are used to set this
+<code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> keywords (lines 23-25) are used to set this
 grid.</p>
 <p><code class="docutils literal"><span class="pre">bounds</span></code> indicates the energies – relative to the <code class="docutils literal"><span class="pre">e0</span></code> value
 – where the step sizes and dwell times will change.  There <strong>must</strong>
@@ -287,9 +275,35 @@ number followed by <code class="docutils literal"><span class="pre">k</span></co
 function of wavenumber above the edge.  I.e., a value of <code class="docutils literal"><span class="pre">0.25k</span></code>
 means that the dwell time will be 1 second at 4 Å<sup>-1</sup>, 2
 seconds at 8 Å<sup>-1</sup>, and so on.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Much more sanity checking &amp; sanitizing of input</p>
+</div>
+</div>
+<div class="section" id="scan-run-time">
+<h2>5.2. Scan run time<a class="headerlink" href="#scan-run-time" title="Permalink to this headline">¶</a></h2>
+<p>To get an approximation of the time a scan will take, do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">howlong</span><span class="p">(</span><span class="s1">&#39;/path/to/scan.ini&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The argument is the path to the INI file described above.</p>
+<p>This will make a guess of scan time for an individual scan using a
+rather crude heuristic for scan overhead.  It will also multiply by
+the number of scans to give a total time in hours for the scan
+sequence.</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>reading ini file: /home/bravel/BMM_Data/303169/scan.ini
+
+Each scan will take about 17.9 minutes
+The sequence of 6 scans will take about 1.8 hours
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Improve heuristic by doing statistics on scans</p>
+</div>
 </div>
 <div class="section" id="running-an-xafs-scan">
-<h2>5.2. Running an XAFS scan<a class="headerlink" href="#running-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+<h2>5.3. Running an XAFS scan<a class="headerlink" href="#running-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
 <p>To run a scan, do this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;/path/to/scan.ini&#39;</span><span class="p">))</span>
 </pre></div>
@@ -301,24 +315,31 @@ It does the following chores:</p>
 <li>Verifies the content of the INI file with a user prompt</li>
 <li>Makes an entry in the experimental log indicating the INI contents
 and the current motor positions of all the important motors</li>
-<li>Takes snapshots of the XAS webcam and the analog camera near the sample</li>
+<li>Takes <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> of the XAS webcam and
+the analog camera near the sample</li>
 <li>Moves to the center of the angular range of motion of the scan and
 enter pseudo-channel-cut mode</li>
 <li>Generates a plotting subscription appropriate to the value of
 <code class="docutils literal"><span class="pre">mode</span></code> in the INI file</li>
+<li>Enables a set of suspenders which will suspend the current XAFS
+scan in the event of a beam dump or a shutter closing (the
+suspenders are disabled at the end of the scan sequence)</li>
 <li>Moves to the beginning of the scan range and begin taking scans
-using the <code class="docutils literal"><span class="pre">scan_n()</span></code> plan and cyclers for energy values and dwell
-times constructed form the <code class="docutils literal"><span class="pre">bounds</span></code>, <code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> in
+using the <code class="docutils literal"><span class="pre">scan_nd()</span></code> plan and cyclers for energy values and dwell
+times constructed from <code class="docutils literal"><span class="pre">bounds</span></code>, <code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> in
 the INI file</li>
+<li>For each scan, notes the start and end times of the scan in the
+experimental log along with the unique and transient IDs of the
+scan in the beamline archive database</li>
 <li>After each scan, extracts the data table from the database and wrote
 an ASCII file in the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a></li>
 </ol>
-<p>The plan also provides some tools to cleanup correctly after a scan
-sequence (i.e. kill certain motors, reset certain parameters) ends or
-is terminated.</p>
+<p>The plan also provides some tools to cleanup correctly (i.e. kill
+certain motors, reset certain parameters) after a scan sequence ends
+or is terminated.</p>
 </div>
 <div class="section" id="revisiting-an-xafs-scan">
-<h2>5.3. Revisiting an XAFS scan<a class="headerlink" href="#revisiting-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+<h2>5.4. Revisiting an XAFS scan<a class="headerlink" href="#revisiting-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
 <p>Grab database entry and write it to an XDI file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">db2xdi</span><span class="p">(</span><span class="s1">&#39;/path/to/data/file&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;id&gt;&#39;</span><span class="p">)</span>
 </pre></div>
@@ -330,7 +351,7 @@ id number.  Both the unique and transient ids can be found in the
 experimental log.</p>
 </div>
 <div class="section" id="scan-sequence-macro">
-<span id="macro"></span><h2>5.4. Scan sequence macro<a class="headerlink" href="#scan-sequence-macro" title="Permalink to this headline">¶</a></h2>
+<span id="macro"></span><h2>5.5. Scan sequence macro<a class="headerlink" href="#scan-sequence-macro" title="Permalink to this headline">¶</a></h2>
 <p>A macro at BMM is a short bit of python code which sequentially moves
 motors and initiates scans.  A common way of doing this is to make an
 INI file for each sample that intend to measure.  The macro then steps
@@ -396,7 +417,7 @@ metadata items specific to the sample.</p>
    <span class="n">BMM_info</span><span class="p">(</span><span class="s1">&#39;Scan sequence finished&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>Any keyword form the INI file can be used as command argument in the
+<p>Any keyword from the INI file can be used as a command argument in the
 call to <code class="docutils literal"><span class="pre">xafs()</span></code>.  Arguments to <code class="docutils literal"><span class="pre">xafs()</span></code> will take priority over
 values in the INI file.</p>
 <p>Once you have prepared the macro file, you must reload the macro into
@@ -407,6 +428,82 @@ the running BlueSky session:</p>
 <p>then run the macro by invoking the scan sequence function through the
 run engine:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">scan_sequence</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xafs-data-file">
+<h2>5.6. XAFS data file<a class="headerlink" href="#xafs-data-file" title="Permalink to this headline">¶</a></h2>
+<p>XAFS data files are written to the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a>.  Here is
+an example.  You can see how the metadata from the INI file and
+elsewhere is captured in the output XDI file.</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span># XDI/1.0 BlueSky/1.3.0
+# Beamline.name: BMM (06BM) -- Beamline for Materials Measurement
+# Beamline.xray_source: NSLS-II three-pole wiggler
+# Beamline.collimation: paraboloid mirror, 5 nm Rh on 30 nm Pt
+# Beamline.focusing: torroidal mirror with bender, 5 nm Rh on 30 nm Pt
+# Beamline.harmonic_rejection: none
+# Detector.I0: 10 cm N2
+# Detector.I1: 25 cm N2
+# Detector.I2: 25 cm N2
+# Detector.fluorescence: SII Vortex ME4 (4-element silicon drift)
+# Element.symbol: Mo
+# Element.edge: K
+# Facility.name: NSLS-II
+# Facility.current: 374.3 mA
+# Facility.energy: 3.0 GeV
+# Facility.mode: top-off
+# Mono.name: Si(311)
+# Mono.d_spacing: 1.6376385 Å
+# Mono.encoder_resolution: 0.0000050 deg/ct
+# Mono.angle_offset: 15.9943932 deg
+# Mono.scan_mode: pseudo channel cut
+# Mono.scan_type: step
+# Mono.direction: forward in energy
+# Mono.first_crystal_temperature: 30.2 C
+# Mono.compton_shield_temperature: 30.5 C
+# Sample.name: Sedovite
+# Sample.prep: speck of mineral in a holder in a gel cap
+# Sample.x_position: 2.750
+# Sample.y_position: 147.670
+# Scan.edge_energy: 20000.0
+# Scan.start_time: 2018-07-08T16:26:49
+# Scan.end_time: 2018-07-08T16:44:22
+# Scan.transient_id: 1447
+# Scan.uid: 442bb882-1e46-4607-a12d-1bca2efa74af
+# Scan.plot_hint: (DTC1 + DTC2 + DTC3 + DTC4) / I0  --  ($7+$8+$9+$10) / $4
+# Column.1: energy eV
+# Column.2: requested_energy eV
+# Column.3: measurement_time seconds
+# Column.4: I0 nA
+# Column.5: It nA
+# Column.6: Ir nA
+# Column.7: DTC1
+# Column.8: DTC2
+# Column.9: DTC3
+# Column.10: DTC4
+# Column.11: ROI1 counts
+# Column.12: ICR1 counts
+# Column.13: OCR1 counts
+# Column.14: ROI2 counts
+# Column.15: ICR2 counts
+# Column.16: OCR2 counts
+# Column.17: ROI3 counts
+# Column.18: ICR3 counts
+# Column.19: OCR3 counts
+# Column.20: ROI4 counts
+# Column.21: ICR4 counts
+# Column.22: OCR4 counts
+# ///////////
+# focused beam, Kyzylsai Dep., Chu-lli Mts., Zhambyl Dist., Kazakhstan 3852
+# -----------
+# energy  requested_energy  measurement_time  I0  It  Ir  DTC1  DTC2  DTC3  DTC4  ROI1  ICR1  OCR1  ROI2  ICR2  OCR2  ROI3  ICR3  OCR3  ROI4  ICR4  OCR4
+19809.967  19810.000  0.500  22.780277  28.026418  5.844915  3393.671531  3512.331211  2189.485830  2294.254018  2984.0  86162.0  79706.0  3085.0  86771.0  80213.0  2018.0  57884.0  55169.0  2085.0  64398.0  60757.0
+19820.016  19820.000  0.500  23.017712  28.316410  5.912596  3607.981130  3515.807498  2272.542220  2255.901234  3160.0  87991.0  81171.0  3088.0  87790.0  81205.0  2093.0  58242.0  55481.0  2036.0  66029.0  61927.0
+19830.022  19830.000  0.500  23.191409  28.546075  5.971688  3398.408050  3343.071835  2237.827496  2348.453171  2983.0  88018.0  81376.0  2930.0  88064.0  81298.0  2061.0  59218.0  56443.0  2120.0  66896.0  62787.0
+19840.073  19840.000  0.500  23.022700  28.346179  5.941913  3424.112880  3464.005608  2199.187023  2294.868496  3007.0  87171.0  80589.0  3042.0  87734.0  81137.0  2023.0  58516.0  55684.0  2075.0  66318.0  62324.0
+.
+ .
+  .
 </pre></div>
 </div>
 
@@ -448,7 +545,7 @@ Creative Commons</a>.</p>
         <li class="right" >
           <a href="linescans.html" title="4. Sample position scans"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
     </div>
 <script type="text/javascript">
