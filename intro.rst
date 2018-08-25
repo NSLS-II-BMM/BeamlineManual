@@ -103,7 +103,7 @@ at-a-glance information about the state of the beamline.
 .. _fig-prompt:
 .. figure::  _images/prompt.png
    :target: _images/prompt.png
-   :width: 30%
+   :width: 40%
    :align: center
 
    The BlueSky user prompt at BMM
@@ -117,7 +117,9 @@ Si(311).
 The red :quoted:`A` and :quoted:`B` indicate that the A and B (front
 end and photon) shutters are currently closed.  When open these
 letters are blue.  The italicized blue text gives the beam current.
-(This picture was made during a maintenance period.)
+(This picture was made during a maintenance period.)  Finally, the
+bright green number indicates the command count, just like the
+default Ipython prompt.
 
 When a new experiment begins, run the command::
 
@@ -161,16 +163,17 @@ the beam, it should never need adjustment.
 
 The collimated light is delivered to a double crystal monochromator
 (DCM).  The DCM has pairs of Si(111) and Si(311) crystals which are
-accessed by translating the DCM vacuum vessel laterally.  A
-transition between the two crystal sets takes about 2 minutes.
+accessed by :numref:`translating the DCM vacuum vessel laterally
+(Section %s) <change-crystals>` .  A transition between the two
+crystal sets takes about 2 minutes.
 
 After the DCM, we have a toroidal focusing mirror followed by a flat
 harmonic rejection mirror.  One or both of these mirrors is in the
-beam depending on the configuration of the XAS experiment in the end
-station.  Because the beam is deflected upward after the collimating
-mirror, at least one of the mirrors after the DCM must be used in
-order to deflect the beam through the lengthy transport pipe and into
-the end station.
+beam depending on :numref:`the configuration of the XAS experiment
+(Section %s) <change-mode>` in the end station.  Because the beam is
+deflected upward after the collimating mirror, at least one of the
+mirrors after the DCM must be used in order to deflect the beam
+through the lengthy transport pipe and into the end station.
 
 Because the collimating mirror is at a fixed angle, it only serves as
 a harmonic rejection mirror above an energy determined by its
