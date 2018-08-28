@@ -75,8 +75,8 @@ This will print this report to the screen:
      111 first crystal                28.7 C        GV2     open          Harmonic Rej. Mirror  2.20E-09      8.9 μA
      311 first crystal                29.4 C        GV3     open          Transport Pipe        2.10E-09      2.7 μA
      Compton shield                   29.2 C        GV4     open          Diagnostic Module 3   2.70E-09      7.4 μA
-     Second crystal pitch             27.9 C        GV5     open          Flight Path           7.20E+02   
-     Second crystal roll              27.9 C        GV6     open  
+     Second crystal pitch             27.9 C        GV5     open          Flight Path           7.20E+02
+     Second crystal roll              27.9 C        GV6     open
      Second crystal perpendicular     27.6 C
      Second crystal parallel          25.5 C
      Mirror 2 upstream                26.4 C
@@ -134,14 +134,47 @@ To see a summary of common commands, use ``BMM_help()``:
 
 .. code-block:: text
 
-   blah
+   Open the shutter:               shb.open()
+   Close the shutter:              shb.close()
+
+   Change energy:                  RE(mv(dcm.energy, <energy>))
+   Move a motor, absolute:         RE(mv(<motor>, <position>))
+   Move a motor, relative:         RE(mvr(<motor>, <delta>))
+   Where is a motor?               <motor>.wh()
+
+   Where is the DCM?               dcm.wh()
+   Where is M2?                    m2.wh()
+   Where is M3?                    m3.wh()
+   Where are the slits?            slits3.wh()
+   Where is the XAFS table?        xafs_table.wh()
+
+   Summarize all motor positions:  ms()
+   Summarize utilities:            su()
+
+   How long will a scan seq. be?   howlong(<INI file>)
+   Run a scan sequence:            RE(xafs(<INI file>))
+   Scan a motor, plot a detector:  RE(linescan(<motor>, <det>, <start>, <stop>, <nsteps>))
+   Scan 2 motors, plot a detector: RE(areascan(<slow motor>, <start>, <stop>, <nsteps>, <fast motor>, <start>, <stop>, <nsteps>, <det>))
+   Make a log entry:               BMM_log_info(<text of entry>)
+
+   All the details: https://nsls-ii-bmm.github.io/BeamlineManual/index.html
 
 and to see a summary of some useful command line hotkeys,
 ``BMM_keys()``:
 
 .. code-block:: text
 
-   blah
+   Abort scan:             Ctrl-c twice!
+   Search backwards:       Ctrl-r
+   Quit search:            Ctrl-g
+   Beginning of line:      Ctrl-a
+   End of line:            Ctrl-e
+   Delete character        Ctrl-d
+   Cut text to eol         Ctrl-k
+   Cut text from bol       Ctrl-u
+   Paste text              Ctrl-y
+
+   More details: http://readline.kablamo.org/emacs.html
 
 
 The day will come that we have a GUI for running XAFS experiments at
