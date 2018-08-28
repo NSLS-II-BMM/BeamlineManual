@@ -123,17 +123,34 @@ default Ipython prompt.
 
 When a new experiment begins, run the command::
 
-  new_experiment(folder)
+  new_experiment('folder')
 
 This will create ``folder`` and populate it with an
 :numref:`experimental log (Section %s) <log>`, a template for a
 :numref:`scan.ini file (Section %s) <xafs>`, and a template for
 :numref:`a macro file (Section %s) <macro>`.
 
+To see a summary of common commands, use ``BMM_help()``:
+
+.. code-block:: text
+
+   blah
+
+and to see a summary of some useful command line hotkeys,
+``BMM_keys()``:
+
+.. code-block:: text
+
+   blah
+
 
 The day will come that we have a GUI for running XAFS experiments at
 BMM.  For now, we have the command line.  Read on |nd| it's not too
 difficult!
+
+
+
+
 
 A Bit about BMM
 ---------------
