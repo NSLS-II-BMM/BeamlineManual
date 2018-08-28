@@ -63,8 +63,8 @@ You can skip the :quoted:`click for motor position` step by typing
 ``n`` and hitting return.
 
 
-Plucking a point from a scan
-----------------------------
+Plucking a point from a line scan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to repeat the action of clicking on a point and moving the
 motor to the click-upon point, do::
@@ -85,7 +85,7 @@ then do a movement command line::
 
 
 Revisit a line scan
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Retrieve data from the database using the database key or scan ID::
 
@@ -138,6 +138,107 @@ the same arguments that they have special names.
 Area scans
 ----------
 
-.. todo:: Bespoke area scan plan based on ``rel_grid_scan()`` with
-	  logging, plucking, etc.
+An area scan is a simple scan of a two motor axes with an on-screen
+heat map.  At BMM this sort of scan is typically done using the
+``areascan()`` plan.  This is a wrapper around BlueSky's `rel_grid_scan()
+<https://nsls-ii.github.io/bluesky/generated/bluesky.plans.rel_grid_scan.html#bluesky.plans.rel_grid_scan>`_.
+
+In BMM's ``areascan()`` plan, the scan is always a relative scan
+around the current positions of both motors being scanned.  It works
+like this::
+
+    RE(areascan('<slow_motor>', -4, 4, 81, '<fast_motor>', -2, 2, 41, 'it'))
+
+The arguments are:
+
+#. The slow motor axis.  This can be either the motor's
+   BlueSky name or the nickname in :numref:`Table %s <xafs-stages>`.  So,
+   these are equivalent::
+
+     RE(areascan('x', -4, 4, 81, 'y', -2, 2, 41, 'it'))
+     RE(areascan(xafs_linx, -4, 4, 81, xafs_liny, -2, 2, 41, 'it'))
+
+   For a motor that does not have a nickname, you must use the BlueSky
+   names, as in this somewhat silly example::
+
+     RE(linescan(slits3_outboard, -1, 1, 21, dcm_pitch, -2, 2, 41, 'it'))
+
+#. The starting position of the slow motor, relative to the current
+   position.
+
+#. The ending position of the slow motor, relative to the current
+   position.
+
+#. The number of steps to take on the slow motor.
+
+#. The fast motor axis.  This can be either the motor's
+   BlueSky name or the nickname in :numref:`Table %s <xafs-stages>`.
+
+#. The starting position of the fast motor, relative to the current
+   position.
+
+#. The ending position of the fast motor, relative to the current
+   position.
+
+#. The number of steps to take on the fast motor.
+
+#. The detector for the plotted signal.  The choices are ``it``,
+   ``if``, and ``i0``.  For the ``it`` choice, the plot will display
+   the ratio of It/I0.  Similarly for the ``if`` choice, the plot will
+   display the sum of four silicon drift channels normalized by I0.
+   For the ``i0`` choice, the signal on the I0 chamber will be plotted.
+
+At the end of the scan, you are prompted with the following question::
+
+    Pluck motor position from the plot? [Yn]
+
+If you answer ``Y``, or simply hit return, you will be prompted to
+single click the left mouse button on the plot.  Both motors will then
+move to the position you clicked on.
+
+You can skip the :quoted:`click for motor position` step by typing
+``n`` and hitting return.
+
+
+Plucking a point from a line scan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to repeat the action of clicking on a point and moving the
+motor to the click-upon point, do::
+
+  RE(pluck())
+
+This will enable the mouse click and subsequent motion on the most
+recent plot.  The ``pluck()`` command *only* works on the most recent
+plot.  You may not pluck from an older plot that is still displayed on
+the screen.
+
+Of course, an older plot remains active in the sense that you can pass
+the cursor over the plot and read the mouse coordinates in the bottom,
+left corner of the plot window.  You can find a point in this way,
+then do a movement command line::
+
+  RE(mv(xafs_linx, 28.31, xafs_liny, 113.97))
+
+
+
+Revisit an area scan
+~~~~~~~~~~~~~~~~~~~~
+
+Retrieve data from the database using the database key or scan ID::
+
+   as2dat('/path/to/output.file', '<id>')
+
+This writes from the database to an output file.  The output file is a
+simple column data file.  The format of this data file is columns with
+datablocks (i.e. rows or constant value of the slow motor) separated by
+blank lines.  This is a format that `works with Gnuplot
+<http://gnuplot.sourceforge.net/docs_4.2/node331.html>`_ and other
+plotting programs.
+
+The first argument is the name of the output data file.  The second
+argument is either the scan's unique ID |nd| something like 
+``42447313-46a5-42ef-bf8a-46fedc2c2bd1`` |nd| or the scan's transient
+id number.  Both the unique and transient ids can be found in the
+experimental log.
 
