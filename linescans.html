@@ -15,7 +15,7 @@
   <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>4. Sample position scans &#8212; BMM User Manual 0.1 documentation</title>
+    <title>4. Sample position scans &#8212; BMM User Manual 0.1</title>
     
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -53,7 +53,7 @@
         <li class="right" >
           <a href="pds.html" title="3. Photon Delivery System"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -76,28 +76,30 @@
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Sample position scans</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general-line-scans">4.1. General line scans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plucking-a-point-from-a-scan">4.2. Plucking a point from a scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#revisit-a-line-scan">4.3. Revisit a line scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#special-purpose-line-scans">4.4. Special purpose line scans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#area-scans">4.5. Area scans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#special-purpose-line-scans">4.2. Special purpose line scans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#area-scans">4.3. Area scans</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
 </ul>
 
     
   </div>
-</div><h3>Helpful Links</h3>
-<ul>
-  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
-  <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
-  <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
-  <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
-  <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
-</ul>
-<p>
-
+</div><div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Helpful Links</h2>
+  </div>
+  <ul>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+    <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+    <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+    <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+  </ul>
+  <p>
+</div>
 <div class="sidebar-block">
   <div class="sidebar-wrapper">
     <div id="main-search">
@@ -111,13 +113,6 @@
     </div>
   </div>
 </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/linescans.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
       
     </div>
   </div>
@@ -143,21 +138,21 @@ plot.  At BMM this sort of scan is typically done using the
 <p>In BMM's <code class="docutils literal"><span class="pre">linescan()</span></code> plan, the scan is always a relative scan
 around the current position of the motor being scanned.  It works like
 this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>The arguments are:</p>
 <ol class="arabic">
 <li><p class="first">The motor axis to be scanned.  This can be either the motor's
-BlueSky name or the nickname in the <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-ref">XAFS sample stages</span></a> table.  So,
+BlueSky name or the nickname in <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.  So,
 these are equivalent:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
-<span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="n">xafs_linx</span><span class="p">,</span> <span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_linx</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>For a motor that does not have a nickname, you must use the BlueSky
 names, as in:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="n">slits3_outboard</span><span class="p">,</span> <span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">slits3_outboard</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
 </pre></div>
 </div>
 </li>
@@ -180,23 +175,27 @@ position.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>Pluck motor position from the plot? [Yn]
 </pre></div>
 </div>
-<p>If you answer <code class="docutils literal"><span class="pre">Y</span></code>, or simply hit return, you will be prompted to
-single click the left mouse button on the plot.  The motor that was
-scanned will then move to the motor position you clicked on.</p>
+<p>If you answer <kbd class="dark">y</kbd>, or simply hit <kbd class="dark">Enter</kbd>, you will be
+prompted to single click the left mouse button <img alt="leftclick" title="Left mouse button" src="./_static/leftclick.png" hspace="3"> on
+the plot.  The motor that was scanned will then move to the motor
+position you clicked on.</p>
 <p>You can skip the “click for motor position” step by typing
-<code class="docutils literal"><span class="pre">n</span></code> and hitting return.</p>
+<kbd class="dark">n</kbd> and hitting <kbd class="dark">Enter</kbd>.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Better sanity checking of input parameters</p>
 </div>
-<div class="section" id="plucking-a-point-from-a-scan">
-<h2>4.2. Plucking a point from a scan<a class="headerlink" href="#plucking-a-point-from-a-scan" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="plucking-a-point-from-a-line-scan">
+<h3>4.1.1. Plucking a point from a line scan<a class="headerlink" href="#plucking-a-point-from-a-line-scan" title="Permalink to this headline">¶</a></h3>
 <p>If you want to repeat the action of clicking on a point and moving the
 motor to the click-upon point, do:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">pluck</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>This will enable the mouse click and subsequent motion on the most
-recent plot.  The <code class="docutils literal"><span class="pre">pluck()</span></code> command <em>only</em> works on the most recent
-plot.  You may not pluck from an older plot that is still displayed on
-the screen.</p>
+<p>This will enable the left mouse <img alt="leftclick" title="Left mouse button" src="./_static/leftclick.png" hspace="3"> click and
+subsequent motion on the most recent plot.  The <code class="docutils literal"><span class="pre">pluck()</span></code> command
+<em>only</em> works on the most recent plot.  You may not pluck from an older
+plot that is still displayed on the screen.</p>
 <p>Of course, an older plot remains active in the sense that you can pass
 the cursor over the plot and read the mouse coordinates in the bottom,
 left corner of the plot window.  You can find a point in this way,
@@ -206,7 +205,7 @@ then do a movement command line:</p>
 </div>
 </div>
 <div class="section" id="revisit-a-line-scan">
-<h2>4.3. Revisit a line scan<a class="headerlink" href="#revisit-a-line-scan" title="Permalink to this headline">¶</a></h2>
+<h3>4.1.2. Revisit a line scan<a class="headerlink" href="#revisit-a-line-scan" title="Permalink to this headline">¶</a></h3>
 <p>Retrieve data from the database using the database key or scan ID:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls2dat</span><span class="p">(</span><span class="s1">&#39;/path/to/output.file&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;id&gt;&#39;</span><span class="p">)</span>
 </pre></div>
@@ -219,8 +218,9 @@ argument is either the scan's unique ID – something like
 id number.  Both the unique and transient ids can be found in the
 experimental log.</p>
 </div>
+</div>
 <div class="section" id="special-purpose-line-scans">
-<span id="special-linescans"></span><h2>4.4. Special purpose line scans<a class="headerlink" href="#special-purpose-line-scans" title="Permalink to this headline">¶</a></h2>
+<span id="special-linescans"></span><h2>4.2. Special purpose line scans<a class="headerlink" href="#special-purpose-line-scans" title="Permalink to this headline">¶</a></h2>
 <p>A number of line scan types are so common and so often performed with
 the same arguments that they have special names.</p>
 <dl class="docutils">
@@ -233,7 +233,7 @@ the same arguments that they have special names.</p>
 signal on I0.  At the end of the scan, it moves to the position of
 the peak of the rocking curve.  This scan is useful after a large
 change of energy.</p>
-<p>You can put this scan in macro using:</p>
+<p>You can put this scan in a macro using:</p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">rocking_curve</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -244,20 +244,116 @@ change of energy.</p>
 </pre></div>
 </div>
 <p class="last">Runs a scan of the DM3 BCT motor around its current position.  At
-the end of the scan, you are prompted to click on the plot to
-choose a position to move the slit height to.  This scan is useful
-for verifying that the slits are in the correct orientation for
-the delivery of beam from the mirrors.</p>
+the end of the scan, you are prompted to left click
+<img alt="leftclick" title="Left mouse button" src="./_static/leftclick.png" hspace="3"> on the plot to choose a position to move the
+slit height to.  This scan is useful for verifying that the slits
+are in the correct orientation for the delivery of beam from the
+mirrors.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="area-scans">
-<h2>4.5. Area scans<a class="headerlink" href="#area-scans" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Bespoke area scan plan based on <code class="docutils literal"><span class="pre">rel_grid_scan()</span></code> with
-logging, plucking, etc.</p>
+<h2>4.3. Area scans<a class="headerlink" href="#area-scans" title="Permalink to this headline">¶</a></h2>
+<p>An area scan is a simple scan of a two motor axes with an on-screen
+heat map.  At BMM this sort of scan is typically done using the
+<code class="docutils literal"><span class="pre">areascan()</span></code> plan.  This is a wrapper around BlueSky's
+<a class="reference external" href="https://nsls-ii.github.io/bluesky/generated/bluesky.plans.rel_grid_scan.html#bluesky.plans.rel_grid_scan">rel_grid_scan()</a>.</p>
+<p>In BMM's <code class="docutils literal"><span class="pre">areascan()</span></code> plan, the scan is always a relative scan
+around the current positions of both motors being scanned.  It works
+like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;slow_motor&gt;&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="s1">&#39;&lt;fast_motor&gt;&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
+</pre></div>
 </div>
+<p>The arguments are:</p>
+<ol class="arabic">
+<li><p class="first">The slow motor axis.  This can be either the motor's
+BlueSky name or the nickname in <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.  So,
+these are equivalent:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_linx</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="n">xafs_liny</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_linx</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>For a motor that does not have a nickname, you must use the BlueSky
+name, as in this somewhat silly example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">slits3_outboard</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">dcm_pitch</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The starting position of the slow motor, relative to the current
+position.</p>
+</li>
+<li><p class="first">The ending position of the slow motor, relative to the current
+position.</p>
+</li>
+<li><p class="first">The number of steps to take on the slow motor.</p>
+</li>
+<li><p class="first">The fast motor axis.  This can be either the motor's
+BlueSky name or the nickname in <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.</p>
+</li>
+<li><p class="first">The starting position of the fast motor, relative to the current
+position.</p>
+</li>
+<li><p class="first">The ending position of the fast motor, relative to the current
+position.</p>
+</li>
+<li><p class="first">The number of steps to take on the fast motor.</p>
+</li>
+<li><p class="first">The detector for the plotted signal.  The choices are <code class="docutils literal"><span class="pre">it</span></code>,
+<code class="docutils literal"><span class="pre">if</span></code>, and <code class="docutils literal"><span class="pre">i0</span></code>.  For the <code class="docutils literal"><span class="pre">it</span></code> choice, the plot will display
+the ratio of It/I0.  Similarly for the <code class="docutils literal"><span class="pre">if</span></code> choice, the plot will
+display the sum of four silicon drift channels normalized by I0.
+For the <code class="docutils literal"><span class="pre">i0</span></code> choice, the signal on the I0 chamber will be plotted.</p>
+</li>
+</ol>
+<p>At the end of the scan, you are prompted with the following question:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Pluck motor position from the plot? [Yn]
+</pre></div>
+</div>
+<p>If you answer <code class="docutils literal"><span class="pre">Y</span></code>, or simply hit return, you will be prompted to
+single click the left mouse button <img alt="leftclick" title="Left mouse button" src="./_static/leftclick.png" hspace="3"> on the plot.
+Both motors will then move to the position you clicked on.</p>
+<p>You can skip the “click for motor position” step by typing
+<code class="docutils literal"><span class="pre">n</span></code> and hitting return.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Better sanity checking of input parameters</p>
+</div>
+<div class="section" id="plucking-a-point-from-an-area-scan">
+<h3>4.3.1. Plucking a point from an area scan<a class="headerlink" href="#plucking-a-point-from-an-area-scan" title="Permalink to this headline">¶</a></h3>
+<p>If you want to repeat the action of clicking on a point and moving the
+motor to the click-upon point, do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">pluck</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This will enable the left mouse click <img alt="leftclick" title="Left mouse button" src="./_static/leftclick.png" hspace="3"> and
+subsequent motion on the most recent plot.  The <code class="docutils literal"><span class="pre">pluck()</span></code> command
+<em>only</em> works on the most recent plot.  You may not pluck from an older
+plot that is still displayed on the screen.</p>
+<p>Of course, an older plot remains active in the sense that you can pass
+the cursor over the plot and read the mouse coordinates in the bottom,
+left corner of the plot window.  You can find a point in this way,
+then do a movement command line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_linx</span><span class="p">,</span> <span class="mf">28.31</span><span class="p">,</span> <span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">113.97</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="revisit-an-area-scan">
+<h3>4.3.2. Revisit an area scan<a class="headerlink" href="#revisit-an-area-scan" title="Permalink to this headline">¶</a></h3>
+<p>Retrieve data from the database using the database key or scan ID:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">as2dat</span><span class="p">(</span><span class="s1">&#39;/path/to/output.file&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;id&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This writes from the database to an output file.  The output file is a
+simple column data file.  The format of this data file is columns with
+datablocks (i.e. rows or constant value of the slow motor) separated by
+blank lines.  This is a format that <a class="reference external" href="http://gnuplot.sourceforge.net/docs_4.2/node331.html">works with Gnuplot</a> and other
+plotting programs.</p>
+<p>The first argument is the name of the output data file.  The second
+argument is either the scan's unique ID – something like
+<code class="docutils literal"><span class="pre">42447313-46a5-42ef-bf8a-46fedc2c2bd1</span></code> – or the scan's transient
+id number.  Both the unique and transient ids can be found in the
+experimental log.</p>
 
 <br>
 
@@ -267,6 +363,7 @@ logging, plucking, etc.</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>
+</div>
 </div>
 </div>
 
@@ -297,7 +394,7 @@ Creative Commons</a>.</p>
         <li class="right" >
           <a href="pds.html" title="3. Photon Delivery System"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
     </div>
 <script type="text/javascript">

@@ -9,44 +9,18 @@
 Introduction to BMM
 ===================
 
-At the command line, `bsui`
+At the unix command line, type ``bsui`` to start the BlueSky user
+interface.  bsui is simply an `Ipython shell <https://ipython.org/>`_
+with some customizations specific to BlueSky.  On top of that, there
+are a number of customizations specific to BMM.
 
-``su()``
+There are some commands that give a broad overview of the state of the
+beamline.  To see the locations of the motors that matter most to most
+experiments, do::
 
-.. code-block:: text
+  ms()
 
-   In [1898]: su()
-   Monday 06 August, 2018 10:24 AM
-
-   BMPS: open            IDPS: closed            Photon Shutter: closed
-
-   Thermocouple               Temperature         Valve   state          Vacuum section       pressure     current
-   =======================================================================================================================
-     Mirror 1, inboard fin            33.5 C        FEGV1   open          Diagnostic Module 1   8.60E-09     20.0 μA
-     Mirror 1, disaster mask          32.4 C        FEGV3   open          Monochromator         5.00E-08    320.0 μA
-     Mirror 1, outboard fin           33.2 C        FEGV2   open          Diagnostic Module 2   3.60E-09     86.0 μA
-     First fluorescent screen         29.0 C        GV1     open          Focusing Mirror       3.10E-09     15.0 μA
-     111 first crystal                28.7 C        GV2     open          Harmonic Rej. Mirror  2.20E-09      8.9 μA
-     311 first crystal                29.4 C        GV3     open          Transport Pipe        2.10E-09      2.7 μA
-     Compton shield                   29.2 C        GV4     open          Diagnostic Module 3   2.70E-09      7.4 μA
-     Second crystal pitch             27.9 C        GV5     open          Flight Path           7.20E+02   
-     Second crystal roll              27.9 C        GV6     open  
-     Second crystal perpendicular     27.6 C
-     Second crystal parallel          25.5 C
-     Mirror 2 upstream                26.4 C
-     Mirror 2 downstream              25.9 C
-     Mirror 3 upstream                26.0 C
-     Mirror 3 downstream              25.5 C
-     Filter assembly 1, slot 1        28.8 C
-     Filter assembly 1, slot 2        28.6 C
-     Filter assembly 1, slot 3        28.5 C
-     Filter assembly 1, slot 4        29.0 C
-     Filter assembly 2, slot 1        28.7 C
-     Filter assembly 2, slot 2        28.7 C
-     Filter assembly 2, slot 3        28.6 C
-     Filter assembly 2, slot 4        28.7 C
-
-``ms()``
+This will print the following report to the screen:
 
 .. code-block:: text
 
@@ -78,6 +52,157 @@ At the command line, `bsui`
    ==============================================================================
 
 
+To get an overview of the status of the beamline utilities |nd|
+i.e. things like temperatures and gate vale states |nd| do::
+
+  su()
+
+This will print this report to the screen:
+
+.. code-block:: text
+
+   In [1898]: su()
+   Monday 06 August, 2018 10:24 AM
+
+   BMPS: open            IDPS: closed            Photon Shutter: closed
+
+   Thermocouple               Temperature         Valve   state          Vacuum section       pressure     current
+   =======================================================================================================================
+     Mirror 1, inboard fin            33.5 C        FEGV1   open          Diagnostic Module 1   8.60E-09     20.0 μA
+     Mirror 1, disaster mask          32.4 C        FEGV3   open          Monochromator         5.00E-08    320.0 μA
+     Mirror 1, outboard fin           33.2 C        FEGV2   open          Diagnostic Module 2   3.60E-09     86.0 μA
+     First fluorescent screen         29.0 C        GV1     open          Focusing Mirror       3.10E-09     15.0 μA
+     111 first crystal                28.7 C        GV2     open          Harmonic Rej. Mirror  2.20E-09      8.9 μA
+     311 first crystal                29.4 C        GV3     open          Transport Pipe        2.10E-09      2.7 μA
+     Compton shield                   29.2 C        GV4     open          Diagnostic Module 3   2.70E-09      7.4 μA
+     Second crystal pitch             27.9 C        GV5     open          Flight Path           7.20E+02
+     Second crystal roll              27.9 C        GV6     open
+     Second crystal perpendicular     27.6 C
+     Second crystal parallel          25.5 C
+     Mirror 2 upstream                26.4 C
+     Mirror 2 downstream              25.9 C
+     Mirror 3 upstream                26.0 C
+     Mirror 3 downstream              25.5 C
+     Filter assembly 1, slot 1        28.8 C
+     Filter assembly 1, slot 2        28.6 C
+     Filter assembly 1, slot 3        28.5 C
+     Filter assembly 1, slot 4        29.0 C
+     Filter assembly 2, slot 1        28.7 C
+     Filter assembly 2, slot 2        28.7 C
+     Filter assembly 2, slot 3        28.6 C
+     Filter assembly 2, slot 4        28.7 C
+
+
+
+The user experience
+-------------------
+
+The Ipython/bsui prompt at BMM is heavily modified to give important
+at-a-glance information about the state of the beamline.
+
+.. _fig-prompt:
+.. figure::  _images/prompt.png
+   :target: _images/prompt.png
+   :width: 40%
+   :align: center
+
+   The BlueSky user prompt at BMM
+
+The white characters at the beginning of the prompt show the
+:numref:`photon delivery system mode (Section %s) <change-mode>` |nd|
+currently :quoted:`XRD` |nd| and the :numref:`monochromator crystals
+(Section %s) <change-crystals>` currently in use |nd| currently
+Si(311).
+
+The red :quoted:`A` and :quoted:`B` indicate that the A and B (front
+end and photon) shutters are currently closed.  When open these
+letters are blue.  The italicized blue text gives the beam current.
+(This picture was made during a maintenance period.)  Finally, the
+bright green number indicates the command count, just like the
+default Ipython prompt.
+
+.. _start_end:
+
+Starting and ending an experiment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a new experiment begins, run the command::
+
+  new_experiment('folder')
+
+This will create ``folder`` and populate it with an
+:numref:`experimental log (Section %s) <log>`, define the ``DATA``
+variable for use in simplifying certain commands, write a template for
+a :numref:`scan.ini file (Section %s) <xafs>`, write a template
+for a :numref:`macro file (Section %s) <macro>`, and configure the
+logger to write a log file for this experiment.
+
+Once the experiment is finished, run this command::
+
+  end_experiment()
+
+This will reset the logger and the ``DATA`` variable.
+
+
+Getting help at the command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To see a summary of common commands, use ``BMM_help()``:
+
+.. code-block:: text
+
+   Open the shutter:               shb.open()
+   Close the shutter:              shb.close()
+
+   Change energy:                  RE(mv(dcm.energy, <energy>))
+   Move a motor, absolute:         RE(mv(<motor>, <position>))
+   Move a motor, relative:         RE(mvr(<motor>, <delta>))
+   Where is a motor?               <motor>.wh()
+
+   Where is the DCM?               dcm.wh()
+   Where is M2?                    m2.wh()
+   Where is M3?                    m3.wh()
+   Where are the slits?            slits3.wh()
+   Where is the XAFS table?        xafs_table.wh()
+
+   Summarize all motor positions:  ms()
+   Summarize utilities:            su()
+
+   How long will a scan seq. be?   howlong(DATA + 'scan.ini')
+   Run a scan sequence:            RE(xafs(DATA + 'scan.ini'))
+   Scan a motor, plot a detector:  RE(linescan(<det>, <motor>, <start>, <stop>, <nsteps>))
+   Scan 2 motors, plot a detector: RE(areascan(<det>, <slow motor>, <start>, <stop>, <nsteps>, <fast motor>, <start>, <stop>, <nsteps>))
+   Make a log entry:               BMM_log_info("blah blah blah")
+
+   DATA = /home/bravel/BMM_Data/bucket
+
+   All the details: https://nsls-ii-bmm.github.io/BeamlineManual/index.html
+
+and to see a summary of some useful command line hotkeys,
+``BMM_keys()``:
+
+.. code-block:: text
+
+   Abort scan:             Ctrl-c twice!
+   Search backwards:       Ctrl-r
+   Quit search:            Ctrl-g
+   Beginning of line:      Ctrl-a
+   End of line:            Ctrl-e
+   Delete character        Ctrl-d
+   Cut text to eol         Ctrl-k
+   Cut text from bol       Ctrl-u
+   Paste text              Ctrl-y
+
+   More details: http://readline.kablamo.org/emacs.html
+
+
+The day will come that we have a GUI for running XAFS experiments at
+BMM.  For now, we have the command line.  Read on |nd| it's not too
+difficult!
+
+
+
+
 
 A Bit about BMM
 ---------------
@@ -107,16 +232,17 @@ the beam, it should never need adjustment.
 
 The collimated light is delivered to a double crystal monochromator
 (DCM).  The DCM has pairs of Si(111) and Si(311) crystals which are
-accessed by translating the DCM vacuum vessel laterally.  A
-transition between the two crystal sets takes about 2 minutes.
+accessed by :numref:`translating the DCM vacuum vessel laterally
+(Section %s) <change-crystals>` .  A transition between the two
+crystal sets takes about 2 minutes.
 
 After the DCM, we have a toroidal focusing mirror followed by a flat
 harmonic rejection mirror.  One or both of these mirrors is in the
-beam depending on the configuration of the XAS experiment in the end
-station.  Because the beam is deflected upward after the collimating
-mirror, at least one of the mirrors after the DCM must be used in
-order to deflect the beam through the lengthy transport pipe and into
-the end station.
+beam depending on :numref:`the configuration of the XAS experiment
+(Section %s) <change-mode>` in the end station.  Because the beam is
+deflected upward after the collimating mirror, at least one of the
+mirrors after the DCM must be used in order to deflect the beam
+through the lengthy transport pipe and into the end station.
 
 Because the collimating mirror is at a fixed angle, it only serves as
 a harmonic rejection mirror above an energy determined by its
