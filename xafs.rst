@@ -22,6 +22,12 @@ header of the output data files.
 This file is typically stored in the same folder where the data files
 are written and is called by name when running an XAFS scan.
 
+
+.. _ini:
+
+The INI file
+------------
+
 .. sourcecode:: ini
    :linenos:
 
@@ -131,7 +137,7 @@ and ``times`` lists.
 
 For the ``bounds`` and ``steps`` lists, values **must** be either a
 number or a string consisting of a number followed by the letter
-``k``.  Numbers followed by ``k`` are interpreted as being value sin
+``k``.  Numbers followed by ``k`` are interpreted as being values in
 photoelectron wavenumber and are only sensible above the edge.
 
 You may switch back and forth between energy and wavenumber values.
@@ -182,9 +188,12 @@ Running an XAFS scan
 
 To run a scan, do this::
 
-  RE(xafs('/path/to/scan.ini'))
+  RE(xafs('scan.ini'))
 
-The argument is the path to the INI file described above.
+The argument is the path to the INI file described above.  The
+``DATA`` variable is convenience.  It gets set to the location of your
+data folder when :numref:`beginning an experiment (Section %s)
+<start_end>`.
 
 This plan is a wrapper around `BlueSky's scan_nd() plan
 <https://nsls-ii.github.io/bluesky/plans.html#multi-dimensional-scans>`_.
@@ -225,6 +234,77 @@ The plan also provides some tools to cleanup correctly (i.e. kill
 certain motors, reset certain parameters) after a scan sequence ends
 or is terminated.
 
+
+Location of scan.ini file
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When you launch an XAFS scan doing::
+
+  RE(xafs('scan.ini'))
+
+the location of the ``scan.ini`` file is assumed to be in ``DATA``.
+For instance, ``DATA`` is ``/home/bravel/BMM_Data/303303/``, then the
+scan plan will look for the file
+``/home/bravel/BMM_Data/303303/scan.ini``.  This is equivalent to::
+
+  RE(xafs(DATA + 'scan.ini'))
+
+where ``+`` is the python :quoted:`string concatination` operator.
+
+You can also explicitly state where your INI file is located, as in::
+
+  RE(xafs('/home/user/data_location/myscan.ini'))
+
+In that case, the explicit location of the INI file will be used.
+
+The ``DATA`` variable is set when the ``new_experiment()`` command is
+run at the beginning of the experiment (:numref:`see Section %s
+<start_end>`).  To know the value of the ``DATA`` variable, simply
+type ``DATA`` at the command line and hit :button:`Enter`.
+
+
+Interrupting an XAFS scan
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are several scenarios where you may need to interrupt or halt an
+XAFS scan.
+
+Pause a scan and *resume*
+  You can pause a scan at any time by
+  hitting :button:`Ctrl`-:button:`c` twice.  This will return you to
+  the command line, leaving the scan in a paused state.  To *resume*
+  the scan, do::
+
+    RE.resume()
+
+  The scan will then continue from where it left off.
+
+*Stop* a scan
+  You can pause a scan at any time by hitting
+  :button:`Ctrl`-:button:`c` twice.  This will return you to the
+  command line, leaving the scan in a paused state.  To *end* the
+  scan, do::
+
+    RE.stop()
+
+  The scan will then terminate, returning all motors and detectors to
+  their resting state.
+
+Pause a scan due to external events
+  When the XAFS scan starts, it initiates a set of `suspenders
+  <https://nsls-ii.github.io/bluesky/state-machine.html#automated-suspension>`_
+  which respond to various external events, such as a shutter closing
+  or the ring current dumping.  When one of these suspenders triggers,
+  the scan will enter a paused state.  It will resume once the
+  condition causing the suspension is resolved.  For example, when the
+  closed shutter is re-opened or current is restored to the ring.  In
+  general, a short bit of time is required to pass once the suspension
+  condition is resolved before the scan resumes.  For instance,
+  5 seconds are allowed to pass after a shutter is re-opened.
+
+`Here is a summary of pausing, resuming, and stopping scans
+<https://nsls-ii.github.io/bluesky/state-machine.html#summary>`_.
+
 Revisiting an XAFS scan
 -----------------------
 
@@ -257,10 +337,10 @@ each sample.
       BMM_info('Starting scan sequence')
 
       yield from mv(xafs_linx, 23.86, xafs_liny, 71.27)
-      yield from xafs('/path/to/sample1.ini')
+      yield from xafs('sample1.ini')
 
       yield from mv(xafs_linx, 23.86, xafs_liny, 81.27)
-      yield from xafs('/path/to/sample2.ini')
+      yield from xafs('sample2.ini')
 
       BMM_xsp.prompt = True
       BMM_info('Scan sequence finished')
@@ -286,28 +366,32 @@ metadata items specific to the sample.
       BMM_info('Starting scan sequence')
 
       yield from mv(xafs_linx, 23.86, xafs_liny, 71.27)
-      yield from xafs('/path/to/scan.ini', filename = 'sample1', prep = 'pressed pellet')
+      yield from xafs('scan.ini', filename = 'sample1', prep = 'pressed pellet')
 
       yield from mv(xafs_linx, 23.86, xafs_liny, 81.27)
-      yield from xafs('/path/to/scan.ini', filename = 'sample2', prep = 'powder on tape')
+      yield from xafs('scan.ini', filename = 'sample2', prep = 'powder on tape')
 
       BMM_xsp.prompt = True
       BMM_info('Scan sequence finished')
 
-Any keyword from the INI file can be used as a command argument in the
-call to ``xafs()``.  Arguments to ``xafs()`` will take priority over
-values in the INI file.
+:numref:`Any keyword (Section %s) <ini>` from the INI file can be used
+as a command argument in the call to ``xafs()``.  Arguments to
+``xafs()`` will take priority over values in the INI file.
 
 
-Once you have prepared the macro file, you must reload the macro into
-the running BlueSky session::
+Assuming your macro file is stored in your data folder under the name
+``macro.py``, you can load or reload the macro into the running
+BlueSky session::
 
-  %run -i '/path/to/macro.py'
+  %run -i DATA+'macro.py'
 
 then run the macro by invoking the scan sequence function through the
 run engine::
 
   RE(scan_sequence())
+
+Every time you edit the macro file, you **must** reload it into the
+running BlueSky session.
 
 XAFS data file
 --------------

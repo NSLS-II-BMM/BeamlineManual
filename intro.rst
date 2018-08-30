@@ -121,14 +121,31 @@ letters are blue.  The italicized blue text gives the beam current.
 bright green number indicates the command count, just like the
 default Ipython prompt.
 
+.. _start_end:
+
+Starting and ending an experiment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 When a new experiment begins, run the command::
 
   new_experiment('folder')
 
 This will create ``folder`` and populate it with an
-:numref:`experimental log (Section %s) <log>`, a template for a
-:numref:`scan.ini file (Section %s) <xafs>`, and a template for
-:numref:`a macro file (Section %s) <macro>`.
+:numref:`experimental log (Section %s) <log>`, define the ``DATA``
+variable for use in simplifying certain commands, write a template for
+a :numref:`scan.ini file (Section %s) <xafs>`, write a template
+for a :numref:`macro file (Section %s) <macro>`, and configure the
+logger to write a log file for this experiment.
+
+Once the experiment is finished, run this command::
+
+  end_experiment()
+
+This will reset the logger and the ``DATA`` variable.
+
+
+Getting help at the command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To see a summary of common commands, use ``BMM_help()``:
 
@@ -151,11 +168,13 @@ To see a summary of common commands, use ``BMM_help()``:
    Summarize all motor positions:  ms()
    Summarize utilities:            su()
 
-   How long will a scan seq. be?   howlong(<INI file>)
-   Run a scan sequence:            RE(xafs(<INI file>))
-   Scan a motor, plot a detector:  RE(linescan(<motor>, <det>, <start>, <stop>, <nsteps>))
-   Scan 2 motors, plot a detector: RE(areascan(<slow motor>, <start>, <stop>, <nsteps>, <fast motor>, <start>, <stop>, <nsteps>, <det>))
-   Make a log entry:               BMM_log_info(<text of entry>)
+   How long will a scan seq. be?   howlong(DATA + 'scan.ini')
+   Run a scan sequence:            RE(xafs(DATA + 'scan.ini'))
+   Scan a motor, plot a detector:  RE(linescan(<det>, <motor>, <start>, <stop>, <nsteps>))
+   Scan 2 motors, plot a detector: RE(areascan(<det>, <slow motor>, <start>, <stop>, <nsteps>, <fast motor>, <start>, <stop>, <nsteps>))
+   Make a log entry:               BMM_log_info("blah blah blah")
+
+   DATA = /home/bravel/BMM_Data/bucket
 
    All the details: https://nsls-ii-bmm.github.io/BeamlineManual/index.html
 

@@ -20,7 +20,7 @@ In BMM's ``linescan()`` plan, the scan is always a relative scan
 around the current position of the motor being scanned.  It works like
 this::
 
-    RE(linescan('x', 'it', -4, 4, 81))
+    RE(linescan('it', 'x', -4, 4, 81))
 
 The arguments are:
 
@@ -28,13 +28,13 @@ The arguments are:
    BlueSky name or the nickname in :numref:`Table %s <xafs-stages>`.  So,
    these are equivalent::
 
-     RE(linescan('x', 'it', -4, 4, 81))
-     RE(linescan(xafs_linx, 'it', -4, 4, 81))
+     RE(linescan('it', 'x', -4, 4, 81))
+     RE(linescan('it', xafs_linx, -4, 4, 81))
 
    For a motor that does not have a nickname, you must use the BlueSky
    names, as in::
 
-     RE(linescan(slits3_outboard, 'it', -1, 1, 21))
+     RE(linescan('it', slits3_outboard, -1, 1, 21))
 
 #. The detector for the plotted signal.  The choices are ``it``,
    ``if``, and ``i0``.  For the ``it`` choice, the plot will display
@@ -55,12 +55,15 @@ At the end of the scan, you are prompted with the following question::
 
     Pluck motor position from the plot? [Yn]
 
-If you answer ``Y``, or simply hit return, you will be prompted to
-single click the left mouse button on the plot.  The motor that was
-scanned will then move to the motor position you clicked on.
+If you answer :button:`y`, or simply hit :button:`Enter`, you will be
+prompted to single click the left mouse button :mark:`leftclick,.` on
+the plot.  The motor that was scanned will then move to the motor
+position you clicked on.
 
 You can skip the :quoted:`click for motor position` step by typing
-``n`` and hitting return.
+:button:`n` and hitting :button:`Enter`.
+
+.. todo:: Better sanity checking of input parameters
 
 
 Plucking a point from a line scan
@@ -71,10 +74,10 @@ motor to the click-upon point, do::
 
   RE(pluck())
 
-This will enable the mouse click and subsequent motion on the most
-recent plot.  The ``pluck()`` command *only* works on the most recent
-plot.  You may not pluck from an older plot that is still displayed on
-the screen.
+This will enable the left mouse :mark:`leftclick,.` click and
+subsequent motion on the most recent plot.  The ``pluck()`` command
+*only* works on the most recent plot.  You may not pluck from an older
+plot that is still displayed on the screen.
 
 Of course, an older plot remains active in the sense that you can pass
 the cursor over the plot and read the mouse coordinates in the bottom,
@@ -119,7 +122,7 @@ the same arguments that they have special names.
    the peak of the rocking curve.  This scan is useful after a large
    change of energy.
 
-   You can put this scan in macro using::
+   You can put this scan in a macro using::
 
      yield from rocking_curve()
 
@@ -129,10 +132,11 @@ the same arguments that they have special names.
      RE(slit_height())
 
    Runs a scan of the DM3 BCT motor around its current position.  At
-   the end of the scan, you are prompted to click on the plot to
-   choose a position to move the slit height to.  This scan is useful
-   for verifying that the slits are in the correct orientation for
-   the delivery of beam from the mirrors.
+   the end of the scan, you are prompted to left click
+   :mark:`leftclick,.` on the plot to choose a position to move the
+   slit height to.  This scan is useful for verifying that the slits
+   are in the correct orientation for the delivery of beam from the
+   mirrors.
 
 
 Area scans
@@ -140,14 +144,15 @@ Area scans
 
 An area scan is a simple scan of a two motor axes with an on-screen
 heat map.  At BMM this sort of scan is typically done using the
-``areascan()`` plan.  This is a wrapper around BlueSky's `rel_grid_scan()
+``areascan()`` plan.  This is a wrapper around BlueSky's
+`rel_grid_scan()
 <https://nsls-ii.github.io/bluesky/generated/bluesky.plans.rel_grid_scan.html#bluesky.plans.rel_grid_scan>`_.
 
 In BMM's ``areascan()`` plan, the scan is always a relative scan
 around the current positions of both motors being scanned.  It works
 like this::
 
-    RE(areascan('<slow_motor>', -4, 4, 81, '<fast_motor>', -2, 2, 41, 'it'))
+    RE(areascan('it', '<slow_motor>', -4, 4, 81, '<fast_motor>', -2, 2, 41))
 
 The arguments are:
 
@@ -155,13 +160,14 @@ The arguments are:
    BlueSky name or the nickname in :numref:`Table %s <xafs-stages>`.  So,
    these are equivalent::
 
-     RE(areascan('x', -4, 4, 81, 'y', -2, 2, 41, 'it'))
-     RE(areascan(xafs_linx, -4, 4, 81, xafs_liny, -2, 2, 41, 'it'))
+     RE(areascan('it', 'x', -4, 4, 81, 'y', -2, 2, 41))
+     RE(areascan('it', xafs_linx, -4, 4, 81, xafs_liny, -2, 2, 41))
+     RE(areascan('it', xafs_linx, -4, 4, 81, 'y', -2, 2, 41))
 
    For a motor that does not have a nickname, you must use the BlueSky
-   names, as in this somewhat silly example::
+   name, as in this somewhat silly example::
 
-     RE(linescan(slits3_outboard, -1, 1, 21, dcm_pitch, -2, 2, 41, 'it'))
+     RE(linescan('it', slits3_outboard, -1, 1, 21, dcm_pitch, -2, 2, 41))
 
 #. The starting position of the slow motor, relative to the current
    position.
@@ -193,25 +199,27 @@ At the end of the scan, you are prompted with the following question::
     Pluck motor position from the plot? [Yn]
 
 If you answer ``Y``, or simply hit return, you will be prompted to
-single click the left mouse button on the plot.  Both motors will then
-move to the position you clicked on.
+single click the left mouse button :mark:`leftclick,.` on the plot.
+Both motors will then move to the position you clicked on.
 
 You can skip the :quoted:`click for motor position` step by typing
 ``n`` and hitting return.
 
+.. todo:: Better sanity checking of input parameters
 
-Plucking a point from a line scan
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Plucking a point from an area scan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to repeat the action of clicking on a point and moving the
 motor to the click-upon point, do::
 
   RE(pluck())
 
-This will enable the mouse click and subsequent motion on the most
-recent plot.  The ``pluck()`` command *only* works on the most recent
-plot.  You may not pluck from an older plot that is still displayed on
-the screen.
+This will enable the left mouse click :mark:`leftclick,.` and
+subsequent motion on the most recent plot.  The ``pluck()`` command
+*only* works on the most recent plot.  You may not pluck from an older
+plot that is still displayed on the screen.
 
 Of course, an older plot remains active in the sense that you can pass
 the cursor over the plot and read the mouse coordinates in the bottom,
