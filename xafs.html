@@ -76,6 +76,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. XAFS scans</a><ul>
+<<<<<<< HEAD
 <li class="toctree-l2"><a class="reference internal" href="#the-ini-file">5.1. The INI file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scan-regions">5.2. Scan regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scan-run-time">5.3. Scan run time</a></li>
@@ -83,6 +84,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#revisiting-an-xafs-scan">5.5. Revisiting an XAFS scan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scan-sequence-macro">5.6. Scan sequence macro</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#xafs-data-file">5.7. XAFS data file</a></li>
+=======
+<li class="toctree-l2"><a class="reference internal" href="#scan-regions">5.1. Scan regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-run-time">5.2. Scan run time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-an-xafs-scan">5.3. Running an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#revisiting-an-xafs-scan">5.4. Revisiting an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-sequence-macro">5.5. Scan sequence macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xafs-data-file">5.6. XAFS data file</a></li>
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
@@ -285,7 +294,11 @@ seconds at 8 Å<sup>-1</sup>, and so on.</p>
 </div>
 </div>
 <div class="section" id="scan-run-time">
+<<<<<<< HEAD
 <h2>5.3. Scan run time<a class="headerlink" href="#scan-run-time" title="Permalink to this headline">¶</a></h2>
+=======
+<h2>5.2. Scan run time<a class="headerlink" href="#scan-run-time" title="Permalink to this headline">¶</a></h2>
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 <p>To get an approximation of the time a scan will take, do:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">howlong</span><span class="p">(</span><span class="s1">&#39;/path/to/scan.ini&#39;</span><span class="p">)</span>
 </pre></div>
@@ -307,7 +320,11 @@ The sequence of 6 scans will take about 1.8 hours
 </div>
 </div>
 <div class="section" id="running-an-xafs-scan">
+<<<<<<< HEAD
 <h2>5.4. Running an XAFS scan<a class="headerlink" href="#running-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+=======
+<h2>5.3. Running an XAFS scan<a class="headerlink" href="#running-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 <p>To run a scan, do this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;scan.ini&#39;</span><span class="p">))</span>
 </pre></div>
@@ -335,14 +352,20 @@ using the <code class="docutils literal"><span class="pre">scan_nd()</span></cod
 times constructed from <code class="docutils literal"><span class="pre">bounds</span></code>, <code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> in
 the INI file</li>
 <li>For each scan, notes the start and end times of the scan in the
+<<<<<<< HEAD
 <a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.2)</span></a> along with the
 unique and transient IDs of the scan in the beamline archive database</li>
+=======
+experimental log along with the unique and transient IDs of the
+scan in the beamline archive database</li>
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 <li>After each scan, extracts the data table from the database and wrote
 an ASCII file in the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a></li>
 </ol>
 <p>The plan also provides some tools to cleanup correctly (i.e. kill
 certain motors, reset certain parameters) after a scan sequence ends
 or is terminated.</p>
+<<<<<<< HEAD
 <div class="section" id="location-of-scan-ini-file">
 <h3>5.4.1. Location of scan.ini file<a class="headerlink" href="#location-of-scan-ini-file" title="Permalink to this headline">¶</a></h3>
 <p>When you launch an XAFS scan doing:</p>
@@ -408,6 +431,11 @@ condition is resolved before the scan resumes.  For instance,
 </div>
 <div class="section" id="revisiting-an-xafs-scan">
 <h2>5.5. Revisiting an XAFS scan<a class="headerlink" href="#revisiting-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+=======
+</div>
+<div class="section" id="revisiting-an-xafs-scan">
+<h2>5.4. Revisiting an XAFS scan<a class="headerlink" href="#revisiting-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 <p>Grab database entry and write it to an XDI file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">db2xdi</span><span class="p">(</span><span class="s1">&#39;/path/to/data/file&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;id&gt;&#39;</span><span class="p">)</span>
 </pre></div>
@@ -419,7 +447,11 @@ id number.  Both the unique and transient ids can be found in the
 experimental log.</p>
 </div>
 <div class="section" id="scan-sequence-macro">
+<<<<<<< HEAD
 <span id="macro"></span><h2>5.6. Scan sequence macro<a class="headerlink" href="#scan-sequence-macro" title="Permalink to this headline">¶</a></h2>
+=======
+<span id="macro"></span><h2>5.5. Scan sequence macro<a class="headerlink" href="#scan-sequence-macro" title="Permalink to this headline">¶</a></h2>
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 <p>A macro at BMM is a short bit of python code which sequentially moves
 motors and initiates scans.  A common way of doing this is to make an
 INI file for each sample that intend to measure.  The macro then steps
@@ -485,6 +517,7 @@ metadata items specific to the sample.</p>
    <span class="n">BMM_info</span><span class="p">(</span><span class="s1">&#39;Scan sequence finished&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
+<<<<<<< HEAD
 <p><a class="reference internal" href="#ini"><span class="std std-numref">Any keyword (Section 5.1)</span></a> from the INI file can be used
 as a command argument in the call to <code class="docutils literal"><span class="pre">xafs()</span></code>.  Arguments to
 <code class="docutils literal"><span class="pre">xafs()</span></code> will take priority over values in the INI file.</p>
@@ -492,6 +525,14 @@ as a command argument in the call to <code class="docutils literal"><span class=
 <code class="docutils literal"><span class="pre">macro.py</span></code>, you can load or reload the macro into the running
 BlueSky session:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="n">DATA</span><span class="o">+</span><span class="s1">&#39;macro.py&#39;</span>
+=======
+<p>Any keyword from the INI file can be used as a command argument in the
+call to <code class="docutils literal"><span class="pre">xafs()</span></code>.  Arguments to <code class="docutils literal"><span class="pre">xafs()</span></code> will take priority over
+values in the INI file.</p>
+<p>Once you have prepared the macro file, you must reload the macro into
+the running BlueSky session:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;/path/to/macro.py&#39;</span>
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 </pre></div>
 </div>
 <p>then run the macro by invoking the scan sequence function through the
@@ -499,11 +540,17 @@ run engine:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">scan_sequence</span><span class="p">())</span>
 </pre></div>
 </div>
+<<<<<<< HEAD
 <p>Every time you edit the macro file, you <strong>must</strong> reload it into the
 running BlueSky session.</p>
 </div>
 <div class="section" id="xafs-data-file">
 <h2>5.7. XAFS data file<a class="headerlink" href="#xafs-data-file" title="Permalink to this headline">¶</a></h2>
+=======
+</div>
+<div class="section" id="xafs-data-file">
+<h2>5.6. XAFS data file<a class="headerlink" href="#xafs-data-file" title="Permalink to this headline">¶</a></h2>
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 <p>XAFS data files are written to the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a>.  Here is
 an example.  You can see how the metadata from the INI file and
 elsewhere is captured in the output XDI file.</p>

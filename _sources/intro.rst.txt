@@ -92,6 +92,7 @@ This will print this report to the screen:
      Filter assembly 2, slot 3        28.6 C
      Filter assembly 2, slot 4        28.7 C
 
+<<<<<<< HEAD
 
 
 The user experience
@@ -148,9 +149,11 @@ Getting help at the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To see a summary of common commands, use ``BMM_help()``:
+=======
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 
-.. code-block:: text
 
+<<<<<<< HEAD
    Open the shutter:               shb.open()
    Close the shutter:              shb.close()
 
@@ -201,8 +204,46 @@ BMM.  For now, we have the command line.  Read on |nd| it's not too
 difficult!
 
 
+=======
+The user experience
+-------------------
+
+The Ipython/bsui prompt at BMM is heavily modified to give important
+at-a-glance information about the state of the beamline.
+
+.. _fig-prompt:
+.. figure::  _images/prompt.png
+   :target: _images/prompt.png
+   :width: 30%
+   :align: center
+
+   The BlueSky user prompt at BMM
+
+The white characters at the beginning of the prompt show the
+:numref:`photon delivery system mode (Section %s) <change-mode>` |nd|
+currently :quoted:`XRD` |nd| and the :numref:`monochromator crystals
+(Section %s) <change-crystals>` currently in use |nd| currently
+Si(311).
+
+The red :quoted:`A` and :quoted:`B` indicate that the A and B (front
+end and photon) shutters are currently closed.  When open these
+letters are blue.  The italicized blue text gives the beam current.
+(This picture was made during a maintenance period.)
+
+When a new experiment begins, run the command::
+
+  new_experiment(folder)
+
+This will create ``folder`` and populate it with an
+:numref:`experimental log (Section %s) <log>`, a template for a
+:numref:`scan.ini file (Section %s) <xafs>`, and a template for
+:numref:`a macro file (Section %s) <macro>`.
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 
 
+The day will come that we have a GUI for running XAFS experiments at
+BMM.  For now, we have the command line.  Read on |nd| it's not too
+difficult!
 
 A Bit about BMM
 ---------------

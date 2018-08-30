@@ -223,8 +223,13 @@ It does the following chores:
    the INI file
 
 #. For each scan, notes the start and end times of the scan in the
+<<<<<<< HEAD
    :numref:`experimental log (Section %s) <logfile>` along with the
    unique and transient IDs of the scan in the beamline archive database
+=======
+   experimental log along with the unique and transient IDs of the
+   scan in the beamline archive database
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 
 #. After each scan, extracts the data table from the database and wrote
    an ASCII file in the `XDI format
@@ -233,6 +238,7 @@ It does the following chores:
 The plan also provides some tools to cleanup correctly (i.e. kill
 certain motors, reset certain parameters) after a scan sequence ends
 or is terminated.
+<<<<<<< HEAD
 
 
 Location of scan.ini file
@@ -304,6 +310,8 @@ Pause a scan due to external events
 
 `Here is a summary of pausing, resuming, and stopping scans
 <https://nsls-ii.github.io/bluesky/state-machine.html#summary>`_.
+=======
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 
 Revisiting an XAFS scan
 -----------------------
@@ -374,9 +382,15 @@ metadata items specific to the sample.
       BMM_xsp.prompt = True
       BMM_info('Scan sequence finished')
 
+<<<<<<< HEAD
 :numref:`Any keyword (Section %s) <ini>` from the INI file can be used
 as a command argument in the call to ``xafs()``.  Arguments to
 ``xafs()`` will take priority over values in the INI file.
+=======
+Any keyword from the INI file can be used as a command argument in the
+call to ``xafs()``.  Arguments to ``xafs()`` will take priority over
+values in the INI file.
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 
 
 Assuming your macro file is stored in your data folder under the name
@@ -390,9 +404,12 @@ run engine::
 
   RE(scan_sequence())
 
+<<<<<<< HEAD
 Every time you edit the macro file, you **must** reload it into the
 running BlueSky session.
 
+=======
+>>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 XAFS data file
 --------------
 
