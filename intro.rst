@@ -134,14 +134,15 @@ Starting and ending an experiment
 
 When a new experiment begins, run the command::
 
-  new_experiment('folder')
+  new_experiment('folder', gup=333123, saf=343123)
 
 This will create ``folder`` and populate it with an
 :numref:`experimental log (Section %s) <log>`, define the ``DATA``
 variable for use in simplifying certain commands, write a template for
-a :numref:`scan.ini file (Section %s) <xafs>`, write a template
-for a :numref:`macro file (Section %s) <macro>`, and configure the
-logger to write a log file for this experiment.
+a :numref:`scan.ini file (Section %s) <xafs>`, write a template for a
+:numref:`macro file (Section %s) <macro>`, configure the logger to
+write a log file for this experiment, and set the GUP and SAF numbers
+as metadata for output files.
 
 Once the experiment is finished, run this command::
 

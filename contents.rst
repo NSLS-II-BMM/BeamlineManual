@@ -13,5 +13,6 @@ Table of Contents
    pds.rst
    linescans.rst
    xafs.rst
+   sead.rst
    log.rst
    manage.rst

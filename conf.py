@@ -37,8 +37,8 @@ extensions = [ 'sphinx.ext.autodoc', 'sphinx.ext.extlinks',
 
 # from sphinxtr
 extensions.extend(['fix_equation_ref', 'subfig', 'numsec', 'figtable',
-                   'singlehtml_toc', 'singletext', 'demeterdocs',
-                   #'numfig', 'sphinx_clatex', 'sphinxcontrib.bibtex',
+                   'singlehtml_toc', 'singletext', 'demeterdocs',  'sphinxcontrib.bibtex',
+                   #'numfig', 'sphinx_clatex',
                    #'sphinxcontrib.images'
 ])
 
@@ -282,7 +282,7 @@ latex_additional_files = [
     'sphinx/tex/refstyle.bst',
     'sphinx/tex/biblio.tex',
     'sphinx/tex/sphinx.sty',
-    #'athena.bib',
+    'manual.bib',
 ]
 
 ## \setcounter{secnumdepth}{2}

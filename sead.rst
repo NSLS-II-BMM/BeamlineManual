@@ -1,0 +1,147 @@
+..
+   This manual is copyright 2018 Bruce Ravel and released under
+   The Creative Commons Attribution-ShareAlike License
+   http://creativecommons.org/licenses/by-sa/3.0/
+
+.. _sead:
+
+Single energy XAS detection
+===========================
+
+In the absence of fast scanning of the monochromator, one way of
+observing a phase transition is to park the monochromator at the
+energy of an interesting feature in the XANES and observe either the
+transmitted or fluorescent signal as a function of whatever extrinsic
+parameter is driving the transition.  Filipponi et al. demonstrated
+this by measuring hysteresis in melting/solidifying transition of an
+intermetalic compound.
+
+.. bibliography:: manual.bib
+   :filter: author % "Filipponi"
+   :list: bullet
+
+This is implemented at BMM as a wrapper around the standard BlueSky
+`count() plan
+<https://nsls-ii.github.io/bluesky/plans.html#time-series-count>`_.
+Like the :numref:`XAFS scan (See section %s) <xafs>`, this plan is
+driven by an INI file and manages data storage and logging.
+
+The single energy absorption detection plan |nd| ``sead()`` |nd|
+starts with an INI file that is very similar to :numref:`the INI file
+used for XAFS (See section %s) <ini>`.  Here is an example:
+
+.. sourcecode:: ini
+   :linenos:
+
+   [scan]
+   folder        = /home/bravel/BMM_Data/303200
+   filename      = cufoil
+   experimenters = Betty Cooper, Veronica Lodge, Archibald Andrews
+
+   e0         = 8983.7
+   element    = Cu
+   edge       = K
+   sample     = Cu thing that changes
+   prep       = Cu made in a way that changes
+   comment    = Welcome to BMM
+
+   nscans     = 3
+   #start      = 1
+
+   npoints    = 6000
+   dwell      = 0.1
+   delay      = 0.01
+
+   snapshots  = True
+
+   # mode is transmission or fluorescence
+   mode = transmission
+
+Most of these parameters are the same as in the XAFS scan INI file and
+are used in the same way.  The new parameters are:
+
+``npoints`` (line 16)
+   The number of measurements.  This is passed to the ``num`` argument
+   of the `count() plan
+   <https://nsls-ii.github.io/bluesky/plans.html#time-series-count>`_.
+
+``dwell`` (line17)
+   The count time for each measurement.  This value is pushed to the
+   electrometer controlling I0 and It and to the multichannel scalar
+   controlling the fluorescence detector.
+
+``delay`` (line 18)
+   The delay between measurements.  This value is passed to the delay
+   argument of the `count() plan
+   <https://nsls-ii.github.io/bluesky/plans.html#time-series-count>`_..
+
+``element`` and ``edge`` are not used for anything, but can be
+retained for ease of use.  The same is true of the ``bounds``,
+``steps``, and ``times`` parameters, although those three are not
+shown above.
+
+The other difference between the INI file for the XAFS and single
+energy scans is ``e0``.  When doing the single energy measurement,
+``e0`` represents the energy at which to make the measurement.  For
+example, if following the evolution of edge peak characteristic to Cu
+:sup:`1+`, which is at 8983.7, you would set ``e0`` to that value.
+This is shown above at line 6.
+
+Running the single energy measurement
+-------------------------------------
+
+Run the single energy absorption measurement by doing::
+
+  RE(sead('testscan.ini'))
+
+Like for the XAFS scan, the INI file can be specified by fully
+resolved path or by file name.  If only the file name is given, it is
+presumed to be in the location of the ``DATA`` global variable.
+
+When the ``sead()`` plan runs, it will:
+
+#. Do some sanity checking on the content of the INI file
+
+#. Prompt the user to examine the content of the INI file before
+   continuing
+
+#. Check that the scan is clear to start, i.e. shutters open and
+   current in the ring
+
+#. Gather metadata for the output file
+
+#. Move to the value of ``e0``
+
+#. Take :numref:`snapshots (Section %s) <snap>` of the XAS webcam and
+   the analog camera near the sample
+
+#. Run the time scan
+
+#. Write an file in the `XDI format
+   <https://github.com/XraySpectroscopy/XAS-Data-Interchange>`_
+
+#. Put useful messages in the :numref:`experimental log (Section %s) <logfile>`
+
+
+See :numref:`Section %s <interrupt>` for details on how to pause,
+resume, or halt a scan.  It works the same for a time scan as for any
+other scan type.
+
+
+Revisiting a single energy measurement
+--------------------------------------
+
+Grab a database entry and write it to an XDI file::
+
+  ts2xdi('/path/to/data/file', '<id>')
+
+The first argument is the name of the output data file.  The second
+argument is either the scan's unique ID |nd| something like
+``f6619ed7-a8e5-41c2-a499-f793b0fcacec`` |nd| or the scan's transient
+id number.  Both the unique and transient ids can be found in the
+experimental log.
+
+
+.. todo:: suspenders, is msg_hook correct?
+
+

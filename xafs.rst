@@ -226,7 +226,7 @@ It does the following chores:
    :numref:`experimental log (Section %s) <logfile>` along with the
    unique and transient IDs of the scan in the beamline archive database
 
-#. After each scan, extracts the data table from the database and wrote
+#. After each scan, extracts the data table from the database and writes
    an ASCII file in the `XDI format
    <https://github.com/XraySpectroscopy/XAS-Data-Interchange>`_
 
@@ -262,6 +262,8 @@ run at the beginning of the experiment (:numref:`see Section %s
 <start_end>`).  To know the value of the ``DATA`` variable, simply
 type ``DATA`` at the command line and hit :button:`Enter`.
 
+
+.. _interrupt:
 
 Interrupting an XAFS scan
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -308,7 +310,7 @@ Pause a scan due to external events
 Revisiting an XAFS scan
 -----------------------
 
-Grab database entry and write it to an XDI file::
+Grab a database entry and write it to an XDI file::
 
   db2xdi('/path/to/data/file', '<id>')
 
