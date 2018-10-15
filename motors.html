@@ -81,8 +81,9 @@
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
 </ul>
 
     
@@ -136,24 +137,30 @@ the bsui command line.  Here is an example:</p>
 ==============================================================================
 Energy = 19300.1   reflection = Si(111)   mode = fixed
      Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
+
 M2
      vertical =   6.000 mm           YU  =   6.000
      lateral  =   0.000 mm           YDO =   6.000
      pitch    =   0.000 mrad         YDI =   6.000
      roll     =  -0.001 mrad         XU  =  -0.129
      yaw      =   0.200 mrad         XD  =   0.129
+
 M3
      vertical =   0.000 mm           YU  =  -1.167
      lateral  =  15.001 mm           YDO =   1.167
      pitch    =   3.500 mrad         YDI =   1.167
      roll     =   0.000 mrad         XU  =  15.001
      yaw      =   0.001 mrad         XD  =  15.001
+
 Slits3:   vsize  vcenter  hsize   hcenter     top    bottom    outboard  inboard
           1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
+
 DM3_BCT:  45.004 mm
+
 XAFS table:
      vertical  pitch    roll   YU     YDO     YDI
      132.000   0.000   0.000 132.000 132.000 132.000
+
 XAFS stages:
         linx     liny    roll    pitch    linxs    roth     rotb     rots
         9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
@@ -262,10 +269,10 @@ the amount to move from the current position. <code class="docutils literal"><sp
 </div>
 <p>is the absolute move command.  The numerical argument is the
 position to which the motor will move.</p>
-<p class="last">All movements are logged in the <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log (Section 6)</span></a></p>
+<p class="last">All movements are logged in the <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log (Section 7)</span></a></p>
 </dd>
 <dt><strong>Moving to a new position in a plan</strong></dt>
-<dd><p class="first">To move a sample stage as part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.5)</span></a> , do:</p>
+<dd><p class="first">To move a sample stage as part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a> , do:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -309,7 +316,7 @@ fluorescence detector.</p>
 <span class="n">fan</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>To turn the spinner on or off in a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.5)</span></a>:</p>
+<p>To turn the spinner on or off in a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">fan</span><span class="o">.</span><span class="n">on_plan</span><span class="p">()</span>
 <span class="k">yield from</span> <span class="n">fan</span><span class="o">.</span><span class="n">off_plan</span><span class="p">()</span>
 </pre></div>
@@ -379,7 +386,7 @@ e.g.:</p>
 <p>Again, this is rarely necessary.  The mode changing plan should
 leave the table in the correct location for your experiment.</p>
 <p class="last">All table movements are recorded in the <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log
-(Section 6)</span></a>.</p>
+(Section 7)</span></a>.</p>
 </dd>
 </dl>
 

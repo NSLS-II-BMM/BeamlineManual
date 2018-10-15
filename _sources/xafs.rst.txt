@@ -223,22 +223,16 @@ It does the following chores:
    the INI file
 
 #. For each scan, notes the start and end times of the scan in the
-<<<<<<< HEAD
    :numref:`experimental log (Section %s) <logfile>` along with the
    unique and transient IDs of the scan in the beamline archive database
-=======
-   experimental log along with the unique and transient IDs of the
-   scan in the beamline archive database
->>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 
-#. After each scan, extracts the data table from the database and wrote
+#. After each scan, extracts the data table from the database and writes
    an ASCII file in the `XDI format
    <https://github.com/XraySpectroscopy/XAS-Data-Interchange>`_
 
 The plan also provides some tools to cleanup correctly (i.e. kill
 certain motors, reset certain parameters) after a scan sequence ends
 or is terminated.
-<<<<<<< HEAD
 
 
 Location of scan.ini file
@@ -259,7 +253,7 @@ where ``+`` is the python :quoted:`string concatination` operator.
 
 You can also explicitly state where your INI file is located, as in::
 
-  RE(xafs('/home/user/data_location/myscan.ini'))
+  RE(xafs('/home/bravel/BMM_Data/303303/scan.ini'))
 
 In that case, the explicit location of the INI file will be used.
 
@@ -268,6 +262,8 @@ run at the beginning of the experiment (:numref:`see Section %s
 <start_end>`).  To know the value of the ``DATA`` variable, simply
 type ``DATA`` at the command line and hit :button:`Enter`.
 
+
+.. _interrupt:
 
 Interrupting an XAFS scan
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -310,13 +306,11 @@ Pause a scan due to external events
 
 `Here is a summary of pausing, resuming, and stopping scans
 <https://nsls-ii.github.io/bluesky/state-machine.html#summary>`_.
-=======
->>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 
 Revisiting an XAFS scan
 -----------------------
 
-Grab database entry and write it to an XDI file::
+Grab a database entry and write it to an XDI file::
 
   db2xdi('/path/to/data/file', '<id>')
 
@@ -382,15 +376,9 @@ metadata items specific to the sample.
       BMM_xsp.prompt = True
       BMM_info('Scan sequence finished')
 
-<<<<<<< HEAD
 :numref:`Any keyword (Section %s) <ini>` from the INI file can be used
 as a command argument in the call to ``xafs()``.  Arguments to
 ``xafs()`` will take priority over values in the INI file.
-=======
-Any keyword from the INI file can be used as a command argument in the
-call to ``xafs()``.  Arguments to ``xafs()`` will take priority over
-values in the INI file.
->>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 
 
 Assuming your macro file is stored in your data folder under the name
@@ -404,12 +392,9 @@ run engine::
 
   RE(scan_sequence())
 
-<<<<<<< HEAD
 Every time you edit the macro file, you **must** reload it into the
 running BlueSky session.
 
-=======
->>>>>>> 895819b9b2315d8ad23f62918193029632c44281
 XAFS data file
 --------------
 
@@ -417,6 +402,9 @@ XAFS data files are written to the `XDI format
 <https://github.com/XraySpectroscopy/XAS-Data-Interchange>`_.  Here is
 an example.  You can see how the metadata from the INI file and
 elsewhere is captured in the output XDI file.
+
+.. todo:: Document use of ``XDI_record`` dictionary to control which
+          xafs motors nd/or temperatures get recorded in the XDI header
 
 .. code-block:: text
 
@@ -436,6 +424,8 @@ elsewhere is captured in the output XDI file.
    # Facility.current: 374.3 mA
    # Facility.energy: 3.0 GeV
    # Facility.mode: top-off
+   # Facility.GUP: 333333
+   # Facility.SAF: 344344
    # Mono.name: Si(311)
    # Mono.d_spacing: 1.6376385 Å
    # Mono.encoder_resolution: 0.0000050 deg/ct
@@ -443,8 +433,6 @@ elsewhere is captured in the output XDI file.
    # Mono.scan_mode: pseudo channel cut
    # Mono.scan_type: step
    # Mono.direction: forward in energy
-   # Mono.first_crystal_temperature: 30.2 C
-   # Mono.compton_shield_temperature: 30.5 C
    # Sample.name: Sedovite
    # Sample.prep: speck of mineral in a holder in a gel cap
    # Sample.x_position: 2.750

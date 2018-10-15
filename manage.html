@@ -15,7 +15,7 @@
   <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>7. Managing the beamline &#8212; BMM User Manual 0.1</title>
+    <title>8. Managing the beamline &#8212; BMM User Manual 0.1</title>
     
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -35,7 +35,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="6. Experimental Log" href="log.html" />
+    <link rel="prev" title="7. Experimental Log" href="log.html" />
 
     <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
     <link rel="stylesheet" type="text/css" href="_static/keys.css" />
@@ -47,7 +47,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="log.html" title="6. Experimental Log"
+          <a href="log.html" title="7. Experimental Log"
              accesskey="P">previous</a></li>
         <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
@@ -72,12 +72,13 @@
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Managing the beamline</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#a-large-change-of-energy">7.1. A large change of energy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-change-of-mode">7.2. A change of mode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-change-of-monochromator-crystals">7.3. A change of monochromator crystals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-change-from-xas-to-xrd">7.4. A change from XAS to XRD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Managing the beamline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-large-change-of-energy">8.1. A large change of energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-change-of-mode">8.2. A change of mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-change-of-monochromator-crystals">8.3. A change of monochromator crystals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-change-from-xas-to-xrd">8.4. A change from XAS to XRD</a></li>
 </ul>
 </li>
 </ul>
@@ -119,19 +120,19 @@
             <ol class="breadcrumb">
               <li><a href="index.html">Docs</a></li>
               
-              <li>7. Managing the beamline</li>
+              <li>8. Managing the beamline</li>
             </ol>
           </div>
           
           <div class="document clearer body">
             
   <div class="section" id="managing-the-beamline">
-<span id="manage"></span><h1>7. Managing the beamline<a class="headerlink" href="#managing-the-beamline" title="Permalink to this headline">¶</a></h1>
+<span id="manage"></span><h1>8. Managing the beamline<a class="headerlink" href="#managing-the-beamline" title="Permalink to this headline">¶</a></h1>
 <p>In this section, some recipes are provided for managing the beamline
 and meeting the needs and expectations of different experiments.</p>
 <p>As a reminder, here is the table of operating modes.</p>
 <table border="1" class="docutils" id="pds-modes2">
-<caption><span class="caption-number">Table 7.1 </span><span class="caption-text">Photon delivery modes</span><a class="headerlink" href="#pds-modes2" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Photon delivery modes</span><a class="headerlink" href="#pds-modes2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="14%" />
 <col width="28%" />
@@ -175,7 +176,7 @@ and meeting the needs and expectations of different experiments.</p>
 </tbody>
 </table>
 <div class="section" id="a-large-change-of-energy">
-<h2>7.1. A large change of energy<a class="headerlink" href="#a-large-change-of-energy" title="Permalink to this headline">¶</a></h2>
+<h2>8.1. A large change of energy<a class="headerlink" href="#a-large-change-of-energy" title="Permalink to this headline">¶</a></h2>
 <p>Suppose that you want to move the monochromator from 8 keV to 15 keV.
 This is a fairly low-overhead change to beamline configuration as both
 energies are suitable for modes A or D.</p>
@@ -200,7 +201,7 @@ iteration of the rocking curve optimization is necessary.</li>
 </ol>
 </div>
 <div class="section" id="a-change-of-mode">
-<h2>7.2. A change of mode<a class="headerlink" href="#a-change-of-mode" title="Permalink to this headline">¶</a></h2>
+<h2>8.2. A change of mode<a class="headerlink" href="#a-change-of-mode" title="Permalink to this headline">¶</a></h2>
 <p>Suppose that you want to change from high-energy, unfocused operations
 to low energy, focused.  That is, you are changing from mode D to mode
 B, for example moving from a large sample at the yttrium K edge to a
@@ -227,7 +228,7 @@ height might be necessary.</li>
 </ol>
 </div>
 <div class="section" id="a-change-of-monochromator-crystals">
-<h2>7.3. A change of monochromator crystals<a class="headerlink" href="#a-change-of-monochromator-crystals" title="Permalink to this headline">¶</a></h2>
+<h2>8.3. A change of monochromator crystals<a class="headerlink" href="#a-change-of-monochromator-crystals" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you wanted to change from the Pt L3 edge (11564 eV) on the
 Si(111) crystal to the same energy on the Si(311) crystal.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_xtal</span><span class="p">(</span><span class="s1">&#39;311&#39;</span><span class="p">))</span>
@@ -258,7 +259,7 @@ that case.</p>
 before exploring the rocking curve.</p>
 </div>
 <div class="section" id="a-change-from-xas-to-xrd">
-<h2>7.4. A change from XAS to XRD<a class="headerlink" href="#a-change-from-xas-to-xrd" title="Permalink to this headline">¶</a></h2>
+<h2>8.4. A change from XAS to XRD<a class="headerlink" href="#a-change-from-xas-to-xrd" title="Permalink to this headline">¶</a></h2>
 <p>Begin this transition by leaving the I0 chamber in place to monitor
 the incidence flux.  Do:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_mode</span><span class="p">(</span><span class="s1">&#39;XRD&#39;</span><span class="p">))</span>
@@ -296,7 +297,7 @@ Creative Commons</a>.</p>
   <div class="footer-relations">
     
       <div class="pull-left">
-        <a class="btn btn-default" href="log.html" title="previous chapter (use the left arrow)">6. Experimental Log</a>
+        <a class="btn btn-default" href="log.html" title="previous chapter (use the left arrow)">7. Experimental Log</a>
       </div>
     
     </div>
@@ -309,7 +310,7 @@ Creative Commons</a>.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="log.html" title="6. Experimental Log"
+          <a href="log.html" title="7. Experimental Log"
              >previous</a></li>
         <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>

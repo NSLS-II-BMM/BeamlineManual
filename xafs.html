@@ -35,7 +35,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6. Experimental Log" href="log.html" />
+    <link rel="next" title="6. Single energy XAS detection" href="sead.html" />
     <link rel="prev" title="4. Sample position scans" href="linescans.html" />
 
     <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
@@ -48,7 +48,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="log.html" title="6. Experimental Log"
+          <a href="sead.html" title="6. Single energy XAS detection"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="linescans.html" title="4. Sample position scans"
@@ -85,8 +85,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#xafs-data-file">5.7. XAFS data file</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
 </ul>
 
     
@@ -241,7 +242,7 @@ highest numbered file in the <code class="docutils literal"><span class="pre">cu
 again using the same INI file will start with <code class="docutils literal"><span class="pre">cuedge.008</span></code>.</p>
 </dd>
 <dt><code class="docutils literal"><span class="pre">snapshots</span></code> (line 16)</dt>
-<dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> from the
+<dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 7.1)</span></a> from the
 XAS webcam and analog camera before beginning the scan sequence.
 <code class="docutils literal"><span class="pre">False</span></code> to skip the snapshots</dd>
 <dt><code class="docutils literal"><span class="pre">mode</span></code> (line 19)</dt>
@@ -321,7 +322,7 @@ It does the following chores:</p>
 <li>Verifies the content of the INI file with a user prompt</li>
 <li>Makes an entry in the experimental log indicating the INI contents
 and the current motor positions of all the important motors</li>
-<li>Takes <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> of the XAS webcam and
+<li>Takes <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 7.1)</span></a> of the XAS webcam and
 the analog camera near the sample</li>
 <li>Moves to the center of the angular range of motion of the scan and
 enter pseudo-channel-cut mode</li>
@@ -335,9 +336,9 @@ using the <code class="docutils literal"><span class="pre">scan_nd()</span></cod
 times constructed from <code class="docutils literal"><span class="pre">bounds</span></code>, <code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> in
 the INI file</li>
 <li>For each scan, notes the start and end times of the scan in the
-<a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.2)</span></a> along with the
+<a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 7.2)</span></a> along with the
 unique and transient IDs of the scan in the beamline archive database</li>
-<li>After each scan, extracts the data table from the database and wrote
+<li>After each scan, extracts the data table from the database and writes
 an ASCII file in the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a></li>
 </ol>
 <p>The plan also provides some tools to cleanup correctly (i.e. kill
@@ -358,7 +359,7 @@ scan plan will look for the file
 </div>
 <p>where <code class="docutils literal"><span class="pre">+</span></code> is the python “string concatination” operator.</p>
 <p>You can also explicitly state where your INI file is located, as in:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;/home/user/data_location/myscan.ini&#39;</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;/home/bravel/BMM_Data/303303/scan.ini&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>In that case, the explicit location of the INI file will be used.</p>
@@ -367,7 +368,7 @@ run at the beginning of the experiment (<a class="reference internal" href="intr
 type <code class="docutils literal"><span class="pre">DATA</span></code> at the command line and hit <kbd class="dark">Enter</kbd>.</p>
 </div>
 <div class="section" id="interrupting-an-xafs-scan">
-<h3>5.4.2. Interrupting an XAFS scan<a class="headerlink" href="#interrupting-an-xafs-scan" title="Permalink to this headline">¶</a></h3>
+<span id="interrupt"></span><h3>5.4.2. Interrupting an XAFS scan<a class="headerlink" href="#interrupting-an-xafs-scan" title="Permalink to this headline">¶</a></h3>
 <p>There are several scenarios where you may need to interrupt or halt an
 XAFS scan.</p>
 <dl class="docutils">
@@ -408,7 +409,7 @@ condition is resolved before the scan resumes.  For instance,
 </div>
 <div class="section" id="revisiting-an-xafs-scan">
 <h2>5.5. Revisiting an XAFS scan<a class="headerlink" href="#revisiting-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
-<p>Grab database entry and write it to an XDI file:</p>
+<p>Grab a database entry and write it to an XDI file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">db2xdi</span><span class="p">(</span><span class="s1">&#39;/path/to/data/file&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;id&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -451,7 +452,7 @@ each sample.</p>
 </pre></div>
 </td></tr></table></div>
 <p>The calls to <code class="docutils literal"><span class="pre">BMM_info()</span></code> at lines 3 and 12 insert lines in the
-<a class="reference internal" href="log.html#log"><span class="std std-numref">experiment log (Section 6)</span></a> indicating the times that
+<a class="reference internal" href="log.html#log"><span class="std std-numref">experiment log (Section 7)</span></a> indicating the times that
 the scan sequence begins and ends.</p>
 <p>Setting the <code class="docutils literal"><span class="pre">BMM_xsp.prompt</span></code> parameter to <code class="docutils literal"><span class="pre">False</span></code> at lines 2 skips
 the step in the <code class="docutils literal"><span class="pre">xafs()</span></code> macro where the user is prompted to verify
@@ -507,6 +508,11 @@ running BlueSky session.</p>
 <p>XAFS data files are written to the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a>.  Here is
 an example.  You can see how the metadata from the INI file and
 elsewhere is captured in the output XDI file.</p>
+<div class="admonition-todo admonition" id="index-3">
+<p class="first admonition-title">Todo</p>
+<p class="last">Document use of <code class="docutils literal"><span class="pre">XDI_record</span></code> dictionary to control which
+xafs motors nd/or temperatures get recorded in the XDI header</p>
+</div>
 <div class="highlight-text"><div class="highlight"><pre><span></span># XDI/1.0 BlueSky/1.3.0
 # Beamline.name: BMM (06BM) -- Beamline for Materials Measurement
 # Beamline.xray_source: NSLS-II three-pole wiggler
@@ -523,6 +529,8 @@ elsewhere is captured in the output XDI file.</p>
 # Facility.current: 374.3 mA
 # Facility.energy: 3.0 GeV
 # Facility.mode: top-off
+# Facility.GUP: 333333
+# Facility.SAF: 344344
 # Mono.name: Si(311)
 # Mono.d_spacing: 1.6376385 Å
 # Mono.encoder_resolution: 0.0000050 deg/ct
@@ -530,8 +538,6 @@ elsewhere is captured in the output XDI file.</p>
 # Mono.scan_mode: pseudo channel cut
 # Mono.scan_type: step
 # Mono.direction: forward in energy
-# Mono.first_crystal_temperature: 30.2 C
-# Mono.compton_shield_temperature: 30.5 C
 # Sample.name: Sedovite
 # Sample.prep: speck of mineral in a holder in a gel cap
 # Sample.x_position: 2.750
@@ -599,7 +605,7 @@ Creative Commons</a>.</p>
       </div>
     
       <div class="pull-right">
-        <a class="btn btn-default" href="log.html" title="next chapter (use the right arrow)">6. Experimental Log</a>
+        <a class="btn btn-default" href="sead.html" title="next chapter (use the right arrow)">6. Single energy XAS detection</a>
       </div>
     </div>
     <div class="clearer"></div>
@@ -611,7 +617,7 @@ Creative Commons</a>.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="log.html" title="6. Experimental Log"
+          <a href="sead.html" title="6. Single energy XAS detection"
              >next</a></li>
         <li class="right" >
           <a href="linescans.html" title="4. Sample position scans"

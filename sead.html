@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>6. Single energy XAS detection &#8212; BMM User Manual 0.1</title>
+    
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/atoms.ico"/>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Experimental Log" href="log.html" />
+    <link rel="prev" title="5. XAFS scans" href="xafs.html" />
+
+    <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
+    <link rel="stylesheet" type="text/css" href="_static/keys.css" />
+    <link rel="stylesheet" type="text/css" href="_static/program.css" />
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="log.html" title="7. Experimental Log"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="xafs.html" title="5. XAFS scans"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motors.html">2. Moving and querying motors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Single energy XAS detection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-single-energy-measurement">6.1. Running the single energy measurement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#revisiting-a-single-energy-measurement">6.2. Revisiting a single energy measurement</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
+</ul>
+
+    
+  </div>
+</div><div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Helpful Links</h2>
+  </div>
+  <ul>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+    <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+    <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+    <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+  </ul>
+  <p>
+</div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Docs</a></li>
+              
+              <li>6. Single energy XAS detection</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="single-energy-xas-detection">
+<span id="sead"></span><h1>6. Single energy XAS detection<a class="headerlink" href="#single-energy-xas-detection" title="Permalink to this headline">¶</a></h1>
+<p>In the absence of fast scanning of the monochromator, one way of
+observing a phase transition is to park the monochromator at the
+energy of an interesting feature in the XANES and observe either the
+transmitted or fluorescent signal as a function of whatever extrinsic
+parameter is driving the transition.  Filipponi et al. demonstrated
+this by measuring hysteresis in melting/solidifying transition of an
+intermetalic compound.</p>
+<ul class="simple" id="bibtex-bibliography-sead-0">
+<li>A.&nbsp;Filipponi, M.&nbsp;Borowski, P.W. Loeffen, S.&nbsp;De Panfilis, A.&nbsp;Di Cicco, F.&nbsp;Sperandini, M.&nbsp;Minicucci, and M.&nbsp;Giorgetti. Single-energy x-ray absorption detection: a combined electronic and structural local probe for phase transitions in condensed matter. <em>Journal of Physics: Condensed Matter</em>, 10(1):235, 1998.</li>
+</ul>
+<p>This is implemented at BMM as a wrapper around the standard BlueSky
+<a class="reference external" href="https://nsls-ii.github.io/bluesky/plans.html#time-series-count">count() plan</a>.
+Like the <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">XAFS scan (See section 5)</span></a>, this plan is
+driven by an INI file and manages data storage and logging.</p>
+<p>The single energy absorption detection plan – <code class="docutils literal"><span class="pre">sead()</span></code> –
+starts with an INI file that is very similar to <a class="reference internal" href="xafs.html#ini"><span class="std std-numref">the INI file
+used for XAFS (See section 5.1)</span></a>.  Here is an example:</p>
+<div class="highlight-ini"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">[scan]</span>
+<span class="na">folder</span>        <span class="o">=</span> <span class="s">/home/bravel/BMM_Data/303200</span>
+<span class="na">filename</span>      <span class="o">=</span> <span class="s">cufoil</span>
+<span class="na">experimenters</span> <span class="o">=</span> <span class="s">Betty Cooper, Veronica Lodge, Archibald Andrews</span>
+
+<span class="na">e0</span>         <span class="o">=</span> <span class="s">8983.7</span>
+<span class="na">element</span>    <span class="o">=</span> <span class="s">Cu</span>
+<span class="na">edge</span>       <span class="o">=</span> <span class="s">K</span>
+<span class="na">sample</span>     <span class="o">=</span> <span class="s">Cu thing that changes</span>
+<span class="na">prep</span>       <span class="o">=</span> <span class="s">Cu made in a way that changes</span>
+<span class="na">comment</span>    <span class="o">=</span> <span class="s">Welcome to BMM</span>
+
+<span class="na">nscans</span>     <span class="o">=</span> <span class="s">3</span>
+<span class="c1">#start      = 1</span>
+
+<span class="na">npoints</span>    <span class="o">=</span> <span class="s">6000</span>
+<span class="na">dwell</span>      <span class="o">=</span> <span class="s">0.1</span>
+<span class="na">delay</span>      <span class="o">=</span> <span class="s">0.01</span>
+
+<span class="na">snapshots</span>  <span class="o">=</span> <span class="s">True</span>
+
+<span class="c1"># mode is transmission or fluorescence</span>
+<span class="na">mode</span> <span class="o">=</span> <span class="s">transmission</span>
+</pre></div>
+</td></tr></table></div>
+<p>Most of these parameters are the same as in the XAFS scan INI file and
+are used in the same way.  The new parameters are:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">npoints</span></code> (line 16)</dt>
+<dd>The number of measurements.  This is passed to the <code class="docutils literal"><span class="pre">num</span></code> argument
+of the <a class="reference external" href="https://nsls-ii.github.io/bluesky/plans.html#time-series-count">count() plan</a>.</dd>
+<dt><code class="docutils literal"><span class="pre">dwell</span></code> (line17)</dt>
+<dd>The count time for each measurement.  This value is pushed to the
+electrometer controlling I0 and It and to the multichannel scalar
+controlling the fluorescence detector.</dd>
+<dt><code class="docutils literal"><span class="pre">delay</span></code> (line 18)</dt>
+<dd>The delay between measurements.  This value is passed to the delay
+argument of the <a class="reference external" href="https://nsls-ii.github.io/bluesky/plans.html#time-series-count">count() plan</a>..</dd>
+</dl>
+<p><code class="docutils literal"><span class="pre">element</span></code> and <code class="docutils literal"><span class="pre">edge</span></code> are not used for anything, but can be
+retained for ease of use.  The same is true of the <code class="docutils literal"><span class="pre">bounds</span></code>,
+<code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> parameters, although those three are not
+shown above.</p>
+<p>The other difference between the INI file for the XAFS and single
+energy scans is <code class="docutils literal"><span class="pre">e0</span></code>.  When doing the single energy measurement,
+<code class="docutils literal"><span class="pre">e0</span></code> represents the energy at which to make the measurement.  For
+example, if following the evolution of edge peak characteristic to Cu
+<sup>1+</sup>, which is at 8983.7, you would set <code class="docutils literal"><span class="pre">e0</span></code> to that value.
+This is shown above at line 6.</p>
+<div class="section" id="running-the-single-energy-measurement">
+<h2>6.1. Running the single energy measurement<a class="headerlink" href="#running-the-single-energy-measurement" title="Permalink to this headline">¶</a></h2>
+<p>Run the single energy absorption measurement by doing:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">sead</span><span class="p">(</span><span class="s1">&#39;testscan.ini&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Like for the XAFS scan, the INI file can be specified by fully
+resolved path or by file name.  If only the file name is given, it is
+presumed to be in the location of the <code class="docutils literal"><span class="pre">DATA</span></code> global variable.</p>
+<p>When the <code class="docutils literal"><span class="pre">sead()</span></code> plan runs, it will:</p>
+<ol class="arabic simple">
+<li>Do some sanity checking on the content of the INI file</li>
+<li>Prompt the user to examine the content of the INI file before
+continuing</li>
+<li>Check that the scan is clear to start, i.e. shutters open and
+current in the ring</li>
+<li>Gather metadata for the output file</li>
+<li>Move to the value of <code class="docutils literal"><span class="pre">e0</span></code></li>
+<li>Take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 7.1)</span></a> of the XAS webcam and
+the analog camera near the sample</li>
+<li>Run the time scan</li>
+<li>Write an file in the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a></li>
+<li>Put useful messages in the <a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 7.2)</span></a></li>
+</ol>
+<p>See <a class="reference internal" href="xafs.html#interrupt"><span class="std std-numref">Section 5.4.2</span></a> for details on how to pause,
+resume, or halt a scan.  It works the same for a time scan as for any
+other scan type.</p>
+</div>
+<div class="section" id="revisiting-a-single-energy-measurement">
+<h2>6.2. Revisiting a single energy measurement<a class="headerlink" href="#revisiting-a-single-energy-measurement" title="Permalink to this headline">¶</a></h2>
+<p>Grab a database entry and write it to an XDI file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ts2xdi</span><span class="p">(</span><span class="s1">&#39;/path/to/data/file&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;id&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first argument is the name of the output data file.  The second
+argument is either the scan's unique ID – something like
+<code class="docutils literal"><span class="pre">f6619ed7-a8e5-41c2-a499-f793b0fcacec</span></code> – or the scan's transient
+id number.  Both the unique and transient ids can be found in the
+experimental log.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">suspenders, is msg_hook correct?</p>
+</div>
+
+<br>
+
+<br>
+<hr class="docutils" />
+<p>This manual is copyright © 2018 Bruce Ravel</p>
+<p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
+<p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
+Creative Commons</a>.</p>
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-default" href="xafs.html" title="previous chapter (use the left arrow)">5. XAFS scans</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-default" href="log.html" title="next chapter (use the right arrow)">7. Experimental Log</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="log.html" title="7. Experimental Log"
+             >next</a></li>
+        <li class="right" >
+          <a href="xafs.html" title="5. XAFS scans"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2018, Bruce Ravel. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>

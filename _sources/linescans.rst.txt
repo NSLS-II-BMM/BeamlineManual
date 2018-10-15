@@ -165,7 +165,7 @@ The arguments are:
      RE(areascan('it', xafs_linx, -4, 4, 81, 'y', -2, 2, 41))
 
    For a motor that does not have a nickname, you must use the BlueSky
-   name, as in this somewhat silly example::
+   name, as in this very silly example::
 
      RE(linescan('it', slits3_outboard, -1, 1, 21, dcm_pitch, -2, 2, 41))
 
@@ -206,6 +206,8 @@ You can skip the :quoted:`click for motor position` step by typing
 ``n`` and hitting return.
 
 .. todo:: Better sanity checking of input parameters
+
+.. todo:: Non-square scans
 
 
 Plucking a point from an area scan

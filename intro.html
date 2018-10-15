@@ -80,8 +80,9 @@
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
 </ul>
 
     
@@ -144,24 +145,30 @@ experiments, do:</p>
 ==============================================================================
 Energy = 19300.1   reflection = Si(111)   mode = fixed
      Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
+
 M2
      vertical =   6.000 mm           YU  =   6.000
      lateral  =   0.000 mm           YDO =   6.000
      pitch    =   0.000 mrad         YDI =   6.000
      roll     =  -0.001 mrad         XU  =  -0.129
      yaw      =   0.200 mrad         XD  =   0.129
+
 M3
      vertical =   0.000 mm           YU  =  -1.167
      lateral  =  15.001 mm           YDO =   1.167
      pitch    =   3.500 mrad         YDI =   1.167
      roll     =   0.000 mrad         XU  =  15.001
      yaw      =   0.001 mrad         XD  =  15.001
+
 Slits3:   vsize  vcenter  hsize   hcenter     top    bottom    outboard  inboard
           1.350   0.000   8.000  -0.000      0.675   -0.675    4.000   -4.000
+
 DM3_BCT:  45.004 mm
+
 XAFS table:
      vertical  pitch    roll   YU     YDO     YDI
      132.000   0.000   0.000 132.000 132.000 132.000
+
 XAFS stages:
         linx     liny    roll    pitch    linxs    roth     rotb     rots
         9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
@@ -208,40 +215,47 @@ Thermocouple               Temperature         Valve   state          Vacuum sec
 </div>
 <div class="section" id="the-user-experience">
 <h2>1.1. The user experience<a class="headerlink" href="#the-user-experience" title="Permalink to this headline">¶</a></h2>
-<p>The Ipython/bsui prompt at BMM is heavily modified to give important
+<p>The Ipython/bsui prompt at BMM is heavily modified to
 at-a-glance information about the state of the beamline.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-prompt"></span><a class="reference external image-reference" href="_images/prompt.png"><img alt="_images/prompt.png" src="_images/prompt.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1.1 </span><span class="caption-text">The BlueSky user prompt at BMM</span></p>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">That prompt image is out of date.  Need to update image and
+discuss cadashboard.</p>
 </div>
 <p>The white characters at the beginning of the prompt show the
 <a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">photon delivery system mode (Section 3.5.1)</span></a> –
 currently “XRD” – and the <a class="reference internal" href="pds.html#change-crystals"><span class="std std-numref">monochromator crystals
 (Section 3.5.2)</span></a> currently in use – currently
 Si(311).</p>
-<p>The red “A” and “B” indicate that the A and B (front
-end and photon) shutters are currently closed.  When open these
-letters are blue.  The italicized blue text gives the beam current.
-(This picture was made during a maintenance period.)  Finally, the
-bright green number indicates the command count, just like the
-default Ipython prompt.</p>
+<p><span class="strike">The red A and B indicate that the A and B (front end and
+photon) shutters are currently closed.  When open these letters are
+blue.</span> The italicized blue text gives the beam current.  (This picture
+was made during a maintenance period.)  Finally, the bright green
+number indicates the command count, just like the default Ipython
+prompt.</p>
 <div class="section" id="starting-and-ending-an-experiment">
 <span id="start-end"></span><h3>1.1.1. Starting and ending an experiment<a class="headerlink" href="#starting-and-ending-an-experiment" title="Permalink to this headline">¶</a></h3>
 <p>When a new experiment begins, run the command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">new_experiment</span><span class="p">(</span><span class="s1">&#39;folder&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">new_experiment</span><span class="p">(</span><span class="s1">&#39;/home/xf06bm/Data/Visitors/Henrietta User/2019-02-28&#39;</span><span class="p">,</span> <span class="n">gup</span><span class="o">=</span><span class="mi">333123</span><span class="p">,</span> <span class="n">saf</span><span class="o">=</span><span class="mi">343123</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This will create <code class="docutils literal"><span class="pre">folder</span></code> and populate it with an
-<a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log (Section 6)</span></a>, define the <code class="docutils literal"><span class="pre">DATA</span></code>
+<p>This will create that data folder and populate it with an
+<a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log (Section 7)</span></a>, define the <code class="docutils literal"><span class="pre">DATA</span></code>
 variable for use in simplifying certain commands, write a template for
-a <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">scan.ini file (Section 5)</span></a>, write a template
-for a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro file (Section 5.5)</span></a>, and configure the
-logger to write a log file for this experiment.</p>
+a <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">scan.ini file (Section 5)</span></a>, write a template for a
+<a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro file (Section 5.6)</span></a>, configure the logger to
+write a user log file for this experiment, and set the GUP and SAF
+numbers as metadata for output files.</p>
 <p>Once the experiment is finished, run this command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">end_experiment</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This will reset the logger and the <code class="docutils literal"><span class="pre">DATA</span></code> variable.</p>
+<p>This will reset the logger and the <code class="docutils literal"><span class="pre">DATA</span></code> variable and unset the GUP
+and SAF numbers.</p>
 </div>
 <div class="section" id="getting-help-at-the-command-line">
 <h3>1.1.2. Getting help at the command line<a class="headerlink" href="#getting-help-at-the-command-line" title="Permalink to this headline">¶</a></h3>

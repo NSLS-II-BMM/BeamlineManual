@@ -97,6 +97,12 @@ facilitating any actions a user should ever need.
    end of the scan, it moves to the ceiling of the measured intensity
    profile.
 
+   You can do the rocking curve scan by looking at the signal on the
+   Bicron which is used as the incident beam monitor for the XRD end
+   station.  Do::
+
+     RE(rocking_curve(detector='Bircron'))
+
    You can tune the second crystal by hand with these commands::
 
      tu()
@@ -120,7 +126,7 @@ positions in any way changes the height and inclination of the beam as
 it enters the end station.  This requires changes in positions of the
 slits, the XAFS table, and other parts of the photon delivery system.
 
-`In short, don't move the mirror motors.`
+**In short, don't move the mirror motors.**
 
 That said, if you want to know the current positions of the motors on
 the focusing mirror, use ``m2.wh()``
@@ -161,18 +167,18 @@ to define the beam size on the sample.
 .. table:: End station slit motors
    :name:  slits3-motors
 
-   ===============   ========  =======================================
-   motor             units     notes
-   ===============   ========  =======================================
-   slits3_top        mm        top blade position
-   slits3_bottom     mm        bottom blade position
-   slits3_inboard    mm        inboard blade position
-   slits3_outboard   mm        outboard blade position
-   slits3_hsize      mm        horizontal size, coordinated motion
-   slits3_hcenter    mm        horizontal center, coordinated motion
-   slits3_vsize      mm        vertical size, coordinated motion
-   slits3_vcenter    mm        vertical center, coordinated motion
-   ===============   ========  =======================================
+   ===============   ========  =======================  ===================
+   motor             units     notes                    motion type
+   ===============   ========  =======================  ===================
+   slits3_top        mm        top blade position       single axis
+   slits3_bottom     mm        bottom blade position    single axis
+   slits3_inboard    mm        inboard blade position   single axis
+   slits3_outboard   mm        outboard blade position  single axis
+   slits3_hsize      mm        horizontal size          coordinated motion
+   slits3_hcenter    mm        horizontal center        coordinated motion
+   slits3_vsize      mm        vertical size            coordinated motion
+   slits3_vcenter    mm        vertical center          coordinated motion
+   ===============   ========  =======================  ===================
 
 
 The individual blades are moved like any other motor::

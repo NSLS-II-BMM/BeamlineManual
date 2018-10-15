@@ -81,8 +81,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
 </ul>
 
     
@@ -275,7 +276,7 @@ these are equivalent:</p>
 </pre></div>
 </div>
 <p>For a motor that does not have a nickname, you must use the BlueSky
-name, as in this somewhat silly example:</p>
+name, as in this very silly example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">slits3_outboard</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">dcm_pitch</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -318,6 +319,10 @@ Both motors will then move to the position you clicked on.</p>
 <div class="admonition-todo admonition" id="index-1">
 <p class="first admonition-title">Todo</p>
 <p class="last">Better sanity checking of input parameters</p>
+</div>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Non-square scans</p>
 </div>
 <div class="section" id="plucking-a-point-from-an-area-scan">
 <h3>4.3.1. Plucking a point from an area scan<a class="headerlink" href="#plucking-a-point-from-an-area-scan" title="Permalink to this headline">¶</a></h3>
