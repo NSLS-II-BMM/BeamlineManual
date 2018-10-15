@@ -3,6 +3,8 @@
    The Creative Commons Attribution-ShareAlike License
    http://creativecommons.org/licenses/by-sa/3.0/
 
+.. role:: strike
+    :class: strike
 
 .. _intro:
 
@@ -103,7 +105,7 @@ This will print this report to the screen:
 The user experience
 -------------------
 
-The Ipython/bsui prompt at BMM is heavily modified to give important
+The Ipython/bsui prompt at BMM is heavily modified to 
 at-a-glance information about the state of the beamline.
 
 .. _fig-prompt:
@@ -114,18 +116,21 @@ at-a-glance information about the state of the beamline.
 
    The BlueSky user prompt at BMM
 
+.. todo:: That prompt image is out of date.  Need to update image and
+          discuss cadashboard.
+
 The white characters at the beginning of the prompt show the
 :numref:`photon delivery system mode (Section %s) <change-mode>` |nd|
 currently :quoted:`XRD` |nd| and the :numref:`monochromator crystals
 (Section %s) <change-crystals>` currently in use |nd| currently
 Si(311).
 
-The red :quoted:`A` and :quoted:`B` indicate that the A and B (front
-end and photon) shutters are currently closed.  When open these
-letters are blue.  The italicized blue text gives the beam current.
-(This picture was made during a maintenance period.)  Finally, the
-bright green number indicates the command count, just like the
-default Ipython prompt.
+:strike:`The red A and B indicate that the A and B (front end and
+photon) shutters are currently closed.  When open these letters are
+blue.` The italicized blue text gives the beam current.  (This picture
+was made during a maintenance period.)  Finally, the bright green
+number indicates the command count, just like the default Ipython
+prompt.
 
 .. _start_end:
 
@@ -134,21 +139,22 @@ Starting and ending an experiment
 
 When a new experiment begins, run the command::
 
-  new_experiment('folder', gup=333123, saf=343123)
+  new_experiment('/home/xf06bm/Data/Visitors/Henrietta User/2019-02-28', gup=333123, saf=343123)
 
-This will create ``folder`` and populate it with an
+This will create that data folder and populate it with an
 :numref:`experimental log (Section %s) <log>`, define the ``DATA``
 variable for use in simplifying certain commands, write a template for
 a :numref:`scan.ini file (Section %s) <xafs>`, write a template for a
 :numref:`macro file (Section %s) <macro>`, configure the logger to
-write a log file for this experiment, and set the GUP and SAF numbers
-as metadata for output files.
+write a user log file for this experiment, and set the GUP and SAF
+numbers as metadata for output files.
 
 Once the experiment is finished, run this command::
 
   end_experiment()
 
-This will reset the logger and the ``DATA`` variable.
+This will reset the logger and the ``DATA`` variable and unset the GUP
+and SAF numbers.
 
 
 Getting help at the command line

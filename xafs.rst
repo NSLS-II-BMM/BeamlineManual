@@ -253,7 +253,7 @@ where ``+`` is the python :quoted:`string concatination` operator.
 
 You can also explicitly state where your INI file is located, as in::
 
-  RE(xafs('/home/user/data_location/myscan.ini'))
+  RE(xafs('/home/bravel/BMM_Data/303303/scan.ini'))
 
 In that case, the explicit location of the INI file will be used.
 
@@ -403,6 +403,9 @@ XAFS data files are written to the `XDI format
 an example.  You can see how the metadata from the INI file and
 elsewhere is captured in the output XDI file.
 
+.. todo:: Document use of ``XDI_record`` dictionary to control which
+          xafs motors nd/or temperatures get recorded in the XDI header
+
 .. code-block:: text
 
    # XDI/1.0 BlueSky/1.3.0
@@ -421,6 +424,8 @@ elsewhere is captured in the output XDI file.
    # Facility.current: 374.3 mA
    # Facility.energy: 3.0 GeV
    # Facility.mode: top-off
+   # Facility.GUP: 333333
+   # Facility.SAF: 344344
    # Mono.name: Si(311)
    # Mono.d_spacing: 1.6376385 Å
    # Mono.encoder_resolution: 0.0000050 deg/ct
@@ -428,8 +433,6 @@ elsewhere is captured in the output XDI file.
    # Mono.scan_mode: pseudo channel cut
    # Mono.scan_type: step
    # Mono.direction: forward in energy
-   # Mono.first_crystal_temperature: 30.2 C
-   # Mono.compton_shield_temperature: 30.5 C
    # Sample.name: Sedovite
    # Sample.prep: speck of mineral in a holder in a gel cap
    # Sample.x_position: 2.750

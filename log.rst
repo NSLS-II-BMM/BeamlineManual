@@ -88,9 +88,9 @@ experimental log.
 Log file
 --------
 
-At the beginning of a user experiment, run this command::
+At the beginning of a user experiment, run something like this command::
 
-  new_experiment('/path/to/data/folder')
+  new_experiment('/home/xf06bm/Data/Visitors/Henrietta User/2019-02-28', gup=333123, saf=343123)
 
 Among other things, this instruments the logger to maintain a log file
 specifically for the current experiment.  The logger also maintains a
