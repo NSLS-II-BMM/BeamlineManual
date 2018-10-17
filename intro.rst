@@ -20,13 +20,13 @@ There are some commands that give a broad overview of the state of the
 beamline.  To see the locations of the motors that matter most to most
 experiments, do::
 
-  ms()
+  %m
 
 This will print the following report to the screen:
 
 .. code-block:: text
 
-   In [1897]: ms()
+   In [1897]: %m
    ==============================================================================
    Energy = 19300.1   reflection = Si(111)   mode = fixed
         Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
@@ -63,13 +63,13 @@ This will print the following report to the screen:
 To get an overview of the status of the beamline utilities |nd|
 i.e. things like temperatures and gate vale states |nd| do::
 
-  su()
+  %ut()
 
 This will print this report to the screen:
 
 .. code-block:: text
 
-   In [1898]: su()
+   In [1898]: %ut
    Monday 06 August, 2018 10:24 AM
 
    BMPS: open            IDPS: closed            Photon Shutter: closed
@@ -164,28 +164,28 @@ To see a summary of common commands, use ``BMM_help()``:
 
 .. code-block:: text
 
-   Open the shutter:               shb.open()
-   Close the shutter:              shb.close()
+   Open the shutter:                 shb.open()
+   Close the shutter:                shb.close()
 
-   Change energy:                  RE(mv(dcm.energy, <energy>))
-   Move a motor, absolute:         RE(mv(<motor>, <position>))
-   Move a motor, relative:         RE(mvr(<motor>, <delta>))
-   Where is a motor?               <motor>.wh()
+   Change energy:                    RE(mv(dcm.energy, <energy>))
+   Move a motor, absolute:           RE(mv(<motor>, <position>))
+   Move a motor, relative:           RE(mvr(<motor>, <delta>))
+   Where is a motor?                 %w <motor>
 
-   Where is the DCM?               dcm.wh()
-   Where is M2?                    m2.wh()
-   Where is M3?                    m3.wh()
-   Where are the slits?            slits3.wh()
-   Where is the XAFS table?        xafs_table.wh()
+   Where is the DCM?                 %w dcm
+   Where is M2?                      %w m2
+   Where is M3?                      %w m3
+   Where are the slits?              %w slits3
+   Where is the XAFS table?          %w xafs_table
 
-   Summarize all motor positions:  ms()
-   Summarize utilities:            su()
+   Summarize all motor positions:    %m
+   Summarize utilities:              %ut
 
-   How long will a scan seq. be?   howlong(DATA + 'scan.ini')
-   Run a scan sequence:            RE(xafs(DATA + 'scan.ini'))
-   Scan a motor, plot a detector:  RE(linescan(<det>, <motor>, <start>, <stop>, <nsteps>))
-   Scan 2 motors, plot a detector: RE(areascan(<det>, <slow motor>, <start>, <stop>, <nsteps>, <fast motor>, <start>, <stop>, <nsteps>))
-   Make a log entry:               BMM_log_info("blah blah blah")
+   How long will a scan seq. be?     howlong(DATA + 'scan.ini')
+   Run a scan sequence:              RE(xafs(DATA + 'scan.ini'))
+   Scan a motor, plot a detector:    RE(linescan(<det>, <motor>, <start>, <stop>, <nsteps>))
+   Scan 2 motors, plot a detector:   RE(areascan(<det>, <slow motor>, <start>, <stop>, <nsteps>, <fast motor>, <start>, <stop>, <nsteps>))
+   Make a log entry:                 BMM_log_info("blah blah blah")
 
    DATA = /home/bravel/BMM_Data/bucket
 

@@ -48,11 +48,7 @@ to interact directly with any of the motors.  Plans exist for
 facilitating any actions a user should ever need.
 
 **Query the current energy**
-   To know the position and energy of the monochrmomator:
-
-   .. code-block:: text
-
-      dcm.wh()
+   To know the position and energy of the monochrmomator: ``%w dcm``
 
    This returns a short report like this:
 
@@ -101,7 +97,7 @@ facilitating any actions a user should ever need.
    Bicron which is used as the incident beam monitor for the XRD end
    station.  Do::
 
-     RE(rocking_curve(detector='Bircron'))
+     RE(rocking_curve(detector='Bicron'))
 
    You can tune the second crystal by hand with these commands::
 
@@ -129,12 +125,12 @@ slits, the XAFS table, and other parts of the photon delivery system.
 **In short, don't move the mirror motors.**
 
 That said, if you want to know the current positions of the motors on
-the focusing mirror, use ``m2.wh()``
+the focusing mirror, use ``%w m2``
 
 
 .. code-block:: text
 
-   In [1903]: m2.wh()
+   In [1903]: %w m2
    M2:
         vertical =   6.000 mm           YU  =   6.000
         lateral  =   0.000 mm           YDO =   6.000
@@ -143,11 +139,11 @@ the focusing mirror, use ``m2.wh()``
         yaw      =   0.200 mrad         XD  =   0.129
         bender   =  163789.0 steps
 
-For the harmonic rejection mirror, use ``m3.wh()``
+For the harmonic rejection mirror, use ``%w m3``
 
 .. code-block:: text
 
-   In [1904]: m3.wh()
+   In [1904]: %w m3
    M3: (Rh/Pt stripe)
         vertical =   0.000 mm           YU  =  -1.167
         lateral  =  15.001 mm           YDO =   1.167
@@ -193,11 +189,11 @@ Coordinated motions are moved the same way::
   RE(mvr(slits3.vcenter, -0.1))
 
 To know the current positions of the slit blades and their coordinated
-motions, use ``slits3.wh()``
+motions, use ``%w slits3``
 
 .. code-block:: text
 
-   In [1966]: slits3.wh()
+   In [1966]: %w slits3
    SLITS3:
         vertical   size   =   1.350 mm          Top      =   0.675
         vertical   center =   0.000 mm          Bottom   =  -0.675

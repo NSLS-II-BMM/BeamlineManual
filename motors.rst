@@ -78,7 +78,7 @@ are the same for all sample stage motors.
 
 **Querying position**
    The position of any motor can be queried with a command line like
-   ``xafs_liny.wh()``. 
+   ``%w xafs_liny``. 
 
 **Moving to a new position**
    Always move motors through the run engine, for example: ::
@@ -179,7 +179,7 @@ The lateral table motors are normally disabled.
 
 **Querying table position**
    The position of any motor can be queried with a command line like
-   ``xafs_table.wh()``.
+   ``%w xafs_table``.
 
 **Moving table motors**
    The normal movement commands work on the real and virtual motors,
