@@ -117,10 +117,12 @@ Mirrors
 
 Mirrors are set as part of the mode changing plan.  Unless you know
 exactly what you are doing, you should never move the mirrors.
-Adjusting mirrors by hand is a poor idea.  Changing the mirror
-positions in any way changes the height and inclination of the beam as
-it enters the end station.  This requires changes in positions of the
-slits, the XAFS table, and other parts of the photon delivery system.
+Adjusting mirrors by hand is a poor idea.  (Adjusting M1 by hand is a
+horrible idea -- unless you know exactly what you are doing and you
+have a plan.)  Changing the mirror positions in any way changes the
+height and inclination of the beam as it enters the end station.  This
+requires changes in positions of the slits, the XAFS table, and other
+parts of the photon delivery system.
 
 **In short, don't move the mirror motors.**
 
@@ -260,7 +262,8 @@ or::
 This will move the lateral motor of the monochromator between the two
 crystal sets and adjust the pitch of the second crystal to be nearly
 in tune and the roll to deliver the beam to nearly the same location
-for both crystals.  This also should take less than 3 minutes.
+for both crystals.  This also is quick and should take less than 3
+minutes.
 
 The ``change_xtals()`` plan also runs the :numref:`rocking curve
 (Section %s) <special-linescans>` macro to fix the tuning of the

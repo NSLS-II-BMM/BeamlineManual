@@ -117,7 +117,7 @@ at-a-glance information about the state of the beamline.
    The BlueSky user prompt at BMM
 
 .. todo:: That prompt image is out of date.  Need to update image and
-          discuss cadashboard.
+          discuss cadashboard. Also provide a picture of cadashboard.
 
 The white characters at the beginning of the prompt show the
 :numref:`photon delivery system mode (Section %s) <change-mode>` |nd|
@@ -160,7 +160,7 @@ and SAF numbers.
 Getting help at the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To see a summary of common commands, use ``BMM_help()``:
+To see a summary of common commands, use ``%h``:
 
 .. code-block:: text
 
@@ -191,8 +191,7 @@ To see a summary of common commands, use ``BMM_help()``:
 
    All the details: https://nsls-ii-bmm.github.io/BeamlineManual/index.html
 
-and to see a summary of some useful command line hotkeys,
-``BMM_keys()``:
+and to see a summary of some useful command line hotkeys, ``%k``:
 
 .. code-block:: text
 

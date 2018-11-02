@@ -14,7 +14,7 @@ the bsui command line.  Here is an example:
 
 .. code-block:: text
 
-   In [1897]: ms()
+   In [1897]: %m
    ==============================================================================
    Energy = 19300.1   reflection = Si(111)   mode = fixed
         Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
@@ -108,12 +108,15 @@ are the same for all sample stage motors.
 
 
 **Querying soft limits**
-   To know the soft limits on a sample stage, do ``xafs_liny.llm`` or
-   ``xafs_liny.hlm`` for the low or high limit.
+   To know the soft limits on a sample stage, do
+   ``xafs_liny.llm.value`` or ``xafs_liny.hlm.value`` for the low or
+   high limit. 
 
 **Setting soft limits**
    To set the soft limits on a sample stage, do something like
    ``xafs_liny.llm = 5`` or ``xafs_liny.hlm = 85``
+
+   .. caution:: Is this right?
 
 **Reference stage**
    The reference stage is calibrated such that the beam passes through

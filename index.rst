@@ -23,3 +23,4 @@ BMM Users Manual
    sead.rst
    log.rst
    manage.rst
+   trouble.rst

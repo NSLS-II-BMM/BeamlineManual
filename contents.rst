@@ -16,3 +16,4 @@ Table of Contents
    sead.rst
    log.rst
    manage.rst
+   trouble.rst
