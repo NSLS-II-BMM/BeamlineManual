@@ -83,6 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
 </ul>
 
     
@@ -137,11 +138,11 @@ are a number of customizations specific to BMM.</p>
 <p>There are some commands that give a broad overview of the state of the
 beamline.  To see the locations of the motors that matter most to most
 experiments, do:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ms</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">m</span>
 </pre></div>
 </div>
 <p>This will print the following report to the screen:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>In [1897]: ms()
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1897]: %m
 ==============================================================================
 Energy = 19300.1   reflection = Si(111)   mode = fixed
      Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
@@ -170,18 +171,18 @@ XAFS table:
      132.000   0.000   0.000 132.000 132.000 132.000
 
 XAFS stages:
-        linx     liny    roll    pitch    linxs    roth     rotb     rots
+          x        y     roll    pitch    linxs    roth    wheel     rots
         9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
 ==============================================================================
 </pre></div>
 </div>
 <p>To get an overview of the status of the beamline utilities –
 i.e. things like temperatures and gate vale states – do:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">su</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">ut</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>This will print this report to the screen:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>In [1898]: su()
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1898]: %ut
 Monday 06 August, 2018 10:24 AM
 
 BMPS: open            IDPS: closed            Photon Shutter: closed
@@ -224,12 +225,12 @@ at-a-glance information about the state of the beamline.</p>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
 <p class="last">That prompt image is out of date.  Need to update image and
-discuss cadashboard.</p>
+discuss cadashboard. Also provide a picture of cadashboard.</p>
 </div>
 <p>The white characters at the beginning of the prompt show the
-<a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">photon delivery system mode (Section 3.5.1)</span></a> –
+<a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">photon delivery system mode (Section 3.6.1)</span></a> –
 currently “XRD” – and the <a class="reference internal" href="pds.html#change-crystals"><span class="std std-numref">monochromator crystals
-(Section 3.5.2)</span></a> currently in use – currently
+(Section 3.6.2)</span></a> currently in use – currently
 Si(311).</p>
 <p><span class="strike">The red A and B indicate that the A and B (front end and
 photon) shutters are currently closed.  When open these letters are
@@ -259,37 +260,36 @@ and SAF numbers.</p>
 </div>
 <div class="section" id="getting-help-at-the-command-line">
 <h3>1.1.2. Getting help at the command line<a class="headerlink" href="#getting-help-at-the-command-line" title="Permalink to this headline">¶</a></h3>
-<p>To see a summary of common commands, use <code class="docutils literal"><span class="pre">BMM_help()</span></code>:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Open the shutter:               shb.open()
-Close the shutter:              shb.close()
+<p>To see a summary of common commands, use <code class="docutils literal"><span class="pre">%h</span></code>:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Open the shutter:                 shb.open()
+Close the shutter:                shb.close()
 
-Change energy:                  RE(mv(dcm.energy, &lt;energy&gt;))
-Move a motor, absolute:         RE(mv(&lt;motor&gt;, &lt;position&gt;))
-Move a motor, relative:         RE(mvr(&lt;motor&gt;, &lt;delta&gt;))
-Where is a motor?               &lt;motor&gt;.wh()
+Change energy:                    RE(mv(dcm.energy, &lt;energy&gt;))
+Move a motor, absolute:           RE(mv(&lt;motor&gt;, &lt;position&gt;))
+Move a motor, relative:           RE(mvr(&lt;motor&gt;, &lt;delta&gt;))
+Where is a motor?                 %w &lt;motor&gt;
 
-Where is the DCM?               dcm.wh()
-Where is M2?                    m2.wh()
-Where is M3?                    m3.wh()
-Where are the slits?            slits3.wh()
-Where is the XAFS table?        xafs_table.wh()
+Where is the DCM?                 %w dcm
+Where is M2?                      %w m2
+Where is M3?                      %w m3
+Where are the slits?              %w slits3
+Where is the XAFS table?          %w xafs_table
 
-Summarize all motor positions:  ms()
-Summarize utilities:            su()
+Summarize all motor positions:    %m
+Summarize utilities:              %ut
 
-How long will a scan seq. be?   howlong(DATA + &#39;scan.ini&#39;)
-Run a scan sequence:            RE(xafs(DATA + &#39;scan.ini&#39;))
-Scan a motor, plot a detector:  RE(linescan(&lt;det&gt;, &lt;motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;nsteps&gt;))
-Scan 2 motors, plot a detector: RE(areascan(&lt;det&gt;, &lt;slow motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;nsteps&gt;, &lt;fast motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;nsteps&gt;))
-Make a log entry:               BMM_log_info(&quot;blah blah blah&quot;)
+How long will a scan seq. be?     howlong(DATA + &#39;scan.ini&#39;)
+Run a scan sequence:              RE(xafs(DATA + &#39;scan.ini&#39;))
+Scan a motor, plot a detector:    RE(linescan(&lt;det&gt;, &lt;motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;nsteps&gt;))
+Scan 2 motors, plot a detector:   RE(areascan(&lt;det&gt;, &lt;slow motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;nsteps&gt;, &lt;fast motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;nsteps&gt;))
+Make a log entry:                 BMM_log_info(&quot;blah blah blah&quot;)
 
 DATA = /home/bravel/BMM_Data/bucket
 
 All the details: https://nsls-ii-bmm.github.io/BeamlineManual/index.html
 </pre></div>
 </div>
-<p>and to see a summary of some useful command line hotkeys,
-<code class="docutils literal"><span class="pre">BMM_keys()</span></code>:</p>
+<p>and to see a summary of some useful command line hotkeys, <code class="docutils literal"><span class="pre">%k</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Abort scan:             Ctrl-c twice!
 Search backwards:       Ctrl-r
 Quit search:            Ctrl-g
@@ -333,12 +333,12 @@ the beam, it should never need adjustment.</p>
 <p>The collimated light is delivered to a double crystal monochromator
 (DCM).  The DCM has pairs of Si(111) and Si(311) crystals which are
 accessed by <a class="reference internal" href="pds.html#change-crystals"><span class="std std-numref">translating the DCM vacuum vessel laterally
-(Section 3.5.2)</span></a> .  A transition between the two
+(Section 3.6.2)</span></a> .  A transition between the two
 crystal sets takes about 2 minutes.</p>
 <p>After the DCM, we have a toroidal focusing mirror followed by a flat
 harmonic rejection mirror.  One or both of these mirrors is in the
 beam depending on <a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">the configuration of the XAS experiment
-(Section 3.5.1)</span></a> in the end station.  Because the beam is
+(Section 3.6.1)</span></a> in the end station.  Because the beam is
 deflected upward after the collimating mirror, at least one of the
 mirrors after the DCM must be used in order to deflect the beam
 through the lengthy transport pipe and into the end station.</p>

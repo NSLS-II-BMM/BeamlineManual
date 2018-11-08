@@ -119,6 +119,8 @@ Here is a complete explanation of the contents of the INI file.
    ``reference``.  ``both`` means to display *both* the transmission
    and fluorescence during the scan.
 
+Comments begin with the hash (``#``) character and are ignored.
+
 
 Scan regions
 ------------
@@ -191,9 +193,9 @@ To run a scan, do this::
   RE(xafs('scan.ini'))
 
 The argument is the path to the INI file described above.  The
-``DATA`` variable is convenience.  It gets set to the location of your
-data folder when :numref:`beginning an experiment (Section %s)
-<start_end>`.
+``DATA`` variable simplifies the use of this plan.  ``DATA`` gets set
+to the location of your data folder when :numref:`beginning an
+experiment (Section %s) <start_end>`.
 
 This plan is a wrapper around `BlueSky's scan_nd() plan
 <https://nsls-ii.github.io/bluesky/plans.html#multi-dimensional-scans>`_.
@@ -217,7 +219,7 @@ It does the following chores:
    scan in the event of a beam dump or a shutter closing (the
    suspenders are disabled at the end of the scan sequence)
 
-#. Moves to the beginning of the scan range and begin taking scans
+#. Moves to the beginning of the scan range and begins taking scans
    using the ``scan_nd()`` plan and cyclers for energy values and dwell
    times constructed from ``bounds``, ``steps``, and ``times`` in
    the INI file
@@ -338,10 +340,10 @@ each sample.
       BMM_xsp.prompt = False
       BMM_info('Starting scan sequence')
 
-      yield from mv(xafs_linx, 23.86, xafs_liny, 71.27)
+      yield from mv(xafs_x, 23.86, xafs_y, 71.27)
       yield from xafs('sample1.ini')
 
-      yield from mv(xafs_linx, 23.86, xafs_liny, 81.27)
+      yield from mv(xafs_x, 23.86, xafs_y, 81.27)
       yield from xafs('sample2.ini')
 
       BMM_xsp.prompt = True
@@ -367,10 +369,10 @@ metadata items specific to the sample.
       BMM_xsp.prompt = False
       BMM_info('Starting scan sequence')
 
-      yield from mv(xafs_linx, 23.86, xafs_liny, 71.27)
+      yield from mv(xafs_x, 23.86, xafs_y, 71.27)
       yield from xafs('scan.ini', filename = 'sample1', prep = 'pressed pellet')
 
-      yield from mv(xafs_linx, 23.86, xafs_liny, 81.27)
+      yield from mv(xafs_x, 23.86, xafs_y, 81.27)
       yield from xafs('scan.ini', filename = 'sample2', prep = 'powder on tape')
 
       BMM_xsp.prompt = True

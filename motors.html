@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
 </ul>
 
     
@@ -133,7 +134,7 @@
 <span id="motors"></span><h1>2. Moving and querying motors<a class="headerlink" href="#moving-and-querying-motors" title="Permalink to this headline">¶</a></h1>
 <p>To get an overview of the state of the beamline motors, do <code class="docutils literal"><span class="pre">ms()</span></code> at
 the bsui command line.  Here is an example:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>In [1897]: ms()
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1897]: %m
 ==============================================================================
 Energy = 19300.1   reflection = Si(111)   mode = fixed
      Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
@@ -162,7 +163,7 @@ XAFS table:
      132.000   0.000   0.000 132.000 132.000 132.000
 
 XAFS stages:
-        linx     liny    roll    pitch    linxs    roth     rotb     rots
+          x        y     roll    pitch    linxs    roth    wheel     rots
         9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
 ==============================================================================
 </pre></div>
@@ -192,22 +193,22 @@ other places instead of writing out the BlueSky's name for the motor.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>xafs_linx</td>
+<tr class="row-even"><td>xafs_x</td>
 <td>x</td>
 <td>linear</td>
 <td>mm</td>
 <td>main sample stage</td>
 <td>+ outboard, - inboard</td>
 </tr>
-<tr class="row-odd"><td>xafs_liny</td>
+<tr class="row-odd"><td>xafs_y</td>
 <td>y</td>
 <td>linear</td>
 <td>mm</td>
 <td>main sample stage</td>
 <td>+ up, - down</td>
 </tr>
-<tr class="row-even"><td>xafs_linxs</td>
-<td>xs</td>
+<tr class="row-even"><td>xafs_ref</td>
+<td>ref</td>
 <td>linear</td>
 <td>mm</td>
 <td>reference stage</td>
@@ -227,6 +228,20 @@ other places instead of writing out the BlueSky's name for the motor.</p>
 <td>Huber tilt stage</td>
 <td>+ more positive</td>
 </tr>
+<tr class="row-odd"><td>xafs_wheel</td>
+<td>wh</td>
+<td>rotary</td>
+<td>degrees</td>
+<td>large rotary stage</td>
+<td>+ clockwise, - widdershins</td>
+</tr>
+<tr class="row-even"><td>xafs_rots</td>
+<td>rs</td>
+<td>rotary</td>
+<td>degrees</td>
+<td>small rotary stage</td>
+<td>+ more positive</td>
+</tr>
 <tr class="row-odd"><td>xafs_roth</td>
 <td>rh</td>
 <td>rotary</td>
@@ -234,37 +249,23 @@ other places instead of writing out the BlueSky's name for the motor.</p>
 <td>Huber circle</td>
 <td>+ more positive</td>
 </tr>
-<tr class="row-even"><td>xafs_rotb</td>
-<td>rb</td>
-<td>rotary</td>
-<td>degrees</td>
-<td>large rotary stage</td>
-<td>+ more positive</td>
-</tr>
-<tr class="row-odd"><td>xafs_rots</td>
-<td>rs</td>
-<td>rotary</td>
-<td>degrees</td>
-<td>small rotary stage</td>
-<td>+ more positive</td>
-</tr>
 </tbody>
 </table>
 <p>Configuration and position of the motors can be queried easily.  In
-the following examples, the <code class="docutils literal"><span class="pre">xafs_liny</span></code> motor is used.  The commands
+the following examples, the <code class="docutils literal"><span class="pre">xafs_y</span></code> motor is used.  The commands
 are the same for all sample stage motors.</p>
 <dl class="docutils">
 <dt><strong>Querying position</strong></dt>
 <dd>The position of any motor can be queried with a command line like
-<code class="docutils literal"><span class="pre">xafs_liny.wh()</span></code>.</dd>
+<code class="docutils literal"><span class="pre">%w</span> <span class="pre">xafs_y</span></code>.</dd>
 <dt><strong>Moving to a new position</strong></dt>
 <dd><p class="first">Always move motors through the run engine, for example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">mvr</span></code> is the relative move command – the numerical argument is
 the amount to move from the current position. <code class="docutils literal"><span class="pre">mv</span></code>, as in:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">37.63</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mf">37.63</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>is the absolute move command.  The numerical argument is the
@@ -273,33 +274,39 @@ position to which the motor will move.</p>
 </dd>
 <dt><strong>Moving to a new position in a plan</strong></dt>
 <dd><p class="first">To move a sample stage as part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a> , do:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can combine motions of two or more motors in a single
 synchronous movement:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">,</span> <span class="n">xafs_linx</span><span class="p">,</span> <span class="mf">15.79</span><span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">,</span> <span class="n">xafs_x</span><span class="p">,</span> <span class="mf">15.79</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 <dt><strong>Querying soft limits</strong></dt>
-<dd>To know the soft limits on a sample stage, do <code class="docutils literal"><span class="pre">xafs_liny.llm</span></code> or
-<code class="docutils literal"><span class="pre">xafs_liny.hlm</span></code> for the low or high limit.</dd>
+<dd>To know the soft limits on a sample stage, do
+<code class="docutils literal"><span class="pre">xafs_y.llm.value</span></code> or <code class="docutils literal"><span class="pre">xafs_y.hlm.value</span></code> for the low or
+high limit.</dd>
 <dt><strong>Setting soft limits</strong></dt>
-<dd>To set the soft limits on a sample stage, do something like
-<code class="docutils literal"><span class="pre">xafs_liny.llm</span> <span class="pre">=</span> <span class="pre">5</span></code> or <code class="docutils literal"><span class="pre">xafs_liny.hlm</span> <span class="pre">=</span> <span class="pre">85</span></code></dd>
+<dd><p class="first">To set the soft limits on a sample stage, do something like
+<code class="docutils literal"><span class="pre">xafs_y.llm</span> <span class="pre">=</span> <span class="pre">5</span></code> or <code class="docutils literal"><span class="pre">xafs_y.hlm</span> <span class="pre">=</span> <span class="pre">85</span></code></p>
+<div class="last admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Is this right?</p>
+</div>
+</dd>
 <dt><strong>Reference stage</strong></dt>
 <dd><p class="first">The reference stage is calibrated such that the beam passes through
 the center of a slot every 45 mm.  Thus the five positions, from
 top to bottom, are -90, -45, 0, 45, and 90.  Move to a new
 positions by:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_linxs</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_ref</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>As part of a macro that changes energies, you might do something
 like:</p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">11564</span><span class="p">)</span> <span class="c1"># the Pt K edge energy</span>
-<span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_linxs</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>    <span class="c1"># the position of the Pt foil in the foil holder</span>
+<span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_ref</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>      <span class="c1"># the position of the Pt foil in the foil holder</span>
 </pre></div>
 </div>
 </dd>
@@ -328,7 +335,7 @@ spinner while it is use.</p>
 <div class="section" id="table-motors">
 <h2>2.3. Table motors<a class="headerlink" href="#table-motors" title="Permalink to this headline">¶</a></h2>
 <p>Typically, table motors are not moved individually.  When changing
-<a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">photon delivery system modes (Section 3.5.1)</span></a>, the
+<a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">photon delivery system modes (Section 3.6.1)</span></a>, the
 table should be put into the correct orientation such that the beam
 passes through the center of the ion chambers.</p>
 <p>The lateral table motors are normally disabled.</p>
@@ -375,7 +382,7 @@ passes through the center of the ion chambers.</p>
 <dl class="docutils">
 <dt><strong>Querying table position</strong></dt>
 <dd>The position of any motor can be queried with a command line like
-<code class="docutils literal"><span class="pre">xafs_table.wh()</span></code>.</dd>
+<code class="docutils literal"><span class="pre">%w</span> <span class="pre">xafs_table</span></code>.</dd>
 <dt><strong>Moving table motors</strong></dt>
 <dd><p class="first">The normal movement commands work on the real and virtual motors,
 e.g.:</p>

@@ -88,6 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
 </ul>
 
     
@@ -251,6 +252,7 @@ options are <code class="docutils literal"><span class="pre">transmission</span>
 <code class="docutils literal"><span class="pre">reference</span></code>.  <code class="docutils literal"><span class="pre">both</span></code> means to display <em>both</em> the transmission
 and fluorescence during the scan.</dd>
 </dl>
+<p>Comments begin with the hash (<code class="docutils literal"><span class="pre">#</span></code>) character and are ignored.</p>
 </div>
 <div class="section" id="scan-regions">
 <h2>5.2. Scan regions<a class="headerlink" href="#scan-regions" title="Permalink to this headline">¶</a></h2>
@@ -314,8 +316,9 @@ The sequence of 6 scans will take about 1.8 hours
 </pre></div>
 </div>
 <p>The argument is the path to the INI file described above.  The
-<code class="docutils literal"><span class="pre">DATA</span></code> variable is convenience.  It gets set to the location of your
-data folder when <a class="reference internal" href="intro.html#start-end"><span class="std std-numref">beginning an experiment (Section 1.1.1)</span></a>.</p>
+<code class="docutils literal"><span class="pre">DATA</span></code> variable simplifies the use of this plan.  <code class="docutils literal"><span class="pre">DATA</span></code> gets set
+to the location of your data folder when <a class="reference internal" href="intro.html#start-end"><span class="std std-numref">beginning an
+experiment (Section 1.1.1)</span></a>.</p>
 <p>This plan is a wrapper around <a class="reference external" href="https://nsls-ii.github.io/bluesky/plans.html#multi-dimensional-scans">BlueSky's scan_nd() plan</a>.
 It does the following chores:</p>
 <ol class="arabic simple">
@@ -331,7 +334,7 @@ enter pseudo-channel-cut mode</li>
 <li>Enables a set of suspenders which will suspend the current XAFS
 scan in the event of a beam dump or a shutter closing (the
 suspenders are disabled at the end of the scan sequence)</li>
-<li>Moves to the beginning of the scan range and begin taking scans
+<li>Moves to the beginning of the scan range and begins taking scans
 using the <code class="docutils literal"><span class="pre">scan_nd()</span></code> plan and cyclers for energy values and dwell
 times constructed from <code class="docutils literal"><span class="pre">bounds</span></code>, <code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> in
 the INI file</li>
@@ -441,10 +444,10 @@ each sample.</p>
    <span class="n">BMM_xsp</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">False</span>
    <span class="n">BMM_info</span><span class="p">(</span><span class="s1">&#39;Starting scan sequence&#39;</span><span class="p">)</span>
 
-   <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_linx</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">71.27</span><span class="p">)</span>
+   <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_x</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="mf">71.27</span><span class="p">)</span>
    <span class="k">yield from</span> <span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;sample1.ini&#39;</span><span class="p">)</span>
 
-   <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_linx</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">81.27</span><span class="p">)</span>
+   <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_x</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="mf">81.27</span><span class="p">)</span>
    <span class="k">yield from</span> <span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;sample2.ini&#39;</span><span class="p">)</span>
 
    <span class="n">BMM_xsp</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">True</span>
@@ -476,10 +479,10 @@ metadata items specific to the sample.</p>
    <span class="n">BMM_xsp</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">False</span>
    <span class="n">BMM_info</span><span class="p">(</span><span class="s1">&#39;Starting scan sequence&#39;</span><span class="p">)</span>
 
-   <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_linx</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">71.27</span><span class="p">)</span>
+   <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_x</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="mf">71.27</span><span class="p">)</span>
    <span class="k">yield from</span> <span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;scan.ini&#39;</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;sample1&#39;</span><span class="p">,</span> <span class="n">prep</span> <span class="o">=</span> <span class="s1">&#39;pressed pellet&#39;</span><span class="p">)</span>
 
-   <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_linx</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">81.27</span><span class="p">)</span>
+   <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_x</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="mf">81.27</span><span class="p">)</span>
    <span class="k">yield from</span> <span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;scan.ini&#39;</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;sample2&#39;</span><span class="p">,</span> <span class="n">prep</span> <span class="o">=</span> <span class="s1">&#39;powder on tape&#39;</span><span class="p">)</span>
 
    <span class="n">BMM_xsp</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">True</span>

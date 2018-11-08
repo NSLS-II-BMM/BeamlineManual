@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
 </ul>
 
     
@@ -148,7 +149,7 @@ this:</p>
 BlueSky name or the nickname in <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.  So,
 these are equivalent:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
-<span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_linx</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_x</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>For a motor that does not have a nickname, you must use the BlueSky
@@ -157,11 +158,14 @@ names, as in:</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">The detector for the plotted signal.  The choices are <code class="docutils literal"><span class="pre">it</span></code>,
-<code class="docutils literal"><span class="pre">if</span></code>, and <code class="docutils literal"><span class="pre">i0</span></code>.  For the <code class="docutils literal"><span class="pre">it</span></code> choice, the plot will display
-the ratio of It/I0.  Similarly for the <code class="docutils literal"><span class="pre">if</span></code> choice, the plot will
-display the sum of four silicon drift channels normalized by I0.
-For the <code class="docutils literal"><span class="pre">i0</span></code> choice, the signal on the I0 chamber will be plotted.</p>
+<li><p class="first">The detector for the plotted signal.  The choices are:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">it</span></code>: display the ratio of <code class="docutils literal"><span class="pre">It/I0</span></code></li>
+<li><code class="docutils literal"><span class="pre">if</span></code>: display the sum of four silicon drift channels normalized by <code class="docutils literal"><span class="pre">I0</span></code></li>
+<li><code class="docutils literal"><span class="pre">i0</span></code>: display the signal on <code class="docutils literal"><span class="pre">I0</span></code></li>
+<li><code class="docutils literal"><span class="pre">ir</span></code>: display the ratio of <code class="docutils literal"><span class="pre">Ir/I0</span></code></li>
+<li><code class="docutils literal"><span class="pre">both</span></code>: display both <code class="docutils literal"><span class="pre">It/I0</span></code> <em>and</em> the sum of four silicon drift channels normalized by <code class="docutils literal"><span class="pre">I0</span></code></li>
+</ul>
 </li>
 <li><p class="first">The starting position of the motor scan, relative to the current
 position.</p>
@@ -201,7 +205,7 @@ plot that is still displayed on the screen.</p>
 the cursor over the plot and read the mouse coordinates in the bottom,
 left corner of the plot window.  You can find a point in this way,
 then do a movement command line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">28.31</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mf">28.31</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -271,8 +275,8 @@ like this:</p>
 BlueSky name or the nickname in <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.  So,
 these are equivalent:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
-<span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_linx</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="n">xafs_liny</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
-<span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_linx</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_x</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_x</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>For a motor that does not have a nickname, you must use the BlueSky
@@ -320,10 +324,6 @@ Both motors will then move to the position you clicked on.</p>
 <p class="first admonition-title">Todo</p>
 <p class="last">Better sanity checking of input parameters</p>
 </div>
-<div class="admonition-todo admonition" id="index-2">
-<p class="first admonition-title">Todo</p>
-<p class="last">Non-square scans</p>
-</div>
 <div class="section" id="plucking-a-point-from-an-area-scan">
 <h3>4.3.1. Plucking a point from an area scan<a class="headerlink" href="#plucking-a-point-from-an-area-scan" title="Permalink to this headline">¶</a></h3>
 <p>If you want to repeat the action of clicking on a point and moving the
@@ -339,7 +339,7 @@ plot that is still displayed on the screen.</p>
 the cursor over the plot and read the mouse coordinates in the bottom,
 left corner of the plot window.  You can find a point in this way,
 then do a movement command line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_linx</span><span class="p">,</span> <span class="mf">28.31</span><span class="p">,</span> <span class="n">xafs_liny</span><span class="p">,</span> <span class="mf">113.97</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_x</span><span class="p">,</span> <span class="mf">28.31</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="mf">113.97</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

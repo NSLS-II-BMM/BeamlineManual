@@ -29,18 +29,20 @@ The arguments are:
    these are equivalent::
 
      RE(linescan('it', 'x', -4, 4, 81))
-     RE(linescan('it', xafs_linx, -4, 4, 81))
+     RE(linescan('it', xafs_x, -4, 4, 81))
 
    For a motor that does not have a nickname, you must use the BlueSky
    names, as in::
 
      RE(linescan('it', slits3_outboard, -1, 1, 21))
 
-#. The detector for the plotted signal.  The choices are ``it``,
-   ``if``, and ``i0``.  For the ``it`` choice, the plot will display
-   the ratio of It/I0.  Similarly for the ``if`` choice, the plot will
-   display the sum of four silicon drift channels normalized by I0.
-   For the ``i0`` choice, the signal on the I0 chamber will be plotted.
+#. The detector for the plotted signal.  The choices are:
+
+   * ``it``: display the ratio of ``It/I0``
+   * ``if``: display the sum of four silicon drift channels normalized by ``I0`` 
+   * ``i0``: display the signal on ``I0``
+   * ``ir``: display the ratio of ``Ir/I0``
+   * ``both``: display both ``It/I0`` *and* the sum of four silicon drift channels normalized by ``I0`` 
 
 #. The starting position of the motor scan, relative to the current
    position.
@@ -84,7 +86,7 @@ the cursor over the plot and read the mouse coordinates in the bottom,
 left corner of the plot window.  You can find a point in this way,
 then do a movement command line::
 
-  RE(mv(xafs_liny, 28.31))
+  RE(mv(xafs_y, 28.31))
 
 
 Revisit a line scan
@@ -161,8 +163,8 @@ The arguments are:
    these are equivalent::
 
      RE(areascan('it', 'x', -4, 4, 81, 'y', -2, 2, 41))
-     RE(areascan('it', xafs_linx, -4, 4, 81, xafs_liny, -2, 2, 41))
-     RE(areascan('it', xafs_linx, -4, 4, 81, 'y', -2, 2, 41))
+     RE(areascan('it', xafs_x, -4, 4, 81, xafs_y, -2, 2, 41))
+     RE(areascan('it', xafs_x, -4, 4, 81, 'y', -2, 2, 41))
 
    For a motor that does not have a nickname, you must use the BlueSky
    name, as in this very silly example::
@@ -207,8 +209,6 @@ You can skip the :quoted:`click for motor position` step by typing
 
 .. todo:: Better sanity checking of input parameters
 
-.. todo:: Non-square scans
-
 
 Plucking a point from an area scan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -228,7 +228,7 @@ the cursor over the plot and read the mouse coordinates in the bottom,
 left corner of the plot window.  You can find a point in this way,
 then do a movement command line::
 
-  RE(mv(xafs_linx, 28.31, xafs_liny, 113.97))
+  RE(mv(xafs_x, 28.31, xafs_y, 113.97))
 
 
 

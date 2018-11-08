@@ -76,9 +76,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Photon Delivery System</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#shutters">3.1. Shutters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#monochromator">3.2. Monochromator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mirrors">3.3. Mirrors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#end-station-slits">3.4. End station slits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#changing-configurations">3.5. Changing configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#post-mono-slits">3.3. Post-mono slits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mirrors">3.4. Mirrors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#end-station-slits">3.5. End station slits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-configurations">3.6. Changing configurations</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
@@ -86,6 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
 </ul>
 
     
@@ -170,14 +172,11 @@ the BMM nomenclature:</p>
 <div class="section" id="monochromator">
 <h2>3.2. Monochromator<a class="headerlink" href="#monochromator" title="Permalink to this headline">¶</a></h2>
 <p>The monochromator consists of 8 motors.  It should never be necessary
-to interact directly with any of the motors.  Plans exist for
+to interact directly with any of the physical motors.  Plans exist for
 facilitating any actions a user should ever need.</p>
 <dl class="docutils">
 <dt><strong>Query the current energy</strong></dt>
-<dd><p class="first">To know the position and energy of the monochrmomator:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>dcm.wh()
-</pre></div>
-</div>
+<dd><p class="first">To know the position and energy of the monochrmomator: <code class="docutils literal"><span class="pre">%w</span> <span class="pre">dcm</span></code></p>
 <p>This returns a short report like this:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Energy = 19300.1   reflection = Si(111)
 current: Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
@@ -220,7 +219,7 @@ profile.</p>
 <p>You can do the rocking curve scan by looking at the signal on the
 Bicron which is used as the incident beam monitor for the XRD end
 station.  Do:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">(</span><span class="n">detector</span><span class="o">=</span><span class="s1">&#39;Bircron&#39;</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">(</span><span class="n">detector</span><span class="o">=</span><span class="s1">&#39;Bicron&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>You can tune the second crystal by hand with these commands:</p>
@@ -238,18 +237,105 @@ When you move to a lower energy, you usually need to tune in the
 </dd>
 </dl>
 </div>
+<div class="section" id="post-mono-slits">
+<h2>3.3. Post-mono slits<a class="headerlink" href="#post-mono-slits" title="Permalink to this headline">¶</a></h2>
+<p>After the mono, before the focusing mirror, in Diagnostic Module 2,
+there is a four-blade slit system.  These are used to define the beam
+size on the mirrors and to refine energy resolution for the focused
+beam..</p>
+<table border="1" class="docutils" id="slits2-motors">
+<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">Post mono slit motors</span><a class="headerlink" href="#slits2-motors" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="23%" />
+<col width="12%" />
+<col width="35%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">motor</th>
+<th class="head">units</th>
+<th class="head">notes</th>
+<th class="head">motion type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>slits2_top</td>
+<td>mm</td>
+<td>top blade position</td>
+<td>single axis</td>
+</tr>
+<tr class="row-odd"><td>slits2_bottom</td>
+<td>mm</td>
+<td>bottom blade position</td>
+<td>single axis</td>
+</tr>
+<tr class="row-even"><td>slits2_inboard</td>
+<td>mm</td>
+<td>inboard blade position</td>
+<td>single axis</td>
+</tr>
+<tr class="row-odd"><td>slits2_outboard</td>
+<td>mm</td>
+<td>outboard blade position</td>
+<td>single axis</td>
+</tr>
+<tr class="row-even"><td>slits2_hsize</td>
+<td>mm</td>
+<td>horizontal size</td>
+<td>coordinated motion</td>
+</tr>
+<tr class="row-odd"><td>slits2_hcenter</td>
+<td>mm</td>
+<td>horizontal center</td>
+<td>coordinated motion</td>
+</tr>
+<tr class="row-even"><td>slits2_vsize</td>
+<td>mm</td>
+<td>vertical size</td>
+<td>coordinated motion</td>
+</tr>
+<tr class="row-odd"><td>slits2_vcenter</td>
+<td>mm</td>
+<td>vertical center</td>
+<td>coordinated motion</td>
+</tr>
+</tbody>
+</table>
+<p>The individual blades are moved like any other motor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">slits2</span><span class="o">.</span><span class="n">outboard</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">slits2</span><span class="o">.</span><span class="n">top</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Coordinated motions are moved the same way:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">slits2</span><span class="o">.</span><span class="n">hsize</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">slits2</span><span class="o">.</span><span class="n">vcenter</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>To know the current positions of the slit blades and their coordinated
+motions, use <code class="docutils literal"><span class="pre">%w</span> <span class="pre">slits2</span></code></p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1966]: %w slits2
+SLITS2:
+     vertical   size   =   1.350 mm          Top      =   0.675
+     vertical   center =   0.000 mm          Bottom   =  -0.675
+     horizontal size   =   8.000 mm          Outboard =   4.000
+     horizontal center =   0.000 mm          Inboard  =  -4.000
+</pre></div>
+</div>
+</div>
 <div class="section" id="mirrors">
-<h2>3.3. Mirrors<a class="headerlink" href="#mirrors" title="Permalink to this headline">¶</a></h2>
+<h2>3.4. Mirrors<a class="headerlink" href="#mirrors" title="Permalink to this headline">¶</a></h2>
 <p>Mirrors are set as part of the mode changing plan.  Unless you know
 exactly what you are doing, you should never move the mirrors.
-Adjusting mirrors by hand is a poor idea.  Changing the mirror
-positions in any way changes the height and inclination of the beam as
-it enters the end station.  This requires changes in positions of the
-slits, the XAFS table, and other parts of the photon delivery system.</p>
+Adjusting mirrors by hand is a poor idea.  (Adjusting M1 by hand is a
+horrible idea -- unless you know exactly what you are doing and why.)
+Changing the mirror positions in any way changes the height and
+inclination of the beam as it enters the end station.  This requires
+changes in positions of the slits, the XAFS table, and other parts of
+the photon delivery system.</p>
 <p><strong>In short, don't move the mirror motors.</strong></p>
 <p>That said, if you want to know the current positions of the motors on
-the focusing mirror, use <code class="docutils literal"><span class="pre">m2.wh()</span></code></p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>In [1903]: m2.wh()
+the focusing mirror, use <code class="docutils literal"><span class="pre">%w</span> <span class="pre">m2</span></code></p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1903]: %w m2
 M2:
      vertical =   6.000 mm           YU  =   6.000
      lateral  =   0.000 mm           YDO =   6.000
@@ -259,8 +345,8 @@ M2:
      bender   =  163789.0 steps
 </pre></div>
 </div>
-<p>For the harmonic rejection mirror, use <code class="docutils literal"><span class="pre">m3.wh()</span></code></p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>In [1904]: m3.wh()
+<p>For the harmonic rejection mirror, use <code class="docutils literal"><span class="pre">%w</span> <span class="pre">m3</span></code></p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1904]: %w m3
 M3: (Rh/Pt stripe)
      vertical =   0.000 mm           YU  =  -1.167
      lateral  =  15.001 mm           YDO =   1.167
@@ -271,12 +357,12 @@ M3: (Rh/Pt stripe)
 </div>
 </div>
 <div class="section" id="end-station-slits">
-<h2>3.4. End station slits<a class="headerlink" href="#end-station-slits" title="Permalink to this headline">¶</a></h2>
+<h2>3.5. End station slits<a class="headerlink" href="#end-station-slits" title="Permalink to this headline">¶</a></h2>
 <p>Near the end of the photon delivery system, in Diagnostic Module 3 in
 the end station, there is a four-blade slit system.  These are used
 to define the beam size on the sample.</p>
 <table border="1" class="docutils" id="slits3-motors">
-<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">End station slit motors</span><a class="headerlink" href="#slits3-motors" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">End station slit motors</span><a class="headerlink" href="#slits3-motors" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="23%" />
 <col width="12%" />
@@ -344,8 +430,8 @@ to define the beam size on the sample.</p>
 </pre></div>
 </div>
 <p>To know the current positions of the slit blades and their coordinated
-motions, use <code class="docutils literal"><span class="pre">slits3.wh()</span></code></p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>In [1966]: slits3.wh()
+motions, use <code class="docutils literal"><span class="pre">%w</span> <span class="pre">slits3</span></code></p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>In [1966]: %w slits3
 SLITS3:
      vertical   size   =   1.350 mm          Top      =   0.675
      vertical   center =   0.000 mm          Bottom   =  -0.675
@@ -355,16 +441,16 @@ SLITS3:
 </div>
 </div>
 <div class="section" id="changing-configurations">
-<h2>3.5. Changing configurations<a class="headerlink" href="#changing-configurations" title="Permalink to this headline">¶</a></h2>
+<h2>3.6. Changing configurations<a class="headerlink" href="#changing-configurations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="photon-delivery-modes">
-<span id="change-mode"></span><h3>3.5.1. Photon delivery modes<a class="headerlink" href="#photon-delivery-modes" title="Permalink to this headline">¶</a></h3>
+<span id="change-mode"></span><h3>3.6.1. Photon delivery modes<a class="headerlink" href="#photon-delivery-modes" title="Permalink to this headline">¶</a></h3>
 <p>A look-up table is used to move the elements of the photon delivery
 system to their correct locations for the different energy ranges and
 focusing conditions.  Here is a table of different photon delivery
 modes.  Modes A-F are for delivery of light to the XAS end station.
 Mode XRD delivers high energy, focused beam to the goniometer.</p>
 <table border="1" class="docutils" id="pds-modes">
-<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Photon delivery modes</span><a class="headerlink" href="#pds-modes" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3.3 </span><span class="caption-text">Photon delivery modes</span><a class="headerlink" href="#pds-modes" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="14%" />
 <col width="28%" />
@@ -395,11 +481,11 @@ Mode XRD delivers high energy, focused beam to the goniometer.</p>
 </tr>
 <tr class="row-even"><td>E</td>
 <td>✗</td>
-<td>below 6 keV</td>
+<td>6 keV – 8 keV</td>
 </tr>
 <tr class="row-odd"><td>F</td>
 <td>✗</td>
-<td>6 keV – 8 keV</td>
+<td>below 6 keV</td>
 </tr>
 <tr class="row-even"><td>XRD</td>
 <td>✓</td>
@@ -409,6 +495,10 @@ Mode XRD delivers high energy, focused beam to the goniometer.</p>
 </table>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
+<p class="last">Lookup table not complete for mode B</p>
+</div>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
 <p class="last">Lookup table for low energy delivery of light to goniometer</p>
 </div>
 <p>To move between modes, do:</p>
@@ -416,15 +506,20 @@ Mode XRD delivers high energy, focused beam to the goniometer.</p>
 </pre></div>
 </div>
 <p>where <code class="docutils literal"><span class="pre">&lt;mode&gt;</span></code> is one of the strings in the first column of
-<a class="reference internal" href="#pds-modes"><span class="std std-numref">Table 3.2</span></a>.  For example:</p>
+<a class="reference internal" href="#pds-modes"><span class="std std-numref">Table 3.3</span></a>.  For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_modes</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>This will move 17 motors all at the same time and should take less
 than 2 minutes.</p>
+<p>Note that the bender on the focusing mirror is not adjusted by the
+<code class="docutils literal"><span class="pre">change_mode()</span></code> plan.  You will likely need to adjust the curvature
+– thus the focal length – by hand.  Focusing at the XAS end
+station requires that bender be near its upper limit.  Focusing at the
+XRD station uses much less focus.</p>
 </div>
 <div class="section" id="monochromator-crystals">
-<span id="change-crystals"></span><h3>3.5.2. Monochromator crystals<a class="headerlink" href="#monochromator-crystals" title="Permalink to this headline">¶</a></h3>
+<span id="change-crystals"></span><h3>3.6.2. Monochromator crystals<a class="headerlink" href="#monochromator-crystals" title="Permalink to this headline">¶</a></h3>
 <p>To change between the Si(111) and Si(311) crystals, do:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_crystals</span><span class="p">(</span><span class="s1">&#39;111&#39;</span><span class="p">))</span>
 </pre></div>
@@ -436,7 +531,8 @@ than 2 minutes.</p>
 <p>This will move the lateral motor of the monochromator between the two
 crystal sets and adjust the pitch of the second crystal to be nearly
 in tune and the roll to deliver the beam to nearly the same location
-for both crystals.  This also should take less than 3 minutes.</p>
+for both crystals.  This also is quick and should take less than 3
+minutes.</p>
 <p>The <code class="docutils literal"><span class="pre">change_xtals()</span></code> plan also runs the <a class="reference internal" href="linescans.html#special-linescans"><span class="std std-numref">rocking curve
 (Section 4.2)</span></a> macro to fix the tuning of the
 second crystal.</p>
