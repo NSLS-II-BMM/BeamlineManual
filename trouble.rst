@@ -15,7 +15,7 @@ Exiting BlueSky
 
 There are a small number of ways that you can unintentionally find
 yourself outside of BlueSky.  One of them is to accidentally hit
-:button:`Ctrl`-:button:`z`, which is unfortunately located right next
+:button:`Ctrl`-:button:`z`, which is unfortunately located close
 to :button:`Ctrl`-:button:`c`.  
 
 :button:`Ctrl`-:button:`z` serves to suspend BlueSky, temporarily
@@ -29,8 +29,9 @@ returning you to the Unix command line.  It looks like this:
 
    Accidentally exiting BlueSky and returning to the Unix command line.
 
-To resume BlueSky, type the command `fg` and hit enter.  You will find
-yourself back at the BlueSky prompt and can carry on normally.
+To resume BlueSky, type the command ``fg`` and hit :button:`Enter`.
+You will find yourself back at the BlueSky prompt and can carry on
+normally.
 
 
 Failed search

@@ -24,8 +24,8 @@ As a reminder, here is the table of operating modes.
    B      |checkmark|  below 6 keV
    C      |checkmark|  6 keV |nd| 8 keV
    D      |xmark|      above 8 keV
-   E      |xmark|      below 6 keV
-   F      |xmark|      6 keV |nd| 8 keV
+   E      |xmark|      6 keV |nd| 8 keV
+   F      |xmark|      below 6 keV
    XRD    |checkmark|  above 8 keV
    ====== ============ ========================= 
 
@@ -78,10 +78,10 @@ small sample at the vanadium K edge.
 	  At this time, some additional adjustments of the mirrors
 	  will be required to optimize focus at the XAS position.
 
-#. If the beam has recently been focused at the XRD station, you may
+#. If the beam has recently been focused at the XRD station, you will
    also need to adjust the bender on M2 to optimize vertical focus at
-   the XAS station.  This is best done with the small CCD camera
-   sitting in the XAS sample stage.
+   the XAS station (or vice versa).  This is best done with the small
+   CCD camera sitting in the XAS sample stage.
 
 #. Again, iterating the optimization of the rocking curve and slit
    height might be necessary.

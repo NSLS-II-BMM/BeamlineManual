@@ -43,7 +43,7 @@ the bsui command line.  Here is an example:
         132.000   0.000   0.000 132.000 132.000 132.000
 
    XAFS stages:
-           linx     liny    roll    pitch    linxs    roth     rotb     rots
+             x        y     roll    pitch    linxs    roth    wheel     rots
            9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
    ==============================================================================
 
@@ -62,33 +62,33 @@ other places instead of writing out the BlueSky's name for the motor.
    ========== ========= ===========  =========  ===================  ===============================
    motor      nickname  type         units      notes                directions
    ========== ========= ===========  =========  ===================  ===============================
-   xafs_linx  x         linear       mm         main sample stage    |plus| outboard, - inboard
-   xafs_liny  y         linear       mm         main sample stage    |plus| up, - down
-   xafs_linxs xs        linear       mm         reference stage      |plus| up, - down
+   xafs_x     x         linear       mm         main sample stage    |plus| outboard, - inboard
+   xafs_y     y         linear       mm         main sample stage    |plus| up, - down
+   xafs_ref   ref       linear       mm         reference stage      |plus| up, - down
    xafs_pitch pitch     tilt         degrees    Huber tilt stage     |plus| more positive
    xafs_roll  roll      tilt         degrees    Huber tilt stage     |plus| more positive
-   xafs_roth  rh        rotary       degrees    Huber circle         |plus| more positive
-   xafs_rotb  rb        rotary       degrees    large rotary stage   |plus| more positive
+   xafs_wheel wh        rotary       degrees    large rotary stage   |plus| clockwise, - widdershins
    xafs_rots  rs        rotary       degrees    small rotary stage   |plus| more positive
+   xafs_roth  rh        rotary       degrees    Huber circle         |plus| more positive
    ========== ========= ===========  =========  ===================  ===============================
 
 Configuration and position of the motors can be queried easily.  In
-the following examples, the ``xafs_liny`` motor is used.  The commands
+the following examples, the ``xafs_y`` motor is used.  The commands
 are the same for all sample stage motors.
 
 **Querying position**
    The position of any motor can be queried with a command line like
-   ``%w xafs_liny``. 
+   ``%w xafs_y``. 
 
 **Moving to a new position**
    Always move motors through the run engine, for example: ::
 
-      RE(mvr(xafs_liny, 10))
+      RE(mvr(xafs_y, 10))
 
    ``mvr`` is the relative move command |nd| the numerical argument is
    the amount to move from the current position. ``mv``, as in::
 
-      RE(mv(xafs_liny, 37.63))
+      RE(mv(xafs_y, 37.63))
 
    is the absolute move command.  The numerical argument is the
    position to which the motor will move.
@@ -99,22 +99,22 @@ are the same for all sample stage motors.
    To move a sample stage as part of a :numref:`macro (Section %s)
    <macro>` , do::
 
-     yield from mv(xafs_liny, 37.36)
+     yield from mv(xafs_y, 37.36)
 
    You can combine motions of two or more motors in a single
    synchronous movement::
 
-     yield from mv(xafs_liny, 37.36, xafs_linx, 15.79)
+     yield from mv(xafs_y, 37.36, xafs_x, 15.79)
 
 
 **Querying soft limits**
    To know the soft limits on a sample stage, do
-   ``xafs_liny.llm.value`` or ``xafs_liny.hlm.value`` for the low or
+   ``xafs_y.llm.value`` or ``xafs_y.hlm.value`` for the low or
    high limit. 
 
 **Setting soft limits**
    To set the soft limits on a sample stage, do something like
-   ``xafs_liny.llm = 5`` or ``xafs_liny.hlm = 85``
+   ``xafs_y.llm = 5`` or ``xafs_y.hlm = 85``
 
    .. caution:: Is this right?
 
@@ -124,13 +124,13 @@ are the same for all sample stage motors.
    top to bottom, are -90, -45, 0, 45, and 90.  Move to a new
    positions by::
 
-     RE(mv(xafs_linxs, -45))
+     RE(mv(xafs_ref, -45))
 
    As part of a macro that changes energies, you might do something
    like::
 
      yield from mv(dcm.energy, 11564) # the Pt K edge energy
-     yield from mv(xafs_linxs, 45)    # the position of the Pt foil in the foil holder
+     yield from mv(xafs_ref, 45)      # the position of the Pt foil in the foil holder
 
 Sample spinner
 --------------

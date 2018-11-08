@@ -55,7 +55,7 @@ This will print the following report to the screen:
         132.000   0.000   0.000 132.000 132.000 132.000
 
    XAFS stages:
-           linx     liny    roll    pitch    linxs    roth     rotb     rots
+             x        y     roll    pitch    linxs    roth    wheel     rots
            9.224  115.000   0.840   0.000  -45.000    0.000  -59.000    0.000
    ==============================================================================
 

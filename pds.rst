@@ -44,7 +44,7 @@ Monochromator
 -------------
 
 The monochromator consists of 8 motors.  It should never be necessary
-to interact directly with any of the motors.  Plans exist for
+to interact directly with any of the physical motors.  Plans exist for
 facilitating any actions a user should ever need.
 
 **Query the current energy**
@@ -112,17 +112,66 @@ facilitating any actions a user should ever need.
    When you move to a lower energy, you usually need to tune in the
    ``tu()`` direction.  Obviously.....
 
+Post-mono slits
+---------------
+
+After the mono, before the focusing mirror, in Diagnostic Module 2,
+there is a four-blade slit system.  These are used to define the beam
+size on the mirrors and to refine energy resolution for the focused
+beam..
+
+
+.. table:: Post mono slit motors
+   :name:  slits2-motors
+
+   ===============   ========  =======================  ===================
+   motor             units     notes                    motion type
+   ===============   ========  =======================  ===================
+   slits2_top        mm        top blade position       single axis
+   slits2_bottom     mm        bottom blade position    single axis
+   slits2_inboard    mm        inboard blade position   single axis
+   slits2_outboard   mm        outboard blade position  single axis
+   slits2_hsize      mm        horizontal size          coordinated motion
+   slits2_hcenter    mm        horizontal center        coordinated motion
+   slits2_vsize      mm        vertical size            coordinated motion
+   slits2_vcenter    mm        vertical center          coordinated motion
+   ===============   ========  =======================  ===================
+
+
+The individual blades are moved like any other motor::
+
+  RE(mv(slits2.outboard, -0.5))
+  RE(mvr(slits2.top, -0.1))
+
+
+Coordinated motions are moved the same way::
+
+  RE(mv(slits2.hsize, 6))
+  RE(mvr(slits2.vcenter, -0.1))
+
+To know the current positions of the slit blades and their coordinated
+motions, use ``%w slits2``
+
+.. code-block:: text
+
+   In [1966]: %w slits2
+   SLITS2:
+        vertical   size   =   1.350 mm          Top      =   0.675
+        vertical   center =   0.000 mm          Bottom   =  -0.675
+        horizontal size   =   8.000 mm          Outboard =   4.000
+        horizontal center =   0.000 mm          Inboard  =  -4.000
+
 Mirrors
 -------
 
 Mirrors are set as part of the mode changing plan.  Unless you know
 exactly what you are doing, you should never move the mirrors.
 Adjusting mirrors by hand is a poor idea.  (Adjusting M1 by hand is a
-horrible idea -- unless you know exactly what you are doing and you
-have a plan.)  Changing the mirror positions in any way changes the
-height and inclination of the beam as it enters the end station.  This
-requires changes in positions of the slits, the XAFS table, and other
-parts of the photon delivery system.
+horrible idea -- unless you know exactly what you are doing and why.)
+Changing the mirror positions in any way changes the height and
+inclination of the beam as it enters the end station.  This requires
+changes in positions of the slits, the XAFS table, and other parts of
+the photon delivery system.
 
 **In short, don't move the mirror motors.**
 
@@ -227,10 +276,12 @@ Mode XRD delivers high energy, focused beam to the goniometer.
    B      |checkmark|  below 6 keV
    C      |checkmark|  6 keV |nd| 8 keV
    D      |xmark|      above 8 keV
-   E      |xmark|      below 6 keV
-   F      |xmark|      6 keV |nd| 8 keV
+   E      |xmark|      6 keV |nd| 8 keV
+   F      |xmark|      below 6 keV
    XRD    |checkmark|  above 8 keV
    ====== ============ ========================= 
+
+.. todo:: Lookup table not complete for mode B
 
 .. todo:: Lookup table for low energy delivery of light to goniometer
 
@@ -245,6 +296,12 @@ where ``<mode>`` is one of the strings in the first column of
 
 This will move 17 motors all at the same time and should take less
 than 2 minutes.
+
+Note that the bender on the focusing mirror is not adjusted by the
+``change_mode()`` plan.  You will likely need to adjust the curvature
+|nd| thus the focal length |nd| by hand.  Focusing at the XAS end
+station requires that bender be near its upper limit.  Focusing at the
+XRD station uses much less focus.
 
 .. _change-crystals:
 
