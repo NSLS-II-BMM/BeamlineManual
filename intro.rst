@@ -139,7 +139,7 @@ Starting and ending an experiment
 
 When a new experiment begins, run the command::
 
-  new_experiment('/home/xf06bm/Data/Visitors/Henrietta User/2019-02-28', gup=333123, saf=343123)
+  start_experiment(name='Betty Cooper', date='2019-02-28', gup=123456, saf=654321)
 
 This will create that data folder and populate it with an
 :numref:`experimental log (Section %s) <log>`, define the ``DATA``
@@ -148,6 +148,10 @@ a :numref:`scan.ini file (Section %s) <xafs>`, write a template for a
 :numref:`macro file (Section %s) <macro>`, configure the logger to
 write a user log file for this experiment, and set the GUP and SAF
 numbers as metadata for output files.
+
+The ``name`` should be the PI's full name, preferably transliterated
+into normal ASCII.  The ``date`` should be the starting day of the
+experiment in the ``YYYY-MM-DD`` format.
 
 Once the experiment is finished, run this command::
 

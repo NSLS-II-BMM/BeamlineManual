@@ -294,6 +294,15 @@ Pause a scan and *resume*
   The scan will then terminate, returning all motors and detectors to
   their resting state.
 
+  This will also terminate a paused scan::
+
+    RE.abort()
+
+  The difference is that ``RE.stop()`` will tag the database entry of
+  the current scan as ``success`` while ``RE.abort()`` will tag it as
+  ``failed``.  In every other way, the two are equivalent |nd| each
+  one will shut the scan down gracefully.
+
 Pause a scan due to external events
   When the XAFS scan starts, it initiates a set of `suspenders
   <https://nsls-ii.github.io/bluesky/state-machine.html#automated-suspension>`_

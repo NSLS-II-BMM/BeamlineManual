@@ -169,7 +169,7 @@ The arguments are:
    For a motor that does not have a nickname, you must use the BlueSky
    name, as in this very silly example::
 
-     RE(linescan('it', slits3_outboard, -1, 1, 21, dcm_pitch, -2, 2, 41))
+     RE(areascan('it', slits3_outboard, -1, 1, 21, dcm_pitch, -2, 2, 41))
 
 #. The starting position of the slow motor, relative to the current
    position.

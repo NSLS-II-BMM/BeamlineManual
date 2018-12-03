@@ -114,9 +114,7 @@ are the same for all sample stage motors.
 
 **Setting soft limits**
    To set the soft limits on a sample stage, do something like
-   ``xafs_y.llm = 5`` or ``xafs_y.hlm = 85``
-
-   .. caution:: Is this right?
+   ``xafs_y.llm.value = 5`` or ``xafs_y.hlm.value = 85``
 
 **Reference stage**
    The reference stage is calibrated such that the beam passes through
@@ -131,6 +129,7 @@ are the same for all sample stage motors.
 
      yield from mv(dcm.energy, 11564) # the Pt K edge energy
      yield from mv(xafs_ref, 45)      # the position of the Pt foil in the foil holder
+     yield from mvr(xafs_wheel, 15)   # the next slot on the sample wheel
 
 Sample spinner
 --------------
