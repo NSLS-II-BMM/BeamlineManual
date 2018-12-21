@@ -93,7 +93,7 @@ are the same for all sample stage motors.
    is the absolute move command.  The numerical argument is the
    position to which the motor will move.
 
-   All movements are logged in the :numref:`experimental log (Section %s) <log>`
+   All movements are logged in the :numref:`experimental log (Section %s) <logfile>`
 
 **Moving to a new position in a plan**
    To move a sample stage as part of a :numref:`macro (Section %s)

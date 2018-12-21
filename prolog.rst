@@ -38,3 +38,4 @@
 .. |plus|    unicode:: U+002B .. PLUS SIGN
 .. |checkmark| unicode:: U+2713 .. CHECK MARK
 .. |xmark|     unicode:: U+2717 .. BALLOT X
+.. |harr|      unicode:: U+02194 .. LEFT RIGHT ARROW

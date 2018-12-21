@@ -197,7 +197,8 @@ html_static_path = ['_static',]
 html_sidebars = {
     '**': ['globaltoc.html',
            os.path.abspath(os.path.join('_static', 'linksbox.html')),
-            'searchbox.html',
+           'searchbox.html',
+           os.path.abspath(os.path.join('_static', 'sourcelink.html')),
         ],
 }
     

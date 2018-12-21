@@ -30,8 +30,8 @@ As a reminder, here is the table of operating modes.
    ====== ============ ========================= 
 
 
-A large change of energy
-------------------------
+Change energy
+-------------
 
 Suppose that you want to move the monochromator from 8 keV to 15 keV.
 This is a fairly low-overhead change to beamline configuration as both
@@ -59,8 +59,8 @@ A couple of caveats about this.
    enough that the tuned beam is not centered on the slits, then an
    iteration of the rocking curve optimization is necessary.
 
-A change of mode
-----------------
+Change mode
+-----------
 
 Suppose that you want to change from high-energy, unfocused operations
 to low energy, focused.  That is, you are changing from mode D to mode
@@ -86,8 +86,8 @@ small sample at the vanadium K edge.
 #. Again, iterating the optimization of the rocking curve and slit
    height might be necessary.
 
-A change of monochromator crystals
-----------------------------------
+Change crystals
+---------------
 
 Suppose you wanted to change from the Pt L3 edge (11564 eV) on the
 Si(111) crystal to the same energy on the Si(311) crystal.
@@ -128,8 +128,8 @@ before exploring the rocking curve.
 
 
 
-A change from XAS to XRD
-------------------------
+Change XAS |harr| XRD
+---------------------
 
 Begin this transition by leaving the I0 chamber in place to monitor
 the incidence flux.  Do:

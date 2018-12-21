@@ -185,8 +185,10 @@ sequence.
 .. todo:: Improve heuristic by doing statistics on scans
 
 
-Running an XAFS scan
---------------------
+.. _xafsscan:
+
+Run an XAFS scan
+----------------
 
 To run a scan, do this::
 
@@ -267,8 +269,8 @@ type ``DATA`` at the command line and hit :button:`Enter`.
 
 .. _interrupt:
 
-Interrupting an XAFS scan
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Interrupt an XAFS scan
+~~~~~~~~~~~~~~~~~~~~~~
 
 There are several scenarios where you may need to interrupt or halt an
 XAFS scan.
@@ -318,8 +320,8 @@ Pause a scan due to external events
 `Here is a summary of pausing, resuming, and stopping scans
 <https://nsls-ii.github.io/bluesky/state-machine.html#summary>`_.
 
-Revisiting an XAFS scan
------------------------
+Revisit an XAFS scan
+--------------------
 
 Grab a database entry and write it to an XDI file::
 

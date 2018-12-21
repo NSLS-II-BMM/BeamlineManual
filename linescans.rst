@@ -108,8 +108,8 @@ experimental log.
 
 .. _special-linescans:
 
-Special purpose line scans
---------------------------
+Specific line scans
+-------------------
 
 A number of line scan types are so common and so often performed with
 the same arguments that they have special names.
@@ -149,6 +149,10 @@ heat map.  At BMM this sort of scan is typically done using the
 ``areascan()`` plan.  This is a wrapper around BlueSky's
 `rel_grid_scan()
 <https://nsls-ii.github.io/bluesky/generated/bluesky.plans.rel_grid_scan.html#bluesky.plans.rel_grid_scan>`_.
+Because the sample stages at BMM do not have encoders, the area scan
+is made by `retreading the direction
+<http://nsls-ii.github.io/bluesky/tutorial.html#scan-multiple-motors-in-a-grid>`_
+of the fast motor rather than snaking back and forth.
 
 In BMM's ``areascan()`` plan, the scan is always a relative scan
 around the current positions of both motors being scanned.  It works

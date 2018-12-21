@@ -9,8 +9,8 @@ Experimental Log
 ================
 
 At BMM, we are trying to run the system in a way that automatically
-generates a useful electronic log book.  This is meant to supplement,
-not replace, a paper log book or a fancy online service like `Olog
+generates a useful electronic log book.  This is meant to complement,
+not replace, a paper log book or an online system like `Olog
 <http://olog.github.io/2.2.7-SNAPSHOT/>`_. 
 
 The point of the BMM experimental log is to capture with time stamps
@@ -80,6 +80,12 @@ experimental log.
    :label: _fig-snapshots
 
 
+.. note:: Web camera snapshots, like :numref:`Figure %s <fig-xascam>`,
+	  are now annotated with a timestamp, the scan file name, and
+	  some NIST/BMM branding.  This annotation is on a
+	  semi-transparent white bar at the bottom of the the image.
+
+
 .. todo:: Have database consume snapshots with pointers from each scan
           connected with the snapshot
 
@@ -90,7 +96,7 @@ Log file
 
 At the beginning of a user experiment, run something like this command::
 
-  new_experiment('/home/xf06bm/Data/Visitors/Betty Cooper/2019-02-28', gup=333123, saf=343123)
+  start_experiment('Betty Cooper', date='2019-02-28', gup=123456, saf=654321)
 
 Among other things, this instruments the logger to maintain a log file
 specifically for the current experiment.  The logger also maintains a
@@ -131,4 +137,40 @@ BMM also uses `Bluesky's msg_hook
 This is how ``mv()`` and ``mvr()`` commands are captured in the log.
 This bespoke message hook parses the document returned by BlueSky for
 specific kinds of events and captures a log message when appropriate.
+
+.. _dossier:
+
+Scan dossier
+------------
+
+.. note:: This is a new feature for the 2019-1 cycle
+
+The BMM data collection system now captures a dossier for each scan
+sequence that is run.  The definition of a scan sequence is a call to 
+:numref:`the xafs program (Section %s) <xafsscan>`, which may
+involve multiple repetitions of the scan.
+
+The dossier is a static html file which captures most of the
+information discussed on this page.  It includes, links to each
+individual data file, the transient ID and UID for each scan, links to
+the snapshots, tables of information from :numref:`the INI file
+(Section %s) <ini>`, a verbatim copy of the INI file, and a table of
+motor positions at the time of the beginning of the scan sequence.
+
+These dossiers aggregate other assets described on this page and
+complement the user's paper logbook by providing comprehensive
+summaries of all the information relevant to the scan sequence
+provided by the user and gleaned from beamline instrumentation.
+
+.. _fig-dossier:
+.. figure::  _images/dossier.png
+   :target: _images/dossier.png
+   :width: 70%
+   :align: center
+
+   An example of the scan sequence dossier, displayed in a web browser.
+
+.. todo:: Manifest and top-level html dossier
+
+.. todo:: Gather scan sequence into an Athena project file
 

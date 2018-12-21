@@ -10,7 +10,7 @@ Troubleshooting
 In this section, solutions are given for problems that BMM's visitors
 occasionally encounter.
 
-Exiting BlueSky
+Pausing BlueSky
 ---------------
 
 There are a small number of ways that you can unintentionally find
@@ -29,9 +29,34 @@ returning you to the Unix command line.  It looks like this:
 
    Accidentally exiting BlueSky and returning to the Unix command line.
 
+Note that BlueSky said :quoted:`Stopped`, then the white and blue
+prompt is presented.  This indicates that BlueSky is paused rather
+than exited.
+
 To resume BlueSky, type the command ``fg`` and hit :button:`Enter`.
 You will find yourself back at the BlueSky prompt and can carry on
 normally.
+
+Exiting BlueSky
+---------------
+
+Another possibility is that BlueSky has exited entirely |nd| possibly
+because something has happened to put the program into an unworkable
+state.  This will usually be accompanied by a lengthy :quoted:`stack
+trace`, i.e. a bunch of weird code and error messages printed to the
+terminal window, followed by the white and blue prompt seen in the
+picture above.
+
+In this case, try typing ``bsui`` at the command line with the white
+and blue prompt, then hit :button:`Enter`.  This will start a new
+BlueSky session.
+
+You will then need to :numref:`restart your user session (Section %s)
+<start_end>` by issuing the ``start_experiment()`` command with the
+appropriate arguments.  You should be able to do so by hitting
+:button:`Ctrl`-:button:`r` and searching for :quoted:`start_experiment`.
+Once found, hit :button:`Enter`, then continue with your experiment.
+
 
 
 Failed search
