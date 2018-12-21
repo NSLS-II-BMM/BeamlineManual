@@ -251,8 +251,8 @@ motions, use ``%w slits3``
         horizontal size   =   8.000 mm          Outboard =   4.000
         horizontal center =   0.000 mm          Inboard  =  -4.000
 
-Changing configurations
------------------------
+Configurations
+--------------
 
 .. _change-mode:
 

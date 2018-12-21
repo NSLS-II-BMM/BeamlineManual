@@ -35,7 +35,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6. Single energy XAS detection" href="sead.html" />
+    <link rel="next" title="6. Experimental Log" href="log.html" />
     <link rel="prev" title="4. Sample position scans" href="linescans.html" />
 
     <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
@@ -48,7 +48,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="sead.html" title="6. Single energy XAS detection"
+          <a href="log.html" title="6. Experimental Log"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="linescans.html" title="4. Sample position scans"
@@ -79,16 +79,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#the-ini-file">5.1. The INI file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scan-regions">5.2. Scan regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scan-run-time">5.3. Scan run time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-an-xafs-scan">5.4. Running an XAFS scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#revisiting-an-xafs-scan">5.5. Revisiting an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-an-xafs-scan">5.4. Run an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#revisit-an-xafs-scan">5.5. Revisit an XAFS scan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scan-sequence-macro">5.6. Scan sequence macro</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#xafs-data-file">5.7. XAFS data file</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">8. Troubleshooting</a></li>
 </ul>
 
     
@@ -118,6 +117,15 @@
       </form>
     </div>
   </div>
+</div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>This Page</h2>
+   </div>
+  <ul>
+    <li><a href="_sources/xafs.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
 </div>
       
     </div>
@@ -243,7 +251,7 @@ highest numbered file in the <code class="docutils literal"><span class="pre">cu
 again using the same INI file will start with <code class="docutils literal"><span class="pre">cuedge.008</span></code>.</p>
 </dd>
 <dt><code class="docutils literal"><span class="pre">snapshots</span></code> (line 16)</dt>
-<dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 7.1)</span></a> from the
+<dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> from the
 XAS webcam and analog camera before beginning the scan sequence.
 <code class="docutils literal"><span class="pre">False</span></code> to skip the snapshots</dd>
 <dt><code class="docutils literal"><span class="pre">mode</span></code> (line 19)</dt>
@@ -309,8 +317,8 @@ The sequence of 6 scans will take about 1.8 hours
 <p class="last">Improve heuristic by doing statistics on scans</p>
 </div>
 </div>
-<div class="section" id="running-an-xafs-scan">
-<h2>5.4. Running an XAFS scan<a class="headerlink" href="#running-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="run-an-xafs-scan">
+<span id="xafsscan"></span><h2>5.4. Run an XAFS scan<a class="headerlink" href="#run-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
 <p>To run a scan, do this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;scan.ini&#39;</span><span class="p">))</span>
 </pre></div>
@@ -325,7 +333,7 @@ It does the following chores:</p>
 <li>Verifies the content of the INI file with a user prompt</li>
 <li>Makes an entry in the experimental log indicating the INI contents
 and the current motor positions of all the important motors</li>
-<li>Takes <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 7.1)</span></a> of the XAS webcam and
+<li>Takes <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> of the XAS webcam and
 the analog camera near the sample</li>
 <li>Moves to the center of the angular range of motion of the scan and
 enter pseudo-channel-cut mode</li>
@@ -339,7 +347,7 @@ using the <code class="docutils literal"><span class="pre">scan_nd()</span></cod
 times constructed from <code class="docutils literal"><span class="pre">bounds</span></code>, <code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> in
 the INI file</li>
 <li>For each scan, notes the start and end times of the scan in the
-<a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 7.2)</span></a> along with the
+<a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.2)</span></a> along with the
 unique and transient IDs of the scan in the beamline archive database</li>
 <li>After each scan, extracts the data table from the database and writes
 an ASCII file in the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a></li>
@@ -370,8 +378,8 @@ scan plan will look for the file
 run at the beginning of the experiment (<a class="reference internal" href="intro.html#start-end"><span class="std std-numref">see Section 1.1.1</span></a>).  To know the value of the <code class="docutils literal"><span class="pre">DATA</span></code> variable, simply
 type <code class="docutils literal"><span class="pre">DATA</span></code> at the command line and hit <kbd class="dark">Enter</kbd>.</p>
 </div>
-<div class="section" id="interrupting-an-xafs-scan">
-<span id="interrupt"></span><h3>5.4.2. Interrupting an XAFS scan<a class="headerlink" href="#interrupting-an-xafs-scan" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="interrupt-an-xafs-scan">
+<span id="interrupt"></span><h3>5.4.2. Interrupt an XAFS scan<a class="headerlink" href="#interrupt-an-xafs-scan" title="Permalink to this headline">¶</a></h3>
 <p>There are several scenarios where you may need to interrupt or halt an
 XAFS scan.</p>
 <dl class="docutils">
@@ -393,8 +401,16 @@ scan, do:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="last">The scan will then terminate, returning all motors and detectors to
+<p>The scan will then terminate, returning all motors and detectors to
 their resting state.</p>
+<p>This will also terminate a paused scan:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="o">.</span><span class="n">abort</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="last">The difference is that <code class="docutils literal"><span class="pre">RE.stop()</span></code> will tag the database entry of
+the current scan as <code class="docutils literal"><span class="pre">success</span></code> while <code class="docutils literal"><span class="pre">RE.abort()</span></code> will tag it as
+<code class="docutils literal"><span class="pre">failed</span></code>.  In every other way, the two are equivalent – each
+one will shut the scan down gracefully.</p>
 </dd>
 <dt>Pause a scan due to external events</dt>
 <dd>When the XAFS scan starts, it initiates a set of <a class="reference external" href="https://nsls-ii.github.io/bluesky/state-machine.html#automated-suspension">suspenders</a>
@@ -410,8 +426,8 @@ condition is resolved before the scan resumes.  For instance,
 <p><a class="reference external" href="https://nsls-ii.github.io/bluesky/state-machine.html#summary">Here is a summary of pausing, resuming, and stopping scans</a>.</p>
 </div>
 </div>
-<div class="section" id="revisiting-an-xafs-scan">
-<h2>5.5. Revisiting an XAFS scan<a class="headerlink" href="#revisiting-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="revisit-an-xafs-scan">
+<h2>5.5. Revisit an XAFS scan<a class="headerlink" href="#revisit-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
 <p>Grab a database entry and write it to an XDI file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">db2xdi</span><span class="p">(</span><span class="s1">&#39;/path/to/data/file&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;id&gt;&#39;</span><span class="p">)</span>
 </pre></div>
@@ -455,7 +471,7 @@ each sample.</p>
 </pre></div>
 </td></tr></table></div>
 <p>The calls to <code class="docutils literal"><span class="pre">BMM_info()</span></code> at lines 3 and 12 insert lines in the
-<a class="reference internal" href="log.html#log"><span class="std std-numref">experiment log (Section 7)</span></a> indicating the times that
+<a class="reference internal" href="log.html#log"><span class="std std-numref">experiment log (Section 6)</span></a> indicating the times that
 the scan sequence begins and ends.</p>
 <p>Setting the <code class="docutils literal"><span class="pre">BMM_xsp.prompt</span></code> parameter to <code class="docutils literal"><span class="pre">False</span></code> at lines 2 skips
 the step in the <code class="docutils literal"><span class="pre">xafs()</span></code> macro where the user is prompted to verify
@@ -608,7 +624,7 @@ Creative Commons</a>.</p>
       </div>
     
       <div class="pull-right">
-        <a class="btn btn-default" href="sead.html" title="next chapter (use the right arrow)">6. Single energy XAS detection</a>
+        <a class="btn btn-default" href="log.html" title="next chapter (use the right arrow)">6. Experimental Log</a>
       </div>
     </div>
     <div class="clearer"></div>
@@ -620,7 +636,7 @@ Creative Commons</a>.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="sead.html" title="6. Single energy XAS detection"
+          <a href="log.html" title="6. Experimental Log"
              >next</a></li>
         <li class="right" >
           <a href="linescans.html" title="4. Sample position scans"

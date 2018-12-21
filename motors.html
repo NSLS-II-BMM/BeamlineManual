@@ -81,10 +81,9 @@
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">8. Troubleshooting</a></li>
 </ul>
 
     
@@ -114,6 +113,15 @@
       </form>
     </div>
   </div>
+</div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>This Page</h2>
+   </div>
+  <ul>
+    <li><a href="_sources/motors.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
 </div>
       
     </div>
@@ -270,7 +278,7 @@ the amount to move from the current position. <code class="docutils literal"><sp
 </div>
 <p>is the absolute move command.  The numerical argument is the
 position to which the motor will move.</p>
-<p class="last">All movements are logged in the <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log (Section 7)</span></a></p>
+<p class="last">All movements are logged in the <a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.2)</span></a></p>
 </dd>
 <dt><strong>Moving to a new position in a plan</strong></dt>
 <dd><p class="first">To move a sample stage as part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a> , do:</p>
@@ -288,13 +296,8 @@ synchronous movement:</p>
 <code class="docutils literal"><span class="pre">xafs_y.llm.value</span></code> or <code class="docutils literal"><span class="pre">xafs_y.hlm.value</span></code> for the low or
 high limit.</dd>
 <dt><strong>Setting soft limits</strong></dt>
-<dd><p class="first">To set the soft limits on a sample stage, do something like
-<code class="docutils literal"><span class="pre">xafs_y.llm</span> <span class="pre">=</span> <span class="pre">5</span></code> or <code class="docutils literal"><span class="pre">xafs_y.hlm</span> <span class="pre">=</span> <span class="pre">85</span></code></p>
-<div class="last admonition caution">
-<p class="first admonition-title">Caution</p>
-<p class="last">Is this right?</p>
-</div>
-</dd>
+<dd>To set the soft limits on a sample stage, do something like
+<code class="docutils literal"><span class="pre">xafs_y.llm.value</span> <span class="pre">=</span> <span class="pre">5</span></code> or <code class="docutils literal"><span class="pre">xafs_y.hlm.value</span> <span class="pre">=</span> <span class="pre">85</span></code></dd>
 <dt><strong>Reference stage</strong></dt>
 <dd><p class="first">The reference stage is calibrated such that the beam passes through
 the center of a slot every 45 mm.  Thus the five positions, from
@@ -307,6 +310,7 @@ positions by:</p>
 like:</p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">11564</span><span class="p">)</span> <span class="c1"># the Pt K edge energy</span>
 <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_ref</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>      <span class="c1"># the position of the Pt foil in the foil holder</span>
+<span class="k">yield from</span> <span class="n">mvr</span><span class="p">(</span><span class="n">xafs_wheel</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>   <span class="c1"># the next slot on the sample wheel</span>
 </pre></div>
 </div>
 </dd>
@@ -393,7 +397,7 @@ e.g.:</p>
 <p>Again, this is rarely necessary.  The mode changing plan should
 leave the table in the correct location for your experiment.</p>
 <p class="last">All table movements are recorded in the <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log
-(Section 7)</span></a>.</p>
+(Section 6)</span></a>.</p>
 </dd>
 </dl>
 

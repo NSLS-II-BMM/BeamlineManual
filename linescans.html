@@ -76,15 +76,14 @@
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Sample position scans</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general-line-scans">4.1. General line scans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#special-purpose-line-scans">4.2. Special purpose line scans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specific-line-scans">4.2. Specific line scans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#area-scans">4.3. Area scans</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">8. Troubleshooting</a></li>
 </ul>
 
     
@@ -114,6 +113,15 @@
       </form>
     </div>
   </div>
+</div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>This Page</h2>
+   </div>
+  <ul>
+    <li><a href="_sources/linescans.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
 </div>
       
     </div>
@@ -224,8 +232,8 @@ id number.  Both the unique and transient ids can be found in the
 experimental log.</p>
 </div>
 </div>
-<div class="section" id="special-purpose-line-scans">
-<span id="special-linescans"></span><h2>4.2. Special purpose line scans<a class="headerlink" href="#special-purpose-line-scans" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="specific-line-scans">
+<span id="special-linescans"></span><h2>4.2. Specific line scans<a class="headerlink" href="#specific-line-scans" title="Permalink to this headline">¶</a></h2>
 <p>A number of line scan types are so common and so often performed with
 the same arguments that they have special names.</p>
 <dl class="docutils">
@@ -262,7 +270,10 @@ mirrors.</p>
 <p>An area scan is a simple scan of a two motor axes with an on-screen
 heat map.  At BMM this sort of scan is typically done using the
 <code class="docutils literal"><span class="pre">areascan()</span></code> plan.  This is a wrapper around BlueSky's
-<a class="reference external" href="https://nsls-ii.github.io/bluesky/generated/bluesky.plans.rel_grid_scan.html#bluesky.plans.rel_grid_scan">rel_grid_scan()</a>.</p>
+<a class="reference external" href="https://nsls-ii.github.io/bluesky/generated/bluesky.plans.rel_grid_scan.html#bluesky.plans.rel_grid_scan">rel_grid_scan()</a>.
+Because the sample stages at BMM do not have encoders, the area scan
+is made by <a class="reference external" href="http://nsls-ii.github.io/bluesky/tutorial.html#scan-multiple-motors-in-a-grid">retreading the direction</a>
+of the fast motor rather than snaking back and forth.</p>
 <p>In BMM's <code class="docutils literal"><span class="pre">areascan()</span></code> plan, the scan is always a relative scan
 around the current positions of both motors being scanned.  It works
 like this:</p>
@@ -281,7 +292,7 @@ these are equivalent:</p>
 </div>
 <p>For a motor that does not have a nickname, you must use the BlueSky
 name, as in this very silly example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">slits3_outboard</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">dcm_pitch</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">slits3_outboard</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">dcm_pitch</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
 </pre></div>
 </div>
 </li>

@@ -20,7 +20,6 @@ BMM Users Manual
    pds.rst
    linescans.rst
    xafs.rst
-   sead.rst
    log.rst
    manage.rst
    trouble.rst

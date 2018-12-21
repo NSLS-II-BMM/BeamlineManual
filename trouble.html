@@ -15,7 +15,7 @@
   <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>9. Troubleshooting &#8212; BMM User Manual 0.1</title>
+    <title>8. Troubleshooting &#8212; BMM User Manual 0.1</title>
     
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -35,7 +35,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="8. Managing the beamline" href="manage.html" />
+    <link rel="prev" title="7. Managing the beamline" href="manage.html" />
 
     <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
     <link rel="stylesheet" type="text/css" href="_static/keys.css" />
@@ -47,7 +47,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="manage.html" title="8. Managing the beamline"
+          <a href="manage.html" title="7. Managing the beamline"
              accesskey="P">previous</a></li>
         <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
@@ -72,12 +72,12 @@
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">7. Experimental Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#exiting-bluesky">9.1. Exiting BlueSky</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#failed-search">9.2. Failed search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pausing-bluesky">8.1. Pausing BlueSky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exiting-bluesky">8.2. Exiting BlueSky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#failed-search">8.3. Failed search</a></li>
 </ul>
 </li>
 </ul>
@@ -110,6 +110,15 @@
     </div>
   </div>
 </div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>This Page</h2>
+   </div>
+  <ul>
+    <li><a href="_sources/trouble.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+</div>
       
     </div>
   </div>
@@ -119,33 +128,53 @@
             <ol class="breadcrumb">
               <li><a href="index.html">Docs</a></li>
               
-              <li>9. Troubleshooting</li>
+              <li>8. Troubleshooting</li>
             </ol>
           </div>
           
           <div class="document clearer body">
             
   <div class="section" id="troubleshooting">
-<h1>9. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<h1>8. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
 <p>In this section, solutions are given for problems that BMM's visitors
 occasionally encounter.</p>
-<div class="section" id="exiting-bluesky">
-<h2>9.1. Exiting BlueSky<a class="headerlink" href="#exiting-bluesky" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pausing-bluesky">
+<h2>8.1. Pausing BlueSky<a class="headerlink" href="#pausing-bluesky" title="Permalink to this headline">¶</a></h2>
 <p>There are a small number of ways that you can unintentionally find
 yourself outside of BlueSky.  One of them is to accidentally hit
-<kbd class="dark">Ctrl</kbd>-<kbd class="dark">z</kbd>, which is unfortunately located right next
+<kbd class="dark">Ctrl</kbd>-<kbd class="dark">z</kbd>, which is unfortunately located close
 to <kbd class="dark">Ctrl</kbd>-<kbd class="dark">c</kbd>.</p>
 <p><kbd class="dark">Ctrl</kbd>-<kbd class="dark">z</kbd> serves to suspend BlueSky, temporarily
 returning you to the Unix command line.  It looks like this:</p>
 <div class="figure align-center" id="id1">
 <span id="fig-ctrlz"></span><a class="reference external image-reference" href="_images/ctrl-z.jpg"><img alt="_images/ctrl-z.jpg" src="_images/ctrl-z.jpg" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Accidentally exiting BlueSky and returning to the Unix command line.</span></p>
+<p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Accidentally exiting BlueSky and returning to the Unix command line.</span></p>
 </div>
-<p>To resume BlueSky, type the command <cite>fg</cite> and hit enter.  You will find
-yourself back at the BlueSky prompt and can carry on normally.</p>
+<p>Note that BlueSky said “Stopped”, then the white and blue
+prompt is presented.  This indicates that BlueSky is paused rather
+than exited.</p>
+<p>To resume BlueSky, type the command <code class="docutils literal"><span class="pre">fg</span></code> and hit <kbd class="dark">Enter</kbd>.
+You will find yourself back at the BlueSky prompt and can carry on
+normally.</p>
+</div>
+<div class="section" id="exiting-bluesky">
+<h2>8.2. Exiting BlueSky<a class="headerlink" href="#exiting-bluesky" title="Permalink to this headline">¶</a></h2>
+<p>Another possibility is that BlueSky has exited entirely – possibly
+because something has happened to put the program into an unworkable
+state.  This will usually be accompanied by a lengthy “stack
+trace”, i.e. a bunch of weird code and error messages printed to the
+terminal window, followed by the white and blue prompt seen in the
+picture above.</p>
+<p>In this case, try typing <code class="docutils literal"><span class="pre">bsui</span></code> at the command line with the white
+and blue prompt, then hit <kbd class="dark">Enter</kbd>.  This will start a new
+BlueSky session.</p>
+<p>You will then need to <a class="reference internal" href="intro.html#start-end"><span class="std std-numref">restart your user session (Section 1.1.1)</span></a> by issuing the <code class="docutils literal"><span class="pre">start_experiment()</span></code> command with the
+appropriate arguments.  You should be able to do so by hitting
+<kbd class="dark">Ctrl</kbd>-<kbd class="dark">r</kbd> and searching for “start_experiment”.
+Once found, hit <kbd class="dark">Enter</kbd>, then continue with your experiment.</p>
 </div>
 <div class="section" id="failed-search">
-<h2>9.2. Failed search<a class="headerlink" href="#failed-search" title="Permalink to this headline">¶</a></h2>
+<h2>8.3. Failed search<a class="headerlink" href="#failed-search" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes the hutch search fails for mysterious reasons.  A likely
 cause is that the door “bounced” a bit as it closed.  This
 confuses the circuit that checks to see that the magnetic latch
@@ -156,7 +185,7 @@ failure by printing a message in yellow text on the HDMI screen.  Here
 is what that looks like:</p>
 <div class="figure align-center" id="id2">
 <span id="fig-hdmi"></span><a class="reference external image-reference" href="_images/hdmi.jpg"><img alt="_images/hdmi.jpg" src="_images/hdmi.jpg" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.2 </span><span class="caption-text">The hutch HDMI display showing the yellow text of a failed search.</span></p>
+<p class="caption"><span class="caption-number">Fig. 8.2 </span><span class="caption-text">The hutch HDMI display showing the yellow text of a failed search.</span></p>
 </div>
 <p>When this happens, it is usually sufficient to simply repeat the
 search.  If the yellow text failure happens again, call the floor
@@ -179,7 +208,7 @@ Creative Commons</a>.</p>
   <div class="footer-relations">
     
       <div class="pull-left">
-        <a class="btn btn-default" href="manage.html" title="previous chapter (use the left arrow)">8. Managing the beamline</a>
+        <a class="btn btn-default" href="manage.html" title="previous chapter (use the left arrow)">7. Managing the beamline</a>
       </div>
     
     </div>
@@ -192,7 +221,7 @@ Creative Commons</a>.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="manage.html" title="8. Managing the beamline"
+          <a href="manage.html" title="7. Managing the beamline"
              >previous</a></li>
         <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>

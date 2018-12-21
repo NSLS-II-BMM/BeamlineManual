@@ -15,7 +15,7 @@
   <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>7. Experimental Log &#8212; BMM User Manual 0.1</title>
+    <title>6. Experimental Log &#8212; BMM User Manual 0.1</title>
     
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -35,8 +35,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. Managing the beamline" href="manage.html" />
-    <link rel="prev" title="6. Single energy XAS detection" href="sead.html" />
+    <link rel="next" title="7. Managing the beamline" href="manage.html" />
+    <link rel="prev" title="5. XAFS scans" href="xafs.html" />
 
     <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
     <link rel="stylesheet" type="text/css" href="_static/keys.css" />
@@ -48,10 +48,10 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="manage.html" title="8. Managing the beamline"
+          <a href="manage.html" title="7. Managing the beamline"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="sead.html" title="6. Single energy XAS detection"
+          <a href="xafs.html" title="5. XAFS scans"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
@@ -76,14 +76,14 @@
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sead.html">6. Single energy XAS detection</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Experimental Log</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#snapshots">7.1. Snapshots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#log-file">7.2. Log file</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Experimental Log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#snapshots">6.1. Snapshots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#log-file">6.2. Log file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-dossier">6.3. Scan dossier</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="manage.html">8. Managing the beamline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">8. Troubleshooting</a></li>
 </ul>
 
     
@@ -114,6 +114,15 @@
     </div>
   </div>
 </div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>This Page</h2>
+   </div>
+  <ul>
+    <li><a href="_sources/log.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+</div>
       
     </div>
   </div>
@@ -123,24 +132,24 @@
             <ol class="breadcrumb">
               <li><a href="index.html">Docs</a></li>
               
-              <li>7. Experimental Log</li>
+              <li>6. Experimental Log</li>
             </ol>
           </div>
           
           <div class="document clearer body">
             
   <div class="section" id="experimental-log">
-<span id="log"></span><h1>7. Experimental Log<a class="headerlink" href="#experimental-log" title="Permalink to this headline">¶</a></h1>
+<span id="log"></span><h1>6. Experimental Log<a class="headerlink" href="#experimental-log" title="Permalink to this headline">¶</a></h1>
 <p>At BMM, we are trying to run the system in a way that automatically
-generates a useful electronic log book.  This is meant to supplement,
-not replace, a paper log book or a fancy online service like <a class="reference external" href="http://olog.github.io/2.2.7-SNAPSHOT/">Olog</a>.</p>
+generates a useful electronic log book.  This is meant to complement,
+not replace, a paper log book or an online system like <a class="reference external" href="http://olog.github.io/2.2.7-SNAPSHOT/">Olog</a>.</p>
 <p>The point of the BMM experimental log is to capture with time stamps
 all the significant actions at the beamline.  In part, this provides a
 record of the actions in an experimental campaign.  It also is an
 attempt to provide enough information to recover from mistakes and
 confusions about sample positions and other experimental issues.</p>
 <div class="section" id="snapshots">
-<span id="snap"></span><h2>7.1. Snapshots<a class="headerlink" href="#snapshots" title="Permalink to this headline">¶</a></h2>
+<span id="snap"></span><h2>6.1. Snapshots<a class="headerlink" href="#snapshots" title="Permalink to this headline">¶</a></h2>
 <p>The XAFS scan plan described in <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">Section 5</span></a> includes a
 step where snapshots are taken from the XAS webcam and the small
 analog camera.  These photos are written to JPG files with names
@@ -171,22 +180,29 @@ experimental log.</p>
 <div class="figure compound align-center" id="_fig-snapshots">
 <div style="width: 45%" class="subfigure" id="id1">
 <span id="fig-anacam"></span><a class="reference external image-reference" href="_images/analog.jpg"><img alt="_images/analog.jpg" src="_images/analog.jpg" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Snapshot taken with the analog camera</span></p>
+<p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Snapshot taken with the analog camera</span></p>
 </div>
 <div style="width: 45%" class="subfigure" id="id2">
 <span id="fig-xascam"></span><a class="reference external image-reference" href="_images/XASwebcam.jpg"><img alt="_images/XASwebcam.jpg" src="_images/XASwebcam.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7.2 </span><span class="caption-text">Snapshot taken with the XAS web camera</span></p>
+<p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Snapshot taken with the XAS web camera</span></p>
 </div>
-</div><div class="admonition-todo admonition" id="index-0">
-<span id="_fig-snapshots"></span><p class="first admonition-title">Todo</p>
+</div><div class="admonition note" id="_fig-snapshots">
+<p class="first admonition-title">Note</p>
+<p class="last">Web camera snapshots, like <a class="reference internal" href="#fig-xascam"><span class="std std-numref">Figure 6.2</span></a>,
+are now annotated with a timestamp, the scan file name, and
+some NIST/BMM branding.  This annotation is on a
+semi-transparent white bar at the bottom of the the image.</p>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
 <p class="last">Have database consume snapshots with pointers from each scan
 connected with the snapshot</p>
 </div>
 </div>
 <div class="section" id="log-file">
-<span id="logfile"></span><h2>7.2. Log file<a class="headerlink" href="#log-file" title="Permalink to this headline">¶</a></h2>
+<span id="logfile"></span><h2>6.2. Log file<a class="headerlink" href="#log-file" title="Permalink to this headline">¶</a></h2>
 <p>At the beginning of a user experiment, run something like this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">new_experiment</span><span class="p">(</span><span class="s1">&#39;/home/xf06bm/Data/Visitors/Henrietta User/2019-02-28&#39;</span><span class="p">,</span> <span class="n">gup</span><span class="o">=</span><span class="mi">333123</span><span class="p">,</span> <span class="n">saf</span><span class="o">=</span><span class="mi">343123</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">start_experiment</span><span class="p">(</span><span class="s1">&#39;Betty Cooper&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="s1">&#39;2019-02-28&#39;</span><span class="p">,</span> <span class="n">gup</span><span class="o">=</span><span class="mi">123456</span><span class="p">,</span> <span class="n">saf</span><span class="o">=</span><span class="mi">654321</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Among other things, this instruments the logger to maintain a log file
@@ -221,6 +237,39 @@ the log.</p>
 This is how <code class="docutils literal"><span class="pre">mv()</span></code> and <code class="docutils literal"><span class="pre">mvr()</span></code> commands are captured in the log.
 This bespoke message hook parses the document returned by BlueSky for
 specific kinds of events and captures a log message when appropriate.</p>
+</div>
+<div class="section" id="scan-dossier">
+<span id="dossier"></span><h2>6.3. Scan dossier<a class="headerlink" href="#scan-dossier" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a new feature for the 2019-1 cycle</p>
+</div>
+<p>The BMM data collection system now captures a dossier for each scan
+sequence that is run.  The definition of a scan sequence is a call to
+<a class="reference internal" href="xafs.html#xafsscan"><span class="std std-numref">the xafs program (Section 5.4)</span></a>, which may
+involve multiple repetitions of the scan.</p>
+<p>The dossier is a static html file which captures most of the
+information discussed on this page.  It includes, links to each
+individual data file, the transient ID and UID for each scan, links to
+the snapshots, tables of information from <a class="reference internal" href="xafs.html#ini"><span class="std std-numref">the INI file
+(Section 5.1)</span></a>, a verbatim copy of the INI file, and a table of
+motor positions at the time of the beginning of the scan sequence.</p>
+<p>These dossiers aggregate other assets described on this page and
+complement the user's paper logbook by providing comprehensive
+summaries of all the information relevant to the scan sequence
+provided by the user and gleaned from beamline instrumentation.</p>
+<div class="figure align-center" id="id3">
+<span id="fig-dossier"></span><a class="reference external image-reference" href="_images/dossier.png"><img alt="_images/dossier.png" src="_images/dossier.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6.3 </span><span class="caption-text">An example of the scan sequence dossier, displayed in a web browser.</span></p>
+</div>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Manifest and top-level html dossier</p>
+</div>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Gather scan sequence into an Athena project file</p>
+</div>
 
 <br>
 
@@ -239,11 +288,11 @@ Creative Commons</a>.</p>
   <div class="footer-relations">
     
       <div class="pull-left">
-        <a class="btn btn-default" href="sead.html" title="previous chapter (use the left arrow)">6. Single energy XAS detection</a>
+        <a class="btn btn-default" href="xafs.html" title="previous chapter (use the left arrow)">5. XAFS scans</a>
       </div>
     
       <div class="pull-right">
-        <a class="btn btn-default" href="manage.html" title="next chapter (use the right arrow)">8. Managing the beamline</a>
+        <a class="btn btn-default" href="manage.html" title="next chapter (use the right arrow)">7. Managing the beamline</a>
       </div>
     </div>
     <div class="clearer"></div>
@@ -255,10 +304,10 @@ Creative Commons</a>.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="manage.html" title="8. Managing the beamline"
+          <a href="manage.html" title="7. Managing the beamline"
              >next</a></li>
         <li class="right" >
-          <a href="sead.html" title="6. Single energy XAS detection"
+          <a href="xafs.html" title="5. XAFS scans"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
       </ul>
