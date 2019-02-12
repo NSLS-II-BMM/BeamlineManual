@@ -47,6 +47,7 @@ The INI file
    start      = 1
 
    snapshots  = True
+   usbstick   = True
 
    # mode is transmission, fluorescence, both, or reference
    mode = transmission
@@ -113,7 +114,18 @@ Here is a complete explanation of the contents of the INI file.
    XAS webcam and analog camera before beginning the scan sequence.
    ``False`` to skip the snapshots
 
-``mode`` (line 19)
+``usbstick`` (line 17)
+   ``True`` will examine the user-supplied filename for characters
+   that cannot be part of a `filename
+   <https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words>`_
+   on a standard USB memory stick.  If any are found, the filename
+   will be modified in a way that retains the meaning of the replaced
+   characters, but which can be successfully written to a memory
+   stick.  Since this is mostly an issue with Windows file systems,
+   users who want to do  their data analysis on a Windows computer
+   should use this option.
+
+``mode`` (line 20)
    Indicate how data should be displayed on screen during a scan.  The
    options are ``transmission``, ``fluorescence``, ``both``, or
    ``reference``.  ``both`` means to display *both* the transmission
@@ -128,7 +140,7 @@ Scan regions
 In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The ``bounds``,
-``steps``, and ``times`` keywords (lines 23-25) are used to set this
+``steps``, and ``times`` keywords (lines 24-26) are used to set this
 grid.
 
 
@@ -183,6 +195,65 @@ sequence.
    The sequence of 6 scans will take about 1.8 hours
 
 .. todo:: Improve heuristic by doing statistics on scans
+
+Safe filenames for USB sticks
+-----------------------------
+
+`These characters are problematic for filenames
+<https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words>`_:
+
+.. code-block:: text
+
+      ? * / \ % : | " < >
+
+While there is no issue using these characters in filenames on the
+beamline computer, you will find that files containing these names
+cannot be written to a normal USB memory stick.  The file system used
+on most memory sticks |nd| `FAT32
+<https://en.wikipedia.org/wiki/USB_flash_drive#File_system>`_ |nd|  
+does not allow those characters in filenames |nd| even if the system
+the memory stick is connected to will allow those characters.
+
+
+.. table:: Character translations in filenames
+   :name:  usb-characters
+
+   ================   ===============   =======================
+    character name     character         substitution string
+   ================   ===============   =======================
+    question mark      ?                 ``_QM_``		      
+    asterisk           |ast|             ``_STAR_``
+    forward slash      /                 ``_SLASH_``		      
+    backslash          \\                ``_BACKSLASH_``		      
+    percent            %                 ``_PERCENT_``		      
+    colon              :                 ``_COLON_``		      
+    vertical bar       |verbar|          ``_VERBAR_``		      
+    greater than       >                 ``_GT_``		      
+    less than          <                 ``_LT_``		      
+   ================   ===============   =======================
+
+
+As an example, a filename like 
+
+.. code-block:: text
+
+   Fe precipitate <60 mM
+
+will be converted to 
+
+.. code-block:: text
+
+   Fe precipitate _LT_60 mM
+
+such that the output files will be called
+
+.. code-block:: text
+
+   Fe precipitate _LT_60 mM.001
+   Fe precipitate _LT_60 mM.002
+   ...
+
+Note that spaces are fine in filenames.
 
 
 .. _xafsscan:

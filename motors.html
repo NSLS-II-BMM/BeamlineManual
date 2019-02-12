@@ -281,7 +281,7 @@ position to which the motor will move.</p>
 <p class="last">All movements are logged in the <a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.2)</span></a></p>
 </dd>
 <dt><strong>Moving to a new position in a plan</strong></dt>
-<dd><p class="first">To move a sample stage as part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a> , do:</p>
+<dd><p class="first">To move a sample stage as part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.7)</span></a> , do:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -327,7 +327,7 @@ fluorescence detector.</p>
 <span class="n">fan</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>To turn the spinner on or off in a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a>:</p>
+<p>To turn the spinner on or off in a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.7)</span></a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">fan</span><span class="o">.</span><span class="n">on_plan</span><span class="p">()</span>
 <span class="k">yield from</span> <span class="n">fan</span><span class="o">.</span><span class="n">off_plan</span><span class="p">()</span>
 </pre></div>

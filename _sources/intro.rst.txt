@@ -114,8 +114,8 @@ To see a summary of common commands, use ``%h``:
    Summarize all motor positions:    %m
    Summarize utilities:              %ut
 
-   How long will a scan seq. be?     howlong(DATA + 'scan.ini')
-   Run a scan sequence:              RE(xafs(DATA + 'scan.ini'))
+   How long will a scan seq. be?     howlong('scan.ini')
+   Run a scan sequence:              RE(xafs('scan.ini'))
    Scan a motor, plot a detector:    RE(linescan(<det>, <motor>, <start>, <stop>, <nsteps>))
    Scan 2 motors, plot a detector:   RE(areascan(<det>, <slow motor>, <start>, <stop>, <nsteps>, <fast motor>, <start>, <stop>, <nsteps>))
    Make a log entry:                 BMM_log_info("blah blah blah")

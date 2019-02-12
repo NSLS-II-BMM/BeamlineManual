@@ -79,10 +79,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#the-ini-file">5.1. The INI file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scan-regions">5.2. Scan regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scan-run-time">5.3. Scan run time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-an-xafs-scan">5.4. Run an XAFS scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#revisit-an-xafs-scan">5.5. Revisit an XAFS scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scan-sequence-macro">5.6. Scan sequence macro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#xafs-data-file">5.7. XAFS data file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#safe-filenames-for-usb-sticks">5.4. Safe filenames for USB sticks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-an-xafs-scan">5.5. Run an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#revisit-an-xafs-scan">5.6. Revisit an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-sequence-macro">5.7. Scan sequence macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xafs-data-file">5.8. XAFS data file</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
@@ -180,7 +181,8 @@ are written and is called by name when running an XAFS scan.</p>
 22
 23
 24
-25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">[scan]</span>
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">[scan]</span>
 <span class="na">folder</span>        <span class="o">=</span> <span class="s">/home/bravel/BMM_Data/303200</span>
 <span class="na">filename</span>      <span class="o">=</span> <span class="s">cufoil</span>
 <span class="na">experimenters</span> <span class="o">=</span> <span class="s">Betty Cooper, Veronica Lodge, Archibald Andrews</span>
@@ -196,6 +198,7 @@ are written and is called by name when running an XAFS scan.</p>
 <span class="na">start</span>      <span class="o">=</span> <span class="s">1</span>
 
 <span class="na">snapshots</span>  <span class="o">=</span> <span class="s">True</span>
+<span class="na">usbstick</span>   <span class="o">=</span> <span class="s">True</span>
 
 <span class="c1"># mode is transmission, fluorescence, both, or reference</span>
 <span class="na">mode</span> <span class="o">=</span> <span class="s">transmission</span>
@@ -254,7 +257,16 @@ again using the same INI file will start with <code class="docutils literal"><sp
 <dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> from the
 XAS webcam and analog camera before beginning the scan sequence.
 <code class="docutils literal"><span class="pre">False</span></code> to skip the snapshots</dd>
-<dt><code class="docutils literal"><span class="pre">mode</span></code> (line 19)</dt>
+<dt><code class="docutils literal"><span class="pre">usbstick</span></code> (line 17)</dt>
+<dd><code class="docutils literal"><span class="pre">True</span></code> will examine the user-supplied filename for characters
+that cannot be part of a <a class="reference external" href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words">filename</a>
+on a standard USB memory stick.  If any are found, the filename
+will be modified in a way that retains the meaning of the replaced
+characters, but which can be successfully written to a memory
+stick.  Since this is mostly an issue with Windows file systems,
+users who want to do  their data analysis on a Windows computer
+should use this option.</dd>
+<dt><code class="docutils literal"><span class="pre">mode</span></code> (line 20)</dt>
 <dd>Indicate how data should be displayed on screen during a scan.  The
 options are <code class="docutils literal"><span class="pre">transmission</span></code>, <code class="docutils literal"><span class="pre">fluorescence</span></code>, <code class="docutils literal"><span class="pre">both</span></code>, or
 <code class="docutils literal"><span class="pre">reference</span></code>.  <code class="docutils literal"><span class="pre">both</span></code> means to display <em>both</em> the transmission
@@ -267,7 +279,7 @@ and fluorescence during the scan.</dd>
 <p>In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The <code class="docutils literal"><span class="pre">bounds</span></code>,
-<code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> keywords (lines 23-25) are used to set this
+<code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> keywords (lines 24-26) are used to set this
 grid.</p>
 <p><code class="docutils literal"><span class="pre">bounds</span></code> indicates the energies – relative to the <code class="docutils literal"><span class="pre">e0</span></code> value
 – where the step sizes and dwell times will change.  There <strong>must</strong>
@@ -317,8 +329,88 @@ The sequence of 6 scans will take about 1.8 hours
 <p class="last">Improve heuristic by doing statistics on scans</p>
 </div>
 </div>
+<div class="section" id="safe-filenames-for-usb-sticks">
+<h2>5.4. Safe filenames for USB sticks<a class="headerlink" href="#safe-filenames-for-usb-sticks" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words">These characters are problematic for filenames</a>:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>? * / \ % : | &quot; &lt; &gt;
+</pre></div>
+</div>
+<p>While there is no issue using these characters in filenames on the
+beamline computer, you will find that files containing these names
+cannot be written to a normal USB memory stick.  The file system used
+on most memory sticks – <a class="reference external" href="https://en.wikipedia.org/wiki/USB_flash_drive#File_system">FAT32</a> –
+does not allow those characters in filenames – even if the system
+the memory stick is connected to will allow those characters.</p>
+<table border="1" class="docutils" id="usb-characters">
+<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Character translations in filenames</span><a class="headerlink" href="#usb-characters" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="28%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">character name</th>
+<th class="head">character</th>
+<th class="head">substitution string</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>question mark</td>
+<td>?</td>
+<td><code class="docutils literal"><span class="pre">_QM_</span></code></td>
+</tr>
+<tr class="row-odd"><td>asterisk</td>
+<td>*</td>
+<td><code class="docutils literal"><span class="pre">_STAR_</span></code></td>
+</tr>
+<tr class="row-even"><td>forward slash</td>
+<td>/</td>
+<td><code class="docutils literal"><span class="pre">_SLASH_</span></code></td>
+</tr>
+<tr class="row-odd"><td>backslash</td>
+<td>\</td>
+<td><code class="docutils literal"><span class="pre">_BACKSLASH_</span></code></td>
+</tr>
+<tr class="row-even"><td>percent</td>
+<td>%</td>
+<td><code class="docutils literal"><span class="pre">_PERCENT_</span></code></td>
+</tr>
+<tr class="row-odd"><td>colon</td>
+<td>:</td>
+<td><code class="docutils literal"><span class="pre">_COLON_</span></code></td>
+</tr>
+<tr class="row-even"><td>vertical bar</td>
+<td>|</td>
+<td><code class="docutils literal"><span class="pre">_VERBAR_</span></code></td>
+</tr>
+<tr class="row-odd"><td>greater than</td>
+<td>&gt;</td>
+<td><code class="docutils literal"><span class="pre">_GT_</span></code></td>
+</tr>
+<tr class="row-even"><td>less than</td>
+<td>&lt;</td>
+<td><code class="docutils literal"><span class="pre">_LT_</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>As an example, a filename like</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Fe precipitate &lt;60 mM
+</pre></div>
+</div>
+<p>will be converted to</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Fe precipitate _LT_60 mM
+</pre></div>
+</div>
+<p>such that the output files will be called</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Fe precipitate _LT_60 mM.001
+Fe precipitate _LT_60 mM.002
+...
+</pre></div>
+</div>
+<p>Note that spaces are fine in filenames.</p>
+</div>
 <div class="section" id="run-an-xafs-scan">
-<span id="xafsscan"></span><h2>5.4. Run an XAFS scan<a class="headerlink" href="#run-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+<span id="xafsscan"></span><h2>5.5. Run an XAFS scan<a class="headerlink" href="#run-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
 <p>To run a scan, do this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;scan.ini&#39;</span><span class="p">))</span>
 </pre></div>
@@ -356,7 +448,7 @@ an ASCII file in the <a class="reference external" href="https://github.com/Xray
 certain motors, reset certain parameters) after a scan sequence ends
 or is terminated.</p>
 <div class="section" id="location-of-scan-ini-file">
-<h3>5.4.1. Location of scan.ini file<a class="headerlink" href="#location-of-scan-ini-file" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.1. Location of scan.ini file<a class="headerlink" href="#location-of-scan-ini-file" title="Permalink to this headline">¶</a></h3>
 <p>When you launch an XAFS scan doing:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;scan.ini&#39;</span><span class="p">))</span>
 </pre></div>
@@ -379,7 +471,7 @@ run at the beginning of the experiment (<a class="reference internal" href="intr
 type <code class="docutils literal"><span class="pre">DATA</span></code> at the command line and hit <kbd class="dark">Enter</kbd>.</p>
 </div>
 <div class="section" id="interrupt-an-xafs-scan">
-<span id="interrupt"></span><h3>5.4.2. Interrupt an XAFS scan<a class="headerlink" href="#interrupt-an-xafs-scan" title="Permalink to this headline">¶</a></h3>
+<span id="interrupt"></span><h3>5.5.2. Interrupt an XAFS scan<a class="headerlink" href="#interrupt-an-xafs-scan" title="Permalink to this headline">¶</a></h3>
 <p>There are several scenarios where you may need to interrupt or halt an
 XAFS scan.</p>
 <dl class="docutils">
@@ -427,7 +519,7 @@ condition is resolved before the scan resumes.  For instance,
 </div>
 </div>
 <div class="section" id="revisit-an-xafs-scan">
-<h2>5.5. Revisit an XAFS scan<a class="headerlink" href="#revisit-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+<h2>5.6. Revisit an XAFS scan<a class="headerlink" href="#revisit-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
 <p>Grab a database entry and write it to an XDI file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">db2xdi</span><span class="p">(</span><span class="s1">&#39;/path/to/data/file&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;id&gt;&#39;</span><span class="p">)</span>
 </pre></div>
@@ -439,7 +531,7 @@ id number.  Both the unique and transient ids can be found in the
 experimental log.</p>
 </div>
 <div class="section" id="scan-sequence-macro">
-<span id="macro"></span><h2>5.6. Scan sequence macro<a class="headerlink" href="#scan-sequence-macro" title="Permalink to this headline">¶</a></h2>
+<span id="macro"></span><h2>5.7. Scan sequence macro<a class="headerlink" href="#scan-sequence-macro" title="Permalink to this headline">¶</a></h2>
 <p>A macro at BMM is a short bit of python code which sequentially moves
 motors and initiates scans.  A common way of doing this is to make an
 INI file for each sample that intend to measure.  The macro then steps
@@ -523,7 +615,7 @@ run engine:</p>
 running BlueSky session.</p>
 </div>
 <div class="section" id="xafs-data-file">
-<h2>5.7. XAFS data file<a class="headerlink" href="#xafs-data-file" title="Permalink to this headline">¶</a></h2>
+<h2>5.8. XAFS data file<a class="headerlink" href="#xafs-data-file" title="Permalink to this headline">¶</a></h2>
 <p>XAFS data files are written to the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a>.  Here is
 an example.  You can see how the metadata from the INI file and
 elsewhere is captured in the output XDI file.</p>

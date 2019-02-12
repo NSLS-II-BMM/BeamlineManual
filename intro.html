@@ -187,7 +187,7 @@ prompt.</p>
 <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log (Section 6)</span></a>, define the <code class="docutils literal"><span class="pre">DATA</span></code>
 variable for use in simplifying certain commands, write a template for
 a <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">scan.ini file (Section 5)</span></a>, write a template for a
-<a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro file (Section 5.6)</span></a>, configure the logger to
+<a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro file (Section 5.7)</span></a>, configure the logger to
 write a <a class="reference internal" href="log.html#logfile"><span class="std std-numref">user log file (Section 6.2)</span></a> for this
 experiment, set the GUP and SAF numbers as metadata for output files,
 and set up <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshot (Section 6.1)</span></a> and <a class="reference internal" href="log.html#dossier"><span class="std std-numref">dossier
@@ -222,8 +222,8 @@ Where is the XAFS table?          %w xafs_table
 Summarize all motor positions:    %m
 Summarize utilities:              %ut
 
-How long will a scan seq. be?     howlong(DATA + &#39;scan.ini&#39;)
-Run a scan sequence:              RE(xafs(DATA + &#39;scan.ini&#39;))
+How long will a scan seq. be?     howlong(&#39;scan.ini&#39;)
+Run a scan sequence:              RE(xafs(&#39;scan.ini&#39;))
 Scan a motor, plot a detector:    RE(linescan(&lt;det&gt;, &lt;motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;nsteps&gt;))
 Scan 2 motors, plot a detector:   RE(areascan(&lt;det&gt;, &lt;slow motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;nsteps&gt;, &lt;fast motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;nsteps&gt;))
 Make a log entry:                 BMM_log_info(&quot;blah blah blah&quot;)
