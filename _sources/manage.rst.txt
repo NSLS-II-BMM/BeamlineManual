@@ -47,17 +47,12 @@ finally verify the slit height.
    RE(rocking_curve())
    RE(slit_height())
 
-A couple of caveats about this.
+A comment about this: Currently there are small errors both in the
+mode look-up table and in the configuration of the mono.  In
+principle, there should be no change in beam height when changing
+energy.  In practice, the beam position changes a bit, so it is
+prudent to verify the slit height.
 
-#. Currently there are errors both in the mode look-up table and in
-   the configuration of the mono.  In principle, there should be no
-   change in beam height when changing energy.  In practice, the beam
-   position changes a bit, so it is prudent to verify the slit height.
-
-#. If the slit height changes sufficiently, it may be prudent to
-   re-run the rocking curve scan.  If the slit height was off by
-   enough that the tuned beam is not centered on the slits, then an
-   iteration of the rocking curve optimization is necessary.
 
 Change mode
 -----------

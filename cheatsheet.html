@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>8. Command cheatsheet &#8212; BMM User Manual 0.1</title>
+    
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/atoms.ico"/>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. Troubleshooting" href="trouble.html" />
+    <link rel="prev" title="7. Managing the beamline" href="manage.html" />
+
+    <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
+    <link rel="stylesheet" type="text/css" href="_static/keys.css" />
+    <link rel="stylesheet" type="text/css" href="_static/program.css" />
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="trouble.html" title="9. Troubleshooting"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="manage.html" title="7. Managing the beamline"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motors.html">2. Moving and querying motors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Command cheatsheet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command-summary">8.1. Command summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#photon-delivery-system-modes">8.2. Photon delivery system modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slits3-coordinated-motions">8.3. Slits3 coordinated motions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motor-positions-and-limits">8.4. Motor positions and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#line-scans">8.5. Line scans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#energy-scans">8.6. Energy scans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#experiment-log">8.7. Experiment log</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+</ul>
+
+    
+  </div>
+</div><div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Helpful Links</h2>
+  </div>
+  <ul>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/BeamlineManual">This manual on github</a>
+    <li>&nbsp; &nbsp; <a href="https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Main_Page">BMM Wiki page</a>
+    <li>&nbsp; &nbsp; <a href="https://github.com/NSLS-II-BMM/">BMM github page</a>
+    <li>&nbsp; &nbsp; <a href="http://nsls-ii.github.io/bluesky/">BlueSky documentation</a>
+    <li>&nbsp; &nbsp; <a href="http://xraypy.github.io/xraylarch/">Larch homepage</a>
+  </ul>
+  <p>
+</div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>This Page</h2>
+   </div>
+  <ul>
+    <li><a href="_sources/cheatsheet.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+</div>
+      
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Docs</a></li>
+              
+              <li>8. Command cheatsheet</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="command-cheatsheet">
+<span id="cheatsheet"></span><h1>8. Command cheatsheet<a class="headerlink" href="#command-cheatsheet" title="Permalink to this headline">¶</a></h1>
+<p>This section provides a quick summary of the data acquisition commands
+discussed in the previous sections.</p>
+<div class="section" id="command-summary">
+<h2>8.1. Command summary<a class="headerlink" href="#command-summary" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils" id="command-list">
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Main BlueSky command for BMM</span><a class="headerlink" href="#command-list" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2">          <strong>Shutter commands</strong></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">shb.open()</span></code> / <code class="docutils literal"><span class="pre">shb.close()</span></code></td>
+<td>Open / close the photon shutter</td>
+</tr>
+<tr class="row-odd"><td colspan="2">          <strong>Mono tuning commands</strong></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tu()</span></code> / <code class="docutils literal"><span class="pre">td()</span></code></td>
+<td>Tune the mono 2nd  crystal</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">TUNE_STEP=0.004</span></code></td>
+<td>Tuning step size – 0.004 is good for Si(111), 0.002 for Si(311)</td>
+</tr>
+<tr class="row-even"><td colspan="2">          <strong>Mono movement commands</strong></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(mv(dcm.energy,</span> <span class="pre">&lt;value&gt;))</span></code></td>
+<td>Move TO an energy value</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(mvr(dcm.energy,</span> <span class="pre">&lt;value&gt;))</span></code></td>
+<td>Move BY an energy step</td>
+</tr>
+<tr class="row-odd"><td colspan="2">          <strong>Motor movement commands</strong></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(mv(xafs_liny,</span> <span class="pre">&lt;value&gt;))</span></code></td>
+<td>Move motor TO a position</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(mvr(xafs_liny,</span> <span class="pre">&lt;value&gt;))</span></code></td>
+<td>Move motor BY an amount</td>
+</tr>
+<tr class="row-even"><td colspan="2">          <strong>Where are things?</strong></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">dcm</span></code></td>
+<td>where's the mono?</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">slits3</span></code></td>
+<td>where are the slits?</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">m2</span></code></td>
+<td>where's mirror 2?  (focusing)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">m3</span></code></td>
+<td>where's mirror 3?  (flat, harmonic rejection)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">xafs_table</span></code></td>
+<td>where's the XAFS table?</td>
+</tr>
+<tr class="row-even"><td colspan="2">          <strong>Change mono and mode</strong></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(change_mode('X'))</span></code></td>
+<td>set mirror mode, see table below</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(change_xtals('h11'))</span></code></td>
+<td>set monochromator, Si(111) or Si(311), h=1 or h=3</td>
+</tr>
+<tr class="row-odd"><td colspan="2">          <strong>Mono and experiment setup</strong></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(rocking_curve())</span></code></td>
+<td>optimize pitch of 2nd DCM crystal (moves automagically)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(rocking_curve(detector='Bicron'))</span></code></td>
+<td>same, but for XRD mode</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(slit_height())</span></code></td>
+<td>explore position of slits3 (then pluck to move dm3_bct)</td>
+</tr>
+<tr class="row-odd"><td colspan="2">          <strong>Get help</strong></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">%m</span></code></td>
+<td>Show motors</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%h</span></code></td>
+<td>Show help</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">%k</span></code></td>
+<td>Show keyboard shortcuts</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="photon-delivery-system-modes">
+<h2>8.2. Photon delivery system modes<a class="headerlink" href="#photon-delivery-system-modes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils" id="pds-mode-table">
+<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Photon delivery system modes</span><a class="headerlink" href="#pds-mode-table" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="19%" />
+<col width="35%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Mode</th>
+<th class="head">focused</th>
+<th class="head">energy range</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>✓</td>
+<td>8 keV and up</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>✓</td>
+<td>below 6 keV</td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td>✓</td>
+<td>6 keV to 8 keV</td>
+</tr>
+<tr class="row-odd"><td>D</td>
+<td>✗</td>
+<td>8 keV and up</td>
+</tr>
+<tr class="row-even"><td>E</td>
+<td>✗</td>
+<td>6 keV to 8 keV</td>
+</tr>
+<tr class="row-odd"><td>F</td>
+<td>✗</td>
+<td>below 6 keV</td>
+</tr>
+<tr class="row-even"><td>XRD</td>
+<td>✓</td>
+<td>8 keV and up</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="slits3-coordinated-motions">
+<h2>8.3. Slits3 coordinated motions<a class="headerlink" href="#slits3-coordinated-motions" title="Permalink to this headline">¶</a></h2>
+<p>These coordinated motions behave just like single motors and can be
+used with the motor movement commands in <a class="reference internal" href="#command-list"><span class="std std-numref">Table 8.1</span></a>.</p>
+<dl class="docutils">
+<dt>Horizontal size</dt>
+<dd><code class="docutils literal"><span class="pre">slits3.hsize</span></code> (nominally 8 mm)</dd>
+<dt>Horizontal center</dt>
+<dd><code class="docutils literal"><span class="pre">slits3.hcenter</span></code> (nominally 0 mm)</dd>
+<dt>Vertical size</dt>
+<dd><code class="docutils literal"><span class="pre">slits3.vsize</span></code> (nominally 1.4 mm)</dd>
+<dt>Vertical center</dt>
+<dd><p class="first"><code class="docutils literal"><span class="pre">slits3.vcenter</span></code> (nominally 0 mm)</p>
+<p class="last">The vertical center is normally not changed.  Instead, align the
+slits using <code class="docutils literal"><span class="pre">dm3_bct</span></code> and the <code class="docutils literal"><span class="pre">slit_height()</span></code> plan</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="motor-positions-and-limits">
+<h2>8.4. Motor positions and limits<a class="headerlink" href="#motor-positions-and-limits" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Where is a sample motor?</dt>
+<dd><code class="docutils literal"><span class="pre">%w</span> <span class="pre">xafs_x</span></code></dd>
+<dt>What are the soft limits?</dt>
+<dd><code class="docutils literal"><span class="pre">xafs_x.hlm.value</span></code> / <code class="docutils literal"><span class="pre">xafs_x.llm.value</span></code></dd>
+<dt>Set a soft limit:</dt>
+<dd><code class="docutils literal"><span class="pre">xafs_x.hlm.put(-95)</span></code> / <code class="docutils literal"><span class="pre">xafs_x.llm.put(-157)</span></code></dd>
+</dl>
+</div>
+<div class="section" id="line-scans">
+<h2>8.5. Line scans<a class="headerlink" href="#line-scans" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre><span></span>RE(linescan(&lt;detector&gt;, &lt;motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;N&gt;))
+</pre></div>
+</div>
+<p>where</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">&lt;detector&gt;</span></code> is one of: <code class="docutils literal"><span class="pre">'it'</span></code>, <code class="docutils literal"><span class="pre">'if'</span></code>, or <code class="docutils literal"><span class="pre">'i0'</span></code></li>
+<li><code class="docutils literal"><span class="pre">&lt;motor&gt;</span></code> is one of: <code class="docutils literal"><span class="pre">'x'</span></code>, <code class="docutils literal"><span class="pre">'y'</span></code>, <code class="docutils literal"><span class="pre">'roll'</span></code>, <code class="docutils literal"><span class="pre">'pitch'</span></code>, or a motor name</li>
+<li><code class="docutils literal"><span class="pre">&lt;start&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;stop&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;N&gt;</span></code> are the boundaries and the number of steps.</li>
+</ul>
+</div></blockquote>
+<p>The plot will be determined from the values of <code class="docutils literal"><span class="pre">&lt;motor&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;detector&gt;</span></code></p>
+<p>This is a relative scan.</p>
+<p>After prompt, single click the left button  after a linescan to move to a position.</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>RE(pluck())
+</pre></div>
+</div>
+<p>to repeat that on the current plot.  <code class="docutils literal"><span class="pre">RE(pluck())</span></code> only works on <em>most recent</em> plot.</p>
+</div>
+<div class="section" id="energy-scans">
+<h2>8.6. Energy scans<a class="headerlink" href="#energy-scans" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre><span></span>RE(xafs(&#39;myscan.ini&#39;))
+</pre></div>
+</div>
+<p>In the INI file, set <code class="docutils literal"><span class="pre">mode</span></code> to transmission, fluorescence,
+reference, or both to control the in-scan plotting display (both =
+show transmission and fluorescence)</p>
+</div>
+<div class="section" id="experiment-log">
+<h2>8.7. Experiment log<a class="headerlink" href="#experiment-log" title="Permalink to this headline">¶</a></h2>
+<p>Log entries are made for each scan.  System and beamtime specific logs
+are maintained.  To insert a comment in the log, do:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>BMM_log_info(“This is my log entry”)
+</pre></div>
+</div>
+
+<br>
+
+<br>
+<hr class="docutils" />
+<p>This manual is copyright © 2018 Bruce Ravel</p>
+<p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
+<p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
+Creative Commons</a>.</p>
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-default" href="manage.html" title="previous chapter (use the left arrow)">7. Managing the beamline</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-default" href="trouble.html" title="next chapter (use the right arrow)">9. Troubleshooting</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="trouble.html" title="9. Troubleshooting"
+             >next</a></li>
+        <li class="right" >
+          <a href="manage.html" title="7. Managing the beamline"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BMM User Manual</a> &#187;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2018, Bruce Ravel. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>
