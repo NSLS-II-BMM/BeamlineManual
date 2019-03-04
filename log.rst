@@ -9,9 +9,9 @@ Experimental Log
 ================
 
 At BMM, we are trying to run the system in a way that automatically
-generates a useful electronic log book.  This is meant to complement,
-not replace, a paper log book or an online system like `Olog
-<http://olog.github.io/2.2.7-SNAPSHOT/>`_. 
+generates a useful electronic log book.  This is meant to complement
+|nd| not replace |nd| a paper log book or an online system like `Olog
+<http://olog.github.io/2.2.7-SNAPSHOT/>`_.
 
 The point of the BMM experimental log is to capture with time stamps
 all the significant actions at the beamline.  In part, this provides a
@@ -170,7 +170,5 @@ provided by the user and gleaned from beamline instrumentation.
 
    An example of the scan sequence dossier, displayed in a web browser.
 
-.. todo:: Manifest and top-level html dossier
-
-.. todo:: Gather scan sequence into an Athena project file
+.. todo:: First pass Athena project file is unreliable
 

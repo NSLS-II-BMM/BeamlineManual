@@ -41,3 +41,4 @@
 .. |harr|      unicode:: U+02194 .. LEFT RIGHT ARROW
 .. |ast|       unicode:: U+002A .. ASTERISK
 .. |verbar|    unicode:: U+007C .. VERTICAL LINE
+.. |mquad|    unicode:: U+2001 .. EM QUAD

@@ -22,4 +22,5 @@ BMM Users Manual
    xafs.rst
    log.rst
    manage.rst
+   cheatsheet.rst
    trouble.rst

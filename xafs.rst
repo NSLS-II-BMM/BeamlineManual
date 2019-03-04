@@ -46,7 +46,6 @@ The INI file
    nscans     = 3
    start      = 1
 
-   snapshots  = True
    usbstick   = True
 
    # mode is transmission, fluorescence, both, or reference
@@ -74,8 +73,9 @@ Here is a complete explanation of the contents of the INI file.
    The edge energy for the element and edge of this measurement.  This
    is the energy reference for the ``bounds``.
 
-   .. todo:: Look up E0 given the element and edge symbols, remove or
-	     make optional the ``e0`` keyword
+   .. todo:: Look up E0 rather than requiring it in the INI file.  Make a
+          specified E0 an override to the value determined from edge
+          and element.
 
 ``element`` (line 7)
    The one- or two-letter symbol for the element.
@@ -109,12 +109,7 @@ Here is a complete explanation of the contents of the INI file.
    highest numbered file in the ``cuedge`` sequence, running XAFS
    again using the same INI file will start with ``cuedge.008``.
 
-``snapshots`` (line 16)
-   ``True`` to take :numref:`snapshots (Section %s) <snap>` from the
-   XAS webcam and analog camera before beginning the scan sequence.
-   ``False`` to skip the snapshots
-
-``usbstick`` (line 17)
+``usbstick`` (line 16)
    ``True`` will examine the user-supplied filename for characters
    that cannot be part of a `filename
    <https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words>`_
@@ -125,7 +120,7 @@ Here is a complete explanation of the contents of the INI file.
    users who want to do  their data analysis on a Windows computer
    should use this option.
 
-``mode`` (line 20)
+``mode`` (line 19)
    Indicate how data should be displayed on screen during a scan.  The
    options are ``transmission``, ``fluorescence``, ``both``, or
    ``reference``.  ``both`` means to display *both* the transmission
@@ -140,7 +135,7 @@ Scan regions
 In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The ``bounds``,
-``steps``, and ``times`` keywords (lines 24-26) are used to set this
+``steps``, and ``times`` keywords (lines 23-25) are used to set this
 grid.
 
 
@@ -172,6 +167,43 @@ means that the dwell time will be 1 second at 4 |AA|:sup:`-1`, 2
 seconds at 8 |AA|:sup:`-1`, and so on.
 
 .. todo:: Much more sanity checking & sanitizing of input
+
+
+More Boolean options
+~~~~~~~~~~~~~~~~~~~~
+
+There are several aspects of the XAFS scan plan that can be enabled or
+disabled from the INI file.  The sample INI file written by the
+:numref:`start_experiment() command (Section %s) <start_end>` does not
+include these options, but they can be added to the INI file if needed.
+
+``snapshots``
+   ``True`` to take :numref:`snapshots (Section %s) <snap>` from the
+   XAS webcam and analog camera before beginning the scan sequence.
+   ``False`` to skip the snapshots.  Default: ``True``
+
+``channelcut``
+  ``True`` to measure XAFS with the monochromator in pseudo-channelcut
+  mode.  ``False`` to measure in fixed exit mode.  Default: ``True``
+
+``rockingcurve``
+  ``True`` to measure a :numref:`rocking curve scan (Section %s)
+  <special-linescans>` after moving to the pseudo-channelcut mode
+  energy.  Default: ``False``
+
+``bothways``
+  ``True`` to measure XAFS in both directions of the monochromator.
+  ``False`` to always measure in the positive energy (negative angle)
+  direction.  Default: ``False``
+
+``htmlpage`` 
+  ``False`` to disable writing of the :numref:`static HTML dossier
+  (Section %s) <dossier>`.  Default: ``True``
+
+
+.. todo:: Document pseudo-channelcut and fixed-exit modes.
+
+
 
 Scan run time
 -------------
@@ -210,27 +242,28 @@ While there is no issue using these characters in filenames on the
 beamline computer, you will find that files containing these names
 cannot be written to a normal USB memory stick.  The file system used
 on most memory sticks |nd| `FAT32
-<https://en.wikipedia.org/wiki/USB_flash_drive#File_system>`_ |nd|  
-does not allow those characters in filenames |nd| even if the system
-the memory stick is connected to will allow those characters.
+<https://en.wikipedia.org/wiki/USB_flash_drive#File_system>`_ |nd|
+does not allow those characters in filenames.  This is true even if
+the system the memory stick is connected to will allow those
+characters.
 
 
 .. table:: Character translations in filenames
    :name:  usb-characters
 
-   ================   ===============   =======================
-    character name     character         substitution string
-   ================   ===============   =======================
-    question mark      ?                 ``_QM_``		      
-    asterisk           |ast|             ``_STAR_``
-    forward slash      /                 ``_SLASH_``		      
-    backslash          \\                ``_BACKSLASH_``		      
-    percent            %                 ``_PERCENT_``		      
-    colon              :                 ``_COLON_``		      
-    vertical bar       |verbar|          ``_VERBAR_``		      
-    greater than       >                 ``_GT_``		      
-    less than          <                 ``_LT_``		      
-   ================   ===============   =======================
+   ================   ==================   =======================
+    character name     character            substitution string
+   ================   ==================   =======================
+    question mark      |mquad| ?            ``_QM_``		      
+    asterisk           |mquad| |ast|        ``_STAR_``
+    forward slash      |mquad| /            ``_SLASH_``		      
+    backslash          |mquad| \\           ``_BACKSLASH_``		      
+    percent            |mquad| %            ``_PERCENT_``		      
+    colon              |mquad| :            ``_COLON_``		      
+    vertical bar       |mquad| |verbar|     ``_VERBAR_``		      
+    greater than       |mquad| >            ``_GT_``		      
+    less than          |mquad| <            ``_LT_``		      
+   ================   ==================   =======================
 
 
 As an example, a filename like 
@@ -304,6 +337,11 @@ It does the following chores:
 #. After each scan, extracts the data table from the database and writes
    an ASCII file in the `XDI format
    <https://github.com/XraySpectroscopy/XAS-Data-Interchange>`_
+
+#. After the full sequence of scans, write :numref:`a dossier (Section
+   %s) <dossier>` containing a fairly complete record of the
+   measurement |nd| including a crude first pass at the data reduction
+   and processing |nd| made by the XAFS plan.
 
 The plan also provides some tools to cleanup correctly (i.e. kill
 certain motors, reset certain parameters) after a scan sequence ends
@@ -388,7 +426,8 @@ Pause a scan due to external events
   condition is resolved before the scan resumes.  For instance,
   5 seconds are allowed to pass after a shutter is re-opened.
 
-`Here is a summary of pausing, resuming, and stopping scans
+`Here is a summary of pausing, resuming, and stopping scans using
+BlueSky
 <https://nsls-ii.github.io/bluesky/state-machine.html#summary>`_.
 
 Revisit an XAFS scan
@@ -401,8 +440,8 @@ Grab a database entry and write it to an XDI file::
 The first argument is the name of the output data file.  The second
 argument is either the scan's unique ID |nd| something like
 ``f6619ed7-a8e5-41c2-a499-f793b0fcacec`` |nd| or the scan's transient
-id number.  Both the unique and transient ids can be found in the
-experimental log.
+id number.  Both the unique and transient ids can be found in
+:numref:`the dossier (Section %s) <dossier>`.
 
 .. _macro:
 
