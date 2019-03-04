@@ -182,8 +182,7 @@ are written and is called by name when running an XAFS scan.</p>
 22
 23
 24
-25
-26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">[scan]</span>
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">[scan]</span>
 <span class="na">folder</span>        <span class="o">=</span> <span class="s">/home/bravel/BMM_Data/303200</span>
 <span class="na">filename</span>      <span class="o">=</span> <span class="s">cufoil</span>
 <span class="na">experimenters</span> <span class="o">=</span> <span class="s">Betty Cooper, Veronica Lodge, Archibald Andrews</span>
@@ -198,7 +197,6 @@ are written and is called by name when running an XAFS scan.</p>
 <span class="na">nscans</span>     <span class="o">=</span> <span class="s">3</span>
 <span class="na">start</span>      <span class="o">=</span> <span class="s">1</span>
 
-<span class="na">snapshots</span>  <span class="o">=</span> <span class="s">True</span>
 <span class="na">usbstick</span>   <span class="o">=</span> <span class="s">True</span>
 
 <span class="c1"># mode is transmission, fluorescence, both, or reference</span>
@@ -224,8 +222,9 @@ are written and is called by name when running an XAFS scan.</p>
 is the energy reference for the <code class="docutils literal"><span class="pre">bounds</span></code>.</p>
 <div class="admonition-todo last admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
-<p class="last">Look up E0 given the element and edge symbols, remove or
-make optional the <code class="docutils literal"><span class="pre">e0</span></code> keyword</p>
+<p class="last">Look up E0 rather than requiring it in the INI file.  Make a
+specified E0 an override to the value determined from edge
+and element.</p>
 </div>
 </dd>
 <dt><code class="docutils literal"><span class="pre">element</span></code> (line 7)</dt>
@@ -254,11 +253,7 @@ subsequent number will be used.  E.g. if <code class="docutils literal"><span cl
 highest numbered file in the <code class="docutils literal"><span class="pre">cuedge</span></code> sequence, running XAFS
 again using the same INI file will start with <code class="docutils literal"><span class="pre">cuedge.008</span></code>.</p>
 </dd>
-<dt><code class="docutils literal"><span class="pre">snapshots</span></code> (line 16)</dt>
-<dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> from the
-XAS webcam and analog camera before beginning the scan sequence.
-<code class="docutils literal"><span class="pre">False</span></code> to skip the snapshots</dd>
-<dt><code class="docutils literal"><span class="pre">usbstick</span></code> (line 17)</dt>
+<dt><code class="docutils literal"><span class="pre">usbstick</span></code> (line 16)</dt>
 <dd><code class="docutils literal"><span class="pre">True</span></code> will examine the user-supplied filename for characters
 that cannot be part of a <a class="reference external" href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words">filename</a>
 on a standard USB memory stick.  If any are found, the filename
@@ -267,7 +262,7 @@ characters, but which can be successfully written to a memory
 stick.  Since this is mostly an issue with Windows file systems,
 users who want to do  their data analysis on a Windows computer
 should use this option.</dd>
-<dt><code class="docutils literal"><span class="pre">mode</span></code> (line 20)</dt>
+<dt><code class="docutils literal"><span class="pre">mode</span></code> (line 19)</dt>
 <dd>Indicate how data should be displayed on screen during a scan.  The
 options are <code class="docutils literal"><span class="pre">transmission</span></code>, <code class="docutils literal"><span class="pre">fluorescence</span></code>, <code class="docutils literal"><span class="pre">both</span></code>, or
 <code class="docutils literal"><span class="pre">reference</span></code>.  <code class="docutils literal"><span class="pre">both</span></code> means to display <em>both</em> the transmission
@@ -280,7 +275,7 @@ and fluorescence during the scan.</dd>
 <p>In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The <code class="docutils literal"><span class="pre">bounds</span></code>,
-<code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> keywords (lines 24-26) are used to set this
+<code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> keywords (lines 23-25) are used to set this
 grid.</p>
 <p><code class="docutils literal"><span class="pre">bounds</span></code> indicates the energies – relative to the <code class="docutils literal"><span class="pre">e0</span></code> value
 – where the step sizes and dwell times will change.  There <strong>must</strong>
@@ -307,6 +302,36 @@ seconds at 8 Å<sup>-1</sup>, and so on.</p>
 <p class="first admonition-title">Todo</p>
 <p class="last">Much more sanity checking &amp; sanitizing of input</p>
 </div>
+<div class="section" id="more-boolean-options">
+<h3>5.2.1. More Boolean options<a class="headerlink" href="#more-boolean-options" title="Permalink to this headline">¶</a></h3>
+<p>There are several aspects of the XAFS scan plan that can be enabled or
+disabled from the INI file.  The sample INI file written by the
+<a class="reference internal" href="intro.html#start-end"><span class="std std-numref">start_experiment() command (Section 1.1.1)</span></a> does not
+include these options, but they can be added to the INI file if needed.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">snapshots</span></code></dt>
+<dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> from the
+XAS webcam and analog camera before beginning the scan sequence.
+<code class="docutils literal"><span class="pre">False</span></code> to skip the snapshots.  Default: <code class="docutils literal"><span class="pre">True</span></code></dd>
+<dt><code class="docutils literal"><span class="pre">channelcut</span></code></dt>
+<dd><code class="docutils literal"><span class="pre">True</span></code> to measure XAFS with the monochromator in pseudo-channelcut
+mode.  <code class="docutils literal"><span class="pre">False</span></code> to measure in fixed exit mode.  Default: <code class="docutils literal"><span class="pre">True</span></code></dd>
+<dt><code class="docutils literal"><span class="pre">rockingcurve</span></code></dt>
+<dd><code class="docutils literal"><span class="pre">True</span></code> to measure a <a class="reference internal" href="linescans.html#special-linescans"><span class="std std-numref">rocking curve scan (Section 4.2)</span></a> after moving to the pseudo-channelcut mode
+energy.  Default: <code class="docutils literal"><span class="pre">False</span></code></dd>
+<dt><code class="docutils literal"><span class="pre">bothways</span></code></dt>
+<dd><code class="docutils literal"><span class="pre">True</span></code> to measure XAFS in both directions of the monochromator.
+<code class="docutils literal"><span class="pre">False</span></code> to always measure in the positive energy (negative angle)
+direction.  Default: <code class="docutils literal"><span class="pre">False</span></code></dd>
+<dt><code class="docutils literal"><span class="pre">htmlpage</span></code></dt>
+<dd><code class="docutils literal"><span class="pre">False</span></code> to disable writing of the <a class="reference internal" href="log.html#dossier"><span class="std std-numref">static HTML dossier
+(Section 6.3)</span></a>.  Default: <code class="docutils literal"><span class="pre">True</span></code></dd>
+</dl>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Document pseudo-channelcut and fixed-exit modes.</p>
+</div>
+</div>
 </div>
 <div class="section" id="scan-run-time">
 <h2>5.3. Scan run time<a class="headerlink" href="#scan-run-time" title="Permalink to this headline">¶</a></h2>
@@ -325,7 +350,7 @@ Each scan will take about 17.9 minutes
 The sequence of 6 scans will take about 1.8 hours
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="index-2">
+<div class="admonition-todo admonition" id="index-3">
 <p class="first admonition-title">Todo</p>
 <p class="last">Improve heuristic by doing statistics on scans</p>
 </div>
@@ -626,7 +651,7 @@ running BlueSky session.</p>
 <p>XAFS data files are written to the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a>.  Here is
 an example.  You can see how the metadata from the INI file and
 elsewhere is captured in the output XDI file.</p>
-<div class="admonition-todo admonition" id="index-3">
+<div class="admonition-todo admonition" id="index-4">
 <p class="first admonition-title">Todo</p>
 <p class="last">Document use of <code class="docutils literal"><span class="pre">XDI_record</span></code> dictionary to control which
 xafs motors nd/or temperatures get recorded in the XDI header</p>

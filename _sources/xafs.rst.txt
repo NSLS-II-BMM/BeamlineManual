@@ -46,7 +46,6 @@ The INI file
    nscans     = 3
    start      = 1
 
-   snapshots  = True
    usbstick   = True
 
    # mode is transmission, fluorescence, both, or reference
@@ -74,8 +73,9 @@ Here is a complete explanation of the contents of the INI file.
    The edge energy for the element and edge of this measurement.  This
    is the energy reference for the ``bounds``.
 
-   .. todo:: Look up E0 given the element and edge symbols, remove or
-	     make optional the ``e0`` keyword
+   .. todo:: Look up E0 rather than requiring it in the INI file.  Make a
+          specified E0 an override to the value determined from edge
+          and element.
 
 ``element`` (line 7)
    The one- or two-letter symbol for the element.
@@ -109,12 +109,7 @@ Here is a complete explanation of the contents of the INI file.
    highest numbered file in the ``cuedge`` sequence, running XAFS
    again using the same INI file will start with ``cuedge.008``.
 
-``snapshots`` (line 16)
-   ``True`` to take :numref:`snapshots (Section %s) <snap>` from the
-   XAS webcam and analog camera before beginning the scan sequence.
-   ``False`` to skip the snapshots
-
-``usbstick`` (line 17)
+``usbstick`` (line 16)
    ``True`` will examine the user-supplied filename for characters
    that cannot be part of a `filename
    <https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words>`_
@@ -125,7 +120,7 @@ Here is a complete explanation of the contents of the INI file.
    users who want to do  their data analysis on a Windows computer
    should use this option.
 
-``mode`` (line 20)
+``mode`` (line 19)
    Indicate how data should be displayed on screen during a scan.  The
    options are ``transmission``, ``fluorescence``, ``both``, or
    ``reference``.  ``both`` means to display *both* the transmission
@@ -140,7 +135,7 @@ Scan regions
 In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The ``bounds``,
-``steps``, and ``times`` keywords (lines 24-26) are used to set this
+``steps``, and ``times`` keywords (lines 23-25) are used to set this
 grid.
 
 
@@ -172,6 +167,43 @@ means that the dwell time will be 1 second at 4 |AA|:sup:`-1`, 2
 seconds at 8 |AA|:sup:`-1`, and so on.
 
 .. todo:: Much more sanity checking & sanitizing of input
+
+
+More Boolean options
+~~~~~~~~~~~~~~~~~~~~
+
+There are several aspects of the XAFS scan plan that can be enabled or
+disabled from the INI file.  The sample INI file written by the
+:numref:`start_experiment() command (Section %s) <start_end>` does not
+include these options, but they can be added to the INI file if needed.
+
+``snapshots``
+   ``True`` to take :numref:`snapshots (Section %s) <snap>` from the
+   XAS webcam and analog camera before beginning the scan sequence.
+   ``False`` to skip the snapshots.  Default: ``True``
+
+``channelcut``
+  ``True`` to measure XAFS with the monochromator in pseudo-channelcut
+  mode.  ``False`` to measure in fixed exit mode.  Default: ``True``
+
+``rockingcurve``
+  ``True`` to measure a :numref:`rocking curve scan (Section %s)
+  <special-linescans>` after moving to the pseudo-channelcut mode
+  energy.  Default: ``False``
+
+``bothways``
+  ``True`` to measure XAFS in both directions of the monochromator.
+  ``False`` to always measure in the positive energy (negative angle)
+  direction.  Default: ``False``
+
+``htmlpage`` 
+  ``False`` to disable writing of the :numref:`static HTML dossier
+  (Section %s) <dossier>`.  Default: ``True``
+
+
+.. todo:: Document pseudo-channelcut and fixed-exit modes.
+
+
 
 Scan run time
 -------------
