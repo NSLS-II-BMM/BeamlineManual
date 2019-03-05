@@ -17,3 +17,4 @@ Table of Contents
    manage.rst
    cheatsheet.rst
    trouble.rst
+   todo.rst

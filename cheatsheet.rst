@@ -142,9 +142,11 @@ Line scans
 
 where
 
- + ``<detector>`` is one of: ``'it'``, ``'if'``, or ``'i0'``
- + ``<motor>`` is one of: ``'x'``, ``'y'``, ``'roll'``, ``'pitch'``, or a motor name
- + ``<start>``, ``<stop>``, ``<N>`` are the boundaries and the number of steps.
++ ``<detector>`` is one of: ``'it'``, ``'if'``, or ``'i0'``
++ ``<motor>`` is one of: ``'x'``, ``'y'``, ``'pitch'``, ``'wheel'``,
+  or a motor name
++ ``<start>``, ``<stop>``, ``<N>`` are the boundaries relative to the
+  current position and the number of steps.
 
 The plot will be determined from the values of ``<motor>`` and ``<detector>``
 

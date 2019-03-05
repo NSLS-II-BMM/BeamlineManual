@@ -173,7 +173,11 @@ inclination of the beam as it enters the end station.  This requires
 changes in positions of the slits, the XAFS table, and other parts of
 the photon delivery system.
 
-**In short, don't move the mirror motors.**
+Outside of the use of the ``change_mode()`` command, it should not be
+necessary for users to move the mirror motors.  It is **very easy** to
+lose the beam entirely when moving motors.  Without a clear
+understanding of how the optics work, re-finding the beam can be quite
+challenging.
 
 That said, if you want to know the current positions of the motors on
 the focusing mirror, use ``%w m2``
