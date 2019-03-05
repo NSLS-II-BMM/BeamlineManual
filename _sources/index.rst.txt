@@ -24,3 +24,4 @@ BMM Users Manual
    manage.rst
    cheatsheet.rst
    trouble.rst
+   todo.rst

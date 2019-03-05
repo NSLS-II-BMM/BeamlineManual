@@ -85,6 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">8. Command cheatsheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">10. To Do List</a></li>
 </ul>
 
     
@@ -342,8 +343,10 @@ spinner while it is use.</p>
 <p>Typically, table motors are not moved individually.  When changing
 <a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">photon delivery system modes (Section 3.6.1)</span></a>, the
 table should be put into the correct orientation such that the beam
-passes through the center of the ion chambers.</p>
-<p>The lateral table motors are normally disabled.</p>
+passes through the center of the ion chambers.  It is very easy to put
+the beamline in a confusing state by changing the table motors outside
+of the <code class="docutils literal"><span class="pre">change_mode()</span></code> command.</p>
+<p>The lateral table motors – and its yaw – are normally disabled.</p>
 <table border="1" class="docutils" id="xafs-table">
 <caption><span class="caption-number">Table 2.2 </span><span class="caption-text">XAFS table motors</span><a class="headerlink" href="#xafs-table" title="Permalink to this table">¶</a></caption>
 <colgroup>

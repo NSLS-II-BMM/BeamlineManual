@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">8. Command cheatsheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">10. To Do List</a></li>
 </ul>
 
     
@@ -156,28 +157,22 @@ that a user will need to do at the beamline, including:</p>
 </ol>
 <div class="section" id="the-user-experience">
 <h2>1.1. The user experience<a class="headerlink" href="#the-user-experience" title="Permalink to this headline">¶</a></h2>
-<p>The Ipython/bsui prompt at BMM is heavily modified to
-at-a-glance information about the state of the beamline.</p>
+<p>The Ipython/bsui prompt at BMM is modified to at-a-glance information
+about the state of the beamline.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-prompt"></span><a class="reference external image-reference" href="_images/prompt.png"><img alt="_images/prompt.png" src="_images/prompt.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1.1 </span><span class="caption-text">The BlueSky user prompt at BMM</span></p>
 </div>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">That prompt image is out of date.  Need to update image and
-discuss cadashboard. Also provide a picture of cadashboard.</p>
-</div>
-<p>The white characters at the beginning of the prompt show the
-<a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">photon delivery system mode (Section 3.6.1)</span></a> –
-currently “XRD” – and the <a class="reference internal" href="pds.html#change-crystals"><span class="std std-numref">monochromator crystals
-(Section 3.6.2)</span></a> currently in use – currently
-Si(311).</p>
-<p><span class="strike">The red A and B indicate that the A and B (front end and
-photon) shutters are currently closed.  When open these letters are
-blue.</span> The italicized blue text gives the beam current.  (This picture
-was made during a maintenance period.)  Finally, the bright green
-number indicates the command count, just like the default Ipython
-prompt.</p>
+<ul class="simple">
+<li>The green <code class="docutils literal"><span class="pre">BMM</span></code> indicates that the beamline is set up and ready
+for the user.  When the beamline is not ready for users, the <code class="docutils literal"><span class="pre">BMM</span></code>
+string is red.</li>
+<li>The string <code class="docutils literal"><span class="pre">D.111</span></code> indicates that the photon delivery system is in
+<a class="reference internal" href="pds.html#pds-modes"><span class="std std-numref">mode D (see Table 3.3)</span></a> and that <a class="reference internal" href="pds.html#change-crystals"><span class="std std-numref">the
+Si(111) monochromator (Section 3.6.2)</span></a> is in use.</li>
+<li>The green number in square brackets is a count of how many commands
+have been issued since <code class="docutils literal"><span class="pre">bsui</span></code> was started.</li>
+</ul>
 <div class="section" id="starting-and-ending-an-experiment">
 <span id="start-end"></span><h3>1.1.1. Starting and ending an experiment<a class="headerlink" href="#starting-and-ending-an-experiment" title="Permalink to this headline">¶</a></h3>
 <p>When a new experiment begins, run the command:</p>

@@ -88,6 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">8. Command cheatsheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">10. To Do List</a></li>
 </ul>
 
     
@@ -341,7 +342,11 @@ Changing the mirror positions in any way changes the height and
 inclination of the beam as it enters the end station.  This requires
 changes in positions of the slits, the XAFS table, and other parts of
 the photon delivery system.</p>
-<p><strong>In short, don't move the mirror motors.</strong></p>
+<p>Outside of the use of the <code class="docutils literal"><span class="pre">change_mode()</span></code> command, it should not be
+necessary for users to move the mirror motors.  It is <strong>very easy</strong> to
+lose the beam entirely when moving motors.  Without a clear
+understanding of how the optics work, re-finding the beam can be quite
+challenging.</p>
 <p>That said, if you want to know the current positions of the motors on
 the focusing mirror, use <code class="docutils literal"><span class="pre">%w</span> <span class="pre">m2</span></code></p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>In [1903]: %w m2

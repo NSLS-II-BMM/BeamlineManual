@@ -89,6 +89,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">10. To Do List</a></li>
 </ul>
 
     
@@ -317,13 +318,13 @@ slits using <code class="docutils literal"><span class="pre">dm3_bct</span></cod
 </pre></div>
 </div>
 <p>where</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">&lt;detector&gt;</span></code> is one of: <code class="docutils literal"><span class="pre">'it'</span></code>, <code class="docutils literal"><span class="pre">'if'</span></code>, or <code class="docutils literal"><span class="pre">'i0'</span></code></li>
-<li><code class="docutils literal"><span class="pre">&lt;motor&gt;</span></code> is one of: <code class="docutils literal"><span class="pre">'x'</span></code>, <code class="docutils literal"><span class="pre">'y'</span></code>, <code class="docutils literal"><span class="pre">'roll'</span></code>, <code class="docutils literal"><span class="pre">'pitch'</span></code>, or a motor name</li>
-<li><code class="docutils literal"><span class="pre">&lt;start&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;stop&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;N&gt;</span></code> are the boundaries and the number of steps.</li>
+<li><code class="docutils literal"><span class="pre">&lt;motor&gt;</span></code> is one of: <code class="docutils literal"><span class="pre">'x'</span></code>, <code class="docutils literal"><span class="pre">'y'</span></code>, <code class="docutils literal"><span class="pre">'pitch'</span></code>, <code class="docutils literal"><span class="pre">'wheel'</span></code>,
+or a motor name</li>
+<li><code class="docutils literal"><span class="pre">&lt;start&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;stop&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;N&gt;</span></code> are the boundaries relative to the
+current position and the number of steps.</li>
 </ul>
-</div></blockquote>
 <p>The plot will be determined from the values of <code class="docutils literal"><span class="pre">&lt;motor&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;detector&gt;</span></code></p>
 <p>This is a relative scan.</p>
 <p>After prompt, single click the left button  after a linescan to move to a position.</p>

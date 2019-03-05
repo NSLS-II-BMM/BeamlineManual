@@ -170,5 +170,4 @@ provided by the user and gleaned from beamline instrumentation.
 
    An example of the scan sequence dossier, displayed in a web browser.
 
-.. todo:: First pass Athena project file is unreliable
 

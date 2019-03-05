@@ -159,9 +159,11 @@ Table motors
 Typically, table motors are not moved individually.  When changing
 :numref:`photon delivery system modes (Section %s) <change-mode>`, the
 table should be put into the correct orientation such that the beam
-passes through the center of the ion chambers.
+passes through the center of the ion chambers.  It is very easy to put
+the beamline in a confusing state by changing the table motors outside
+of the ``change_mode()`` command.
 
-The lateral table motors are normally disabled.
+The lateral table motors |nd| and its yaw |nd| are normally disabled.
 
 
 .. table:: XAFS table motors

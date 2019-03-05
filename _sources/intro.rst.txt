@@ -31,8 +31,8 @@ that a user will need to do at the beamline, including:
 The user experience
 -------------------
 
-The Ipython/bsui prompt at BMM is heavily modified to 
-at-a-glance information about the state of the beamline.
+The Ipython/bsui prompt at BMM is modified to at-a-glance information
+about the state of the beamline.
 
 .. _fig-prompt:
 .. figure::  _images/prompt.png
@@ -42,21 +42,17 @@ at-a-glance information about the state of the beamline.
 
    The BlueSky user prompt at BMM
 
-.. todo:: That prompt image is out of date.  Need to update image and
-          discuss cadashboard. Also provide a picture of cadashboard.
+* The green ``BMM`` indicates that the beamline is set up and ready
+  for the user.  When the beamline is not ready for users, the ``BMM``
+  string is red.
 
-The white characters at the beginning of the prompt show the
-:numref:`photon delivery system mode (Section %s) <change-mode>` |nd|
-currently :quoted:`XRD` |nd| and the :numref:`monochromator crystals
-(Section %s) <change-crystals>` currently in use |nd| currently
-Si(311).
+* The string ``D.111`` indicates that the photon delivery system is in
+  :numref:`mode D (see Table %s) <pds-modes>` and that :numref:`the
+  Si(111) monochromator (Section %s) <change-crystals>` is in use.
 
-:strike:`The red A and B indicate that the A and B (front end and
-photon) shutters are currently closed.  When open these letters are
-blue.` The italicized blue text gives the beam current.  (This picture
-was made during a maintenance period.)  Finally, the bright green
-number indicates the command count, just like the default Ipython
-prompt.
+* The green number in square brackets is a count of how many commands
+  have been issued since ``bsui`` was started.
+
 
 .. _start_end:
 
