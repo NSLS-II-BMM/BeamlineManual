@@ -86,6 +86,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">8. Command cheatsheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">10. To Do List</a></li>
 </ul>
 
     
@@ -191,22 +192,64 @@ and meeting the needs and expectations of different experiments.</p>
 </table>
 <div class="section" id="change-energy">
 <h2>7.1. Change energy<a class="headerlink" href="#change-energy" title="Permalink to this headline">¶</a></h2>
-<p>Suppose that you want to move the monochromator from 8 keV to 15 keV.
-This is a fairly low-overhead change to beamline configuration as both
-energies are suitable for modes A or D.</p>
-<p>This is a three-step process.  First move the DCM to the new energy
-position, then run a rocking curve scan to tune up the second crystal,
-finally verify the slit height.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">15000</span><span class="p">))</span>
-<span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
-<span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
+<p>Changing energy is usually simple enough that the user can do so
+without help.  Here's the recipe:</p>
+<ol class="arabic">
+<li><p class="first">First move the DCM to the new energy position.  It is usually a
+good idea to move a bit above the target edge energy.  Here's an
+example for moving 50 eV above the iron K edge energy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">7112</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>A comment about this: Currently there are small errors both in the
-mode look-up table and in the configuration of the mono.  In
-principle, there should be no change in beam height when changing
-energy.  In practice, the beam position changes a bit, so it is
-prudent to verify the slit height.</p>
+</li>
+<li><p class="first">Put the beamline in the correct photon delivery system mode.  (See
+the table just above.)  Continuing with the example of the iron K
+edge, for unfocused beam:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_mode</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If the new edge energy is in the same energy range according to the
+table above, you can skip this step.  For example, Mn and Fe are
+both in mode E (or mode C).  The <code class="docutils literal"><span class="pre">change_mode()</span></code> command does not
+need to be run to move between those edges.</p>
+</li>
+<li><p class="first">Measure a <a class="reference internal" href="linescans.html#special-linescans"><span class="std std-numref">rocking curve scan (Sec 4.2)</span></a>
+to verify that the second crystal of the rocking curve is parallel
+to the first crystal.  This is more important for large energy
+changes.  You may find that you can skip this step if you are
+changing between nearby edges.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>At the end of the scan, the mono pitch will be moved to the top of
+the rocking curve.</p>
+</li>
+<li><p class="first">Next, verify that the <a class="reference internal" href="linescans.html#special-linescans"><span class="std std-numref">height of the hutch slits (Sec 4.2)</span></a> is optimized for the beam height.  In
+principle, this should be correct after changing photon delivery
+system mode.  But it doesn't hurt to verify.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>At the end of the scan, you will need to pluck the correct position
+from the plot.</p>
+</li>
+<li><p class="first">Finally, if you are using a reference foil, you should move the
+reference foil holder to the slot containing the correct foil.  The
+command is something like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_ref</span><span class="p">,</span> <span class="mi">45</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The positions on the reference foil holder are 45 mm apart.  The
+top-most slot is at an <code class="docutils literal"><span class="pre">xafs_ref</span></code> position of -90, the
+bottom-most at +90.</p>
+</li>
+</ol>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Better automation.  Something like <code class="docutils literal"><span class="pre">RE(change_edge('Fe'))</span></code>, which
+changes energy, moves to the correct photon delivery mode, runs a
+rocking curve, and sets the reference foil.</p>
+</div>
 </div>
 <div class="section" id="change-mode">
 <h2>7.2. Change mode<a class="headerlink" href="#change-mode" title="Permalink to this headline">¶</a></h2>
@@ -220,7 +263,7 @@ small sample at the vanadium K edge.</p>
 <span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="index-0">
+<div class="admonition-todo admonition" id="index-1">
 <p class="first admonition-title">Todo</p>
 <p class="last">We are still working on optimizing the mode look-up table.
 At this time, some additional adjustments of the mirrors
@@ -280,7 +323,7 @@ the incidence flux.  Do:</p>
 of the goniometer.  8000 eV is the nominal operating energy for the
 goniometer.  If a higher energy is required, substitute the correct
 energy for <code class="docutils literal"><span class="pre">8000</span></code> in the second line.</p>
-<div class="admonition-todo admonition" id="index-1">
+<div class="admonition-todo admonition" id="index-2">
 <p class="first admonition-title">Todo</p>
 <p class="last">Determine look-up table for lower energy operations using
 both M2 and M3.</p>

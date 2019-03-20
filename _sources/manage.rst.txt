@@ -33,25 +33,72 @@ As a reminder, here is the table of operating modes.
 Change energy
 -------------
 
-Suppose that you want to move the monochromator from 8 keV to 15 keV.
-This is a fairly low-overhead change to beamline configuration as both
-energies are suitable for modes A or D.
+Changing energy is usually simple enough that the user can do so
+without help.  Here's the recipe:
 
-This is a three-step process.  First move the DCM to the new energy
-position, then run a rocking curve scan to tune up the second crystal,
-finally verify the slit height.
+#. First move the DCM to the new energy position.  It is usually a
+   good idea to move a bit above the target edge energy.  Here's an
+   example for moving 50 eV above the iron K edge energy:
 
-.. code-block:: python
+   .. code-block:: python
 
-   RE(mv(dcm.energy, 15000))
-   RE(rocking_curve())
-   RE(slit_height())
+      RE(mv(dcm.energy, 7112+50))
 
-A comment about this: Currently there are small errors both in the
-mode look-up table and in the configuration of the mono.  In
-principle, there should be no change in beam height when changing
-energy.  In practice, the beam position changes a bit, so it is
-prudent to verify the slit height.
+#. Put the beamline in the correct photon delivery system mode.  (See
+   the table just above.)  Continuing with the example of the iron K
+   edge, for unfocused beam:
+
+   .. code-block:: python
+
+      RE(change_mode('E'))
+
+   If the new edge energy is in the same energy range according to the
+   table above, you can skip this step.  For example, Mn and Fe are
+   both in mode E (or mode C).  The ``change_mode()`` command does not
+   need to be run to move between those edges.
+
+#. Measure a :numref:`rocking curve scan (Sec %s) <special-linescans>`
+   to verify that the second crystal of the rocking curve is parallel
+   to the first crystal.  This is more important for large energy
+   changes.  You may find that you can skip this step if you are
+   changing between nearby edges.
+
+   .. code-block:: python
+
+      RE(rocking_curve())
+
+   At the end of the scan, the mono pitch will be moved to the top of
+   the rocking curve.
+
+#. Next, verify that the :numref:`height of the hutch slits (Sec %s)
+   <special-linescans>` is optimized for the beam height.  In
+   principle, this should be correct after changing photon delivery
+   system mode.  But it doesn't hurt to verify.
+
+   .. code-block:: python
+
+      RE(slit_height())
+
+   At the end of the scan, you will need to pluck the correct position
+   from the plot.
+
+#. Finally, if you are using a reference foil, you should move the
+   reference foil holder to the slot containing the correct foil.  The
+   command is something like:
+
+   .. code-block:: python
+
+      RE(mv(xafs_ref, 45))
+
+   The positions on the reference foil holder are 45 mm apart.  The
+   top-most slot is at an ``xafs_ref`` position of -90, the
+   bottom-most at +90.
+
+
+.. todo::
+   Better automation.  Something like ``RE(change_edge('Fe'))``, which
+   changes energy, moves to the correct photon delivery mode, runs a
+   rocking curve, and sets the reference foil.
 
 
 Change mode
