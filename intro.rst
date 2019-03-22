@@ -48,10 +48,12 @@ about the state of the beamline.
 
 * The string ``D.111`` indicates that the photon delivery system is in
   :numref:`mode D (see Table %s) <pds-modes>` and that :numref:`the
-  Si(111) monochromator (Section %s) <change-crystals>` is in use.
+  Si(111) monochromator (Section %s) <change-crystals>` is in use.  This
+  part of the prompt will reflect the current state of the photon
+  delivery system.
 
-* The green number in square brackets is a count of how many commands
-  have been issued since ``bsui`` was started.
+* The green number in square brackets is an incremented count of how
+  many commands have been issued since ``bsui`` was started.
 
 
 .. _start_end:
