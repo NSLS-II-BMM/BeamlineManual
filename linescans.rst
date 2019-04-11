@@ -24,9 +24,18 @@ this::
 
 The arguments are:
 
+#. A string indicating the detector for the plotted signal.  The
+   choices are:
+
+   * ``it``: display the ratio of ``It/I0``
+   * ``if``: display the sum of four silicon drift channels normalized by ``I0`` 
+   * ``i0``: display the signal on ``I0``
+   * ``ir``: display the ratio of ``Ir/I0``
+   * ``both``: display both ``It/I0`` *and* the sum of four silicon drift channels normalized by ``I0`` 
+
 #. The motor axis to be scanned.  This can be either the motor's
-   BlueSky name or the nickname in :numref:`Table %s <xafs-stages>`.  So,
-   these are equivalent::
+   BlueSky name or the nickname string from :numref:`Table %s
+   <xafs-stages>`.  So, these are equivalent::
 
      RE(linescan('it', 'x', -4, 4, 81))
      RE(linescan('it', xafs_x, -4, 4, 81))
@@ -34,15 +43,7 @@ The arguments are:
    For a motor that does not have a nickname, you must use the BlueSky
    names, as in::
 
-     RE(linescan('it', slits3_outboard, -1, 1, 21))
-
-#. The detector for the plotted signal.  The choices are:
-
-   * ``it``: display the ratio of ``It/I0``
-   * ``if``: display the sum of four silicon drift channels normalized by ``I0`` 
-   * ``i0``: display the signal on ``I0``
-   * ``ir``: display the ratio of ``Ir/I0``
-   * ``both``: display both ``It/I0`` *and* the sum of four silicon drift channels normalized by ``I0`` 
+     RE(linescan('i0', slits3_outboard, -1, 1, 21))
 
 #. The starting position of the motor scan, relative to the current
    position.
@@ -139,6 +140,10 @@ the same arguments that they have special names.
    slit height to.  This scan is useful for verifying that the slits
    are in the correct orientation for the delivery of beam from the
    mirrors.
+
+   You can put this scan in a macro using::
+
+     yield from slit_height()
 
 
 Area scans

@@ -33,8 +33,21 @@ As a reminder, here is the table of operating modes.
 Change energy
 -------------
 
-Changing energy is usually simple enough that the user can do so
-without help.  Here's the recipe:
+Changing energy is simple.  Usually, it is as simple as doing
+
+.. code-block:: python
+		
+   RE(change_edge('Fe'))
+
+replacing the two-letter element symbol with the element you actually
+want to measure. This command will move the monochromator, put the
+photon delivery system in the correct mode, run a rocking curve scan,
+optimize the slit height, and move the reference foil holder to the
+correct position.
+
+
+If you want to reproduce this by hand, here is the command sequence:
+
 
 #. First move the DCM to the new energy position.  It is usually a
    good idea to move a bit above the target edge energy.  Here's an
@@ -95,10 +108,6 @@ without help.  Here's the recipe:
    bottom-most at +90.
 
 
-.. todo::
-   Better automation.  Something like ``RE(change_edge('Fe'))``, which
-   changes energy, moves to the correct photon delivery mode, runs a
-   rocking curve, and sets the reference foil.
 
 
 Change mode
@@ -116,9 +125,6 @@ small sample at the vanadium K edge.
    RE(rocking_curve())
    RE(slit_height())
 
-.. todo:: We are still working on optimizing the mode look-up table.
-	  At this time, some additional adjustments of the mirrors
-	  will be required to optimize focus at the XAS position.
 
 #. If the beam has recently been focused at the XRD station, you will
    also need to adjust the bender on M2 to optimize vertical focus at
@@ -193,3 +199,113 @@ energy for ``8000`` in the second line.
 
 Once the photon delivery system is set, remove the ion chambers and
 insert the XRD flight path into its place.
+
+
+.. _use333:
+
+XAFS with Si(333)
+-----------------
+
+Using the Si(111) monochromator, it is possible to use the third
+harmonic |nd| the Si(333) reflection |nd| to measure XAS with slightly
+higher energy resolution.  In this section, we explain how to set up
+the beamline to measure the Ge K edge at 11103 eV using the Si(333).
+
+You cannot use the ``change_edge()`` command to do this.  Use of the
+Si(111) (or Si(311)) is hard-wired into that plan.  You have to set up
+the beamline by hand.
+
+First, put the photon delivery system in mode D (or mode A if using
+the focusing mirror):
+
+.. code-block:: python
+
+   RE(change_mode('D'))
+
+Next, move the monochromator to a few 10s of eV above the absorption
+edge, as measured with the third harmonic.  The Ge K edge is at 11103
+eV, so we need to move the monochromator to 11103/3 = 3701 eV.
+
+.. code-block:: python
+
+   RE(mv(dcm.energy, (11103+27)/3))
+
+or simply
+
+.. code-block:: python
+
+   RE(mv(dcm.energy, 3701+9))
+
+This will put the third harmonic energy 27 eV above the Ge K edge.
+
+Now, run a rocking curve scan:
+
+.. code-block:: python
+
+   RE(rocking_curve())
+
+This will produce a plot that looks something like this:
+
+.. _fig-rocking333:
+.. figure::  _images/rocking_curve_333_E=3716.png
+   :target: _images/rocking_curve_333_E=3716.png
+   :width: 70%
+   :align: center
+
+   A rocking curve scan with the photon delivery system in mode D and
+   the mono at 3716 eV.
+
+The broad base of this curve is the Si(111) rocking curve with photons
+at 3710 eV. The sharp spike in the middle is the Si(333) rocking curve
+with photons at 11130 eV.
+
+Optimize the slit_height:
+
+.. code-block:: python
+
+   RE(slit_height())
+
+You are ready to measure XAS with the Si(333) reflection!
+
+Here's an example ``scan.ini`` file for XANES of elemental Ge:  
+
+.. code-block:: ini
+
+   [scan]
+   folder        = /home/xf06bm/Data/Staff/Bruce Ravel/2019-03-28
+   experimenters = Bruce Ravel
+   usbstick      = True
+
+   filename      = Ge
+
+   sample        = elemental Ge, crystalline
+   prep          = standard sample
+   comment       = measured with Si(333) reflection, 25um Al foil in beam path before I0
+
+   ththth        = True
+   e0            = 11103
+   element       = Ge
+   edge          = K
+
+   nscans        = 1
+   start         = next
+
+   ## mode is one of transmission, fluorescence, both, or reference
+   mode       = transmission
+
+   ## Ge Si(333)
+   bounds     = -45    -18     -9      36    150
+   steps      =      9     0.9     0.3    0.9
+   times      =      0.5    0.5    0.5    0.5
+ 
+
+Several things to note:
+
+#. Note that the actual value for E0 is specified.  
+#. Actual energy bounds and steps are specified, the xafs scan plan
+   will convert them to appropriately sized steps for the Si(111).
+#. By setting the 333 flag to True, the correct thing will happen,
+   including writing the correct energy axis to the output data file.
+#. The on-screen plot will show the Si(111) energy, however.  
+#. Also, you still need to set up the photon delivery system up by hand.
+

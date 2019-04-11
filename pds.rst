@@ -8,6 +8,57 @@
 Photon Delivery System
 ======================
 
+Configuring the photon delivery system for a specific measurement is
+usually quite simple.  When moving to a new absorption edge, do the
+following:
+
+.. code-block:: python
+
+   RE(change_edge('Fe'))
+
+substituting the two-letter symbol for the element you want to
+measure.  This will move the monochromator, put the photon delivery
+system in the correct mode, measure the rocking curve of the
+monochromator, optimize the height of the hutch slits, and move the
+reference foil holder to the correct position.  
+
+This whole process takes less than 7 minutes. After that, the beamline
+is ready to collect data.
+
+If using the focusing mirror, do this:
+
+.. code-block:: python
+
+   RE(change_edge('Fe', focus=True))
+
+Excluding the ``focus`` argument |nd| or setting it to False |nd|
+indicates setup for unfocused beam.
+
+This edge change can be put into a :numref:`macro (see Section %s)
+<macro>` like so:
+
+.. code-block:: python
+   
+   yield from change_edge('Fe')
+
+In this way, a macro can manage energy changes while you sleep!
+
+.. _foilholder:
+
+To make sure the correct reference foil is selected, you need to
+configure the reference foil holder.  Suppose that you are measuring
+transition metals in sequence.  Then you would fill the reference foil
+holder with Mn, Fe, Co, Ni, and Cu from top of the holder to the
+bottom.  Execute this command to configure the reference foil holder:
+
+.. code-block:: python
+
+   foils.set('Mn Fe Co Ni Cu')
+
+For all the details about the individual parts of the photon delivery
+system, read on!
+
+
 Shutters
 --------
 
@@ -48,7 +99,7 @@ to interact directly with any of the physical motors.  Plans exist for
 facilitating any actions a user should ever need.
 
 **Query the current energy**
-   To know the position and energy of the monochrmomator: ``%w dcm``
+   To know the position and energy of the monochromator: ``%w dcm``
 
    This returns a short report like this:
 
@@ -112,6 +163,49 @@ facilitating any actions a user should ever need.
    When you move to a lower energy, you usually need to tune in the
    ``tu()`` direction.  Obviously.....
 
+**Fixed-exit and pseudo-channelcut modes**
+   The mono can be run in either fixed-exit or pseudo-channelcut
+   modes. 
+
+   Fixed exit means that the second monochromator crystal will be
+   moved in directions parallel and perpendicular to its diffracting
+   surface in order to maintain a fixed exit height of the beam coming
+   from the second crystal.  Without fixed-exit mode, it would not be
+   possible to change the energy over the entire energy range of the
+   beamline.  The aperture after the monochromator is only a few
+   millimeters tall.  The vertical displacement of the beam over a
+   lerge energy change would be sufficient to move the beam out of the
+   aperture. 
+
+   However, the stability of the monochromator suffers with respect to
+   EXAFS data quality when measuring an energy scan in fixed-exit
+   mode.  We find it is better to disable the parallel and
+   perpendicular motions when measuring XAFS, suffering a small
+   vertical displacement of the beam.
+
+   The mono mode is controlled by a parameter:
+
+   .. code-block:: python
+
+      dcm.mode = 'fixed'
+
+   or 
+
+   .. code-block:: python
+
+      dcm.mode = 'channelcut'
+
+   In practice, the monochromator is normally left in fixed-exit
+   mode.  That way, the monochromator can be moved without worry about
+   the beam height and the monochromator exit aperture.  In the 
+   :numref:`XAFS scan plan (Section %s) <xafsscan>`, the monochromator
+   first moves |nd| in fixed-exit mode |nd| to the center of the
+   angular range of the scan, then sets ``dcm.mode`` to
+   ``channelcut``. Once the sequence of scan repititions is finished,
+   the monochromator is moved back to the center of the angular range
+   and the monochromator is returned to fixed-exit mode.
+
+
 Post-mono slits
 ---------------
 
@@ -165,17 +259,17 @@ Mirrors
 -------
 
 Mirrors are set as part of the mode changing plan.  Unless you know
-exactly what you are doing, you should never move the mirrors.
-Adjusting mirrors by hand is a poor idea.  (Adjusting M1 by hand is a
-horrible idea -- unless you know exactly what you are doing and why.)
-Changing the mirror positions in any way changes the height and
-inclination of the beam as it enters the end station.  This requires
-changes in positions of the slits, the XAFS table, and other parts of
-the photon delivery system.
+exactly what you are doing, you probably don't want to move the
+mirrors outside of the ``change_mode()`` command.  (Adjusting M1 by
+hand is a horrible idea -- unless you know exactly what you are doing
+and why.)  Changing the mirror positions in any way changes the height
+and inclination of the beam as it enters the end station.  This
+requires changes in positions of the slits, the XAFS table, and other
+parts of the photon delivery system.
 
 Outside of the use of the ``change_mode()`` command, it should not be
 necessary for users to move the mirror motors.  It is **very easy** to
-lose the beam entirely when moving motors.  Without a clear
+lose the beam entirely when moving mirror motors.  Without a clear
 understanding of how the optics work, re-finding the beam can be quite
 challenging.
 
@@ -285,9 +379,10 @@ Mode XRD delivers high energy, focused beam to the goniometer.
    XRD    |checkmark|  above 8 keV
    ====== ============ ========================= 
 
-.. todo:: Lookup table not complete for mode B
+.. todo:: Lookup table not complete for mode B. In fact, the ydo and
+   ydi jacks of M3 cannot move low enough to enter mode B.  In
+   practice, mode B is not available.
 
-.. todo:: Lookup table for low energy delivery of light to goniometer
 
 To move between modes, do::
 

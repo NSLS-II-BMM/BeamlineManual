@@ -73,9 +73,9 @@ Here is a complete explanation of the contents of the INI file.
    The edge energy for the element and edge of this measurement.  This
    is the energy reference for the ``bounds``.
 
-   .. todo:: Look up E0 rather than requiring it in the INI file.  Make a
-          specified E0 an override to the value determined from edge
-          and element.
+   .. todo:: If absent, look up E0 rather than requiring it in the INI
+      file.  Make a specified E0 an override to the value determined
+      from edge and element.
 
 ``element`` (line 7)
    The one- or two-letter symbol for the element.
@@ -118,7 +118,7 @@ Here is a complete explanation of the contents of the INI file.
    characters, but which can be successfully written to a memory
    stick.  Since this is mostly an issue with Windows file systems,
    users who want to do  their data analysis on a Windows computer
-   should use this option.
+   should use this option.  :numref:`See Section %s <usbsafe>`.
 
 ``mode`` (line 19)
    Indicate how data should be displayed on screen during a scan.  The
@@ -130,7 +130,7 @@ Comments begin with the hash (``#``) character and are ignored.
 
 
 Scan regions
-------------
+~~~~~~~~~~~~
 
 In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
@@ -166,8 +166,6 @@ function of wavenumber above the edge.  I.e., a value of ``0.25k``
 means that the dwell time will be 1 second at 4 |AA|:sup:`-1`, 2
 seconds at 8 |AA|:sup:`-1`, and so on.
 
-.. todo:: Much more sanity checking & sanitizing of input
-
 
 More Boolean options
 ~~~~~~~~~~~~~~~~~~~~
@@ -200,8 +198,10 @@ include these options, but they can be added to the INI file if needed.
   ``False`` to disable writing of the :numref:`static HTML dossier
   (Section %s) <dossier>`.  Default: ``True``
 
+``ththth`` 
+  ``True`` to measure with :numref:`Si(333) reflection (Section %s)
+  <use333>` of the Si(111) monochromator .  Default: ``False``
 
-.. todo:: Document pseudo-channelcut and fixed-exit modes.
 
 
 
@@ -226,7 +226,10 @@ sequence.
    Each scan will take about 17.9 minutes
    The sequence of 6 scans will take about 1.8 hours
 
-.. todo:: Improve heuristic by doing statistics on scans
+.. todo:: Improve heuristic by doing statistics on scans.  Wait
+   patiently for Andrew Welter's scan telemetry package.
+
+.. _usbsafe:
 
 Safe filenames for USB sticks
 -----------------------------
@@ -316,7 +319,7 @@ It does the following chores:
    the analog camera near the sample
 
 #. Moves to the center of the angular range of motion of the scan and
-   enter pseudo-channel-cut mode
+   enters pseudo-channel-cut mode
 
 #. Generates a plotting subscription appropriate to the value of
    ``mode`` in the INI file
@@ -326,13 +329,14 @@ It does the following chores:
    suspenders are disabled at the end of the scan sequence)
 
 #. Moves to the beginning of the scan range and begins taking scans
-   using the ``scan_nd()`` plan and cyclers for energy values and dwell
-   times constructed from ``bounds``, ``steps``, and ``times`` in
-   the INI file
+   using the ``scan_nd()`` plan and `cyclers
+   <https://matplotlib.org/cycler/>`_ for energy values and dwell
+   times constructed from the values of ``bounds``, ``steps``, and
+   ``times`` read from the INI file
 
 #. For each scan, notes the start and end times of the scan in the
    :numref:`experimental log (Section %s) <logfile>` along with the
-   unique and transient IDs of the scan in the beamline archive database
+   unique and transient IDs of the scan in the beamline database
 
 #. After each scan, extracts the data table from the database and writes
    an ASCII file in the `XDI format
@@ -356,8 +360,8 @@ When you launch an XAFS scan doing::
   RE(xafs('scan.ini'))
 
 the location of the ``scan.ini`` file is assumed to be in ``DATA``.
-For instance, ``DATA`` is ``/home/bravel/BMM_Data/303303/``, then the
-scan plan will look for the file
+For instance, if ``DATA`` is ``/home/bravel/BMM_Data/303303/``, then
+the scan plan will look for the file
 ``/home/bravel/BMM_Data/303303/scan.ini``.  This is equivalent to::
 
   RE(xafs(DATA + 'scan.ini'))
@@ -518,6 +522,12 @@ run engine::
 Every time you edit the macro file, you **must** reload it into the
 running BlueSky session.
 
+The name of the macro file is not proscribed.  If it would be
+convenient to have, say, ``macroFe.py`` and ``macroPt.py``, that's
+fine.  Just be sure to explicitly ``%run -i`` the file using the
+correct name.
+
+
 XAFS data file
 --------------
 
@@ -527,7 +537,7 @@ an example.  You can see how the metadata from the INI file and
 elsewhere is captured in the output XDI file.
 
 .. todo:: Document use of ``XDI_record`` dictionary to control which
-          xafs motors nd/or temperatures get recorded in the XDI header
+	  xafs motors and/or temperatures get recorded in the XDI header
 
 .. code-block:: text
 
