@@ -85,6 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">8. Command cheatsheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">10. To Do List</a></li>
 </ul>
 
     
@@ -154,20 +155,8 @@ this:</p>
 </div>
 <p>The arguments are:</p>
 <ol class="arabic">
-<li><p class="first">The motor axis to be scanned.  This can be either the motor's
-BlueSky name or the nickname in <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.  So,
-these are equivalent:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
-<span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_x</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>For a motor that does not have a nickname, you must use the BlueSky
-names, as in:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">slits3_outboard</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">The detector for the plotted signal.  The choices are:</p>
+<li><p class="first">A string indicating the detector for the plotted signal.  The
+choices are:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">it</span></code>: display the ratio of <code class="docutils literal"><span class="pre">It/I0</span></code></li>
 <li><code class="docutils literal"><span class="pre">if</span></code>: display the sum of four silicon drift channels normalized by <code class="docutils literal"><span class="pre">I0</span></code></li>
@@ -175,6 +164,18 @@ names, as in:</p>
 <li><code class="docutils literal"><span class="pre">ir</span></code>: display the ratio of <code class="docutils literal"><span class="pre">Ir/I0</span></code></li>
 <li><code class="docutils literal"><span class="pre">both</span></code>: display both <code class="docutils literal"><span class="pre">It/I0</span></code> <em>and</em> the sum of four silicon drift channels normalized by <code class="docutils literal"><span class="pre">I0</span></code></li>
 </ul>
+</li>
+<li><p class="first">The motor axis to be scanned.  This can be either the motor's
+BlueSky name or the nickname string from <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.  So, these are equivalent:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
+<span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_x</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>For a motor that does not have a nickname, you must use the BlueSky
+names, as in:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;i0&#39;</span><span class="p">,</span> <span class="n">slits3_outboard</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
+</pre></div>
+</div>
 </li>
 <li><p class="first">The starting position of the motor scan, relative to the current
 position.</p>
@@ -257,12 +258,16 @@ change of energy.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
 </pre></div>
 </div>
-<p class="last">Runs a scan of the DM3 BCT motor around its current position.  At
+<p>Runs a scan of the DM3 BCT motor around its current position.  At
 the end of the scan, you are prompted to left click
 <img alt="leftclick" title="Left mouse button" src="./_static/leftclick.png" hspace="3"> on the plot to choose a position to move the
 slit height to.  This scan is useful for verifying that the slits
 are in the correct orientation for the delivery of beam from the
 mirrors.</p>
+<p>You can put this scan in a macro using:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">slit_height</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </div>

@@ -144,6 +144,18 @@ BMM.  For now, we have the command line.  Read on |nd| it's not too
 difficult!
 
 
+BMM and LOB3
+------------
+
+
+.. _fig-lob3:
+.. figure::  _images/LOB-3.png
+   :target: _images/LOB-3.png
+   :width: 90%
+   :align: center
+
+   Bruce's and Jean's offices in LOB 3
+
 
 
 

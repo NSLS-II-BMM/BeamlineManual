@@ -203,34 +203,37 @@ discussed in the previous sections.</p>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">xafs_table</span></code></td>
 <td>where's the XAFS table?</td>
 </tr>
-<tr class="row-even"><td colspan="2">          <strong>Change mono and mode</strong></td>
+<tr class="row-even"><td colspan="2">          <strong>Change edge, mode, and mono</strong></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(change_mode('X'))</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(change_edge('Xx'))</span></code></td>
+<td>setup beamline for an absorption edge</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(change_mode('X'))</span></code></td>
 <td>set mirror mode, see table below</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(change_xtals('h11'))</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(change_xtals('h11'))</span></code></td>
 <td>set monochromator, Si(111) or Si(311), h=1 or h=3</td>
 </tr>
-<tr class="row-odd"><td colspan="2">          <strong>Mono and experiment setup</strong></td>
+<tr class="row-even"><td colspan="2">          <strong>Mono and experiment setup</strong></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(rocking_curve())</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(rocking_curve())</span></code></td>
 <td>optimize pitch of 2nd DCM crystal (moves automagically)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(rocking_curve(detector='Bicron'))</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(rocking_curve(detector='Bicron'))</span></code></td>
 <td>same, but for XRD mode</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(slit_height())</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(slit_height())</span></code></td>
 <td>explore position of slits3 (then pluck to move dm3_bct)</td>
 </tr>
-<tr class="row-odd"><td colspan="2">          <strong>Get help</strong></td>
+<tr class="row-even"><td colspan="2">          <strong>Get help</strong></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">%m</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%m</span></code></td>
 <td>Show motors</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%h</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">%h</span></code></td>
 <td>Show help</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">%k</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%k</span></code></td>
 <td>Show keyboard shortcuts</td>
 </tr>
 </tbody>

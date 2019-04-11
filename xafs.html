@@ -77,19 +77,19 @@
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. XAFS scans</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-ini-file">5.1. The INI file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scan-regions">5.2. Scan regions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scan-run-time">5.3. Scan run time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#safe-filenames-for-usb-sticks">5.4. Safe filenames for USB sticks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-an-xafs-scan">5.5. Run an XAFS scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#revisit-an-xafs-scan">5.6. Revisit an XAFS scan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scan-sequence-macro">5.7. Scan sequence macro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#xafs-data-file">5.8. XAFS data file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-run-time">5.2. Scan run time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#safe-filenames-for-usb-sticks">5.3. Safe filenames for USB sticks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-an-xafs-scan">5.4. Run an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#revisit-an-xafs-scan">5.5. Revisit an XAFS scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-sequence-macro">5.6. Scan sequence macro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xafs-data-file">5.7. XAFS data file</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">6. Experimental Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">8. Command cheatsheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">10. To Do List</a></li>
 </ul>
 
     
@@ -222,9 +222,9 @@ are written and is called by name when running an XAFS scan.</p>
 is the energy reference for the <code class="docutils literal"><span class="pre">bounds</span></code>.</p>
 <div class="admonition-todo last admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
-<p class="last">Look up E0 rather than requiring it in the INI file.  Make a
-specified E0 an override to the value determined from edge
-and element.</p>
+<p class="last">If absent, look up E0 rather than requiring it in the INI
+file.  Make a specified E0 an override to the value determined
+from edge and element.</p>
 </div>
 </dd>
 <dt><code class="docutils literal"><span class="pre">element</span></code> (line 7)</dt>
@@ -261,7 +261,7 @@ will be modified in a way that retains the meaning of the replaced
 characters, but which can be successfully written to a memory
 stick.  Since this is mostly an issue with Windows file systems,
 users who want to do  their data analysis on a Windows computer
-should use this option.</dd>
+should use this option.  <a class="reference internal" href="#usbsafe"><span class="std std-numref">See Section 5.3</span></a>.</dd>
 <dt><code class="docutils literal"><span class="pre">mode</span></code> (line 19)</dt>
 <dd>Indicate how data should be displayed on screen during a scan.  The
 options are <code class="docutils literal"><span class="pre">transmission</span></code>, <code class="docutils literal"><span class="pre">fluorescence</span></code>, <code class="docutils literal"><span class="pre">both</span></code>, or
@@ -269,9 +269,8 @@ options are <code class="docutils literal"><span class="pre">transmission</span>
 and fluorescence during the scan.</dd>
 </dl>
 <p>Comments begin with the hash (<code class="docutils literal"><span class="pre">#</span></code>) character and are ignored.</p>
-</div>
 <div class="section" id="scan-regions">
-<h2>5.2. Scan regions<a class="headerlink" href="#scan-regions" title="Permalink to this headline">¶</a></h2>
+<h3>5.1.1. Scan regions<a class="headerlink" href="#scan-regions" title="Permalink to this headline">¶</a></h3>
 <p>In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The <code class="docutils literal"><span class="pre">bounds</span></code>,
@@ -298,12 +297,9 @@ number followed by <code class="docutils literal"><span class="pre">k</span></co
 function of wavenumber above the edge.  I.e., a value of <code class="docutils literal"><span class="pre">0.25k</span></code>
 means that the dwell time will be 1 second at 4 Å<sup>-1</sup>, 2
 seconds at 8 Å<sup>-1</sup>, and so on.</p>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<p class="last">Much more sanity checking &amp; sanitizing of input</p>
 </div>
 <div class="section" id="more-boolean-options">
-<h3>5.2.1. More Boolean options<a class="headerlink" href="#more-boolean-options" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.2. More Boolean options<a class="headerlink" href="#more-boolean-options" title="Permalink to this headline">¶</a></h3>
 <p>There are several aspects of the XAFS scan plan that can be enabled or
 disabled from the INI file.  The sample INI file written by the
 <a class="reference internal" href="intro.html#start-end"><span class="std std-numref">start_experiment() command (Section 1.1.1)</span></a> does not
@@ -326,15 +322,13 @@ direction.  Default: <code class="docutils literal"><span class="pre">False</spa
 <dt><code class="docutils literal"><span class="pre">htmlpage</span></code></dt>
 <dd><code class="docutils literal"><span class="pre">False</span></code> to disable writing of the <a class="reference internal" href="log.html#dossier"><span class="std std-numref">static HTML dossier
 (Section 6.3)</span></a>.  Default: <code class="docutils literal"><span class="pre">True</span></code></dd>
+<dt><code class="docutils literal"><span class="pre">ththth</span></code></dt>
+<dd><code class="docutils literal"><span class="pre">True</span></code> to measure with <a class="reference internal" href="manage.html#use333"><span class="std std-numref">Si(333) reflection (Section 7.5)</span></a> of the Si(111) monochromator .  Default: <code class="docutils literal"><span class="pre">False</span></code></dd>
 </dl>
-<div class="admonition-todo admonition" id="index-2">
-<p class="first admonition-title">Todo</p>
-<p class="last">Document pseudo-channelcut and fixed-exit modes.</p>
-</div>
 </div>
 </div>
 <div class="section" id="scan-run-time">
-<h2>5.3. Scan run time<a class="headerlink" href="#scan-run-time" title="Permalink to this headline">¶</a></h2>
+<h2>5.2. Scan run time<a class="headerlink" href="#scan-run-time" title="Permalink to this headline">¶</a></h2>
 <p>To get an approximation of the time a scan will take, do:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">howlong</span><span class="p">(</span><span class="s1">&#39;/path/to/scan.ini&#39;</span><span class="p">)</span>
 </pre></div>
@@ -350,13 +344,14 @@ Each scan will take about 17.9 minutes
 The sequence of 6 scans will take about 1.8 hours
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="index-3">
+<div class="admonition-todo admonition" id="index-1">
 <p class="first admonition-title">Todo</p>
-<p class="last">Improve heuristic by doing statistics on scans</p>
+<p class="last">Improve heuristic by doing statistics on scans.  Wait
+patiently for Andrew Welter's scan telemetry package.</p>
 </div>
 </div>
 <div class="section" id="safe-filenames-for-usb-sticks">
-<h2>5.4. Safe filenames for USB sticks<a class="headerlink" href="#safe-filenames-for-usb-sticks" title="Permalink to this headline">¶</a></h2>
+<span id="usbsafe"></span><h2>5.3. Safe filenames for USB sticks<a class="headerlink" href="#safe-filenames-for-usb-sticks" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words">These characters are problematic for filenames</a>:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>? * / \ % : | &quot; &lt; &gt;
 </pre></div>
@@ -437,7 +432,7 @@ Fe precipitate _LT_60 mM.002
 <p>Note that spaces are fine in filenames.</p>
 </div>
 <div class="section" id="run-an-xafs-scan">
-<span id="xafsscan"></span><h2>5.5. Run an XAFS scan<a class="headerlink" href="#run-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+<span id="xafsscan"></span><h2>5.4. Run an XAFS scan<a class="headerlink" href="#run-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
 <p>To run a scan, do this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;scan.ini&#39;</span><span class="p">))</span>
 </pre></div>
@@ -455,19 +450,19 @@ and the current motor positions of all the important motors</li>
 <li>Takes <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> of the XAS webcam and
 the analog camera near the sample</li>
 <li>Moves to the center of the angular range of motion of the scan and
-enter pseudo-channel-cut mode</li>
+enters pseudo-channel-cut mode</li>
 <li>Generates a plotting subscription appropriate to the value of
 <code class="docutils literal"><span class="pre">mode</span></code> in the INI file</li>
 <li>Enables a set of suspenders which will suspend the current XAFS
 scan in the event of a beam dump or a shutter closing (the
 suspenders are disabled at the end of the scan sequence)</li>
 <li>Moves to the beginning of the scan range and begins taking scans
-using the <code class="docutils literal"><span class="pre">scan_nd()</span></code> plan and cyclers for energy values and dwell
-times constructed from <code class="docutils literal"><span class="pre">bounds</span></code>, <code class="docutils literal"><span class="pre">steps</span></code>, and <code class="docutils literal"><span class="pre">times</span></code> in
-the INI file</li>
+using the <code class="docutils literal"><span class="pre">scan_nd()</span></code> plan and <a class="reference external" href="https://matplotlib.org/cycler/">cyclers</a> for energy values and dwell
+times constructed from the values of <code class="docutils literal"><span class="pre">bounds</span></code>, <code class="docutils literal"><span class="pre">steps</span></code>, and
+<code class="docutils literal"><span class="pre">times</span></code> read from the INI file</li>
 <li>For each scan, notes the start and end times of the scan in the
 <a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.2)</span></a> along with the
-unique and transient IDs of the scan in the beamline archive database</li>
+unique and transient IDs of the scan in the beamline database</li>
 <li>After each scan, extracts the data table from the database and writes
 an ASCII file in the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a></li>
 <li>After the full sequence of scans, write <a class="reference internal" href="log.html#dossier"><span class="std std-numref">a dossier (Section
@@ -479,14 +474,14 @@ and processing – made by the XAFS plan.</li>
 certain motors, reset certain parameters) after a scan sequence ends
 or is terminated.</p>
 <div class="section" id="location-of-scan-ini-file">
-<h3>5.5.1. Location of scan.ini file<a class="headerlink" href="#location-of-scan-ini-file" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.1. Location of scan.ini file<a class="headerlink" href="#location-of-scan-ini-file" title="Permalink to this headline">¶</a></h3>
 <p>When you launch an XAFS scan doing:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;scan.ini&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>the location of the <code class="docutils literal"><span class="pre">scan.ini</span></code> file is assumed to be in <code class="docutils literal"><span class="pre">DATA</span></code>.
-For instance, <code class="docutils literal"><span class="pre">DATA</span></code> is <code class="docutils literal"><span class="pre">/home/bravel/BMM_Data/303303/</span></code>, then the
-scan plan will look for the file
+For instance, if <code class="docutils literal"><span class="pre">DATA</span></code> is <code class="docutils literal"><span class="pre">/home/bravel/BMM_Data/303303/</span></code>, then
+the scan plan will look for the file
 <code class="docutils literal"><span class="pre">/home/bravel/BMM_Data/303303/scan.ini</span></code>.  This is equivalent to:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">xafs</span><span class="p">(</span><span class="n">DATA</span> <span class="o">+</span> <span class="s1">&#39;scan.ini&#39;</span><span class="p">))</span>
 </pre></div>
@@ -502,7 +497,7 @@ run at the beginning of the experiment (<a class="reference internal" href="intr
 type <code class="docutils literal"><span class="pre">DATA</span></code> at the command line and hit <kbd class="dark">Enter</kbd>.</p>
 </div>
 <div class="section" id="interrupt-an-xafs-scan">
-<span id="interrupt"></span><h3>5.5.2. Interrupt an XAFS scan<a class="headerlink" href="#interrupt-an-xafs-scan" title="Permalink to this headline">¶</a></h3>
+<span id="interrupt"></span><h3>5.4.2. Interrupt an XAFS scan<a class="headerlink" href="#interrupt-an-xafs-scan" title="Permalink to this headline">¶</a></h3>
 <p>There are several scenarios where you may need to interrupt or halt an
 XAFS scan.</p>
 <dl class="docutils">
@@ -551,7 +546,7 @@ BlueSky</a>.</p>
 </div>
 </div>
 <div class="section" id="revisit-an-xafs-scan">
-<h2>5.6. Revisit an XAFS scan<a class="headerlink" href="#revisit-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
+<h2>5.5. Revisit an XAFS scan<a class="headerlink" href="#revisit-an-xafs-scan" title="Permalink to this headline">¶</a></h2>
 <p>Grab a database entry and write it to an XDI file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">db2xdi</span><span class="p">(</span><span class="s1">&#39;/path/to/data/file&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;id&gt;&#39;</span><span class="p">)</span>
 </pre></div>
@@ -563,7 +558,7 @@ id number.  Both the unique and transient ids can be found in
 <a class="reference internal" href="log.html#dossier"><span class="std std-numref">the dossier (Section 6.3)</span></a>.</p>
 </div>
 <div class="section" id="scan-sequence-macro">
-<span id="macro"></span><h2>5.7. Scan sequence macro<a class="headerlink" href="#scan-sequence-macro" title="Permalink to this headline">¶</a></h2>
+<span id="macro"></span><h2>5.6. Scan sequence macro<a class="headerlink" href="#scan-sequence-macro" title="Permalink to this headline">¶</a></h2>
 <p>A macro at BMM is a short bit of python code which sequentially moves
 motors and initiates scans.  A common way of doing this is to make an
 INI file for each sample that intend to measure.  The macro then steps
@@ -645,16 +640,20 @@ run engine:</p>
 </div>
 <p>Every time you edit the macro file, you <strong>must</strong> reload it into the
 running BlueSky session.</p>
+<p>The name of the macro file is not proscribed.  If it would be
+convenient to have, say, <code class="docutils literal"><span class="pre">macroFe.py</span></code> and <code class="docutils literal"><span class="pre">macroPt.py</span></code>, that's
+fine.  Just be sure to explicitly <code class="docutils literal"><span class="pre">%run</span> <span class="pre">-i</span></code> the file using the
+correct name.</p>
 </div>
 <div class="section" id="xafs-data-file">
-<h2>5.8. XAFS data file<a class="headerlink" href="#xafs-data-file" title="Permalink to this headline">¶</a></h2>
+<h2>5.7. XAFS data file<a class="headerlink" href="#xafs-data-file" title="Permalink to this headline">¶</a></h2>
 <p>XAFS data files are written to the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a>.  Here is
 an example.  You can see how the metadata from the INI file and
 elsewhere is captured in the output XDI file.</p>
-<div class="admonition-todo admonition" id="index-4">
+<div class="admonition-todo admonition" id="index-2">
 <p class="first admonition-title">Todo</p>
 <p class="last">Document use of <code class="docutils literal"><span class="pre">XDI_record</span></code> dictionary to control which
-xafs motors nd/or temperatures get recorded in the XDI header</p>
+xafs motors and/or temperatures get recorded in the XDI header</p>
 </div>
 <div class="highlight-text"><div class="highlight"><pre><span></span># XDI/1.0 BlueSky/1.3.0
 # Beamline.name: BMM (06BM) -- Beamline for Materials Measurement

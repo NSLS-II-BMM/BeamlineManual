@@ -76,7 +76,10 @@
 <li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">8. Command cheatsheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">10. To Do List</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. To Do List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-scan-ini-parameter">10.1. Add a scan.ini parameter</a></li>
+</ul>
+</li>
 </ul>
 
     
@@ -136,7 +139,8 @@
 <p>This is an aggregate list of things missing from the BMM beamline
 documentation manual.</p>
 <ol class="arabic simple">
-<li>Document pseudo channel cut &amp; fixed exit DCM modes</li>
+<li><span class="strike">Document change_edge()</span></li>
+<li><span class="strike">Document pseudo channel cut &amp; fixed exit DCM modes</span></li>
 <li>Document use of <code class="docutils literal"><span class="pre">XDI_record</span></code> to control what motors get recorded
 in the XDI header</li>
 </ol>
@@ -146,12 +150,22 @@ the BMM data collection system needs to do.</p>
 <li>Better sanity checking on linescan input</li>
 <li>Better sanity checking on areascan input</li>
 <li>Have database consume snapshots</li>
-<li>Mode C lookup table</li>
+<li><span class="strike">Mode C lookup table</span></li>
 <li>Lookup table for E &lt; 8 keV at goniometer</li>
 <li>Look up E0 from element &amp; edge, use E0 to specify a non-edge energy</li>
-<li>Better sanitizing of INI file input</li>
+<li><span class="strike">Better sanitizing of INI file input</span></li>
 <li>Better heuristics for scan time remaining</li>
 </ol>
+<div class="section" id="add-a-scan-ini-parameter">
+<h2>10.1. Add a scan.ini parameter<a class="headerlink" href="#add-a-scan-ini-parameter" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Add its entry into <code class="docutils literal"><span class="pre">scan_metadata()</span></code> in <code class="docutils literal"><span class="pre">84-energyscan.py</span></code></li>
+<li>Add its default value to the <code class="docutils literal"><span class="pre">BMM_configuration</span></code>  class in <code class="docutils literal"><span class="pre">74-modes.py</span></code></li>
+<li>Add it to <code class="docutils literal"><span class="pre">html_dict</span></code> in <code class="docutils literal"><span class="pre">84-energyscan.py</span></code> around line 912</li>
+<li>Correspondingly, add to the call arguments of
+<code class="docutils literal"><span class="pre">scan_sequence_static_html()</span></code> in <code class="docutils literal"><span class="pre">84-energyscan.py</span></code></li>
+</ol>
+<p>and, of course, use the new parameter in whatever way it needs to be used.</p>
 
 <br>
 
@@ -161,6 +175,7 @@ the BMM data collection system needs to do.</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>
+</div>
 </div>
 
 

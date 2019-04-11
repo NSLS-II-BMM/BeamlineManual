@@ -82,6 +82,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#change-mode">7.2. Change mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#change-crystals">7.3. Change crystals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#change-xas-harr-xrd">7.4. Change XAS ↔ XRD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xafs-with-si-333">7.5. XAFS with Si(333)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">8. Command cheatsheet</a></li>
@@ -192,8 +193,16 @@ and meeting the needs and expectations of different experiments.</p>
 </table>
 <div class="section" id="change-energy">
 <h2>7.1. Change energy<a class="headerlink" href="#change-energy" title="Permalink to this headline">¶</a></h2>
-<p>Changing energy is usually simple enough that the user can do so
-without help.  Here's the recipe:</p>
+<p>Changing energy is simple.  Usually, it is as simple as doing</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_edge</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>replacing the two-letter element symbol with the element you actually
+want to measure. This command will move the monochromator, put the
+photon delivery system in the correct mode, run a rocking curve scan,
+optimize the slit height, and move the reference foil holder to the
+correct position.</p>
+<p>If you want to reproduce this by hand, here is the command sequence:</p>
 <ol class="arabic">
 <li><p class="first">First move the DCM to the new energy position.  It is usually a
 good idea to move a bit above the target edge energy.  Here's an
@@ -244,12 +253,6 @@ top-most slot is at an <code class="docutils literal"><span class="pre">xafs_ref
 bottom-most at +90.</p>
 </li>
 </ol>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Better automation.  Something like <code class="docutils literal"><span class="pre">RE(change_edge('Fe'))</span></code>, which
-changes energy, moves to the correct photon delivery mode, runs a
-rocking curve, and sets the reference foil.</p>
-</div>
 </div>
 <div class="section" id="change-mode">
 <h2>7.2. Change mode<a class="headerlink" href="#change-mode" title="Permalink to this headline">¶</a></h2>
@@ -262,12 +265,6 @@ small sample at the vanadium K edge.</p>
 <span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
 <span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
 </pre></div>
-</div>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<p class="last">We are still working on optimizing the mode look-up table.
-At this time, some additional adjustments of the mirrors
-will be required to optimize focus at the XAS position.</p>
 </div>
 <ol class="arabic simple">
 <li>If the beam has recently been focused at the XRD station, you will
@@ -323,13 +320,96 @@ the incidence flux.  Do:</p>
 of the goniometer.  8000 eV is the nominal operating energy for the
 goniometer.  If a higher energy is required, substitute the correct
 energy for <code class="docutils literal"><span class="pre">8000</span></code> in the second line.</p>
-<div class="admonition-todo admonition" id="index-2">
+<div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
 <p class="last">Determine look-up table for lower energy operations using
 both M2 and M3.</p>
 </div>
 <p>Once the photon delivery system is set, remove the ion chambers and
 insert the XRD flight path into its place.</p>
+</div>
+<div class="section" id="xafs-with-si-333">
+<span id="use333"></span><h2>7.5. XAFS with Si(333)<a class="headerlink" href="#xafs-with-si-333" title="Permalink to this headline">¶</a></h2>
+<p>Using the Si(111) monochromator, it is possible to use the third
+harmonic – the Si(333) reflection – to measure XAS with slightly
+higher energy resolution.  In this section, we explain how to set up
+the beamline to measure the Ge K edge at 11103 eV using the Si(333).</p>
+<p>You cannot use the <code class="docutils literal"><span class="pre">change_edge()</span></code> command to do this.  Use of the
+Si(111) (or Si(311)) is hard-wired into that plan.  You have to set up
+the beamline by hand.</p>
+<p>First, put the photon delivery system in mode D (or mode A if using
+the focusing mirror):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_mode</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Next, move the monochromator to a few 10s of eV above the absorption
+edge, as measured with the third harmonic.  The Ge K edge is at 11103
+eV, so we need to move the monochromator to 11103/3 = 3701 eV.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="p">(</span><span class="mi">11103</span><span class="o">+</span><span class="mi">27</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>or simply</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">3701</span><span class="o">+</span><span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This will put the third harmonic energy 27 eV above the Ge K edge.</p>
+<p>Now, run a rocking curve scan:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This will produce a plot that looks something like this:</p>
+<div class="figure align-center" id="id1">
+<span id="fig-rocking333"></span><a class="reference external image-reference" href="_images/rocking_curve_333_E=3716.png"><img alt="_images/rocking_curve_333_E=3716.png" src="_images/rocking_curve_333_E=3716.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.1 </span><span class="caption-text">A rocking curve scan with the photon delivery system in mode D and
+the mono at 3716 eV.</span></p>
+</div>
+<p>The broad base of this curve is the Si(111) rocking curve with photons
+at 3710 eV. The sharp spike in the middle is the Si(333) rocking curve
+with photons at 11130 eV.</p>
+<p>Optimize the slit_height:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>You are ready to measure XAS with the Si(333) reflection!</p>
+<p>Here's an example <code class="docutils literal"><span class="pre">scan.ini</span></code> file for XANES of elemental Ge:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[scan]</span>
+<span class="na">folder</span>        <span class="o">=</span> <span class="s">/home/xf06bm/Data/Staff/Bruce Ravel/2019-03-28</span>
+<span class="na">experimenters</span> <span class="o">=</span> <span class="s">Bruce Ravel</span>
+<span class="na">usbstick</span>      <span class="o">=</span> <span class="s">True</span>
+
+<span class="na">filename</span>      <span class="o">=</span> <span class="s">Ge</span>
+
+<span class="na">sample</span>        <span class="o">=</span> <span class="s">elemental Ge, crystalline</span>
+<span class="na">prep</span>          <span class="o">=</span> <span class="s">standard sample</span>
+<span class="na">comment</span>       <span class="o">=</span> <span class="s">measured with Si(333) reflection, 25um Al foil in beam path before I0</span>
+
+<span class="na">ththth</span>        <span class="o">=</span> <span class="s">True</span>
+<span class="na">e0</span>            <span class="o">=</span> <span class="s">11103</span>
+<span class="na">element</span>       <span class="o">=</span> <span class="s">Ge</span>
+<span class="na">edge</span>          <span class="o">=</span> <span class="s">K</span>
+
+<span class="na">nscans</span>        <span class="o">=</span> <span class="s">1</span>
+<span class="na">start</span>         <span class="o">=</span> <span class="s">next</span>
+
+<span class="c1">## mode is one of transmission, fluorescence, both, or reference</span>
+<span class="na">mode</span>       <span class="o">=</span> <span class="s">transmission</span>
+
+<span class="c1">## Ge Si(333)</span>
+<span class="na">bounds</span>     <span class="o">=</span> <span class="s">-45    -18     -9      36    150</span>
+<span class="na">steps</span>      <span class="o">=</span>      <span class="s">9     0.9     0.3    0.9</span>
+<span class="na">times</span>      <span class="o">=</span>      <span class="s">0.5    0.5    0.5    0.5</span>
+</pre></div>
+</div>
+<p>Several things to note:</p>
+<ol class="arabic simple">
+<li>Note that the actual value for E0 is specified.</li>
+<li>Actual energy bounds and steps are specified, the xafs scan plan
+will convert them to appropriately sized steps for the Si(111).</li>
+<li>By setting the 333 flag to True, the correct thing will happen,
+including writing the correct energy axis to the output data file.</li>
+<li>The on-screen plot will show the Si(111) energy, however.</li>
+<li>Also, you still need to set up the photon delivery system up by hand.</li>
+</ol>
 
 <br>
 

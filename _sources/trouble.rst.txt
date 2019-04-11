@@ -49,13 +49,14 @@ picture above.
 
 In this case, try typing ``bsui`` at the command line with the white
 and blue prompt, then hit :button:`Enter`.  This will start a new
-BlueSky session.
+BlueSky session and should remember all the metadata from the 
+:quoted:`start_experiment` command that began your experiment.
 
-You will then need to :numref:`restart your user session (Section %s)
-<start_end>` by issuing the ``start_experiment()`` command with the
-appropriate arguments.  You should be able to do so by hitting
-:button:`Ctrl`-:button:`r` and searching for :quoted:`start_experiment`.
-Once found, hit :button:`Enter`, then continue with your experiment.
+.. You will then need to :numref:`restart your user session (Section %s)
+   <start_end>` by issuing the ``start_experiment()`` command with the
+   appropriate arguments.  You should be able to do so by hitting
+   :button:`Ctrl`-:button:`r` and searching for :quoted:`start_experiment`.
+   Once found, hit :button:`Enter`, then continue with your experiment.
 
 
 
