@@ -71,11 +71,9 @@ Here is a complete explanation of the contents of the INI file.
 
 ``e0`` (line 6)
    The edge energy for the element and edge of this measurement.  This
-   is the energy reference for the ``bounds``.
-
-   .. todo:: If absent, look up E0 rather than requiring it in the INI
-      file.  Make a specified E0 an override to the value determined
-      from edge and element.
+   is the energy reference for the ``bounds``.  If absent, the
+   tabulated value determined from ``element`` and ``edge`` will be
+   used. 
 
 ``element`` (line 7)
    The one- or two-letter symbol for the element.
@@ -126,6 +124,18 @@ Here is a complete explanation of the contents of the INI file.
    ``reference``.  ``both`` means to display *both* the transmission
    and fluorescence during the scan.
 
+   This parameter also controls what gets written to the output data
+   files. In all cases, the signals from I0, It, and Ir are written to
+   the data file.  If ``mode`` is ``fluorescence`` or ``both``, then
+   16 columns related to the fluorescence detector are also
+   written. The columns labeled ``dtc1``, ``dtc2``, ``dtc3``, and
+   ``dtc4`` are the dead-time corrected signals for each of the four
+   elements of the detector.  The ``roiN``, ``icrN``, and ``ocrN``
+   columns give the signal in the discriminator window, the input
+   count rate, and the output count rate for each element.  That is
+   sufficient information to recompute the dead-time correction, if
+   need be.
+
 Comments begin with the hash (``#``) character and are ignored.
 
 
@@ -172,8 +182,9 @@ More Boolean options
 
 There are several aspects of the XAFS scan plan that can be enabled or
 disabled from the INI file.  The sample INI file written by the
-:numref:`start_experiment() command (Section %s) <start_end>` does not
-include these options, but they can be added to the INI file if needed.
+:numref:`BMMuser.start_experiment() command (Section %s) <start_end>`
+does not include these options, but they can be added to the INI file
+if needed.
 
 ``snapshots``
    ``True`` to take :numref:`snapshots (Section %s) <snap>` from the
@@ -312,8 +323,9 @@ It does the following chores:
 
 #. Verifies the content of the INI file with a user prompt
 
-#. Makes an entry in the experimental log indicating the INI contents
-   and the current motor positions of all the important motors
+#. Makes an entry in the :numref:`experimental log (Section %s)
+   <logfile>` indicating the INI contents and the current motor
+   positions of all the important motors
 
 #. Takes :numref:`snapshots (Section %s) <snap>` of the XAS webcam and
    the analog camera near the sample
@@ -324,9 +336,10 @@ It does the following chores:
 #. Generates a plotting subscription appropriate to the value of
    ``mode`` in the INI file
 
-#. Enables a set of suspenders which will suspend the current XAFS
-   scan in the event of a beam dump or a shutter closing (the
-   suspenders are disabled at the end of the scan sequence)
+#. Enables a :numref:`set of suspenders (Section %s) <interrupt>`
+   which will suspend the current XAFS scan in the event of a beam
+   dump or a shutter closing (the suspenders are disabled at the end
+   of the scan sequence)
 
 #. Moves to the beginning of the scan range and begins taking scans
    using the ``scan_nd()`` plan and `cyclers
@@ -462,7 +475,7 @@ each sample.
    :linenos:
 
    def scan_sequence():
-      BMM_xsp.prompt = False
+      BMMuser.prompt = False
       BMM_info('Starting scan sequence')
 
       yield from mv(xafs_x, 23.86, xafs_y, 71.27)
@@ -471,14 +484,14 @@ each sample.
       yield from mv(xafs_x, 23.86, xafs_y, 81.27)
       yield from xafs('sample2.ini')
 
-      BMM_xsp.prompt = True
+      BMMuser.prompt = True
       BMM_info('Scan sequence finished')
 
 The calls to ``BMM_info()`` at lines 3 and 12 insert lines in the
 :numref:`experiment log (Section %s) <log>` indicating the times that
 the scan sequence begins and ends.
 
-Setting the ``BMM_xsp.prompt`` parameter to ``False`` at lines 2 skips
+Setting the ``BMMuser.prompt`` parameter to ``False`` at lines 2 skips
 the step in the ``xafs()`` macro where the user is prompted to verify
 that the scan is set up correctly.
 
@@ -491,7 +504,7 @@ metadata items specific to the sample.
    :linenos:
 
    def scan_sequence():
-      BMM_xsp.prompt = False
+      BMMuser.prompt = False
       BMM_info('Starting scan sequence')
 
       yield from mv(xafs_x, 23.86, xafs_y, 71.27)
@@ -500,7 +513,7 @@ metadata items specific to the sample.
       yield from mv(xafs_x, 23.86, xafs_y, 81.27)
       yield from xafs('scan.ini', filename = 'sample2', prep = 'powder on tape')
 
-      BMM_xsp.prompt = True
+      BMMuser.prompt = True
       BMM_info('Scan sequence finished')
 
 :numref:`Any keyword (Section %s) <ini>` from the INI file can be used

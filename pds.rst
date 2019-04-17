@@ -55,6 +55,37 @@ bottom.  Execute this command to configure the reference foil holder:
 
    foils.set('Mn Fe Co Ni Cu')
 
+The full set of parameters for the ``change_edge()`` plan are:
+
+.. code-block:: python
+
+   RE(change_edge(element, focus=False, edge='K', energy=None, slits=True, calibrating=False, target=300.))
+
+where,
+
+``element``
+  The one- or two-letter element symbol or Z number.
+
+``focus``
+  True: set up for using the focusing mirror, modes A, B, C; False: unfocused beam, modes D, E, F.
+
+``edge``
+  If not specified, use K or L3, as appropriate for the energy range
+  of the beamline.  Use this argument to specify an L1, L2, or M edge.
+
+``energy``
+  Use an E0 value that is not obtained from the look-up table.
+
+``slits``
+  True: optimize slit height; False: skip ``slit_hight()`` scan.
+
+``calibrating``
+  True: used when performing beamline maintenance.
+
+``target``
+  The energy above e0 at which to perform the rocking curve scan.
+
+
 For all the details about the individual parts of the photon delivery
 system, read on!
 

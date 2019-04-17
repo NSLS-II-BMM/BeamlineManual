@@ -48,9 +48,7 @@ about the state of the beamline.
 
 * The string ``D.111`` indicates that the photon delivery system is in
   :numref:`mode D (see Table %s) <pds-modes>` and that :numref:`the
-  Si(111) monochromator (Section %s) <change-crystals>` is in use.  This
-  part of the prompt will reflect the current state of the photon
-  delivery system.
+  Si(111) monochromator (Section %s) <change-crystals>` is in use.
 
 * The green number in square brackets is an incremented count of how
   many commands have been issued since ``bsui`` was started.
@@ -63,7 +61,7 @@ Starting and ending an experiment
 
 When a new experiment begins, run the command::
 
-  start_experiment(name='Betty Cooper', date='2019-02-28', gup=123456, saf=654321)
+  BMMuser.start_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321)
 
 This will create that data folder and populate it with an
 :numref:`experimental log (Section %s) <log>`, define the ``DATA``
@@ -82,7 +80,7 @@ experiment in the ``YYYY-MM-DD`` format.
 
 Once the experiment is finished, run this command::
 
-  end_experiment()
+  BMMuser.end_experiment()
 
 This will reset the logger and the ``DATA`` variable and unset the GUP
 and SAF numbers.
