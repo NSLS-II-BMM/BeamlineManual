@@ -19,6 +19,55 @@ record of the actions in an experimental campaign.  It also is an
 attempt to provide enough information to recover from mistakes and
 confusions about sample positions and other experimental issues.
 
+.. _logfile:
+
+Log file
+--------
+
+At the beginning of a user experiment, run something like this command::
+
+  BMMuser.start_experiment('Betty Cooper', date='2019-02-28', gup=123456, saf=654321)
+
+Among other things, this instruments the logger to maintain a log file
+specifically for the current experiment.  The logger also maintains a
+master log file which is, effectively, a concatenation of all the
+individual experimental logs.
+
+The log is an attempt to capture a record of all significant actions
+taken during an experimental campaign.  It errs of the conservative
+side in that it likely captures way too much information.
+
+Experimental events are captures with a time stamp and a brief
+explanation of what happened.  For example, when a motor is moved, the
+motor name and target position are written to the log with a time
+stamp.
+
+Similarly, a line scan or an XAFS scan is captured with enough
+information to understand what the scan accomplished.  For a line
+scan, the motor name, scan range, and starting position are captured.
+For an XAFS scan, the contents of the :numref:`INI file (See Section
+%s) <xafs>` are written to the log along with the motor positions as
+reported by the ``ms()`` command :numref:`(see Section %s) <motors>`.
+The names of the output data files are recorded with timestamps
+indicating when they were written.
+
+Several other activities specific to BMM also recorded to the log file.
+The snapshot tool described above is an example.
+
+Writing to the log file is accomplished in two ways.  This function::
+
+  BMM_log_info('text of message')
+
+is used to insert most messages into the log.  ``BMM_log_info()`` can
+be called at any time from the command line to insert any message into
+the log.
+
+BMM also uses `Bluesky's msg_hook
+<https://nsls-ii.github.io/bluesky/debugging.html#message-hook>`_.
+This is how ``mv()`` and ``mvr()`` commands are captured in the log.
+This bespoke message hook parses the document returned by BlueSky for
+specific kinds of events and captures a log message when appropriate.
+
 .. _snap:
 
 Snapshots
@@ -80,63 +129,8 @@ experimental log.
    :label: _fig-snapshots
 
 
-.. note:: Web camera snapshots, like :numref:`Figure %s <fig-xascam>`,
-	  are now annotated with a timestamp, the scan file name, and
-	  some NIST/BMM branding.  This annotation is on a
-	  semi-transparent white bar at the bottom of the the image.
-
-
 .. todo:: Have database consume snapshots with pointers from each scan
-          connected with the snapshot
-
-.. _logfile:
-
-Log file
---------
-
-At the beginning of a user experiment, run something like this command::
-
-  start_experiment('Betty Cooper', date='2019-02-28', gup=123456, saf=654321)
-
-Among other things, this instruments the logger to maintain a log file
-specifically for the current experiment.  The logger also maintains a
-master log file which is, effectively, a concatenation of all the
-individual experimental logs.
-
-The log is an attempt to capture a record of all significant actions
-taken during an experimental campaign.  It errs of the conservative
-side in that it likely captures way too much information.
-
-Experimental events are captures with a time stamp and a brief
-explanation of what happened.  For example, when a motor is moved, the
-motor name and target position are written to the log with a time
-stamp.
-
-Similarly, a line scan or an XAFS scan is captured with enough
-information to understand what the scan accomplished.  For a line
-scan, the motor name, scan range, and starting position are captured.
-For an XAFS scan, the contents of the :numref:`INI file (See Section
-%s) <xafs>` are written to the log along with the motor positions as
-reported by the ``ms()`` command :numref:`(see Section %s) <motors>`.
-The names of the output data files are recorded with timestamps
-indicating when they were written.
-
-Several other activities specific to BMM also recorded to the log file.
-The snapshot tool described above is an example.
-
-Writing to the log file is accomplished in two ways.  This function::
-
-  BMM_log_info('text of message')
-
-is used to insert most messages into the log.  ``BMM_log_info()`` can
-be called at any time from the command line to insert any message into
-the log.
-
-BMM also uses `Bluesky's msg_hook
-<https://nsls-ii.github.io/bluesky/debugging.html#message-hook>`_.
-This is how ``mv()`` and ``mvr()`` commands are captured in the log.
-This bespoke message hook parses the document returned by BlueSky for
-specific kinds of events and captures a log message when appropriate.
+   connected with the snapshot
 
 .. _dossier:
 

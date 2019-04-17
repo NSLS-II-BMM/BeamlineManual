@@ -54,7 +54,7 @@ Sample stages
 
 These stages sit on top of the XAFS optical table.  The nickname is a
 short string that can be used in the ``linescan()`` plan and certain
-other places instead of writing out the BlueSky's name for the motor.
+other places instead of writing out the BlueSky name for the motor.
 
 .. table:: XAFS sample stages
    :name:  xafs-stages
@@ -77,8 +77,9 @@ the following examples, the ``xafs_y`` motor is used.  The commands
 are the same for all sample stage motors.
 
 **Querying position**
-   The position of any motor can be queried with a command line like
-   ``%w xafs_y``. 
+   The position of any motor can be queried with a command line like ::
+
+      %w xafs_y 
 
 **Moving to a new position**
    Always move motors through the run engine, for example: ::
@@ -124,6 +125,7 @@ are the same for all sample stage motors.
 
      RE(mv(xafs_ref, -45))
 
+..
    As part of a macro that changes energies, you might do something
    like::
 

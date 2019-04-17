@@ -164,7 +164,7 @@ is ready to collect data.</p>
 </div>
 <p>Excluding the <code class="docutils literal"><span class="pre">focus</span></code> argument – or setting it to False –
 indicates setup for unfocused beam.</p>
-<p>This edge change can be put into a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (see Section 5.7)</span></a> like so:</p>
+<p>This edge change can be put into a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (see Section 5.6)</span></a> like so:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">change_edge</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -177,6 +177,28 @@ bottom.  Execute this command to configure the reference foil holder:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">foils</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Mn Fe Co Ni Cu&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>The full set of parameters for the <code class="docutils literal"><span class="pre">change_edge()</span></code> plan are:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_edge</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">focus</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">edge</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="n">energy</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">slits</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">calibrating</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="mf">300.</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>where,</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">element</span></code></dt>
+<dd>The one- or two-letter element symbol or Z number.</dd>
+<dt><code class="docutils literal"><span class="pre">focus</span></code></dt>
+<dd>True: set up for using the focusing mirror, modes A, B, C; False: unfocused beam, modes D, E, F.</dd>
+<dt><code class="docutils literal"><span class="pre">edge</span></code></dt>
+<dd>If not specified, use K or L3, as appropriate for the energy range
+of the beamline.  Use this argument to specify an L1, L2, or M edge.</dd>
+<dt><code class="docutils literal"><span class="pre">energy</span></code></dt>
+<dd>Use an E0 value that is not obtained from the look-up table.</dd>
+<dt><code class="docutils literal"><span class="pre">slits</span></code></dt>
+<dd>True: optimize slit height; False: skip <code class="docutils literal"><span class="pre">slit_hight()</span></code> scan.</dd>
+<dt><code class="docutils literal"><span class="pre">calibrating</span></code></dt>
+<dd>True: used when performing beamline maintenance.</dd>
+<dt><code class="docutils literal"><span class="pre">target</span></code></dt>
+<dd>The energy above e0 at which to perform the rocking curve scan.</dd>
+</dl>
 <p>For all the details about the individual parts of the photon delivery
 system, read on!</p>
 <div class="section" id="shutters">
@@ -195,7 +217,7 @@ shutter does not trigger when told to open or close.  So, these
 plans try up to three times to open or close the photon shutter,
 with a 1.5 second pause between attempts.</p>
 <p>If you wish to open or close the photon shutter (using the same
-multiple attempt algorithm) in a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.7)</span></a>, do:</p>
+multiple attempt algorithm) in a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a>, do:</p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">shb</span><span class="o">.</span><span class="n">open_plan</span><span class="p">()</span>
 <span class="k">yield from</span> <span class="n">shb</span><span class="o">.</span><span class="n">close_plan</span><span class="p">()</span>
 </pre></div>
@@ -246,7 +268,7 @@ the energy of the mono.  To move to the copper K edge energy:</p>
 to the computer.</p>
 </dd>
 <dt><strong>Move to a new energy in a macro</strong></dt>
-<dd><p class="first">An energy change can be a part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.7)</span></a>.  Simply do:</p>
+<dd><p class="first">An energy change can be a part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a>.  Simply do:</p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8979</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -307,7 +329,7 @@ vertical displacement of the beam.</p>
 <p class="last">In practice, the monochromator is normally left in fixed-exit
 mode.  That way, the monochromator can be moved without worry about
 the beam height and the monochromator exit aperture.  In the
-<a class="reference internal" href="xafs.html#xafsscan"><span class="std std-numref">XAFS scan plan (Section 5.5)</span></a>, the monochromator
+<a class="reference internal" href="xafs.html#xafsscan"><span class="std std-numref">XAFS scan plan (Section 5.4)</span></a>, the monochromator
 first moves – in fixed-exit mode – to the center of the
 angular range of the scan, then sets <code class="docutils literal"><span class="pre">dcm.mode</span></code> to
 <code class="docutils literal"><span class="pre">channelcut</span></code>. Once the sequence of scan repititions is finished,

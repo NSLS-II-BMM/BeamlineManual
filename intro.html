@@ -170,32 +170,30 @@ for the user.  When the beamline is not ready for users, the <code class="docuti
 string is red.</li>
 <li>The string <code class="docutils literal"><span class="pre">D.111</span></code> indicates that the photon delivery system is in
 <a class="reference internal" href="pds.html#pds-modes"><span class="std std-numref">mode D (see Table 3.3)</span></a> and that <a class="reference internal" href="pds.html#change-crystals"><span class="std std-numref">the
-Si(111) monochromator (Section 3.6.2)</span></a> is in use.  This
-part of the prompt will reflect the current state of the photon
-delivery system.</li>
+Si(111) monochromator (Section 3.6.2)</span></a> is in use.</li>
 <li>The green number in square brackets is an incremented count of how
 many commands have been issued since <code class="docutils literal"><span class="pre">bsui</span></code> was started.</li>
 </ul>
 <div class="section" id="starting-and-ending-an-experiment">
 <span id="start-end"></span><h3>1.1.1. Starting and ending an experiment<a class="headerlink" href="#starting-and-ending-an-experiment" title="Permalink to this headline">¶</a></h3>
 <p>When a new experiment begins, run the command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">start_experiment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Betty Cooper&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="s1">&#39;2019-02-28&#39;</span><span class="p">,</span> <span class="n">gup</span><span class="o">=</span><span class="mi">123456</span><span class="p">,</span> <span class="n">saf</span><span class="o">=</span><span class="mi">654321</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BMMuser</span><span class="o">.</span><span class="n">start_experiment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Betty Cooper&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="s1">&#39;2019-02-29&#39;</span><span class="p">,</span> <span class="n">gup</span><span class="o">=</span><span class="mi">123456</span><span class="p">,</span> <span class="n">saf</span><span class="o">=</span><span class="mi">654321</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This will create that data folder and populate it with an
 <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log (Section 6)</span></a>, define the <code class="docutils literal"><span class="pre">DATA</span></code>
 variable for use in simplifying certain commands, write a template for
 a <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">scan.ini file (Section 5)</span></a>, write a template for a
-<a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro file (Section 5.7)</span></a>, configure the logger to
-write a <a class="reference internal" href="log.html#logfile"><span class="std std-numref">user log file (Section 6.2)</span></a> for this
+<a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro file (Section 5.6)</span></a>, configure the logger to
+write a <a class="reference internal" href="log.html#logfile"><span class="std std-numref">user log file (Section 6.1)</span></a> for this
 experiment, set the GUP and SAF numbers as metadata for output files,
-and set up <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshot (Section 6.1)</span></a> and <a class="reference internal" href="log.html#dossier"><span class="std std-numref">dossier
+and set up <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshot (Section 6.2)</span></a> and <a class="reference internal" href="log.html#dossier"><span class="std std-numref">dossier
 (Section 6.3)</span></a> folders.</p>
 <p>The <code class="docutils literal"><span class="pre">name</span></code> should be the PI's full name, preferably transliterated
 into normal ASCII.  The <code class="docutils literal"><span class="pre">date</span></code> should be the starting day of the
 experiment in the <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code> format.</p>
 <p>Once the experiment is finished, run this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">end_experiment</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BMMuser</span><span class="o">.</span><span class="n">end_experiment</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>This will reset the logger and the <code class="docutils literal"><span class="pre">DATA</span></code> variable and unset the GUP

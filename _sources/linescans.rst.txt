@@ -112,8 +112,8 @@ experimental log.
 Specific line scans
 -------------------
 
-A number of line scan types are so common and so often performed with
-the same arguments that they have special names.
+Some scan types are performed often enough and always with the same
+arguments that they have special names.
 
 **Rocking curve scan**
    This command::
@@ -235,7 +235,7 @@ plot that is still displayed on the screen.
 Of course, an older plot remains active in the sense that you can pass
 the cursor over the plot and read the mouse coordinates in the bottom,
 left corner of the plot window.  You can find a point in this way,
-then do a movement command line::
+then do a movement command::
 
   RE(mv(xafs_x, 28.31, xafs_y, 113.97))
 

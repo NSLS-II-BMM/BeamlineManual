@@ -77,8 +77,8 @@
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xafs.html">5. XAFS scans</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. Experimental Log</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#snapshots">6.1. Snapshots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#log-file">6.2. Log file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#log-file">6.1. Log file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#snapshots">6.2. Snapshots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scan-dossier">6.3. Scan dossier</a></li>
 </ul>
 </li>
@@ -150,8 +150,47 @@ all the significant actions at the beamline.  In part, this provides a
 record of the actions in an experimental campaign.  It also is an
 attempt to provide enough information to recover from mistakes and
 confusions about sample positions and other experimental issues.</p>
+<div class="section" id="log-file">
+<span id="logfile"></span><h2>6.1. Log file<a class="headerlink" href="#log-file" title="Permalink to this headline">¶</a></h2>
+<p>At the beginning of a user experiment, run something like this command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BMMuser</span><span class="o">.</span><span class="n">start_experiment</span><span class="p">(</span><span class="s1">&#39;Betty Cooper&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="s1">&#39;2019-02-28&#39;</span><span class="p">,</span> <span class="n">gup</span><span class="o">=</span><span class="mi">123456</span><span class="p">,</span> <span class="n">saf</span><span class="o">=</span><span class="mi">654321</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Among other things, this instruments the logger to maintain a log file
+specifically for the current experiment.  The logger also maintains a
+master log file which is, effectively, a concatenation of all the
+individual experimental logs.</p>
+<p>The log is an attempt to capture a record of all significant actions
+taken during an experimental campaign.  It errs of the conservative
+side in that it likely captures way too much information.</p>
+<p>Experimental events are captures with a time stamp and a brief
+explanation of what happened.  For example, when a motor is moved, the
+motor name and target position are written to the log with a time
+stamp.</p>
+<p>Similarly, a line scan or an XAFS scan is captured with enough
+information to understand what the scan accomplished.  For a line
+scan, the motor name, scan range, and starting position are captured.
+For an XAFS scan, the contents of the <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">INI file (See Section
+5)</span></a> are written to the log along with the motor positions as
+reported by the <code class="docutils literal"><span class="pre">ms()</span></code> command <a class="reference internal" href="motors.html#motors"><span class="std std-numref">(see Section 2)</span></a>.
+The names of the output data files are recorded with timestamps
+indicating when they were written.</p>
+<p>Several other activities specific to BMM also recorded to the log file.
+The snapshot tool described above is an example.</p>
+<p>Writing to the log file is accomplished in two ways.  This function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BMM_log_info</span><span class="p">(</span><span class="s1">&#39;text of message&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>is used to insert most messages into the log.  <code class="docutils literal"><span class="pre">BMM_log_info()</span></code> can
+be called at any time from the command line to insert any message into
+the log.</p>
+<p>BMM also uses <a class="reference external" href="https://nsls-ii.github.io/bluesky/debugging.html#message-hook">Bluesky's msg_hook</a>.
+This is how <code class="docutils literal"><span class="pre">mv()</span></code> and <code class="docutils literal"><span class="pre">mvr()</span></code> commands are captured in the log.
+This bespoke message hook parses the document returned by BlueSky for
+specific kinds of events and captures a log message when appropriate.</p>
+</div>
 <div class="section" id="snapshots">
-<span id="snap"></span><h2>6.1. Snapshots<a class="headerlink" href="#snapshots" title="Permalink to this headline">¶</a></h2>
+<span id="snap"></span><h2>6.2. Snapshots<a class="headerlink" href="#snapshots" title="Permalink to this headline">¶</a></h2>
 <p>The XAFS scan plan described in <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">Section 5</span></a> includes a
 step where snapshots are taken from the XAS webcam and the small
 analog camera.  These photos are written to JPG files with names
@@ -188,57 +227,11 @@ experimental log.</p>
 <span id="fig-xascam"></span><a class="reference external image-reference" href="_images/XASwebcam.jpg"><img alt="_images/XASwebcam.jpg" src="_images/XASwebcam.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Snapshot taken with the XAS web camera</span></p>
 </div>
-</div><div class="admonition note" id="_fig-snapshots">
-<p class="first admonition-title">Note</p>
-<p class="last">Web camera snapshots, like <a class="reference internal" href="#fig-xascam"><span class="std std-numref">Figure 6.2</span></a>,
-are now annotated with a timestamp, the scan file name, and
-some NIST/BMM branding.  This annotation is on a
-semi-transparent white bar at the bottom of the the image.</p>
-</div>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
+</div><div class="admonition-todo admonition" id="index-0">
+<span id="_fig-snapshots"></span><p class="first admonition-title">Todo</p>
 <p class="last">Have database consume snapshots with pointers from each scan
 connected with the snapshot</p>
 </div>
-</div>
-<div class="section" id="log-file">
-<span id="logfile"></span><h2>6.2. Log file<a class="headerlink" href="#log-file" title="Permalink to this headline">¶</a></h2>
-<p>At the beginning of a user experiment, run something like this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">start_experiment</span><span class="p">(</span><span class="s1">&#39;Betty Cooper&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="s1">&#39;2019-02-28&#39;</span><span class="p">,</span> <span class="n">gup</span><span class="o">=</span><span class="mi">123456</span><span class="p">,</span> <span class="n">saf</span><span class="o">=</span><span class="mi">654321</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Among other things, this instruments the logger to maintain a log file
-specifically for the current experiment.  The logger also maintains a
-master log file which is, effectively, a concatenation of all the
-individual experimental logs.</p>
-<p>The log is an attempt to capture a record of all significant actions
-taken during an experimental campaign.  It errs of the conservative
-side in that it likely captures way too much information.</p>
-<p>Experimental events are captures with a time stamp and a brief
-explanation of what happened.  For example, when a motor is moved, the
-motor name and target position are written to the log with a time
-stamp.</p>
-<p>Similarly, a line scan or an XAFS scan is captured with enough
-information to understand what the scan accomplished.  For a line
-scan, the motor name, scan range, and starting position are captured.
-For an XAFS scan, the contents of the <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">INI file (See Section
-5)</span></a> are written to the log along with the motor positions as
-reported by the <code class="docutils literal"><span class="pre">ms()</span></code> command <a class="reference internal" href="motors.html#motors"><span class="std std-numref">(see Section 2)</span></a>.
-The names of the output data files are recorded with timestamps
-indicating when they were written.</p>
-<p>Several other activities specific to BMM also recorded to the log file.
-The snapshot tool described above is an example.</p>
-<p>Writing to the log file is accomplished in two ways.  This function:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BMM_log_info</span><span class="p">(</span><span class="s1">&#39;text of message&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>is used to insert most messages into the log.  <code class="docutils literal"><span class="pre">BMM_log_info()</span></code> can
-be called at any time from the command line to insert any message into
-the log.</p>
-<p>BMM also uses <a class="reference external" href="https://nsls-ii.github.io/bluesky/debugging.html#message-hook">Bluesky's msg_hook</a>.
-This is how <code class="docutils literal"><span class="pre">mv()</span></code> and <code class="docutils literal"><span class="pre">mvr()</span></code> commands are captured in the log.
-This bespoke message hook parses the document returned by BlueSky for
-specific kinds of events and captures a log message when appropriate.</p>
 </div>
 <div class="section" id="scan-dossier">
 <span id="dossier"></span><h2>6.3. Scan dossier<a class="headerlink" href="#scan-dossier" title="Permalink to this headline">¶</a></h2>

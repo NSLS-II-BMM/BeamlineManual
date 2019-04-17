@@ -218,15 +218,10 @@ are written and is called by name when running an XAFS scan.</p>
 <dt><code class="docutils literal"><span class="pre">experimenters</span></code> (line 3)</dt>
 <dd>The name of the participants in the measurement</dd>
 <dt><code class="docutils literal"><span class="pre">e0</span></code> (line 6)</dt>
-<dd><p class="first">The edge energy for the element and edge of this measurement.  This
-is the energy reference for the <code class="docutils literal"><span class="pre">bounds</span></code>.</p>
-<div class="admonition-todo last admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">If absent, look up E0 rather than requiring it in the INI
-file.  Make a specified E0 an override to the value determined
-from edge and element.</p>
-</div>
-</dd>
+<dd>The edge energy for the element and edge of this measurement.  This
+is the energy reference for the <code class="docutils literal"><span class="pre">bounds</span></code>.  If absent, the
+tabulated value determined from <code class="docutils literal"><span class="pre">element</span></code> and <code class="docutils literal"><span class="pre">edge</span></code> will be
+used.</dd>
 <dt><code class="docutils literal"><span class="pre">element</span></code> (line 7)</dt>
 <dd>The one- or two-letter symbol for the element.</dd>
 <dt><code class="docutils literal"><span class="pre">edge</span></code> (line 8)</dt>
@@ -263,10 +258,22 @@ stick.  Since this is mostly an issue with Windows file systems,
 users who want to do  their data analysis on a Windows computer
 should use this option.  <a class="reference internal" href="#usbsafe"><span class="std std-numref">See Section 5.3</span></a>.</dd>
 <dt><code class="docutils literal"><span class="pre">mode</span></code> (line 19)</dt>
-<dd>Indicate how data should be displayed on screen during a scan.  The
+<dd><p class="first">Indicate how data should be displayed on screen during a scan.  The
 options are <code class="docutils literal"><span class="pre">transmission</span></code>, <code class="docutils literal"><span class="pre">fluorescence</span></code>, <code class="docutils literal"><span class="pre">both</span></code>, or
 <code class="docutils literal"><span class="pre">reference</span></code>.  <code class="docutils literal"><span class="pre">both</span></code> means to display <em>both</em> the transmission
-and fluorescence during the scan.</dd>
+and fluorescence during the scan.</p>
+<p class="last">This parameter also controls what gets written to the output data
+files. In all cases, the signals from I0, It, and Ir are written to
+the data file.  If <code class="docutils literal"><span class="pre">mode</span></code> is <code class="docutils literal"><span class="pre">fluorescence</span></code> or <code class="docutils literal"><span class="pre">both</span></code>, then
+16 columns related to the fluorescence detector are also
+written. The columns labeled <code class="docutils literal"><span class="pre">dtc1</span></code>, <code class="docutils literal"><span class="pre">dtc2</span></code>, <code class="docutils literal"><span class="pre">dtc3</span></code>, and
+<code class="docutils literal"><span class="pre">dtc4</span></code> are the dead-time corrected signals for each of the four
+elements of the detector.  The <code class="docutils literal"><span class="pre">roiN</span></code>, <code class="docutils literal"><span class="pre">icrN</span></code>, and <code class="docutils literal"><span class="pre">ocrN</span></code>
+columns give the signal in the discriminator window, the input
+count rate, and the output count rate for each element.  That is
+sufficient information to recompute the dead-time correction, if
+need be.</p>
+</dd>
 </dl>
 <p>Comments begin with the hash (<code class="docutils literal"><span class="pre">#</span></code>) character and are ignored.</p>
 <div class="section" id="scan-regions">
@@ -302,11 +309,12 @@ seconds at 8 Å<sup>-1</sup>, and so on.</p>
 <h3>5.1.2. More Boolean options<a class="headerlink" href="#more-boolean-options" title="Permalink to this headline">¶</a></h3>
 <p>There are several aspects of the XAFS scan plan that can be enabled or
 disabled from the INI file.  The sample INI file written by the
-<a class="reference internal" href="intro.html#start-end"><span class="std std-numref">start_experiment() command (Section 1.1.1)</span></a> does not
-include these options, but they can be added to the INI file if needed.</p>
+<a class="reference internal" href="intro.html#start-end"><span class="std std-numref">BMMuser.start_experiment() command (Section 1.1.1)</span></a>
+does not include these options, but they can be added to the INI file
+if needed.</p>
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">snapshots</span></code></dt>
-<dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> from the
+<dd><code class="docutils literal"><span class="pre">True</span></code> to take <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.2)</span></a> from the
 XAS webcam and analog camera before beginning the scan sequence.
 <code class="docutils literal"><span class="pre">False</span></code> to skip the snapshots.  Default: <code class="docutils literal"><span class="pre">True</span></code></dd>
 <dt><code class="docutils literal"><span class="pre">channelcut</span></code></dt>
@@ -344,7 +352,7 @@ Each scan will take about 17.9 minutes
 The sequence of 6 scans will take about 1.8 hours
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="index-1">
+<div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
 <p class="last">Improve heuristic by doing statistics on scans.  Wait
 patiently for Andrew Welter's scan telemetry package.</p>
@@ -445,23 +453,24 @@ experiment (Section 1.1.1)</span></a>.</p>
 It does the following chores:</p>
 <ol class="arabic simple">
 <li>Verifies the content of the INI file with a user prompt</li>
-<li>Makes an entry in the experimental log indicating the INI contents
-and the current motor positions of all the important motors</li>
-<li>Takes <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.1)</span></a> of the XAS webcam and
+<li>Makes an entry in the <a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.1)</span></a> indicating the INI contents and the current motor
+positions of all the important motors</li>
+<li>Takes <a class="reference internal" href="log.html#snap"><span class="std std-numref">snapshots (Section 6.2)</span></a> of the XAS webcam and
 the analog camera near the sample</li>
 <li>Moves to the center of the angular range of motion of the scan and
 enters pseudo-channel-cut mode</li>
 <li>Generates a plotting subscription appropriate to the value of
 <code class="docutils literal"><span class="pre">mode</span></code> in the INI file</li>
-<li>Enables a set of suspenders which will suspend the current XAFS
-scan in the event of a beam dump or a shutter closing (the
-suspenders are disabled at the end of the scan sequence)</li>
+<li>Enables a <a class="reference internal" href="#interrupt"><span class="std std-numref">set of suspenders (Section 5.4.2)</span></a>
+which will suspend the current XAFS scan in the event of a beam
+dump or a shutter closing (the suspenders are disabled at the end
+of the scan sequence)</li>
 <li>Moves to the beginning of the scan range and begins taking scans
 using the <code class="docutils literal"><span class="pre">scan_nd()</span></code> plan and <a class="reference external" href="https://matplotlib.org/cycler/">cyclers</a> for energy values and dwell
 times constructed from the values of <code class="docutils literal"><span class="pre">bounds</span></code>, <code class="docutils literal"><span class="pre">steps</span></code>, and
 <code class="docutils literal"><span class="pre">times</span></code> read from the INI file</li>
 <li>For each scan, notes the start and end times of the scan in the
-<a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.2)</span></a> along with the
+<a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.1)</span></a> along with the
 unique and transient IDs of the scan in the beamline database</li>
 <li>After each scan, extracts the data table from the database and writes
 an ASCII file in the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a></li>
@@ -576,7 +585,7 @@ each sample.</p>
 10
 11
 12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scan_sequence</span><span class="p">():</span>
-   <span class="n">BMM_xsp</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">False</span>
+   <span class="n">BMMuser</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">False</span>
    <span class="n">BMM_info</span><span class="p">(</span><span class="s1">&#39;Starting scan sequence&#39;</span><span class="p">)</span>
 
    <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_x</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="mf">71.27</span><span class="p">)</span>
@@ -585,14 +594,14 @@ each sample.</p>
    <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_x</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="mf">81.27</span><span class="p">)</span>
    <span class="k">yield from</span> <span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;sample2.ini&#39;</span><span class="p">)</span>
 
-   <span class="n">BMM_xsp</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">True</span>
+   <span class="n">BMMuser</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">True</span>
    <span class="n">BMM_info</span><span class="p">(</span><span class="s1">&#39;Scan sequence finished&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 <p>The calls to <code class="docutils literal"><span class="pre">BMM_info()</span></code> at lines 3 and 12 insert lines in the
 <a class="reference internal" href="log.html#log"><span class="std std-numref">experiment log (Section 6)</span></a> indicating the times that
 the scan sequence begins and ends.</p>
-<p>Setting the <code class="docutils literal"><span class="pre">BMM_xsp.prompt</span></code> parameter to <code class="docutils literal"><span class="pre">False</span></code> at lines 2 skips
+<p>Setting the <code class="docutils literal"><span class="pre">BMMuser.prompt</span></code> parameter to <code class="docutils literal"><span class="pre">False</span></code> at lines 2 skips
 the step in the <code class="docutils literal"><span class="pre">xafs()</span></code> macro where the user is prompted to verify
 that the scan is set up correctly.</p>
 <p>Alternately, you can use a single, master <code class="file docutils literal"><span class="pre">scan.ini</span></code> file that
@@ -611,7 +620,7 @@ metadata items specific to the sample.</p>
 10
 11
 12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scan_sequence</span><span class="p">():</span>
-   <span class="n">BMM_xsp</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">False</span>
+   <span class="n">BMMuser</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">False</span>
    <span class="n">BMM_info</span><span class="p">(</span><span class="s1">&#39;Starting scan sequence&#39;</span><span class="p">)</span>
 
    <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_x</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="mf">71.27</span><span class="p">)</span>
@@ -620,7 +629,7 @@ metadata items specific to the sample.</p>
    <span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_x</span><span class="p">,</span> <span class="mf">23.86</span><span class="p">,</span> <span class="n">xafs_y</span><span class="p">,</span> <span class="mf">81.27</span><span class="p">)</span>
    <span class="k">yield from</span> <span class="n">xafs</span><span class="p">(</span><span class="s1">&#39;scan.ini&#39;</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;sample2&#39;</span><span class="p">,</span> <span class="n">prep</span> <span class="o">=</span> <span class="s1">&#39;powder on tape&#39;</span><span class="p">)</span>
 
-   <span class="n">BMM_xsp</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">True</span>
+   <span class="n">BMMuser</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="bp">True</span>
    <span class="n">BMM_info</span><span class="p">(</span><span class="s1">&#39;Scan sequence finished&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
@@ -650,7 +659,7 @@ correct name.</p>
 <p>XAFS data files are written to the <a class="reference external" href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI format</a>.  Here is
 an example.  You can see how the metadata from the INI file and
 elsewhere is captured in the output XDI file.</p>
-<div class="admonition-todo admonition" id="index-2">
+<div class="admonition-todo admonition" id="index-1">
 <p class="first admonition-title">Todo</p>
 <p class="last">Document use of <code class="docutils literal"><span class="pre">XDI_record</span></code> dictionary to control which
 xafs motors and/or temperatures get recorded in the XDI header</p>
