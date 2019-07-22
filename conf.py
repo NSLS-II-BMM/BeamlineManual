@@ -101,9 +101,9 @@ else:
 #sphinxtr
 # A string of reStructuredText that will be included at the end of
 # every source file that is read.
-rst_epilog = open(os.path.join(CURDIR, 'epilog.rst'),'r').read().decode('utf8')
+rst_epilog = open(os.path.join(CURDIR, 'epilog.rst'),'r').read() #.decode('utf-16')
 
-rst_prolog = open(os.path.join(CURDIR, 'prolog.rst'),'r').read().decode('utf8')
+rst_prolog = open(os.path.join(CURDIR, 'prolog.rst'),'r').read() #.decode('utf-16')
 
 
 demeter_color = '#aa0000'
@@ -289,17 +289,17 @@ latex_additional_files = [
 ## \setcounter{secnumdepth}{2}
 ## \setcounter{tocdepth}{2}
 
-latex_elements = {'pointsizee': '11pt',
-                  'preamble': """
-\input{preamble._tex}
-\usepackage{sphinx}
-input{biblio.tex}
-"""
-#                   ,
-#                  'footer':"""
+# latex_elements = {'pointsizee': '11pt',
+#                   'preamble': """
+# \input{preamble._tex}
+# \usepackage{sphinx}
 # input{biblio.tex}
-#"""
-}
+# """
+# #                   ,
+# #                  'footer':"""
+# # input{biblio.tex}
+# #"""
+# }
 
 
 # -- Options for manual page output ---------------------------------------

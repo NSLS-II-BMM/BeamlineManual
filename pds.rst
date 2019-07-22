@@ -8,6 +8,9 @@
 Photon Delivery System
 ======================
 
+Configure the Photon Delivery System
+------------------------------------
+
 Configuring the photon delivery system for a specific measurement is
 usually quite simple.  When moving to a new absorption edge, do the
 following:
@@ -45,6 +48,9 @@ In this way, a macro can manage energy changes while you sleep!
 
 .. _foilholder:
 
+Automating reference foil changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 To make sure the correct reference foil is selected, you need to
 configure the reference foil holder.  Suppose that you are measuring
 transition metals in sequence.  Then you would fill the reference foil
@@ -54,6 +60,35 @@ bottom.  Execute this command to configure the reference foil holder:
 .. code-block:: python
 
    foils.set('Mn Fe Co Ni Cu')
+
+.. _roichannels:
+
+Automating fluorescence ROI changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To make sure that the correct ROI channel is selected, you need to
+configure the ROI readout.  Suppose that you have configure the analog
+detector readout system to measure three of those transition metals.
+Then you would execute a command like this to configure the detector
+readout:
+
+.. code-block:: python
+
+   rois.set('Fe Co Ni')
+
+Unfortunately, the ROI channels and reference holder have the hot
+dog/hot dog bun problem.  There are only three output channels for the
+analog detector readout system, thus only three elements can be
+configured at a time.
+
+When you change edge to an element that is configured as an ROI
+channel, the data acquisition system will take its fluorescence data
+from the corresponding channels of the Struck multichannel scalar.  It
+will also perform the dead-time correction using the correct signal
+chains for the selected element. 
+
+Parameters for the change_edge command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The full set of parameters for the ``change_edge()`` plan are:
 
@@ -67,7 +102,8 @@ where,
   The one- or two-letter element symbol or Z number.
 
 ``focus``
-  True: set up for using the focusing mirror, modes A, B, C; False: unfocused beam, modes D, E, F.
+  ``True``: set up for using the focusing mirror, modes A, B, C;
+  ``False``: unfocused beam, modes D, E, F.  Default is ``False``.
 
 ``edge``
   If not specified, use K or L3, as appropriate for the energy range
@@ -75,15 +111,18 @@ where,
 
 ``energy``
   Use an E0 value that is not obtained from the look-up table.
+  Default is unspecified, i.e. use ``element`` and look-up table.
 
 ``slits``
-  True: optimize slit height; False: skip ``slit_hight()`` scan.
+  ``True``: optimize slit height; ``False``: skip ``slit_hight()``
+  scan.  Default is ``True``.
 
 ``calibrating``
-  True: used when performing beamline maintenance.
+  ``True``: used when performing beamline maintenance.  Default is ``False``
 
 ``target``
   The energy above e0 at which to perform the rocking curve scan.
+  Default is 300.
 
 
 For all the details about the individual parts of the photon delivery
@@ -172,8 +211,8 @@ facilitating any actions a user should ever need.
      RE(rocking_curve())
 
    This will run a scan of the pitch of the second crystal.  At the
-   end of the scan, it moves to the ceiling of the measured intensity
-   profile.
+   end of the scan, it moves to the center of mass of the measured
+   intensity profile.
 
    You can do the rocking curve scan by looking at the signal on the
    Bicron which is used as the incident beam monitor for the XRD end

@@ -3,10 +3,11 @@
 
 .. endpar::
    
+.. endpar::
+   
 		      
---------------
 
-This manual is copyright |copy| 2018 Bruce Ravel
+This manual is copyright |copy| 2018-2019 Bruce Ravel
 
 :mark:`somerights,.`  This document is licensed under `The Creative Commons Attribution-ShareAlike License <https://creativecommons.org/licenses/by-sa/3.0/>`__.
 

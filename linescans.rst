@@ -63,7 +63,7 @@ prompted to single click the left mouse button :mark:`leftclick,.` on
 the plot.  The motor that was scanned will then move to the motor
 position you clicked on.
 
-You can skip the :quoted:`click for motor position` step by typing
+You can skip the "click for motor position" step by typing
 :button:`n` and hitting :button:`Enter`.
 
 .. todo:: Better sanity checking of input parameters
@@ -100,11 +100,13 @@ Retrieve data from the database using the database key or scan ID::
 This writes from the database to an output file.  The output file is a
 simple column data file without header or metadata.
 
+
 The first argument is the name of the output data file.  The second
 argument is either the scan's unique ID |nd| something like 
-``f6619ed7-a8e5-41c2-a499-f793b0fcacec`` |nd| or the scan's transient
+``42447313-46a5-42ef-bf8a-46fedc2c2bd1`` |nd| or the scan's transient
 id number.  Both the unique and transient ids can be found in the
-experimental log.
+:numref:`dossier (Section %s) <dossier>`.
+
 
 
 .. _special-linescans:
@@ -122,8 +124,8 @@ arguments that they have special names.
 
    does a scan of the pitch of the second mono crystal and plots the
    signal on I0.  At the end of the scan, it moves to the position of
-   the peak of the rocking curve.  This scan is useful after a large
-   change of energy.
+   the center of mass of the rocking curve.  This scan is useful after
+   a large change of energy.
 
    You can put this scan in a macro using::
 
@@ -140,6 +142,11 @@ arguments that they have special names.
    slit height to.  This scan is useful for verifying that the slits
    are in the correct orientation for the delivery of beam from the
    mirrors.
+
+   Optionally, the scan will move to the center of mass of the
+   measurement, skipping the prompt and plot interaction::
+
+     RE(slit_height(move=True))
 
    You can put this scan in a macro using::
 
@@ -213,7 +220,7 @@ If you answer ``Y``, or simply hit return, you will be prompted to
 single click the left mouse button :mark:`leftclick,.` on the plot.
 Both motors will then move to the position you clicked on.
 
-You can skip the :quoted:`click for motor position` step by typing
+You can skip the "click for motor position" step by typing
 ``n`` and hitting return.
 
 .. todo:: Better sanity checking of input parameters
@@ -250,7 +257,7 @@ Retrieve data from the database using the database key or scan ID::
 
 This writes from the database to an output file.  The output file is a
 simple column data file.  The format of this data file is columns with
-datablocks (i.e. rows or constant value of the slow motor) separated by
+datablocks (i.e. rows of constant value of the slow motor) separated by
 blank lines.  This is a format that `works with Gnuplot
 <http://gnuplot.sourceforge.net/docs_4.2/node331.html>`_ and other
 plotting programs.
@@ -259,5 +266,6 @@ The first argument is the name of the output data file.  The second
 argument is either the scan's unique ID |nd| something like 
 ``42447313-46a5-42ef-bf8a-46fedc2c2bd1`` |nd| or the scan's transient
 id number.  Both the unique and transient ids can be found in the
-experimental log.
+:numref:`dossier (Section %s) <dossier>`.
+
 

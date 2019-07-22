@@ -41,9 +41,11 @@ Changing energy is simple.  Usually, it is as simple as doing
 
 replacing the two-letter element symbol with the element you actually
 want to measure. This command will move the monochromator, put the
-photon delivery system in the correct mode, run a rocking curve scan,
-optimize the slit height, and move the reference foil holder to the
-correct position.
+photon delivery system in the correct mode, move the M2 bender to
+approximately the correct setting, run a rocking curve scan,
+optimize the slit height, move the reference foil holder to the
+correct position (if configured), and select the correct ROI channel
+(if configured).
 
 
 If you want to reproduce this by hand, here is the command sequence:
@@ -83,6 +85,15 @@ If you want to reproduce this by hand, here is the command sequence:
    At the end of the scan, the mono pitch will be moved to the top of
    the rocking curve.
 
+#. If using focused beam, make sure that the mirror bender is in the
+   correct position.  For focusing at the XAS table, ``m2_bender``
+   should be at about 212000 counts.  For focusing at the position of
+   the goniometer, ``m2_bender`` should be about 112000 counts.
+
+   .. code-block:: python
+
+      RE(mv(m2_bender, 212000))
+
 #. Next, verify that the :numref:`height of the hutch slits (Sec %s)
    <special-linescans>` is optimized for the beam height.  In
    principle, this should be correct after changing photon delivery
@@ -107,32 +118,37 @@ If you want to reproduce this by hand, here is the command sequence:
    top-most slot is at an ``xafs_ref`` position of -90, the
    bottom-most at +90.
 
+   Then select the correct ROI channel:
+
+   .. code-block:: python
+
+      RE(rois.select('Fe'))
 
 
+..
+ Change mode
+ -----------
 
-Change mode
------------
+ Suppose that you want to change from high-energy, unfocused operations
+ to low energy, focused.  That is, you are changing from mode D to mode
+ B, for example moving from a large sample at the yttrium K edge to a
+ small sample at the vanadium K edge.
 
-Suppose that you want to change from high-energy, unfocused operations
-to low energy, focused.  That is, you are changing from mode D to mode
-B, for example moving from a large sample at the yttrium K edge to a
-small sample at the vanadium K edge.
+ .. code-block:: python
 
-.. code-block:: python
+		 RE(change_mode('B'))
+		 RE(mv(dcm.energy, 5465+50))
+		 RE(rocking_curve())
+		 RE(slit_height())
 
-   RE(change_mode('B'))
-   RE(mv(dcm.energy, 5465+50))
-   RE(rocking_curve())
-   RE(slit_height())
-
-
-#. If the beam has recently been focused at the XRD station, you will
-   also need to adjust the bender on M2 to optimize vertical focus at
-   the XAS station (or vice versa).  This is best done with the small
-   CCD camera sitting in the XAS sample stage.
-
-#. Again, iterating the optimization of the rocking curve and slit
-   height might be necessary.
+		 
+    #. If the beam has recently been focused at the XRD station, you will
+       also need to adjust the bender on M2 to optimize vertical focus at
+       the XAS station (or vice versa).  This is best done with the small
+       CCD camera sitting in the XAS sample stage.
+       
+    #. Again, iterating the optimization of the rocking curve and slit
+       height might be necessary.
 
 Change crystals
 ---------------
@@ -180,19 +196,34 @@ Change XAS |harr| XRD
 ---------------------
 
 Begin this transition by leaving the I0 chamber in place to monitor
-the incidence flux.  Do:
+the incidence flux.  In most cases, this should do the trick:
+
+.. code-block:: python
+
+   RE(change_edge('Ni', xrd=True, energy=8600)
+
+The element symbol in the first argument is not actually used in any
+way when ``xrd=True`` is used, however the funtion requires
+`something` as its first argument.  Setting ``xrd=True`` forces the
+``focus=True`` and ``target=0`` arguments to the ``change_edge()``
+command to be set.  This will move to the specified energy, place the
+photon delivery mode in :quoted:`XRD` mode, optimize the second
+crystal and the slit height, and move to an approximately M2 bender
+position. 
+
+To do all of that by hand, you would do the follow commands:
 
 .. code-block:: python
 
    RE(change_mode('XRD'))
-   RE(mv(dcm.energy, 8000))
+   RE(mv(dcm.energy, 8600))
    RE(rocking_curve())
    RE(slit_height())
 
 This change of mode should have the beam in good focus at the position
 of the goniometer.  8000 eV is the nominal operating energy for the
 goniometer.  If a higher energy is required, substitute the correct
-energy for ``8000`` in the second line.
+energy for ``8600`` in the second line.
 
 .. todo:: Determine look-up table for lower energy operations using
 	  both M2 and M3.
@@ -309,3 +340,98 @@ Several things to note:
 #. The on-screen plot will show the Si(111) energy, however.  
 #. Also, you still need to set up the photon delivery system up by hand.
 
+
+Examine Motor Axes
+------------------
+
+Some BlueSky functionality related to the axes controlled by the FMBO
+MCS8 motor controllers.  These include:
+
++ Collimating mirror (``m1_*``)
++ Filter assemblies (``dm1_*``)
++ Monochromator (``dcm_*``)
++ Second diagnostic module (``dm2_*``)
++ Focusing mirror (``m2_*``)
++ Harmonic rejection mirror (``m3_*``)
++ Third diagnostic module (``dm3_*``)
+
+(38 axes motors in total) but not any of the end station motors
+(``xafs_*``), which are run using NSLS-II standard GeoBricks.
+
+**Homing**
+  Any of these axes can be homed with, for example, ``dm3_bct.home()``
+
+**Summarize the status of a motor**
+  To show the values of all the status flags, for example, ``dm3_bct.status()``
+
+**Which motors have been homed?**
+  Do this command: ``homed()``
+
+**Which motors have their amplifiers enabled?**
+  Do this command: ``ampen()``
+
+
+Calibrate the mono
+------------------
+
+The typical calibration procedure involves measuring the angular
+position of the Bragg axis for the edge energies of 10 metals: Fe, Co,
+Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.  These will be measured in two
+sets of 5, given that the reference holder has five slots.
+
+#. Mount the 5 lower energy metals in the reference holder in energy
+   order from top to bottom, i.e. Fe at the top and Zn at the bottom.
+
+#. Run the command 
+
+   .. code-block:: python
+
+      calibrate_low_end(mono='111')
+
+   Use the ``mono='311'`` argument for the Si(311) monochromator.
+   This will, in sequence, move to each edge and measure a XANES scan
+   over a wide enough range that it should cover the edge (unless the
+   mono is currently calibrated VERY wrongly).  This will begin
+   writing a file called :file:`edges111.ini` (or
+   :file:`edges3111.ini`).
+
+#. Mount the 5 higher energy metals in the reference holder in energy
+   order from top to bottom, i.e. Pt at the top and Mo at the bottom.
+
+#. Run the command
+
+   .. code-block:: python
+
+      calibrate_high_end(mono='111')
+
+   Use the ``mono='311'`` argument for the Si(311) monochromator.
+   This will, in sequence, move to each edge and measure a XANES scan
+   over a wide enough range that it should cover the edge (unless the
+   mono is currently calibrated VERY wrongly).  This will continue
+   writing to the :file:`edges111.ini` (or :file:`edges3111.ini`) file.
+
+#. Run the command
+
+   .. code-block:: python
+
+      calibrate_mono(mono='111')
+
+   (or use the ``'311'`` argument).  This will show the fitting
+   results and plot the best fit.  It will also print in a text box
+   instructions for modifying the :file:`19-dcm-parameters.py` file to use
+   the new calibration values.
+
+#. Do
+
+   .. code-block:: python
+
+      %run -i 'home/xf06bm/.ipython/profile_collection/startup/19-dcm-parameters.py'
+
+   then do
+
+   .. code-block:: python
+
+      dcm.set_crystal()
+
+The mono should now be correctly calibrated using the new calibration
+parameters.

@@ -3,8 +3,6 @@
    The Creative Commons Attribution-ShareAlike License
    http://creativecommons.org/licenses/by-sa/3.0/
 
-.. role:: strike
-    :class: strike
 
 .. _intro:
 
@@ -24,15 +22,31 @@ that a user will need to do at the beamline, including:
 #. understanding the state of the photon delivery system
 #. making motor scans
 #. making energy scans
-#. interacting with the beamline's :quoted:`electronic log book`
+#. interacting with the beamline's electronic log book
 #. troubleshooting common problems
+
+TL;DR
+-----
+
+**Sample alignment scans**
+   Use the ``RE(linescan())`` command, see :numref:`{name}, Section {number} <linescan>`
+
+**Change energy**
+   Use the ``RE(change_edge())`` command, see :numref:`{name}, Section {number} <pds>`
+
+**XAFS scan**
+   Use the ``RE(xafs())`` command, see :numref:`{name}, Section {number} <xafsscan>`
+
+**Macro for moving motors and measuring XAFS**
+   Edit the ``macro.py`` example in your data directory, see :numref:`{name}, Section {number} <macro>`
+
 
 
 The user experience
 -------------------
 
-The Ipython/bsui prompt at BMM is modified to at-a-glance information
-about the state of the beamline.
+The Ipython/bsui prompt at BMM is modified to provide at-a-glance
+information about the state of the beamline.
 
 .. _fig-prompt:
 .. figure::  _images/prompt.png

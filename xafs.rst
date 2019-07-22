@@ -32,7 +32,6 @@ The INI file
    :linenos:
 
    [scan]
-   folder        = /home/bravel/BMM_Data/303200
    filename      = cufoil
    experimenters = Betty Cooper, Veronica Lodge, Archibald Andrews
 
@@ -60,40 +59,37 @@ The INI file
 
 Here is a complete explanation of the contents of the INI file.
 
-``folder`` (line 1)
-   The fully resolved path to the data folder
-
-``filename`` (line 2)
+``filename`` (line 1)
    The stub for the names of the output data files and the snapshots
 
-``experimenters`` (line 3)
+``experimenters`` (line 2)
    The name of the participants in the measurement
 
-``e0`` (line 6)
+``e0`` (line 5)
    The edge energy for the element and edge of this measurement.  This
    is the energy reference for the ``bounds``.  If absent, the
    tabulated value determined from ``element`` and ``edge`` will be
    used. 
 
-``element`` (line 7)
+``element`` (line 6)
    The one- or two-letter symbol for the element.
 
-``edge`` (line 8)
+``edge`` (line 7)
    The symbol (``K``, ``L3``, ``L2``, ``L1``) of the edge being
    measured.
 
-``sample`` (line 9)
+``sample`` (line 8)
    This is intended to capture the stoichiometry or composition of the
    sample being measured.
 
-``prep`` (line 10)
+``prep`` (line 9)
    This is intended to capture the details of how the sample was
    prepared for measurement.
 
-``comment`` (line 11)
+``comment`` (line 10)
    This is for anything else you might want to say about your sample.
 
-``nscans`` and ``start`` (lines 13 - 14)
+``nscans`` and ``start`` (lines 12 - 13)
    These are used to form the file extension of the output data file.
    They indicate the starting value of the number used as the file
    extension and how many repetitions of the scan to make.  The file
@@ -107,7 +103,7 @@ Here is a complete explanation of the contents of the INI file.
    highest numbered file in the ``cuedge`` sequence, running XAFS
    again using the same INI file will start with ``cuedge.008``.
 
-``usbstick`` (line 16)
+``usbstick`` (line 15)
    ``True`` will examine the user-supplied filename for characters
    that cannot be part of a `filename
    <https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words>`_
@@ -118,7 +114,7 @@ Here is a complete explanation of the contents of the INI file.
    users who want to do  their data analysis on a Windows computer
    should use this option.  :numref:`See Section %s <usbsafe>`.
 
-``mode`` (line 19)
+``mode`` (line 18)
    Indicate how data should be displayed on screen during a scan.  The
    options are ``transmission``, ``fluorescence``, ``both``, or
    ``reference``.  ``both`` means to display *both* the transmission
@@ -177,8 +173,8 @@ means that the dwell time will be 1 second at 4 |AA|:sup:`-1`, 2
 seconds at 8 |AA|:sup:`-1`, and so on.
 
 
-More Boolean options
-~~~~~~~~~~~~~~~~~~~~
+More options
+~~~~~~~~~~~~
 
 There are several aspects of the XAFS scan plan that can be enabled or
 disabled from the INI file.  The sample INI file written by the
@@ -213,6 +209,15 @@ if needed.
   ``True`` to measure with :numref:`Si(333) reflection (Section %s)
   <use333>` of the Si(111) monochromator .  Default: ``False``
 
+
+You can explicitly specify a destination folder for the data and other
+output files.  This is not a great idea, but might be useful in
+special situations.  The output folder is usually specified
+:numref:`when starting an experiment (Section %s) <start_end>` and
+rarely needs to be changed during the course of an experiment.
+
+``folder``
+   The fully resolved path to the data folder
 
 
 
