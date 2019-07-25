@@ -16,10 +16,10 @@ are a number of customizations specific to BMM.
 
 
 In this user manual, there are chapters covering most of the chores
-that a user will need to do at the beamline, including:
+one will need to do at the beamline, including:
 
 #. moving motors
-#. understanding the state of the photon delivery system
+#. changing the state of the photon delivery system
 #. making motor scans
 #. making energy scans
 #. interacting with the beamline's electronic log book
@@ -28,11 +28,11 @@ that a user will need to do at the beamline, including:
 TL;DR
 -----
 
-**Sample alignment scans**
-   Use the ``RE(linescan())`` command, see :numref:`{name}, Section {number} <linescan>`
-
 **Change energy**
    Use the ``RE(change_edge())`` command, see :numref:`{name}, Section {number} <pds>`
+
+**Sample alignment scans**
+   Use the ``RE(linescan())`` command, see :numref:`{name}, Section {number} <linescan>`
 
 **XAFS scan**
    Use the ``RE(xafs())`` command, see :numref:`{name}, Section {number} <xafsscan>`

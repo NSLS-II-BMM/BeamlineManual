@@ -45,8 +45,6 @@ The INI file
    nscans     = 3
    start      = 1
 
-   usbstick   = True
-
    # mode is transmission, fluorescence, both, or reference
    mode = transmission
 
@@ -103,18 +101,7 @@ Here is a complete explanation of the contents of the INI file.
    highest numbered file in the ``cuedge`` sequence, running XAFS
    again using the same INI file will start with ``cuedge.008``.
 
-``usbstick`` (line 15)
-   ``True`` will examine the user-supplied filename for characters
-   that cannot be part of a `filename
-   <https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words>`_
-   on a standard USB memory stick.  If any are found, the filename
-   will be modified in a way that retains the meaning of the replaced
-   characters, but which can be successfully written to a memory
-   stick.  Since this is mostly an issue with Windows file systems,
-   users who want to do  their data analysis on a Windows computer
-   should use this option.  :numref:`See Section %s <usbsafe>`.
-
-``mode`` (line 18)
+``mode`` (line 16)
    Indicate how data should be displayed on screen during a scan.  The
    options are ``transmission``, ``fluorescence``, ``both``, or
    ``reference``.  ``both`` means to display *both* the transmission
@@ -141,7 +128,7 @@ Scan regions
 In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The ``bounds``,
-``steps``, and ``times`` keywords (lines 23-25) are used to set this
+``steps``, and ``times`` keywords (lines 20-22) are used to set this
 grid.
 
 
@@ -181,6 +168,18 @@ disabled from the INI file.  The sample INI file written by the
 :numref:`BMMuser.start_experiment() command (Section %s) <start_end>`
 does not include these options, but they can be added to the INI file
 if needed.
+
+``usbstick``
+   ``True`` will examine the user-supplied filename for characters
+   that cannot be part of a `filename
+   <https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words>`_
+   on a standard USB memory stick.  If any are found, the filename
+   will be modified in a way that retains the meaning of the replaced
+   characters, but which can be successfully written to a memory
+   stick.  Since this is mostly an issue with Windows file systems,
+   users who want to do  their data analysis on a Windows computer
+   should use this option.  :numref:`See Section %s <usbsafe>`.
+   Default: ``True``
 
 ``snapshots``
    ``True`` to take :numref:`snapshots (Section %s) <snap>` from the
@@ -503,7 +502,8 @@ that the scan is set up correctly.
 Alternately, you can use a single, master :file:`scan.ini` file that
 covers all the metadata common to all the samples in a sequence.
 Then, as part of the argument to the ``xafs()`` plan, specify those
-metadata items specific to the sample.
+metadata items specific to the sample. (This has proven to be the more
+popular option among BMM users.)
 
 .. sourcecode:: python
    :linenos:

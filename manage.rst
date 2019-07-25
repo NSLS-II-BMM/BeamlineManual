@@ -16,6 +16,7 @@ As a reminder, here is the table of operating modes.
 
 .. table:: Photon delivery modes
    :name:  pds-modes2
+   :align: left
 
    ====== ============ ========================= 
    Mode   focused      energy range
@@ -303,12 +304,9 @@ Here's an example ``scan.ini`` file for XANES of elemental Ge:
 .. code-block:: ini
 
    [scan]
-   folder        = /home/xf06bm/Data/Staff/Bruce Ravel/2019-03-28
    experimenters = Bruce Ravel
-   usbstick      = True
 
    filename      = Ge
-
    sample        = elemental Ge, crystalline
    prep          = standard sample
    comment       = measured with Si(333) reflection, 25um Al foil in beam path before I0
@@ -332,12 +330,12 @@ Here's an example ``scan.ini`` file for XANES of elemental Ge:
 
 Several things to note:
 
-#. Note that the actual value for E0 is specified.  
+#. Note that the actual value for E0 is specified, not the divided-by-3 value.  
 #. Actual energy bounds and steps are specified, the xafs scan plan
    will convert them to appropriately sized steps for the Si(111).
 #. By setting the 333 flag to True, the correct thing will happen,
    including writing the correct energy axis to the output data file.
-#. The on-screen plot will show the Si(111) energy, however.  
+#. The on-screen plot will show the fundamental |nd| Si(111) |nd| energy, however.  
 #. Also, you still need to set up the photon delivery system up by hand.
 
 

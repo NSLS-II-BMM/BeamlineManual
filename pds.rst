@@ -287,6 +287,7 @@ beam..
 
 .. table:: Post mono slit motors
    :name:  slits2-motors
+   :align: left
 
    ===============   ========  =======================  ===================
    motor             units     notes                    motion type
@@ -381,6 +382,7 @@ to define the beam size on the sample.
 
 .. table:: End station slit motors
    :name:  slits3-motors
+   :align: left
 
    ===============   ========  =======================  ===================
    motor             units     notes                    motion type
@@ -436,6 +438,7 @@ Mode XRD delivers high energy, focused beam to the goniometer.
 
 .. table:: Photon delivery modes
    :name:  pds-modes
+   :align: left
 
    ====== ============ ========================= 
    Mode   focused      energy range

@@ -35,3 +35,6 @@ th, td {
 }
 
  
+#right-column {
+  max-width: 1100px;
+}
