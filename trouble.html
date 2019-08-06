@@ -1,12 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-  
+    <meta charset="utf-8" />
   <!-- Licensed under the Apache 2.0 License -->
   <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
   <!-- Licensed under the SIL Open Font License -->
@@ -16,23 +13,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <title>9. Troubleshooting &#8212; BMM User Manual 0.1</title>
-    
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="10. To Do List" href="todo.html" />
@@ -42,8 +29,7 @@
     <link rel="stylesheet" type="text/css" href="_static/keys.css" />
     <link rel="stylesheet" type="text/css" href="_static/program.css" />
 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -82,7 +68,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">9. Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pausing-bluesky">9.1. Pausing BlueSky</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exiting-bluesky">9.2. Exiting BlueSky</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#failed-search">9.3. Failed search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#amplifier-fault">9.3. Amplifier fault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#failed-hutch-search">9.4. Failed hutch search</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="todo.html">10. To Do List</a></li>
@@ -142,7 +129,7 @@
             
   <div class="section" id="troubleshooting">
 <h1>9. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
-<p>In this section, solutions are given for problems that BMM's visitors
+<p>In this section, solutions are given for problems that BMM’s visitors
 occasionally encounter.</p>
 <div class="section" id="pausing-bluesky">
 <h2>9.1. Pausing BlueSky<a class="headerlink" href="#pausing-bluesky" title="Permalink to this headline">¶</a></h2>
@@ -154,12 +141,12 @@ to <kbd class="dark">Ctrl</kbd>-<kbd class="dark">c</kbd>.</p>
 returning you to the Unix command line.  It looks like this:</p>
 <div class="figure align-center" id="id1">
 <span id="fig-ctrlz"></span><a class="reference external image-reference" href="_images/ctrl-z.jpg"><img alt="_images/ctrl-z.jpg" src="_images/ctrl-z.jpg" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Accidentally exiting BlueSky and returning to the Unix command line.</span></p>
+<p class="caption"><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Accidentally exiting BlueSky and returning to the Unix command line.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>Note that BlueSky said “Stopped”, then the white and blue
 prompt is presented.  This indicates that BlueSky is paused rather
 than exited.</p>
-<p>To resume BlueSky, type the command <code class="docutils literal"><span class="pre">fg</span></code> and hit <kbd class="dark">Enter</kbd>.
+<p>To resume BlueSky, type the command <code class="docutils literal notranslate"><span class="pre">fg</span></code> and hit <kbd class="dark">Enter</kbd>.
 You will find yourself back at the BlueSky prompt and can carry on
 normally.</p>
 </div>
@@ -171,24 +158,51 @@ state.  This will usually be accompanied by a lengthy “stack
 trace”, i.e. a bunch of weird code and error messages printed to the
 terminal window, followed by the white and blue prompt seen in the
 picture above.</p>
-<p>In this case, try typing <code class="docutils literal"><span class="pre">bsui</span></code> at the command line with the white
+<p>In this case, try typing <code class="docutils literal notranslate"><span class="pre">bsui</span></code> at the command line with the white
 and blue prompt, then hit <kbd class="dark">Enter</kbd>.  This will start a new
 BlueSky session and should remember all the metadata from the
 “start_experiment” command that began your experiment.</p>
 </div>
-<div class="section" id="failed-search">
-<h2>9.3. Failed search<a class="headerlink" href="#failed-search" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="amplifier-fault">
+<h2>9.3. Amplifier fault<a class="headerlink" href="#amplifier-fault" title="Permalink to this headline">¶</a></h2>
+<p>From time to time, a fault is triggered on one of the motor
+amplifiers.  The most common examples involve the jacks controlling
+the height and pitch of the focusing and harmonic rejection mirrors,
+M2 and M3.  This is usually observed when trying to use the
+<code class="docutils literal notranslate"><span class="pre">change_edge()</span></code> command (which, among other things, moves the
+mirrors to the correct positions).</p>
+<p>The error message on screen will look something like this</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="admonition-title">Todo</p>
+<p>Capture an example of this</p>
+</div>
+<p>The first solution is to try killing the power to the amplifiers on
+the correct MCS8.  Switch the corresponding switch to the off
+○  position, wait at least 10 seconds, then flip the
+switch back to the on  |  position.  Try moving
+the motors again.</p>
+<div class="figure align-center" id="id2">
+<span id="fig-killswitch"></span><a class="reference external image-reference" href="_images/Kill_switches.jpg"><img alt="_images/Kill_switches.jpg" src="_images/Kill_switches.jpg" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.2 </span><span class="caption-text">The MCS8 kill switches on rack D.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>If toggling the switch does not clear the problem, the next solution
+to try is to power cycle the appropriate MCS8.  You should stop the
+corresponding IOC before cycling the power, then restart the IOC
+afterwards.  Contact Bruce or other beamline staff before doing this.</p>
+</div>
+<div class="section" id="failed-hutch-search">
+<h2>9.4. Failed hutch search<a class="headerlink" href="#failed-hutch-search" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes the hutch search fails for mysterious reasons.  A likely
 cause is that the door “bounced” a bit as it closed.  This
 confuses the circuit that checks to see that the magnetic latch
-holding the door closed in engaged.</p>
+holding the door closed is engaged.</p>
 <p>When that (or some other thing out of your control) happens to confuse
 the personnel protection system, the search fails and reports the
 failure by printing a message in yellow text on the HDMI screen.  Here
 is what that looks like:</p>
-<div class="figure align-center" id="id2">
+<div class="figure align-center" id="id3">
 <span id="fig-hdmi"></span><a class="reference external image-reference" href="_images/hdmi.jpg"><img alt="_images/hdmi.jpg" src="_images/hdmi.jpg" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.2 </span><span class="caption-text">The hutch HDMI display showing the yellow text of a failed search.</span></p>
+<p class="caption"><span class="caption-number">Fig. 9.3 </span><span class="caption-text">The hutch HDMI display showing the yellow text of a failed search.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>When this happens, it is usually sufficient to simply repeat the
 search.  If the yellow text failure happens again, call the floor
@@ -197,8 +211,10 @@ coordinator at extension 5046.</p>
 <br>
 
 <br>
-<hr class="docutils" />
-<p>This manual is copyright © 2018 Bruce Ravel</p>
+
+<br>
+<p></p>
+<p>This manual is copyright © 2018-2019 Bruce Ravel</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>

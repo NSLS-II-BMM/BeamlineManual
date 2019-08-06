@@ -1,12 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-  
+    <meta charset="utf-8" />
   <!-- Licensed under the Apache 2.0 License -->
   <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
   <!-- Licensed under the SIL Open Font License -->
@@ -16,23 +13,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <title>BMM Users Manual &#8212; BMM User Manual 0.1</title>
-    
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Introduction to BMM" href="intro.html" />
@@ -41,8 +28,7 @@
     <link rel="stylesheet" type="text/css" href="_static/keys.css" />
     <link rel="stylesheet" type="text/css" href="_static/program.css" />
 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -137,9 +123,10 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#the-user-experience">1.1. The user experience</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#bmm-and-lob3">1.2. BMM and LOB3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#a-bit-about-bmm">1.3. A Bit about BMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#tl-dr">1.1. TL;DR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-user-experience">1.2. The user experience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#bmm-and-lob3">1.3. BMM and LOB3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#a-bit-about-bmm">1.4. A Bit about BMM</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="motors.html">2. Moving and querying motors</a><ul>
@@ -149,12 +136,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pds.html#shutters">3.1. Shutters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pds.html#monochromator">3.2. Monochromator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pds.html#post-mono-slits">3.3. Post-mono slits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pds.html#mirrors">3.4. Mirrors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pds.html#end-station-slits">3.5. End station slits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pds.html#configurations">3.6. Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pds.html#configure-the-photon-delivery-system">3.1. Configure the Photon Delivery System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pds.html#shutters">3.2. Shutters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pds.html#monochromator">3.3. Monochromator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pds.html#post-mono-slits">3.4. Post-mono slits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pds.html#mirrors">3.5. Mirrors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pds.html#end-station-slits">3.6. End station slits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pds.html#configurations">3.7. Configurations</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linescans.html">4. Sample position scans</a><ul>
@@ -181,10 +169,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manage.html">7. Managing the beamline</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manage.html#change-energy">7.1. Change energy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manage.html#change-mode">7.2. Change mode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manage.html#change-crystals">7.3. Change crystals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manage.html#change-xas-harr-xrd">7.4. Change XAS ↔ XRD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manage.html#xafs-with-si-333">7.5. XAFS with Si(333)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#change-crystals">7.2. Change crystals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#change-xas-harr-xrd">7.3. Change XAS ↔ XRD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#xafs-with-si-333">7.4. XAFS with Si(333)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#examine-motor-axes">7.5. Examine Motor Axes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#calibrate-the-mono">7.6. Calibrate the mono</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">8. Command cheatsheet</a><ul>
@@ -200,7 +189,8 @@
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">9. Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#pausing-bluesky">9.1. Pausing BlueSky</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#exiting-bluesky">9.2. Exiting BlueSky</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trouble.html#failed-search">9.3. Failed search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#amplifier-fault">9.3. Amplifier fault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#failed-hutch-search">9.4. Failed hutch search</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="todo.html">10. To Do List</a><ul>
@@ -213,8 +203,10 @@
 <br>
 
 <br>
-<hr class="docutils" />
-<p>This manual is copyright © 2018 Bruce Ravel</p>
+
+<br>
+<p></p>
+<p>This manual is copyright © 2018-2019 Bruce Ravel</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>

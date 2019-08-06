@@ -1,12 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-  
+    <meta charset="utf-8" />
   <!-- Licensed under the Apache 2.0 License -->
   <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
   <!-- Licensed under the SIL Open Font License -->
@@ -16,23 +13,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <title>6. Experimental Log &#8212; BMM User Manual 0.1</title>
-    
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="7. Managing the beamline" href="manage.html" />
@@ -42,8 +29,7 @@
     <link rel="stylesheet" type="text/css" href="_static/keys.css" />
     <link rel="stylesheet" type="text/css" href="_static/program.css" />
 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -153,7 +139,7 @@ confusions about sample positions and other experimental issues.</p>
 <div class="section" id="log-file">
 <span id="logfile"></span><h2>6.1. Log file<a class="headerlink" href="#log-file" title="Permalink to this headline">¶</a></h2>
 <p>At the beginning of a user experiment, run something like this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BMMuser</span><span class="o">.</span><span class="n">start_experiment</span><span class="p">(</span><span class="s1">&#39;Betty Cooper&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="s1">&#39;2019-02-28&#39;</span><span class="p">,</span> <span class="n">gup</span><span class="o">=</span><span class="mi">123456</span><span class="p">,</span> <span class="n">saf</span><span class="o">=</span><span class="mi">654321</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BMMuser</span><span class="o">.</span><span class="n">start_experiment</span><span class="p">(</span><span class="s1">&#39;Betty Cooper&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="s1">&#39;2019-02-28&#39;</span><span class="p">,</span> <span class="n">gup</span><span class="o">=</span><span class="mi">123456</span><span class="p">,</span> <span class="n">saf</span><span class="o">=</span><span class="mi">654321</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Among other things, this instruments the logger to maintain a log file
@@ -172,20 +158,20 @@ information to understand what the scan accomplished.  For a line
 scan, the motor name, scan range, and starting position are captured.
 For an XAFS scan, the contents of the <a class="reference internal" href="xafs.html#xafs"><span class="std std-numref">INI file (See Section
 5)</span></a> are written to the log along with the motor positions as
-reported by the <code class="docutils literal"><span class="pre">ms()</span></code> command <a class="reference internal" href="motors.html#motors"><span class="std std-numref">(see Section 2)</span></a>.
+reported by the <code class="docutils literal notranslate"><span class="pre">ms()</span></code> command <a class="reference internal" href="motors.html#motors"><span class="std std-numref">(see Section 2)</span></a>.
 The names of the output data files are recorded with timestamps
 indicating when they were written.</p>
 <p>Several other activities specific to BMM also recorded to the log file.
 The snapshot tool described above is an example.</p>
 <p>Writing to the log file is accomplished in two ways.  This function:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BMM_log_info</span><span class="p">(</span><span class="s1">&#39;text of message&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BMM_log_info</span><span class="p">(</span><span class="s1">&#39;text of message&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>is used to insert most messages into the log.  <code class="docutils literal"><span class="pre">BMM_log_info()</span></code> can
+<p>is used to insert most messages into the log.  <code class="docutils literal notranslate"><span class="pre">BMM_log_info()</span></code> can
 be called at any time from the command line to insert any message into
 the log.</p>
-<p>BMM also uses <a class="reference external" href="https://nsls-ii.github.io/bluesky/debugging.html#message-hook">Bluesky's msg_hook</a>.
-This is how <code class="docutils literal"><span class="pre">mv()</span></code> and <code class="docutils literal"><span class="pre">mvr()</span></code> commands are captured in the log.
+<p>BMM also uses <a class="reference external" href="https://nsls-ii.github.io/bluesky/debugging.html#message-hook">Bluesky’s msg_hook</a>.
+This is how <code class="docutils literal notranslate"><span class="pre">mv()</span></code> and <code class="docutils literal notranslate"><span class="pre">mvr()</span></code> commands are captured in the log.
 This bespoke message hook parses the document returned by BlueSky for
 specific kinds of events and captures a log message when appropriate.</p>
 </div>
@@ -195,41 +181,41 @@ specific kinds of events and captures a log message when appropriate.</p>
 step where snapshots are taken from the XAS webcam and the small
 analog camera.  These photos are written to JPG files with names
 related to the XAS data file written as part of the call to the
-<code class="docutils literal"><span class="pre">xafs()</span></code> plan.  This provides automated photographic documentation
+<code class="docutils literal notranslate"><span class="pre">xafs()</span></code> plan.  This provides automated photographic documentation
 of the state of the measurement as it is being made.</p>
 <p>Snapshots can be taken at any time using this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">snap</span><span class="p">(</span><span class="s1">&#39;&lt;camera&gt;&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;/path/to/image.jpg&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snap</span><span class="p">(</span><span class="s1">&#39;&lt;camera&gt;&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;/path/to/image.jpg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The choices for <code class="docutils literal"><span class="pre">&lt;camera&gt;</span></code> are</p>
-<dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">XAS</span></code></dt>
-<dd>Take a snapshot from the XAS webcam</dd>
-<dt><code class="docutils literal"><span class="pre">XRD</span></code></dt>
-<dd>Take a snapshot from the XRD webcam</dd>
-<dt><code class="docutils literal"><span class="pre">analog</span></code></dt>
-<dd>Take a snapshot of the image currently displayed on the monitor to
-the left of the control station.</dd>
+<p>The choices for <code class="docutils literal notranslate"><span class="pre">&lt;camera&gt;</span></code> are</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">XAS</span></code></dt><dd><p>Take a snapshot from the XAS webcam</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">XRD</span></code></dt><dd><p>Take a snapshot from the XRD webcam</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">analog</span></code></dt><dd><p>Take a snapshot of the image currently displayed on the monitor to
+the left of the control station.</p>
+</dd>
 </dl>
 <p>The image will then be written to the file specified by the
-<code class="docutils literal"><span class="pre">filename=</span></code> argument.</p>
-<p>The <code class="docutils literal"><span class="pre">xafs()</span></code> plan calls this function twice, once for the XAS webcam
+<code class="docutils literal notranslate"><span class="pre">filename=</span></code> argument.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">xafs()</span></code> plan calls this function twice, once for the XAS webcam
 and once for the analog camera.</p>
 <p>Note that this function is <cite>not</cite> run through the Run Engine.</p>
 <p>The name of the snapshot file and the camera used are written to the
 experimental log.</p>
 <div class="figure compound align-center" id="_fig-snapshots">
-<div style="width: 45%" class="subfigure" id="id1">
+<div style="width: 45%" class="subfigure align-center" id="id1">
 <span id="fig-anacam"></span><a class="reference external image-reference" href="_images/analog.jpg"><img alt="_images/analog.jpg" src="_images/analog.jpg" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Snapshot taken with the analog camera</span></p>
+<p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Snapshot taken with the analog camera</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
-<div style="width: 45%" class="subfigure" id="id2">
+<div style="width: 45%" class="subfigure align-center" id="id2">
 <span id="fig-xascam"></span><a class="reference external image-reference" href="_images/XASwebcam.jpg"><img alt="_images/XASwebcam.jpg" src="_images/XASwebcam.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Snapshot taken with the XAS web camera</span></p>
+<p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Snapshot taken with the XAS web camera</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="admonition-todo admonition" id="index-0">
-<span id="_fig-snapshots"></span><p class="first admonition-title">Todo</p>
-<p class="last">Have database consume snapshots with pointers from each scan
+<span id="_fig-snapshots"></span><p class="admonition-title">Todo</p>
+<p>Have database consume snapshots with pointers from each scan
 connected with the snapshot</p>
 </div>
 </div>
@@ -246,19 +232,21 @@ the snapshots, tables of information from <a class="reference internal" href="xa
 (Section 5.1)</span></a>, a verbatim copy of the INI file, and a table of
 motor positions at the time of the beginning of the scan sequence.</p>
 <p>These dossiers aggregate other assets described on this page and
-complement the user's paper logbook by providing comprehensive
+complement the user’s paper logbook by providing comprehensive
 summaries of all the information relevant to the scan sequence
 provided by the user and gleaned from beamline instrumentation.</p>
 <div class="figure align-center" id="id3">
 <span id="fig-dossier"></span><a class="reference external image-reference" href="_images/dossier.png"><img alt="_images/dossier.png" src="_images/dossier.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.3 </span><span class="caption-text">An example of the scan sequence dossier, displayed in a web browser.</span></p>
+<p class="caption"><span class="caption-number">Fig. 6.3 </span><span class="caption-text">An example of the scan sequence dossier, displayed in a web browser.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 
 <br>
 
 <br>
-<hr class="docutils" />
-<p>This manual is copyright © 2018 Bruce Ravel</p>
+
+<br>
+<p></p>
+<p>This manual is copyright © 2018-2019 Bruce Ravel</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>

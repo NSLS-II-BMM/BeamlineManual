@@ -59,14 +59,46 @@ BlueSky session and should remember all the metadata from the
    Once found, hit :button:`Enter`, then continue with your experiment.
 
 
+Amplifier fault
+---------------
 
-Failed search
--------------
+From time to time, a fault is triggered on one of the motor
+amplifiers.  The most common examples involve the jacks controlling
+the height and pitch of the focusing and harmonic rejection mirrors,
+M2 and M3.  This is usually observed when trying to use the
+``change_edge()`` command (which, among other things, moves the
+mirrors to the correct positions).
+
+The error message on screen will look something like this
+
+.. todo:: Capture an example of this
+
+The first solution is to try killing the power to the amplifiers on
+the correct MCS8.  Switch the corresponding switch to the off 
+|circle|  position, wait at least 10 seconds, then flip the
+switch back to the on  |verbar|  position.  Try moving
+the motors again.
+
+.. _fig-killswitch:
+.. figure::  _images/Kill_switches.jpg
+   :target: _images/Kill_switches.jpg
+   :width: 70%
+   :align: center
+
+   The MCS8 kill switches on rack D.
+
+If toggling the switch does not clear the problem, the next solution
+to try is to power cycle the appropriate MCS8.  You should stop the
+corresponding IOC before cycling the power, then restart the IOC
+afterwards.  Contact Bruce or other beamline staff before doing this.
+
+Failed hutch search
+-------------------
 
 Sometimes the hutch search fails for mysterious reasons.  A likely
 cause is that the door :quoted:`bounced` a bit as it closed.  This
 confuses the circuit that checks to see that the magnetic latch
-holding the door closed in engaged.
+holding the door closed is engaged.
 
 When that (or some other thing out of your control) happens to confuse
 the personnel protection system, the search fails and reports the

@@ -1,12 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-  
+    <meta charset="utf-8" />
   <!-- Licensed under the Apache 2.0 License -->
   <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
   <!-- Licensed under the SIL Open Font License -->
@@ -16,23 +13,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <title>8. Command cheatsheet &#8212; BMM User Manual 0.1</title>
-    
     <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/atoms.ico"/>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="9. Troubleshooting" href="trouble.html" />
@@ -42,8 +29,7 @@
     <link rel="stylesheet" type="text/css" href="_static/keys.css" />
     <link rel="stylesheet" type="text/css" href="_static/program.css" />
 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -150,138 +136,141 @@
 discussed in the previous sections.</p>
 <div class="section" id="command-summary">
 <h2>8.1. Command summary<a class="headerlink" href="#command-summary" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils" id="command-list">
-<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Main BlueSky command for BMM</span><a class="headerlink" href="#command-list" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-left" id="command-list">
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Main BlueSky commands used at BMM</span><a class="headerlink" href="#command-list" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col style="width: 36%" />
+<col style="width: 64%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="2">          <strong>Shutter commands</strong></td>
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>          <strong>Shutter commands</strong></p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">shb.open()</span></code> / <code class="docutils literal"><span class="pre">shb.close()</span></code></td>
-<td>Open / close the photon shutter</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">shb.open()</span></code> / <code class="docutils literal notranslate"><span class="pre">shb.close()</span></code></p></td>
+<td><p>Open / close the photon shutter</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2">          <strong>Mono tuning commands</strong></td>
+<tr class="row-odd"><td colspan="2"><p>          <strong>Mono tuning commands</strong></p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">tu()</span></code> / <code class="docutils literal"><span class="pre">td()</span></code></td>
-<td>Tune the mono 2nd  crystal</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tu()</span></code> / <code class="docutils literal notranslate"><span class="pre">td()</span></code></p></td>
+<td><p>Tune the mono 2nd  crystal</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">TUNE_STEP=0.004</span></code></td>
-<td>Tuning step size – 0.004 is good for Si(111), 0.002 for Si(311)</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TUNE_STEP=0.004</span></code></p></td>
+<td><p>Tuning step size – 0.004 is good for Si(111), 0.002 for Si(311)</p></td>
 </tr>
-<tr class="row-even"><td colspan="2">          <strong>Mono movement commands</strong></td>
+<tr class="row-even"><td colspan="2"><p>          <strong>Mono movement commands</strong></p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(mv(dcm.energy,</span> <span class="pre">&lt;value&gt;))</span></code></td>
-<td>Move TO an energy value</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RE(mv(dcm.energy,</span> <span class="pre">&lt;value&gt;))</span></code></p></td>
+<td><p>Move TO an energy value</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(mvr(dcm.energy,</span> <span class="pre">&lt;value&gt;))</span></code></td>
-<td>Move BY an energy step</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RE(mvr(dcm.energy,</span> <span class="pre">&lt;value&gt;))</span></code></p></td>
+<td><p>Move BY an energy step</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2">          <strong>Motor movement commands</strong></td>
+<tr class="row-odd"><td colspan="2"><p>          <strong>Motor movement commands</strong></p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(mv(xafs_liny,</span> <span class="pre">&lt;value&gt;))</span></code></td>
-<td>Move motor TO a position</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RE(mv(xafs_liny,</span> <span class="pre">&lt;value&gt;))</span></code></p></td>
+<td><p>Move motor TO a position</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(mvr(xafs_liny,</span> <span class="pre">&lt;value&gt;))</span></code></td>
-<td>Move motor BY an amount</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RE(mvr(xafs_liny,</span> <span class="pre">&lt;value&gt;))</span></code></p></td>
+<td><p>Move motor BY an amount</p></td>
 </tr>
-<tr class="row-even"><td colspan="2">          <strong>Where are things?</strong></td>
+<tr class="row-even"><td colspan="2"><p>          <strong>Where are things?</strong></p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">dcm</span></code></td>
-<td>where's the mono?</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">dcm</span></code></p></td>
+<td><p>where’s the mono?</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">slits3</span></code></td>
-<td>where are the slits?</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">slits3</span></code></p></td>
+<td><p>where are the slits?</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">m2</span></code></td>
-<td>where's mirror 2?  (focusing)</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">m2</span></code></p></td>
+<td><p>where’s mirror 2?  (toroidal focusing mirror)</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">m3</span></code></td>
-<td>where's mirror 3?  (flat, harmonic rejection)</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">m3</span></code></p></td>
+<td><p>where’s mirror 3?  (flat, harmonic rejection mirror)</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%w</span> <span class="pre">xafs_table</span></code></td>
-<td>where's the XAFS table?</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">xafs_table</span></code></p></td>
+<td><p>where’s the XAFS table?</p></td>
 </tr>
-<tr class="row-even"><td colspan="2">          <strong>Change edge, mode, and mono</strong></td>
+<tr class="row-even"><td colspan="2"><p>          <strong>Change edge, mode, and mono</strong></p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(change_edge('Xx'))</span></code></td>
-<td>setup beamline for an absorption edge</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RE(change_edge('Xx'))</span></code></p></td>
+<td><p>setup beamline for an absorption edge, 1- or 2-letter symbol</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(change_mode('X'))</span></code></td>
-<td>set mirror mode, see table below</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RE(change_mode('X'))</span></code></p></td>
+<td><p>set mirror mode, see table below</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(change_xtals('h11'))</span></code></td>
-<td>set monochromator, Si(111) or Si(311), h=1 or h=3</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RE(change_xtals('h11'))</span></code></p></td>
+<td><p>set monochromator, Si(111) or Si(311), h=1 or h=3</p></td>
 </tr>
-<tr class="row-even"><td colspan="2">          <strong>Mono and experiment setup</strong></td>
+<tr class="row-even"><td colspan="2"><p>          <strong>Mono and experiment setup</strong></p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(rocking_curve())</span></code></td>
-<td>optimize pitch of 2nd DCM crystal (moves automagically)</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RE(rocking_curve())</span></code></p></td>
+<td><p>optimize pitch of 2nd DCM crystal (moves automagically)</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RE(rocking_curve(detector='Bicron'))</span></code></td>
-<td>same, but for XRD mode</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RE(rocking_curve(detector='Bicron'))</span></code></p></td>
+<td><p>same, but for XRD mode</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RE(slit_height())</span></code></td>
-<td>explore position of slits3 (then pluck to move dm3_bct)</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RE(slit_height())</span></code></p></td>
+<td><p>explore position of slits3 (then pluck to move dm3_bct)</p></td>
 </tr>
-<tr class="row-even"><td colspan="2">          <strong>Get help</strong></td>
+<tr class="row-even"><td colspan="2"><p>          <strong>Get help</strong></p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%m</span></code></td>
-<td>Show motors</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%m</span></code></p></td>
+<td><p>Show motors</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">%h</span></code></td>
-<td>Show help</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%h</span></code></p></td>
+<td><p>Show help</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">%k</span></code></td>
-<td>Show keyboard shortcuts</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%k</span></code></p></td>
+<td><p>Show keyboard shortcuts</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%se</span></code></p></td>
+<td><p>Show foil and ROI configurations</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="photon-delivery-system-modes">
 <h2>8.2. Photon delivery system modes<a class="headerlink" href="#photon-delivery-system-modes" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils" id="pds-mode-table">
+<table class="docutils align-center" id="pds-mode-table">
 <caption><span class="caption-number">Table 8.2 </span><span class="caption-text">Photon delivery system modes</span><a class="headerlink" href="#pds-mode-table" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="19%" />
-<col width="35%" />
-<col width="46%" />
+<col style="width: 19%" />
+<col style="width: 35%" />
+<col style="width: 46%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Mode</th>
-<th class="head">focused</th>
-<th class="head">energy range</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p>focused</p></th>
+<th class="head"><p>energy range</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>A</td>
-<td>✓</td>
-<td>8 keV and up</td>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>✓</p></td>
+<td><p>8 keV and up</p></td>
 </tr>
-<tr class="row-odd"><td>B</td>
-<td>✓</td>
-<td>below 6 keV</td>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p>✓</p></td>
+<td><p>below 6 keV</p></td>
 </tr>
-<tr class="row-even"><td>C</td>
-<td>✓</td>
-<td>6 keV to 8 keV</td>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>✓</p></td>
+<td><p>6 keV to 8 keV</p></td>
 </tr>
-<tr class="row-odd"><td>D</td>
-<td>✗</td>
-<td>8 keV and up</td>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>✗</p></td>
+<td><p>8 keV and up</p></td>
 </tr>
-<tr class="row-even"><td>E</td>
-<td>✗</td>
-<td>6 keV to 8 keV</td>
+<tr class="row-even"><td><p>E</p></td>
+<td><p>✗</p></td>
+<td><p>6 keV to 8 keV</p></td>
 </tr>
-<tr class="row-odd"><td>F</td>
-<td>✗</td>
-<td>below 6 keV</td>
+<tr class="row-odd"><td><p>F</p></td>
+<td><p>✗</p></td>
+<td><p>below 6 keV</p></td>
 </tr>
-<tr class="row-even"><td>XRD</td>
-<td>✓</td>
-<td>8 keV and up</td>
+<tr class="row-even"><td><p>XRD</p></td>
+<td><p>✓</p></td>
+<td><p>8 keV and up</p></td>
 </tr>
 </tbody>
 </table>
@@ -290,58 +279,57 @@ discussed in the previous sections.</p>
 <h2>8.3. Slits3 coordinated motions<a class="headerlink" href="#slits3-coordinated-motions" title="Permalink to this headline">¶</a></h2>
 <p>These coordinated motions behave just like single motors and can be
 used with the motor movement commands in <a class="reference internal" href="#command-list"><span class="std std-numref">Table 8.1</span></a>.</p>
-<dl class="docutils">
-<dt>Horizontal size</dt>
-<dd><code class="docutils literal"><span class="pre">slits3.hsize</span></code> (nominally 8 mm)</dd>
-<dt>Horizontal center</dt>
-<dd><code class="docutils literal"><span class="pre">slits3.hcenter</span></code> (nominally 0 mm)</dd>
-<dt>Vertical size</dt>
-<dd><code class="docutils literal"><span class="pre">slits3.vsize</span></code> (nominally 1.4 mm)</dd>
-<dt>Vertical center</dt>
-<dd><p class="first"><code class="docutils literal"><span class="pre">slits3.vcenter</span></code> (nominally 0 mm)</p>
-<p class="last">The vertical center is normally not changed.  Instead, align the
-slits using <code class="docutils literal"><span class="pre">dm3_bct</span></code> and the <code class="docutils literal"><span class="pre">slit_height()</span></code> plan</p>
+<dl>
+<dt>Horizontal size</dt><dd><p><code class="docutils literal notranslate"><span class="pre">slits3.hsize</span></code> (nominally 8 mm)</p>
+</dd>
+<dt>Horizontal center</dt><dd><p><code class="docutils literal notranslate"><span class="pre">slits3.hcenter</span></code> (nominally 0 mm)</p>
+</dd>
+<dt>Vertical size</dt><dd><p><code class="docutils literal notranslate"><span class="pre">slits3.vsize</span></code> (nominally 1 mm)</p>
+</dd>
+<dt>Vertical center</dt><dd><p><code class="docutils literal notranslate"><span class="pre">slits3.vcenter</span></code> (nominally 0 mm)</p>
+<p>The vertical center is normally not changed.  Instead, align the
+slits using <code class="docutils literal notranslate"><span class="pre">dm3_bct</span></code> and the <code class="docutils literal notranslate"><span class="pre">slit_height()</span></code> plan</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="motor-positions-and-limits">
 <h2>8.4. Motor positions and limits<a class="headerlink" href="#motor-positions-and-limits" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Where is a sample motor?</dt>
-<dd><code class="docutils literal"><span class="pre">%w</span> <span class="pre">xafs_x</span></code></dd>
-<dt>What are the soft limits?</dt>
-<dd><code class="docutils literal"><span class="pre">xafs_x.hlm.value</span></code> / <code class="docutils literal"><span class="pre">xafs_x.llm.value</span></code></dd>
-<dt>Set a soft limit:</dt>
-<dd><code class="docutils literal"><span class="pre">xafs_x.hlm.put(-95)</span></code> / <code class="docutils literal"><span class="pre">xafs_x.llm.put(-157)</span></code></dd>
+<dl class="simple">
+<dt>Where is a sample motor?</dt><dd><p><code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">xafs_x</span></code></p>
+</dd>
+<dt>What are the soft limits?</dt><dd><p><code class="docutils literal notranslate"><span class="pre">xafs_x.hlm.value</span></code> / <code class="docutils literal notranslate"><span class="pre">xafs_x.llm.value</span></code></p>
+</dd>
+<dt>Set a soft limit:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">xafs_x.hlm.put(-95)</span></code> / <code class="docutils literal notranslate"><span class="pre">xafs_x.llm.put(-157)</span></code></p>
+</dd>
 </dl>
 </div>
 <div class="section" id="line-scans">
 <h2>8.5. Line scans<a class="headerlink" href="#line-scans" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>RE(linescan(&lt;detector&gt;, &lt;motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;N&gt;))
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>RE(linescan(&lt;detector&gt;, &lt;motor&gt;, &lt;start&gt;, &lt;stop&gt;, &lt;N&gt;))
 </pre></div>
 </div>
 <p>where</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">&lt;detector&gt;</span></code> is one of: <code class="docutils literal"><span class="pre">'it'</span></code>, <code class="docutils literal"><span class="pre">'if'</span></code>, or <code class="docutils literal"><span class="pre">'i0'</span></code></li>
-<li><code class="docutils literal"><span class="pre">&lt;motor&gt;</span></code> is one of: <code class="docutils literal"><span class="pre">'x'</span></code>, <code class="docutils literal"><span class="pre">'y'</span></code>, <code class="docutils literal"><span class="pre">'pitch'</span></code>, <code class="docutils literal"><span class="pre">'wheel'</span></code>,
-or a motor name</li>
-<li><code class="docutils literal"><span class="pre">&lt;start&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;stop&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;N&gt;</span></code> are the boundaries relative to the
-current position and the number of steps.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;detector&gt;</span></code> is one of: <code class="docutils literal notranslate"><span class="pre">'it'</span></code>, <code class="docutils literal notranslate"><span class="pre">'if'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'i0'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;motor&gt;</span></code> is one of: <code class="docutils literal notranslate"><span class="pre">'x'</span></code>, <code class="docutils literal notranslate"><span class="pre">'y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'pitch'</span></code>, <code class="docutils literal notranslate"><span class="pre">'wheel'</span></code>,
+or a motor name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;start&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;stop&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;N&gt;</span></code> are the boundaries relative to the
+current position and the number of steps.</p></li>
 </ul>
-<p>The plot will be determined from the values of <code class="docutils literal"><span class="pre">&lt;motor&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;detector&gt;</span></code></p>
+<p>The plot will be determined from the values of <code class="docutils literal notranslate"><span class="pre">&lt;motor&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;detector&gt;</span></code></p>
 <p>This is a relative scan.</p>
 <p>After prompt, single click the left button  after a linescan to move to a position.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>RE(pluck())
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>RE(pluck())
 </pre></div>
 </div>
-<p>to repeat that on the current plot.  <code class="docutils literal"><span class="pre">RE(pluck())</span></code> only works on <em>most recent</em> plot.</p>
+<p>to repeat that on the current plot.  <code class="docutils literal notranslate"><span class="pre">RE(pluck())</span></code> only works on <em>most recent</em> plot.</p>
 </div>
 <div class="section" id="energy-scans">
 <h2>8.6. Energy scans<a class="headerlink" href="#energy-scans" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>RE(xafs(&#39;myscan.ini&#39;))
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>RE(xafs(&#39;myscan.ini&#39;))
 </pre></div>
 </div>
-<p>In the INI file, set <code class="docutils literal"><span class="pre">mode</span></code> to transmission, fluorescence,
+<p>In the INI file, set <code class="docutils literal notranslate"><span class="pre">mode</span></code> to transmission, fluorescence,
 reference, or both to control the in-scan plotting display (both =
 show transmission and fluorescence)</p>
 </div>
@@ -349,15 +337,17 @@ show transmission and fluorescence)</p>
 <h2>8.7. Experiment log<a class="headerlink" href="#experiment-log" title="Permalink to this headline">¶</a></h2>
 <p>Log entries are made for each scan.  System and beamtime specific logs
 are maintained.  To insert a comment in the log, do:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>BMM_log_info(“This is my log entry”)
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>BMM_log_info(“This is my log entry”)
 </pre></div>
 </div>
 
 <br>
 
 <br>
-<hr class="docutils" />
-<p>This manual is copyright © 2018 Bruce Ravel</p>
+
+<br>
+<p></p>
+<p>This manual is copyright © 2018-2019 Bruce Ravel</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>
