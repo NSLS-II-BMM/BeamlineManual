@@ -56,9 +56,9 @@ information about the state of the beamline.
 
    The BlueSky user prompt at BMM
 
-* The green ``BMM`` indicates that the beamline is set up and ready
-  for the user.  When the beamline is not ready for users, the ``BMM``
-  string is red.
+* The green ``BMM`` indicates that the beamline is :numref:`set up and
+  ready for the user (see Section %s) <start_end>`.  When the beamline
+  is not ready for users, the ``BMM`` string is red.
 
 * The string ``D.111`` indicates that the photon delivery system is in
   :numref:`mode D (see Table %s) <pds-modes>` and that :numref:`the
@@ -66,6 +66,54 @@ information about the state of the beamline.
 
 * The green number in square brackets is an incremented count of how
   many commands have been issued since ``bsui`` was started.
+
+.. _cadashboard:
+
+CA Dashboard
+~~~~~~~~~~~~
+
+At the top of the big screen, you see a crude-but-handy beamline
+monitor.  It looks like this:
+
+.. _fig-cadashboard:
+.. figure::  _images/cadashboard.png
+   :target: _images/cadashboard.png
+   :width: 100%
+   :align: center
+
+   The CA dashboard beamline monitor
+
+This provides a (very) concise overview of the state of the beamline.
+
+**Line 1**
+   In short, if the top line has no red text, the beamline is all ready to go.
+
+   + BMM is enabled (green) or disable (red)
+   + The BM, FE, & user photon shutters are open (green) or closed (red)
+   + The ring current
+   + The state of vacuum sections 1 through 7 -- green means vacuum
+     level is OK, red means vacuum level is high
+   + The state of the in-vacuum motors, 4 on the DCM, 2 on the
+     focusing mirror, 2 on the harmonic rejection mirror -- green
+     means temperature is cool, red means temperature is high
+   + The open (green) or closed (red) state of the 3 front end gate
+     valves and the 6 beamline gate valves
+
+**Line 2**
+   + The energy position of the monochromator
+   + The signals on the I0 and It ion chambers, measured in nanoamps
+   + The current operation at the beamline, options are: idle (white),
+     XAFS scan (pink), line scan (cyan), area scan (yellow), or time
+     scan (blue)
+
+**Line 3**
+   + Positions of common sample motors and size of sample slits
+
+For more information about this tool, `follow this link
+<https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Cadashboard>`_,
+which explains how to run the tool and position it on the screen.  It
+also explains how to launch the tool when the beamline is set up for
+XRD measurements.
 
 
 .. _start_end:
