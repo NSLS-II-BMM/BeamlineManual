@@ -58,6 +58,7 @@ At the end of the scan, you are prompted with the following question::
 
     Pluck motor position from the plot? [Yn]
 
+
 If you answer :button:`y` then :button:`Enter`, or simply hit
 :button:`Enter`, you will be prompted to single click the left mouse
 button :mark:`leftclick,.` on the plot.  The motor that was scanned
@@ -125,7 +126,9 @@ arguments that they have special names.
    does a scan of the pitch of the second mono crystal and plots the
    signal on I0.  At the end of the scan, it moves to the position of
    the center of mass of the rocking curve.  This scan is useful after
-   a large change of energy.
+   a large change of energy.  It also opens the slits to 3 mm in
+   vertical size before starting the scan, then returns the slits to
+   their original height after the scan.
 
    You can put this scan in a macro using::
 

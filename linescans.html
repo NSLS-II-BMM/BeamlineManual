@@ -1,9 +1,12 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
   <!-- Licensed under the Apache 2.0 License -->
   <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
   <!-- Licensed under the SIL Open Font License -->
@@ -141,17 +144,17 @@ this:</p>
 </div>
 <p>The arguments are:</p>
 <ol class="arabic">
-<li><p>A string indicating the detector for the plotted signal.  The
+<li><p class="first">A string indicating the detector for the plotted signal.  The
 choices are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">it</span></code>: display the ratio of <code class="docutils literal notranslate"><span class="pre">It/I0</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code>: display the sum of four silicon drift channels normalized by <code class="docutils literal notranslate"><span class="pre">I0</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">i0</span></code>: display the signal on <code class="docutils literal notranslate"><span class="pre">I0</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ir</span></code>: display the ratio of <code class="docutils literal notranslate"><span class="pre">Ir/I0</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">both</span></code>: display both <code class="docutils literal notranslate"><span class="pre">It/I0</span></code> <em>and</em> the sum of four silicon drift channels normalized by <code class="docutils literal notranslate"><span class="pre">I0</span></code></p></li>
+<li><code class="docutils literal notranslate"><span class="pre">it</span></code>: display the ratio of <code class="docutils literal notranslate"><span class="pre">It/I0</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">if</span></code>: display the sum of four silicon drift channels normalized by <code class="docutils literal notranslate"><span class="pre">I0</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">i0</span></code>: display the signal on <code class="docutils literal notranslate"><span class="pre">I0</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ir</span></code>: display the ratio of <code class="docutils literal notranslate"><span class="pre">Ir/I0</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">both</span></code>: display both <code class="docutils literal notranslate"><span class="pre">It/I0</span></code> <em>and</em> the sum of four silicon drift channels normalized by <code class="docutils literal notranslate"><span class="pre">I0</span></code></li>
 </ul>
 </li>
-<li><p>The motor axis to be scanned.  This can be either the motor’s
+<li><p class="first">The motor axis to be scanned.  This can be either the motor’s
 BlueSky name or the nickname string from <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.  So, these are equivalent:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
 <span class="n">RE</span><span class="p">(</span><span class="n">linescan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">xafs_x</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">))</span>
@@ -163,11 +166,14 @@ object, as in:</p>
 </pre></div>
 </div>
 </li>
-<li><p>The starting position of the motor scan, relative to the current
-position.</p></li>
-<li><p>The ending position of the motor scan, relative to the current
-position.</p></li>
-<li><p>The number of steps in the scan.</p></li>
+<li><p class="first">The starting position of the motor scan, relative to the current
+position.</p>
+</li>
+<li><p class="first">The ending position of the motor scan, relative to the current
+position.</p>
+</li>
+<li><p class="first">The number of steps in the scan.</p>
+</li>
 </ol>
 <p>At the end of the scan, you are prompted with the following question:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Pluck motor position from the plot? [Yn]
@@ -180,8 +186,8 @@ will then move to the motor position you clicked on.</p>
 <p>You can skip the “click for motor position” step by typing
 <kbd class="dark">n</kbd> and hitting <kbd class="dark">Enter</kbd>.</p>
 <div class="admonition-todo admonition" id="index-0">
-<p class="admonition-title">Todo</p>
-<p>Better sanity checking of input parameters</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Better sanity checking of input parameters</p>
 </div>
 <div class="section" id="plucking-a-point-from-a-line-scan">
 <h3>4.1.1. Plucking a point from a line scan<a class="headerlink" href="#plucking-a-point-from-a-line-scan" title="Permalink to this headline">¶</a></h3>
@@ -221,21 +227,25 @@ id number.  Both the unique and transient ids can be found in the
 <span id="special-linescans"></span><h2>4.2. Specific line scans<a class="headerlink" href="#specific-line-scans" title="Permalink to this headline">¶</a></h2>
 <p>Some scan types are performed often enough and always with the same
 arguments that they have special names.</p>
-<dl>
-<dt><strong>Rocking curve scan</strong></dt><dd><p>This command:</p>
+<dl class="docutils">
+<dt><strong>Rocking curve scan</strong></dt>
+<dd><p class="first">This command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>does a scan of the pitch of the second mono crystal and plots the
 signal on I0.  At the end of the scan, it moves to the position of
 the center of mass of the rocking curve.  This scan is useful after
-a large change of energy.</p>
+a large change of energy.  It also opens the slits to 3 mm in
+vertical size before starting the scan, then returns the slits to
+their original height after the scan.</p>
 <p>You can put this scan in a macro using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">rocking_curve</span><span class="p">()</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">rocking_curve</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd>
-<dt><strong>Slit height scan</strong></dt><dd><p>This command:</p>
+<dt><strong>Slit height scan</strong></dt>
+<dd><p class="first">This command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">slit_height</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -251,7 +261,7 @@ measurement, skipping the prompt and plot interaction:</p>
 </pre></div>
 </div>
 <p>You can put this scan in a macro using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">slit_height</span><span class="p">()</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">slit_height</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd>
@@ -274,7 +284,7 @@ like this:</p>
 </div>
 <p>The arguments are:</p>
 <ol class="arabic">
-<li><p>The slow motor axis.  This can be either the motor’s
+<li><p class="first">The slow motor axis.  This can be either the motor’s
 BlueSky name or the nickname in <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.  So,
 these are equivalent:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">areascan</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>
@@ -288,23 +298,31 @@ name, as in this very silly example:</p>
 </pre></div>
 </div>
 </li>
-<li><p>The starting position of the slow motor, relative to the current
-position.</p></li>
-<li><p>The ending position of the slow motor, relative to the current
-position.</p></li>
-<li><p>The number of steps to take on the slow motor.</p></li>
-<li><p>The fast motor axis.  This can be either the motor’s
-BlueSky name or the nickname in <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.</p></li>
-<li><p>The starting position of the fast motor, relative to the current
-position.</p></li>
-<li><p>The ending position of the fast motor, relative to the current
-position.</p></li>
-<li><p>The number of steps to take on the fast motor.</p></li>
-<li><p>The detector for the plotted signal.  The choices are <code class="docutils literal notranslate"><span class="pre">it</span></code>,
+<li><p class="first">The starting position of the slow motor, relative to the current
+position.</p>
+</li>
+<li><p class="first">The ending position of the slow motor, relative to the current
+position.</p>
+</li>
+<li><p class="first">The number of steps to take on the slow motor.</p>
+</li>
+<li><p class="first">The fast motor axis.  This can be either the motor’s
+BlueSky name or the nickname in <a class="reference internal" href="motors.html#xafs-stages"><span class="std std-numref">Table 2.1</span></a>.</p>
+</li>
+<li><p class="first">The starting position of the fast motor, relative to the current
+position.</p>
+</li>
+<li><p class="first">The ending position of the fast motor, relative to the current
+position.</p>
+</li>
+<li><p class="first">The number of steps to take on the fast motor.</p>
+</li>
+<li><p class="first">The detector for the plotted signal.  The choices are <code class="docutils literal notranslate"><span class="pre">it</span></code>,
 <code class="docutils literal notranslate"><span class="pre">if</span></code>, and <code class="docutils literal notranslate"><span class="pre">i0</span></code>.  For the <code class="docutils literal notranslate"><span class="pre">it</span></code> choice, the plot will display
 the ratio of It/I0.  Similarly for the <code class="docutils literal notranslate"><span class="pre">if</span></code> choice, the plot will
 display the sum of four silicon drift channels normalized by I0.
-For the <code class="docutils literal notranslate"><span class="pre">i0</span></code> choice, the signal on the I0 chamber will be plotted.</p></li>
+For the <code class="docutils literal notranslate"><span class="pre">i0</span></code> choice, the signal on the I0 chamber will be plotted.</p>
+</li>
 </ol>
 <p>At the end of the scan, you are prompted with the following question:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Pluck motor position from the plot? [Yn]
@@ -316,8 +334,8 @@ Both motors will then move to the position you clicked on.</p>
 <p>You can skip the “click for motor position” step by typing
 <code class="docutils literal notranslate"><span class="pre">n</span></code> and hitting return.</p>
 <div class="admonition-todo admonition" id="index-1">
-<p class="admonition-title">Todo</p>
-<p>Better sanity checking of input parameters</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Better sanity checking of input parameters</p>
 </div>
 <div class="section" id="plucking-a-point-from-an-area-scan">
 <h3>4.3.1. Plucking a point from an area scan<a class="headerlink" href="#plucking-a-point-from-an-area-scan" title="Permalink to this headline">¶</a></h3>
@@ -361,7 +379,7 @@ id number.  Both the unique and transient ids can be found in the
 
 <br>
 <p></p>
-<p>This manual is copyright © 2018-2019 Bruce Ravel</p>
+<p>This manual is copyright © 2018-2020 Bruce Ravel</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>

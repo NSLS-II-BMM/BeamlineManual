@@ -1,9 +1,12 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
   <!-- Licensed under the Apache 2.0 License -->
   <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
   <!-- Licensed under the SIL Open Font License -->
@@ -157,25 +160,50 @@ indicates setup for unfocused beam.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">change_edge</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">change_edge</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="n">focus</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>In this way, a macro can manage energy changes while you sleep!</p>
 <div class="section" id="automating-reference-foil-changes">
 <span id="foilholder"></span><h3>3.1.1. Automating reference foil changes<a class="headerlink" href="#automating-reference-foil-changes" title="Permalink to this headline">¶</a></h3>
-<p>To make sure the correct reference foil is selected, you need to
-configure the reference foil holder.  Suppose that you are measuring
-transition metals in sequence.  Then you would fill the reference foil
-holder with Mn, Fe, Co, Ni, and Cu from top of the holder to the
-bottom.  Execute this command to configure the reference foil holder:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foils</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Mn Fe Co Ni Cu&#39;</span><span class="p">)</span>
+<p>A wheel is used to hold and switch between reference foils.  The
+standard reference wheel has the 20 most commonly measured elements,
+plus four empty slots where additional references can be mounted.</p>
+<p>To select, for example, the iron reference foil:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">reference</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
+<p>In a plan:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">reference</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The argument is simply the one- or two-element symbol for the target
+element.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">change_edge()</span></code> command does this automatically, so long as the
+target edge is available on the reference holder.</p>
+<p>The foil holder is configured as a python list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#                    1     2     3     4     5     6     7     8     9     10    11    12</span>
+<span class="n">xafs_ref</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;Ti&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span>  <span class="s1">&#39;Cr&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">,</span> <span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;Co&#39;</span><span class="p">,</span> <span class="s1">&#39;Ni&#39;</span><span class="p">,</span> <span class="s1">&#39;Cu&#39;</span><span class="p">,</span> <span class="s1">&#39;Zn&#39;</span><span class="p">,</span> <span class="s1">&#39;Ga&#39;</span><span class="p">,</span> <span class="s1">&#39;Ge&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;As&#39;</span><span class="p">,</span> <span class="s1">&#39;Se&#39;</span><span class="p">,</span> <span class="s1">&#39;Br&#39;</span><span class="p">,</span> <span class="s1">&#39;Zr&#39;</span><span class="p">,</span> <span class="s1">&#39;Nb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mo&#39;</span><span class="p">,</span> <span class="s1">&#39;Pt&#39;</span><span class="p">,</span> <span class="s1">&#39;Au&#39;</span><span class="p">,</span> <span class="s1">&#39;Pb&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Adding a new element to this list is simple.  Suppose we affix a
+sample of Dy<sub>2</sub>O<sub>3</sub> to slot 22 (right after the Pb
+foil) as a reference for Dy.  This placement can be configured by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xafs_ref</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Dy&#39;</span>
+</pre></div>
+</div>
+<p>Note that python lists count from 0, hence the 22<sup>nd</sup> slot is
+index 21 in the list.</p>
 </div>
 <div class="section" id="automating-fluorescence-roi-changes">
 <span id="roichannels"></span><h3>3.1.2. Automating fluorescence ROI changes<a class="headerlink" href="#automating-fluorescence-roi-changes" title="Permalink to this headline">¶</a></h3>
 <p>To make sure that the correct ROI channel is selected, you need to
-configure the ROI readout.  Suppose that you have configure the analog
-detector readout system to measure three of those transition metals.
-Then you would execute a command like this to configure the detector
-readout:</p>
+configure the ROI readout.  Suppose that you have configured the
+analog detector readout system to measure three of those transition
+metals.  Then you would execute a command like this to configure the
+detector readout:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rois</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Fe Co Ni&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -190,32 +218,32 @@ will also perform the dead-time correction using the correct signal
 chains for the selected element.</p>
 </div>
 <div class="section" id="parameters-for-the-change-edge-command">
-<h3>3.1.3. Parameters for the change_edge command<a class="headerlink" href="#parameters-for-the-change-edge-command" title="Permalink to this headline">¶</a></h3>
+<h3>3.1.3. Parameters for the change_edge() command<a class="headerlink" href="#parameters-for-the-change-edge-command" title="Permalink to this headline">¶</a></h3>
 <p>The full set of parameters for the <code class="docutils literal notranslate"><span class="pre">change_edge()</span></code> plan are:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">change_edge</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">focus</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">edge</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="n">energy</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">slits</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">calibrating</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="mf">300.</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>where,</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">element</span></code></dt><dd><p>The one- or two-letter element symbol or Z number.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">focus</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: set up for using the focusing mirror, modes A, B, C;
-<code class="docutils literal notranslate"><span class="pre">False</span></code>: unfocused beam, modes D, E, F.  Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">edge</span></code></dt><dd><p>If not specified, use K or L3, as appropriate for the energy range
-of the beamline.  Use this argument to specify an L1, L2, or M edge.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">energy</span></code></dt><dd><p>Use an E0 value that is not obtained from the look-up table.
-Default is unspecified, i.e. use <code class="docutils literal notranslate"><span class="pre">element</span></code> and look-up table.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">slits</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: optimize slit height; <code class="docutils literal notranslate"><span class="pre">False</span></code>: skip <code class="docutils literal notranslate"><span class="pre">slit_hight()</span></code>
-scan.  Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">calibrating</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: used when performing beamline maintenance.  Default is <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">target</span></code></dt><dd><p>The energy above e0 at which to perform the rocking curve scan.
-Default is 300.</p>
-</dd>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">element</span></code></dt>
+<dd>The one- or two-letter element symbol or Z number.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">focus</span></code></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">True</span></code>: set up for using the focusing mirror, modes A, B, C;
+<code class="docutils literal notranslate"><span class="pre">False</span></code>: unfocused beam, modes D, E, F.  Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">edge</span></code></dt>
+<dd>If not specified, use K or L3, as appropriate for the energy range
+of the beamline.  Use this argument to specify an L1, L2, or M edge.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">energy</span></code></dt>
+<dd>Use an E0 value that is not obtained from the look-up table.
+Default is unspecified, i.e. use <code class="docutils literal notranslate"><span class="pre">element</span></code> and look-up table.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">slits</span></code></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">True</span></code>: optimize slit height; <code class="docutils literal notranslate"><span class="pre">False</span></code>: skip <code class="docutils literal notranslate"><span class="pre">slit_hight()</span></code>
+scan.  Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">calibrating</span></code></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">True</span></code>: used when performing beamline maintenance.  Default is <code class="docutils literal notranslate"><span class="pre">False</span></code></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">target</span></code></dt>
+<dd>The energy above e0 at which to perform the rocking curve scan.
+Default is 300.</dd>
 </dl>
 <p>For all the details about the individual parts of the photon delivery
 system, read on!</p>
@@ -223,8 +251,9 @@ system, read on!</p>
 </div>
 <div class="section" id="shutters">
 <h2>3.2. Shutters<a class="headerlink" href="#shutters" title="Permalink to this headline">¶</a></h2>
-<dl>
-<dt><strong>Open and close the photon shutter</strong></dt><dd><p>In the nomenclature of BMM, the photon shutter is <code class="docutils literal notranslate"><span class="pre">shb</span></code>.  Open
+<dl class="docutils">
+<dt><strong>Open and close the photon shutter</strong></dt>
+<dd><p class="first">In the nomenclature of BMM, the photon shutter is <code class="docutils literal notranslate"><span class="pre">shb</span></code>.  Open
 and close this shutter with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shb</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
 <span class="n">shb</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -237,16 +266,17 @@ plans try up to three times to open or close the photon shutter,
 with a 1.5 second pause between attempts.</p>
 <p>If you wish to open or close the photon shutter (using the same
 multiple attempt algorithm) in a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a>, do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">shb</span><span class="o">.</span><span class="n">open_plan</span><span class="p">()</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">shb</span><span class="o">.</span><span class="n">open_plan</span><span class="p">()</span>
 <span class="k">yield from</span> <span class="n">shb</span><span class="o">.</span><span class="n">close_plan</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd>
-<dt><strong>Open and close the safety shutter</strong></dt><dd><p>This is the front-end shutter.  Closing it takes light off the
+<dt><strong>Open and close the safety shutter</strong></dt>
+<dd><p class="first">This is the front-end shutter.  Closing it takes light off the
 monochromator, which is not something you typically want to do
 during an experiment.  That said, the safety shutter is <code class="docutils literal notranslate"><span class="pre">sha</span></code> in
 the BMM nomenclature:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sha</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sha</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
 <span class="n">sha</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -258,18 +288,20 @@ the BMM nomenclature:</p>
 <p>The monochromator consists of 8 motors.  It should never be necessary
 to interact directly with any of the physical motors.  Plans exist for
 facilitating any actions a user should ever need.</p>
-<dl>
-<dt><strong>Query the current energy</strong></dt><dd><p>To know the position and energy of the monochromator: <code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">dcm</span></code></p>
+<dl class="docutils">
+<dt><strong>Query the current energy</strong></dt>
+<dd><p class="first">To know the position and energy of the monochromator: <code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">dcm</span></code></p>
 <p>This returns a short report like this:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Energy = 19300.1   reflection = Si(111)
 current: Bragg =  5.87946   2nd Xtal Perp = 15.0792   2nd Xtal Para = 146.4328
 </pre></div>
 </div>
-<p>This report shows the current energy, the crystal set currently in
+<p class="last">This report shows the current energy, the crystal set currently in
 use, and the position of the parallel and perpendicular motors of
 the second crystal carriage.</p>
 </dd>
-<dt><strong>Move to a new energy</strong></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">dcm.energy</span></code> virtual motor coordinates the Bragg, parallel,
+<dt><strong>Move to a new energy</strong></dt>
+<dd><p class="first">The <code class="docutils literal notranslate"><span class="pre">dcm.energy</span></code> virtual motor coordinates the Bragg, parallel,
 and perpendicular motors to maintain a fixed exit height and set
 the energy of the mono.  To move to the copper K edge energy:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8979</span><span class="p">))</span>
@@ -279,16 +311,18 @@ the energy of the mono.  To move to the copper K edge energy:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8979</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Note that the BlueSky command line is able to do simple arithmetic
+<p class="last">Note that the BlueSky command line is able to do simple arithmetic
 (and a whole lot more!).  It is a good idea to leave the arithmetic
 to the computer.</p>
 </dd>
-<dt><strong>Move to a new energy in a macro</strong></dt><dd><p>An energy change can be a part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a>.  Simply do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8979</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
+<dt><strong>Move to a new energy in a macro</strong></dt>
+<dd><p class="first">An energy change can be a part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a>.  Simply do:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">dcm</span><span class="o">.</span><span class="n">energy</span><span class="p">,</span> <span class="mi">8979</span><span class="o">+</span><span class="mi">50</span><span class="p">))</span>
 </pre></div>
 </div>
 </dd>
-<dt><strong>Tune the second crystal of the mono</strong></dt><dd><p>After a long move, you might need to retune the second crystal.  To
+<dt><strong>Tune the second crystal of the mono</strong></dt>
+<dd><p class="first">After a long move, you might need to retune the second crystal.  To
 find the peak of the rocking curve and move to that peak:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">rocking_curve</span><span class="p">())</span>
 </pre></div>
@@ -307,7 +341,7 @@ station.  Do:</p>
 <span class="n">td</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Those stand for “tune up” and “tune down”.  Do not
+<p class="last">Those stand for “tune up” and “tune down”.  Do not
 think that “up” and “down” refer to measured
 intensity.  Rather, they refer to the direction of motion of the
 motor which adjusts the second crystal pitch.  When you move to
@@ -315,7 +349,8 @@ higher energy, you usually need to tune in <code class="docutils literal notrans
 When you move to a lower energy, you usually need to tune in the
 <code class="docutils literal notranslate"><span class="pre">tu()</span></code> direction.  Obviously…..</p>
 </dd>
-<dt><strong>Fixed-exit and pseudo-channelcut modes</strong></dt><dd><p>The mono can be run in either fixed-exit or pseudo-channelcut
+<dt><strong>Fixed-exit and pseudo-channelcut modes</strong></dt>
+<dd><p class="first">The mono can be run in either fixed-exit or pseudo-channelcut
 modes.</p>
 <p>Fixed exit means that the second monochromator crystal will be
 moved in directions parallel and perpendicular to its diffracting
@@ -339,7 +374,7 @@ vertical displacement of the beam.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dcm</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;channelcut&#39;</span>
 </pre></div>
 </div>
-<p>In practice, the monochromator is normally left in fixed-exit
+<p class="last">In practice, the monochromator is normally left in fixed-exit
 mode.  That way, the monochromator can be moved without worry about
 the beam height and the monochromator exit aperture.  In the
 <a class="reference internal" href="xafs.html#xafsscan"><span class="std std-numref">XAFS scan plan (Section 5.4)</span></a>, the monochromator
@@ -357,61 +392,61 @@ and the monochromator is returned to fixed-exit mode.</p>
 there is a four-blade slit system.  These are used to define the beam
 size on the mirrors and to refine energy resolution for the focused
 beam..</p>
-<table class="docutils align-left" id="slits2-motors">
+<table border="1" class="docutils align-left" id="slits2-motors">
 <caption><span class="caption-number">Table 3.1 </span><span class="caption-text">Post mono slit motors</span><a class="headerlink" href="#slits2-motors" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 23%" />
-<col style="width: 12%" />
-<col style="width: 35%" />
-<col style="width: 29%" />
+<col width="23%" />
+<col width="12%" />
+<col width="35%" />
+<col width="29%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>motor</p></th>
-<th class="head"><p>units</p></th>
-<th class="head"><p>notes</p></th>
-<th class="head"><p>motion type</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">motor</th>
+<th class="head">units</th>
+<th class="head">notes</th>
+<th class="head">motion type</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>slits2_top</p></td>
-<td><p>mm</p></td>
-<td><p>top blade position</p></td>
-<td><p>single axis</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>slits2_top</td>
+<td>mm</td>
+<td>top blade position</td>
+<td>single axis</td>
 </tr>
-<tr class="row-odd"><td><p>slits2_bottom</p></td>
-<td><p>mm</p></td>
-<td><p>bottom blade position</p></td>
-<td><p>single axis</p></td>
+<tr class="row-odd"><td>slits2_bottom</td>
+<td>mm</td>
+<td>bottom blade position</td>
+<td>single axis</td>
 </tr>
-<tr class="row-even"><td><p>slits2_inboard</p></td>
-<td><p>mm</p></td>
-<td><p>inboard blade position</p></td>
-<td><p>single axis</p></td>
+<tr class="row-even"><td>slits2_inboard</td>
+<td>mm</td>
+<td>inboard blade position</td>
+<td>single axis</td>
 </tr>
-<tr class="row-odd"><td><p>slits2_outboard</p></td>
-<td><p>mm</p></td>
-<td><p>outboard blade position</p></td>
-<td><p>single axis</p></td>
+<tr class="row-odd"><td>slits2_outboard</td>
+<td>mm</td>
+<td>outboard blade position</td>
+<td>single axis</td>
 </tr>
-<tr class="row-even"><td><p>slits2_hsize</p></td>
-<td><p>mm</p></td>
-<td><p>horizontal size</p></td>
-<td><p>coordinated motion</p></td>
+<tr class="row-even"><td>slits2_hsize</td>
+<td>mm</td>
+<td>horizontal size</td>
+<td>coordinated motion</td>
 </tr>
-<tr class="row-odd"><td><p>slits2_hcenter</p></td>
-<td><p>mm</p></td>
-<td><p>horizontal center</p></td>
-<td><p>coordinated motion</p></td>
+<tr class="row-odd"><td>slits2_hcenter</td>
+<td>mm</td>
+<td>horizontal center</td>
+<td>coordinated motion</td>
 </tr>
-<tr class="row-even"><td><p>slits2_vsize</p></td>
-<td><p>mm</p></td>
-<td><p>vertical size</p></td>
-<td><p>coordinated motion</p></td>
+<tr class="row-even"><td>slits2_vsize</td>
+<td>mm</td>
+<td>vertical size</td>
+<td>coordinated motion</td>
 </tr>
-<tr class="row-odd"><td><p>slits2_vcenter</p></td>
-<td><p>mm</p></td>
-<td><p>vertical center</p></td>
-<td><p>coordinated motion</p></td>
+<tr class="row-odd"><td>slits2_vcenter</td>
+<td>mm</td>
+<td>vertical center</td>
+<td>coordinated motion</td>
 </tr>
 </tbody>
 </table>
@@ -475,65 +510,65 @@ M3: (Rh/Pt stripe)
 </div>
 </div>
 <div class="section" id="end-station-slits">
-<h2>3.6. End station slits<a class="headerlink" href="#end-station-slits" title="Permalink to this headline">¶</a></h2>
+<span id="slits3"></span><h2>3.6. End station slits<a class="headerlink" href="#end-station-slits" title="Permalink to this headline">¶</a></h2>
 <p>Near the end of the photon delivery system, in Diagnostic Module 3 in
 the end station, there is a four-blade slit system.  These are used
 to define the beam size on the sample.</p>
-<table class="docutils align-left" id="slits3-motors">
+<table border="1" class="docutils align-left" id="slits3-motors">
 <caption><span class="caption-number">Table 3.2 </span><span class="caption-text">End station slit motors</span><a class="headerlink" href="#slits3-motors" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 23%" />
-<col style="width: 12%" />
-<col style="width: 35%" />
-<col style="width: 29%" />
+<col width="23%" />
+<col width="12%" />
+<col width="35%" />
+<col width="29%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>motor</p></th>
-<th class="head"><p>units</p></th>
-<th class="head"><p>notes</p></th>
-<th class="head"><p>motion type</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">motor</th>
+<th class="head">units</th>
+<th class="head">notes</th>
+<th class="head">motion type</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>slits3_top</p></td>
-<td><p>mm</p></td>
-<td><p>top blade position</p></td>
-<td><p>single axis</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>slits3_top</td>
+<td>mm</td>
+<td>top blade position</td>
+<td>single axis</td>
 </tr>
-<tr class="row-odd"><td><p>slits3_bottom</p></td>
-<td><p>mm</p></td>
-<td><p>bottom blade position</p></td>
-<td><p>single axis</p></td>
+<tr class="row-odd"><td>slits3_bottom</td>
+<td>mm</td>
+<td>bottom blade position</td>
+<td>single axis</td>
 </tr>
-<tr class="row-even"><td><p>slits3_inboard</p></td>
-<td><p>mm</p></td>
-<td><p>inboard blade position</p></td>
-<td><p>single axis</p></td>
+<tr class="row-even"><td>slits3_inboard</td>
+<td>mm</td>
+<td>inboard blade position</td>
+<td>single axis</td>
 </tr>
-<tr class="row-odd"><td><p>slits3_outboard</p></td>
-<td><p>mm</p></td>
-<td><p>outboard blade position</p></td>
-<td><p>single axis</p></td>
+<tr class="row-odd"><td>slits3_outboard</td>
+<td>mm</td>
+<td>outboard blade position</td>
+<td>single axis</td>
 </tr>
-<tr class="row-even"><td><p>slits3_hsize</p></td>
-<td><p>mm</p></td>
-<td><p>horizontal size</p></td>
-<td><p>coordinated motion</p></td>
+<tr class="row-even"><td>slits3_hsize</td>
+<td>mm</td>
+<td>horizontal size</td>
+<td>coordinated motion</td>
 </tr>
-<tr class="row-odd"><td><p>slits3_hcenter</p></td>
-<td><p>mm</p></td>
-<td><p>horizontal center</p></td>
-<td><p>coordinated motion</p></td>
+<tr class="row-odd"><td>slits3_hcenter</td>
+<td>mm</td>
+<td>horizontal center</td>
+<td>coordinated motion</td>
 </tr>
-<tr class="row-even"><td><p>slits3_vsize</p></td>
-<td><p>mm</p></td>
-<td><p>vertical size</p></td>
-<td><p>coordinated motion</p></td>
+<tr class="row-even"><td>slits3_vsize</td>
+<td>mm</td>
+<td>vertical size</td>
+<td>coordinated motion</td>
 </tr>
-<tr class="row-odd"><td><p>slits3_vcenter</p></td>
-<td><p>mm</p></td>
-<td><p>vertical center</p></td>
-<td><p>coordinated motion</p></td>
+<tr class="row-odd"><td>slits3_vcenter</td>
+<td>mm</td>
+<td>vertical center</td>
+<td>coordinated motion</td>
 </tr>
 </tbody>
 </table>
@@ -567,53 +602,53 @@ system to their correct locations for the different energy ranges and
 focusing conditions.  Here is a table of different photon delivery
 modes.  Modes A-F are for delivery of light to the XAS end station.
 Mode XRD delivers high energy, focused beam to the goniometer.</p>
-<table class="docutils align-left" id="pds-modes">
+<table border="1" class="docutils align-left" id="pds-modes">
 <caption><span class="caption-number">Table 3.3 </span><span class="caption-text">Photon delivery modes</span><a class="headerlink" href="#pds-modes" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 28%" />
-<col style="width: 58%" />
+<col width="14%" />
+<col width="28%" />
+<col width="58%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Mode</p></th>
-<th class="head"><p>focused</p></th>
-<th class="head"><p>energy range</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Mode</th>
+<th class="head">focused</th>
+<th class="head">energy range</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>A</p></td>
-<td><p>✓</p></td>
-<td><p>above 8 keV</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>✓</td>
+<td>above 8 keV</td>
 </tr>
-<tr class="row-odd"><td><p>B</p></td>
-<td><p>✓</p></td>
-<td><p>below 6 keV</p></td>
+<tr class="row-odd"><td>B</td>
+<td>✓</td>
+<td>below 6 keV</td>
 </tr>
-<tr class="row-even"><td><p>C</p></td>
-<td><p>✓</p></td>
-<td><p>6 keV – 8 keV</p></td>
+<tr class="row-even"><td>C</td>
+<td>✓</td>
+<td>6 keV – 8 keV</td>
 </tr>
-<tr class="row-odd"><td><p>D</p></td>
-<td><p>✗</p></td>
-<td><p>above 8 keV</p></td>
+<tr class="row-odd"><td>D</td>
+<td>✗</td>
+<td>above 8 keV</td>
 </tr>
-<tr class="row-even"><td><p>E</p></td>
-<td><p>✗</p></td>
-<td><p>6 keV – 8 keV</p></td>
+<tr class="row-even"><td>E</td>
+<td>✗</td>
+<td>6 keV – 8 keV</td>
 </tr>
-<tr class="row-odd"><td><p>F</p></td>
-<td><p>✗</p></td>
-<td><p>below 6 keV</p></td>
+<tr class="row-odd"><td>F</td>
+<td>✗</td>
+<td>below 6 keV</td>
 </tr>
-<tr class="row-even"><td><p>XRD</p></td>
-<td><p>✓</p></td>
-<td><p>above 8 keV</p></td>
+<tr class="row-even"><td>XRD</td>
+<td>✓</td>
+<td>above 8 keV</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition-todo admonition" id="index-0">
-<p class="admonition-title">Todo</p>
-<p>Lookup table not complete for mode B. In fact, the ydo and
+<p class="first admonition-title">Todo</p>
+<p class="last">Lookup table not complete for mode B. In fact, the ydo and
 ydi jacks of M3 cannot move low enough to enter mode B.  In
 practice, mode B is not available.</p>
 </div>
@@ -659,7 +694,7 @@ second crystal.</p>
 
 <br>
 <p></p>
-<p>This manual is copyright © 2018-2019 Bruce Ravel</p>
+<p>This manual is copyright © 2018-2020 Bruce Ravel</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>

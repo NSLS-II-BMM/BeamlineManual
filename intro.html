@@ -1,9 +1,12 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
   <!-- Licensed under the Apache 2.0 License -->
   <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
   <!-- Licensed under the SIL Open Font License -->
@@ -136,24 +139,24 @@ are a number of customizations specific to BMM.</p>
 <p>In this user manual, there are chapters covering most of the chores
 one will need to do at the beamline, including:</p>
 <ol class="arabic simple">
-<li><p>moving motors</p></li>
-<li><p>changing the state of the photon delivery system</p></li>
-<li><p>making motor scans</p></li>
-<li><p>making energy scans</p></li>
-<li><p>interacting with the beamline’s electronic log book</p></li>
-<li><p>troubleshooting common problems</p></li>
+<li>moving motors</li>
+<li>changing the state of the photon delivery system</li>
+<li>making motor scans</li>
+<li>making energy scans</li>
+<li>interacting with the beamline’s electronic log book</li>
+<li>troubleshooting common problems</li>
 </ol>
 <div class="section" id="tl-dr">
 <h2>1.1. TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h2>
-<dl class="simple">
-<dt><strong>Change energy</strong></dt><dd><p>Use the <code class="docutils literal notranslate"><span class="pre">RE(change_edge())</span></code> command, see <a class="reference internal" href="pds.html#pds"><span class="std std-numref">Photon Delivery System, Section 3</span></a></p>
-</dd>
-<dt><strong>Sample alignment scans</strong></dt><dd><p>Use the <code class="docutils literal notranslate"><span class="pre">RE(linescan())</span></code> command, see <a class="reference internal" href="linescans.html#linescan"><span class="std std-numref">Sample position scans, Section 4</span></a></p>
-</dd>
-<dt><strong>XAFS scan</strong></dt><dd><p>Use the <code class="docutils literal notranslate"><span class="pre">RE(xafs())</span></code> command, see <a class="reference internal" href="xafs.html#xafsscan"><span class="std std-numref">Run an XAFS scan, Section 5.4</span></a></p>
-</dd>
-<dt><strong>Macro for moving motors and measuring XAFS</strong></dt><dd><p>Edit the <code class="docutils literal notranslate"><span class="pre">macro.py</span></code> example in your data directory, see <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">Scan sequence macro, Section 5.6</span></a></p>
-</dd>
+<dl class="docutils">
+<dt><strong>Change energy</strong></dt>
+<dd>Use the <code class="docutils literal notranslate"><span class="pre">RE(change_edge())</span></code> command, see <a class="reference internal" href="pds.html#pds"><span class="std std-numref">Photon Delivery System, Section 3</span></a></dd>
+<dt><strong>Sample alignment scans</strong></dt>
+<dd>Use the <code class="docutils literal notranslate"><span class="pre">RE(linescan())</span></code> command, see <a class="reference internal" href="linescans.html#linescan"><span class="std std-numref">Sample position scans, Section 4</span></a></dd>
+<dt><strong>XAFS scan</strong></dt>
+<dd>Use the <code class="docutils literal notranslate"><span class="pre">RE(xafs())</span></code> command, see <a class="reference internal" href="xafs.html#xafsscan"><span class="std std-numref">Run an XAFS scan, Section 5.4</span></a></dd>
+<dt><strong>Macro for moving motors and measuring XAFS</strong></dt>
+<dd>Edit the <code class="docutils literal notranslate"><span class="pre">macro.py</span></code> example in your data directory, see <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">Scan sequence macro, Section 5.6</span></a></dd>
 </dl>
 </div>
 <div class="section" id="the-user-experience">
@@ -162,17 +165,17 @@ one will need to do at the beamline, including:</p>
 information about the state of the beamline.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-prompt"></span><a class="reference external image-reference" href="_images/prompt.png"><img alt="_images/prompt.png" src="_images/prompt.png" style="width: 40%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.1 </span><span class="caption-text">The BlueSky user prompt at BMM</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.1 </span><span class="caption-text">The BlueSky user prompt at BMM</span></p>
 </div>
 <ul class="simple">
-<li><p>The green <code class="docutils literal notranslate"><span class="pre">BMM</span></code> indicates that the beamline is <a class="reference internal" href="#start-end"><span class="std std-numref">set up and
+<li>The green <code class="docutils literal notranslate"><span class="pre">BMM</span></code> indicates that the beamline is <a class="reference internal" href="#start-end"><span class="std std-numref">set up and
 ready for the user (see Section 1.2.2)</span></a>.  When the beamline
-is not ready for users, the <code class="docutils literal notranslate"><span class="pre">BMM</span></code> string is red.</p></li>
-<li><p>The string <code class="docutils literal notranslate"><span class="pre">D.111</span></code> indicates that the photon delivery system is in
+is not ready for users, the <code class="docutils literal notranslate"><span class="pre">BMM</span></code> string is red.</li>
+<li>The string <code class="docutils literal notranslate"><span class="pre">D.111</span></code> indicates that the photon delivery system is in
 <a class="reference internal" href="pds.html#pds-modes"><span class="std std-numref">mode D (see Table 3.3)</span></a> and that <a class="reference internal" href="pds.html#change-crystals"><span class="std std-numref">the
-Si(111) monochromator (Section 3.7.2)</span></a> is in use.</p></li>
-<li><p>The green number in square brackets is an incremented count of how
-many commands have been issued since <code class="docutils literal notranslate"><span class="pre">bsui</span></code> was started.</p></li>
+Si(111) monochromator (Section 3.7.2)</span></a> is in use.</li>
+<li>The green number in square brackets is an incremented count of how
+many commands have been issued since <code class="docutils literal notranslate"><span class="pre">bsui</span></code> was started.</li>
 </ul>
 <div class="section" id="ca-dashboard">
 <span id="cadashboard"></span><h3>1.2.1. CA Dashboard<a class="headerlink" href="#ca-dashboard" title="Permalink to this headline">¶</a></h3>
@@ -180,34 +183,37 @@ many commands have been issued since <code class="docutils literal notranslate">
 monitor.  It looks like this:</p>
 <div class="figure align-center" id="id2">
 <span id="fig-cadashboard"></span><a class="reference external image-reference" href="_images/cadashboard.png"><img alt="_images/cadashboard.png" src="_images/cadashboard.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.2 </span><span class="caption-text">The CA dashboard beamline monitor</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.2 </span><span class="caption-text">The CA dashboard beamline monitor</span></p>
 </div>
 <p>This provides a (very) concise overview of the state of the beamline.</p>
-<dl class="simple">
-<dt><strong>Line 1</strong></dt><dd><p>In short, if the top line has no red text, the beamline is all ready to go.</p>
-<ul class="simple">
-<li><p>BMM is enabled (green) or disable (red)</p></li>
-<li><p>The BM, FE, &amp; user photon shutters are open (green) or closed (red)</p></li>
-<li><p>The ring current</p></li>
-<li><p>The state of vacuum sections 1 through 7 – green means vacuum
-level is OK, red means vacuum level is high</p></li>
-<li><p>The state of the in-vacuum motors, 4 on the DCM, 2 on the
+<dl class="docutils">
+<dt><strong>Line 1</strong></dt>
+<dd><p class="first">In short, if the top line has no red text, the beamline is all ready to go.</p>
+<ul class="last simple">
+<li>BMM is enabled (green) or disable (red)</li>
+<li>The BM, FE, &amp; user photon shutters are open (green) or closed (red)</li>
+<li>The ring current</li>
+<li>The state of vacuum sections 1 through 7 – green means vacuum
+level is OK, red means vacuum level is high</li>
+<li>The state of the in-vacuum motors, 4 on the DCM, 2 on the
 focusing mirror, 2 on the harmonic rejection mirror – green
-means temperature is cool, red means temperature is high</p></li>
-<li><p>The open (green) or closed (red) state of the 3 front end gate
-valves and the 6 beamline gate valves</p></li>
+means temperature is cool, red means temperature is high</li>
+<li>The open (green) or closed (red) state of the 3 front end gate
+valves and the 6 beamline gate valves</li>
 </ul>
 </dd>
-<dt><strong>Line 2</strong></dt><dd><ul class="simple">
-<li><p>The energy position of the monochromator</p></li>
-<li><p>The signals on the I0 and It ion chambers, measured in nanoamps</p></li>
-<li><p>The current operation at the beamline, options are: idle (white),
+<dt><strong>Line 2</strong></dt>
+<dd><ul class="first last simple">
+<li>The energy position of the monochromator</li>
+<li>The signals on the I0 and It ion chambers, measured in nanoamps</li>
+<li>The current operation at the beamline, options are: idle (white),
 XAFS scan (pink), line scan (cyan), area scan (yellow), or time
-scan (blue)</p></li>
+scan (blue)</li>
 </ul>
 </dd>
-<dt><strong>Line 3</strong></dt><dd><ul class="simple">
-<li><p>Positions of common sample motors and size of sample slits</p></li>
+<dt><strong>Line 3</strong></dt>
+<dd><ul class="first last simple">
+<li>Positions of common sample motors and size of sample slits</li>
 </ul>
 </dd>
 </dl>
@@ -295,7 +301,7 @@ difficult!</p>
 <h2>1.3. BMM and LOB3<a class="headerlink" href="#bmm-and-lob3" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="id3">
 <span id="fig-lob3"></span><a class="reference external image-reference" href="_images/LOB-3.png"><img alt="_images/LOB-3.png" src="_images/LOB-3.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.3 </span><span class="caption-text">Bruce’s and Jean’s offices in LOB 3</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.3 </span><span class="caption-text">Bruce’s and Jean’s offices in LOB 3</span></p>
 </div>
 </div>
 <div class="section" id="a-bit-about-bmm">
@@ -351,7 +357,7 @@ about 300 μm by 200 μm.</p>
 
 <br>
 <p></p>
-<p>This manual is copyright © 2018-2019 Bruce Ravel</p>
+<p>This manual is copyright © 2018-2020 Bruce Ravel</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>

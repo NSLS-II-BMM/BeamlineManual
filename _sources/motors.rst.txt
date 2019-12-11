@@ -65,12 +65,14 @@ other places instead of writing out the BlueSky name for the motor.
    ========== ========= ===========  =========  ===================  ===============================
    xafs_x     x         linear       mm         main sample stage    |plus| outboard, - inboard
    xafs_y     y         linear       mm         main sample stage    |plus| up, - down
-   xafs_ref   ref       linear       mm         reference stage      |plus| up, - down
+   xafs_lins            linear       mm         unused linear stage 
+   xafs_linxs           linear       mm         unused linear stage 
+   xafs_ref   ref       rotary       degrees    reference stage      |plus| clockwise, - widdershins
    xafs_pitch pitch     tilt         degrees    Huber tilt stage     |plus| more positive
    xafs_roll  roll      tilt         degrees    Huber tilt stage     |plus| more positive
    xafs_wheel wh        rotary       degrees    large rotary stage   |plus| clockwise, - widdershins
-   xafs_rots  rs        rotary       degrees    small rotary stage   |plus| more positive
-   xafs_roth  rh        rotary       degrees    Huber circle         |plus| more positive
+   xafs_rots  rs        rotary       degrees    small rotary stage   
+   xafs_roth  rh        rotary       degrees    Huber circle         
    ========== ========= ===========  =========  ===================  ===============================
 
 Configuration and position of the motors can be queried easily.  In
@@ -108,7 +110,6 @@ are the same for all sample stage motors.
 
      yield from mv(xafs_y, 37.36, xafs_x, 15.79)
 
-
 **Querying soft limits**
    To know the soft limits on a sample stage, do
    ``xafs_y.llm.value`` or ``xafs_y.hlm.value`` for the low or
@@ -118,21 +119,47 @@ are the same for all sample stage motors.
    To set the soft limits on a sample stage, do something like
    ``xafs_y.llm.value = 5`` or ``xafs_y.hlm.value = 85``
 
-**Reference stage**
-   The reference stage is calibrated such that the beam passes through
-   the center of a slot every 45 mm.  Thus the five positions, from
-   top to bottom, are -90, -45, 0, 45, and 90.  Move to a new
-   positions by::
+**Reference wheel** 
+   The reference stage is a rotation stage with a `Delrin
+   <https://en.wikipedia.org/wiki/Polyoxymethylene>`_ sample disk
+   holding up to 24 reference foils.  It is calibrated such that the
+   beam passes through the center of a slot every 15 degrees.  The
+   slots are indexed such that they can be accessed by the symbol of
+   the element being measured.  To move to a new reference foil::
 
-     RE(mv(xafs_ref, -45))
+     RE(reference('Fe'))
 
-..
-   As part of a macro that changes energies, you might do something
-   like::
 
-     yield from mv(dcm.energy, 11564) # the Pt K edge energy
-     yield from mv(xafs_ref, 45)      # the position of the Pt foil in the foil holder
-     yield from mvr(xafs_wheel, 15)   # the next slot on the sample wheel
+Sample wheel
+------------
+
+The ``xafs_wheel`` motor is a rotary stage that is typically mounted
+on the XY stage.  It can be mounted face-on to the beam or at 45
+degrees for use with the fluorescence detector.
+
+Sample plates laser cut from `Delrin
+<https://en.wikipedia.org/wiki/Polyoxymethylene>`_ sheet  are usually
+attached to the rotation stage.  These plates have 24 slots arranged
+around the periphery, evenly spaced 15 degree apart.  While you can
+move from slot to slot in increments of 15 degrees, i.e.
+
+.. code-block:: python
+
+   RE(mvr(xafs_wheel, 15*3))
+
+it is somewhat easier to move by slot number.  The sample plates are
+also cut with sample numbers for slots 1, 7, 13, and 19, making it
+clear which slot is which.  To move, for instance, to slot 5, do:
+
+.. code-block:: python
+
+   RE(slot(5))
+
+In a macro, do
+
+.. code-block:: python
+
+   yield from slot(5)
 
 Sample spinner
 --------------

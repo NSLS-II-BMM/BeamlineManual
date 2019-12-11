@@ -1,9 +1,12 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
   <!-- Licensed under the Apache 2.0 License -->
   <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
   <!-- Licensed under the SIL Open Font License -->
@@ -60,8 +63,9 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Moving and querying motors</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sample-stages">2.1. Sample stages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sample-spinner">2.2. Sample spinner</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#table-motors">2.3. Table motors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-wheel">2.2. Sample wheel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-spinner">2.3. Sample spinner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#table-motors">2.4. Table motors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pds.html">3. Photon Delivery System</a></li>
@@ -169,94 +173,110 @@ XAFS stages:
 <p>These stages sit on top of the XAFS optical table.  The nickname is a
 short string that can be used in the <code class="docutils literal notranslate"><span class="pre">linescan()</span></code> plan and certain
 other places instead of writing out the BlueSky name for the motor.</p>
-<table class="docutils align-left" id="xafs-stages">
+<table border="1" class="docutils align-left" id="xafs-stages">
 <caption><span class="caption-number">Table 2.1 </span><span class="caption-text">XAFS sample stages</span><a class="headerlink" href="#xafs-stages" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 10%" />
-<col style="width: 12%" />
-<col style="width: 10%" />
-<col style="width: 21%" />
-<col style="width: 35%" />
+<col width="11%" />
+<col width="10%" />
+<col width="12%" />
+<col width="10%" />
+<col width="21%" />
+<col width="35%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>motor</p></th>
-<th class="head"><p>nickname</p></th>
-<th class="head"><p>type</p></th>
-<th class="head"><p>units</p></th>
-<th class="head"><p>notes</p></th>
-<th class="head"><p>directions</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">motor</th>
+<th class="head">nickname</th>
+<th class="head">type</th>
+<th class="head">units</th>
+<th class="head">notes</th>
+<th class="head">directions</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>xafs_x</p></td>
-<td><p>x</p></td>
-<td><p>linear</p></td>
-<td><p>mm</p></td>
-<td><p>main sample stage</p></td>
-<td><p>+ outboard, - inboard</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>xafs_x</td>
+<td>x</td>
+<td>linear</td>
+<td>mm</td>
+<td>main sample stage</td>
+<td>+ outboard, - inboard</td>
 </tr>
-<tr class="row-odd"><td><p>xafs_y</p></td>
-<td><p>y</p></td>
-<td><p>linear</p></td>
-<td><p>mm</p></td>
-<td><p>main sample stage</p></td>
-<td><p>+ up, - down</p></td>
+<tr class="row-odd"><td>xafs_y</td>
+<td>y</td>
+<td>linear</td>
+<td>mm</td>
+<td>main sample stage</td>
+<td>+ up, - down</td>
 </tr>
-<tr class="row-even"><td><p>xafs_ref</p></td>
-<td><p>ref</p></td>
-<td><p>linear</p></td>
-<td><p>mm</p></td>
-<td><p>reference stage</p></td>
-<td><p>+ up, - down</p></td>
+<tr class="row-even"><td>xafs_lins</td>
+<td>&#160;</td>
+<td>linear</td>
+<td>mm</td>
+<td>unused linear stage</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-odd"><td><p>xafs_pitch</p></td>
-<td><p>pitch</p></td>
-<td><p>tilt</p></td>
-<td><p>degrees</p></td>
-<td><p>Huber tilt stage</p></td>
-<td><p>+ more positive</p></td>
+<tr class="row-odd"><td>xafs_linxs</td>
+<td>&#160;</td>
+<td>linear</td>
+<td>mm</td>
+<td>unused linear stage</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td><p>xafs_roll</p></td>
-<td><p>roll</p></td>
-<td><p>tilt</p></td>
-<td><p>degrees</p></td>
-<td><p>Huber tilt stage</p></td>
-<td><p>+ more positive</p></td>
+<tr class="row-even"><td>xafs_ref</td>
+<td>ref</td>
+<td>rotary</td>
+<td>degrees</td>
+<td>reference stage</td>
+<td>+ clockwise, - widdershins</td>
 </tr>
-<tr class="row-odd"><td><p>xafs_wheel</p></td>
-<td><p>wh</p></td>
-<td><p>rotary</p></td>
-<td><p>degrees</p></td>
-<td><p>large rotary stage</p></td>
-<td><p>+ clockwise, - widdershins</p></td>
+<tr class="row-odd"><td>xafs_pitch</td>
+<td>pitch</td>
+<td>tilt</td>
+<td>degrees</td>
+<td>Huber tilt stage</td>
+<td>+ more positive</td>
 </tr>
-<tr class="row-even"><td><p>xafs_rots</p></td>
-<td><p>rs</p></td>
-<td><p>rotary</p></td>
-<td><p>degrees</p></td>
-<td><p>small rotary stage</p></td>
-<td><p>+ more positive</p></td>
+<tr class="row-even"><td>xafs_roll</td>
+<td>roll</td>
+<td>tilt</td>
+<td>degrees</td>
+<td>Huber tilt stage</td>
+<td>+ more positive</td>
 </tr>
-<tr class="row-odd"><td><p>xafs_roth</p></td>
-<td><p>rh</p></td>
-<td><p>rotary</p></td>
-<td><p>degrees</p></td>
-<td><p>Huber circle</p></td>
-<td><p>+ more positive</p></td>
+<tr class="row-odd"><td>xafs_wheel</td>
+<td>wh</td>
+<td>rotary</td>
+<td>degrees</td>
+<td>large rotary stage</td>
+<td>+ clockwise, - widdershins</td>
+</tr>
+<tr class="row-even"><td>xafs_rots</td>
+<td>rs</td>
+<td>rotary</td>
+<td>degrees</td>
+<td>small rotary stage</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>xafs_roth</td>
+<td>rh</td>
+<td>rotary</td>
+<td>degrees</td>
+<td>Huber circle</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
 <p>Configuration and position of the motors can be queried easily.  In
 the following examples, the <code class="docutils literal notranslate"><span class="pre">xafs_y</span></code> motor is used.  The commands
 are the same for all sample stage motors.</p>
-<dl>
-<dt><strong>Querying position</strong></dt><dd><p>The position of any motor can be queried with a command line like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">w</span> <span class="n">xafs_y</span>
+<dl class="docutils">
+<dt><strong>Querying position</strong></dt>
+<dd><p class="first">The position of any motor can be queried with a command line like</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">w</span> <span class="n">xafs_y</span>
 </pre></div>
 </div>
 </dd>
-<dt><strong>Moving to a new position</strong></dt><dd><p>Always move motors through the run engine, for example:</p>
+<dt><strong>Moving to a new position</strong></dt>
+<dd><p class="first">Always move motors through the run engine, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -267,37 +287,63 @@ the amount to move from the current position. <code class="docutils literal notr
 </div>
 <p>is the absolute move command.  The numerical argument is the
 position to which the motor will move.</p>
-<p>All movements are logged in the <a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.1)</span></a></p>
+<p class="last">All movements are logged in the <a class="reference internal" href="log.html#logfile"><span class="std std-numref">experimental log (Section 6.1)</span></a></p>
 </dd>
-<dt><strong>Moving to a new position in a plan</strong></dt><dd><p>To move a sample stage as part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a> , do:</p>
+<dt><strong>Moving to a new position in a plan</strong></dt>
+<dd><p class="first">To move a sample stage as part of a <a class="reference internal" href="xafs.html#macro"><span class="std std-numref">macro (Section 5.6)</span></a> , do:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can combine motions of two or more motors in a single
 synchronous movement:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">,</span> <span class="n">xafs_x</span><span class="p">,</span> <span class="mf">15.79</span><span class="p">)</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">mv</span><span class="p">(</span><span class="n">xafs_y</span><span class="p">,</span> <span class="mf">37.36</span><span class="p">,</span> <span class="n">xafs_x</span><span class="p">,</span> <span class="mf">15.79</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
-<dt><strong>Querying soft limits</strong></dt><dd><p>To know the soft limits on a sample stage, do
+<dt><strong>Querying soft limits</strong></dt>
+<dd>To know the soft limits on a sample stage, do
 <code class="docutils literal notranslate"><span class="pre">xafs_y.llm.value</span></code> or <code class="docutils literal notranslate"><span class="pre">xafs_y.hlm.value</span></code> for the low or
-high limit.</p>
-</dd>
-<dt><strong>Setting soft limits</strong></dt><dd><p>To set the soft limits on a sample stage, do something like
-<code class="docutils literal notranslate"><span class="pre">xafs_y.llm.value</span> <span class="pre">=</span> <span class="pre">5</span></code> or <code class="docutils literal notranslate"><span class="pre">xafs_y.hlm.value</span> <span class="pre">=</span> <span class="pre">85</span></code></p>
-</dd>
-<dt><strong>Reference stage</strong></dt><dd><p>The reference stage is calibrated such that the beam passes through
-the center of a slot every 45 mm.  Thus the five positions, from
-top to bottom, are -90, -45, 0, 45, and 90.  Move to a new
-positions by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_ref</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">))</span>
+high limit.</dd>
+<dt><strong>Setting soft limits</strong></dt>
+<dd>To set the soft limits on a sample stage, do something like
+<code class="docutils literal notranslate"><span class="pre">xafs_y.llm.value</span> <span class="pre">=</span> <span class="pre">5</span></code> or <code class="docutils literal notranslate"><span class="pre">xafs_y.hlm.value</span> <span class="pre">=</span> <span class="pre">85</span></code></dd>
+<dt><strong>Reference wheel</strong></dt>
+<dd><p class="first">The reference stage is a rotation stage with a <a class="reference external" href="https://en.wikipedia.org/wiki/Polyoxymethylene">Delrin</a> sample disk
+holding up to 24 reference foils.  It is calibrated such that the
+beam passes through the center of a slot every 15 degrees.  The
+slots are indexed such that they can be accessed by the symbol of
+the element being measured.  To move to a new reference foil:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">reference</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 </div>
+<div class="section" id="sample-wheel">
+<h2>2.2. Sample wheel<a class="headerlink" href="#sample-wheel" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">xafs_wheel</span></code> motor is a rotary stage that is typically mounted
+on the XY stage.  It can be mounted face-on to the beam or at 45
+degrees for use with the fluorescence detector.</p>
+<p>Sample plates laser cut from <a class="reference external" href="https://en.wikipedia.org/wiki/Polyoxymethylene">Delrin</a> sheet  are usually
+attached to the rotation stage.  These plates have 24 slots arranged
+around the periphery, evenly spaced 15 degree apart.  While you can
+move from slot to slot in increments of 15 degrees, i.e.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">xafs_wheel</span><span class="p">,</span> <span class="mi">15</span><span class="o">*</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>it is somewhat easier to move by slot number.  The sample plates are
+also cut with sample numbers for slots 1, 7, 13, and 19, making it
+clear which slot is which.  To move, for instance, to slot 5, do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">slot</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In a macro, do</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">slot</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="sample-spinner">
-<h2>2.2. Sample spinner<a class="headerlink" href="#sample-spinner" title="Permalink to this headline">¶</a></h2>
+<h2>2.3. Sample spinner<a class="headerlink" href="#sample-spinner" title="Permalink to this headline">¶</a></h2>
 <p>The sample spinner is a 12 volt CPU cooling fan mounted on a plate
 which is mounted on the tilt stage.  It is used to spin crystalline
 samples in an effort to suppress Bragg peaks which might enter the
@@ -317,7 +363,7 @@ station.  It is a good idea to always have a camera pointed at the
 spinner while it is use.</p>
 </div>
 <div class="section" id="table-motors">
-<h2>2.3. Table motors<a class="headerlink" href="#table-motors" title="Permalink to this headline">¶</a></h2>
+<h2>2.4. Table motors<a class="headerlink" href="#table-motors" title="Permalink to this headline">¶</a></h2>
 <p>Typically, table motors are not moved individually.  When changing
 <a class="reference internal" href="pds.html#change-mode"><span class="std std-numref">photon delivery system modes (Section 3.7.1)</span></a>, the
 table should be put into the correct orientation such that the beam
@@ -325,51 +371,52 @@ passes through the center of the ion chambers.  It is very easy to put
 the beamline in a confusing state by changing the table motors outside
 of the <code class="docutils literal notranslate"><span class="pre">change_mode()</span></code> command.</p>
 <p>The lateral table motors – and its yaw – are normally disabled.</p>
-<table class="docutils align-left" id="xafs-table">
+<table border="1" class="docutils align-left" id="xafs-table">
 <caption><span class="caption-number">Table 2.2 </span><span class="caption-text">XAFS table motors</span><a class="headerlink" href="#xafs-table" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 25%" />
-<col style="width: 15%" />
-<col style="width: 60%" />
+<col width="25%" />
+<col width="15%" />
+<col width="60%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>motor</p></th>
-<th class="head"><p>units</p></th>
-<th class="head"><p>notes</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">motor</th>
+<th class="head">units</th>
+<th class="head">notes</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>xafs_yu</p></td>
-<td><p>mm</p></td>
-<td><p>upstream table jack</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>xafs_yu</td>
+<td>mm</td>
+<td>upstream table jack</td>
 </tr>
-<tr class="row-odd"><td><p>xafs_ydi</p></td>
-<td><p>mm</p></td>
-<td><p>downstream, inboard table jack</p></td>
+<tr class="row-odd"><td>xafs_ydi</td>
+<td>mm</td>
+<td>downstream, inboard table jack</td>
 </tr>
-<tr class="row-even"><td><p>xafs_ydo</p></td>
-<td><p>mm</p></td>
-<td><p>downstream, outboard table jack</p></td>
+<tr class="row-even"><td>xafs_ydo</td>
+<td>mm</td>
+<td>downstream, outboard table jack</td>
 </tr>
-<tr class="row-odd"><td><p>xafs_vertical</p></td>
-<td><p>mm</p></td>
-<td><p>coordinated linear motion</p></td>
+<tr class="row-odd"><td>xafs_vertical</td>
+<td>mm</td>
+<td>coordinated linear motion</td>
 </tr>
-<tr class="row-even"><td><p>xafs_pitch</p></td>
-<td><p>degrees</p></td>
-<td><p>coordinated table pitch</p></td>
+<tr class="row-even"><td>xafs_pitch</td>
+<td>degrees</td>
+<td>coordinated table pitch</td>
 </tr>
-<tr class="row-odd"><td><p>xafs_roll</p></td>
-<td><p>degrees</p></td>
-<td><p>coordinated table roll</p></td>
+<tr class="row-odd"><td>xafs_roll</td>
+<td>degrees</td>
+<td>coordinated table roll</td>
 </tr>
 </tbody>
 </table>
-<dl>
-<dt><strong>Querying table position</strong></dt><dd><p>The position of any motor can be queried with a command line like
-<code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">xafs_table</span></code>.</p>
-</dd>
-<dt><strong>Moving table motors</strong></dt><dd><p>The normal movement commands work on the real and virtual motors,
+<dl class="docutils">
+<dt><strong>Querying table position</strong></dt>
+<dd>The position of any motor can be queried with a command line like
+<code class="docutils literal notranslate"><span class="pre">%w</span> <span class="pre">xafs_table</span></code>.</dd>
+<dt><strong>Moving table motors</strong></dt>
+<dd><p class="first">The normal movement commands work on the real and virtual motors,
 e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">mvr</span><span class="p">(</span><span class="n">xafs_ydi</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">RE</span><span class="p">(</span><span class="n">mv</span><span class="p">(</span><span class="n">xafs_vertical</span><span class="p">,</span> <span class="mi">107</span><span class="p">))</span>
@@ -377,7 +424,7 @@ e.g.:</p>
 </div>
 <p>Again, this is rarely necessary.  The mode changing plan should
 leave the table in the correct location for your experiment.</p>
-<p>All table movements are recorded in the <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log
+<p class="last">All table movements are recorded in the <a class="reference internal" href="log.html#log"><span class="std std-numref">experimental log
 (Section 6)</span></a>.</p>
 </dd>
 </dl>
@@ -388,7 +435,7 @@ leave the table in the correct location for your experiment.</p>
 
 <br>
 <p></p>
-<p>This manual is copyright © 2018-2019 Bruce Ravel</p>
+<p>This manual is copyright © 2018-2020 Bruce Ravel</p>
 <p><img alt="somerights" title="This is a Creative Commons Attribution-ShareAlike document" src="./_static/somerights.png" hspace="3">  This document is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">The Creative Commons Attribution-ShareAlike License</a>.</p>
 <p>If this document is useful to you, please consider <a class="reference external" href="https://creativecommons.org/donate/">supporting The
 Creative Commons</a>.</p>
