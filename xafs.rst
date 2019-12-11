@@ -471,33 +471,67 @@ Scan sequence macro
 
 A macro at BMM is a short bit of python code which sequentially moves
 motors and initiates scans.  A common way of doing this is to make an
-INI file for each sample that intend to measure.  The macro then steps
-to each sample, then runs the ``xafs()`` plan by calling the INI file
-each sample.
+INI file for each sample that intend to measure.  The macro then moves
+to each sample and runs the ``xafs()`` for each sample using the same
+INI file.
 
 .. sourcecode:: python
    :linenos:
 
-   def scan_sequence():
+   def sample_sequence():
+      '''User-defined macro for running a sequence of motor motions and
+      XAFS measurements'''
+      (ok, text) = BMM_clear_to_start()
+      if ok is False:
+         print(error_msg('\n'+text) + bold_msg('Quitting macro....\n'))
+         return(yield from null())
+    
+      BMMuser.macro_dryrun = False
       BMMuser.prompt = False
-      BMM_info('Starting scan sequence')
+      BMM_log_info('Beginning sample macro')
+      def main_plan():
+          ### ---------------------------------------------------------------------------------------
+          ### BOILERPLATE ABOVE THIS LINE -----------------------------------------------------------
+          ##  EDIT BELOW THIS LINE
+          #<--indentation matters!
+    
+          ## sample 1
+          yield from slot(1)
+          yield from xafs('sample1.ini')
+          close_last_plot()                 # this command closes the plot on screen
+    
+          ## sample 2
+          yield from slot(2)
+          yield from xafs('sample2.ini')
+          close_last_plot()
 
-      yield from mv(xafs_x, 23.86, xafs_y, 71.27)
-      yield from xafs('sample1.ini')
+          ##  EDIT ABOVE THIS LINE
+          ### BOILERPLATE BELOW THIS LINE -----------------------------------------------------------
+          ### ---------------------------------------------------------------------------------------
+      def cleanup_plan():
+          yield from end_of_macro()
+        
+      yield from bluesky.preprocessors.finalize_wrapper(main_plan(), cleanup_plan())    
+      yield from end_of_macro()
+      BMM_log_info('Sample macro finished!')
 
-      yield from mv(xafs_x, 23.86, xafs_y, 81.27)
-      yield from xafs('sample2.ini')
+The gray lines at lines 13-16 and 28-30 are comments indicating that
+parts of the macro are intended for editing by the user while other
+parts are boilerplate that make the macro work correctly.  In general,
+you only want to edit the lines between those two comment blocks,
+leaving the lines above and below untouched.
 
-      BMMuser.prompt = True
-      BMM_info('Scan sequence finished')
-
-The calls to ``BMM_info()`` at lines 3 and 12 insert lines in the
+The calls to ``BMM_info()`` at lines 11 and 35 insert lines in the
 :numref:`experiment log (Section %s) <log>` indicating the times that
 the scan sequence begins and ends.
 
-Setting the ``BMMuser.prompt`` parameter to ``False`` at lines 2 skips
+Setting the ``BMMuser.prompt`` parameter to ``False`` at line 9 skips
 the step in the ``xafs()`` macro where the user is prompted to verify
 that the scan is set up correctly.
+
+This macro is for samples mounted on the sample wheel.  At lines 19
+and 24, the wheel is rotated to the correct slot before launching the 
+``xafs()`` command.
 
 Alternately, you can use a single, master :file:`scan.ini` file that
 covers all the metadata common to all the samples in a sequence.
@@ -508,18 +542,42 @@ popular option among BMM users.)
 .. sourcecode:: python
    :linenos:
 
-   def scan_sequence():
+   def sample_sequence():
+      '''User-defined macro for running a sequence of motor motions and
+      XAFS measurements'''
+      (ok, text) = BMM_clear_to_start()
+      if ok is False:
+         print(error_msg('\n'+text) + bold_msg('Quitting macro....\n'))
+         return(yield from null())
+    
+      BMMuser.macro_dryrun = False
       BMMuser.prompt = False
-      BMM_info('Starting scan sequence')
+      BMM_log_info('Beginning sample macro')
+      def main_plan():
+          ### ---------------------------------------------------------------------------------------
+          ### BOILERPLATE ABOVE THIS LINE -----------------------------------------------------------
+          ##  EDIT BELOW THIS LINE
+          #<--indentation matters!
+    
+          ## sample 1
+          yield from slot(1)
+          yield from xafs('scan.ini', filename='samp1', sample='first sample')
+          close_last_plot()                 # this command closes the plot on screen
+    
+          ## sample 2
+          yield from slot(2)
+          yield from xafs('scan.ini', filename='samp2', sample='another sample', comment='my comment')
+          close_last_plot()
 
-      yield from mv(xafs_x, 23.86, xafs_y, 71.27)
-      yield from xafs('scan.ini', filename = 'sample1', prep = 'pressed pellet')
-
-      yield from mv(xafs_x, 23.86, xafs_y, 81.27)
-      yield from xafs('scan.ini', filename = 'sample2', prep = 'powder on tape')
-
-      BMMuser.prompt = True
-      BMM_info('Scan sequence finished')
+          ##  EDIT ABOVE THIS LINE
+          ### BOILERPLATE BELOW THIS LINE -----------------------------------------------------------
+          ### ---------------------------------------------------------------------------------------
+      def cleanup_plan():
+          yield from end_of_macro()
+        
+      yield from bluesky.preprocessors.finalize_wrapper(main_plan(), cleanup_plan())    
+      yield from end_of_macro()
+      BMM_log_info('Sample macro finished!')
 
 :numref:`Any keyword (Section %s) <ini>` from the INI file can be used
 as a command argument in the call to ``xafs()``.  Arguments to
@@ -532,8 +590,12 @@ BlueSky session::
 
   %run -i DATA+'macro.py'
 
-then run the macro by invoking the scan sequence function through the
-run engine::
+This creates (or overwrites) a new kind of plan called
+``sample_sequence()`` (at line 1, you ``def``\ -ine a function of that
+name). 
+
+You can then run the macro by invoking the ``sample_sequence()``
+function through the run engine::
 
   RE(scan_sequence())
 
@@ -543,7 +605,110 @@ running BlueSky session.
 The name of the macro file is not proscribed.  If it would be
 convenient to have, say, ``macroFe.py`` and ``macroPt.py``, that's
 fine.  Just be sure to explicitly ``%run -i`` the file using the
-correct name.
+correct name.  Neither is the name of the command defined in the macro
+proscribed.  It can be called almost anything (you should avoid
+reserved words in Python and names already used for other things in
+BlueSky) and run through the run engine (i.e. ``RE()``) like any other
+BlueSky plan.
+
+
+Sample wheel automation
+-----------------------
+
+For the use of the sample wheel, the procedure for creating a useful
+macro is somewhat better automated.  A specially formatted spreadsheet
+can be used to facilitate macro creation.  Here's an example:
+
+.. _fig-spreadsheet:
+.. figure::  _images/spreadsheet.png
+   :target: _images/spreadsheet.png
+   :width: 70%
+   :align: center
+
+   Example wheel macro builder spreadsheet.
+
+
+If you have read :numref:`Section %s <ini>` about the INI file, then
+most of the columns in this spreadsheet will be quite familiar.  Most
+of the columns are used to specify the same set of parameters as in
+the INI file |nd| file name, E\ :sub:`0` value, element, and so on.
+
+The green cell in the first row is used to input the names of all the
+people involved in the experiment.
+
+Row 6, row with an entirely green background, is used to specify the
+default values for all the parameters.  The concept here is to try to
+avoid having in input repetitive information.  For instance, in this
+case, all measurements will be made at the Fe K edge.  The element,
+edge, and E\ :sub:`0` value are all specified in the green row.  Those
+cells are left blank for all subsequent rows, so the default values
+will be used.
+
+In short, any cell that is left blank will use the value from the
+green, default row.  Any cell for which a value is specified will be
+used in the subsequent macro.
+
+The first column is used to specify the slot number for each sample on
+the sample wheel.
+
+The second column is a simple way of excluding the slot from
+measurement simply by specifying :quoted:`No`.
+
+The next several columns correspond to lines in the INI file as
+explained in :numref:`Section %s <ini>`.
+
+Energy changes can be included in the macro by specifying different
+values for element, edge, and E\ :sub:`0` in a row.  When specified
+and different from the default, a call to the ``change_edge()``
+command (:numref:`Section {number} <pds>`) is inserted into the macro.
+
+Not shown in :numref:`Figure %s <fig-spreadsheet>` are columns for
+tweaking the ``xafs_x`` and ``xafs_y`` positions and for adjusting the
+horizontal size of :numref:`slits3 (see Section %s) <slits3>`.
+
+To convert a spreadsheet into a macro then run the macro, do the
+following:
+
+.. sourcecode:: python
+   :linenos:
+
+   wmb.spreadsheet(DATA+'SampleWheel.xlsx')
+   wmb.write_macro()
+   %run -i DATA+'SampleWheel_macro.py'
+   RE(SampleWheel_macro())
+
+Line 1 reads and interprets the spreadsheet.  Line 2 writes the
+macro.  In this case, the spreadsheet is called ``SampleWheel.xlsx``
+and a macro file called ``SampleWheel_macro.py`` is written.  Also
+written is an INI file called ``SampleWheel.ini`` and which contains
+the default values from the green line.  The macro to be run in
+BlueSky is called ``SampleWheel_macro()``.
+
+
+Here are the first few lines of the macro generated from this
+spreadsheet. Note that for each sample, the macro first moves using
+the ``slot()`` command, then measures XAS using the ``xafs()``
+command.  The ``xafs()`` command uses the INI file generated from the
+green default line and has explicit arguments for the filled-in
+spreadsheet cells.
+
+.. sourcecode:: python
+   :linenos:
+
+   yield from slot(1)
+   yield from xafs('MnFewheel.ini', filename='Fe-Rhodonite', sample='MnSiO3', comment='ID:93 Russia')
+   close_last_plot()
+
+   yield from slot(2)
+   yield from xafs('MnFewheel.ini', filename='Fe-Johannsonite', sample='CaMnSi2O6 - LT', comment='B –Iron Cap Mine; Graham Country, Arizona')
+   close_last_plot()
+
+   yield from slot(3)
+   yield from xafs('MnFewheel.ini', filename='Fe-Spessartine', sample='Mn3Al2(SiO4)3', comment='Grants Mining District; New Mexico')
+   close_last_plot()
+
+
+
 
 
 XAFS data file

@@ -46,3 +46,7 @@ div.admonition-note {
 .strike {
   text-decoration: line-through;
 }
+
+/* code, pre { */
+/*   padding: 0; */
+/* } */

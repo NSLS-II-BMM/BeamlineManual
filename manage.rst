@@ -107,19 +107,17 @@ If you want to reproduce this by hand, here is the command sequence:
    At the end of the scan, you will need to pluck the correct position
    from the plot.
 
-#. Finally, if you are using a reference foil, you should move the
+#. Next, if you are using a reference foil, you should move the
    reference foil holder to the slot containing the correct foil.  The
    command is something like:
 
    .. code-block:: python
 
-      RE(mv(xafs_ref, 45))
+      RE(reference('Fe'))
 
-   The positions on the reference foil holder are 45 mm apart.  The
-   top-most slot is at an ``xafs_ref`` position of -90, the
-   bottom-most at +90.
+   choosing the correct element for your measurement.
 
-   Then select the correct ROI channel:
+#. Finally,  select the correct ROI channel:
 
    .. code-block:: python
 
@@ -374,39 +372,22 @@ Calibrate the mono
 
 The typical calibration procedure involves measuring the angular
 position of the Bragg axis for the edge energies of 10 metals: Fe, Co,
-Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.  These will be measured in two
-sets of 5, given that the reference holder has five slots.
+Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.  
 
-#. Mount the 5 lower energy metals in the reference holder in energy
-   order from top to bottom, i.e. Fe at the top and Zn at the bottom.
+#. Be sure that all 10 of these elements are actually mounted on the
+   reference wheel and configured in the ``xafs_ref.contents`` list.
 
 #. Run the command 
 
    .. code-block:: python
 
-      calibrate_low_end(mono='111')
+      calibrate_wheel(mono='111')
 
    Use the ``mono='311'`` argument for the Si(311) monochromator.
    This will, in sequence, move to each edge and measure a XANES scan
    over a wide enough range that it should cover the edge (unless the
-   mono is currently calibrated VERY wrongly).  This will begin
-   writing a file called :file:`edges111.ini` (or
-   :file:`edges3111.ini`).
-
-#. Mount the 5 higher energy metals in the reference holder in energy
-   order from top to bottom, i.e. Pt at the top and Mo at the bottom.
-
-#. Run the command
-
-   .. code-block:: python
-
-      calibrate_high_end(mono='111')
-
-   Use the ``mono='311'`` argument for the Si(311) monochromator.
-   This will, in sequence, move to each edge and measure a XANES scan
-   over a wide enough range that it should cover the edge (unless the
-   mono is currently calibrated VERY wrongly).  This will continue
-   writing to the :file:`edges111.ini` (or :file:`edges3111.ini`) file.
+   mono is currently calibrated VERY wrongly).  This will write a file
+   called :file:`edges111.ini` (or :file:`edges3111.ini`).
 
 #. Run the command
 

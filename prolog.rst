@@ -43,3 +43,4 @@
 .. |verbar|    unicode:: U+007C .. VERTICAL LINE
 .. |mquad|    unicode:: U+2001 .. EM QUAD
 .. |circle|   unicode:: U+25CB .. WHITE CIRCLE
+.. |elementof|   unicode:: U+2208 .. ELEMENT OF

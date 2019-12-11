@@ -15,7 +15,8 @@ discussed in the previous sections.
 Command summary
 ---------------
 
-.. table:: Main BlueSky commands used at BMM
+.. table:: Main BlueSky commands used at BMM (don't type the ``<`` or
+	   ``>``, those symbols indicate that the argument is numeric.)
    :name:  command-list
    :align: left
 
@@ -42,6 +43,8 @@ Command summary
    +------------------------------------------+--------------------------------------------------------------------------+
    | ``RE(mvr(xafs_liny, <value>))``          |    Move motor BY an amount                                               |
    +------------------------------------------+--------------------------------------------------------------------------+
+   | ``RE(slot(<N>))``                        |    Move sample wheel to slot #N                                          |
+   +------------------------------------------+--------------------------------------------------------------------------+
    | |mquad| |mquad| |mquad| |mquad| |mquad| **Where are things?**                                                       |
    +------------------------------------------+--------------------------------------------------------------------------+
    | ``%w dcm``                               |    where's the mono?                                                     |
@@ -58,7 +61,7 @@ Command summary
    +------------------------------------------+--------------------------------------------------------------------------+
    | ``RE(change_edge('Xx'))``                |    setup beamline for an absorption edge, 1- or 2-letter symbol          |
    +------------------------------------------+--------------------------------------------------------------------------+
-   | ``RE(change_mode('X'))``                 |    set mirror mode, see table below                                      |
+   | ``RE(change_mode('X'))``                 |    set mirror mode, X |elementof| (A,B,C,D,E,F), see table below         |
    +------------------------------------------+--------------------------------------------------------------------------+
    | ``RE(change_xtals('h11'))``              |    set monochromator, Si(111) or Si(311), h=1 or h=3                     |
    +------------------------------------------+--------------------------------------------------------------------------+
@@ -78,7 +81,7 @@ Command summary
    +------------------------------------------+--------------------------------------------------------------------------+
    | ``%k``                                   |    Show keyboard shortcuts                                               |
    +------------------------------------------+--------------------------------------------------------------------------+
-   | ``%se``                                  |    Show foil and ROI configurations                                      |
+   | ``%se``                                  |    Show reference foil and ROI configurations                            |
    +------------------------------------------+--------------------------------------------------------------------------+
 
 
@@ -147,23 +150,26 @@ Line scans
 
 where
 
-+ ``<detector>`` is one of: ``'it'``, ``'if'``, or ``'i0'``
++ ``<detector>`` is one of: ``'it'``, ``'if'``, ``'ir'``, or ``'i0'``
 + ``<motor>`` is one of: ``'x'``, ``'y'``, ``'pitch'``, ``'wheel'``,
   or a motor name
 + ``<start>``, ``<stop>``, ``<N>`` are the boundaries relative to the
   current position and the number of steps.
 
-The plot will be determined from the values of ``<motor>`` and ``<detector>``
+The plot will be determined from the values of ``<motor>`` and
+``<detector>``
 
 This is a relative scan.
 
-After prompt, single click the left button  after a linescan to move to a position.
+After prompt, single click the left button after a linescan to move to
+a position.
 
 .. code-block:: text
 
    RE(pluck()) 
 
-to repeat that on the current plot.  ``RE(pluck())`` only works on *most recent* plot.
+to repeat that on the current plot.  ``RE(pluck())`` only works on the
+*most recent* plot.
 
 
 Energy scans

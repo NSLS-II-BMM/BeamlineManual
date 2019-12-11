@@ -44,6 +44,12 @@ This edge change can be put into a :numref:`macro (see Section %s)
    
    yield from change_edge('Fe')
 
+or
+
+.. code-block:: python
+   
+   yield from change_edge('Fe', focus=True)
+
 In this way, a macro can manage energy changes while you sleep!
 
 .. _foilholder:
@@ -51,15 +57,47 @@ In this way, a macro can manage energy changes while you sleep!
 Automating reference foil changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To make sure the correct reference foil is selected, you need to
-configure the reference foil holder.  Suppose that you are measuring
-transition metals in sequence.  Then you would fill the reference foil
-holder with Mn, Fe, Co, Ni, and Cu from top of the holder to the
-bottom.  Execute this command to configure the reference foil holder:
+A wheel is used to hold and switch between reference foils.  The
+standard reference wheel has the 20 most commonly measured elements,
+plus four empty slots where additional references can be mounted.
+
+To select, for example, the iron reference foil:
 
 .. code-block:: python
 
-   foils.set('Mn Fe Co Ni Cu')
+   RE(reference('Fe'))
+
+In a plan:
+
+.. code-block:: python
+
+   yield from reference('Fe')
+
+The argument is simply the one- or two-element symbol for the target
+element.
+
+The ``change_edge()`` command does this automatically, so long as the
+target edge is available on the reference holder.
+
+The foil holder is configured as a python list:
+
+.. code-block:: python
+
+   #                    1     2     3     4     5     6     7     8     9     10    11    12
+   xafs_ref.content = [None, 'Ti', 'V',  'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge',
+                       'As', 'Se', 'Br', 'Zr', 'Nb', 'Mo', 'Pt', 'Au', 'Pb', None, None, None]
+
+
+Adding a new element to this list is simple.  Suppose we affix a
+sample of Dy\ :sub:`2`\ O\ :sub:`3` to slot 22 (right after the Pb
+foil) as a reference for Dy.  This placement can be configured by
+
+.. code-block:: python
+
+   xafs_ref.content[21] = 'Dy'
+
+Note that python lists count from 0, hence the 22\ :sup:`nd` slot is
+index 21 in the list.
 
 .. _roichannels:
 
@@ -67,10 +105,10 @@ Automating fluorescence ROI changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To make sure that the correct ROI channel is selected, you need to
-configure the ROI readout.  Suppose that you have configure the analog
-detector readout system to measure three of those transition metals.
-Then you would execute a command like this to configure the detector
-readout:
+configure the ROI readout.  Suppose that you have configured the
+analog detector readout system to measure three of those transition
+metals.  Then you would execute a command like this to configure the
+detector readout:
 
 .. code-block:: python
 
@@ -87,8 +125,8 @@ from the corresponding channels of the Struck multichannel scalar.  It
 will also perform the dead-time correction using the correct signal
 chains for the selected element. 
 
-Parameters for the change_edge command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Parameters for the change_edge() command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The full set of parameters for the ``change_edge()`` plan are:
 
@@ -371,6 +409,7 @@ For the harmonic rejection mirror, use ``%w m3``
         roll     =   0.000 mrad         XU  =  15.001
         yaw      =   0.001 mrad         XD  =  15.001
 
+.. _slits3:
 
 End station slits
 -----------------
