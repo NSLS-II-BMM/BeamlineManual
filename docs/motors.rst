@@ -60,20 +60,20 @@ other places instead of writing out the BlueSky name for the motor.
    :name:  xafs-stages
    :align: left
 
-   ========== ========= ===========  =========  ===================  ===============================
-   motor      nickname  type         units      notes                directions
-   ========== ========= ===========  =========  ===================  ===============================
-   xafs_x     x         linear       mm         main sample stage    |plus| outboard, - inboard
-   xafs_y     y         linear       mm         main sample stage    |plus| up, - down
-   xafs_lins            linear       mm         unused linear stage 
-   xafs_linxs           linear       mm         unused linear stage 
-   xafs_ref   ref       rotary       degrees    reference stage      |plus| clockwise, - widdershins
-   xafs_pitch pitch     tilt         degrees    Huber tilt stage     |plus| more positive
-   xafs_roll  roll      tilt         degrees    Huber tilt stage     |plus| more positive
-   xafs_wheel wh        rotary       degrees    large rotary stage   |plus| clockwise, - widdershins
-   xafs_rots  rs        rotary       degrees    small rotary stage   
-   xafs_roth  rh        rotary       degrees    Huber circle         
-   ========== ========= ===========  =========  ===================  ===============================
+   ========== ===========  =========  =======================  ===================================
+   motor      type         units      notes                    directions
+   ========== ===========  =========  =======================  ===================================
+   xafs_x     linear       mm         main sample stage        |plus| outboard, - inboard
+   xafs_y     linear       mm         main sample stage        |plus| up, - down
+   xafs_det   linear       mm         detector mount           |plus| closer to sample, - farther
+   xafs_wheel rotary       degrees    *ex situ* sample wheel   |plus| clockwise, - widdershins
+   xafs_linxs linear       mm         ref wheel vertical       |plus| up, - down
+   xafs_ref   rotary       degrees    reference stage          |plus| clockwise, - widdershins
+   xafs_pitch tilt         degrees    Huber tilt stage         |plus| more positive
+   xafs_roll  tilt         degrees    Huber tilt stage         |plus| more positive
+   xafs_rots  rotary       degrees    small rotary stage   
+   xafs_roth  rotary       degrees    Huber circle         
+   ========== ===========  =========  =======================  ===================================
 
 Configuration and position of the motors can be queried easily.  In
 the following examples, the ``xafs_y`` motor is used.  The commands
@@ -90,7 +90,9 @@ are the same for all sample stage motors.
       RE(mvr(xafs_y, 10))
 
    ``mvr`` is the relative move command |nd| the numerical argument is
-   the amount to move from the current position. ``mv``, as in::
+   the amount by which the motor will move from the current position.
+
+   ``mv``, as in::
 
       RE(mv(xafs_y, 37.63))
 
@@ -110,6 +112,10 @@ are the same for all sample stage motors.
 
      yield from mv(xafs_y, 37.36, xafs_x, 15.79)
 
+   Similarly::
+
+     yield from mvr(xafs_y, 5)
+
 **Querying soft limits**
    To know the soft limits on a sample stage, do
    ``xafs_y.llm.value`` or ``xafs_y.hlm.value`` for the low or
@@ -128,6 +134,8 @@ are the same for all sample stage motors.
    the element being measured.  To move to a new reference foil::
 
      RE(reference('Fe'))
+
+   To see the available foils, do ``%se``
 
 
 Sample wheel
@@ -161,27 +169,135 @@ In a macro, do
 
    yield from slot(5)
 
-Sample spinner
---------------
+..
+   Sample spinner
+   --------------
 
-The sample spinner is a 12 volt CPU cooling fan mounted on a plate
-which is mounted on the tilt stage.  It is used to spin crystalline
-samples in an effort to suppress Bragg peaks which might enter the
-fluorescence detector.
+   The sample spinner is a 12 volt CPU cooling fan mounted on a plate
+   which is mounted on the tilt stage.  It is used to spin crystalline
+   samples in an effort to suppress Bragg peaks which might enter the
+   fluorescence detector.
 
-To turn the spinner on and off::
+   To turn the spinner on and off::
 
-   fan.on()
-   fan.off()
+     fan.on()
+     fan.off()
 
-To turn the spinner on or off in a :numref:`macro (Section %s) <macro>`::
+   To turn the spinner on or off in a :numref:`macro (Section %s) <macro>`::
 
-   yield from fan.on_plan()
-   yield from fan.off_plan()
+     yield from fan.on_plan()
+     yield from fan.off_plan()
 
-The spinner should **always** be turned off before entering the end
-station.  It is a good idea to always have a camera pointed at the
-spinner while it is use.
+   The spinner should **always** be turned off before entering the end
+   station.  It is a good idea to always have a camera pointed at the
+   spinner while it is use.
+
+
+Glancing angle stage
+--------------------
+
+The glancing angle stage, shown in :numref:`Figure %s <fig-gastage>`,
+can hold up to eight samples and allows each sample to spin
+independently.  The spinning allows spurious diffraction from a
+crystalline substrate into the fluorescence detector to be suppressed.
+
+.. _fig-gastage:
+.. figure::  _images/glancing_angle_stage.jpg
+   :target: _images/glancing_angle_stage.jpg
+   :width: 50%
+   :align: center
+
+   The glancing angle stage with 8 sample positions.
+
+To move to a sample position::
+
+  RE(ga.to(<N>))
+
+where ``<N>`` is a number from 1 to 8.  This command will rotate that
+sample into the beampath and start the sample spinning.
+
+To turn a spanner on or off::
+
+  ga.on(<N>)
+  ga.off(<N>)
+
+To turn off all spinners::
+
+  ga.alloff()
+
+In a plan::
+
+  RE(ga.on_plan())
+  RE(ga.off_plan())
+  RE(ga.alloff_plan())
+
+
+
+Sample alignment
+~~~~~~~~~~~~~~~~
+
+A sample is aligned into the beam by moving the tilt stage ot an
+approximately flat position::
+
+  RE(mv(xafs_pitch(0))
+
+Then performing the following sequence::
+
+  RE(linescan(xafs_y, 'It', -1, 1, 41))
+  RE(linescan(xafs_pitch, 'It', -2, 2, 41))
+
+At the and of the ``xafs_y`` scan, pick the position halfway down the
+edge in the It signal.  At the end of the ``xafs_pitch`` scan, select
+the peak position.  This will place the sample such that it is flat
+relative to the incident beam direction and halfway blocking the beam.
+
+You may choose to iterate those two scans.
+
+Next move the sample to the measurement angle.  Suppose the
+measurement angle is 2.5 degrees::
+
+  RE(mv(xafs_pitch, 2.5))
+
+Finally, position the sample so that the beam is hitting the center of
+the sample::
+
+  RE(linescan(xafs_y, 'If', -1, 1, 41))
+
+Since the sample is not at the eucentric of the tilt stage, this final
+vertical scan is always necessary.  When first aligning the sample,
+you may need to center the sample in ``xafs_x`` as well::
+
+  RE(linescan(xafs_x, 'If', -6, 6, 41))
+
+You will almost certainly need to scan over a longer range.  Make sure
+the detector is retracted far enough to allow for this motion.
+
+
+Automated alignment
+~~~~~~~~~~~~~~~~~~~
+
+The sequence described above can be automated in many cases::
+
+  RE(ga.auto_align(pitch=2.5))
+
+This will run the sequence of alignment scans, pitching the sample to
+the user-specified angle at the appropriate point.  This works by
+fitting an error function to the ``xafs_y`` scan versus It, selecting
+the peak of the pitch scan, then selecting the peak of the ``xafs_y``
+scan versus fluorescence.
+
+.. _fig-ga_alignment:
+.. figure::  _images/spinner-alignment.png
+   :target: _images/spinner-alignment.png
+   :width: 50%
+   :align: center
+
+   If all goes well, the result of the sample alignment looks like this.
+
+
+For very flat samples which are square or circular and about 5mm
+across or larger, this alignment algorithm is very robust.  For oddly
+shaped samples, verify the automation or simply do the alignment by hand.
 
 Table motors
 ------------

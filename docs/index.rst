@@ -20,8 +20,10 @@ BMM Users Manual
    pds.rst
    linescans.rst
    xafs.rst
+   automation.rst
    log.rst
    manage.rst
    cheatsheet.rst
    trouble.rst
+   details.rst
    todo.rst

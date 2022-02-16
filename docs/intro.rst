@@ -37,8 +37,8 @@ TL;DR
 **XAFS scan**
    Use the ``RE(xafs())`` command, see :numref:`{name}, Section {number} <xafsscan>`
 
-**Macro for moving motors and measuring XAFS**
-   Edit the ``macro.py`` example in your data directory, see :numref:`{name}, Section {number} <macro>`
+**Import an automation spreadsheet**
+   Prepare a spreadsheet, then ``xlsx()``, see :numref:`{name}, Section {number} <automation>`
 
 
 
@@ -67,6 +67,13 @@ information about the state of the beamline.
 * The green number in square brackets is an incremented count of how
   many commands have been issued since ``bsui`` was started.
 
+* If the prompt starts with three red exclamation points |nd| something like 
+
+      :red:`!!!` :green:`BMM` D.111 :green:`[1]`
+
+  that means that some motors were not connected when Bluesky started.
+  Contact beamline staff immediately!
+
 .. _cadashboard:
 
 CA Dashboard
@@ -88,14 +95,14 @@ This provides a (very) concise overview of the state of the beamline.
 **Line 1**
    In short, if the top line has no red text, the beamline is all ready to go.
 
-   + BMM is enabled (green) or disable (red)
+   + BMM is enabled (green) or disabled (red)
    + The BM, FE, & user photon shutters are open (green) or closed (red)
    + The ring current
-   + The state of vacuum sections 1 through 7 -- green means vacuum
+   + The state of vacuum sections 1 through 7 |nd| green means vacuum
      level is OK, red means vacuum level is high
    + The state of the in-vacuum motors, 4 on the DCM, 2 on the
-     focusing mirror, 2 on the harmonic rejection mirror -- green
-     means temperature is cool, red means temperature is high
+     focusing mirror, 2 on the harmonic rejection mirror |nd| green
+     means temperature is OK, red means temperature is high
    + The open (green) or closed (red) state of the 3 front end gate
      valves and the 6 beamline gate valves
 
@@ -138,7 +145,8 @@ and set up :numref:`snapshot (Section %s) <snap>` and :numref:`dossier
 
 The ``name`` should be the PI's full name, preferably transliterated
 into normal ASCII.  The ``date`` should be the starting day of the
-experiment in the ``YYYY-MM-DD`` format.
+experiment in the ``YYYY-MM-DD`` format.  The ```GUP`` and ``SAF``
+numbers can be found on the posted safety approval form.
 
 Once the experiment is finished, run this command::
 
@@ -146,6 +154,33 @@ Once the experiment is finished, run this command::
 
 This will reset the logger and the ``DATA`` variable and unset the GUP
 and SAF numbers.
+
+Electrochemistry experiments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: January 2022
+
+   Electrochemistry is not yet properly supported in the experimental
+   work flow.  This section is remains somewhat aspirations.
+
+The data acquisition system at BMM has rudimentary support for
+electrochemistry experiments using the BioLogic potentiostat.  When
+starting a new experiment, do this::
+
+  BMMuser.start_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321, echem=True)
+
+The ``echem`` argument, when set to ``True`` tells the system to look
+for data from the potentiostat in the appropriate place on the Windows
+computer running the EC-Lab software.  It will make a folder called
+``electrochemistry`` in the data folder and make a folder on the
+Windows machine at ``C:Users\xf06nm\My Documents\EC-Lab\Data``.
+There will be a folder with the PI's name and a subfolder with the
+start date of the experiment.
+
+At the end of the experiment, the electrochemistry files are copied
+from the Windows machine to the data folder.  This puts all of the
+data in one place and makes sure that the electrochemistry data are
+backed up correctly.
 
 
 Getting help at the command line
@@ -182,7 +217,7 @@ To see a summary of common commands, use ``%h``:
 
    All the details: https://nsls-ii-bmm.github.io/BeamlineManual/index.html
 
-and to see a summary of some useful command line hotkeys, ``%k``:
+and to see a summary of some useful command line hotkeys, use ``%k``:
 
 .. code-block:: text
 
@@ -214,7 +249,7 @@ BMM and LOB3
    :width: 90%
    :align: center
 
-   Bruce's and Jean's offices in LOB 3
+   Bruce's, Jean's and Vesna's offices in LOB 3
 
 
 

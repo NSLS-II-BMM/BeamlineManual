@@ -7,7 +7,7 @@
    
 		      
 
-This manual is copyright |copy| 2018-2020 Bruce Ravel
+This manual is copyright |copy| 2018-2022 Bruce Ravel
 
 :mark:`somerights,.`  This document is licensed under `The Creative Commons Attribution-ShareAlike License <https://creativecommons.org/licenses/by-sa/3.0/>`__.
 

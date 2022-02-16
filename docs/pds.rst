@@ -20,12 +20,16 @@ following:
    RE(change_edge('Fe'))
 
 substituting the two-letter symbol for the element you want to
-measure.  This will move the monochromator, put the photon delivery
-system in the correct mode, measure the rocking curve of the
-monochromator, optimize the height of the hutch slits, and move the
-reference foil holder to the correct position.  
+measure.  This will:
 
-This whole process takes less than 7 minutes. After that, the beamline
+* move the monochromator
+* put the photon delivery system in the correct mode
+* measure the rocking curve of the monochromator
+* optimize the height of the hutch slits
+* move the reference foil holder to the correct position
+* set the active Xspress3 ROI to the correct emission line
+
+This whole process takes less than 5 minutes. After that, the beamline
 is ready to collect data.
 
 If using the focusing mirror, do this:
@@ -86,6 +90,7 @@ The foil holder is configured as a python list:
    #                    1     2     3     4     5     6     7     8     9     10    11    12
    xafs_ref.content = [None, 'Ti', 'V',  'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge',
                        'As', 'Se', 'Br', 'Zr', 'Nb', 'Mo', 'Pt', 'Au', 'Pb', None, None, None]
+   #                    13    14    15    16    17    18    19    20    21    22    23    24
 
 
 Adding a new element to this list is simple.  Suppose we affix a
@@ -101,29 +106,30 @@ index 21 in the list.
 
 .. _roichannels:
 
-Automating fluorescence ROI changes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..
+  Automating fluorescence ROI changes
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To make sure that the correct ROI channel is selected, you need to
-configure the ROI readout.  Suppose that you have configured the
-analog detector readout system to measure three of those transition
-metals.  Then you would execute a command like this to configure the
-detector readout:
+  To make sure that the correct ROI channel is selected, you need to
+  configure the ROI readout.  Suppose that you have configured the
+  analog detector readout system to measure three of those transition
+  metals.  Then you would execute a command like this to configure the
+  detector readout:
 
-.. code-block:: python
+  .. code-block:: python
 
-   rois.set('Fe Co Ni')
+     rois.set('Fe Co Ni')
 
-Unfortunately, the ROI channels and reference holder have the hot
-dog/hot dog bun problem.  There are only three output channels for the
-analog detector readout system, thus only three elements can be
-configured at a time.
+  Unfortunately, the ROI channels and reference holder have the hot
+  dog/hot dog bun problem.  There are only three output channels for the
+  analog detector readout system, thus only three elements can be
+  configured at a time.
 
-When you change edge to an element that is configured as an ROI
-channel, the data acquisition system will take its fluorescence data
-from the corresponding channels of the Struck multichannel scalar.  It
-will also perform the dead-time correction using the correct signal
-chains for the selected element. 
+  When you change edge to an element that is configured as an ROI
+  channel, the data acquisition system will take its fluorescence data
+  from the corresponding channels of the Struck multichannel scalar.  It
+  will also perform the dead-time correction using the correct signal
+  chains for the selected element. 
 
 Parameters for the change_edge() command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -263,8 +269,8 @@ facilitating any actions a user should ever need.
      tu()
      td()
 
-   Those stand for :quoted:`tune up` and :quoted:`tune down`.  Do not
-   think that :quoted:`up` and :quoted:`down` refer to measured
+   Those stand for "tune up" and "tune down".  Do not
+   think that "up" and "down" refer to measured
    intensity.  Rather, they refer to the direction of motion of the
    motor which adjusts the second crystal pitch.  When you move to
    higher energy, you usually need to tune in ``td()`` direction.

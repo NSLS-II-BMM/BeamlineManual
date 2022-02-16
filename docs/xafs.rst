@@ -35,7 +35,6 @@ The INI file
    filename      = cufoil
    experimenters = Betty Cooper, Veronica Lodge, Archibald Andrews
 
-   e0         = 8979
    element    = Cu
    edge       = K
    sample     = Cu metal
@@ -43,7 +42,7 @@ The INI file
    comment    = Welcome to BMM
 
    nscans     = 3
-   start      = 1
+   start      = next
 
    # mode is transmission, fluorescence, both, or reference
    mode = transmission
@@ -57,51 +56,49 @@ The INI file
 
 Here is a complete explanation of the contents of the INI file.
 
-``filename`` (line 1)
+``filename`` (line 2)
    The stub for the names of the output data files and the snapshots
 
-``experimenters`` (line 2)
+``experimenters`` (line 3)
    The name of the participants in the measurement
 
-``e0`` (line 5)
-   The edge energy for the element and edge of this measurement.  This
-   is the energy reference for the ``bounds``.  If absent, the
-   tabulated value determined from ``element`` and ``edge`` will be
-   used. 
+``element`` (line 5)
+   The one- or two-letter symbol for the element.  The edge energy,
+   ``e0``, will be determined from ``element`` and ``edge``.
 
-``element`` (line 6)
-   The one- or two-letter symbol for the element.
-
-``edge`` (line 7)
+``edge`` (line 6)
    The symbol (``K``, ``L3``, ``L2``, ``L1``) of the edge being
    measured.
 
-``sample`` (line 8)
+``sample`` (line 7)
    This is intended to capture the stoichiometry or composition of the
    sample being measured.
 
-``prep`` (line 9)
+``prep`` (line 8)
    This is intended to capture the details of how the sample was
    prepared for measurement.
 
-``comment`` (line 10)
+``comment`` (line 9)
    This is for anything else you might want to say about your sample.
 
-``nscans`` and ``start`` (lines 12 - 13)
+``nscans`` and ``start`` (lines 11 - 12)
    These are used to form the file extension of the output data file.
    They indicate the starting value of the number used as the file
    extension and how many repetitions of the scan to make.  The file
    extension is always a zero-padded, three-digit number,
    e.g. :file:`cufoil.001`, :file:`cufoil.002`, and so on.
 
-   ``start`` is normally a positive integer but can also be the word
-   ``next``, in which case the ``folder`` will be searched for
-   files starting with ``filename`` and ending in a number.  The
-   subsequent number will be used.  E.g. if ``cuedge.007`` is the
-   highest numbered file in the ``cuedge`` sequence, running XAFS
-   again using the same INI file will start with ``cuedge.008``.
+   ``start`` is usually the word ``next``, in which case the
+   ``folder`` will be searched for files starting with ``filename``
+   and ending in a number.  The subsequent number will be used.
+   E.g. if ``cuedge.007`` is the highest numbered file in the
+   ``cuedge`` sequence, running XAFS again using the same INI file
+   will start with ``cuedge.008``.
 
-``mode`` (line 16)
+   ``start`` can also be a positive integer, in which case it will be
+   the first number used in the sequence of scans.
+
+``mode`` (line 15)
    Indicate how data should be displayed on screen during a scan.  The
    options are ``transmission``, ``fluorescence``, ``both``, or
    ``reference``.  ``both`` means to display *both* the transmission
@@ -121,6 +118,12 @@ Here is a complete explanation of the contents of the INI file.
 
 Comments begin with the hash (``#``) character and are ignored.
 
+.. note:: February 2020
+
+   The E\ :sub:`0` keyword in the INI file is no longer used in normal
+   operations.  E\ :sub:`0` by default determined from ``element`` and
+   ``edge``.
+
 
 Scan regions
 ~~~~~~~~~~~~
@@ -128,7 +131,7 @@ Scan regions
 In a typical step scan, we measure data on a coarse grid in the
 pre-edge, a fine grid through the edge region, and on a constant grid
 in photoelectron wavenumber in the extended region.  The ``bounds``,
-``steps``, and ``times`` keywords (lines 20-22) are used to set this
+``steps``, and ``times`` keywords (lines 19-21) are used to set this
 grid.
 
 
@@ -168,6 +171,12 @@ disabled from the INI file.  The sample INI file written by the
 :numref:`BMMuser.start_experiment() command (Section %s) <start_end>`
 does not include these options, but they can be added to the INI file
 if needed.
+
+``e0``
+   The edge energy for the element and edge of this measurement.  This
+   is the energy reference for the ``bounds``.  Normally, the
+   tabulated value determined from ``element`` and ``edge`` will be
+   used.  This can be specified to override the tabulated value.
 
 ``usbstick``
    ``True`` will examine the user-supplied filename for characters
@@ -225,9 +234,12 @@ Scan run time
 
 To get an approximation of the time a scan will take, do::
 
-  howlong('/path/to/scan.ini')
+  howlong('scan')
 
-The argument is the path to the INI file described above.
+The argument is the path to the INI file described above.  Like for
+the ``xafs()`` command, the INI file is presumed to be in the user's
+data folder and the ``.ini`` need not be specified.  It is assumed
+that the INI file ends in ``.ini``.
 
 This will make a guess of scan time for an individual scan using a
 rather crude heuristic for scan overhead.  It will also multiply by
@@ -304,7 +316,8 @@ such that the output files will be called
    Fe precipitate _LT_60 mM.002
    ...
 
-Note that spaces are fine in filenames.
+Note that spaces are fine in filenames as are all the other keyboard
+characters.
 
 
 .. _xafsscan:
@@ -314,12 +327,13 @@ Run an XAFS scan
 
 To run a scan, do this::
 
-  RE(xafs('scan.ini'))
+  RE(xafs('scan'))
 
-The argument is the path to the INI file described above.  The
-``DATA`` variable simplifies the use of this plan.  ``DATA`` gets set
-to the location of your data folder when :numref:`beginning an
-experiment (Section %s) <start_end>`.
+The argument is the path to the INI file, as described above.
+Specifically, the INI file is assumed to be in the user's data folder
+and is assumed to have the ``.ini`` extension.  The location of the
+user's data folder is set when :numref:`beginning an experiment
+(Section %s) <start_end>`.
 
 This plan is a wrapper around `BlueSky's scan_nd() plan
 <https://nsls-ii.github.io/bluesky/plans.html#multi-dimensional-scans>`_.
@@ -334,8 +348,11 @@ It does the following chores:
 #. Takes :numref:`snapshots (Section %s) <snap>` of the XAS webcam and
    the analog camera near the sample
 
-#. Moves to the center of the angular range of motion of the scan and
-   enters pseudo-channel-cut mode
+#. Moves the monochromator to the center of the angular range of
+   motion of the scan and enters pseudo-channel-cut mode
+
+#. If using the Xspress3 to measure fluorescence with the Si-drift
+   detector, an XRF spectrum will be recorded at that energy.
 
 #. Generates a plotting subscription appropriate to the value of
    ``mode`` in the INI file
@@ -374,16 +391,23 @@ Location of scan.ini file
 
 When you launch an XAFS scan doing::
 
+  RE(xafs('scan'))
+
+This assumes that there is a file called ``scan.ini`` in the user's
+data directory.  Note that you can drop the ``.ini`` |nd| the program
+is smart enough to know that you want the ``.ini`` file by that name.
+So that is completely equivalent to::
+
   RE(xafs('scan.ini'))
 
-the location of the ``scan.ini`` file is assumed to be in ``DATA``.
-For instance, if ``DATA`` is ``/home/bravel/BMM_Data/303303/``, then
-the scan plan will look for the file
-``/home/bravel/BMM_Data/303303/scan.ini``.  This is equivalent to::
+For instance, if the user's directory (``DATA``) is
+``/home/bravel/BMM_Data/303303/``, then the scan plan will look for
+the file ``/home/bravel/BMM_Data/303303/scan.ini``.  This is
+equivalent to::
 
   RE(xafs(DATA + 'scan.ini'))
 
-where ``+`` is the python :quoted:`string concatination` operator.
+where ``+`` is the python string concatenation operator.
 
 You can also explicitly state where your INI file is located, as in::
 
@@ -394,7 +418,7 @@ In that case, the explicit location of the INI file will be used.
 The ``DATA`` variable is set when the ``new_experiment()`` command is
 run at the beginning of the experiment (:numref:`see Section %s
 <start_end>`).  To know the value of the ``DATA`` variable, simply
-type ``DATA`` at the command line and hit :button:`Enter`.
+type ``DATA`` at the command line and hit `Enter`.
 
 
 .. _interrupt:
@@ -407,7 +431,7 @@ XAFS scan.
 
 Pause a scan and *resume*
   You can pause a scan at any time by
-  hitting :button:`Ctrl`-:button:`c` twice.  This will return you to
+  hitting `Ctrl-c` twice.  This will return you to
   the command line, leaving the scan in a paused state.  To *resume*
   the scan, do::
 
@@ -417,7 +441,7 @@ Pause a scan and *resume*
 
 *Stop* a scan
   You can pause a scan at any time by hitting
-  :button:`Ctrl`-:button:`c` twice.  This will return you to the
+  `Ctrl-c` twice.  This will return you to the
   command line, leaving the scan in a paused state.  To *end* the
   scan, do::
 
@@ -588,7 +612,7 @@ Assuming your macro file is stored in your data folder under the name
 ``macro.py``, you can load or reload the macro into the running
 BlueSky session::
 
-  %run -i DATA+'macro.py'
+  %run -i BMMuser.data+'macro.py'
 
 This creates (or overwrites) a new kind of plan called
 ``sample_sequence()`` (at line 1, you ``def``\ -ine a function of that
@@ -611,101 +635,6 @@ reserved words in Python and names already used for other things in
 BlueSky) and run through the run engine (i.e. ``RE()``) like any other
 BlueSky plan.
 
-
-Sample wheel automation
------------------------
-
-For the use of the sample wheel, the procedure for creating a useful
-macro is somewhat better automated.  A specially formatted spreadsheet
-can be used to facilitate macro creation.  Here's an example:
-
-.. _fig-spreadsheet:
-.. figure::  _images/spreadsheet.png
-   :target: _images/spreadsheet.png
-   :width: 70%
-   :align: center
-
-   Example wheel macro builder spreadsheet.
-
-
-If you have read :numref:`Section %s <ini>` about the INI file, then
-most of the columns in this spreadsheet will be quite familiar.  Most
-of the columns are used to specify the same set of parameters as in
-the INI file |nd| file name, E\ :sub:`0` value, element, and so on.
-
-The green cell in the first row is used to input the names of all the
-people involved in the experiment.
-
-Row 6, row with an entirely green background, is used to specify the
-default values for all the parameters.  The concept here is to try to
-avoid having in input repetitive information.  For instance, in this
-case, all measurements will be made at the Fe K edge.  The element,
-edge, and E\ :sub:`0` value are all specified in the green row.  Those
-cells are left blank for all subsequent rows, so the default values
-will be used.
-
-In short, any cell that is left blank will use the value from the
-green, default row.  Any cell for which a value is specified will be
-used in the subsequent macro.
-
-The first column is used to specify the slot number for each sample on
-the sample wheel.
-
-The second column is a simple way of excluding the slot from
-measurement simply by specifying :quoted:`No`.
-
-The next several columns correspond to lines in the INI file as
-explained in :numref:`Section %s <ini>`.
-
-Energy changes can be included in the macro by specifying different
-values for element, edge, and E\ :sub:`0` in a row.  When specified
-and different from the default, a call to the ``change_edge()``
-command (:numref:`Section {number} <pds>`) is inserted into the macro.
-
-Not shown in :numref:`Figure %s <fig-spreadsheet>` are columns for
-tweaking the ``xafs_x`` and ``xafs_y`` positions and for adjusting the
-horizontal size of :numref:`slits3 (see Section %s) <slits3>`.
-
-To convert a spreadsheet into a macro then run the macro, do the
-following:
-
-.. sourcecode:: python
-   :linenos:
-
-   wmb.spreadsheet(DATA+'SampleWheel.xlsx')
-   wmb.write_macro()
-   %run -i DATA+'SampleWheel_macro.py'
-   RE(SampleWheel_macro())
-
-Line 1 reads and interprets the spreadsheet.  Line 2 writes the
-macro.  In this case, the spreadsheet is called ``SampleWheel.xlsx``
-and a macro file called ``SampleWheel_macro.py`` is written.  Also
-written is an INI file called ``SampleWheel.ini`` and which contains
-the default values from the green line.  The macro to be run in
-BlueSky is called ``SampleWheel_macro()``.
-
-
-Here are the first few lines of the macro generated from this
-spreadsheet. Note that for each sample, the macro first moves using
-the ``slot()`` command, then measures XAS using the ``xafs()``
-command.  The ``xafs()`` command uses the INI file generated from the
-green default line and has explicit arguments for the filled-in
-spreadsheet cells.
-
-.. sourcecode:: python
-   :linenos:
-
-   yield from slot(1)
-   yield from xafs('MnFewheel.ini', filename='Fe-Rhodonite', sample='MnSiO3', comment='ID:93 Russia')
-   close_last_plot()
-
-   yield from slot(2)
-   yield from xafs('MnFewheel.ini', filename='Fe-Johannsonite', sample='CaMnSi2O6 - LT', comment='B –Iron Cap Mine; Graham Country, Arizona')
-   close_last_plot()
-
-   yield from slot(3)
-   yield from xafs('MnFewheel.ini', filename='Fe-Spessartine', sample='Mn3Al2(SiO4)3', comment='Grants Mining District; New Mexico')
-   close_last_plot()
 
 
 

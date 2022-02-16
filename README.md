@@ -1,2 +1,3 @@
-# BeamlineManual
-User manual for the BMM data acquisition system
+# BMM Beamline Manual
+
+https://nsls-ii-bmm.github.io/BeamlineManual/

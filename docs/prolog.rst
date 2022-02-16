@@ -3,6 +3,8 @@
    The Creative Commons Attribution-ShareAlike License
    http://creativecommons.org/licenses/by-sa/3.0/
 
+.. include:: <s5defs.txt>
+
 .. |mu|      unicode:: U+003BC .. GREEK SMALL LETTER MU
    :rtrim:
 .. |chi|     unicode:: U+003C7 .. GREEK SMALL LETTER CHI

@@ -206,7 +206,7 @@ way when ``xrd=True`` is used, however the funtion requires
 `something` as its first argument.  Setting ``xrd=True`` forces the
 ``focus=True`` and ``target=0`` arguments to the ``change_edge()``
 command to be set.  This will move to the specified energy, place the
-photon delivery mode in :quoted:`XRD` mode, optimize the second
+photon delivery mode in `XRD` mode, optimize the second
 crystal and the slit height, and move to an approximately M2 bender
 position. 
 
@@ -381,13 +381,17 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
 
    .. code-block:: python
 
-      calibrate_wheel(mono='111')
+      RE(calibrate(mono='111'))
 
    Use the ``mono='311'`` argument for the Si(311) monochromator.
    This will, in sequence, move to each edge and measure a XANES scan
    over a wide enough range that it should cover the edge (unless the
    mono is currently calibrated VERY wrongly).  This will write a file
-   called :file:`edges111.ini` (or :file:`edges3111.ini`).
+   called :file:`edges111.ini` (or :file:`edges3111.ini`).  Each XANES
+   scan uses the file
+   :file:`/home/xf06bm/Data/Staff/mono_calibration/cal.ini` as the INI
+   file.  Edge appropriate command line parameters will be added by
+   the ``calibrate`` plan.
 
 #. Run the command
 
@@ -411,6 +415,18 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
    .. code-block:: python
 
       dcm.set_crystal()
+
+   Or simply restart bsui.
+
+#. Finally, do 
+
+
+   .. code-block:: python
+
+      calibrate_pitch(mono='111')
+
+   and use the fitted slope and offset to modify ``approximate_pitch``
+   in :file:`BMM/functions.py`.
 
 The mono should now be correctly calibrated using the new calibration
 parameters.

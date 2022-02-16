@@ -59,13 +59,24 @@ At the end of the scan, you are prompted with the following question::
     Pluck motor position from the plot? [Yn]
 
 
-If you answer :button:`y` then :button:`Enter`, or simply hit
-:button:`Enter`, you will be prompted to single click the left mouse
+
+..
+   If you answer :quote:`y` then :button:`Enter`, or simply hit
+   :button:`Enter`, you will be prompted to single click the left mouse
+   button :mark:`leftclick,.` on the plot.  The motor that was scanned
+   will then move to the motor position you clicked on.
+
+   You can skip the "click for motor position" step by typing
+   :button:`n` and hitting :button:`Enter`.
+
+
+If you answer `y` then `Enter`, or simply hit
+`Enter`, you will be prompted to single click the left mouse
 button :mark:`leftclick,.` on the plot.  The motor that was scanned
 will then move to the motor position you clicked on.
 
 You can skip the "click for motor position" step by typing
-:button:`n` and hitting :button:`Enter`.
+`n` and hitting `Enter`.
 
 .. todo:: Better sanity checking of input parameters
 

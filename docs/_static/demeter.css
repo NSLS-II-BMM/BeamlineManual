@@ -29,6 +29,16 @@ div.subfigure {
 }
 
 
+cite {
+    background-color: #2e3434;
+    color: #eff0f1;
+    outline-style: double;
+    outline-color: #2e3434;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
 /*****************************************/
 /* some color for the caution admonition */
 /*****************************************/

@@ -15,10 +15,10 @@ Pausing BlueSky
 
 There are a small number of ways that you can unintentionally find
 yourself outside of BlueSky.  One of them is to accidentally hit
-:button:`Ctrl`-:button:`z`, which is unfortunately located close
-to :button:`Ctrl`-:button:`c`.  
+`Ctrl-z`, which is unfortunately located close
+to `Ctrl-c`.  
 
-:button:`Ctrl`-:button:`z` serves to suspend BlueSky, temporarily
+`Ctrl-z` serves to suspend BlueSky, temporarily
 returning you to the Unix command line.  It looks like this:
 
 .. _fig-ctrlz:
@@ -29,11 +29,11 @@ returning you to the Unix command line.  It looks like this:
 
    Accidentally exiting BlueSky and returning to the Unix command line.
 
-Note that BlueSky said :quoted:`Stopped`, then the white and blue
+Note that BlueSky said `Stopped`, then the yellow and magenta
 prompt is presented.  This indicates that BlueSky is paused rather
 than exited.
 
-To resume BlueSky, type the command ``fg`` and hit :button:`Enter`.
+To resume BlueSky, type the command ``fg`` and hit `Enter`.
 You will find yourself back at the BlueSky prompt and can carry on
 normally.
 
@@ -42,15 +42,21 @@ Exiting BlueSky
 
 Another possibility is that BlueSky has exited entirely |nd| possibly
 because something has happened to put the program into an unworkable
-state.  This will usually be accompanied by a lengthy :quoted:`stack
-trace`, i.e. a bunch of weird code and error messages printed to the
-terminal window, followed by the white and blue prompt seen in the
-picture above.
+state.  This will usually be accompanied by a lengthy `stack trace`,
+i.e. a bunch of weird code and error messages printed to the terminal
+window, followed by the yellow and magenta prompt seen in the picture
+above.
 
-In this case, try typing ``bsui`` at the command line with the white
-and blue prompt, then hit :button:`Enter`.  This will start a new
-BlueSky session and should remember all the metadata from the 
-:quoted:`start_experiment` command that began your experiment.
+In this case, simply hit up arrow once (or possible a few times) until
+you find the ``bsui`` command.  Hit `Enter`.
+
+If hitting up arrow does not uncover the correct command, simply
+type ``bsui`` at the command line with the yellow and magenta
+prompt, then hit `Enter`.  
+
+This will start a new BlueSky session and should remember all the
+metadata from the `start_experiment` command that began your
+experiment.
 
 .. You will then need to :numref:`restart your user session (Section %s)
    <start_end>` by issuing the ``BMMuser.start_experiment()`` command with the
@@ -73,30 +79,46 @@ The error message on screen will look something like this
 
 .. todo:: Capture an example of this
 
-The first solution is to try killing the power to the amplifiers on
-the correct MCS8.  Switch the corresponding switch to the off 
-|circle|  position, wait at least 10 seconds, then flip the
-switch back to the on  |verbar|  position.  Try moving
-the motors again.
+This problem is usually resolved by cycling the kill switch to the amplifiers.
 
-.. _fig-killswitch:
-.. figure::  _images/Kill_switches.jpg
-   :target: _images/Kill_switches.jpg
-   :width: 70%
-   :align: center
+.. code-block:: python
 
-   The MCS8 kill switches on rack D.
+   ks.cycle('m2')
 
-If toggling the switch does not clear the problem, the next solution
-to try is to power cycle the appropriate MCS8.  You should stop the
-corresponding IOC before cycling the power, then restart the IOC
-afterwards.  Contact Bruce or other beamline staff before doing this.
+where the possible arguments (one for each FMB Oxford motor
+controller) are ``m2``, ``m3``, ``slits2``, ``dcm``, or ``dm3``.
+
+Once that finishes, try doing the thing that triggered the fault
+message.  Should work....
+
+
+
+
+..
+  The first solution is to try killing the power to the amplifiers on
+  the correct MCS8.  Switch the corresponding switch to the off 
+  |circle|  position, wait at least 10 seconds, then flip the
+  switch back to the on  |verbar|  position.  Try moving
+  the motors again.
+
+  .. _fig-killswitch:
+  .. figure::  _images/Kill_switches.jpg
+     :target: _images/Kill_switches.jpg
+     :width: 70%
+     :align: center
+
+     The MCS8 kill switches on rack D.
+
+  If toggling the switch does not clear the problem, the next solution
+  to try is to power cycle the appropriate MCS8.  You should stop the
+  corresponding IOC before cycling the power, then restart the IOC
+  afterwards.  Contact Bruce or other beamline staff before doing this.
 
 Failed hutch search
 -------------------
 
 Sometimes the hutch search fails for mysterious reasons.  A likely
-cause is that the door :quoted:`bounced` a bit as it closed.  This
+cause is that the door `bounced` a bit as it closed.  This
 confuses the circuit that checks to see that the magnetic latch
 holding the door closed is engaged.
 
