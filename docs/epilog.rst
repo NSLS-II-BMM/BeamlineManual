@@ -1,18 +1,12 @@
 
 .. endpar::
 
-.. endpar::
-   
-.. endpar::
-   
-		      
+.. raw:: html
 
-This manual is copyright |copy| 2018-2022 Bruce Ravel
+   <hr>
 
 :mark:`somerights,.`  This document is licensed under `The Creative Commons Attribution-ShareAlike License <https://creativecommons.org/licenses/by-sa/3.0/>`__.
 
 If this document is useful to you, please consider `supporting The
 Creative Commons <https://creativecommons.org/donate/>`__.
-
-.. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
 
