@@ -8,10 +8,11 @@
 Beamline automation
 ===================
 
-BMM currently supports four categories of spreadsheet-based automation:
+BMM currently supports five categories of spreadsheet-based automation:
 
 #. Sample wheels, both single and double ring  
 #. Linkam stage temperature control
+#. LakeShore 331 controller for Displexy cryostat
 #. Glancing angle stage
 #. Generic XY grids
 
@@ -327,6 +328,9 @@ names.
 
    Example spreadsheet for running a temperature-dependent experiment
    using the Linkam stage.
+
+LakeShore/Displex cryostat automation
+-------------------------------------
 
 
 Glancing angle stage automation
