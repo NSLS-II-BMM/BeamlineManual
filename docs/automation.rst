@@ -334,7 +334,7 @@ LakeShore/Displex cryostat automation
 
 Displex...
 
-
+`Produce page <https://www.lakeshore.com/products/categories/overview/discontinued-products/discontinued-products/model-331-cryogenic-temperature-controller>`__
 
 Glancing angle stage automation
 -------------------------------
