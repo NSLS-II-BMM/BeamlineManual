@@ -199,7 +199,7 @@ the incidence flux.  In most cases, this should do the trick:
 
 .. code-block:: python
 
-   RE(change_edge('Ni', xrd=True, energy=8600)
+   RE(change_edge('Ni', xrd=True, energy=8600))
 
 The element symbol in the first argument is not actually used in any
 way when ``xrd=True`` is used, however the funtion requires
