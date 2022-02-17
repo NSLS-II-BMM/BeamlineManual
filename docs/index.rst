@@ -16,6 +16,7 @@ BMM Users Manual
    :numbered:
 
    intro.rst
+   instruments.rst
    motors.rst
    pds.rst
    linescans.rst
@@ -25,5 +26,4 @@ BMM Users Manual
    manage.rst
    cheatsheet.rst
    trouble.rst
-   details.rst
    todo.rst

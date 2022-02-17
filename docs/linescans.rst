@@ -78,8 +78,6 @@ will then move to the motor position you clicked on.
 You can skip the "click for motor position" step by typing
 `n` and hitting `Enter`.
 
-.. todo:: Better sanity checking of input parameters
-
 
 Plucking a point from a line scan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,9 +164,29 @@ arguments that they have special names.
 
      yield from slit_height()
 
+**Align ex situ sample holder**
+   If the *ex situ* sample wheel is in approximately the right
+   position such that X-rays are passing through the slot, you can
+   center the slot around the beam with::
+
+     RE(find_slot())
+
+   This will run linescans in the X and Y directions, fitting a
+   lineshape to each scan in order to find the center position.  The
+   same can be done by hand by doing::
+
+     RE(linescan(xafs_y, 'It',  -3,  3, 31))
+     RE(linescan(xafs_x, 'It', -10, 10, 31))
+
+   each time selecting the center when prompted.
+
 
 Area scans
 ----------
+
+
+.. todo:: Area scans are slowly improving 
+
 
 An area scan is a simple scan of a two motor axes with an on-screen
 heat map.  At BMM this sort of scan is typically done using the
@@ -236,8 +254,6 @@ Both motors will then move to the position you clicked on.
 
 You can skip the "click for motor position" step by typing
 ``n`` and hitting return.
-
-.. todo:: Better sanity checking of input parameters
 
 
 Plucking a point from an area scan

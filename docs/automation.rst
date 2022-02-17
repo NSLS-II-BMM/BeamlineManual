@@ -12,7 +12,7 @@ BMM currently supports five categories of spreadsheet-based automation:
 
 #. Sample wheels, both single and double ring  
 #. Linkam stage temperature control
-#. LakeShore 331 controller for Displexy cryostat
+#. LakeShore 331 controller for Displex cryostat
 #. Glancing angle stage
 #. Generic XY grids
 
@@ -83,8 +83,8 @@ spreadsheet tab.
 
 
 
-Selecting an spreadsheet
-~~~~~~~~~~~~~~~~~~~~~~~~
+Selecting a spreadsheet
+~~~~~~~~~~~~~~~~~~~~~~~
 
 All spreadsheets are imported using the :file:`xlsx()` command.  The
 spreadsheets are self-identifying.  Every spreadsheet has an
@@ -179,7 +179,7 @@ is aligned, all the slots are aligned.
 
 .. _fig-samplewheel:
 .. figure::  _images/Samplewheel.jpg
-   :target: _images/Samplewheel.png
+   :target: _images/Samplewheel.jpg
    :width: 100%
    :align: center
 
@@ -188,7 +188,7 @@ is aligned, all the slots are aligned.
 
 .. _fig-doublewheel:
 .. figure::  _images/double_wheel_sm.jpg
-   :target: _images/double_wheel_sm.png
+   :target: _images/double_wheel_sm.jpg
    :width: 100%
    :align: center
 
@@ -332,9 +332,73 @@ names.
 LakeShore/Displex cryostat automation
 -------------------------------------
 
-Displex...
+For extremely low temperature experiments, BMM has a Displex crystat
+which uses a two-stage helium compressor to cool the cold head down as
+low as 10K with temperature control between 10K and 500K using a
+resistive heater and a `LakeShore temperature controller
+<https://www.lakeshore.com/products/categories/overview/discontinued-products/discontinued-products/model-331-cryogenic-temperature-controller>`__.
 
-`Product page <https://www.lakeshore.com/products/categories/overview/discontinued-products/discontinued-products/model-331-cryogenic-temperature-controller>`__
+This is a somewhat unusual version of the Displex system in that it is
+suitable for low-vibration applications.  The compressor is
+mechanically decoupled from the cold head, reducing the motion of the
+sample. As a result of this cooling system, it is somewhat
+time-consuming to temperature cycle and replace samples.  Expect that
+cooling from room temperature to 10K will take about 2 hours and
+budget up to an an hour for returning to room temperature and changing
+samples. 
+
+.. subfigstart::
+
+.. _fig-cryostat:
+.. figure::  _images/cryostat.jpg
+   :target: _images/cryostat.jpg
+   :width: 100%
+   :align: center
+
+   The Displex cryostat and it's compressor.
+
+
+.. _fig-lakeshore:
+.. figure::  _images/lakeshore331.png
+   :target: _images/lakeshore331.png
+   :width: 60%
+   :align: center
+
+   The LakeShore 331 controller, used to control temperature for the
+   cryostat shown to the left.
+
+.. subfigend::
+   :width: 0.45
+   :label: _fig-displex
+
+
+The automation for the LakeShore 331 works much the same as for the
+Linkam stage.  Again, you will specify the target temperature for the
+measurement.  And there is a column for specifying the holding time
+after arriving at temperature before beginning the XAFS measurement.
+
+There is a column for specifying the power level of the heater in the
+cryostat. 
+
+.. _fig-lakeshore-spreadsheet:
+.. figure::  _images/lakeshore_spreadsheet.png
+   :target: _images/lakeshore_spreadsheet.png
+   :width: 70%
+   :align: center
+
+   Example spreadsheet for running a temperature-dependent experiment
+   using the Displex cryostat and the LakeShore 331.
+
+
+..
+  .. _fig-lakeshoreCSS:
+  .. figure::  _images/lakeshoreCSS.png
+     :target: _images/lakeshoreCSS.png
+     :width: 30%
+     :align: center
+
+   The CSS screen for the LakeShore 331.
+
 
 Glancing angle stage automation
 -------------------------------

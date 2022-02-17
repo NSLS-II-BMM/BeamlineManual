@@ -389,16 +389,25 @@ or is terminated.
 Location of scan.ini file
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you launch an XAFS scan doing::
+You may start the XAFS scan by doing::
 
-  RE(xafs('scan'))
+  RE(xafs())
 
-This assumes that there is a file called ``scan.ini`` in the user's
+without specifying an argument.  In that case, your data folder will
+be searched for INI files and you will presented with an option menu
+of the INI files found.
+
+You may also specify which INI file to use.  When you launch an XAFS
+scan doing::
+
+  RE(xafs('myscan'))
+
+This assumes that there is a file called ``myscan.ini`` in the user's
 data directory.  Note that you can drop the ``.ini`` |nd| the program
 is smart enough to know that you want the ``.ini`` file by that name.
 So that is completely equivalent to::
 
-  RE(xafs('scan.ini'))
+  RE(xafs('myscan.ini'))
 
 For instance, if the user's directory (``DATA``) is
 ``/home/bravel/BMM_Data/303303/``, then the scan plan will look for

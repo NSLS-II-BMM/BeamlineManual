@@ -129,9 +129,6 @@ experimental log.
    :label: _fig-snapshots
 
 
-.. todo:: Have database consume snapshots with pointers from each scan
-   connected with the snapshot
-
 .. _dossier:
 
 Scan dossier

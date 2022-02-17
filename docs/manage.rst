@@ -119,6 +119,10 @@ If you want to reproduce this by hand, here is the command sequence:
 
 #. Finally,  select the correct ROI channel:
 
+   .. todo::
+
+      get this right for Xspress3
+
    .. code-block:: python
 
       RE(rois.select('Fe'))
@@ -160,35 +164,14 @@ Si(111) crystal to the same energy on the Si(311) crystal.
    RE(change_xtal('311'))
 
 This will move the lateral motor of the DCM and optimize the roll and
-pitch of the second crystal.  It will leave the DCM at 22143.4 eV, so
-move back to the correct energy and rerun the rocking curve scan.
-
-.. code-block:: python
-
-   RE(mv(dcm.energy, 11564))
-   RE(rocking_curve())
+pitch of the second crystal.  It will then move the DCM to the energy
+that you started at with the other crystal set and run a rocking curve
+scan.
 
 Note that some of these motions can be a bit surprising in the sense
 that the monochromator will end up outside the normal operating range
-of the beamline.
-
-For example, starting much higher in energy on the Si(111)
-monochromator will leave the beamline above the energy cut-off imposed
-by the collimating mirror.  In that case, the signal will be quite
-feeble and the rocking curve scan that is part of the
-``change_xtal()`` command might be hard to interpret.
-
-Another example: changing from a rather low energy on the Si(311)
-crystal might leave the mono well below 5000 eV.  In that case the
-fundemnatal will be significantly attenuated by the Be windows and by
-the air, while the harmonics may not be well removed by the flat
-mirror.  Again, the rocking curve scan will be hard to interpret in
-that case.
-
-In both examples, move the monochromator back to the desired energy
-before exploring the rocking curve.
-
-
+of the beamline.  They will, however, eventually return to sensible
+places.
 
 
 Change XAS |harr| XRD

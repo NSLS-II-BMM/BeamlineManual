@@ -155,13 +155,14 @@ Once the experiment is finished, run this command::
 This will reset the logger and the ``DATA`` variable and unset the GUP
 and SAF numbers.
 
+
 Electrochemistry experiments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note:: January 2022
 
    Electrochemistry is not yet properly supported in the experimental
-   work flow.  This section is remains somewhat aspirations.
+   work flow.  This section is remains somewhat aspirational.
 
 The data acquisition system at BMM has rudimentary support for
 electrochemistry experiments using the BioLogic potentiostat.  When

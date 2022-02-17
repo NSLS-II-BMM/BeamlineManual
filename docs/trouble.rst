@@ -15,10 +15,10 @@ Pausing BlueSky
 
 There are a small number of ways that you can unintentionally find
 yourself outside of BlueSky.  One of them is to accidentally hit
-`Ctrl-z`, which is unfortunately located close
-to `Ctrl-c`.  
+``Ctrl-z``, which is unfortunately located close
+to ``Ctrl-c``.  
 
-`Ctrl-z` serves to suspend BlueSky, temporarily
+``Ctrl-z`` serves to suspend BlueSky, temporarily
 returning you to the Unix command line.  It looks like this:
 
 .. _fig-ctrlz:
@@ -29,11 +29,11 @@ returning you to the Unix command line.  It looks like this:
 
    Accidentally exiting BlueSky and returning to the Unix command line.
 
-Note that BlueSky said `Stopped`, then the yellow and magenta
+Note that BlueSky said ``Stopped``, then the yellow and magenta
 prompt is presented.  This indicates that BlueSky is paused rather
 than exited.
 
-To resume BlueSky, type the command ``fg`` and hit `Enter`.
+To resume BlueSky, type the command ``fg`` and hit ``Enter``.
 You will find yourself back at the BlueSky prompt and can carry on
 normally.
 
@@ -48,14 +48,14 @@ window, followed by the yellow and magenta prompt seen in the picture
 above.
 
 In this case, simply hit up arrow once (or possible a few times) until
-you find the ``bsui`` command.  Hit `Enter`.
+you find the ``bsui`` command.  Hit ``Enter``.
 
 If hitting up arrow does not uncover the correct command, simply
 type ``bsui`` at the command line with the yellow and magenta
-prompt, then hit `Enter`.  
+prompt, then hit ``Enter``.  
 
 This will start a new BlueSky session and should remember all the
-metadata from the `start_experiment` command that began your
+metadata from the ``start_experiment`` command that began your
 experiment.
 
 .. You will then need to :numref:`restart your user session (Section %s)
