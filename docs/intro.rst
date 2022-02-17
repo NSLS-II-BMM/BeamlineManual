@@ -9,6 +9,8 @@
 Introduction to BMM
 ===================
 
+BMM is NIST's Beamline for Materials Measurement.
+
 At the unix command line, type ``bsui`` to start the BlueSky user
 interface.  bsui is simply an `Ipython shell <https://ipython.org/>`_
 with some customizations specific to BlueSky.  On top of that, there
@@ -308,3 +310,11 @@ this rather large beam is desirable.  Indeed, many of the visitors to
 BMM specifically request the large beam for their experiments.  With
 the focusing mirror in place, that large swath is reduced to a spot of
 about 300 |mu| m by 200 |mu| m.
+
+Notes
+-----
+
+This documentation project uses the lovely `{book}theme
+<https://sphinx-book-theme.readthedocs.io/en/latest/index.html>`__
+from the `The Executable Book Project
+<https://ebp.jupyterbook.org/>`__.

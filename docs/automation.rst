@@ -10,11 +10,16 @@ Beamline automation
 
 BMM currently supports five categories of spreadsheet-based automation:
 
-#. Sample wheels, both single and double ring  
-#. Linkam stage temperature control
-#. LakeShore 331 controller for Displex cryostat
-#. Glancing angle stage
-#. Generic XY grids
+#. Sample wheels, both single (`spreadsheet
+   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/wheel.xlsx>`__)
+   and double (`spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/doublewheel.xlsx>`__) ring  
+#. Linkam stage temperature control (`spreadsheet
+   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/linkam.xlsx>`__)
+#. LakeShore 331 controller for Displex cryostat (`spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/lakeshore.xlsx>`__)
+#. Glancing angle stage (`spreadsheet
+   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/glancing_angle.xlsx>`__)
+#. Generic XY grids (`spreadsheet
+   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/grid.xlsx>`__)
 
 The latest spreadsheets for each of these can always be found at
 https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Automation_Spreadsheets
@@ -211,7 +216,9 @@ carries one parameter of the XAFS scan.
    :align: center
 
    Example spreadsheet for running an experiment from a wheel with a
-   two sample rings.
+   two sample rings.  Links: `single wheel spreadsheet
+   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/wheel.xlsx>`_
+   and `double wheel spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/doublewheel.xlsx>`_.
 
 
 If you have read :numref:`Section %s <ini>` about the INI file, then
@@ -327,7 +334,8 @@ names.
    :align: center
 
    Example spreadsheet for running a temperature-dependent experiment
-   using the Linkam stage.
+   using the Linkam stage.  Link to the `Linkam spreadsheet
+   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/linkam.xlsx>`_
 
 LakeShore/Displex cryostat automation
 -------------------------------------
@@ -387,7 +395,8 @@ cryostat.
    :align: center
 
    Example spreadsheet for running a temperature-dependent experiment
-   using the Displex cryostat and the LakeShore 331.
+   using the Displex cryostat and the LakeShore 331. Link to the
+   `LakeShore spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/lakeshore.xlsx>`_.
 
 
 ..
@@ -438,7 +447,8 @@ whether the sample spins during measurement.
    :align: center
 
    Example spreadsheet for running an experiment using the glancing
-   angle stage.
+   angle stage.  Link to the `glancing angle spreadsheet
+   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/glancing_angle.xlsx>`_.
 
 Not shown in :numref:`Figure %s <fig-glancingangle-spreadsheet>` are
 columns for specifying how sample alignment is handled.  The default
@@ -480,19 +490,19 @@ measurement angle and well-aligned in the beam.  Enter those numbers
 and they will be used by the macro rather than performing the
 automated alignment.
 
-XY grid automation
-------------------
+Motor grid automation
+---------------------
 
 The final kind of automation-via-spreadsheet available is BMM is for a
-generic XY grid.  The most common XY grid used for measurement is the
-sample XY stage, ``xafs_x`` and ``xafs_y``.  However, any two motors
-on the beamline can be used for the grid.
+generic motor grid.  The most common motor grid used for measurement
+is the sample XY stage, ``xafs_x`` and ``xafs_y``.  However, any two
+motors on the beamline can be used for the grid.
 
 There are columns (to the left of the view shown in :numref:`Figure %s
 <fig-grid-spreadsheet>`) for specifying the axes in the grid.
 
-In all other ways, this spreadsheet is identical to the ex-situ sample
-wheel spreadsheet.
+In all other ways |nd| except for the ``slot`` column |nd| this
+spreadsheet is identical to the *ex-situ* sample wheel spreadsheet.
 
 .. _fig-grid-spreadsheet:
 .. figure::  _images/grid_spreadsheet.png
@@ -500,5 +510,7 @@ wheel spreadsheet.
    :width: 70%
    :align: center
 
-   Example spreadsheet for running an experiment on an XY grid.
+   Example spreadsheet for running an experiment on an XY grid.  Link
+   to the `motor grid spreadsheet
+   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/grid.xlsx>`_.
 

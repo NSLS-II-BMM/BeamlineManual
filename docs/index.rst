@@ -8,6 +8,7 @@
 BMM Users Manual
 ================
 
+BMM is NIST's Beamline for Materials Measurement
 				
 **Contents:**
 
