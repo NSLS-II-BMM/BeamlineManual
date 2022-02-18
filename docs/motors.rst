@@ -3,6 +3,8 @@
    The Creative Commons Attribution-ShareAlike License
    http://creativecommons.org/licenses/by-sa/3.0/
 
+.. |nbsp| unicode:: 0xA0 
+   :trim:
 
 .. _motors:
 
@@ -145,11 +147,16 @@ The ``xafs_wheel`` motor is a rotary stage that is typically mounted
 on the XY stage.  It can be mounted face-on to the beam or at 45
 degrees for use with the fluorescence detector.
 
-Sample plates laser cut from `Delrin
-<https://en.wikipedia.org/wiki/Polyoxymethylene>`_ sheet  are usually
-attached to the rotation stage.  These plates have 24 slots arranged
-around the periphery, evenly spaced 15 degree apart.  While you can
-move from slot to slot in increments of 15 degrees, i.e.
+Sample plates laser cut from plastic sheet (initially we used `Delrin
+<https://en.wikipedia.org/wiki/Polyoxymethylene>`_, since COVID made
+supply difficult, we use whatever we can get) are attached to the
+rotation stage.  The single-ring version of these plates have 24 slots
+arranged around the periphery, evenly spaced 15 degree apart.  The
+double-ring version has concentric rings of 24 slots each.  These are
+still 15 degrees apart.  The radius of the outer ring is 26 mm larger
+than the radius of the inner ring.
+
+While you can move from slot to slot in increments of 15 degrees, i.e.
 
 .. code-block:: python
 
@@ -168,6 +175,23 @@ In a macro, do
 .. code-block:: python
 
    yield from slot(5)
+
+To move to the inner or outer ring, do
+
+.. code-block:: python
+
+   RE(xafs_wheel.inner())
+   RE(xafs_wheel.outer())
+
+This translates ``xafs_x`` by |nbsp|  |pm| 26 mm.
+
+In a macro, do
+
+.. code-block:: python
+
+   yield from xafs_wheel.inner()
+   yield from xafs_wheel.outer()
+
 
 ..
    Sample spinner
@@ -227,9 +251,9 @@ To turn off all spinners::
 
 In a plan::
 
-  RE(ga.on_plan())
-  RE(ga.off_plan())
-  RE(ga.alloff_plan())
+  yield from ga.on_plan()
+  yield from ga.off_plan()
+  yield from ga.alloff_plan()
 
 
 

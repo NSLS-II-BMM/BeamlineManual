@@ -28,10 +28,12 @@ The arguments are:
    choices are:
 
    * ``it``: display the ratio of ``It/I0``
-   * ``if``: display the sum of four silicon drift channels normalized by ``I0`` 
+   * ``if``: display the sum of four silicon drift channels normalized
+     by ``I0``
    * ``i0``: display the signal on ``I0``
    * ``ir``: display the ratio of ``Ir/I0``
-   * ``both``: display both ``It/I0`` *and* the sum of four silicon drift channels normalized by ``I0`` 
+   * ``both``: display both ``It/I0`` *and* the sum of four silicon
+     drift channels normalized by ``I0``
 
 #. The motor axis to be scanned.  This can be either the motor's
    BlueSky name or the nickname string from :numref:`Table %s
@@ -112,10 +114,9 @@ simple column data file without header or metadata.
 
 
 The first argument is the name of the output data file.  The second
-argument is either the scan's unique ID |nd| something like 
+argument is either the scan's unique ID |nd| something like
 ``42447313-46a5-42ef-bf8a-46fedc2c2bd1`` |nd| or the scan's transient
-id number.  Both the unique and transient ids can be found in the
-:numref:`dossier (Section %s) <dossier>`.
+id number.
 
 
 
@@ -180,6 +181,9 @@ arguments that they have special names.
 
    each time selecting the center when prompted.
 
+   You can put this scan in a macro using::
+
+     yield from find_slot()
 
 Area scans
 ----------

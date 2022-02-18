@@ -162,11 +162,11 @@ which the instructions were read.
 It is, therefor, a very good idea to give your tabs names that
 indicate something about the experiment being described on that tab.
 
-The INI file contains the default values from the green line (see
-:numref:`Figure %s <fig-wheel-spreadsheet>`).  The macro file is
-imported into the BlueSky session, providing a new with the name of
-the spreadsheet file.  If the tab in the spreadsheet was called
-:file:`mysamples.xlsx`, the new BlueSky command is called
+The INI file (:numref:`Section %s <ini>`) contains the default values
+from the green line (see :numref:`Figure %s <fig-wheel-spreadsheet>`).
+The macro file is imported into the BlueSky session, providing a new
+with the name of the spreadsheet file.  If the tab in the spreadsheet
+was called :file:`mysamples.xlsx`, the new BlueSky command is called
 ``mysemaples_macro()``.
 
 
@@ -236,7 +236,7 @@ people involved in the experiment, as explained above.
 
 As explained above, row 6, row with an entirely green background, is
 used to specify the default values for all the parameters.  The
-concept here is to try to avoid having in input repetitive
+concept here is to try to avoid having to input repetitive
 information.  For instance, in this case, all measurements will be
 made at the Fe K edge.  The element and edge are all specified in the
 green row.  Those cells are left blank for all subsequent rows, so the
@@ -275,9 +275,9 @@ you can then run the macro generated from the spreadsheet by::
 Here are the first few lines of the macro generated from this
 spreadsheet. Note that for each sample, the macro first moves using
 the ``slot()`` command, then measures XAS using the ``xafs()``
-command.  The ``xafs()`` command uses the INI file generated from the
-green default line and has explicit arguments for the filled-in
-spreadsheet cells.
+command.  The ``xafs()`` command uses the INI file (:numref:`Section
+{number} <ini>`) generated from the green default line and has
+explicit arguments for the filled-in spreadsheet cells.
 
 .. sourcecode:: python
    :linenos:
