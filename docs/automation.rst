@@ -116,7 +116,7 @@ folder, something like this:
     3: 20210128-KB2.xlsx
     4: 20210128-KB4.xlsx
     5: 20210128-KB5.xlsx
-    7: wheel_template.xlsx
+    6: wheel_template.xlsx
 
     r: return
 
@@ -167,8 +167,11 @@ from the green line (see :numref:`Figure %s <fig-wheel-spreadsheet>`).
 The macro file is imported into the BlueSky session, providing a new
 with the name of the spreadsheet file.  If the tab in the spreadsheet
 was called :file:`mysamples.xlsx`, the new BlueSky command is called
-``mysemaples_macro()``.
+``mysamples_macro()``.
 
+.. todo::
+
+   Convert spreadsheets to Bluesky queueserver input.
 
 
 Sample wheel automation

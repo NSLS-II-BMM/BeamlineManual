@@ -104,6 +104,18 @@ foil) as a reference for Dy.  This placement can be configured by
 Note that python lists count from 0, hence the 22\ :sup:`nd` slot is
 index 21 in the list.
 
+To see the available foils, do ``%se``
+
+BMM has stable oxide references for all lanthanides except Pm as well
+as metal or oxide references for most other elements within the
+measurement range of the beamline that are not normally mounted on the
+reference wheel.
+
+`Here is a complete list of standards
+<https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__ in
+BMM's collection.
+
+
 .. _roichannels:
 
 ..
@@ -167,6 +179,11 @@ where,
 ``target``
   The energy above e0 at which to perform the rocking curve scan.
   Default is 300.
+
+
+Most of those parameters are rrarely used, except for ``edge``.  If
+you need to set up for measuring an L\ :sub:`2` or L\ :sub:`1` edge, you
+must specify it.
 
 
 For all the details about the individual parts of the photon delivery
@@ -386,7 +403,8 @@ Outside of the use of the ``change_mode()`` command, it should not be
 necessary for users to move the mirror motors.  It is **very easy** to
 lose the beam entirely when moving mirror motors.  Without a clear
 understanding of how the optics work, re-finding the beam can be quite
-challenging.
+challenging.  If you loose the beam by moving motors, the best
+solution is probably to rerun the ``change_mode()`` command.
 
 That said, if you want to know the current positions of the motors on
 the focusing mirror, use ``%w m2``

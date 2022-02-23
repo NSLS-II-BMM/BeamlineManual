@@ -35,6 +35,7 @@
 .. |cdot|    unicode:: U+00B7  .. MIDDLE DOT
 .. |therefore| unicode:: U+2234  .. THEREFORE
 .. |ge|      unicode:: U+2265 ..  GREATER-THAN OR EQUAL TO
+.. |le|      unicode:: U+2264 ..  LESS-THAN OR EQUAL TO
 .. |ouml|    unicode:: U+00F6 .. LATIN SMALL LETTER O WITH DIAERESIS
 .. |tilde|    unicode:: U+223C .. TILDE
 .. |plus|    unicode:: U+002B .. PLUS SIGN

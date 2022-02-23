@@ -3,6 +3,9 @@
    The Creative Commons Attribution-ShareAlike License
    http://creativecommons.org/licenses/by-sa/3.0/
 
+.. role:: key
+    :class: key
+
 .. _xafs:
 
 XAFS scans
@@ -21,6 +24,10 @@ header of the output data files.
 
 This file is typically stored in the same folder where the data files
 are written and is called by name when running an XAFS scan.
+
+Note that the concepts and language used in the INI file is repeated
+throughout the spreadsheets used for :numref:`beamline automation
+(Section %s) <automation>`.
 
 
 .. _ini:
@@ -57,10 +64,15 @@ The INI file
 Here is a complete explanation of the contents of the INI file.
 
 ``filename`` (line 2)
-   The stub for the names of the output data files and the snapshots
+   The stub for the names of the output data files and the
+   snapshots. In the example above, the files written disk will be
+   called ``cufoil.001``, ``cufoil.002``, and so on.
 
 ``experimenters`` (line 3)
-   The name of the participants in the measurement
+   The name of the participants in the measurement. Because all data
+   and metadata reside in a database, specifying experimenter names
+   makes it easy to search the database for data associated with a
+   specific person.
 
 ``element`` (line 5)
    The one- or two-letter symbol for the element.  The edge energy,
@@ -76,7 +88,7 @@ Here is a complete explanation of the contents of the INI file.
 
 ``prep`` (line 8)
    This is intended to capture the details of how the sample was
-   prepared for measurement.
+   prepared for the XAFS measurement.
 
 ``comment`` (line 9)
    This is for anything else you might want to say about your sample.
@@ -88,15 +100,16 @@ Here is a complete explanation of the contents of the INI file.
    extension is always a zero-padded, three-digit number,
    e.g. :file:`cufoil.001`, :file:`cufoil.002`, and so on.
 
-   ``start`` is usually the word ``next``, in which case the
-   ``folder`` will be searched for files starting with ``filename``
-   and ending in a number.  The subsequent number will be used.
-   E.g. if ``cuedge.007`` is the highest numbered file in the
+   The most common value for this parameters is the word ``next``, in
+   which case the ``folder`` will be searched for files starting with
+   ``filename`` and ending in a number.  The subsequent number will be
+   used.  E.g. if ``cuedge.007`` is the highest numbered file in the
    ``cuedge`` sequence, running XAFS again using the same INI file
    will start with ``cuedge.008``.
 
    ``start`` can also be a positive integer, in which case it will be
-   the first number used in the sequence of scans.
+   the first number used in the sequence of scans.  So if the value is
+   137, the first file will be called ``cufoil.137``.
 
 ``mode`` (line 15)
    Indicate how data should be displayed on screen during a scan.  The
@@ -106,23 +119,18 @@ Here is a complete explanation of the contents of the INI file.
 
    This parameter also controls what gets written to the output data
    files. In all cases, the signals from I0, It, and Ir are written to
-   the data file.  If ``mode`` is ``fluorescence`` or ``both``, then
-   16 columns related to the fluorescence detector are also
-   written. The columns labeled ``dtc1``, ``dtc2``, ``dtc3``, and
-   ``dtc4`` are the dead-time corrected signals for each of the four
-   elements of the detector.  The ``roiN``, ``icrN``, and ``ocrN``
-   columns give the signal in the discriminator window, the input
-   count rate, and the output count rate for each element.  That is
-   sufficient information to recompute the dead-time correction, if
-   need be.
+   the data file.  If ``mode`` is ``fluorescence`` or ``both``, then 4
+   columns related to the fluorescence detector are also written. The
+   columns are labeled something like ``Cu1``, ``Cu2``, ``Cu3``, and
+   ``Cu4`` (where ``Cu`` would be replaced by the symbol of the element
 
 Comments begin with the hash (``#``) character and are ignored.
 
-.. note:: February 2020
+.. note:: 
 
    The E\ :sub:`0` keyword in the INI file is no longer used in normal
    operations.  E\ :sub:`0` by default determined from ``element`` and
-   ``edge``.
+   ``edge``. (February 2020)
 
 
 Scan regions
@@ -228,6 +236,7 @@ rarely needs to be changed during the course of an experiment.
    The fully resolved path to the data folder
 
 
+.. _howlong:
 
 Scan run time
 -------------
@@ -241,6 +250,24 @@ the ``xafs()`` command, the INI file is presumed to be in the user's
 data folder and the ``.ini`` need not be specified.  It is assumed
 that the INI file ends in ``.ini``.
 
+If you leave off the argument, you will be shown a numbered list of
+all :file:`.ini` files in your data folder, something like this:
+
+.. sourcecode:: text
+
+  Select your INI file:
+
+    1: Fe.ini
+    2: Mn.ini
+    3: Zr.ini
+    4: scan.ini
+
+    r: return
+
+  Select a file > 
+
+Select number of the :file:`.ini` file you want to read.
+
 This will make a guess of scan time for an individual scan using a
 rather crude heuristic for scan overhead.  It will also multiply by
 the number of scans to give a total time in hours for the scan
@@ -253,8 +280,7 @@ sequence.
    Each scan will take about 17.9 minutes
    The sequence of 6 scans will take about 1.8 hours
 
-.. todo:: Improve heuristic by doing statistics on scans.  Wait
-   patiently for Andrew Welter's scan telemetry package.
+
 
 .. _usbsafe:
 
@@ -271,11 +297,11 @@ Safe filenames for USB sticks
 While there is no issue using these characters in filenames on the
 beamline computer, you will find that files containing these names
 cannot be written to a normal USB memory stick.  The file system used
-on most memory sticks |nd| `FAT32
-<https://en.wikipedia.org/wiki/USB_flash_drive#File_system>`_ |nd|
-does not allow those characters in filenames.  This is true even if
-the system the memory stick is connected to will allow those
-characters.
+on many memory sticks (`FAT32
+<https://en.wikipedia.org/wiki/USB_flash_drive#File_system>`__) does
+not allow those characters in filenames.  This is true even if the
+system the memory stick is connected to will allow those characters
+(i.e. the beamline linux computer).
 
 
 .. table:: Character translations in filenames
@@ -395,7 +421,7 @@ You may start the XAFS scan by doing::
 
 without specifying an argument.  In that case, your data folder will
 be searched for INI files and you will presented with an option menu
-of the INI files found.
+of the INI files found, as explained in :numref:`Section %s <howlong>`.
 
 You may also specify which INI file to use.  When you launch an XAFS
 scan doing::
@@ -427,7 +453,7 @@ In that case, the explicit location of the INI file will be used.
 The ``DATA`` variable is set when the ``new_experiment()`` command is
 run at the beginning of the experiment (:numref:`see Section %s
 <start_end>`).  To know the value of the ``DATA`` variable, simply
-type ``DATA`` at the command line and hit `Enter`.
+type ``DATA`` at the command line and hit :key:`Enter`.
 
 
 .. _interrupt:
@@ -501,6 +527,13 @@ id number.  Both the unique and transient ids can be found in
 
 Scan sequence macro
 -------------------
+
+.. note::
+
+   Many types of experiments can be automated using the established,
+   spreadsheet-based systems described in :numref:`Section %s
+   <automation>`.  This section is helpful for those situation where
+   you need to roll your own bespoke automation plans.
 
 A macro at BMM is a short bit of python code which sequentially moves
 motors and initiates scans.  A common way of doing this is to make an

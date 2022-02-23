@@ -139,6 +139,15 @@ are the same for all sample stage motors.
 
    To see the available foils, do ``%se``
 
+   BMM has stable oxide references for all lanthanides except Pm as
+   well as metal or oxide references for most other elements within
+   the measurement range of the beamline that are not normally mounted
+   on the reference wheel.
+
+   `Here is a complete list of standards
+   <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__
+   in BMM's collection.
+
 
 Sample wheel
 ------------
@@ -163,8 +172,11 @@ While you can move from slot to slot in increments of 15 degrees, i.e.
    RE(mvr(xafs_wheel, 15*3))
 
 it is somewhat easier to move by slot number.  The sample plates are
-also cut with sample numbers for slots 1, 7, 13, and 19, making it
-clear which slot is which.  To move, for instance, to slot 5, do:
+cut with sample numbers for slots 1, 7, 13, and 19, making it clear
+which slot is which.  The wheel is mounted such that the numbers can
+be read normally on the side facing the beam.
+
+To move, for instance, to slot 5, do:
 
 .. code-block:: python
 
@@ -237,10 +249,11 @@ To move to a sample position::
 
   RE(ga.to(<N>))
 
-where ``<N>`` is a number from 1 to 8.  This command will rotate that
-sample into the beampath and start the sample spinning.
+where ``<N>`` is a number from 1 to 8, as shown by the labels in
+:numref:`Figure %s <fig-gastage>`.  This command will rotate that
+sample into the beam path and start the sample spinning.
 
-To turn a spanner on or off::
+To turn a spinner on or off::
 
   ga.on(<N>)
   ga.off(<N>)
@@ -260,7 +273,7 @@ In a plan::
 Sample alignment
 ~~~~~~~~~~~~~~~~
 
-A sample is aligned into the beam by moving the tilt stage ot an
+A sample is aligned into the beam by moving the tilt stage to an
 approximately flat position::
 
   RE(mv(xafs_pitch(0))
@@ -302,13 +315,14 @@ Automated alignment
 
 The sequence described above can be automated in many cases::
 
-  RE(ga.auto_align(pitch=2.5))
+  RE(ga.auto_align(2.5))
 
-This will run the sequence of alignment scans, pitching the sample to
-the user-specified angle at the appropriate point.  This works by
-fitting an error function to the ``xafs_y`` scan versus It, selecting
-the peak of the pitch scan, then selecting the peak of the ``xafs_y``
-scan versus fluorescence.
+This will run the sequence of alignment scans described above,
+pitching the sample to the user-specified angle before the vertical
+scan measuring the fluorescence signal.  This works by fitting an
+error function to the ``xafs_y`` scan versus It, selecting the peak of
+the pitch scan, then selecting the peak of the ``xafs_y`` scan versus
+fluorescence.
 
 .. _fig-ga_alignment:
 .. figure::  _images/spinner-alignment.png
@@ -316,12 +330,15 @@ scan versus fluorescence.
    :width: 50%
    :align: center
 
-   If all goes well, the result of the sample alignment looks like this.
+   If all goes well, the result of the sample alignment looks like
+   this.  A picture like this is posted to :numref:`Slack (Section %s)
+   <slack>`.
 
 
 For very flat samples which are square or circular and about 5mm
 across or larger, this alignment algorithm is very robust.  For oddly
-shaped samples, verify the automation or simply do the alignment by hand.
+shaped samples, verify that the automation works before relying upon
+it.  Otherwise, simply do the alignment by hand.
 
 Table motors
 ------------

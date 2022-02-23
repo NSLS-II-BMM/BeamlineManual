@@ -3,6 +3,10 @@
    The Creative Commons Attribution-ShareAlike License
    http://creativecommons.org/licenses/by-sa/3.0/
 
+.. role:: key
+    :class: key
+
+
 .. _linescan:
 
 Sample position scans
@@ -11,9 +15,10 @@ Sample position scans
 General line scans
 ------------------
 
-A line scan is a simple scan of a single motor axis with an on-screen
-plot.  At BMM this sort of scan is typically done using the
-``linescan()`` plan.  This is a wrapper around BlueSky's `rel_scan()
+In the nomenclature of BMM, a line scan is a simple scan of a single
+motor axis with an on-screen plot.  At BMM this sort of scan is
+typically done using the ``linescan()`` plan.  This is a wrapper
+around BlueSky's `rel_scan()
 <https://nsls-ii.github.io/bluesky/generated/bluesky.plans.rel_scan.html#bluesky.plans.rel_scan>`_.
 
 In BMM's ``linescan()`` plan, the scan is always a relative scan
@@ -55,6 +60,12 @@ The arguments are:
 
 #. The number of steps in the scan.
 
+Note that the first two arguments can be in either order.  The plan
+will sort it out for you.  These are equivalent::
+
+  RE(linescan('it', xafs_x, -4, 4, 81))
+  RE(linescan(xafs_x, 'it', -4, 4, 81))
+
 
 At the end of the scan, you are prompted with the following question::
 
@@ -72,13 +83,13 @@ At the end of the scan, you are prompted with the following question::
    :button:`n` and hitting :button:`Enter`.
 
 
-If you answer `y` then `Enter`, or simply hit
-`Enter`, you will be prompted to single click the left mouse
+If you answer :key:`y` then :key:`Enter`, or simply hit
+:key:`Enter`, you will be prompted to single click the left mouse
 button :mark:`leftclick,.` on the plot.  The motor that was scanned
 will then move to the motor position you clicked on.
 
 You can skip the "click for motor position" step by typing
-`n` and hitting `Enter`.
+:key:`n` and hitting :key:`Enter`.
 
 
 Plucking a point from a line scan
@@ -252,12 +263,12 @@ At the end of the scan, you are prompted with the following question::
 
     Pluck motor position from the plot? [Yn]
 
-If you answer ``Y``, or simply hit return, you will be prompted to
-single click the left mouse button :mark:`leftclick,.` on the plot.
-Both motors will then move to the position you clicked on.
+If you answer :key:`Y`, or simply hit :key:`Return`, you will be
+prompted to single click the left mouse button :mark:`leftclick,.` on
+the plot.  Both motors will then move to the position you clicked on.
 
 You can skip the "click for motor position" step by typing
-``n`` and hitting return.
+:key:`n` and hitting :key:`Return`.
 
 
 Plucking a point from an area scan
@@ -299,7 +310,6 @@ plotting programs.
 The first argument is the name of the output data file.  The second
 argument is either the scan's unique ID |nd| something like 
 ``42447313-46a5-42ef-bf8a-46fedc2c2bd1`` |nd| or the scan's transient
-id number.  Both the unique and transient ids can be found in the
-:numref:`dossier (Section %s) <dossier>`.
+id number.
 
 

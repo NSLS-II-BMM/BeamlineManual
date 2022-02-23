@@ -125,6 +125,46 @@ also explains how to launch the tool when the beamline is set up for
 XRD measurements.
 
 
+.. _slack:
+
+Slack and Google Drive
+~~~~~~~~~~~~~~~~~~~~~~
+
+At the beginning of your experiment, you will be invited to the BMM
+Slack workspace.  There you can follow along with the progress of the
+experiment in the #beamtime channel.
+
+Throughout the course of the experiment, messages and figures will be
+automatically posted to that channel.  This allows someone to keep
+track of progress and to keep an eye on data quality without being
+physically at the beamline.
+
+.. _fig-slack:
+.. figure::  _images/slack.png
+   :target: _images/slack.png
+   :width: 50%
+   :align: center
+
+   An example of messages and a picture of measured data posted to the
+   beamline Slack channel.
+
+The measured data along with the entire contents of the 
+:numref:`measurement dossier (Section %s) <dossier>` will be synched
+to Google Drive.  At the beginning of the experiment (in fact, when
+the ``start_experiment()`` command described in the next session is
+run), a folder for the experiment will be created on Google Drive.
+The contents of the user's data folder will be synched frequently to
+that folder throughout the course of the experiment, including
+every time an individual XAFS scan finishes.
+
+This allows a remote user to examine the data being measured in
+almost-real time.  The data will be available on Google Drive within a
+few seconds of the end of each scan.
+
+Along with an invitation to the Slack workspace, the user will receive
+an invitation to share the Google Drive.
+
+
 .. _start_end:
 
 Starting and ending an experiment
@@ -158,32 +198,33 @@ This will reset the logger and the ``DATA`` variable and unset the GUP
 and SAF numbers.
 
 
-Electrochemistry experiments
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..
+  Electrochemistry experiments
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: January 2022
+  .. note:: January 2022
 
-   Electrochemistry is not yet properly supported in the experimental
-   work flow.  This section is remains somewhat aspirational.
+     Electrochemistry is not yet properly supported in the experimental
+     work flow.  This section is remains aspirational.
 
-The data acquisition system at BMM has rudimentary support for
-electrochemistry experiments using the BioLogic potentiostat.  When
-starting a new experiment, do this::
+  The data acquisition system at BMM has rudimentary support for
+  electrochemistry experiments using the BioLogic potentiostat.  When
+  starting a new experiment, do this::
 
-  BMMuser.start_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321, echem=True)
+    BMMuser.start_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321, echem=True)
 
-The ``echem`` argument, when set to ``True`` tells the system to look
-for data from the potentiostat in the appropriate place on the Windows
-computer running the EC-Lab software.  It will make a folder called
-``electrochemistry`` in the data folder and make a folder on the
-Windows machine at ``C:Users\xf06nm\My Documents\EC-Lab\Data``.
-There will be a folder with the PI's name and a subfolder with the
-start date of the experiment.
+  The ``echem`` argument, when set to ``True`` tells the system to look
+  for data from the potentiostat in the appropriate place on the Windows
+  computer running the EC-Lab software.  It will make a folder called
+  ``electrochemistry`` in the data folder and make a folder on the
+  Windows machine at ``C:Users\xf06nm\My Documents\EC-Lab\Data``.
+  There will be a folder with the PI's name and a subfolder with the
+  start date of the experiment.
 
-At the end of the experiment, the electrochemistry files are copied
-from the Windows machine to the data folder.  This puts all of the
-data in one place and makes sure that the electrochemistry data are
-backed up correctly.
+  At the end of the experiment, the electrochemistry files are copied
+  from the Windows machine to the data folder.  This puts all of the
+  data in one place and makes sure that the electrochemistry data are
+  backed up correctly.
 
 
 Getting help at the command line
@@ -242,8 +283,61 @@ BMM.  For now, we have the command line.  Read on |nd| it's not too
 difficult!
 
 
-BMM and LOB3
-------------
+BMM and Building 743
+--------------------
+
+
+BMM is on the south side of the NSLS-II building.  You should park at
+building 743 and enter through the main entrance of 743.
+
+.. _fig-sitemap:
+.. figure::  _images/map.png
+   :target: _images/map.png
+   :width: 60%
+   :align: center
+
+   Route from the Main Gate to Building 743
+
+
+Walk though the lobby to the doors that lead out onto the experimental
+floor.  BMM is just across the walk way from the doors to the 743 lobby.
+
+
+
+.. subfigstart::
+
+.. _fig-743lobby:
+.. figure::  _images/743lobby.jpg
+   :target: _images/743lobby.jpg
+   :width: 100%
+   :align: center
+
+   Approaching the floor through the lobby of Building 743
+
+.. _fig-corridor:
+.. figure::  _images/corridor.jpg
+   :target: _images/corridor.jpg
+   :width: 100%
+   :align: center
+
+   BMM is just across the corridor from the door to the 743 lobby
+
+.. _fig-controlstation:
+.. figure::  _images/BMMcontrolstation.jpg
+   :target: _images/BMMcontrolstation.jpg
+   :width: 100%
+   :align: center
+
+   Walk past the diagonal support beam and head into the BMM control
+   station
+
+.. subfigend::
+   :width: 0.31
+   :label: _fig-XRFINST
+
+
+
+BMM's staff have offices on the outer hallway of Building 743.
 
 
 .. _fig-lob3:
@@ -252,7 +346,7 @@ BMM and LOB3
    :width: 90%
    :align: center
 
-   Bruce's, Jean's and Vesna's offices in LOB 3
+   Bruce's, Jean's and Vesna's offices in Building 743
 
 
 
