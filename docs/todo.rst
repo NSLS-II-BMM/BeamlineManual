@@ -21,6 +21,7 @@ documentation manual.
 #. Flesh out documentation on using automation + spreadsheets
 #. Explain contents of dossier more fully
 #. Current batch of cameras
+#. Document using the Xspress3
 
 
 This is an aggregate list of things mentioned in this document that

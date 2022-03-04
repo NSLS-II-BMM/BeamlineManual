@@ -50,6 +50,7 @@ the bsui command line.  Here is an example:
    ==============================================================================
 
 
+.. _sample_stages:
 
 Sample stages
 -------------
@@ -128,7 +129,7 @@ are the same for all sample stage motors.
    ``xafs_y.llm.value = 5`` or ``xafs_y.hlm.value = 85``
 
 **Reference wheel** 
-   The reference stage is a rotation stage with a `Delrin
+   The reference stage _`Reference` is a rotation stage with a `Delrin
    <https://en.wikipedia.org/wiki/Polyoxymethylene>`_ sample disk
    holding up to 24 reference foils.  It is calibrated such that the
    beam passes through the center of a slot every 15 degrees.  The

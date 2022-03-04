@@ -22,11 +22,15 @@ following:
 substituting the two-letter symbol for the element you want to
 measure.  This will:
 
-* move the monochromator
-* put the photon delivery system in the correct mode
-* measure the rocking curve of the monochromator
-* optimize the height of the hutch slits
+* move the monochromator :numref:`(Section %s) <dcm>`
+* put the photon delivery system in the correct mode :numref:`(Section
+  %s) <change-mode>`
+* measure the rocking curve of the monochromator :numref:`(Section %s)
+  <special-linescans>`
+* optimize the height of the hutch slits :numref:`(Section %s)
+  <special-linescans>`
 * move the reference foil holder to the correct position
+  :numref:`(Section %s) <sample_stages>`
 * set the active Xspress3 ROI to the correct emission line
 
 This whole process takes less than 5 minutes. After that, the beamline
@@ -221,6 +225,8 @@ Shutters
 
      sha.open()
      sha.close()
+
+.. _dcm:
 
 Monochromator
 -------------

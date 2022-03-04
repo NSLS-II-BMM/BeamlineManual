@@ -14,6 +14,7 @@ and meeting the needs and expectations of different experiments.
 
 As a reminder, here is the table of operating modes.
 
+.. _pds_modes:
 .. table:: Photon delivery modes
    :name:  pds-modes2
    :align: left
