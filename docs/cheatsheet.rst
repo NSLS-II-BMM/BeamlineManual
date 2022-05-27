@@ -22,8 +22,8 @@ engine will complain with this hint:
 
 .. code-block:: text
 
-   BMM D.111 [48] > dark_current()
-   Out[48] <generator object dark_current 0x7fefafd1df50>   Hint: enclose bsui commands in RE()
+   BMM D.111 [48] > mvr(xafs_x, 2)
+   Out[48] <generator object mvr 0x7fefafd1df50>   Hint: enclose bsui commands in RE()
 
 
 .. table:: Main BlueSky commands used at BMM (don't type the ``<`` or
@@ -86,7 +86,7 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(slit_height())``                    |    explore position of slits3 (then pluck to move dm3_bct)                 |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | ``dark_current()``                       |    measure electrometer dark currents                                      |
+   | ``RE(dark_current())``                   |    measure electrometer dark currents                                      |
    +------------------------------------------+----------------------------------------------------------------------------+
    | |mquad| |mquad| |mquad| |mquad| |mquad| **ex situ sample stage**                                                      |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -113,6 +113,22 @@ engine will complain with this hint:
    | ``linkam.status()``                      |    display Linkam status                                                   |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``linkam.on()`` / ``linkam.off()``       |    turn Linkam on or off                                                   |
+   +------------------------------------------+----------------------------------------------------------------------------+
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **LakeShore temperature controller**                                          |
+   +------------------------------------------+----------------------------------------------------------------------------+
+   | ``RE(lakeshore.to(T, power))``           |    move cryostat to temperature T with heater at ``power``                 |
+   +------------------------------------------+----------------------------------------------------------------------------+
+   | ``lakeshore.settle_time = 120``          |    set Linkam settling time (in seconds)                                   |
+   +------------------------------------------+----------------------------------------------------------------------------+
+   | ``lakeshore.status()``                   |    display Linkam status                                                   |
+   +------------------------------------------+----------------------------------------------------------------------------+
+   | ``RE(mv(lakeshore.power,3))``            |    turn heater to full power                                               |
+   +------------------------------------------+----------------------------------------------------------------------------+
+   | ``RE(mv(lakeshore.power,0))``            |    turn heater off                                                         |
+   +------------------------------------------+----------------------------------------------------------------------------+
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Reference wheel**                                                           |
+   +------------------------------------------+----------------------------------------------------------------------------+
+   | ``RE(reference('Xx'))``                  |    Move to reference 'Xx'                                                  |
    +------------------------------------------+----------------------------------------------------------------------------+
    | |mquad| |mquad| |mquad| |mquad| |mquad| **Get help**                                                                  |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -165,8 +181,13 @@ Vertical size
 Vertical center
   ``slits3.vcenter`` (nominally 0 mm)
 
-  The vertical center is normally not changed.  Instead, align the
+  The vertical center should never be changed.  Instead, align the
   slits using ``dm3_bct`` and the ``slit_height()`` plan
+  (:numref:`Section %s <special-linescans>`)
+
+
+
+Example movement: ``RE(mv(slits3.vsize, 0.5))``
 
 Individual slits are named ``slits3.top``, ``slits3.bottom``,
 ``slits3.inboard``, ``slits3.outboard``.
@@ -236,6 +257,15 @@ Start an XAFS scan using a specified :numref:`INI file (section %s) <ini>`
 In the INI file, set ``mode`` to transmission, fluorescence,
 reference, or both to control the in-scan plotting display (both =
 show transmission and fluorescence)
+
+Import a spreadsheet to perform automated XAFS measurements:
+
+.. code-block:: python
+
+   xlsx()
+
+You will be prompted first for the name of a spreadsheet file, then
+for the tab to be read.
 
 ..
   Experiment log

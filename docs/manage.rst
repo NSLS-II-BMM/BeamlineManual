@@ -120,13 +120,9 @@ If you want to reproduce this by hand, here is the command sequence:
 
 #. Finally,  select the correct ROI channel:
 
-   .. todo::
-
-      get this right for Xspress3
-
    .. code-block:: python
 
-      RE(rois.select('Fe'))
+      BMMuser.verify_roi(xs, 'Fe', 'K')
 
 
 ..
@@ -209,7 +205,9 @@ goniometer.  If a higher energy is required, substitute the correct
 energy for ``8600`` in the second line.
 
 .. todo:: Determine look-up table for lower energy operations using
-	  both M2 and M3.
+	  both M2 and M3.  This will require a new XAFS table and
+	  adjustments to the limit switches on ``m3_ydo`` and
+	  ``m3_ydi``.
 
 Once the photon delivery system is set, remove the ion chambers and
 insert the XRD flight path into its place.
@@ -375,7 +373,18 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
    scan uses the file
    :file:`/home/xf06bm/Data/Staff/mono_calibration/cal.ini` as the INI
    file.  Edge appropriate command line parameters will be added by
-   the ``calibrate`` plan.
+   the ``calibrate()`` plan.
+
+#. Examine the data in Athena. Make sure E\ :sub:`0` is selected
+   correctly for all 10 edges. Copy those values into
+   :file:`edges111.ini` (or :file:`edges3111.ini`). Compute the
+   angular positions using
+
+   .. code-block:: python
+
+      dcm.e2a(<energy values>)
+
+   and copy those numbers into the :file:`edgeH11.ini` file.
 
 #. Run the command
 
@@ -385,14 +394,16 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
 
    (or use the ``'311'`` argument).  This will show the fitting
    results and plot the best fit.  It will also print in a text box
-   instructions for modifying the :file:`19-dcm-parameters.py` file to use
-   the new calibration values.
+   instructions for modifying the :file:`BMM/dcm-parameters.py` file
+   to use the new calibration values.
+
+#. Edit :file:`BMM/dcm-parameters.py` as indicated.
 
 #. Do
 
    .. code-block:: python
 
-      %run -i 'home/xf06bm/.ipython/profile_collection/startup/19-dcm-parameters.py'
+      %run -i 'home/xf06bm/.ipython/profile_collection/startup/BMM/dcm-parameters.py'
 
    then do
 
@@ -400,7 +411,7 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
 
       dcm.set_crystal()
 
-   Or simply restart bsui.
+   Or simply restart bsui, which is usually the easiest thing.
 
 #. Finally, do 
 

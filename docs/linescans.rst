@@ -200,7 +200,12 @@ Area scans
 ----------
 
 
-.. todo:: Area scans are slowly improving 
+.. todo:: A raster scan type |nd| i.e. ``RE(raster())`` |nd| that does
+          an areascan as described here, makes a nice figure using
+          `matplotlib's contourf
+          <https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contourf.html>`_,
+          exports data in formats used by popular plotting programs,
+          and writes a dossier is being tested in 2022-2.
 
 
 An area scan is a simple scan of a two motor axes with an on-screen
