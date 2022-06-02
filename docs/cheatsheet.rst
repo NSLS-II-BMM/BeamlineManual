@@ -3,6 +3,9 @@
    The Creative Commons Attribution-ShareAlike License
    http://creativecommons.org/licenses/by-sa/3.0/
 
+.. role:: key
+    :class: key
+
 .. _cheatsheet:
 
 Command cheatsheet
@@ -10,6 +13,18 @@ Command cheatsheet
 
 This section provides a quick summary of the data acquisition commands
 discussed in the previous sections.
+
+.. admonition:: Stopping a measurement
+
+   To stop any command do :key:`Ctrl`-:key:`C` :key:`Ctrl`-:key:`C`
+
+   That is, hit :key:`Ctrl`-:key:`C` twice!
+
+   This will **pause** the running command and return you to the command line.
+
+   Do ``RE.resume()`` to continue the command from where it stopped.
+
+   Do ``RE.stop()`` to fully stop the command.
 
 
 Command summary
@@ -24,6 +39,7 @@ engine will complain with this hint:
 
    BMM D.111 [48] > mvr(xafs_x, 2)
    Out[48] <generator object mvr 0x7fefafd1df50>   Hint: enclose bsui commands in RE()
+
 
 
 .. table:: Main BlueSky commands used at BMM (don't type the ``<`` or
