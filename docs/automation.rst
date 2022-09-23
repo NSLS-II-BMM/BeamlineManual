@@ -201,7 +201,8 @@ is aligned, all the slots are aligned.
    :align: center
 
    Double-ring sample wheels with 48 sample positions.  There are
-   options with 13mm x 3 mm slots or 13mm diameter holes.
+   options with 13mm x 3 mm slots or 13mm diameter holes.  The rings
+   are 26 mm apart.
 
 .. subfigend::
    :width: 0.45
@@ -389,7 +390,7 @@ measurement.  And there is a column for specifying the holding time
 after arriving at temperature before beginning the XAFS measurement.
 
 There is a column for specifying the power level of the heater in the
-cryostat. 
+cryostat.  There are three power settings.
 
 .. _fig-lakeshore-spreadsheet:
 .. figure::  _images/lakeshore_spreadsheet.png

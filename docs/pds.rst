@@ -87,33 +87,14 @@ element.
 The ``change_edge()`` command does this automatically, so long as the
 target edge is available on the reference holder.
 
-The foil holder is configured as a python list:
+The foil holder interface is configured as a python dictionary.  See
+``xafs_ref.mapping``.
 
-.. code-block:: python
-
-   #                    1     2     3     4     5     6     7     8     9     10    11    12
-   xafs_ref.content = [None, 'Ti', 'V',  'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge',
-                       'As', 'Se', 'Br', 'Zr', 'Nb', 'Mo', 'Pt', 'Au', 'Pb', None, None, None]
-   #                    13    14    15    16    17    18    19    20    21    22    23    24
-
-
-Adding a new element to this list is simple.  Suppose we affix a
-sample of Dy\ :sub:`2`\ O\ :sub:`3` to slot 22 (right after the Pb
-foil) as a reference for Dy.  This placement can be configured by
-
-.. code-block:: python
-
-   xafs_ref.content[21] = 'Dy'
-
-Note that python lists count from 0, hence the 22\ :sup:`nd` slot is
-index 21 in the list.
+This dictionary identifies the positions in ``xafs_ref`` and
+``xafs_refx`` for each reference sample.  It also identifies the form
+of the refefence samples and its stoichiometry.
 
 To see the available foils, do ``%se``
-
-BMM has stable oxide references for all lanthanides except Pm as well
-as metal or oxide references for most other elements within the
-measurement range of the beamline that are not normally mounted on the
-reference wheel.
 
 `Here is a complete list of standards
 <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__ in
@@ -154,7 +135,7 @@ The full set of parameters for the ``change_edge()`` plan are:
 
 .. code-block:: python
 
-   RE(change_edge(element, focus=False, edge='K', energy=None, slits=True, calibrating=False, target=300.))
+   RE(change_edge(element, focus=False, edge='K', energy=None, tune=True, slits=True, calibrating=False, target=300.))
 
 where,
 
@@ -173,9 +154,13 @@ where,
   Use an E0 value that is not obtained from the look-up table.
   Default is unspecified, i.e. use ``element`` and look-up table.
 
+``tune``
+  ``True``: optimize DCM second crystal pitch; ``False``: skip ``rocking_curve()``
+  scan.  Default is ``True``.  Skipping this is rarely a good idea.
+
 ``slits``
   ``True``: optimize slit height; ``False``: skip ``slit_hight()``
-  scan.  Default is ``True``.
+  scan.  Default is ``True``.  Skipping this is rarely a good idea.
 
 ``calibrating``
   ``True``: used when performing beamline maintenance.  Default is ``False``
@@ -185,14 +170,16 @@ where,
   Default is 300.
 
 
-Most of those parameters are rrarely used, except for ``edge``.  If
-you need to set up for measuring an L\ :sub:`2` or L\ :sub:`1` edge, you
-must specify it.
+Most of those parameters are rarely used, except for ``edge`` and
+``focus``.  If you need to set up for measuring an L\ :sub:`2` or L\
+:sub:`1` edge, you must specify ``edge``.
 
 
 For all the details about the individual parts of the photon delivery
 system, read on!
 
+
+.. _shutters:
 
 Shutters
 --------

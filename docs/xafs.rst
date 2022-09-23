@@ -466,7 +466,7 @@ XAFS scan.
 
 Pause a scan and *resume*
   You can pause a scan at any time by
-  hitting `Ctrl-c` twice.  This will return you to
+  hitting :key:`Ctrl`-:key:`C` twice.  This will return you to
   the command line, leaving the scan in a paused state.  To *resume*
   the scan, do::
 
@@ -476,7 +476,7 @@ Pause a scan and *resume*
 
 *Stop* a scan
   You can pause a scan at any time by hitting
-  `Ctrl-c` twice.  This will return you to the
+  :key:`Ctrl`-:key:`C` twice.  This will return you to the
   command line, leaving the scan in a paused state.  To *end* the
   scan, do::
 

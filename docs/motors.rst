@@ -63,20 +63,21 @@ other places instead of writing out the BlueSky name for the motor.
    :name:  xafs-stages
    :align: left
 
-   ========== ===========  =========  =======================  ===================================
-   motor      type         units      notes                    directions
-   ========== ===========  =========  =======================  ===================================
-   xafs_x     linear       mm         main sample stage        |plus| outboard, - inboard
-   xafs_y     linear       mm         main sample stage        |plus| up, - down
-   xafs_det   linear       mm         detector mount           |plus| closer to sample, - farther
-   xafs_wheel rotary       degrees    *ex situ* sample wheel   |plus| clockwise, - widdershins
-   xafs_linxs linear       mm         ref wheel vertical       |plus| up, - down
-   xafs_ref   rotary       degrees    reference stage          |plus| clockwise, - widdershins
-   xafs_pitch tilt         degrees    Huber tilt stage         |plus| more positive
-   xafs_roll  tilt         degrees    Huber tilt stage         |plus| more positive
-   xafs_rots  rotary       degrees    small rotary stage   
-   xafs_roth  rotary       degrees    Huber circle         
-   ========== ===========  =========  =======================  ===================================
+   ============== ===========  =========  =======================  ===================================
+   motor          type         units      notes                    directions
+   ============== ===========  =========  =======================  ===================================
+   ``xafs_x``     linear       mm         main sample stage        |plus| outboard, - inboard
+   ``xafs_y``     linear       mm         main sample stage        |plus| up, - down
+   ``xafs_det``   linear       mm         detector mount           |plus| closer to sample, - farther
+   ``xafs_wheel`` rotary       degrees    *ex situ* sample wheel   |plus| clockwise, - widdershins
+   ``xafs_linxs`` linear       mm         ref wheel vertical       |plus| up, - down
+   ``xafs_ref``   rotary       degrees    reference stage          |plus| clockwise, - widdershins
+   ``xafs_refx``  linear       mm         reference stage          |plus| outboard, - inboard
+   ``xafs_refy``  linear       mm         reference stage          |plus| up, - down
+   ``xafs_pitch`` tilt         degrees    Huber tilt stage         |plus| more positive
+   ``xafs_roll``  tilt         degrees    Huber tilt stage         |plus| more positive
+   ``xafs_rots``  rotary       degrees    small rotary stage   
+   ============== ===========  =========  =======================  ===================================
 
 Configuration and position of the motors can be queried easily.  In
 the following examples, the ``xafs_y`` motor is used.  The commands
@@ -131,7 +132,7 @@ are the same for all sample stage motors.
 **Reference wheel** 
    The reference stage _`Reference` is a rotation stage with a `Delrin
    <https://en.wikipedia.org/wiki/Polyoxymethylene>`_ sample disk
-   holding up to 24 reference foils.  It is calibrated such that the
+   holding up to 48 reference foils.  It is calibrated such that the
    beam passes through the center of a slot every 15 degrees.  The
    slots are indexed such that they can be accessed by the symbol of
    the element being measured.  To move to a new reference foil::
@@ -140,10 +141,13 @@ are the same for all sample stage motors.
 
    To see the available foils, do ``%se``
 
-   BMM has stable oxide references for all lanthanides except Pm as
-   well as metal or oxide references for most other elements within
-   the measurement range of the beamline that are not normally mounted
-   on the reference wheel.
+   BMM has foils or stable oxides for each of these elements
+
+      Ti V  Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Zr Nb Mo Pt Au Pb Bi Sr Y
+      La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Rb Ba Hf Ta W  Re Os Ir Ru
+
+   (A few of these are missing as of 23 September, 2022 with a plan in
+   place for obtaining the missing ones.)
 
    `Here is a complete list of standards
    <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__

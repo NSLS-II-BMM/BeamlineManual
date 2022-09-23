@@ -30,6 +30,9 @@ one will need to do at the beamline, including:
 TL;DR
 -----
 
+**Open/close the shutter**
+   ``shb.open()`` and ``shb.close()``, see :numref:`{name}, Section {number} <shutters>`
+
 **Change energy**
    Use the ``RE(change_edge())`` command, see :numref:`{name}, Section {number} <pds>`
 
@@ -175,15 +178,13 @@ When a new experiment begins, run the command::
   BMMuser.start_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321)
 
 This will create that data folder and populate it with an
-:numref:`experimental log (Section %s) <log>`, define the ``DATA``
-variable for use in simplifying certain commands, write a template for
-a :numref:`scan.ini file (Section %s) <xafs>`, write a template for a
+:numref:`experimental log (Section %s) <log>`, write a template for a
 :numref:`macro file (Section %s) <macro>`, configure the logger to
 write a :numref:`user log file (Section %s) <logfile>` for this
 experiment, set the GUP and SAF numbers as metadata for output files,
-and set up :numref:`snapshot (Section %s) <snap>` and :numref:`dossier
-(Section %s) <dossier>` folders.
-
+set up :numref:`snapshot (Section %s) <snap>` and :numref:`dossier
+(Section %s) <dossier>` folders, and perfrom other experiment start-up
+chores.
 
 The ``name`` should be the PI's full name, preferably transliterated
 into normal ASCII.  The ``date`` should be the starting day of the
@@ -399,7 +400,7 @@ provided by the collimating mirror is adequate.  At lower energies,
 the flat harmonic rejection mirror is used to provide clean beam.
 
 With just the harmonic rejection mirror in place, a beam of size 8 mm
-by 1.4 mm is delivered to the end station.  For many XAS experiments,
+by 1 mm is delivered to the end station.  For many XAS experiments,
 this rather large beam is desirable.  Indeed, many of the visitors to
 BMM specifically request the large beam for their experiments.  With
 the focusing mirror in place, that large swath is reduced to a spot of
@@ -412,3 +413,6 @@ This documentation project uses the lovely `{book}theme
 <https://sphinx-book-theme.readthedocs.io/en/latest/index.html>`__
 from the `The Executable Book Project
 <https://ebp.jupyterbook.org/>`__.
+
+This project uses a GitHub action to build and deploy this document
+whenever a ``git push`` happens.

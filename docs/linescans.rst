@@ -108,7 +108,7 @@ plot that is still displayed on the screen.
 Of course, an older plot remains active in the sense that you can pass
 the cursor over the plot and read the mouse coordinates in the bottom,
 left corner of the plot window.  You can find a point in this way,
-then do a movement command line::
+then do a movement command like::
 
   RE(mv(xafs_y, 28.31))
 
@@ -205,7 +205,8 @@ Area scans
           `matplotlib's contourf
           <https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contourf.html>`_,
           exports data in formats used by popular plotting programs,
-          and writes a dossier is being tested in 2022-2.
+          and writes a dossier was tested in 2022-2.  Current status:
+          dossier is written, scan works, documen tation needs to be written.
 
 
 An area scan is a simple scan of a two motor axes with an on-screen
