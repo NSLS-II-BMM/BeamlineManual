@@ -130,10 +130,9 @@ are the same for all sample stage motors.
    ``xafs_y.llm.value = 5`` or ``xafs_y.hlm.value = 85``
 
 **Reference wheel** 
-   The reference stage _`Reference` is a rotation stage with a `Delrin
-   <https://en.wikipedia.org/wiki/Polyoxymethylene>`_ sample disk
-   holding up to 48 reference foils.  It is calibrated such that the
-   beam passes through the center of a slot every 15 degrees.  The
+   The reference stage _`Reference` is a rotation stage with a sample
+   wheel holding up to 48 reference foils.  It is calibrated such that
+   the beam passes through the center of a slot every 15 degrees.  The
    slots are indexed such that they can be accessed by the symbol of
    the element being measured.  To move to a new reference foil::
 
@@ -141,13 +140,13 @@ are the same for all sample stage motors.
 
    To see the available foils, do ``%se``
 
-   BMM has foils or stable oxides for each of these elements
+   BMM has foils or stable oxides for each of these elements::
 
       Ti V  Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Zr Nb Mo Pt Au Pb Bi Sr Y
-      La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Rb Ba Hf Ta W  Re Os Ir Ru
+      Cs La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Rb Ba Hf Ta W  Re Os Ir Ru
 
-   (A few of these are missing as of 23 September, 2022 with a plan in
-   place for obtaining the missing ones.)
+   (A few of these |nd| Ba, W, Os, Ir |nd| are missing as of 23
+   December, 2022.  We are working to obtain the missing ones.)
 
    `Here is a complete list of standards
    <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__

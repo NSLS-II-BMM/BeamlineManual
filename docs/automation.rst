@@ -37,6 +37,9 @@ differences in the columns corresponding to the different instruments.
    Example spreadsheet for running an experiment from a wheel with a
    single sample ring.
 
+Make sure you are using the most up-to-date version of the spreadsheet.
+
+.. note:: The current spreadsheet version is **10**, as of 23 December, 2022.
 
 
 Common features

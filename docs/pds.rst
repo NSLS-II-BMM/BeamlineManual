@@ -65,9 +65,21 @@ In this way, a macro can manage energy changes while you sleep!
 Automating reference foil changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A wheel is used to hold and switch between reference foils.  The
-standard reference wheel has the 20 most commonly measured elements,
-plus four empty slots where additional references can be mounted.
+A wheel is used to hold and switch between reference foils and stable
+oxides.  The standard reference wheel has most of the elements
+accessible at BMM, including all the lanthanides (except Pm!).  A
+double wheel (:numref:`see (Figure %s) <fig-doublewheelINST>`) is used
+to hold the standards.  The wheel is mounted on a rotation stage which
+is, in turn, mounted on an XY stage for alignment.
+
+.. _fig-ref_wheel:
+.. figure::  _images/ref_wheel.jpg
+   :target: _images/ref_wheel.jpg
+   :width: 50%
+   :align: center
+
+   The reference wheel.
+
 
 To select, for example, the iron reference foil:
 
@@ -84,6 +96,9 @@ In a plan:
 The argument is simply the one- or two-element symbol for the target
 element.
 
+This selects the correct reference by rotating to the correct slot and
+translating to the correct ring on the wheel.
+
 The ``change_edge()`` command does this automatically, so long as the
 target edge is available on the reference holder.
 
@@ -92,9 +107,10 @@ The foil holder interface is configured as a python dictionary.  See
 
 This dictionary identifies the positions in ``xafs_ref`` and
 ``xafs_refx`` for each reference sample.  It also identifies the form
-of the refefence samples and its stoichiometry.
+of the reference samples and its chemical composition.
 
-To see the available foils, do ``%se``
+To see the available reference mayerials and their positions on the
+reference wheel, do ``%se``.
 
 `Here is a complete list of standards
 <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__ in
@@ -130,6 +146,10 @@ BMM's collection.
 
 Parameters for the change_edge() command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Typically the ``change_edge()`` command is called with one or two
+arguments, the mandatory element symbol and the the ``focus``
+argument, which can be ``True`` or ``False``.
 
 The full set of parameters for the ``change_edge()`` plan are:
 
@@ -212,6 +232,12 @@ Shutters
 
      sha.open()
      sha.close()
+
+   and::
+
+     yield from sha.open_plan()
+     yield from sha.close_plan()
+
 
 .. _dcm:
 
