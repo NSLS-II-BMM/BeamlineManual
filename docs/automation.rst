@@ -1,7 +1,11 @@
 ..
-   This manual is copyright 2018 Bruce Ravel and released under
-   The Creative Commons Attribution-ShareAlike License
-   http://creativecommons.org/licenses/by-sa/3.0/
+   This document was developed primarily by a NIST employee. Pursuant
+   to title 17 United States Code Section 105, works of NIST employees
+   are not subject to copyright protection in the United States. Thus
+   this repository may not be licensed under the same terms as Bluesky
+   itself.
+
+   See the LICENSE file for details.
 
 .. _automation:
 
@@ -180,7 +184,7 @@ was called :file:`mysamples.xlsx`, the new BlueSky command is called
 Sample wheel automation
 -----------------------
 
-The standard ex-situ sample holder at BMM is a plastic wheel that get
+The standard *ex situ* sample holder at BMM is a plastic wheel that get
 mounted on a rotation stage.  Examples are shown in figures
 :numref:`fig-samplewheel` and :numref:`fig-doublewheel`.  The rotation
 stage is mounted on an XY stage, so when one slot on the sample wheel
@@ -321,7 +325,7 @@ XY stage.
    diameter hole in the heating block to allow for transmission XAFS.
 
 The automation concept for the Linkam stage is quite similar to the
-ex-situ sample holder.  Instead of specifying the slot position of the
+*ex situ* sample holder.  Instead of specifying the slot position of the
 sample, you will specify the target temperature for the measurement.
 There is also a column for specifying the holding time after arriving
 at temperature before beginning the XAFS measurement.
@@ -442,7 +446,7 @@ CPU fan).  The 8 spinners are independently controlled via slip ring
 electrical connection that runs through the axis of the rotation
 stage.  In practice, only the sample that is being measured is spinning.
 
-Again, the automation concept is very similar to the ex situ sample
+Again, the automation concept is very similar to the *ex situ* sample
 wheel.  Instead of specifying slot number, the spinner number is
 specified on each row.  There is also a yes/no menu for specifying
 whether the sample spins during measurement.
@@ -509,7 +513,7 @@ There are columns (to the left of the view shown in :numref:`Figure %s
 <fig-grid-spreadsheet>`) for specifying the axes in the grid.
 
 In all other ways |nd| except for the ``slot`` column |nd| this
-spreadsheet is identical to the *ex-situ* sample wheel spreadsheet.
+spreadsheet is identical to the *ex situ* sample wheel spreadsheet.
 
 .. _fig-grid-spreadsheet:
 .. figure::  _images/grid_spreadsheet.png

@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath(os.path.join('sphinx', 'ext')))
 # -- Project information -----------------------------------------------------
 
 project = 'BMM Beamline Manual'
-copyright = '2018-2022, Bruce Ravel'
+copyright = ': none, this document is available as a public service'
 author = 'Bruce Ravel'
 
 # The full version, including alpha/beta/rc tags

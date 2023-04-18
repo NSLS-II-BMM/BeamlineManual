@@ -1,7 +1,11 @@
 ..
-   This manual is copyright 2018 Bruce Ravel and released under
-   The Creative Commons Attribution-ShareAlike License
-   http://creativecommons.org/licenses/by-sa/3.0/
+   This document was developed primarily by a NIST employee. Pursuant
+   to title 17 United States Code Section 105, works of NIST employees
+   are not subject to copyright protection in the United States. Thus
+   this repository may not be licensed under the same terms as Bluesky
+   itself.
+
+   See the LICENSE file for details.
 
 .. _pds:
 
