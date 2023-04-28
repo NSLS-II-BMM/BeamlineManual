@@ -27,7 +27,7 @@ The solution adopted was to move all plotting chores out of the main
 data collection profile and into a Kafka consumer.  With the help of
 DSSI, the beamline computers were given access to the same Kafka
 server used by BlueSky to orchestrate it's communications.  We were
-also given a private Kafka topic over which to send BMM specific
+also given a private Kafka topic over which to send BMM-specific
 messages intended for use by a BMM-specific consumer.
 
 Local communication
@@ -80,8 +80,9 @@ the keywords.
 
 As each scan finishes, a document like this is issued.  This tells the
 consumer that a repetition finished and supplies the UID of the
-just-completed scan.  This triggers a recalculation of the merge and
-the recreation of the 3-panel plot.
+just-completed scan.  `Tiled <https://github.com/bluesky/tiled>`__ is
+used to grab the data from the just-completed scan.  This triggers
+a recalculation of the merge and the recreation of the 3-panel plot.
 
 .. code-block:: python
 

@@ -77,6 +77,8 @@ specific kinds of events and captures a log message when appropriate.
 Snapshots
 ---------
 
+.. todo:: Document the USB cameras
+
 The XAFS scan plan described in :numref:`Section %s <xafs>` includes a
 step where snapshots are taken from the XAS webcam and the small
 analog camera.  These photos are written to JPG files with names
@@ -132,6 +134,47 @@ experimental log.
    :width: 0.45
    :label: _fig-snapshots
 
+.. _video:
+
+Recording videos
+----------------
+
+The USB cameras can be used to record short videos of whatever they
+are pointing at.  The resulting video will be saved to a `.avi
+<https://en.wikipedia.org/wiki/Audio_Video_Interleave>`__ file in
+the ``video`` folder under the experiment folder.
+
+The simplest way to record a video is by this command:
+
+.. code-block:: python
+
+       usbvideo1.record_video(name, time)
+
+Here the arguments are:
+
+``name``
+  The stub of the file to be written to disk.  The ``.avi`` extension
+  will be added
+``time``
+  The length in seconds of the recording
+
+This is, perhaps, a bit clunky since you have to specify the time of
+the recording.  You can do the recording in a more hands on manner by
+explicitly starting the recording.
+
+.. code-block:: python
+
+       usbvideo1.start()
+
+Do whatever you want to capture, then explicitly stop the recording.
+Finally, you save the video to a name which means the same thing as is
+explained above.
+
+.. code-block:: python
+
+       usbvideo1.stop()
+       usbvideo1.save_video(name)
+
 
 .. _dossier:
 
@@ -164,3 +207,9 @@ provided by the user and gleaned from beamline instrumentation.
    An example of the scan sequence dossier, displayed in a web browser.
 
 
+.. admonition:: New in April 2023
+
+   Along with the dossier, the beamline now records a flat HTML file
+   which records all the messages sent to :numref:`Slack (Section %s)
+   <slack>`.  This can be accessed by the "Timeline" link at the top
+   of every dossier page.

@@ -74,7 +74,7 @@ html_theme_options = {
     "use_download_button": True,
     "extra_navbar": '<p><a href=https://wiki-nsls2.bnl.gov/beamline6BM/index.php?Main_Page><img src="./_static/floor_mat.png" style="height: 3cm;" alt="BMM floor tab"><br>Beamline for Materials<br>Measurement</a></p>',
 }
-
+html_show_copyright = False
 #html_sidebars = {
 #    "**": ["sidebar-logo.html", "search-field.html", "sbt-sidebar-nav.html", "sbt-sidebar-footer.html"]
 #}

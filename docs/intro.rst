@@ -409,8 +409,8 @@ BMM specifically request the large beam for their experiments.  With
 the focusing mirror in place, that large swath is reduced to a spot of
 about 300 |mu| m by 200 |mu| m.
 
-Notes
------
+Acknowledgements
+----------------
 
 This documentation project uses the lovely `{book}theme
 <https://sphinx-book-theme.readthedocs.io/en/latest/index.html>`__
@@ -419,3 +419,19 @@ from the `The Executable Book Project
 
 This project uses a GitHub action to build and deploy this document
 whenever a ``git push`` happens.
+
+
+A note about copyright
+----------------------
+
+This document and `the BlueSky data collection profile
+<https://github.com/NSLS-II-BMM/profile_collection>`__ it covers was
+developed primarily by a NIST employee. Pursuant to title 17 United
+States Code Section 105, works of NIST employees are not subject to
+copyright protection in the United States. Thus this repository may
+not be licensed under the same terms as Bluesky itself or its
+documentation.
+
+See the `LICENSE file
+<https://raw.githubusercontent.com/NSLS-II-BMM/BeamlineManual/master/LICENSE>`__
+for details.
