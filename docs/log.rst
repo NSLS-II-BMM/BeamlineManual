@@ -183,7 +183,7 @@ Scan dossier
 
 The BMM data collection system now captures a dossier for each scan
 sequence that is run.  The definition of a scan sequence is a call to 
-:numref:`the xafs program (Section %s) <xafsscan>`, which may
+:numref:`the xafs plan (Section %s) <xafsscan>`, which may
 involve multiple repetitions of the scan.
 
 The dossier is a static html file which captures most of the

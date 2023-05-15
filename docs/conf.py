@@ -37,7 +37,7 @@ extensions = ['sphinx_math_dollar', 'sphinx.ext.mathjax',
               'sphinx.ext.todo',
 ]
 extensions.extend([#'fix_equation_ref',
-                   'subfig', 'numsec', 'figtable',
+                   'sphinx_subfigure', 'numsec', 'figtable',
                    'singlehtml_toc', 'singletext', 'demeterdocs',
 ])
 

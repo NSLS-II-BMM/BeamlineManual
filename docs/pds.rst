@@ -522,6 +522,8 @@ modes.  Modes A-F are for delivery of light to the XAS end station.
 Mode XRD delivers high energy, focused beam to the goniometer.
 
 
+.. _photon_delivery_modes:
+
 .. table:: Photon delivery modes
    :name:  pds-modes
    :align: left

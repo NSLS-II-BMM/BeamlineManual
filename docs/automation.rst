@@ -26,7 +26,7 @@ BMM currently supports five categories of spreadsheet-based automation:
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/grid.xlsx>`__)
 
 The latest spreadsheets for each of these can always be found at
-https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Automation_Spreadsheets
+https://github.com/NSLS-II-BMM/profile_collection/tree/master/startup/xlsx
 
 
 Each of the spreadsheets looks much like this, although there are some
@@ -93,6 +93,10 @@ spreadsheet tab.
    temperature, and so on.  This simplifies data entry into the
    ``filename`` column of the spreadsheet.
 
+#. A place for specifying the number of repetitions of the entire
+   spreadsheet. This is different from the column labeled
+   "repetitions", which specifies the number of repeated XAS scans of
+   the sample in that row of the spreadsheet.  
 
 
 Selecting a spreadsheet

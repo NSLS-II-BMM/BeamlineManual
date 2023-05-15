@@ -24,7 +24,9 @@ typically `not` run on the same machine as ``bsui``, this plotting
 scheme stopped being helpful.  
 
 The solution adopted was to move all plotting chores out of the main
-data collection profile and into a Kafka consumer.  With the help of
+data collection profile and into a Kafka consumer.  Using the
+`bluesky-kafka producer and consumer
+<https://github.com/bluesky/bluesky-kafka>`__ and with the help of
 DSSI, the beamline computers were given access to the same Kafka
 server used by BlueSky to orchestrate it's communications.  We were
 also given a private Kafka topic over which to send BMM-specific
@@ -35,7 +37,12 @@ Local communication
 
 Communicating over the ``bmm-test`` topic, two sorts of plotting
 chores are managed.  In each case, the document is a simple dictionary
-which the consumer parses to perform a plotting chore.
+which the consumer parses to perform a plotting chore using
+`matplotlib <https://matplotlib.org/>`__.
+
+.. todo:: Would a browser-y solution like `Bokeh
+          <https://docs.bokeh.org/en/latest/index.html>`__ be an
+          alternative?
 
 The dictionary sent as the document is not structured like a BlueSky
 document.  There is no schema.  The dictionary simply contains
@@ -78,11 +85,11 @@ plot.  The value of ``start`` tells the consumer to prepare for making
 this plot from data under the conditions specified by the remainder of
 the keywords.
 
-As each scan finishes, a document like this is issued.  This tells the
-consumer that a repetition finished and supplies the UID of the
+As each scan finishes, the following document is issued.  This tells
+the consumer that a repetition finished and supplies the UID of the
 just-completed scan.  `Tiled <https://github.com/bluesky/tiled>`__ is
-used to grab the data from the just-completed scan.  This triggers
-a recalculation of the merge and the recreation of the 3-panel plot.
+used to grab the data from the just-completed scan.  This triggers a
+recalculation of the merge and the recreation of the 3-panel plot.
 
 .. code-block:: python
 
@@ -123,9 +130,10 @@ Alignment plots
 Various alignment chores at the beamline |nd| for example, aligning a
 slot on a :numref:`sample wheel (Sec %s) <sample-wheel>` or aligning
 the :numref:`glancing angle stage (Sec %s) <glancing-angle-stage>`
-|nd| involve a series of :numref:`linescans (Sec %s) <linescan>`,
-each of which is plotted in real time, followed by a plot summarizing
-the result of the alignment.
+|nd| involve a series of :numref:`linescans (Sec %s) <linescan>`, each
+of which is plotted in real time |nd| as shown :numref:`below (Sec %s)
+<liveline>` |nd| followed by a plot summarizing the result of the
+alignment.
 
 Using the sample wheel alignment as an example, the sequence is
 initiated by this document:
@@ -137,7 +145,7 @@ initiated by this document:
 As each linescan in the alignment procedure is completed, some
 automated analysis is performed to determine the optimal position of
 the motor axis being scanned.  The results of this analysis are issued
-in a Kafka message.
+in a document like this.
 
 .. code-block:: python
 
@@ -179,7 +187,7 @@ manner.
    sample wheel. 
 
 
-
+.. _liveline:
 
 Live linescan plots
 ~~~~~~~~~~~~~~~~~~~

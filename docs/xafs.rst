@@ -767,3 +767,148 @@ elsewhere is captured in the output XDI file.
    .
     .
      .
+
+
+
+Telemetry
+---------
+
+Whenever you run the ``xafs()`` plan or :numref:`import a spreadsheet
+(Section %s) <automation>` with the ``xlsx()``, you are given an
+estimate of how long it will take.  This is estimate is ... pretty
+good.  Not great, but decent.  Here's where it comes from.
+
+``xafs()`` plan time
+  For each element, the database is searched for XAFS scans on that
+  element that ran to completion.  The data base record has start and
+  stop times for the scan as well as a record of point-by-point
+  integration times.
+
+  For each scan at an element, the sum of integration times is
+  computed, as is the difference between the end and start times.  The
+  difference between those is the overhead (monochromator movement and
+  anything else the plan does between the issuing of the start and
+  stop documents).  The average difference is computed and recorded.
+
+  So, the estimated time for an ``xafs()`` plan is the sum of its
+  integration times plus this historical average of overhead.
+
+Additional ``xafs()`` plan overhead
+  The ``xafs()`` plan does a bunch of measurements related to metadata
+  prior to the start document for the scan being issued.  This is a
+  little harder to compute from the database (certainly not
+  impossible, but it hasn't yet been worked on), so Bruce has made an
+  observation through experience to approximate the amount of time
+  needed to capture photos, measure an XRF spectrum, move to the
+  :numref:`pseudo-channelcut energy (Section %s) <dcm>`, etc.  When
+  computing time for a spreadsheet, this is added to the time for each
+  ``xafs()`` plan run.  Until this is measured properly, the value of
+  ``BMMuser.tweak_xas_time`` is used.
+
+Changing temperature
+  For spreadsheets using the Linkam stage or Lakeshore temperature
+  controller, times for temperature changes are made considering the
+  ramp rate and the settling time.
+
+Moving motors, rotating sample wheels
+  Motor movement for a grid spreadsheet or wheel rotation for wheel
+  spreadsheet are not considered in the time estimate.  The assumption
+  is that the motors are fast compared to almost everything else.
+
+Changing edges
+  For the time estimate in a spreadsheet file, a flat 5 minutes is
+  used.  The range of time for the :numref:`change_edge() (Sample %s)
+  <pds>` command is about 2.5 minutes when moving between nearby edges
+  in the same :numref:`photon delivery mode (Table %s)
+  <photon_delivery_modes>` to about 7 minutes for a change between
+  modes. So this is a source of error in a spreadsheet time estimate.
+
+Aligning the glancing angle stage
+  A flat 3 minutes is used to account for the time it takes to do the
+  automated alignment.
+  
+For a single XAFS scan, the time estimate is the sum of the first two
+items in the list above.  For a spreadsheet, all applicable items from
+the list are added together for each row of the spreadsheet.  The
+times for each row are added up.
+
+.. caution:: The time estimate is a good faith estimate.  It should be
+	     used as a decent suggestion, but high accuracy should not
+	     be expected! 
+
+
+
+Data evaluation
+---------------
+
+The thing about :numref:`automation of measurements (Section %s)
+<automation>` is that the beamline is left unattended for extended
+periods.  Sometimes things happen at the unattended beamline,
+detectors can malfunction, software can get into a weird state,
+samples can fall off of sample holders.  In short, things can happen
+that need human attention and intervention.
+
+At BMM, we have a sort of a warning system for such things.  A machine
+agent has been trained to recognize what XAFS data looks like.  When a
+spectrum is measured that looks like data, i.e. it has an obvious edge
+step towards the beginning of the spectrum which is followed by
+oscillations, the data evaluator returns a positive result.  If the
+measurement does not look like that, it returns a negative result.
+Examples are shown in :numref:`Figure %s <dataeval>`.
+
+The result of the data evaluation is printed to the screen.  More
+importantly, it is posted to :numref:`Slack (Section %s) <slack>`
+where it might be seen by the user or the beamline staff.
+
+
+.. subfigure::  AB
+   :layout-sm: AB
+   :subcaptions: above
+   :name: dataeval
+   :class-grid: outline
+
+   .. image:: _images/good_evaluation.png
+
+   .. image:: _images/bad_evaluation.png
+
+   Examples of data being evaluated as good (left) and bad (right) XAS
+   data.  The data on the left has an obvious edge step followed by
+   oscillations.  It, therefore, looks like XAFS data.  The data on
+   the right is an example of a marginal measurement.  There `is` a
+   step, but it's not very big.  Thus it looks like it might be a
+   problematic measurement.  It certainly is something that needs the
+   attention of a human.
+
+This machine agent is a trained learning model.  It uses a corpus of
+data measured at BMM and tagged by Bruce.  The corpus includes
+hundreds of examples of good spectra and hundreds of examples of
+problematic measurements of all sorts.  These are human-tagged as such
+and trained using a `random forest classifier
+<https://scikit-learn.org/stable/modules/ensemble.html#random-forests>`__.
+Subsequent spectra are evaluated using this trained classifier.  This
+evaluation happens upon completion of each XAFS scan repetition.
+
+Experience so far with this model has been quite good.  The training
+set is over 98% successful when tested against a subset of the
+training corpus.  False positives (i.e. bad data identified as being
+good data) are exceedingly rare.  False negatives (i.e. good data
+falsely identified as bad data) are much more common, happening most
+days. 
+
+That's a fundamentally useful result.  A false negative draws human
+attention to the beamline for a situation that might not require it.
+Frequent false positives would be much more problematic.
+
+All negative results are logged so that the training model can be
+further refined by having a human tag each those negatives
+appropriately and adding them to the training corpus.
+
+The random forest (RF) classifier was chosen because it is fairly simple
+and because it works well.  Also tested were K-neighbors (KN) and a
+Multi-layer Perceptron (MLP).  KN is certainly the simplest of the
+models tried |nd| it is the model usually associated with the `classic
+iris classification problem
+<https://kirenz.github.io/classification/docs/knn-iris.html>`__.  It
+actually works quite well, although RF and MLP are both improvements.
+MLP was the suggestion of a local machine learning expert and performs
+similarly to RF on this trained data corpus.

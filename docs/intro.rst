@@ -420,6 +420,15 @@ from the `The Executable Book Project
 This project uses a GitHub action to build and deploy this document
 whenever a ``git push`` happens.
 
+BMM's profile was mostly written by Bruce.  But I could not have done
+so without the help of several members of NSLS-II's DSSI program.  In
+particular, I want to thank Dan Allan, Tom Caswell, Josh Lynch, Max
+Ratikin, Dmitri Gavrilov, and Stuart Campbell
+
+BMM also makes use of lots of great python tools.  Along with all the
+obvious candidates in the scientific python ecosystem, Matt Newville's
+Larch is used for processing every XAS scan that gets measured.
+
 
 A note about copyright
 ----------------------

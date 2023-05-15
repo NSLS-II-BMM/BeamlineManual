@@ -33,27 +33,20 @@ required to remain in an upright orientation during operation.  While
 the single element detector sees fewer photons, this versatility of
 setup is occasionally very helpful.
 
-.. subfigstart::
 
-.. _fig-4elementINST:
-.. figure::  _images/4element.jpg
-   :target: _images/4element.jpg
-   :width: 100%
-   :align: center
+.. subfigure::  AB
+   :layout-sm: AB
+   :gap: 8px
+   :subcaptions: above
+   :name: fig-XRFINST
+   :class-grid: outline
 
-   Four element silicon drift detector
+   .. image:: _images/4element.jpg
 
-.. _fig-1elementINST:
-.. figure::  _images/1element.jpg
-   :target: _images/1element.jpg
-   :width: 100%
-   :align: center
+   .. image:: _images/1element.jpg
 
-   One element silicon drift detector
-
-.. subfigend::
-   :width: 0.45
-   :label: _fig-XRFINST
+   (Left) Four element silicon drift detector.  (Right) One element
+   silicon drift detector.
 
 
 
@@ -126,29 +119,23 @@ There is also a design which is, essentially, a normal disk cut in
 half.  That one holds fewer samples, but is easier to load and unload
 from a glove box during sample preparation.
 
-.. subfigstart::
 
-.. _fig-samplewheelINST:
-.. figure::  _images/Samplewheel.jpg
-   :target: _images/Samplewheel.jpg
-   :width: 100%
-   :align: center
+.. subfigure::  AB
+   :layout-sm: AB
+   :subcaptions: above
+   :gap: 8px
+   :name: fig-wheelINST
+   :class-grid: outline
 
-   A single-ring sample wheel with 24 sample positions.  There are
-   options with 13mm x 3 mm slots or 13mm diameter holes.
+   .. image:: _images/Samplewheel.jpg
 
-.. _fig-doublewheelINST:
-.. figure::  _images/double_wheel_sm.jpg
-   :target: _images/double_wheel_sm.jpg
-   :width: 100%
-   :align: center
+   .. image:: _images/double_wheel_sm.jpg
 
-   Double-ring sample wheels with 48 sample positions.  There are
-   options with 13mm x 3 mm slots or 13mm diameter holes.
+   (Left) A single-ring sample wheel with 24 sample positions.
+   (Right) Double-ring sample wheels with 48 sample positions.  For
+   both styles, there are options with 13mm x 3 mm slots or 13mm
+   diameter holes.
 
-.. subfigend::
-   :width: 0.45
-   :label: _fig-wheelINST
 
 
 
@@ -219,29 +206,23 @@ result, it is a bit slow to cool down, requiring about 2 hours to get
 to 10K from room temperature. Sample changes are a bit laborious
 due to the construction of the vacuum shroud.
 
-.. subfigstart::
 
-.. _fig-cryostatINST:
-.. figure::  _images/cryostat.jpg
-   :target: _images/cryostat.jpg
-   :width: 100%
-   :align: center
+.. subfigure::  AB
+   :layout-sm: AB
+   :subcaptions: above
+   :gap: 8px
+   :name: fig-displexINST
+   :class-grid: outline
 
-   The Displex cryostat and it's compressor.
+   .. image:: _images/cryostat.jpg
 
+   .. image:: _images/lakeshore331.png
 
-.. _fig-lakeshoreINST:
-.. figure::  _images/lakeshore331.png
-   :target: _images/lakeshore331.png
-   :width: 60%
-   :align: center
+   (Left) The Displex cryostat and it's compressor.  (Right) The
+   `LakeShore 331 controller
+   <https://www.lakeshore.com/products/categories/overview/discontinued-products/discontinued-products/model-331-cryogenic-temperature-controller>`__,
+   used to control temperature for the cryostat shown to the left.
 
-   The LakeShore 331 controller, used to control temperature for the
-   cryostat shown to the left.
-
-.. subfigend::
-   :width: 0.45
-   :label: _fig-displexINST
 
 
 .. _glancing-angle-stage:
