@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Sphinx docs to gh-pages
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Make conda environment
@@ -24,7 +24,7 @@ jobs:
           auto-activate-base: false
           show-channel-urls: true
       - name: Running the Sphinx to gh-pages Action
-        uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.0-beta.2
+        uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.2.0
         with:
           branch: master
           dir_docs: docs
