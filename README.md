@@ -14,3 +14,11 @@ This documentation project uses the lovely
 from the [The Executable Book Project](https://ebp.jupyterbook.org/).
 
 
+## A note about copyright
+
+This document and the BlueSky data collection profile it covers was
+developed primarily by a NIST employee. Pursuant to title 17 United
+States Code Section 105, works of NIST employees are not subject to
+copyright protection in the United States. Thus this repository may
+not be licensed under the same terms as Bluesky itself or its
+documentation.

@@ -283,5 +283,5 @@ of transmission |mu| (E), I0, and the reference spectrum.
    :width: 80%
    :align: center
 
-   An example of the XAFS live plot made for a transmission XAFS scan.
+   An example of the XAFS live plot made for a fluorescence XAFS scan.
 

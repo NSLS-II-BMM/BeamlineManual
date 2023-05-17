@@ -31,8 +31,70 @@ discussed in the previous sections.
    Do ``RE.stop()`` to fully stop the command.
 
 
-Command summary
----------------
+The most essential information
+------------------------------
+
+.. note:: Parentheses |nd| ``()`` |nd| are an essential part of the
+	  syntax.  Same for ``RE()`` and ``%`` when specified.  
+
+
+Most common commands
+~~~~~~~~~~~~~~~~~~~~
+
+
+``shb.open()`` / ``shb.close()``
+  Open / close the photon shutter
+
+``RE(mv(dcm.energy, <value>))``
+  Move TO an energy value
+
+``RE(mv(xafs_y, <value>))``
+  Move any named motor TO a position (``xafs_y`` is an example)
+
+``RE(mvr(xafs_y, <value>))``
+  Move any named motor BY an amount (``xafs_y`` is an example)
+
+``RE(change_edge('Xx'))``
+  setup beamline for an absorption edge, ``Xx`` = 1- or 2-letter symbol,
+  e.g. ``Cu`` or ``Y``.
+
+``RE(slot(<N>))``
+  Move sample wheel to slot #N (1 |le| N |le| 24)
+
+``RE(xafs_wheel.outer())`` / ``RE(xafs_wheel.inner())``
+  move the *ex situ* wheel sample holder to the outer/inner ring
+
+``%xrf``
+  measure and display an XRF spectrum
+
+``RE(linescan(<detector>, <motor>, <start>, <stop>, <N>))``
+  move a motor, plot a signal
+
+``xlsx()``
+  import a spreadsheet
+
+``RE(xanes())``
+  quick-n-dirty XANES scan at the current element and edge
+
+
+Most common motors
+~~~~~~~~~~~~~~~~~~
+
+See :numref:`Section %s <sample_stages>` for the full list of
+``xafs_`` motors.
+
+   ============== ===========  =========  =======================  ==================================
+   motor          type         units      notes                    directions
+   ============== ===========  =========  =======================  ==================================
+   ``xafs_x``     linear       mm         main sample stage        |plus| outboard, - inboard
+   ``xafs_y``     linear       mm         main sample stage        |plus| up, - down
+   ``xafs_det``   linear       mm         detector mount           |plus| away from sample, - closer
+   ============== ===========  =========  =======================  ==================================
+
+
+
+Full list of commands
+---------------------
 
 Note that some command must be run through the run engine, other do
 not.  The use of ``RE()`` is called explicitly in :numref:`Table %s
@@ -80,9 +142,9 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | |mquad| |mquad| |mquad| |mquad| |mquad| **Motor movement commands**                                                   |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | ``RE(mv(xafs_liny, <value>))``           |    Move any named motor TO a position (``xafs_y`` is an example)           |
+   | ``RE(mv(xafs_y, <value>))``              |    Move any named motor TO a position (``xafs_y`` is an example)           |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | ``RE(mvr(xafs_liny, <value>))``          |    Move any named motor BY an amount (``xafs_y`` is an example)            |
+   | ``RE(mvr(xafs_y, <value>))``             |    Move any named motor BY an amount (``xafs_y`` is an example)            |
    +------------------------------------------+----------------------------------------------------------------------------+
    | |mquad| |mquad| |mquad| |mquad| |mquad| **Where are things?**                                                         |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -216,7 +278,7 @@ Individual slits are named ``slits3.top``, ``slits3.bottom``,
 Motor positions and limits
 --------------------------
 
-These commands work on any named motor (:numref:`Table %s <motor-list>`).
+These commands work on any named motor (:numref:`Table %s <xafs-stages>`).
 
 Where is a sample motor?
    ``%w xafs_x``
@@ -239,7 +301,7 @@ where
 
 + ``<detector>`` is one of: ``'it'``, ``'if'``, ``'ir'``, or ``'i0'``
 + ``<motor>`` is one of: ``'x'``, ``'y'``, ``'pitch'``, ``'wheel'``,
-  or a named motor (:numref:`Table %s <motor-list>`)
+  or a named motor (:numref:`Table %s <xafs-stages>`)
 + ``<start>``, ``<stop>``, ``<N>`` are the boundaries relative to the
   current position and the number of steps.
 
@@ -298,33 +360,3 @@ for the tab to be read.
 
      BMM_log_info(“This is my log entry”)
 
-Common user motors
-------------------
-
-.. table:: Main motors BMM users will interact with
-   :name:  motor-list
-   :align: left
-
-   +----------------------+--------------------------------------------------------------------------+
-   | ``xafs_x``           |    X sample stage (+ inboard / - outboard)                               |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``xafs_y``           |    Y sample stage (+ up / - down)                                        |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``xafs_det``         |    detector stage (+ out / - in)                                         |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``xafs_pitch``       |    sample pitch (Rx)                                                     |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``xafs_roll``        |    sample roll (Rz)                                                      |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``xafs_wheel``       |    sample wheel (+ higher slot number, 15 degrees apart)                 |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``xafs_ref``         |    reference wheel (+ higher slot number, 15 degrees apart)              |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``xafs_garot``       |    glancing angle rotation wheel                                         |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``dm3_bct``          |    slit assembly height (+ up / - down) (normally use ``slit_height()``) |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``slits3.vsize``     |    vertical slit size                                                    |
-   +----------------------+--------------------------------------------------------------------------+
-   | ``slits3.vcenter``   |    horizontal slit size                                                  |
-   +----------------------+--------------------------------------------------------------------------+

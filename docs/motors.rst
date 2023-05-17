@@ -67,12 +67,12 @@ other places instead of writing out the BlueSky name for the motor.
    :name:  xafs-stages
    :align: left
 
-   ============== ===========  =========  =======================  ===================================
+   ============== ===========  =========  =======================  =====================================
    motor          type         units      notes                    directions
-   ============== ===========  =========  =======================  ===================================
+   ============== ===========  =========  =======================  =====================================
    ``xafs_x``     linear       mm         main sample stage        |plus| outboard, - inboard
    ``xafs_y``     linear       mm         main sample stage        |plus| up, - down
-   ``xafs_det``   linear       mm         detector mount           |plus| closer to sample, - farther
+   ``xafs_det``   linear       mm         detector mount           |plus| away from sample, - closer
    ``xafs_wheel`` rotary       degrees    *ex situ* sample wheel   |plus| clockwise, - widdershins
    ``xafs_linxs`` linear       mm         ref wheel vertical       |plus| up, - down
    ``xafs_ref``   rotary       degrees    reference stage          |plus| clockwise, - widdershins
@@ -81,7 +81,7 @@ other places instead of writing out the BlueSky name for the motor.
    ``xafs_pitch`` tilt         degrees    Huber tilt stage         |plus| more positive
    ``xafs_roll``  tilt         degrees    Huber tilt stage         |plus| more positive
    ``xafs_rots``  rotary       degrees    small rotary stage   
-   ============== ===========  =========  =======================  ===================================
+   ============== ===========  =========  =======================  =====================================
 
 Configuration and position of the motors can be queried easily.  In
 the following examples, the ``xafs_y`` motor is used.  The commands
