@@ -188,36 +188,28 @@ was called :file:`mysamples.xlsx`, the new BlueSky command is called
 Sample wheel automation
 -----------------------
 
-The standard *ex situ* sample holder at BMM is a plastic wheel that get
-mounted on a rotation stage.  Examples are shown in figures
-:numref:`fig-samplewheel` and :numref:`fig-doublewheel`.  The rotation
-stage is mounted on an XY stage, so when one slot on the sample wheel
-is aligned, all the slots are aligned.
+The standard *ex situ* sample holder at BMM is a plastic wheel that
+get mounted on a rotation stage.  Examples are shown in figures
+:numref:`fig-wheels`.  The rotation stage is mounted on an XY stage,
+so when one slot on the sample wheel is aligned, all the slots are
+aligned.
 
-.. subfigstart::
+.. subfigure::  AB
+   :layout-sm: AB
+   :gap: 8px
+   :subcaptions: above
+   :name: fig-wheels
+   :class-grid: outline
 
-.. _fig-samplewheel:
-.. figure::  _images/Samplewheel.jpg
-   :target: _images/Samplewheel.jpg
-   :width: 100%
-   :align: center
+   .. image:: _images/Samplewheel.jpg
 
-   A single-ring sample wheel with 24 sample positions.  There are
-   options with 13mm x 3 mm slots or 13mm diameter holes.
+   .. image:: _images/double_wheel_sm.jpg
 
-.. _fig-doublewheel:
-.. figure::  _images/double_wheel_sm.jpg
-   :target: _images/double_wheel_sm.jpg
-   :width: 100%
-   :align: center
-
-   Double-ring sample wheels with 48 sample positions.  There are
-   options with 13mm x 3 mm slots or 13mm diameter holes.  The rings
-   are 26 mm apart.
-
-.. subfigend::
-   :width: 0.45
-   :label: _fig-normalization
+   (Left) A single-ring sample wheel with 24 sample positions.
+   (Right) Double-ring sample wheels with 48 sample positions.  There
+   are options for both wheel styles with 13mm x 3 mm slots or 13mm
+   diameter holes.  The rings on the double wheel are 26 mm apart
+   (center to center of slots/holes).
 
 The automation concept is that each slot on the sample wheel is
 described by a row in the spreadsheet.  Each column of the spreadsheet
@@ -352,8 +344,8 @@ names.
    using the Linkam stage.  Link to the `Linkam spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/linkam.xlsx>`_
 
-LakeShore/Displex cryostat automation
--------------------------------------
+LakeShore/Displex automation
+----------------------------
 
 For extremely low temperature experiments, BMM has a Displex crystat
 which uses a two-stage helium compressor to cool the cold head down as
@@ -370,29 +362,20 @@ cooling from room temperature to 10K will take about 2 hours and
 budget up to an an hour for returning to room temperature and changing
 samples. 
 
-.. subfigstart::
+.. subfigure::  AB
+   :layout-sm: AB
+   :gap: 8px
+   :subcaptions: above
+   :name: fig-displex
+   :class-grid: outline
 
-.. _fig-cryostat:
-.. figure::  _images/cryostat.jpg
-   :target: _images/cryostat.jpg
-   :width: 100%
-   :align: center
+   .. image:: _images/cryostat.jpg
 
-   The Displex cryostat and it's compressor.
+   .. image:: _images/lakeshore331.png
 
-
-.. _fig-lakeshore:
-.. figure::  _images/lakeshore331.png
-   :target: _images/lakeshore331.png
-   :width: 60%
-   :align: center
-
-   The LakeShore 331 controller, used to control temperature for the
+   (Left) The Displex cryostat and it's compressor.  (Right) The
+   LakeShore 331 controller, used to control temperature for the
    cryostat shown to the left.
-
-.. subfigend::
-   :width: 0.45
-   :label: _fig-displex
 
 
 The automation for the LakeShore 331 works much the same as for the

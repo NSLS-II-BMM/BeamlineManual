@@ -72,7 +72,7 @@ Automating reference foil changes
 A wheel is used to hold and switch between reference foils and stable
 oxides.  The standard reference wheel has most of the elements
 accessible at BMM, including all the lanthanides (except Pm!).  A
-double wheel (:numref:`see (Figure %s) <fig-doublewheelINST>`) is used
+double wheel (:numref:`see (Figure %s) <fig-wheels>`) is used
 to hold the standards.  The wheel is mounted on a rotation stage which
 is, in turn, mounted on an XY stage for alignment.
 

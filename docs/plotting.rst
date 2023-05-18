@@ -32,8 +32,8 @@ server used by BlueSky to orchestrate it's communications.  We were
 also given a private Kafka topic over which to send BMM-specific
 messages intended for use by a BMM-specific consumer.
 
-Local communication
--------------------
+Various types of plots
+----------------------
 
 Communicating over the ``bmm-test`` topic, two sorts of plotting
 chores are managed.  In each case, the document is a simple dictionary
@@ -100,8 +100,8 @@ Finally, at the end of the scan sequence, this document is issued:
 
 .. code-block:: python
 
-   'xafs_sequence' : 'stop', 
-   'filename'      : '/path/to/dossier/image'}
+   {'xafs_sequence' : 'stop', 
+    'filename'      : '/path/to/dossier/image'}
 
 This tells the consumer to make the final version of the 3-panel plot
 using all the data and to save a png image of the plot for use in the
@@ -175,16 +175,16 @@ the alignment.
 The alignment of the glancing angle stage works in much the same
 manner.
 
-.. todo:: Make some pictures to illustrate all of this.
 
 .. _fig-find_slot:
-.. figure::  _images/dummy.png
-   :target: _images/dummy.png
+.. figure::  _images/find_slot.png
+   :target: _images/find_slot.png
    :width: 50%
    :align: center
 
    An example of the final plot for an alignment of the *ex situ*
-   sample wheel. 
+   sample wheel. The green X marks shows the aligned positions in
+   ``xafs_x`` and ``xafs_y``.
 
 
 .. _liveline:
@@ -194,8 +194,8 @@ Live linescan plots
 
 At BMM, :numref:`a linescan (Sec %s) <linescan>` is a scan where a
 motor is moved and a signal is plotted.  A linescan begins by issuing
-a message telling the consumer to begin looking for BlueSky event
-documents:
+a message telling the consumer to start a new plot and to begin
+looking for BlueSky event documents:
 
 .. code-block:: python
 
@@ -207,7 +207,7 @@ Those event documents will be parsed to obtain the result of the most
 recently measured data point.  The new data point is added to the plot
 and the plot is redrawn.
 
-When the linescan finishes, a ``stop`` message is issued:
+When the linescan finishes, a *stop* message is issued:
 
 .. code-block:: python
 
@@ -284,4 +284,34 @@ of transmission |mu| (E), I0, and the reference spectrum.
    :align: center
 
    An example of the XAFS live plot made for a fluorescence XAFS scan.
+
+
+Cleaning up the screen
+----------------------
+
+Most of the plotting options from the Kafka consumer are good about
+closing the last plot before starting a new one.  However, linescans,
+in general, do not clean up prior plots.
+
+You can close some or all of the plots made by the Kafka consumer by
+issuing a suitable message, either at the command line or in a plan. 
+
+This will close all plots on screen made by the consumer:
+
+.. code-block:: python
+
+   kafka_message({'close': 'all'})
+
+This will close all plots associated with linescans, but not close
+plots associated with XAFS scans:
+
+.. code-block:: python
+
+   kafka_message({'close': 'line'})
+
+And this will close the most recent plot:
+
+.. code-block:: python
+
+   kafka_message({'close': 'last'})
 

@@ -306,38 +306,24 @@ building 743 and enter through the main entrance of 743.
 Walk though the lobby to the doors that lead out onto the experimental
 floor.  BMM is just across the walk way from the doors to the 743 lobby.
 
+.. subfigure::  ABC
+   :layout-sm: ABC
+   :gap: 8px
+   :subcaptions: above
+   :name: fig-BMMlocation
+   :class-grid: outline
 
+   .. image:: _images/743lobby.jpg
 
-.. subfigstart::
+   .. image:: _images/corridor.jpg
 
-.. _fig-743lobby:
-.. figure::  _images/743lobby.jpg
-   :target: _images/743lobby.jpg
-   :width: 100%
-   :align: center
+   .. image:: _images/BMMcontrolstation.jpg
 
-   Approaching the floor through the lobby of Building 743
+   (Left) Approaching the floor through the lobby of
+   Building 743. (Center) BMM is just across the corridor from the
+   door to the 743 lobby. (Right) Walk past the diagonal support beam
+   and head into the BMM control station
 
-.. _fig-corridor:
-.. figure::  _images/corridor.jpg
-   :target: _images/corridor.jpg
-   :width: 100%
-   :align: center
-
-   BMM is just across the corridor from the door to the 743 lobby
-
-.. _fig-controlstation:
-.. figure::  _images/BMMcontrolstation.jpg
-   :target: _images/BMMcontrolstation.jpg
-   :width: 100%
-   :align: center
-
-   Walk past the diagonal support beam and head into the BMM control
-   station
-
-.. subfigend::
-   :width: 0.31
-   :label: _fig-XRFINST
 
 
 

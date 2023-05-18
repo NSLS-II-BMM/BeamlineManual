@@ -114,25 +114,20 @@ The name of the snapshot file and the camera used are written to the
 experimental log.
 
 
-.. subfigstart::
+.. subfigure::  AB
+   :layout-sm: AB
+   :gap: 8px
+   :subcaptions: above
+   :name: fig-snapshots
+   :class-grid: outline
 
-.. _fig-anacam:
-.. figure::  _images/analog.jpg
-   :target: _images/analog.jpg
-   :width: 75%
+   .. image:: _images/analog.jpg
 
-   Snapshot taken with the analog camera
+   .. image:: _images/XASwebcam.jpg
 
-.. _fig-xascam:
-.. figure::  _images/XASwebcam.jpg
-   :target: _images/XASwebcam.jpg
-   :width: 100%
+   (Left) Snapshot taken with the analog camera.  (Right) 
+   Snapshot taken with the XAS web camera.
 
-   Snapshot taken with the XAS web camera
-
-.. subfigend::
-   :width: 0.45
-   :label: _fig-snapshots
 
 .. _video:
 
