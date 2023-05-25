@@ -126,30 +126,32 @@ are the same for all sample stage motors.
 
 **Querying soft limits**
    To know the soft limits on a sample stage, do
-   ``xafs_y.llm.value`` or ``xafs_y.hlm.value`` for the low or
+   ``xafs_y.llm.get()`` or ``xafs_y.hlm.get()`` for the low or
    high limit. 
 
 **Setting soft limits**
    To set the soft limits on a sample stage, do something like
-   ``xafs_y.llm.value = 5`` or ``xafs_y.hlm.value = 85``
+   ``xafs_y.llm.put(5)`` or ``xafs_y.hlm.put(85)``
 
 **Reference wheel** 
-   The reference stage _`Reference` is a rotation stage with a sample
-   wheel holding up to 48 reference foils.  It is calibrated such that
-   the beam passes through the center of a slot every 15 degrees.  The
-   slots are indexed such that they can be accessed by the symbol of
-   the element being measured.  To move to a new reference foil::
+   :numref:`The reference stage (Section %s) <foilholder>` is a
+   rotation stage with a sample wheel holding up to 48 reference
+   foils.  It is calibrated such that the beam passes through the
+   center of a slot every 15 degrees.  The slots are indexed such that
+   they can be accessed by the symbol of the element being measured.
+   To move to a new reference foil::
 
      RE(reference('Fe'))
 
-   To see the available foils, do ``%se``
+   To see the available foils, do ``%se`` or look at the value of
+   ``xafs_ref.mapping``.
 
    BMM has foils or stable oxides for each of these elements::
 
       Ti V  Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Zr Nb Mo Pt Au Pb Bi Sr Y
       Cs La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Rb Ba Hf Ta W  Re Os Ir Ru
 
-   (A few of these |nd| Ba, W, Os, Ir |nd| are missing as of 23
+   (A few of these |nd| Ba, Os, Ir |nd| are missing as of 23
    December, 2022.  We are working to obtain the missing ones.)
 
    `Here is a complete list of standards

@@ -37,8 +37,8 @@ measure.  This will:
   :numref:`(Section %s) <sample_stages>`
 * set the active Xspress3 ROI to the correct emission line
 
-This whole process takes less than 5 minutes. After that, the beamline
-is ready to collect data.
+This whole process takes at most 7 minutes, sometimes under 3
+minutes.  After that, the beamline is ready to collect data.
 
 If using the focusing mirror, do this:
 
@@ -72,7 +72,7 @@ Automating reference foil changes
 A wheel is used to hold and switch between reference foils and stable
 oxides.  The standard reference wheel has most of the elements
 accessible at BMM, including all the lanthanides (except Pm!).  A
-double wheel (:numref:`see (Figure %s) <fig-wheels>`) is used
+double wheel (:numref:`see Figure %s <fig-wheels>`) is used
 to hold the standards.  The wheel is mounted on a rotation stage which
 is, in turn, mounted on an XY stage for alignment.
 
@@ -177,6 +177,7 @@ where,
 ``energy``
   Use an E0 value that is not obtained from the look-up table.
   Default is unspecified, i.e. use ``element`` and look-up table.
+  This is rarely necessary, except when setting up for XRD.
 
 ``tune``
   ``True``: optimize DCM second crystal pitch; ``False``: skip ``rocking_curve()``
@@ -187,7 +188,8 @@ where,
   scan.  Default is ``True``.  Skipping this is rarely a good idea.
 
 ``calibrating``
-  ``True``: used when performing beamline maintenance.  Default is ``False``
+  ``True``: used when performing beamline maintenance.  Default is
+  ``False``.  Rarely used.
 
 ``target``
   The energy above e0 at which to perform the rocking curve scan.
@@ -542,7 +544,9 @@ Mode XRD delivers high energy, focused beam to the goniometer.
 
 .. todo:: Lookup table not complete for mode B. In fact, the ydo and
    ydi jacks of M3 cannot move low enough to enter mode B.  In
-   practice, mode B is not available.
+   practice, mode B is not available.  Elements that should be
+   measured in mode B are, instead, measured in mode C and we live
+   with incomplete harmonic rejection.
 
 
 To move between modes, do::
@@ -552,16 +556,14 @@ To move between modes, do::
 where ``<mode>`` is one of the strings in the first column of
 :numref:`Table %s <pds-modes>`.  For example::
 
-  RE(change_modes('D'))
+  RE(change_mode('D'))
 
 This will move 17 motors all at the same time and should take less
-than 2 minutes.
+than 5 minutes.
 
-Note that the bender on the focusing mirror is not adjusted by the
-``change_mode()`` plan.  You will likely need to adjust the curvature
-|nd| thus the focal length |nd| by hand.  Focusing at the XAS end
-station requires that bender be near its upper limit.  Focusing at the
-XRD station uses much less focus.
+Focusing at the XAS end station requires that bender be near its upper
+limit.  Focusing at the XRD station has the bender near the middle of
+its range.
 
 .. _change-crystals:
 
@@ -579,8 +581,10 @@ or::
 This will move the lateral motor of the monochromator between the two
 crystal sets and adjust the pitch of the second crystal to be nearly
 in tune and the roll to deliver the beam to nearly the same location
-for both crystals.  This also is quick and should take less than 3
-minutes.
+for both crystals.  It will also return the monochromator to the same
+energy.
+
+This takes about 5 minutes.
 
 The ``change_xtals()`` plan also runs the :numref:`rocking curve
 (Section %s) <special-linescans>` macro to fix the tuning of the

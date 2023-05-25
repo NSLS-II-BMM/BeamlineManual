@@ -21,17 +21,22 @@ experimental options, contact the beamline staff.
 Fluorescence detectors
 ----------------------
 
-The standard fluorescence detector at BMM is a four element silicon
-drift detector with an `Xspress3
-<https://quantumdetectors.com/products/xspress3/>`_ readout.
+The standard fluorescence detector at BMM is a `four element silicon
+drift detector
+<https://www.hitachi-hightech.com/us/en/products/analytical-systems/sdd/vortex-me4.html>`__
+with an `Xspress3 <https://quantumdetectors.com/products/xspress3/>`_
+readout.  This normally sits on a linear stage so that distance to the
+sample can be user-controlled and incorporated into :numref:`beamline
+automation (Section %s) <automation>`.
 
-We also have a single element silicon drift detector which is useful
-in certain situations.  If your experimental setup requires placing
-the detector in an unusual orientation, the single element detector
-can be used.  Unlike the 4-element detector, the single element is not
-required to remain in an upright orientation during operation.  While
-the single element detector sees fewer photons, this versatility of
-setup is occasionally very helpful.
+We also have a `single element silicon drift detector
+<https://www.hitachi-hightech.com/us/en/products/analytical-systems/sdd/vortex-90ex.html>`__
+which is useful in certain situations.  If your experimental setup
+requires placing the detector in an unusual orientation, the single
+element detector can be used.  Unlike the 4-element detector, the
+single element is not required to remain in an upright orientation
+during operation.  While the single element detector sees fewer
+photons, this versatility of setup is occasionally very helpful.
 
 
 .. subfigure::  AB
@@ -109,7 +114,7 @@ the sample holder to the incident beam.
 Here are photos of some of the sample holder options.  There are
 designs which use slots or circle for the sample position.  The
 circular holes are 13 mm, which is a common size for a pellet press.
-133mm pellets can usually slip snugly in those holes.
+13 mm pellets can usually slip snugly into those holes.
 
 Samples can be packed into the slots or holes.  More commonly, samples
 are prepared in some manner and affixed to the front of the sample
@@ -120,8 +125,8 @@ half.  That one holds fewer samples, but is easier to load and unload
 from a glove box during sample preparation.
 
 
-.. subfigure::  AB
-   :layout-sm: AB
+.. subfigure::  ABC
+   :layout-sm: ABC
    :subcaptions: above
    :gap: 8px
    :name: fig-wheelINST
@@ -131,10 +136,13 @@ from a glove box during sample preparation.
 
    .. image:: _images/double_wheel_sm.jpg
 
+   .. image:: _images/halfwheel.jpg
+
    (Left) A single-ring sample wheel with 24 sample positions.
-   (Right) Double-ring sample wheels with 48 sample positions.  For
+   (Center) Double-ring sample wheels with 48 sample positions.  For
    both styles, there are options with 13mm x 3 mm slots or 13mm
-   diameter holes.
+   diameter holes. (Right) A half wheel suitable for loading in a
+   glove box.
 
 
 
@@ -194,6 +202,13 @@ transmission XAFS.
    The linkam stage at BMM is much like this one, except with a 3mm
    diameter hole in the heating block to allow for transmission XAFS.
 
+
+BMM has two dewars for use with the Linkam.  The 2 L dewar has enough
+capacity for about 2 hours of measurement.  The 25 L dewar runs for
+about 16 hours and is the standard choice.  The advantage of the
+smaller dewar is that it is smaller and might be needed for
+complicated setups were space is at a premium.
+
 Displex Cryostat
 ~~~~~~~~~~~~~~~~
 
@@ -233,11 +248,11 @@ Glancing angle and thin film stage
 We use this glancing angle stage for high throughput studies of thin
 film and other flat samples.  The apparatus shown below rests on a
 rotation stage for moving up to 8 samples into and out of the beam.
-The rotation stage sits on a tilt stage, allowing fine control of
+The rotation stage sits on a tilt stage, allowing fine control of the
 incident angle.  Each sample position is a spinner, which is used to
 suppress diffraction from the substrate.
-
-In most cases, sample alignment is fully automated.
+In most cases, sample translation and sample alignment is fully
+automated.
 
 .. _fig-glancinganglestageINST:
 .. figure::  _images/glancing_angle_stage.jpg
@@ -248,4 +263,8 @@ In most cases, sample alignment is fully automated.
    The glancing angle stage with 8 sample positions.
 
 
-
+While this can be used for standing wave experiments, the much more
+typical application is a simple glancing angle measurement in which
+the point of the shallow angle is to spread the beam out over the full
+length of the sample.  This significantly increases the number of
+atoms involved in the measurement.

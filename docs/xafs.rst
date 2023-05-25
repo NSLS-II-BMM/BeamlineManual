@@ -56,7 +56,7 @@ The INI file
    start      = next
 
    # mode is transmission, fluorescence, both, or reference
-   mode = transmission
+   mode       = transmission
 
    ##  regions relative
    ##  to e0:         1      2      3      4
