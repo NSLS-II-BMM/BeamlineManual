@@ -14,7 +14,7 @@ import os
 import sys
 CURDIR = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join('sphinx', 'ext')))
-# sys.path.insert(0, os.path.abspath('.'))
+#sys.path.insert(0, os.path.abspath('./ext'))
 
 
 # -- Project information -----------------------------------------------------
@@ -38,7 +38,7 @@ extensions = ['sphinx_math_dollar', 'sphinx.ext.mathjax',
 ]
 extensions.extend([#'fix_equation_ref',
                    'sphinx_subfigure', 'numsec', 'figtable',
-                   'singlehtml_toc', 'singletext', 'demeterdocs',
+                   'singlehtml_toc', 'singletext', 'demeterdocs', 'appendix',
 ])
 
 mathjax3_config = {
@@ -72,7 +72,7 @@ html_theme_options = {
     "use_issues_button": True,
     "use_repository_button": True,
     "use_download_button": True,
-    "extra_navbar": '<p><a href=https://wiki-nsls2.bnl.gov/beamline6BM/index.php?Main_Page><img src="./_static/floor_mat.png" style="height: 3cm;" alt="BMM floor tab"><br>Beamline for Materials<br>Measurement</a></p>',
+    "extra_navbar": '<p><a href=https://wiki-nsls2.bnl.gov/beamline6BM/index.php?Main_Page><img src="./_static/floor_mat.png" style="height: 3cm;" alt="BMM floor tab"></a></p>',
 }
 html_show_copyright = False
 #html_sidebars = {

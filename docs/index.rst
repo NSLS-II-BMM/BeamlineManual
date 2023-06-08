@@ -18,6 +18,7 @@ BMM is NIST's Beamline for Materials Measurement
 .. toctree::
    :maxdepth: 2
    :numbered:
+   :caption: Running the beamline
 
    intro.rst
    instruments.rst
@@ -30,5 +31,12 @@ BMM is NIST's Beamline for Materials Measurement
    manage.rst
    cheatsheet.rst
    trouble.rst
+
+.. appendix::
+   :maxdepth: 2
+   :numbered:
+   :caption: Developer documentation
+
+   profile.rst
    plotting.rst
    todo.rst

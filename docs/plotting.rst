@@ -32,6 +32,11 @@ server used by BlueSky to orchestrate it's communications.  We were
 also given a private Kafka topic over which to send BMM-specific
 messages intended for use by a BMM-specific consumer.
 
+Starting the Kafka consumer
+---------------------------
+
+.. todo:: Document this!
+
 Various types of plots
 ----------------------
 

@@ -112,7 +112,7 @@ the sample holder to the incident beam.
 
 
 Here are photos of some of the sample holder options.  There are
-designs which use slots or circle for the sample position.  The
+designs which use slots or circles for the sample position.  The
 circular holes are 13 mm, which is a common size for a pellet press.
 13 mm pellets can usually slip snugly into those holes.
 
@@ -193,19 +193,23 @@ sample stage at the center is modified to have a 3mm diameter hole for
 transmission XAFS.
 
 
-.. _fig-linkamstageINST:
-.. figure::  _images/linkam.png
-   :target: _images/linkam.png
-   :width: 40%
-   :align: center
+.. subfigure::  AB
+   :layout-sm: AB
+   :subcaptions: above
+   :gap: 8px
+   :name: fig-linkamstageINST
+   :class-grid: outline
 
-   The linkam stage at BMM is much like this one, except with a 3mm
-   diameter hole in the heating block to allow for transmission XAFS.
+   .. image:: _images/linkam.jpg
 
+   .. image:: _images/dewar.jpg
+
+   (Left) The Linkham stage mounted for transmission on the sample
+   stage.  (Right) The 25 L dewar used for cooling the Linkam stage.
 
 BMM has two dewars for use with the Linkam.  The 2 L dewar has enough
 capacity for about 2 hours of measurement.  The 25 L dewar runs for
-about 16 hours and is the standard choice.  The advantage of the
+about 14 hours and is the standard choice.  The advantage of the
 smaller dewar is that it is smaller and might be needed for
 complicated setups were space is at a premium.
 

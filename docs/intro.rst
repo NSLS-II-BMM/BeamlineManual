@@ -12,7 +12,7 @@
 Introduction to BMM
 ===================
 
-BMM is NIST's Beamline for Materials Measurement.
+BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
 
 At the unix command line, type ``bsui`` to start the BlueSky user
 interface.  bsui is simply an `Ipython shell <https://ipython.org/>`_
@@ -48,6 +48,7 @@ TL;DR
 **Import an automation spreadsheet**
    Prepare a spreadsheet, then ``xlsx()``, see :numref:`{name}, Section {number} <automation>`
 
+:numref:`More complete command cheatsheet, Section {number} <cheatsheet>`
 
 
 The user experience
@@ -393,7 +394,7 @@ by 1 mm is delivered to the end station.  For many XAS experiments,
 this rather large beam is desirable.  Indeed, many of the visitors to
 BMM specifically request the large beam for their experiments.  With
 the focusing mirror in place, that large swath is reduced to a spot of
-about 300 |mu| m by 200 |mu| m.
+about 300 |mu| m by 250 |mu| m.
 
 Acknowledgements
 ----------------
@@ -401,19 +402,22 @@ Acknowledgements
 This documentation project uses the lovely `{book}theme
 <https://sphinx-book-theme.readthedocs.io/en/latest/index.html>`__
 from the `The Executable Book Project
-<https://ebp.jupyterbook.org/>`__.
+<https://ebp.jupyterbook.org/>`__.  Appendices are numbered properly using the ``appendix.py`` extension from https://github.com/heig-tin-info/handout.
 
-This project uses a GitHub action to build and deploy this document
-whenever a ``git push`` happens.
+This project uses a GitHub action to build and deploy `(see details
+here)
+<https://github.com/marketplace/actions/sphinx-docs-to-github-pages>`__
+this document whenever a ``git push`` happens.
 
 BMM's profile was mostly written by Bruce.  But I could not have done
 so without the help of several members of NSLS-II's DSSI program.  In
 particular, I want to thank Dan Allan, Tom Caswell, Josh Lynch, Max
-Ratikin, Dmitri Gavrilov, and Stuart Campbell
+Rakitin, Dmitri Gavrilov, and Stuart Campbell
 
 BMM also makes use of lots of great python tools.  Along with all the
 obvious candidates in the scientific python ecosystem, Matt Newville's
-Larch is used for processing every XAS scan that gets measured.
+`Larch <http://xraypy.github.io/xraylarch/>`__ is used to process
+every XAS scan that gets measured.
 
 
 A note about copyright

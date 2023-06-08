@@ -43,7 +43,9 @@ differences in the columns corresponding to the different instruments.
 
 Make sure you are using the most up-to-date version of the spreadsheet.
 
-.. note:: The current spreadsheet version is **10**, as of 23 December, 2022.
+.. note:: The current spreadsheet version is **10**, as of 23
+          December, 2022.  You should *always* use a current
+          spreadsheet.
 
 
 Common features
@@ -177,7 +179,7 @@ The INI file (:numref:`Section %s <ini>`) contains the default values
 from the green line (see :numref:`Figure %s <fig-wheel-spreadsheet>`).
 The macro file is imported into the BlueSky session, providing a new
 with the name of the spreadsheet file.  If the tab in the spreadsheet
-was called :file:`mysamples.xlsx`, the new BlueSky command is called
+was called :file:`mysamples`, the new BlueSky command is called
 ``mysamples_macro()``.
 
 .. todo::
@@ -236,7 +238,10 @@ the INI file |nd| file name, element, edge, and so on.
 .. note:: February 2020
 
    The E\ :sub:`0` column is no longer used.  E\ :sub:`0` is now
-   always taken from the tabulated value for ``element`` and ``edge``
+   always taken from the tabulated value for ``element`` and
+   ``edge``. Some effort is made to read spreadsheets from before
+   Feb. 2020, but they are deprecated and no longer guaranteed to
+   work.
 
 The green cell in the first row is used to input the names of all the
 people involved in the experiment, as explained above.
@@ -311,14 +316,21 @@ using liquid nitrogen flow or heat up to 600 C using a resistive
 heater.  The linkam stage is typically mounted upright on top fo the
 XY stage.
 
-.. _fig-linkamstage:
-.. figure::  _images/linkam.png
-   :target: _images/linkam.png
-   :width: 40%
-   :align: center
 
-   The linkam stage at BMM is much like this one, except with a 3mm
-   diameter hole in the heating block to allow for transmission XAFS.
+.. subfigure::  AB
+   :layout-sm: AB
+   :subcaptions: above
+   :gap: 8px
+   :name: fig-linkamstage
+   :class-grid: outline
+
+   .. image:: _images/linkam.jpg
+
+   .. image:: _images/dewar.jpg
+
+   (Left) The Linkham stage mounted for transmission on the sample
+   stage.  (Right) The 25 L dewar used for cooling the Linkam stage.
+
 
 The automation concept for the Linkam stage is quite similar to the
 *ex situ* sample holder.  Instead of specifying the slot position of the

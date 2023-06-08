@@ -240,6 +240,66 @@ rarely needs to be changed during the course of an experiment.
    The fully resolved path to the data folder
 
 
+k-weighted integration times
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As discussed above, you can specify k-weighted integration times in
+the EXAFS region.  While not strictly necessary, it is nice to choose
+scan boundaries and integration times that do not result in a
+discontinuity in integration time at the transition into the EXAFS
+region.
+
+Here are some suggestions for scan parameters that transition smoothly
+between the XANES and EXAFS regions:
+
+Here are parameters for a 1/2 second base integration time
+transitioning into k-weighted integration multiplied by 1/4 (e.g. 2.5
+second integration at k=10).
+
+.. code-block:: ini
+
+   bounds = -200    -30   -2      15.5    25,      '14k'
+   steps  =     10      2     0.3     0.3     '0.05k'
+   times  =     0.5     0.5   0.5    '0.25k'  '0.25k'
+
+Here are parameters for a 1 second base integration time transitioning
+into k-weighted integration multiplied by 1/4 (e.g. 2.5 second
+integration at k=10).  This is Bruce's favorite suggestion for an
+experiment needing k-weighted integration time.  It's a good balance
+between good statistics and reasonable scan time (about 17 minutes).
+
+.. code-block:: ini
+
+   bounds = -200    -30   -2      25      61       '14k'
+   steps  =     10       2    0.3    '0.05k'  '0.05k'
+   times  =     1        1    1       1       '0.25k'
+
+Here are parameters for a 1/2 second base integration time
+transitioning into k-weighted integration multiplied by 1/2 (e.g. 5
+second integration at k=10).  This results in quite long integration
+times by the end of the scan, which may be useful for
+low-concentration or otherwise noisy EXAFS data..
+
+.. code-block:: ini
+
+   bounds = -200    -30   -2      3.81    25      '14k'
+   steps  =     10       2    0.3     0.3     '0.05k'
+   times  =     0.5      0.5  0.5    '0.5k'   '0.5k'
+
+Here are parameters for a 1 second base integration time transitioning
+into k-weighted integration multiplied by 1/2 (e.g. 5 second
+integration at k=10).  This results in quite long integration times by
+the end of the scan, which may be useful for low-concentration or
+otherwise noisy EXAFS data..
+
+.. code-block:: ini
+
+   bounds = -200    -30   -2      15.3    25      '14k'
+   steps  =     10       2    0.3     0.3     '0.05k'
+   times  =     1        1    1      '0.5k'   '0.5k'
+
+
+
 .. _howlong:
 
 Scan run time
@@ -769,6 +829,7 @@ elsewhere is captured in the output XDI file.
      .
 
 
+.. _telemetry:
 
 Telemetry
 ---------
@@ -837,6 +898,7 @@ times for each row are added up.
 	     be expected! 
 
 
+.. _dataevaluation:
 
 Data evaluation
 ---------------
