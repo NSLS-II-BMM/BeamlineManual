@@ -237,6 +237,8 @@ linescan plots, but with some additional considerations:
    energy calibration standard, and a view of the raw I0 spectrum (to
    keep an eye on monochromator glitches and other issues).
 
+.. todo:: Panel for live |chi|\ (k) plots, begin plotting this panel,
+          say, 60 eV above the edge.
 
 Like with the linescan, the plot begins with a message issued to tell
 the consumer to begin preparing for an XAFS plot and providing enough
@@ -246,13 +248,13 @@ the beginning of the entire scan sequence.
 .. code-block:: python
 
    {'xafsscan'   : 'start',
-    'element'    : 'Fe'],
+    'element'    : 'Fe',
     'edge'       : 'K',
     'mode'       : 'fluorescence',
-    'filename'   : 'esample'
+    'filename'   : 'example'
     'repetitions': 3,
     'sample'     : 'Fe sample',
-    'reference_material': 'Fe foil', })
+    'reference_material': 'Fe foil', }
 
 At the beginning of each individual repetition, a ``next`` message is
 sent, telling the consumer to prepare to add a new set of traces to

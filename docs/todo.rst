@@ -19,6 +19,7 @@ To Do List
 This is an aggregate list of things missing from the BMM beamline
 documentation manual.
 
+#. Replace ``db.v2`` with explicit use of Tiled catalog
 #. Document use of ``XDI_record`` to control what motors get recorded
    in the XDI header
 #. Flesh out documentation on using automation + spreadsheets
@@ -26,7 +27,11 @@ documentation manual.
 #. Current batch of cameras
 #. Document using the Xspress3
 #. Better abstraction of spreadsheet-to-macro components, less cargo-cult code
-#. How redis is used at the BL
+#. Document how redis is used at the BL, explain state+redis+BMMuser object
+#. Section about instrumentation development plans at BL
+#. Document timescan and SEAD, discuss in plotting section
+   Citation: A Filipponi et al 1998 J. Phys.: Condens. Matter 10 235 DOI:
+   10.1088/0953-8984/10/1/026
 
 
 This is an aggregate list of things mentioned in this document that

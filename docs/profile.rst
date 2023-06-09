@@ -166,7 +166,14 @@ is very similar to the common python idiom of
 to identify the module or source code file being loaded.  While
 similar in concept, it is a bit more flexible.
 
-.. todo:: Take a screenshot of the start-up screen with messages
+.. _fig-bsui_startup:
+.. figure::  _images/bsui_startup.png
+   :target: _images/bsui_startup.png
+   :width: 80%
+   :align: center
+
+   Screen messages during *bsui* start-up.
+
 
 For one thing, it applies consistent coloring to the text.  In that
 way the user knows that that color is a progress report explaining
