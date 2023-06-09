@@ -235,13 +235,13 @@ Here's a brief summary of every module in the BMM profile.
     ``areascan.py``                define an area scan plan
     ``busy.py``                    define a "wall clock" motor
     ``camera_device.py``           interact with AD and non-AD cameras 
-    ``db.py``                      utilities for working with DataBroker
+    ``db.py``                      utilities for working with *DataBroker*
     ``dcm.py``                     define monochromator ophyd objects
     ``dcm_parameters.py``          mono calibration parameters
     ``demeter.py``                 Athena and Hephaestus integration
     ``derivedplot.py``             deprecated plotting capabilities
-    ``desc_string.py``             fix epics motor DESC fields for CSS
-    ``detector_mount.py``          deprecated tools for xafs_det
+    ``desc_string.py``             fix epics motor ``DESC`` fields for CSS
+    ``detector_mount.py``          deprecated tools for ``xafs_det``
     ``dossier.py``                 manage writing of dossier files
     ``dwelltime.py``               coordinate dwell time across detectors
     ``edge.py``                    change edge
