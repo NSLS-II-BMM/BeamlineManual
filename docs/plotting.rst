@@ -60,74 +60,64 @@ plotting via Kafka consumer works at BMM.  It is, admittedly, a rather
 baroque system using a lot of infrastructure.
 
 
-Scan sequence data reduction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-At the end of a scan sequence, we show the user a 3-panel plot showing
-|mu| (E), |chi| (k), and |chi| (R).  (This is the same 3-panel plot
-that is written to the :numref:`dossier (Section %s) <dossier>`.  This
-plot is of the merge of the scans measured in the scan sequence.
-Behind the scenes, Larch is used to make the merge, remove the
-background function, and perform the Fourier transform.  Additionally,
-every time an individual repetition in the scan sequence is finished,
-this 3-panel plot is made from the merge of the scans measured thus far.
 
-At the beginning of a scan sequence, a Kafka document with a payload
-like this is issued:
+
+.. _liveline:
+
+Live linescan plots
+~~~~~~~~~~~~~~~~~~~
+
+At BMM, :numref:`a linescan (Sec %s) <linescan>` is a scan where a
+motor is moved and a signal is plotted.  A linescan begins by issuing
+a message telling the consumer to start a new plot and to begin
+looking for BlueSky event documents:
 
 .. code-block:: python
 
-   {'xafs_sequence' : 'start',
-    'element'       : 'Fe',
-    'edge'          : 'K',
-    'folder'        : BMMuser.folder,
-    'repetitions'   : 3,
-    'mode'          : 'fluorescence'}
+   {'linescan' : 'start',
+    'motor'    : 'xafs_x',
+    'detector' : 'I0',}
 
-The presence of the ``xafs_sequence`` key tells the Kafka consumer to
-interpret this document as relevant to the creation of the 3-panel
-plot.  The value of ``start`` tells the consumer to prepare for making
-this plot from data under the conditions specified by the remainder of
-the keywords.
+Those event documents will be parsed to obtain the result of the most
+recently measured data point.  The new data point is added to the plot
+and the plot is redrawn.
 
-As each scan finishes, the following document is issued.  This tells
-the consumer that a repetition finished and supplies the UID of the
-just-completed scan.  `Tiled <https://github.com/bluesky/tiled>`__ is
-used to grab the data from the just-completed scan.  This triggers a
-recalculation of the merge and the recreation of the 3-panel plot.
+When the linescan finishes, a *stop* message is issued:
 
 .. code-block:: python
 
-   {'xafs_sequence' :'add',
-    'uid'           : uid}
+   {'linescan': 'end',}
 
-Finally, at the end of the scan sequence, this document is issued:
+This replicates very closely how the BlueSky `LivePlot
+<https://blueskyproject.io/bluesky/callbacks.html#liveplot-for-scalar-data>`__
+has been used to display linescsan data.
 
-.. code-block:: python
+.. _livetime:
 
-   {'xafs_sequence' : 'stop', 
-    'filename'      : '/path/to/dossier/image'}
+Live timescan plots
+~~~~~~~~~~~~~~~~~~~
 
-This tells the consumer to make the final version of the 3-panel plot
-using all the data and to save a png image of the plot for use in the
-dossier.
-
-.. _fig-triplot:
-.. figure::  _images/triplot.png
-   :target: _images/triplot.png
-   :width: 50%
-   :align: center
-
-   An example of a 3-panel plot created by the Kafka consumer.
+With the BMM plotter, a timescan and a line scan are made with the
+same code.  The only difference is that no motor is given for a
+timescan and the X-axis is plotted as the time stamp of the current
+point minus the time stamp of the first point.  Thus the X-axis is in
+units of seconds.  The signal plotted on the Y-axis is determined the
+same as for a linescan and all the internal mechanics of the time plot
+are the same as for a motor plot.
 
 
+.. _livearea:
 
-This motif of issuing a ``start`` message to begin crafting a plot,
-messages to ``add`` to the plot, and a message to ``stop`` the plot is
-the common thread to how BMM uses Kafka to make plots, both static and
-real-time plots.
+Live areascan plots
+~~~~~~~~~~~~~~~~~~~
 
+.. todo:: Make and document live areascan plots.  Currently, a
+	  LivePlot is used when running ``areascan()`` and the Kafka
+	  consumer replicates the plot afterwards.  The replicated
+	  plot has the correct axes and is saved in the dossier.
 
+.. _livealignment:
 
 Alignment plots
 ~~~~~~~~~~~~~~~
@@ -192,37 +182,7 @@ manner.
    ``xafs_x`` and ``xafs_y``.
 
 
-.. _liveline:
-
-Live linescan plots
-~~~~~~~~~~~~~~~~~~~
-
-At BMM, :numref:`a linescan (Sec %s) <linescan>` is a scan where a
-motor is moved and a signal is plotted.  A linescan begins by issuing
-a message telling the consumer to start a new plot and to begin
-looking for BlueSky event documents:
-
-.. code-block:: python
-
-   {'linescan' : 'start',
-    'motor'    : 'xafs_x',
-    'detector' : 'I0',}
-
-Those event documents will be parsed to obtain the result of the most
-recently measured data point.  The new data point is added to the plot
-and the plot is redrawn.
-
-When the linescan finishes, a *stop* message is issued:
-
-.. code-block:: python
-
-   {'linescan': 'end',}
-
-This replicates very closely how the BlueSky `LivePlot
-<https://blueskyproject.io/bluesky/callbacks.html#liveplot-for-scalar-data>`__
-has been used to display linescsan data.
-
-
+.. _livexafs:
 
 Live XAFS plots
 ~~~~~~~~~~~~~~~
@@ -291,6 +251,76 @@ of transmission |mu| (E), I0, and the reference spectrum.
    :align: center
 
    An example of the XAFS live plot made for a fluorescence XAFS scan.
+
+
+.. _xafssequence:
+
+Scan sequence data reduction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+At the end of a scan sequence, we show the user a 3-panel plot showing
+|mu| (E), |chi| (k), and |chi| (R).  (This is the same 3-panel plot
+that is written to the :numref:`dossier (Section %s) <dossier>`.  This
+plot is of the merge of the scans measured in the scan sequence.
+Behind the scenes, Larch is used to make the merge, remove the
+background function, and perform the Fourier transform.  Additionally,
+every time an individual repetition in the scan sequence is finished,
+this 3-panel plot is made from the merge of the scans measured thus far.
+
+At the beginning of a scan sequence, a Kafka document with a payload
+like this is issued:
+
+.. code-block:: python
+
+   {'xafs_sequence' : 'start',
+    'element'       : 'Fe',
+    'edge'          : 'K',
+    'folder'        : BMMuser.folder,
+    'repetitions'   : 3,
+    'mode'          : 'fluorescence'}
+
+The presence of the ``xafs_sequence`` key tells the Kafka consumer to
+interpret this document as relevant to the creation of the 3-panel
+plot.  The value of ``start`` tells the consumer to prepare for making
+this plot from data under the conditions specified by the remainder of
+the keywords.
+
+As each scan finishes, the following document is issued.  This tells
+the consumer that a repetition finished and supplies the UID of the
+just-completed scan.  `Tiled <https://github.com/bluesky/tiled>`__ is
+used to grab the data from the just-completed scan.  This triggers a
+recalculation of the merge and the recreation of the 3-panel plot.
+
+.. code-block:: python
+
+   {'xafs_sequence' :'add',
+    'uid'           : uid}
+
+Finally, at the end of the scan sequence, this document is issued:
+
+.. code-block:: python
+
+   {'xafs_sequence' : 'stop', 
+    'filename'      : '/path/to/dossier/image'}
+
+This tells the consumer to make the final version of the 3-panel plot
+using all the data and to save a png image of the plot for use in the
+dossier.
+
+.. _fig-triplot:
+.. figure::  _images/triplot.png
+   :target: _images/triplot.png
+   :width: 50%
+   :align: center
+
+   An example of a 3-panel plot created by the Kafka consumer.
+
+
+
+This motif of issuing a ``start`` message to begin crafting a plot,
+messages to ``add`` to the plot, and a message to ``stop`` the plot is
+the common thread to how BMM uses Kafka to make plots, both static and
+real-time plots.
 
 
 Cleaning up the screen
