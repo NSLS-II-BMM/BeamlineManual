@@ -48,7 +48,11 @@ TL;DR
 **Import an automation spreadsheet**
    Prepare a spreadsheet, then ``xlsx()``, see :numref:`{name}, Section {number} <automation>`
 
-:numref:`More complete command cheatsheet, Section {number} <cheatsheet>`
+**Details, details, details**
+   :numref:`Command cheatsheet, Section {number} <cheatsheet>`
+
+**Start the live plotting utility**
+   At the command line, ``run-consumer``, see :numref:`{name}, Section {number} <start_consumer>`
 
 
 The user experience
@@ -404,20 +408,26 @@ This documentation project uses the lovely `{book}theme
 from the `The Executable Book Project
 <https://ebp.jupyterbook.org/>`__.  Appendices are numbered properly using the ``appendix.py`` extension from https://github.com/heig-tin-info/handout.
 
-This project uses a GitHub action to build and deploy `(see details
-here)
-<https://github.com/marketplace/actions/sphinx-docs-to-github-pages>`__
-this document whenever a ``git push`` happens.
-
 BMM's profile was mostly written by Bruce.  But I could not have done
 so without the help of several members of NSLS-II's DSSI program.  In
 particular, I want to thank Dan Allan, Tom Caswell, Josh Lynch, Max
 Rakitin, Dmitri Gavrilov, and Stuart Campbell
 
-BMM also makes use of lots of great python tools.  Along with all the
-obvious candidates in the scientific python ecosystem, Matt Newville's
-`Larch <http://xraypy.github.io/xraylarch/>`__ is used to process
-every XAS scan that gets measured.
+BMM makes use of `lots of great python tools
+<https://speakerdeck.com/jakevdp/the-unexpected-effectiveness-of-python-in-science?slide=52>`__.
+Along with all the obvious candidates in the scientific python
+ecosystem, Matt Newville's `Larch
+<http://xraypy.github.io/xraylarch/>`__ is used to process every XAS
+scan that gets measured.
+
+This project uses a GitHub action to build and deploy `(see details
+here)
+<https://github.com/marketplace/actions/sphinx-docs-to-github-pages>`__
+this document whenever a ``git push`` happens.  I gratefully
+acknowledge the `UIBCDF
+<https://github.com/uibcdf/action-sphinx-docs-to-gh-pages>`__ developers
+for this continuous deployment capability.
+
 
 
 A note about copyright

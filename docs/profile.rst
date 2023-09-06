@@ -207,6 +207,49 @@ available and provides the code maintainer/developer some hints about
 where to look in the code base for various features.
 
 
+Profile start-up as acceptance testing
+--------------------------------------
+
+At NSLS-II, beamline staff are asked to develop ways to do acceptance
+testing to verify things like recovery from power failures, or upgrades
+of computer operating systems, upgrades of conda and python.
+
+At BMM, we have chosen *not* to develop one-off or on-delivery
+acceptance testing practices.  Instead, acceptance testing is built
+right into BMM's profile.
+
+Very early in profile start-up, several basic functions are checked
+for, including:
+
+#. Verify that Channel Access Security is configured for read/write
+   access
+#. Verify that the LAN is up and that IOC servers can be pinged
+#. Verify that various necessary folders on the local machine can be
+   found
+#. Verify that Lustre mounts can be found
+#. Verify that authentication keys (e.g. for Slack) can be found
+#. Verify that a redis server can be found
+
+If any of these tests fail, the profile stops loading and issues a
+(hopefully) useful error message.
+
+As the profile continues loading, it runs a variety of tests, such as:
+
+#. Verify that beamline state and user configuration can be obtained
+   from redis
+#. Establish all necessary user configuration
+#. Check each axis to verify that it is connected
+#. Check each axis to verify that it is homed, or identify those that
+   are used without homing
+#. Verify that detectors are started correctly (e.g. the XSpress3
+   needs to save an HDF5 file to initialize file saving)
+#. Initialize the hinted ROI from the XSpress3 using data from redis
+
+In short, the concept is that the profile is instrumented to do
+acceptance testing *every time it starts*. If anything is found to be
+missing, it can be noticed and addressed immediately.
+
+
 Core Bluesky functionality
 --------------------------
 

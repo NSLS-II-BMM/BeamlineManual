@@ -32,10 +32,34 @@ server used by BlueSky to orchestrate it's communications.  We were
 also given a private Kafka topic over which to send BMM-specific
 messages intended for use by a BMM-specific consumer.
 
+.. _start_consumer:
+
 Starting the Kafka consumer
 ---------------------------
 
-.. todo:: Document this!
+In the ``consumer/`` folder, there is a bash script called
+``run-consumer``.  This script establishes the correct shell and conda
+environments for running the data plotter.  It then starts an ipython
+instance, loads ``consumer/consume_measurement.py``, and starts the
+Kafka consumer.
+
+For ease of use, ``run-consumer`` can be copied into ``$HOME/bin`` so
+that it is in the execution path.
+
+Bruce's preference for this is to open a new terminal window on a
+virtual desktop that is not the main desktop.  In that terminal
+window, run ``run-consumer``.
+
+
+.. _fig-consumer:
+.. figure::  _images/consumer.png
+   :target: _images/consumer.png
+   :width: 70%
+   :align: center
+
+   A terminal window in which the Kafka consumer has just been started.
+
+
 
 Various types of plots
 ----------------------
@@ -116,6 +140,9 @@ Live areascan plots
 	  LivePlot is used when running ``areascan()`` and the Kafka
 	  consumer replicates the plot afterwards.  The replicated
 	  plot has the correct axes and is saved in the dossier.
+
+	  This (along with the ``%xrf`` plot) is the only remaining
+	  plot not yet made via the Kafka consumer.
 
 .. _livealignment:
 
