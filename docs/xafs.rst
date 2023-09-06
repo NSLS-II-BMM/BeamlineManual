@@ -974,3 +974,105 @@ iris classification problem
 actually works quite well, although RF and MLP are both improvements.
 MLP was the suggestion of a local machine learning expert and performs
 similarly to RF on this trained data corpus.
+
+
+Extract XRF spectra from fluorescence XAS 
+-----------------------------------------
+
+BMM offers a handy tool for examining the XRF spectra of a
+fluorescence XAS scan on a point-by-point basis.  Given the UID of a
+scan |nd| which can be found in :numref:`the dossier (Section %s)
+<dossier>` or in the text of the data file |nd|, you can plot the XRF
+spectrum at a given point in the scan.
+
+.. sourcecode:: python
+
+   xrfat(uid, energy)
+
+where ``uid`` is a string containing the scan UID and ``energy`` is
+one of the following:
+
++ an energy point in the scan range, the nearest energy point will be
+  used
++ a negative integer, the energy point that many steps from the *end*
+  of the scan will be used
++ a positive integer (smaller than the first energy value in the
+  scan), the energy point that many steps from the *beginning* of the
+  scan will be used
+
+For example,
+
+.. sourcecode:: python
+
+   xrfat(uid, -1)
+
+will plot the XRF spectrum measured at the last point in the scan.
+
+Here's a good example of why this is useful.  Some visitors to BMM
+were measuring a sample with a rather low concentration of neodymium
+(L\ :sub:`3`\ edge energy of 6208).  The |chi|\ (k) data were
+noticeably distorted about 330 eV (or about 9.3 inverse Angstrom)
+above the edge.  This corresponds to the K edge energy (about 6539) of
+Mn.  We eventually determined that the BN used as a diluant was
+slightly contaminated with Mn.
+
+Here are the plots from below and above the Mn K edge:
+
+.. sourcecode:: python
+
+   xrfat(uid, 6510)
+   xrfat(uid, 6560)
+
+.. subfigure::  AB
+   :layout-sm: AB
+   :gap: 8px
+   :subcaptions: above
+   :name: Ndsample
+   :class-grid: outline
+
+   .. image:: _images/Nd-6510.png
+
+   .. image:: _images/Nd-6560.png
+
+   (Left) The XRF spectra from the Nd-bearing sample measured at 6510 eV.
+   (Right) The XRF spectra from the Nd-bearing sample measured at 6560 eV.
+
+Those don't look very different.  However, overplotting the two
+spectra and displaying on a log scale on the y-axis:
+
+.. _fig-Ndcompare:
+.. figure::  _images/Nd-compare.png
+   :target: _images/Nd-compare.png
+   :width: 70%
+   :align: center
+
+   The XRF spectra from the Nd-bearing sample measured at 6510 eV and
+   at 6560 eV.  There is a very small peak at the Mn K\ |alpha|
+   energy, marked by the green circle.
+
+While tiny, this Mn contamination had a noticeable impact on the
+measured EXAFS data.  This sort of forensic work is enabled by the
+``xrfat`` command.
+
+The full signature of this function is
+
+.. sourcecode:: python
+
+   def xrfat(uid, energy=-1, xrffile=None, add=True, only=None, xmax=1500):
+
+where 
+
+``xrffile``
+   If not None, is the name of the column data file to be written to
+   the users ``XRF`` folder.
+
+``add``
+   If True, add the signals from the four channels
+
+``only``
+   If specified as an integer (1, 2, 3, or 4), plot only that detector
+   channel
+
+``xmax``
+   Specify the maximum energy plotted on the x-axis in units of energy
+   above the measured fluorescence line energy
