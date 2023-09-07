@@ -153,7 +153,7 @@ Early in the loading of the profile, a function called
 ``BMM/functions.py`` and called near the top of
 ``BMM/user_ns/bmm.py``, which is the second file loaded by 
 ``BMM/user_ns/__init__.py``.  So, it is defined very early in the
-process if loading the profile.
+process of loading the profile.
 
 This is used to write a message to the screen explaining what chore is
 being done during start-up or what file is being loaded.  As such it
@@ -164,7 +164,7 @@ is very similar to the common python idiom of
    print(__file__)
 
 to identify the module or source code file being loaded.  While
-similar in concept, it is a bit more flexible.
+similar in concept, it is a bit more suited to our purpose.
 
 .. _fig-bsui_startup:
 .. figure::  _images/bsui_startup.png

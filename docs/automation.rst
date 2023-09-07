@@ -61,9 +61,9 @@ indicated measurements.  In :numref:`Figure %s
 green background.  All rows underneath the green line are used to
 describe individual measurements.
 
-For an individual measurement, if a cell is left blank, the default
-value will be used.  If a cell is filled in, that value will be used
-for that measurement.
+For an individual measurement, if a white cell is left blank, the
+default value from the corresponding green cell will be used.  If a
+white cell is filled in, that value will be used for that measurement.
 
 Experimenters
 ~~~~~~~~~~~~~
@@ -107,8 +107,10 @@ Selecting a spreadsheet
 All spreadsheets are imported using the :file:`xlsx()` command.  The
 spreadsheets are self-identifying.  Every spreadsheet has an
 identifying string spanning cells B1:C1.  This is the cell with the
-pink background.  **Never** change the text in that cell or you run
-the risk of your spreadsheet being interpreted incorrectly.
+pink background.  
+
+.. caution:: **Never** change the text in the pink cell or your
+             spreadsheet will likely be interpreted incorrectly.
 
 To convert a spreadsheet into a macro then run the macro, do the
 following:

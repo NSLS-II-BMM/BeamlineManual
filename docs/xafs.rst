@@ -744,6 +744,7 @@ BlueSky plan.
 
 
 
+.. _xdiexample:
 
 
 XAFS data file
@@ -982,14 +983,15 @@ Extract XRF spectra from fluorescence XAS
 BMM offers a handy tool for examining the XRF spectra of a
 fluorescence XAS scan on a point-by-point basis.  Given the UID of a
 scan |nd| which can be found in :numref:`the dossier (Section %s)
-<dossier>` or in the text of the data file |nd|, you can plot the XRF
-spectrum at a given point in the scan.
+<dossier>` or in :numref:`the header of the data file (Section %s)
+<xdiexample>` |nd| you can plot the XRF spectrum at a given point in
+the scan.
 
 .. sourcecode:: python
 
    xrfat(uid, energy)
 
-where ``uid`` is a string containing the scan UID and ``energy`` is
+Here, ``uid`` is a string containing the scan UID and ``energy`` is
 one of the following:
 
 + an energy point in the scan range, the nearest energy point will be
