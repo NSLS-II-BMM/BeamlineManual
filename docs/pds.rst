@@ -572,11 +572,11 @@ Monochromator crystals
 
 To change between the Si(111) and Si(311) crystals, do::
 
-  RE(change_crystals('111'))
+  RE(change_xtals('111'))
 
 or::
 
-  RE(change_crystals('311'))
+  RE(change_xtals('311'))
 
 This will move the lateral motor of the monochromator between the two
 crystal sets and adjust the pitch of the second crystal to be nearly

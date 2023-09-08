@@ -95,6 +95,8 @@ will then move to the motor position you clicked on.
 You can skip the "click for motor position" step by typing
 :key:`n` and hitting :key:`Enter`.
 
+.. todo:: Document plucking with Kafka + verification interaction
+
 
 Plucking a point from a line scan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -210,7 +212,7 @@ Area scans
           <https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contourf.html>`_,
           exports data in formats used by popular plotting programs,
           and writes a dossier was tested in 2022-2.  Current status:
-          dossier is written, scan works, documen tation needs to be written.
+          dossier is written, scan works, documentation needs to be written.
 
 
 An area scan is a simple scan of a two motor axes with an on-screen

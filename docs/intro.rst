@@ -92,7 +92,7 @@ information about the state of the beamline.
 CA Dashboard
 ~~~~~~~~~~~~
 
-At the top of the big screen, you see a crude-but-handy beamline
+At the top of the some screens, you see a crude-but-handy beamline
 monitor.  It looks like this:
 
 .. _fig-cadashboard:
@@ -105,7 +105,7 @@ monitor.  It looks like this:
 
 This provides a (very) concise overview of the state of the beamline.
 
-**Line 1**
+**Top line**
    In short, if the top line has no red text, the beamline is all ready to go.
 
    + BMM is enabled (green) or disabled (red)
@@ -119,14 +119,14 @@ This provides a (very) concise overview of the state of the beamline.
    + The open (green) or closed (red) state of the 3 front end gate
      valves and the 6 beamline gate valves
 
-**Line 2**
+**Middle line**
    + The energy position of the monochromator
    + The signals on the I0 and It ion chambers, measured in nanoamps
    + The current operation at the beamline, options are: idle (white),
      XAFS scan (pink), line scan (cyan), area scan (yellow), or time
      scan (blue)
 
-**Line 3**
+**Bottom line**
    + Positions of common sample motors and size of sample slits
 
 For more information about this tool, `follow this link
@@ -408,25 +408,22 @@ This documentation project uses the lovely `{book}theme
 from the `The Executable Book Project
 <https://ebp.jupyterbook.org/>`__.  Appendices are numbered properly using the ``appendix.py`` extension from https://github.com/heig-tin-info/handout.
 
-BMM's profile was mostly written by Bruce.  But I could not have done
-so without the help of several members of NSLS-II's DSSI program.  In
-particular, I want to thank Dan Allan, Tom Caswell, Josh Lynch, Max
-Rakitin, Dmitri Gavrilov, and Stuart Campbell
+BMM's profile was mostly written by Bruce.  But this would not have
+happened without the help of several members of NSLS-II's DSSI
+program.  In particular, I want to thank Dan Allan, Tom Caswell, Josh
+Lynch, Max Rakitin, Dmitri Gavrilov, and Stuart Campbell
 
 BMM makes use of `lots of great python tools
 <https://speakerdeck.com/jakevdp/the-unexpected-effectiveness-of-python-in-science?slide=52>`__.
-Along with all the obvious candidates in the scientific python
-ecosystem, Matt Newville's `Larch
-<http://xraypy.github.io/xraylarch/>`__ is used to process every XAS
-scan that gets measured.
+Matt Newville's `Larch <http://xraypy.github.io/xraylarch/>`__ is used
+to process every XAS scan that gets measured.
 
 This project uses a GitHub action to build and deploy `(see details
 here)
 <https://github.com/marketplace/actions/sphinx-docs-to-github-pages>`__
-this document whenever a ``git push`` happens.  I gratefully
-acknowledge the `UIBCDF
-<https://github.com/uibcdf/action-sphinx-docs-to-gh-pages>`__ developers
-for this continuous deployment capability.
+this document whenever a ``git push`` happens.  We are grateful to the
+`UIBCDF <https://github.com/uibcdf/action-sphinx-docs-to-gh-pages>`__
+developers for this continuous deployment capability.
 
 
 
