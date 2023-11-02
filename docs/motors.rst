@@ -90,19 +90,23 @@ are the same for all sample stage motors.
 **Querying position**
    The position of any motor can be queried with a command line like ::
 
-      %w xafs_y 
+     %w xafs_y 
+
+   or ::
+
+     xafs_y.position
 
 **Moving to a new position**
    Always move motors through the run engine, for example: ::
 
-      RE(mvr(xafs_y, 10))
+     RE(mvr(xafs_y, 10))
 
    ``mvr`` is the relative move command |nd| the numerical argument is
    the amount by which the motor will move from the current position.
 
    ``mv``, as in::
 
-      RE(mv(xafs_y, 37.63))
+     RE(mv(xafs_y, 37.63))
 
    is the absolute move command.  The numerical argument is the
    position to which the motor will move.
@@ -125,9 +129,9 @@ are the same for all sample stage motors.
      yield from mvr(xafs_y, 5)
 
 **Querying soft limits**
-   To know the soft limits on a sample stage, do
-   ``xafs_y.llm.get()`` or ``xafs_y.hlm.get()`` for the low or
-   high limit. 
+   To know the soft limits on a sample stage, do ``xafs_y.limits`` or
+   ``xafs_y.llm.get()`` or ``xafs_y.hlm.get()`` to query the low or
+   high limits individually.
 
 **Setting soft limits**
    To set the soft limits on a sample stage, do something like
@@ -148,15 +152,16 @@ are the same for all sample stage motors.
 
    BMM has foils or stable oxides for each of these elements::
 
-      Ti V  Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Zr Nb Mo Pt Au Pb Bi Sr Y
+      Sc Ti V  Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Zr Nb Mo Pt Au Pb Bi Sr Y
       Cs La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Rb Ba Hf Ta W  Re Os Ir Ru
 
-   (A few of these |nd| Ba, Os, Ir |nd| are missing as of 23
-   December, 2022.  We are working to obtain the missing ones.)
+   (A few of these |nd| Ba, Os, Ir |nd| are missing as of 2
+   November, 2023.  We are working to obtain the missing ones.)
 
    `Here is a complete list of standards
    <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__
-   in BMM's collection.
+   in BMM's collection.  These standards are mounted on sample wheels
+   and stored in the hutch for ready access by users.
 
 
 Sample wheel

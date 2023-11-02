@@ -351,9 +351,9 @@ facilitating any actions a user should ever need.
 
       dcm.mode = 'channelcut'
 
-   In practice, the monochromator is normally left in fixed-exit
-   mode.  That way, the monochromator can be moved without worry about
-   the beam height and the monochromator exit aperture.  In the 
+   In practice, the monochromator is normally left in fixed-exit mode.
+   That way, the monochromator can be moved without having to worry
+   about the beam height and the monochromator exit aperture.  In the
    :numref:`XAFS scan plan (Section %s) <xafsscan>`, the monochromator
    first moves |nd| in fixed-exit mode |nd| to the center of the
    angular range of the scan, then sets ``dcm.mode`` to

@@ -29,9 +29,21 @@ In BMM's ``linescan()`` plan, the scan is always a relative scan
 around the current position of the motor being scanned.  It works like
 this::
 
-    RE(linescan('it', 'x', -4, 4, 81))
+    RE(linescan(xafs_x, 'it', -4, 4, 81))
 
 The arguments are:
+
+#. The motor axis to be scanned.  This can be either the motor's
+   BlueSky name or the nickname string from :numref:`Table %s
+   <xafs-stages>`.  So, these are equivalent::
+
+     RE(linescan('x', 'it', -4, 4, 81))
+     RE(linescan('xafs', it_x, -4, 4, 81))
+
+   For a motor that does not have a nickname, you must use the ophyd
+   symbol, as in::
+
+     RE(linescan(slits3.outboard, 'i0', -1, 1, 21))
 
 #. A string indicating the detector for the plotted signal.  The
    choices are:
@@ -40,21 +52,7 @@ The arguments are:
    * ``if``: display the sum of four silicon drift channels normalized
      by ``I0``
    * ``i0``: display the signal on ``I0``
-   * ``ir``: display the ratio of ``Ir/I0``
-   * ``both``: display both ``It/I0`` *and* the sum of four silicon
-     drift channels normalized by ``I0``
-
-#. The motor axis to be scanned.  This can be either the motor's
-   BlueSky name or the nickname string from :numref:`Table %s
-   <xafs-stages>`.  So, these are equivalent::
-
-     RE(linescan('it', 'x', -4, 4, 81))
-     RE(linescan('it', xafs_x, -4, 4, 81))
-
-   For a motor that does not have a nickname, you must use the ophyd
-   object, as in::
-
-     RE(linescan('i0', slits3_outboard, -1, 1, 21))
+   * ``ir``: display the ratio of ``Ir/It``
 
 #. The starting position of the motor scan, relative to the current
    position.
@@ -74,18 +72,6 @@ will sort it out for you.  These are equivalent::
 At the end of the scan, you are prompted with the following question::
 
     Pluck motor position from the plot? [Yn]
-
-
-
-..
-   If you answer :quote:`y` then :button:`Enter`, or simply hit
-   :button:`Enter`, you will be prompted to single click the left mouse
-   button :mark:`leftclick,.` on the plot.  The motor that was scanned
-   will then move to the motor position you clicked on.
-
-   You can skip the "click for motor position" step by typing
-   :button:`n` and hitting :button:`Enter`.
-
 
 If you answer :key:`y` then :key:`Enter`, or simply hit
 :key:`Enter`, you will be prompted to single click the left mouse
@@ -107,16 +93,12 @@ motor to the click-upon point, do::
   RE(pluck())
 
 This will enable the left mouse :mark:`leftclick,.` click and
-subsequent motion on the most recent plot.  The ``pluck()`` command
-*only* works on the most recent plot.  You may not pluck from an older
-plot that is still displayed on the screen.
+subsequent motion on the most recent plot.  
 
-Of course, an older plot remains active in the sense that you can pass
-the cursor over the plot and read the mouse coordinates in the bottom,
-left corner of the plot window.  You can find a point in this way,
-then do a movement command like::
-
-  RE(mv(xafs_y, 28.31))
+.. warning::
+   The ``pluck()`` command works on any plot made through the Kafka
+   plotter.  Be sure you are clicking on the plot you intend to pluck
+   from!
 
 
 Revisit a line scan
@@ -182,10 +164,10 @@ arguments that they have special names.
 
      yield from slit_height()
 
-**Align ex situ sample holder**
+**Align ex situ sample holder** 
    If the *ex situ* sample wheel is in approximately the right
-   position such that X-rays are passing through the slot, you can
-   center the slot around the beam with::
+   position such that X-rays are passing through a slot on the outer
+   ring, you can center the slot around the beam with::
 
      RE(find_slot())
 
@@ -207,12 +189,12 @@ Area scans
 
 
 .. todo:: A raster scan type |nd| i.e. ``RE(raster())`` |nd| that does
-          an areascan as described here, makes a nice figure using
-          `matplotlib's contourf
-          <https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contourf.html>`_,
-          exports data in formats used by popular plotting programs,
-          and writes a dossier was tested in 2022-2.  Current status:
-          dossier is written, scan works, documentation needs to be written.
+   an areascan as described here, makes a nice figure using
+   `matplotlib's contourf
+   <https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contourf.html>`_,
+   exports data in formats used by popular plotting programs,
+   and writes a dossier was tested in 2022-2.  Current status:
+   dossier is written, scan works, documentation needs to be written.
 
 
 An area scan is a simple scan of a two motor axes with an on-screen

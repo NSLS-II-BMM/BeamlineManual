@@ -191,8 +191,15 @@ This will create that data folder and populate it with an
 write a :numref:`user log file (Section %s) <logfile>` for this
 experiment, set the GUP and SAF numbers as metadata for output files,
 set up :numref:`snapshot (Section %s) <snap>` and :numref:`dossier
-(Section %s) <dossier>` folders, and perfrom other experiment start-up
+(Section %s) <dossier>` folders, and perform other experiment start-up
 chores.
+
+.. note::
+
+   In the near future, the ``start_experiment()`` command will grab
+   metadata from PASS (or UPS, or whatever) and set access permissions
+   on data.  When that happens, the only argument needed will be the
+   SAF number.
 
 The ``name`` should be the PI's full name, preferably transliterated
 into normal ASCII.  The ``date`` should be the starting day of the
@@ -411,12 +418,16 @@ from the `The Executable Book Project
 BMM's profile was mostly written by Bruce.  But this would not have
 happened without the help of several members of NSLS-II's DSSI
 program.  In particular, I want to thank Dan Allan, Tom Caswell, Josh
-Lynch, Max Rakitin, Dmitri Gavrilov, and Stuart Campbell
+Lynch, Max Rakitin, Dmitri Gavrilov, and Stuart Campbell.  And I need
+to thank all every BMM user because there is no difference being a BMM
+user and being a bug tester for this software!
 
 BMM makes use of `lots of great python tools
 <https://speakerdeck.com/jakevdp/the-unexpected-effectiveness-of-python-in-science?slide=52>`__.
 Matt Newville's `Larch <http://xraypy.github.io/xraylarch/>`__ is used
-to process every XAS scan that gets measured.
+to process every XAS scan that gets measured and Matt's `lmfit
+<https://lmfit.github.io/lmfit-py/>`__ is used for many alignment
+chores.
 
 This project uses a GitHub action to build and deploy `(see details
 here)

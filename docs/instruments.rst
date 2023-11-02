@@ -54,6 +54,11 @@ photons, this versatility of setup is occasionally very helpful.
    silicon drift detector.
 
 
+.. note::
+   Thanks to funding from the CHIPS Act, BMM is the process of
+   procuring a new 7-element SDD!  Look for that in late 2024 or
+   early 2025. 
+
 
 Area detector
 -------------
@@ -267,8 +272,8 @@ automated.
    The glancing angle stage with 8 sample positions.
 
 
-While this can be used for standing wave experiments, the much more
-typical application is a simple glancing angle measurement in which
-the point of the shallow angle is to spread the beam out over the full
-length of the sample.  This significantly increases the number of
-atoms involved in the measurement.
+While a standing wave experiment might be feasible at BMM, the much
+more typical application is a simple glancing angle measurement in
+which the point of the shallow angle is to spread the beam out over
+the full length of the sample.  This significantly increases the
+number of atoms involved in the measurement.

@@ -15,7 +15,7 @@
 XAFS scans
 ==========
 
-The BMM step scan plan starts by editing an `INI file
+The simplest access to an XAFS scan starts by editing an `INI file
 <https://en.wikipedia.org/wiki/INI_file>`_.  This is a simple
 keyword/value system where the keyword is separated from the value by
 an equals sign and each line contains a single keyword/value pair.
@@ -645,11 +645,11 @@ INI file.
       yield from end_of_macro()
       BMM_log_info('Sample macro finished!')
 
-The gray lines at lines 13-16 and 28-30 are comments indicating that
-parts of the macro are intended for editing by the user while other
-parts are boilerplate that make the macro work correctly.  In general,
-you only want to edit the lines between those two comment blocks,
-leaving the lines above and below untouched.
+The commented (by ``#``) lines at lines 13-16 and 28-30 are comments
+indicating that parts of the macro are intended for editing by the
+user while other parts are boilerplate that make the macro work
+correctly.  In general, you only want to edit the lines between those
+two comment blocks, leaving the lines above and below untouched.
 
 The calls to ``BMM_info()`` at lines 11 and 35 insert lines in the
 :numref:`experiment log (Section %s) <log>` indicating the times that
