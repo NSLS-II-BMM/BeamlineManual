@@ -67,8 +67,11 @@ Most common commands
 ``%xrf``
   measure and display an XRF spectrum
 
-``RE(linescan(<detector>, <motor>, <start>, <stop>, <N>))``
+``RE(linescan(<motor>, <detector>, <start>, <stop>, <N>))``
   move a motor, plot a signal
+
+``RE(pluck())``
+  Select a point from a plot on screen and move that motor to that position
 
 ``xlsx()``
   import a spreadsheet
@@ -295,13 +298,12 @@ Line scans
 
 .. code-block:: python
 
-   RE(linescan(<detector>, <motor>, <start>, <stop>, <N>))
+   RE(linescan(<motor>, <detector>, <start>, <stop>, <N>))
 
 where
 
++ ``<motor>`` is a named motor, see :numref:`Table %s <xafs-stages>`
 + ``<detector>`` is one of: ``'it'``, ``'if'``, ``'ir'``, or ``'i0'``
-+ ``<motor>`` is one of: ``'x'``, ``'y'``, ``'pitch'``, ``'wheel'``,
-  or a named motor (:numref:`Table %s <xafs-stages>`)
 + ``<start>``, ``<stop>``, ``<N>`` are the boundaries relative to the
   current position and the number of steps.
 
@@ -310,15 +312,14 @@ The plot will be determined from the values of ``<motor>`` and
 
 This is a relative scan.
 
-After prompt, single click the left button after a linescan to move to
-a position.
+After the scan, you will prompted to select a position to move to.
+Single click the left button after a linescan to move to a position.
 
 .. code-block:: python
 
    RE(pluck()) 
 
-to repeat that on the current plot.  ``RE(pluck())`` only works on the
-*most recent* plot.
+to repeat that on the current plot.
 
 
 Energy scans
