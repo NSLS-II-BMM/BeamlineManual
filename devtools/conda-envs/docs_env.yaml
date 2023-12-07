@@ -10,7 +10,7 @@ dependencies:
   # Write here all dependencies to compile the sphinx documentation.
   # This list is just an example
   - python=3.9
-  - sphinx
+  - sphinx=6.2.1
   - sphinx_rtd_theme
   - sphinxcontrib-bibtex
   - nbsphinx
@@ -19,4 +19,6 @@ dependencies:
   - sphinx-book-theme
   - sphinx-math-dollar
   - sphinx-subfigure
+  - sphinx-design
+  
 
