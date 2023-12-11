@@ -30,6 +30,7 @@ BMM is NIST's Beamline for Materials Measurement
    log.rst
    manage.rst
    cheatsheet.rst
+   commonchores.rst
    trouble.rst
 
 .. appendix::

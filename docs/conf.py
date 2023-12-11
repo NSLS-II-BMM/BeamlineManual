@@ -72,8 +72,9 @@ html_theme_options = {
     "use_issues_button": True,
     "use_repository_button": True,
     "use_download_button": True,
-    "extra_navbar": '<p><a href=https://wiki-nsls2.bnl.gov/beamline6BM/index.php?Main_Page><img src="./_static/floor_mat.png" style="height: 3cm;" alt="BMM floor tab"></a></p>',
+    #"extra_navbar": '<p><a href=https://wiki-nsls2.bnl.gov/beamline6BM/index.php?Main_Page><img src="./_static/floor_mat.png" style="height: 3cm;" alt="BMM floor tab"></a></p>',
 }
+html_logo = '_static/floor_mat.png'
 html_show_copyright = False
 #html_sidebars = {
 #    "**": ["sidebar-logo.html", "search-field.html", "sbt-sidebar-nav.html", "sbt-sidebar-footer.html"]

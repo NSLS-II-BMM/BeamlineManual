@@ -52,7 +52,9 @@ TL;DR
    :numref:`Command cheatsheet, Section {number} <cheatsheet>`
 
 **Start the live plotting utility**
-   At the command line, ``run-consumer``, see :numref:`{name}, Section {number} <start_consumer>`
+   At a command line (but not the bsui command line),
+   ``run-consumer``, see :numref:`{name}, Section {number}
+   <start_consumer>`
 
 
 The user experience
@@ -415,12 +417,13 @@ This documentation project uses the lovely `{book}theme
 from the `The Executable Book Project
 <https://ebp.jupyterbook.org/>`__.  Appendices are numbered properly using the ``appendix.py`` extension from https://github.com/heig-tin-info/handout.
 
-BMM's profile was mostly written by Bruce.  But this would not have
-happened without the help of several members of NSLS-II's DSSI
-program.  In particular, I want to thank Dan Allan, Tom Caswell, Josh
-Lynch, Max Rakitin, Dmitri Gavrilov, and Stuart Campbell.  And I need
-to thank all every BMM user because there is no difference being a BMM
-user and being a bug tester for this software!
+BMM's `Bluesky <https://blueskyproject.io/>`__ profile was mostly
+written by Bruce.  But this would not have happened without the help
+of several members of NSLS-II's DSSI program.  In particular, I want
+to thank Dan Allan, Tom Caswell, Josh Lynch, Max Rakitin, Dmitri
+Gavrilov, Stuart Campbell, Abby Giles, and Garrett Bishof.  And I need
+to thank every BMM user |nd| being a BMM user means being a bug tester
+for this software!
 
 BMM makes use of `lots of great python tools
 <https://speakerdeck.com/jakevdp/the-unexpected-effectiveness-of-python-in-science?slide=52>`__.

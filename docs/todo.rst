@@ -16,6 +16,13 @@
 To Do List
 ==========
 
+Chapters needed:
+
+#. Dealing with XRF spectra, including ``%xrf``, ``xrfat()``, saving
+   XRF spectra 
+#. Valence maps
+
+
 This is an aggregate list of things missing from the BMM beamline
 documentation manual.
 
