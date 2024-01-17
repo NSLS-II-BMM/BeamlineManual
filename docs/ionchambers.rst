@@ -9,7 +9,7 @@ direct beam signals (I\ :sub:`0`, I\ :sub:`t`, I\ :sub:`r`) are
 measured.
 
 The old system
-==============
+--------------
 
 BMM has been using the same ion chambers that were used at X23A2 at
 the old NSLS.  They are excellent ion chambers |nd| robust, linear,
@@ -43,7 +43,7 @@ communicates with the QuadEM device via a cat6 cable.
 
 
 The new system
-==============
+--------------
 
 The new ion chambers are integrated devices.  The low half of the
 enclosure is a gas-filled volume with capacitor plates made from
@@ -81,7 +81,7 @@ continuous scanning on the monochromator.
    voltage supply.
 
 Configuration in bsui profile
-=============================
+-----------------------------
 
 I am trying to make it easy to configure ``bsui`` to switch easily
 between ion chambers and electrometers.  This is a work in progress.
