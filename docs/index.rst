@@ -40,4 +40,5 @@ BMM is NIST's Beamline for Materials Measurement
 
    profile.rst
    plotting.rst
+   ionchambers.rst
    todo.rst
