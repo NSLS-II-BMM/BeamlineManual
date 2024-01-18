@@ -361,7 +361,9 @@ position of the Bragg axis for the edge energies of 10 metals: Fe, Co,
 Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.  
 
 #. Be sure that all 10 of these elements are actually mounted on the
-   reference wheel and configured in the ``xafs_ref.contents`` list.
+   reference wheel and configured in the ``xafs_ref.mapping`` dict.
+   (They should be.  It would be very unusual for any of these foils
+   to have been removed from the reference wheel.)
 
 #. Run the command 
 
@@ -380,15 +382,21 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
    the ``calibrate()`` plan.
 
 #. Examine the data in Athena. Make sure E\ :sub:`0` is selected
-   correctly for all 10 edges. Copy those values into
-   :file:`edges111.ini` (or :file:`edges3111.ini`). Compute the
-   angular positions using
+   correctly for all 10 edges. Copy those values into the first column
+   of :file:`edges111.ini` (or :file:`edges311.ini`). 
 
-   .. code-block:: python
+   .. attention::
 
-      dcm.e2a(<energy values>)
+      It is no longer necessary to compute the angular positions of
+      the monochromator.  Those will be computed from the edge energy
+      values you edited into the INI file by hand.
 
-   and copy those numbers into the :file:`edgeH11.ini` file.
+   .. 
+     Compute the
+     angular positions using
+     .. code-block:: python
+	dcm.e2a(<energy values>)
+     and copy those numbers into the :file:`edgeH11.ini` file.
 
 #. Run the command
 
