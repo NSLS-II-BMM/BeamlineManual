@@ -21,6 +21,8 @@ Chapters needed:
 #. Dealing with XRF spectra, including ``%xrf``, ``xrfat()``, saving
    XRF spectra 
 #. Valence maps
+#. Document why M1 is the way it is, explain why moving it is a BAD
+   idea, explain front end slits
 
 
 This is an aggregate list of things missing from the BMM beamline

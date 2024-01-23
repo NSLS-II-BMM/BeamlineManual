@@ -262,20 +262,21 @@ crystalline substrate into the fluorescence detector to be suppressed.
 
 To move to a sample position::
 
-  RE(ga.to(<N>))
+  RE(ga.to(3))
 
-where ``<N>`` is a number from 1 to 8, as shown by the labels in
-:numref:`Figure %s <fig-gastage>`.  This command will rotate that
-sample into the beam path and start the sample spinning.
+where the argument is a number from 1 to 8, as shown by the labels in
+:numref:`Figure %s <fig-gastage>`.  This command will turn off all
+other spinners, rotate that sample into the beam path, and start the
+sample spinning.
 
-To turn a spinner on or off::
+To turn a spinner on or off, where the argument is a number from 1 to 8::
 
-  ga.on(<N>)
-  ga.off(<N>)
+  RE(ga.on(3))
+  RE(ga.off(3))
 
 To turn off all spinners::
 
-  ga.alloff()
+  RE(ga.alloff())
 
 In a plan::
 

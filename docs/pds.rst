@@ -113,7 +113,7 @@ This dictionary identifies the positions in ``xafs_ref`` and
 ``xafs_refx`` for each reference sample.  It also identifies the form
 of the reference samples and its chemical composition.
 
-To see the available reference mayerials and their positions on the
+To see the available reference materials and their positions on the
 reference wheel, do ``%se``.
 
 `Here is a complete list of standards
@@ -486,13 +486,13 @@ to define the beam size on the sample.
    ===============   ========  =======================  ===================
 
 
-The individual blades are moved like any other motor::
+The individual blades are moved like any other motor, for example::
 
   RE(mv(slits3.outboard, -0.5))
   RE(mvr(slits3.top, -0.1))
 
 
-Coordinated motions are moved the same way::
+Coordinated motions are moved the same way, for example::
 
   RE(mv(slits3.hsize, 6))
   RE(mvr(slits3.vcenter, -0.1))
@@ -542,8 +542,8 @@ Mode XRD delivers high energy, focused beam to the goniometer.
    XRD    |checkmark|  above 8 keV
    ====== ============ ========================= 
 
-.. todo:: Lookup table not complete for mode B. In fact, the ydo and
-   ydi jacks of M3 cannot move low enough to enter mode B.  In
+.. todo:: The lookup table is not complete for mode B. In fact, the
+   ydo and ydi jacks of M3 cannot move low enough to enter mode B.  In
    practice, mode B is not available.  Elements that should be
    measured in mode B are, instead, measured in mode C and we live
    with incomplete harmonic rejection.
@@ -581,8 +581,8 @@ or::
 This will move the lateral motor of the monochromator between the two
 crystal sets and adjust the pitch of the second crystal to be nearly
 in tune and the roll to deliver the beam to nearly the same location
-for both crystals.  It will also return the monochromator to the same
-energy.
+for both crystals.  It will also return the monochromator to the
+starting energy.
 
 This takes about 5 minutes.
 

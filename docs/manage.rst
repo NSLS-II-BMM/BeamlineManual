@@ -391,6 +391,12 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
       the monochromator.  Those will be computed from the edge energy
       values you edited into the INI file by hand.
 
+   .. todo::
+
+      Implement on-the-fly determination of E0 to obviate the step of
+      editing the INI file.  Pb is tricky.  Nb and Mo are kind of tricky.
+
+
    .. 
      Compute the
      angular positions using

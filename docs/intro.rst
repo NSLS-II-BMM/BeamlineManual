@@ -110,9 +110,10 @@ This provides a (very) concise overview of the state of the beamline.
 **Top line**
    In short, if the top line has no red text, the beamline is all ready to go.
 
-   + BMM is enabled (green) or disabled (red)
-   + The BM, FE, & user photon shutters are open (green) or closed (red)
-   + The ring current
+   + BMM is enabled (green) or disabled (gray)
+   + The BM, FE, & user photon shutters are open (green) or closed (gray)
+   + Indicators that the temperature sensors in the racks are in range
+     (green) or running hot (red)
    + The state of vacuum sections 1 through 7 |nd| green means vacuum
      level is OK, red means vacuum level is high
    + The state of the in-vacuum motors, 4 on the DCM, 2 on the
@@ -123,19 +124,25 @@ This provides a (very) concise overview of the state of the beamline.
 
 **Middle line**
    + The energy position of the monochromator
-   + The signals on the I0 and It ion chambers, measured in nanoamps
+   + The current element and edge configuration of the beamline
+   + The ring current
+   + The signals on the I\ :sub:`0`, I\ :sub:`t`, and I\ :sub:`r` ion
+     chambers, measured in nanoamps
    + The current operation at the beamline, options are: idle (white),
      XAFS scan (pink), line scan (cyan), area scan (yellow), or time
      scan (blue)
 
 **Bottom line**
-   + Positions of common sample motors and size of sample slits
+   + Positions of common sample motors
+   + size of sample slits
+   + the element currently in the reference position
+   + the state of the instrument being used |nd| in this example, *the
+     ex-situ* sample wheel
+   + the brown block at the end is a heartbeat monitor to visually
+     verify that the dashboard is functioning correctly
 
 For more information about this tool, `follow this link
-<https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Cadashboard>`_,
-which explains how to run the tool and position it on the screen.  It
-also explains how to launch the tool when the beamline is set up for
-XRD measurements.
+<https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Cadashboard>`_.
 
 
 .. _slack:
@@ -160,6 +167,14 @@ physically at the beamline.
 
    An example of messages and a picture of measured data posted to the
    beamline Slack channel.
+
+.. attention::
+   
+   In the 2024-1 cycle, BMM is no longer synching data automatically
+   to Google Drive, although data will be manually transferred to a
+   Google Drive for the time being.  Soon, data will be available to
+   users via sftp with proper integration into new data storage and
+   authentication services in the 2024-2 cycle.
 
 The measured data along with the entire contents of the 
 :numref:`measurement dossier (Section %s) <dossier>` will be synched

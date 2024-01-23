@@ -81,8 +81,6 @@ will then move to the motor position you clicked on.
 You can skip the "click for motor position" step by typing
 :key:`n` and hitting :key:`Enter`.
 
-.. todo:: Document plucking with Kafka + verification interaction
-
 
 Plucking a point from a line scan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
