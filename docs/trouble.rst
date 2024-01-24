@@ -41,26 +41,33 @@ To resume BlueSky, type the command ``fg`` and hit ``Enter``.
 You will find yourself back at the BlueSky prompt and can carry on
 normally.
 
-Exiting BlueSky
----------------
+Exiting or crashing bsui
+------------------------
 
 Another possibility is that BlueSky has exited entirely |nd| possibly
 because something has happened to put the program into an unworkable
-state.  This will usually be accompanied by a lengthy `stack trace`,
+state.  This will often be accompanied by a lengthy `stack trace`,
 i.e. a bunch of weird code and error messages printed to the terminal
 window, followed by the yellow and magenta prompt seen in the picture
-above.
+above.  Other times, there may simply be a message about a
+"Segmentation fault" and a "core dump".  An example of a segmentation
+fault is shown here:
 
-In this case, simply hit up arrow once (or possible a few times) until
-you find the ``bsui`` command.  Hit ``Enter``.
+.. _fig-segfault:
+.. figure:: _images/segfault.png
+   :target: _images/segfault.png
+   :width: 100%
+   :align: center
 
-If hitting up arrow does not uncover the correct command, simply
-type ``bsui`` at the command line with the yellow and magenta
-prompt, then hit ``Enter``.  
+   An example of bsui crashing with a segfault
 
-This will start a new BlueSky session and should remember all the
-metadata from the ``start_experiment`` command that began your
-experiment.
+The previous bsui session cannot be recovered at this point.  You will
+have to restart bsui and restart your data collection.
+
+In this case, at the command line,  type ``bsui`` and hit ``Enter``.
+
+This will start a new BlueSky session and should restore the state of
+your experiment from before the crash.
 
 .. You will then need to :numref:`restart your user session (Section %s)
    <start_end>` by issuing the ``BMMuser.start_experiment()`` command with the
