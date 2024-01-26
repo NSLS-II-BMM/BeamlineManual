@@ -43,8 +43,8 @@ differences in the columns corresponding to the different instruments.
 
 Make sure you are using the most up-to-date version of the spreadsheet.
 
-.. note:: The current spreadsheet version is **10**, as of 23
-          December, 2022.  You should *always* use a current
+.. note:: The current spreadsheet version is **12**, as of 26
+          January, 2024.  You should *always* use a current
           spreadsheet.
 
 

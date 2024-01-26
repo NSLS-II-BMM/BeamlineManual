@@ -69,12 +69,6 @@ In this case, at the command line,  type ``bsui`` and hit ``Enter``.
 This will start a new BlueSky session and should restore the state of
 your experiment from before the crash.
 
-.. You will then need to :numref:`restart your user session (Section %s)
-   <start_end>` by issuing the ``BMMuser.start_experiment()`` command with the
-   appropriate arguments.  You should be able to do so by hitting
-   :button:`Ctrl`-:button:`r` and searching for :quoted:`start_experiment`.
-   Once found, hit :button:`Enter`, then continue with your experiment.
-
 
 Amplifier fault
 ---------------
