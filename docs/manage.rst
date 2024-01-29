@@ -323,34 +323,203 @@ Several things to note:
 #. Also, you still need to set up the photon delivery system up by hand.
 
 
-Examine Motor Axes
-------------------
 
-Some BlueSky functionality related to the axes controlled by the FMBO
-MCS8 motor controllers.  These include:
+Motor controller kill switches
+------------------------------
 
-+ Collimating mirror (``m1_*``)
-+ Filter assemblies (``dm1_*``)
-+ Monochromator (``dcm_*``)
-+ Second diagnostic module (``dm2_*``)
-+ Focusing mirror (``m2_*``)
-+ Harmonic rejection mirror (``m3_*``)
-+ Third diagnostic module (``dm3_*``)
+The MCS8 motor controllers supplied by FMBO have a kill switch for
+power cycling the Phytron amplifier cards.  This is implemented by the
+vendor as connector plugged into the back of the chassis which shorts
+the two leads of the receptacle.  To kill the amplifiers, this plug is
+removed and reinserted.
 
-(38 axes motors in total) but not any of the end station motors
-(``xafs_*``), which are run using NSLS-II standard GeoBricks.
+That's fine, but the motor controllers are on top of the FOE |nd| not
+a convenient location.
 
-**Homing**
-  Any of these axes can be homed with, for example, ``dm3_bct.home()``
+The new kill switch system uses DIODE to close the kill switch
+circuit. Two-conductor cable is run from each motor controller to a
+remote DIODE box mounted on the inboard wall of the end station.
 
-**Summarize the status of a motor**
-  To show the values of all the status flags, for example, ``dm3_bct.status()``
+The Bluesky interface is defined `here
+<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/killswitch.py>`__
 
-**Which motors have been homed?**
-  Do this command: ``homed()``
 
-**Which motors have their amplifiers enabled?**
-  Do this command: ``ampen()``
+
+From the docstring of the class: 
+
+.. code-block:: none
+
+   A simple interface to the DIODE kill switches for the Phytron
+   amplifiers on the FMBO Delta Tau motor controllers.
+
+   In the BMM DIODE box, these are implemented on channels 0 to 4 of
+   slot 4.
+
+   attributes
+   ----------
+   dcm 
+     kill switch for MC02, monochromator
+   slits2
+     kill switch for MC03, DM2 slits
+   m2
+     kill switch for MC04, focusing mirror
+   m3
+     kill switch for MC05, harmonic rejection mirror
+   dm3
+     kill switch for MC06, hutch slits and diagnostics
+
+   methods
+   -------
+   kill(mc)
+     disable Phytron
+   enable(mc)
+     activate Phytron
+   cycle(mc)
+     disable, wait 5 seconds, reactivate, then re-enable all motors
+
+   Specify the motor controller as a string, i.e. 'dcm', 'slits2', 'm2', 'm3', 'dm3'
+   
+   Here is a common problem which is resolved using a kill switch.
+
+      BMM E.111 [36] ▶ RE(mvr(m2.pitch, 0.05))
+      INFO:BMM_logger:    Moving m2_pitch to 2.550
+
+      Moving m2_pitch to 2.550
+      ERROR:ophyd.objects:Motion failed: m2_yu is in an alarm state status=AlarmStatus.STATE severity=AlarmSeverity.MAJOR
+      ERROR:ophyd.objects:Motion failed: m2_yu is in an alarm state status=AlarmStatus.STATE severity=AlarmSeverity.MAJOR
+      ERROR:ophyd.objects:Motion failed: m2_ydi is in an alarm state status=AlarmStatus.STATE severity=AlarmSeverity.MAJOR
+      ERROR:ophyd.objects:Motion failed: m2_ydi is in an alarm state status=AlarmStatus.STATE severity=AlarmSeverity.MAJOR
+      Out[36]: ()
+
+   This is telling you that the amplifiers for two of the M2 jacks
+   went into an alarm state. In the vast majority of cases, this
+   simply requires killing and reactivating those amplifiers.
+
+   The solution to this one is:
+
+      BMM E.111 [1] ▶ ks.cycle('m2')
+      Cycling amplifiers on m2 motor controller
+      killing amplifiers
+      reactivating amplifiers
+      enabling motors
+
+
+Old kill switch system
+~~~~~~~~~~~~~~~~~~~~~~
+
+There is a row of switches on rack D, the rack next to the control
+station, that are used to disable the amplifiers for the MCS8 motor
+controllers.  The cabling for this system still exists, but is not
+plugged into the controllers.  Should the DIODE system somehow fail,
+this can be redeployed easily.
+
+
+.. _fig-killswitches:
+.. figure:: _images/Kill_switches.jpg
+   :target: _images/Kill_switches.jpg
+   :width: 70%
+   :align: center
+
+   The manual kill switch system
+
+
+When you suspect that a motor has an amplifier fault, toggle the
+appropriate switch to the off position.  Wait 10 seconds (to be very
+safe...).  Then toggle the switch back to the on position. The motor
+should be ready to go. These switches replace the shorted plugs that
+came attached to the "disable" port on the back side of the MCS8s.
+
+=======  ==========================  ===============================   =================================
+ MCS8     RGA label                   RGD label                         motors
+=======  ==========================  ===============================   =================================
+ MC02     6BM-100149-RG:A1-PT1B3-A    6BM-100149-RG:A1-PT1B3-B	        DCM
+ MC03     6BM-100150-RG:A1-PT1B3-A    6BM-100150-RG:A1-PT1B3-B	        slits2
+ MC04     6BM-100151-RG:A1-PT1B3-A    6BM-100151-RG:A1-PT1B3-B	        M2 + DM2 FS
+ MC05     6BM-100152-RG:A1-PT1B3-A    6BM-100152-RG:A1-PT1B3-B	        M3 + Filters
+ MC06                                 <installed, not yet labeled>      DM3 (bct,bpm,fs,foils)+ Slits3
+=======  ==========================  ===============================   =================================
+
+In the situation where toggling the switch does not clear the
+amplifier fault, the next troubleshooting step is to power cycle the
+MCS8.  This is done by toggling the red, illuminated switch on the
+front of the MCS8.  Wait for the red amplifier lights to stop
+flickering after turning off the MCS8, then turn the MCS8 back on.
+
+After power cycling the MCS8, it is necessary to re-home all the
+motors controlled by the MCS8.
+
+
+MCS8 Connector
+~~~~~~~~~~~~~~
+
+The disable plug on the back of the MCS8 controllers is a Binder RS
+connector, part number 468-885. `Here's an
+example. <https://uk.rs-online.com/web/p/industrial-automation-circular-connectors/0468885/?sra=pstk>`__
+
+And here is the wiring diagram.  Short the prongs on the opposite side
+of the alignment groove.
+
+.. _fig-killswitcheconnector:
+.. figure:: _images/Kill_switch_connector.png
+   :target: _images/Kill_switch_connector.png
+   :width: 30%
+   :align: center
+
+Tutorial for how to put together the Binder connectors: :download:`PDF <_static/Binder-instructions.pdf>`
+
+
+
+Windows VM and BioLogic
+-----------------------
+
+We use the `BioLogic EC_lab software
+<https://www.biologic.net/support-software/ec-lab-software/>`__ to run
+the `VSP-300 potentiostat
+<https://www.biologic.net/products/vsp-300/>`__.  Since there is not a
+dedicated Windows machine at BMM, EC-Lab is run on a virtual machine
+that is spun up when needed.  Here are the instructions for starting
+and interacting with the the VM.
+
+Starting the virtual machine
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++ At a command line, do ``rdesktop xf06bm-srv2``
++ This will open a new window and display a Windows login
+  screen. Normal credentials do not work. Log in as xf06bm using the
+  password provided by beamline staff.
++ The Windows desktop will start with a full-screen management
+  application that looks like the figure below. You can close
+  or minimize that window.
++ Double-click on the EC-lab icon.
++ Start doing electrochemistry.
++ Save your data to the Echem folder on the Windows desktop. In that
+  folder you will find a folder with the name of the PI for the
+  experiment. In that, you will find a folder with the start dat of
+  the experiment. Save your data in that folder. 
+
+.. _fig-winvm:
+.. figure:: _images/Winvm_startup.png
+   :target: _images/Winvm_startup.png
+   :width: 70%
+   :align: center
+
+   VM management window. You can minimize or close this.
+
+Transferring echem data
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The VM is on the INST network, thus data must be transferred to a
+machine on the INST network. This means an IOC server needs to be used
+for data transfer. Here is how this can be done using the bravel
+account.
+
++ Open a CMD window on the VM
++ cd to the location of the current user's Echem data
++ do something like ``scp * bravel@10.68.42.26:/nsls2/users/bravel/temp_folder``
++ on IOC2, zip up the temp_folder and transfer the file to the xf06bm
+  user via the ``/tmp/`` folder. 
+
+Obviously, this needs streamlining. 
 
 
 Calibrate the mono
@@ -359,6 +528,10 @@ Calibrate the mono
 The typical calibration procedure involves measuring the angular
 position of the Bragg axis for the edge energies of 10 metals: Fe, Co,
 Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.  
+
+The tabulated values of edge energies from :cite:t:`Kraft1998` are
+used in the calibration.
+
 
 #. Be sure that all 10 of these elements are actually mounted on the
    reference wheel and configured in the ``xafs_ref.mapping`` dict.
@@ -393,8 +566,9 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
 
    .. todo::
 
-      Implement on-the-fly determination of E0 to obviate the step of
-      editing the INI file.  Pb is tricky.  Nb and Mo are kind of tricky.
+      Implement on-the-fly determination of E\ :sub:`0` to obviate the
+      step of editing the INI file.  Pb is tricky.  Nb and Mo are kind
+      of tricky.
 
 
    .. 
@@ -415,6 +589,15 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
    instructions for modifying the :file:`BMM/dcm-parameters.py` file
    to use the new calibration values.
 
+   .. _fig-calibrate:
+   .. figure:: _images/Calibration_111.png
+      :target: _images/Calibration_111.png
+      :width: 70%
+      :align: center
+
+      Example calibration curve
+   
+
 #. Edit :file:`BMM/dcm-parameters.py` as indicated.
 
 #. Do
@@ -429,17 +612,22 @@ Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.
 
       dcm.set_crystal()
 
-   Or simply restart bsui, which is usually the easiest thing.
+   Or simply restart ``bsui``, which is usually the easier thing.
 
 #. Finally, do 
-
 
    .. code-block:: python
 
       calibrate_pitch(mono='111')
 
-   and use the fitted slope and offset to modify ``approximate_pitch``
-   in :file:`BMM/functions.py`.
+   This performs a simple linear fit to the rocking curve peak
+   positions for ``dcm_pitch`` found at each edge.  Use the fitted
+   slope and offset to modify ``approximate_pitch`` in
+   :file:`BMM/functions.py`.
 
 The mono should now be correctly calibrated using the new calibration
 parameters.
+
+----
+
+.. bibliography::

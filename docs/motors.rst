@@ -401,3 +401,32 @@ The lateral table motors |nd| and its yaw |nd| are normally disabled.
 
    All table movements are recorded in the :numref:`experimental log
    (Section %s) <log>`.
+
+Examine Motor Axes
+------------------
+
+Some BlueSky functionality related to the axes controlled by the FMBO
+MCS8 motor controllers.  These include:
+
++ Collimating mirror (``m1_*``)
++ Filter assemblies (``dm1_*``)
++ Monochromator (``dcm_*``)
++ Second diagnostic module (``dm2_*``)
++ Focusing mirror (``m2_*``)
++ Harmonic rejection mirror (``m3_*``)
++ Third diagnostic module (``dm3_*``)
+
+(38 axes motors in total) but not any of the end station motors
+(``xafs_*``), which are run using NSLS-II standard GeoBricks.
+
+**Homing**
+  Any of these axes can be homed with, for example, ``dm3_bct.home()``
+
+**Summarize the status of a motor**
+  To show the values of all the status flags, for example, ``dm3_bct.status()``
+
+**Which motors have been homed?**
+  Do this command: ``homed()``
+
+**Which motors have their amplifiers enabled?**
+  Do this command: ``ampen()``
