@@ -114,8 +114,8 @@ Bluesky. The heart of the implementation is a system call to
 ``fswebcam``. From there, the image is saved as an asset and correctly
 pointed to in databroker.  See:
 
-+ https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/user_ns/detectors.py#L253
-+ https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/camera_device.py#L62-L164
++ `BMM/user_ns/detectors.py <https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/user_ns/detectors.py#L253>`__
++ `BMM/camera_device.py <https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/camera_device.py#L62-L164>`__
 
 
 DI Water Flow

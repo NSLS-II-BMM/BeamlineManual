@@ -15,6 +15,61 @@
 Common chores
 =============
 
+Search the Hutch
+----------------
+
+The buttons on the hutch interlock panel are labeled with black
+stickers with white numbers.  Those labels correspond to the numbering
+in these lists:
+
+To OPEN the hutch
+~~~~~~~~~~~~~~~~~
+
++ 6. Close the shutter
++ 5. Press the "SBE" button
++ 4. ∙∙∙
++ 3. Make sure the “Front Left Maglock” button is not green
++ 2. Press the green “Open Door” button, wait for the slow door to open
++ 1. Enter the hutch
+
+
+To CLOSE the hutch
+~~~~~~~~~~~~~~~~~~
+
+Everyone but the person performing the search should leave the hutch.
+
+The search is done by and only one person.  Only one person pushes all
+the buttons.  The serach **is not** a team sport!
+
+1. Complete the hutch search 
+
+   + Look in the mirror to see that no one is behind the table
+   + Press search button 1
+   + Visually inspect the length of the hutch, verifying that it is empty of people
+   + Press search button 2
+   + Exit the hutch
+
+2. ∙∙∙
+3. Push the “Front Left Maglock” button. It should be lit green
+4. Push and hold the yellow “Close Door” button. Listen for the magnetic latch
+5. Push the "SBE" button, wait for the loud noise to finish
+6. You can now open the shutter
+
+Hutch search sign
+~~~~~~~~~~~~~~~~~
+
+These instructions are printed, laminated, mounted on a magnetic
+sheet, and hung near the search station.  I would like to make these
+signs in various languages.  If you would like to help by translating
+this sign, download the Word document below.  Make a translation into
+your language and mail the Word doc back to Bruce.  He will print and
+mount the new translation!  I am most eager for Chinese, Russian, and
+German translations.
+
+:download:`Word document with hutch search instructions <_static/HutchSearch.docx>`.
+
+
+
 Change energy and prepare for fluorescence measurements
 -------------------------------------------------------
 

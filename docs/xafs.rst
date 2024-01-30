@@ -1078,3 +1078,98 @@ where
 ``xmax``
    Specify the maximum energy plotted on the x-axis in units of energy
    above the measured fluorescence line energy
+
+
+Reference spectra
+-----------------
+
+BMM has a wide variety of reference materials mounted in the reference
+position.  The collection includes metal foils, metal powders, stable
+oxides, or other stable compound of 44 of the elements measurable at
+BMM.
+
+The materials shown and listed below are always available for
+measurement.  As part of the `command for changing edge
+<https://nsls-ii-bmm.github.io/BeamlineManual/manage.html#change-energy>`__,
+the reference wheel will rotate to the position of the selected
+element.  Every XAS scan will include the signal from the I\ :sub:`r`
+chamber (whether any signal makes it to that detector depends on the
+sample being measured, of course).
+
+.. _fig-refwheel:
+.. figure:: _images/Ref_wheel.jpg
+   :target: _images/Ref_wheel.jpg
+   :width: 70%
+   :align: center
+
+   The reference wheel at BMM
+
+.. |Gaoxide| replace:: Ga\ :sub:`2`\ O\ :sub:`3`
+.. |Geoxide| replace:: GeO\ :sub:`2`
+.. |Asoxide| replace:: As\ :sub:`2`\ O\ :sub:`3`
+.. |Bioxide| replace:: BiO\ :sub:`2`
+.. |Yoxide|  replace:: Y\ :sub:`2`\ O\ :sub:`3`
+.. |Srtitanate| replace:: SrTiO\ :sub:`3`
+.. |Csnitrate| replace:: CsNO\ :sub:`3`
+.. |Lahydroxide| replace:: La(OH)\ :sub:`3`
+.. |Ceoxide| replace:: Ce\ :sub:`2`\ O\ :sub:`3`
+.. |Proxide| replace:: Pr\ :sub:`6`\ O\ :sub:`11`
+.. |Ndoxide| replace:: Nd\ :sub:`2`\ O\ :sub:`3`
+.. |Smoxide| replace:: Sm\ :sub:`2`\ O\ :sub:`3`
+.. |Euoxide| replace:: Eu\ :sub:`2`\ O\ :sub:`3`
+.. |Gdoxide| replace:: Gd\ :sub:`2`\ O\ :sub:`3`
+.. |Tboxide| replace:: Tb\ :sub:`4`\ O\ :sub:`9`
+.. |Dyoxide| replace:: Dy\ :sub:`2`\ O\ :sub:`3`
+.. |Hooxide| replace:: Ho\ :sub:`2`\ O\ :sub:`3`
+.. |Eroxide| replace:: Er\ :sub:`2`\ O\ :sub:`3`
+.. |Tmoxide| replace:: Tm\ :sub:`2`\ O\ :sub:`3`
+.. |Yboxide| replace:: Yb\ :sub:`2`\ O\ :sub:`3`
+.. |Luoxide| replace:: Lu\ :sub:`2`\ O\ :sub:`3`
+.. |Rbcarbonate| replace:: RbCO\ :sub:`3`
+.. |Hfoxide| replace:: HfO\ :sub:`2`
+.. |Taoxide| replace:: Ta\ :sub:`2`\ O\ :sub:`5`
+.. |Reoxide| replace:: ReO\ :sub:`2`
+.. |Ruoxide| replace:: RuO\ :sub:`2`
+
+============   ========        ===================     ============    ========        ===============
+ Ring / slot    Element         Material                Ring / slot     Element         Material        
+============   ========        ===================     ============    ========        ===============
+ Outer 1         empty           for alignment           Inner 1         Cs              |Csnitrate|
+ Outer 2         Ti              foil                    Inner 2         La              |Lahydroxide|
+ Outer 3         V               foil                    Inner 3         Ce              |Ceoxide|
+ Outer 4         Cr              foil                    Inner 4         Pr              |Proxide|
+ Outer 5         Mn              metal powder            Inner 5         Nd              |Ndoxide|
+ Outer 6         Fe              foil                    Inner 6         Sm              |Smoxide|
+ Outer 7         Co              foil                    Inner 7         Eu              |Euoxide|
+ Outer 8         Ni              foil                    Inner 8         Gd              |Gdoxide|
+ Outer 9         Cu              foil                    Inner 9         Tb              |Tboxide|
+ Outer 10        Zn              foil                    Inner 10        Dy              |Dyoxide|
+ Outer 11        Ga              |Gaoxide|               Inner 11        Ho              |Hooxide|
+ Outer 12        Ge              |Geoxide|               Inner 12        Er              |Eroxide|
+ Outer 13        As              |Asoxide|               Inner 13        Tm              |Tmoxide|
+ Outer 14        Se              metal powder            Inner 14        Yb              |Yboxide|
+ Outer 15        Br              bromophenol blue        Inner 15        Lu              |Luoxide|
+ Outer 16        Zr              foil                    Inner 16        Rb              |Rbcarbonate|
+ Outer 17        Nb              foil                    Inner 17        Ba              *<absent>*
+ Outer 18        Mo              foil                    Inner 18        Hf              |Hfoxide|
+ Outer 19        Pt              foil                    Inner 19        Ta              |Taoxide|
+ Outer 20        Au              foil                    Inner 20        W               *<absent>*
+ Outer 21        Pb              foil                    Inner 21        Re              |Reoxide|
+ Outer 22        Bi              |Bioxide|               Inner 22        Os              *<absent>*
+ Outer 23        Sr              |Srtitanate|            Inner 23        Sc              metal powder
+ Outer 24        Y               |Yoxide|                Inner 24        Ru              |Ruoxide|
+============   ========        ===================     ============    ========        ===============
+
++ For Th L3: Bi will be used (outer 20)
++ For U L3: Y will be used (outer 24)
++ For Pu L3: Zr will be used (outer 16)
+
+The missing elements (Ba, W, & Os, Ir) will be added when they are acquired.
+
+See also `BMM's complete list of standard materials
+<https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__.
+
+Here is a `spreadsheet
+<https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/standards/standards.xlsx>`__
+for :numref:`automation (see Section %s) <sample_wheel_automation>`
+with the content of standards wheel.

@@ -189,6 +189,8 @@ was called :file:`mysamples`, the new BlueSky command is called
    Convert spreadsheets to Bluesky queueserver input.
 
 
+.. _sample_wheel_automation:
+
 Sample wheel automation
 -----------------------
 

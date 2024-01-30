@@ -20,5 +20,5 @@ dependencies:
   - sphinx-math-dollar
   - sphinx-subfigure
   - sphinx-design
-  
+  - sphinxcontrib.bibtex  
 
