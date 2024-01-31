@@ -16,6 +16,64 @@ This section is a scattershot assortment of details about things at
 the beamline.  This is basically an attempt to capture institutional
 knowledge ... someplace.
 
+xf06bm-ws5, in-hutch Zoom calls
+-------------------------------
+
+``xf06bm-ws5`` (``10.68.40.225``) is the System 76 Meerkat mounted on
+the upstream wall of the end station. This machine is intended to
+allow the users in the hutch to join a Zoom chat from within the
+hutch. This helps Bruce provide user support from home.
+
+.. _fig-ws5:
+.. figure:: _images/Xf06bm-ws5.jpg
+   :target: _images/Xf06bm-ws5.jpg
+   :width: 70%
+   :align: center
+
+
+There are a number of peripherals attached to ``xf06bm-ws5``:
+
++ A wireless mouse and keyboard clearly labeled as being for this
+  computer. These are normally tucked away on the ledge formed by the
+  panel seam on the upstream wall. I usually place these on the long
+  table when I want to use them
+
++ A screen. This is the rather large screen mounted in the corner of
+  the hutch. It can be moved around somewhat for better viewing.
+
++ A reasonably loud speaker. This is the Nylavee sitting on top of the
+  DIODE box above the beampipe next to the teddy bear in soldier
+  clothing. 
+
++ A good microphone. This is the Blue Yeti on stand above the IT
+  chamber on the XAS table. It has good noise cancellation so the din
+  from the XSpress3 should not effect voice quality.
+
++ A decent camera. This is the Nexigo mounted overhead next to the
+  Axis webcam.
+
+
+While these devices are all connected to ``xf06bm-ws5`` and powered
+on, there are no long running processes that connect to the camera or
+microphone. You are not being spied upon while in the hutch -- unless
+you are on a Zoom call, in which case the Zoom session will be on
+screen.
+
+``xf06bm-ws5`` is available via Guacamole.  When needed for remote
+support, Bruce will usually initiate the Zoom call and have the hutch
+computer join in.
+
+Note that the speaker is a Bluetooth speaker.  It shows up as SK100
+when you go into Settings and run a Bluetooth probe.  The USB cable is
+for power only.
+
+.. note:: To connect the speaker, select it in Settings then the
+	  volume button on the right end of the speaker must be
+	  pressed twice.
+
+
+
+
 BNC Cable Map
 -------------
 
@@ -116,6 +174,17 @@ pointed to in databroker.  See:
 
 + `BMM/user_ns/detectors.py <https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/user_ns/detectors.py#L253>`__
 + `BMM/camera_device.py <https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/camera_device.py#L62-L164>`__
+
+
+Pilatus 100K
+------------
+
+.. todo:: Need to verify what's on the wiki page.
+
+dcm_roll
+--------
+
+.. todo:: Capture this: https://wiki-nsls2.bnl.gov/beamline6BM/index.php?title=Encoder_Loss_2nd_Xtal_Roll
 
 
 DI Water Flow
@@ -345,3 +414,273 @@ Logitech controller
 .. todo::
 
    Explain how to configure buttons in CSS
+
+
+Motor controllers
+-----------------
+
+This section is a big, long list of all the motor PV names at BMM.
+
+Most motors have aliases.  The alias is an alternate, easier-to-type
+name for the axis.  These are equivalent:
+
+.. code-block:: sh
+
+   caget XF:06BMA-OP{Mono:DCM1-Ax:Bragg}Mtr
+   caget xafs_bragg
+
+Aliases work with most motor record fields, as well.  The following are
+also equivalent:
+
+.. code-block:: sh
+
+   caget XF:06BMA-OP{Mono:DCM1-Ax:Bragg}Mtr.VELO
+   caget xafs_bragg.VELO
+
+
+The following tables give PV name and alias, a brief description of
+the purpose of the motor, the controller and location of that
+controller, and the channel number in the controller.  A few
+abbreviations are used:  
+
+:us: upstream
+:ds: downsteam
+:ib: inboard
+:ob: outboard
+:para: parallel
+:perp: perpendicular
+
+
+Collimating mirror, M1
+~~~~~~~~~~~~~~~~~~~~~~
+
+================================  =========  =========================  ======================  ==============
+PV                                alias      Motor Description          controller              motor number
+================================  =========  =========================  ======================  ==============
+XF:06BM-OP{Mir:M1-Ax:YU}Mtr       m1_yu      us jack                    MC01 (mezzanine)        1
+XF:06BM-OP{Mir:M1-Ax:YDO}Mtr      m1_ydo     ds, outboard jack          MC01 (mezzanine)        2
+XF:06BM-OP{Mir:M1-Ax:YDI}Mtr      m1_ydi     ds, inboard jack           MC01 (mezzanine)        3
+XF:06BM-OP{Mir:M1-Ax:XU}Mtr       m1_xu      us lateral                 MC01 (mezzanine)        4
+XF:06BM-OP{Mir:M1-Ax:XD}Mtr       m1_xd      ds lateral                 MC01 (mezzanine)        5 
+================================  =========  =========================  ======================  ==============
+
+Filters, DM1
+~~~~~~~~~~~~
+
+================================  ============  =========================  ======================  ==============
+PV                                alias         Motor Description          controller              motor number
+================================  ============  =========================  ======================  ==============
+XF:06BMA-BI{Fltr:01-Ax:Y1}Mtr     dm1_filters1  assembly #1                MC05 (RGA)              6
+XF:06BMA-BI{Fltr:01-Ax:Y2}Mtr     dm1_filters2  assembly #2                MC05 (RGA)              7 
+================================  ============  =========================  ======================  ==============
+
+DCM
+~~~
+
+===================================  ============  ====================  ======================  ==============
+PV                                   alias         Motor Description     controller              motor number
+===================================  ============  ====================  ======================  ==============
+XF:06BMA-OP{Mono:DCM1-Ax:Bragg}Mtr   dcm_bragg     DCM Bragg             MC02 (RGA)              1
+XF:06BMA-OP{Mono:DCM1-Ax:Bragg2}Mtr  dcm_bragg2    Bragg 2nd encoder     MC02 (RGA)
+XF:06BMA-OP{Mono:DCM1-Ax:P2}Mtr      dcm_pitch     2nd xtal pitch        MC02 (RGA)              3
+XF:06BMA-OP{Mono:DCM1-Ax:R2}Mtr      dcm_roll      2nd xtal roll         MC02 (RGA)              4
+XF:06BMA-OP{Mono:DCM1-Ax:Per2}Mtr    dcm_para      2nd xtal perp         MC02 (RGA)              5
+XF:06BMA-OP{Mono:DCM1-Ax:Par2}Mtr    dcm_perp      2nd xtal para         MC02 (RGA)              6
+XF:06BMA-OP{Mono:DCM1-Ax:X}Mtr       dcm_x         lateral               MC02 (RGA)              7
+XF:06BMA-OP{Mono:DCM1-Ax:Y}Mtr       dcm_y         vertical              MC02 (RGA)              8 
+===================================  ============  ====================  ======================  ==============
+
+Slits 2, DM2
+~~~~~~~~~~~~
+
+==============================  ============  ====================  ======================  ==============
+PV                              alias         Motor Description     controller              motor number
+==============================  ============  ====================  ======================  ==============
+XF:06BMA-OP{Slt:01-Ax:O}Mtr     dm2_slits_o   outboard              MC03 (RGA)              1
+XF:06BMA-OP{Slt:01-Ax:I}Mtr     dm2_slits_i   inboard               MC03 (RGA)              2
+XF:06BMA-OP{Slt:01-Ax:T}Mtr     dm2_slits_t   top                   MC03 (RGA)              3
+XF:06BMA-OP{Slt:01-Ax:B}Mtr     dm2_slits_b   bottom                MC03 (RGA)              4 
+==============================  ============  ====================  ======================  ==============
+
+
+DM2 fluorescence screen
+~~~~~~~~~~~~~~~~~~~~~~~
+
+==============================  ============  ====================  ======================  ==============
+PV                              alias         Motor Description     controller              motor number
+==============================  ============  ====================  ======================  ==============
+XF:06BMA-BI{Diag:02-Ax:Y}Mtr    dm2_fs        vertical              MC04 (RGA)              7 
+==============================  ============  ====================  ======================  ==============
+
+Focusing mirror, M2
+~~~~~~~~~~~~~~~~~~~
+
+
+==============================  ============  ====================  ======================  ==============
+PV                              alias         Motor Description     controller              motor number
+==============================  ============  ====================  ======================  ==============
+XF:06BMA-OP{Mir:M2-Ax:YU}Mtr    m2_yu         us jack               MC04 (RGA)              1
+XF:06BMA-OP{Mir:M2-Ax:YDO}Mtr   m2_ydo        ds, outboard jack     MC04 (RGA)              2
+XF:06BMA-OP{Mir:M2-Ax:YDI}Mtr   m2_ydi        ds, inboard jack      MC04 (RGA)              3
+XF:06BMA-OP{Mir:M2-Ax:XU}Mtr    m2_xu         us lateral            MC04 (RGA)              4
+XF:06BMA-OP{Mir:M2-Ax:XD}Mtr    m2_xd         ds lateral            MC04 (RGA)              5
+XF:06BMA-OP{Mir:M2-Ax:Bend}Mtr  m2_bender     bender                MC04 (RGA)              6 
+==============================  ============  ====================  ======================  ==============
+
+Harmonic rejection mirror, M3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+==============================  ============  ====================  ======================  ==============
+PV                              alias         Motor Description     controller              motor number
+==============================  ============  ====================  ======================  ==============
+XF:06BMA-OP{Mir:M3-Ax:YU}Mtr    m3_yu         us jack               MC05 (RGA)              1
+XF:06BMA-OP{Mir:M3-Ax:YDO}Mtr   m3_ydo        ds, outboard jack     MC05 (RGA)              2
+XF:06BMA-OP{Mir:M3-Ax:YDI}Mtr   m3_ydi        ds, inboard jack      MC05 (RGA)              3
+XF:06BMA-OP{Mir:M3-Ax:XU}Mtr    m3_xu         us lateral            MC05 (RGA)              4
+XF:06BMA-OP{Mir:M3-Ax:XD}Mtr    m3_xd         ds lateral            MC05 (RGA)              5 
+==============================  ============  ====================  ======================  ==============
+
+Slits 3, DM3
+~~~~~~~~~~~~
+
+==============================  ============  ====================  ======================  ==============
+PV                              alias         Motor Description     controller              motor number
+==============================  ============  ====================  ======================  ==============
+XF:06BM-BI{Slt:02-Ax:O}Mtr      dm3_slits_o     outboard            MC06 (RGC1)             5
+XF:06BM-BI{Slt:02-Ax:I}Mtr      dm3_slits_i     inboard             MC06 (RGC1)             6
+XF:06BM-BI{Slt:02-Ax:T}Mtr      dm3_slits_t     top                 MC06 (RGC1)             7
+XF:06BM-BI{Slt:02-Ax:B}Mtr      dm3_slits_b     bottom              MC06 (RGC1)             8
+==============================  ============  ====================  ======================  ==============
+
+DM3
+~~~
+
+==============================  ============  ====================  ======================  ==============
+PV                              alias         Motor Description     controller              motor number
+==============================  ============  ====================  ======================  ==============
+XF:06BM-BI{FS:03-Ax:Y}Mtr       dm3_fs        fluorescent screen     MC06 (RGC1)            1 
+XF:06BM-BI{Fltr:01-Ax:Y}Mtr     dm3_foils     foils actuator         MC06 (RGC1)            4
+XF:06BM-BI{BCT-Ax:Y}Mtr         dm3_bct       vertical stage         MC06 (RGC1)            3
+XF:06BM-BI{BPM:1-Ax:Y}Mtr       dm3_bpm       NanoBPM                MC06 (RGC1)            2 
+==============================  ============  ====================  ======================  ==============
+
+XAFS Table
+~~~~~~~~~~
+
+===============================  ============  ====================  ======================  ==============
+PV                               alias         Motor Description     controller              motor number
+===============================  ============  ====================  ======================  ==============
+XF:06BMA-BI{XAFS-Ax:Tbl_YU}Mtr   xafs_yu       xafs table y us        MC07 (RGC1)             1
+XF:06BMA-BI{XAFS-Ax:Tbl_YDO}Mtr  xafs_ydo      xafs table y ds ob     MC07 (RGC1)             2
+XF:06BMA-BI{XAFS-Ax:Tbl_YDI}Mtr  xafs_ydi      xafs table y ds ib     MC07 (RGC1)             3
+XF:06BMA-BI{XAFS-Ax:Tbl_XU}Mtr   xafs_xu       xafs table x us        MC07 (RGC1)             4
+XF:06BMA-BI{XAFS-Ax:Tbl_XD}Mtr   xafs_xd       xafs table x ds        MC07 (RGC1)             5
+===============================  ============  ====================  ======================  ==============
+
+
+XAFS Stages
+~~~~~~~~~~~
+
+.. todo:: This table needs attention
+
+
+================================  ============  ====================  ======================  ==============
+PV                                alias         Motor Description     controller              motor number
+================================  ============  ====================  ======================  ==============
+XF:06BMA-BI{XAFS-Ax:LinY}Mtr      xafs_liny     xafs sample y          MC08 (RGC1)             1
+XF:06BMA-BI{XAFS-Ax:LinX}Mtr      xafs_linx     xafs sample x          MC08 (RGC1)             2
+XF:06BMA-BI{XAFS-Ax:LinS}Mtr      xafs_lins     xafs sample small      MC08 (RGC1)             3
+XF:06BMA-BI{XAFS-Ax:LinXS}Mtr     xafs_linxs    xafs reference         MC08 (RGC1)             4
+XF:06BMA-BI{XAFS-Ax:Pitch}Mtr     xafs_pitch    xafs pitch stage       MC08 (RGC1)             5
+XF:06BMA-BI{XAFS-Ax:Roll}Mtr      xafs_roll     xafs tilt stage        MC08 (RGC1)             6
+.                                 .             xafs reference wheel   MC08 (RGC1)             7
+.                                 .             glancing rotation      MC08 (RGC1)             8
+XF:06BMA-BI{XAFS-Ax:Tbl_RotH}Mtr  xafs_roth     xafs Huber             MC07 (RGC1)             6
+XF:06BMA-BI{XAFS-Ax:Tbl_RotB}Mtr  xafs_rotb     xafs black rot stage   MC07 (RGC1)             7
+XF:06BMA-BI{XAFS-Ax:Tbl_RotS}Mtr  xafs_rots     xafs small rot stage   MC07 (RGC1)             8
+================================  ============  ====================  ======================  ==============
+
+Gonimeter circles
+~~~~~~~~~~~~~~~~~
+
+=============================  =============  =====================  ======================  ==============
+PV                                alias         Motor Description     controller             motor number
+=============================  =============  =====================  ======================  ==============
+XF:06BM-ES{SixC-Ax:VTTH}Mtr    6bm:sixc_vtth   Vertical two theta      MC11 (RGC2)            1
+XF:06BM-ES{SixC-Ax:VTH}Mtr     6bm:sixc_vth    Vertical theta          MC11 (RGC2)            2
+XF:06BM-ES{SixC-Ax:CHI}Mtr     6bm:sixc_chi    Chi                     MC11 (RGC2)            3
+XF:06BM-ES{SixC-Ax:PHI}Mtr     6bm:sixc_phi    Phi                     MC11 (RGC2)            4
+XF:06BM-ES{SixC-Ax:HTH}Mtr     6bm:sixc_hth    Horizontal theta        MC11 (RGC2)            5
+XF:06BM-ES{SixC-Ax:HTTH}Mtr    6bm:sixc_htth   Horizontal two theta    MC11 (RGC2)            6
+XF:06BM-ES{SixC-Ax:ANAL}Mtr    6bm:sixc_anal   Analyzer                MC11 (RGC2)            7
+XF:06BM-ES{SixC-Ax:DET}Mtr     6bm:sixc_det    Detector                MC11 (RGC2)            8
+=============================  =============  =====================  ======================  ==============
+
+Goniometer motors
+~~~~~~~~~~~~~~~~~
+
+==============================  ==============  ====================  ======================  ==============
+PV                                alias         Motor Description     controller               motor number
+==============================  ==============  ====================  ======================  ==============
+XF:06BM-ES{SixC-Ax:DETHOR}Mtr   6bm:sixc_det_h  det horiz               MC12 (RGC2)            1
+XF:06BM-ES{SixC-Ax:WHEEL1}Mtr   6bm:sixc_wh1    wheel 1                 MC12 (RGC2)            2
+XF:06BM-ES{SixC-Ax:WHEEL2}Mtr   6bm:sixc_wh2    wheel 2                 MC12 (RGC2)            3
+XF:06BM-ES{SixC-Ax:SAMX}Mtr     6bm:sixc_samx   sample X                MC12 (RGC2)            4
+XF:06BM-ES{SixC-Ax:SAMY}Mtr     6bm:sixc_samy   sample Y                MC12 (RGC2)            5
+XF:06BM-ES{SixC-Ax:SAMZ}Mtr     6bm:sixc_samz   sample Z                MC12 (RGC2)            6
+XF:06BM-ES{SixC-Ax:Tbl_YD}Mtr   6bm:sixc_tyd    table Y ds              MC12 (RGC2)            7
+XF:06BM-ES{SixC-Ax:Tbl_YUI}Mtr  6bm:sixc_tyui   table Y us ib           MC12 (RGC2)            8
+==============================  ==============  ====================  ======================  ==============
+
+
+
+Goniometer table
+~~~~~~~~~~~~~~~~
+
+==============================  ===============  ====================  ======================  ==============
+PV                                alias          Motor Description     controller               motor number
+==============================  ===============  ====================  ======================  ==============
+XF:06BM-ES{SixC-Ax:Tbl_YUO}Mtr  6bm:sixc_tyuo    table Y us ob          MC13 (RGC2)             1
+XF:06BM-ES{SixC-Ax:Tbl_XU}Mtr   6bm:sixc_txu     table X us             MC13 (RGC2)             2
+XF:06BM-ES{SixC-Ax:Tbl_XD}Mtr   6bm:sixc_txd     table X ds             MC13 (RGC2)             3
+XF:06BM-ES{SixC-Ax:Tbl_Z}Mtr    6bm:sixc_tz      table Z                MC13 (RGC2)             4
+XF:06BM-ES{SixC-Ax:Slt1_T}Mtr   6bm:sixc_slt1_t  top slit               MC13 (RGC2)             5
+XF:06BM-ES{SixC-Ax:Slt1_B}Mtr   6bm:sixc_slt1_b  bottom slit            MC13 (RGC2)             6
+XF:06BM-ES{SixC-Ax:Slt1_I}Mtr   6bm:sixc_slt1_i  inboard slit           MC13 (RGC2)             7
+XF:06BM-ES{SixC-Ax:Slt1_O}Mtr   6bm:sixc_slt1_o  outboard slit          MC13 (RGC2)             8
+==============================  ===============  ====================  ======================  ==============
+
+
+
+Shutters and screen
+~~~~~~~~~~~~~~~~~~~
+
+================================  =========  ======================  ======================  ==============
+PV                                alias      Motor Description       controller              motor number
+================================  =========  ======================  ======================  ==============
+XF:06BM-PPS{Sh:FE}Pos-Sts                    front end shutter       PPS     
+XF:06BM-PPS{Sh:A}Pos-Sts                     A hutch shutter         PPS     
+XF:06BMA-OP{FS:1}Pos-Sts                     fluorescent screen      EPS     
+================================  =========  ======================  ======================  ==============
+
+
+
+Front-end slits
+~~~~~~~~~~~~~~~
+
+================================  =========  ======================  ======================  ==============
+PV                                alias      Motor Description       controller              motor number
+================================  =========  ======================  ======================  ==============
+FE:C06B-OP{Slt:12-Ax:X}size                  horizontal size         geobrick (mezzanine)    virtual
+FE:C06B-OP{Slt:12-Ax:X}center                horizontal center       geobrick (mezzanine)    virtual
+FE:C06B-OP{Slt:12-Ax:Y}size                  vertical size           geobrick (mezzanine)    virtual
+FE:C06B-OP{Slt:12-Ax:Y}center                vertical center         geobrick (mezzanine)    virtual
+FE:C06B-OP{Slt:1-Ax:Hrz}Mtr                  Slit 1 horizontal       geobrick (mezzanine)    
+FE:C06B-OP{Slt:1-Ax:Inc}Mtr                  Slit 1 incline          geobrick (mezzanine)    
+FE:C06B-OP{Slt:1-Ax:O}Mtr                    Slit 1 X outboard       geobrick (mezzanine)    
+FE:C06B-OP{Slt:1-Ax:T}Mtr                    Slit 1 Y top            geobrick (mezzanine)    
+FE:C06B-OP{Slt:2-Ax:Hrz}Mtr                  Slit 2 horizontal       geobrick (mezzanine)    
+FE:C06B-OP{Slt:2-Ax:Inc}Mtr                  Slit 2 incline          geobrick (mezzanine)    
+FE:C06B-OP{Slt:2-Ax:I}Mtr                    Slit 2 X inboard        geobrick (mezzanine)    
+FE:C06B-OP{Slt:2-Ax:B}Mtr                    Slit 2 Y bottom         geobrick (mezzanine)
+================================  =========  ======================  ======================  ==============
