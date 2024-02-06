@@ -193,43 +193,6 @@ Along with an invitation to the Slack workspace, the user will receive
 an invitation to share the Google Drive.
 
 
-.. _start_end:
-
-Starting and ending an experiment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-When a new experiment begins, run the command::
-
-  BMMuser.start_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321)
-
-This will create that data folder and populate it with an
-:numref:`experimental log (Section %s) <log>`, write a template for a
-:numref:`macro file (Section %s) <macro>`, configure the logger to
-write a :numref:`user log file (Section %s) <logfile>` for this
-experiment, set the GUP and SAF numbers as metadata for output files,
-set up :numref:`snapshot (Section %s) <snap>` and :numref:`dossier
-(Section %s) <dossier>` folders, and perform other experiment start-up
-chores.
-
-.. note::
-
-   In the near future, the ``start_experiment()`` command will grab
-   metadata from PASS (or UPS, or whatever) and set access permissions
-   on data.  When that happens, the only argument needed will be the
-   SAF number.
-
-The ``name`` should be the PI's full name, preferably transliterated
-into normal ASCII.  The ``date`` should be the starting day of the
-experiment in the ``YYYY-MM-DD`` format.  The ```GUP`` and ``SAF``
-numbers can be found on the posted safety approval form.
-
-Once the experiment is finished, run this command::
-
-  BMMuser.end_experiment()
-
-This will reset the logger and the ``DATA`` variable and unset the GUP
-and SAF numbers.
-
 
 ..
   Electrochemistry experiments

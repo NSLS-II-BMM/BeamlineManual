@@ -15,6 +15,10 @@
 Common chores
 =============
 
+In this section, a variety of procedures around the beamline are
+explained in detail.
+
+
 Search the Hutch
 ----------------
 
@@ -104,8 +108,9 @@ Once the hutch is secured and you are back at the computer:
    a sensible signal on the detector.
 
 #. Record the detector position (``xafs_det.position`` or the number
-   next to ``det:`` in the display at the top of the top screen) for
-   the current sample in the spreadsheet.
+   next to ``det:`` in the :numref:`display (Section %s)
+   <cadashboard>` at the top of the top screen) for the current sample
+   in the spreadsheet.
 
 #. Move to a new sample position. To change slots on the *ex situ*
    sample wheel: ``RE(slot(##))``, where the number (``##``) is

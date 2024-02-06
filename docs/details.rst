@@ -103,6 +103,14 @@ the XAFS table.
 
 Vendor link for quick-disconnect fixture: https://www.mcmaster.com/5012K122/
 
+In practice, the H\ :sub:`2`/N\ :sub:`2` and N\ :sub:`2`/Ar mixing
+channels are not much used.  Unless measuring with the incident beam
+below 5 keV or above 21 keV, it is a poor use of time to make changes
+to the gas content of the ion chambers.  This is because it takes
+quite some time for the volume of the ion chamber to equillibrate.
+
+N\ :sub:`2` is adequate for almost all experiments at BMM.
+
 
    
 Analog Video Capture

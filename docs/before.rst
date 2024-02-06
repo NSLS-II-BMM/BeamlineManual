@@ -21,12 +21,12 @@ registration.
 
 .. note::
 
-   + New registration requests as well as the extensions requests for
-     expired registrations shall be submitted as soon as possible.
-   + Approvals for guest registrations can take as long as two
-     months for some non-US citizens.
+   + New registration requests as well as extension requests for
+     expired registrations should be submitted as soon as possible.
+   + Approvals for guest registrations require two months for non-US
+     citizens and longer for certain nationalities.
 
-To apply for a BNL Guest appointment: https://www.bnl.gov/ps/userguide/beforearrival.php 
+Apply for a BNL Guest appointment: https://www.bnl.gov/ps/userguide/beforearrival.php 
 
 .. caution::  Without an active appointment, you will not be allowed
 	      on site and will be turned away at the main gate. 
@@ -36,10 +36,11 @@ BNL Domain Account
 
 When your BNL Guest registration becomes active, you should receive an
 email with instructions for enabling your BNL domain account. You must
-complete that step, which includes setting your password and signing
-up for DUO Federal two-factor authentication. If you need to request
-an account, go to https://www.bnl.gov/accounts/ and click the button
-that says "Submit account registration form".
+do this, including setting your password and signing up for DUO
+Federal two-factor authentication.  
+
+If you need to request an account, go to https://www.bnl.gov/accounts/
+and click the button that says "Submit account registration form".
 
 Enabling your BNL account is non-optional. You must have an active
 account in order to unlock the computers at the beamline. 
@@ -51,14 +52,14 @@ account in order to unlock the computers at the beamline.
 Safety Approval Form
 --------------------
 
-Submit your Safety Approval Form (SAF) AT LEAST two weeks before the
-above starting date. Your SAF should provide a complete and accurate
-description of the experiment, including all samples, chemicals,
-solvents, reference materials, and equipment that will be used during
-the experiment and preparation. In addition, any additional equipment
-not provided by the beamline has to be identified and described in the
-SAF. Provide detailed information on sample processing and any safety
-measures necessary.
+Submit your Safety Approval Form (SAF) **at least** two weeks before
+the start date for your experiment.  Your SAF should provide a
+complete and accurate description of the experiment, including all
+samples, chemicals, solvents, reference materials, and equipment that
+will be used during the experiment and for sample preparation.  In
+addition, any additional equipment not provided by the beamline has to
+be identified and described in the SAF.  Provide detailed information
+on sample processing and any safety measures necessary.
 
 .. caution:: An approved SAF is required on the first day of beamtime.
 	     Without enough time for approval, you may lose your
@@ -83,14 +84,14 @@ Currently, four labs support user activities at BMM.  They are:
 + Lab 3L-L09: XAS Chemistry Lab
 + Lab 4L-L09: Electrochemistry Lab
 
-See https://www.bnl.gov/nsls2/labs/
+See https://www.bnl.gov/nsls2/labs/ for details of what equipment is
+available in each lab.
 
-If you prepare or treat samples on-site, you must request use of the
-appropriate NSLS-II User Laboratory when you submit your Safety
+If you prepare or treat samples on-site, you **must** request use of
+the appropriate NSLS-II User Laboratory when you submit your Safety
 Approval Form.
 
 You cannot request a laboratory after an SAF has been approved.  
-
 
 Here is some advice on selecting the correct lab:
 
@@ -100,7 +101,7 @@ Unbound nanoparticles
   unbound, please contact BMM beamline scientist Bruce Ravel
   (bravel@bnl.gov) as soon as possible.  
 
-Solid sample preparation (pellet pressing, spreading on tape etc)
+Solid sample preparation (pellet pressing, spreading on tape, etc)
   Request Lab 3L-L06.
 
 Liquid samples (organic solvents, acids, bases)
@@ -110,20 +111,20 @@ Hydrofluoric acid treatment
   Request Lab 3L-L09 and notify Cognizant Space Manager, Syed Khalid
   at khalid@bnl.gov, as soon as possible. 
 
-Environment and earth science sample preparation and treatment
+Environmental and earth science sample preparation and treatment
   Request Lab 3L-L07.
   
 Electrochemistry and battery science
   Request Lab 4L-L09.
 
 Radionuclide samples must be prepared and properly contained at the
-home institution. NSLS-II has no lab available for work on
-radiological materials. Samples with depleted uranium and uranium at
-low or environmentally relevant concentrations are considered
-radiological samples at NSLS-II and must be treated accordingly.
+home institution.  NSLS-II has no lab available for work on
+radiological materials.  Samples with depleted uranium and uranium at
+low or environmentally relevant concentrations **are** considered to
+be radiological samples at NSLS-II and must be treated accordingly.
 
 Requests for using gloveboxes should be discussed prior to submitting
-the SAF, with Bruce Ravel (bravel@bnl.gov) and/or Syed Khalid
+the SAF, contact Bruce Ravel (bravel@bnl.gov) and/or Syed Khalid
 (khalid@bnl.gov)
 
 .. note:: Each lab you select on your safety approval form makes work

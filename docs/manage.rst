@@ -16,24 +16,45 @@ Managing the beamline
 In this section, some recipes are provided for managing the beamline
 and meeting the needs and expectations of different experiments.
 
-As a reminder, here is the table of operating modes.
 
-.. _pds_modes:
-.. table:: Photon delivery modes
-   :name:  pds-modes2
-   :align: left
 
-   ====== ============ ========================= 
-   Mode   focused      energy range
-   ====== ============ ========================= 
-   A      |checkmark|  above 8 keV
-   B      |checkmark|  below 6 keV
-   C      |checkmark|  6 keV |nd| 8 keV
-   D      |xmark|      above 8 keV
-   E      |xmark|      6 keV |nd| 8 keV
-   F      |xmark|      below 6 keV
-   XRD    |checkmark|  above 8 keV
-   ====== ============ ========================= 
+.. _start_end:
+
+Starting and ending an experiment
+---------------------------------
+
+When a new experiment begins, run the command::
+
+  BMMuser.start_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321)
+
+This will create that data folder and populate it with an
+:numref:`experimental log (Section %s) <log>`, write a template for a
+:numref:`macro file (Section %s) <macro>`, configure the logger to
+write a :numref:`user log file (Section %s) <logfile>` for this
+experiment, set the GUP and SAF numbers as metadata for output files,
+set up :numref:`snapshot (Section %s) <snap>` and :numref:`dossier
+(Section %s) <dossier>` folders, and perform other experiment start-up
+chores.
+
+.. note::
+
+   In the near future, the ``start_experiment()`` command will grab
+   metadata from PASS (or UPS, or whatever) and set access permissions
+   on data.  When that happens, the only argument needed will be the
+   SAF number.
+
+The ``name`` should be the PI's full name, preferably transliterated
+into normal ASCII.  The ``date`` should be the starting day of the
+experiment in the ``YYYY-MM-DD`` format.  The ```GUP`` and ``SAF``
+numbers can be found on the posted safety approval form.
+
+Once the experiment is finished, run this command::
+
+  BMMuser.end_experiment()
+
+This will reset the logger and the ``DATA`` variable and unset the GUP
+and SAF numbers.
+
 
 
 Change energy
@@ -127,6 +148,26 @@ If you want to reproduce this by hand, here is the command sequence:
    .. code-block:: python
 
       BMMuser.verify_roi(xs, 'Fe', 'K')
+
+
+As a reminder, here is the table of operating modes.
+
+.. _pds_modes:
+.. table:: Photon delivery modes
+   :name:  pds-modes2
+   :align: left
+
+   ====== ============ ========================= 
+   Mode   focused      energy range
+   ====== ============ ========================= 
+   A      |checkmark|  above 8 keV
+   B      |checkmark|  below 6 keV
+   C      |checkmark|  6 keV |nd| 8 keV
+   D      |xmark|      above 8 keV
+   E      |xmark|      6 keV |nd| 8 keV
+   F      |xmark|      below 6 keV
+   XRD    |checkmark|  above 8 keV
+   ====== ============ ========================= 
 
 
 ..
@@ -456,8 +497,8 @@ The disable plug on the back of the MCS8 controllers is a Binder RS
 connector, part number 468-885. `Here's an
 example. <https://uk.rs-online.com/web/p/industrial-automation-circular-connectors/0468885/?sra=pstk>`__
 
-And here is the wiring diagram.  Short the prongs on the opposite side
-of the alignment groove.
+And here is the wiring diagram.  Short the prongs on the side opposite
+to the alignment groove.
 
 .. _fig-killswitcheconnector:
 .. figure:: _images/Kill_switch_connector.png
@@ -529,8 +570,9 @@ The typical calibration procedure involves measuring the angular
 position of the Bragg axis for the edge energies of 10 metals: Fe, Co,
 Ni, Cu, Zn, Pt, Au, Pb, Nb, and Mo.  
 
-The tabulated values of edge energies from :cite:t:`Kraft1998` are
-used in the calibration.
+The tabulated values of edge energies from Table 1 in `Kraft, et
+al. <https://doi.org/10.1063/1.1146657>`__ are used in the
+calibration.
 
 
 #. Be sure that all 10 of these elements are actually mounted on the
@@ -628,6 +670,60 @@ used in the calibration.
 The mono should now be correctly calibrated using the new calibration
 parameters.
 
-----
 
-.. bibliography::
+Provision a new beamline computer
+---------------------------------
+
+This is a list of notes on how to finish the provisioning of a new
+beamline computer.
+
+install additional packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++ plasma-desktop (just ... better)
++ redis (essential for operation of bsui)
++ most (used as the pager in BMM's bsui profile)
++ ag (powerful ack-like grep alternative)
++ sddm (also just ... better)
++ fswebcam (used to capture analog pinhole camera)
++ demeter and perl-Graphics-GnuplotIF (something silly, no doubt)
++ slack (communications)
++ ark (compression, useful in file manager)
+
+
+To install these, do:
+
+.. code-block:: sh
+
+   dzdo dnf install redis most ag sddm fswebcam demeter perl-Graphics-GnuplotIF slack ark
+   dzdo dnf install --skip-broken --nobest @kde-desktop
+
+The second command installs the KDE metapackage, skipping missing
+packages. 
+
+To finish installing ``sddm``, do 
+
+.. code-block:: sh
+
+   dzdo systemctl stop gdm
+   dzdo systemctl start sddm
+
+Desktop wallpaper
+~~~~~~~~~~~~~~~~~
+
+This may not be provisioned correctly out of the box.  Find the
+beamline wallpapers in ``/usr/share/nsls2/wallpapers/beamlines``. 
+
+Right click on the desktop and select "Configure Desktop and
+Wallpaper".  Click on "Add Image" and navigate to the folder above.
+
+Things to install from git
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++ BMM stuff: ``git clone git@github.com:NSLS-II-BMM/BMM-beamline-configuration.git``
+  + then, ``cd ~/bin`` and ``ln -s ~/git/BMM-beamline-configuration/tools/run-cadashboard``
++ BMM user manual: ``git clone git@github.com:NSLS-II-BMM/BeamlineManual.git``
++ BMM standards: ``git clone git@github.com:NSLS-II-BMM/bmm-standards.git``
++ Switch visualization: ``git clone git@github.com:NSLS-II-BMM/switch-pretty-printer.git``
+
+Also do ``cd ~/bin`` and ``ln -s ~/.ipython_collection/startup/consumer/run-consumer``

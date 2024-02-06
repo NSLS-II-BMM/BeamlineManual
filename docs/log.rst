@@ -105,17 +105,15 @@ The choices for ``<camera>`` are
 The image will then be written to the file specified by the
 ``filename=`` argument.
 
-The ``xafs()`` plan calls this function twice, once for the XAS webcam
-and once for the analog camera.
-
-Note that this function is `not` run through the Run Engine.
-
-The name of the snapshot file and the camera used are written to the
-experimental log.
+The ``xafs()`` plan does something equivalent to the ``snap()``
+function for each available camera.  These are recorded to the scan's
+:numref:`dossier (Section %s) <dossier>`.
 
 
-.. subfigure::  AB
-   :layout-sm: AB
+
+
+.. subfigure::  AB|CD
+   :layout-sm: AB|CD
    :gap: 8px
    :subcaptions: above
    :name: fig-snapshots
@@ -125,14 +123,25 @@ experimental log.
 
    .. image:: _images/XASwebcam.jpg
 
-   (Left) Snapshot taken with the analog camera.  (Right) 
-   Snapshot taken with the XAS web camera.
+   .. image:: _images/usbcam1.jpg
+
+   .. image:: _images/usbcam2.jpg
+
+   Snapshots from an experiment using the Linkam stage.  Note that
+   each snapshot is annotated along the bottom, visually displaying
+   the time and identifying the sample being measured.  
+   (Top left) Snapshot taken with the analog camera.  (Top right)
+   Snapshot taken with the XAS web camera. (Bottom left) Snapshot
+   taken with USB camera #1. (Bottom left) Snapshot taken with USB
+   camera #2.
 
 
 .. _video:
 
 Recording videos
 ----------------
+
+.. todo:: Does this actually work?
 
 The USB cameras can be used to record short videos of whatever they
 are pointing at.  The resulting video will be saved to a `.avi
