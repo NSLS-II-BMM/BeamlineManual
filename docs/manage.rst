@@ -726,4 +726,25 @@ Things to install from git
 + BMM standards: ``git clone git@github.com:NSLS-II-BMM/bmm-standards.git``
 + Switch visualization: ``git clone git@github.com:NSLS-II-BMM/switch-pretty-printer.git``
 
-Also do ``cd ~/bin`` and ``ln -s ~/.ipython_collection/startup/consumer/run-consumer``
+Also do ``cd ~/bin`` and ``ln -s ~/.ipython/profile_collection/startup/consumer/run-consumer``
+
+Data collection folders
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Make the local data collection folders.  The
+:numref:`BMMuser.start_experiment() command (Section %s) <start_end>`
+will make symlinks under those folders to the correct place on central
+storage.
+
+.. code-block:: text
+
+   mkdir ~/Data
+   mkdir ~/Data/Visitors
+   mkdir ~/Data/Staff
+
+Next need to recreate historical symlinks using the correct tool.
+
+.. todo:: capture the ``make_links.py`` script and the ``ls-lR``
+   files.  Also need to automate generating the ``ls-lR`` files.
+
+

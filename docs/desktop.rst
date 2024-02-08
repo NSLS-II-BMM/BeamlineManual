@@ -47,8 +47,7 @@ Phoebus (engineering screens)
   If you first opened a new window or tab, you can safely close it.
 
   There should be an icon for Phoebus on the icon bar at the bottom of
-  the screen.  Is looks like a stylized version of this charater
-  string: ``>/``.  Click on it.
+  the screen.  It looks like a red eyeball.  Click on it.
 
   Once Phoebus is open, if the layout was not restored, click on the
   "Window" menu, then on "Load Layout", then select "Two cameras".

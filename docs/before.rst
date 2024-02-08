@@ -104,12 +104,12 @@ Unbound nanoparticles
 Solid sample preparation (pellet pressing, spreading on tape, etc)
   Request Lab 3L-L06.
 
-Liquid samples (organic solvents, acids, bases)
+Liquid samples (organic solvents, acids, bases) and simple chemistry
   Request Lab 3L-L09.
   
 Hydrofluoric acid treatment
-  Request Lab 3L-L09 and notify Cognizant Space Manager, Syed Khalid
-  at khalid@bnl.gov, as soon as possible. 
+  Request Lab 3L-L09 and notify the Cognizant Space Manager, Syed Khalid
+  (khalid@bnl.gov), as soon as possible. 
 
 Environmental and earth science sample preparation and treatment
   Request Lab 3L-L07.
@@ -117,19 +117,22 @@ Environmental and earth science sample preparation and treatment
 Electrochemistry and battery science
   Request Lab 4L-L09.
 
-Radionuclide samples must be prepared and properly contained at the
-home institution.  NSLS-II has no lab available for work on
-radiological materials.  Samples with depleted uranium and uranium at
-low or environmentally relevant concentrations **are** considered to
-be radiological samples at NSLS-II and must be treated accordingly.
+.. admonition:: Radiological samples
+
+   Radionuclide samples must be prepared and properly contained at the
+   home institution.  NSLS-II has no lab available for work on
+   radiological materials.  Samples with depleted uranium and uranium
+   at low or environmentally relevant concentrations **are**
+   considered to be radiological samples at NSLS-II and must be
+   treated as such.
 
 Requests for using gloveboxes should be discussed prior to submitting
 the SAF, contact Bruce Ravel (bravel@bnl.gov) and/or Syed Khalid
 (khalid@bnl.gov)
 
-.. note:: Each lab you select on your safety approval form makes work
-	  for the lab stewards.  Only request the lab(s) that you
-	  actually intend to use.
+.. important:: Each lab you select on your safety approval form makes work
+	       for the lab stewards.  Only request the lab(s) that you
+	       actually intend to use.
 
 Training
 --------

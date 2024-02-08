@@ -189,10 +189,6 @@ Pilatus 100K
 
 .. todo:: Need to verify what's on the wiki page.
 
-dcm_roll
---------
-
-.. todo:: Capture this: https://wiki-nsls2.bnl.gov/beamline6BM/index.php?title=Encoder_Loss_2nd_Xtal_Roll
 
 
 DI Water Flow
@@ -692,3 +688,142 @@ FE:C06B-OP{Slt:2-Ax:Inc}Mtr                  Slit 2 incline          geobrick (m
 FE:C06B-OP{Slt:2-Ax:I}Mtr                    Slit 2 X inboard        geobrick (mezzanine)    
 FE:C06B-OP{Slt:2-Ax:B}Mtr                    Slit 2 Y bottom         geobrick (mezzanine)
 ================================  =========  ======================  ======================  ==============
+
+
+Encoder loss second crystal roll
+--------------------------------
+
+On 9 January, 2018, when attempting to home the mono motors following
+the schduled power outage in December, the 2\ :sup:`nd` crystal roll
+motor moved to its negative limit, then reported an encoder loss.
+With Graeme Elliner's (an FMB-O controls engineer) help, I came to a
+resolution of the problem.  It has left that axis in an unusual state
+that needs to be documented.
+
+Executive summary: that axis does not use its encoder.  It homes by
+running to its negative limit, then running back to it's home
+position.  It does this by counting controller pulses rather than
+encoder 
+
+Here are a couple of useful emails from Graeme to me from January 11
+and 12, 2018.
+
+.. code-block:: text
+
+   Hi Bruce
+
+   We now need to work out where the problem is.
+   NOTE you will not be able to drive anything while you're doing this or you potentially can break more.
+   1: Unplug the Disable Plug from the back of the DCM (this will
+      force all motors to be disabled) - it’s the small black connector
+      (bottom right as you look at the back) 
+   2: Disconnect PL102 & SK102 from IF2
+   3: Disconnect PL103 & SK103 from IF3
+   4: Connect PL103 & SK103 to IF2
+   5: Connect PL102 & SK102 to IF3
+
+   IF the Red light on the Interpolator stayed with IF3 then there is
+   a problem with Interpolator - Need to put motor into Open Loop 
+
+   IF the Red light on the Interpolator has moved to IF2 then the
+   Interpolator is fine and it is cabling somewhere - GOTO STEP 6 
+
+   6: SWAP PL102 and PL103
+
+   IF the red light has moved back to IF3 then the problem is between
+   PL103 to the read head on the Xtal2 Roll stage - GOTO STEP 7 
+
+   IF the red light has stayed with IF2 then the problem is between SK103 to the MCS8
+   
+   This cabling is Pin to Pin so a simple continuity test on each pin should identify what has broken
+
+   7: SWAP SK102 and SK103. The cabling should now be back to the original layout
+   8: SWAP SK203-2 and SK203-3 at the feedthroughs on the DCM (FD3-2 & FD3-3 respectively)
+
+   IF the red light has moved to IF2 then the problem is INSIDE the
+   DCM vessel - Need to put motor into Open Loop (and ultimately open
+   the vessel to find it) 
+
+   If the red light has stayed on IF3 then there is a problem with the
+   cable to the DCM. This cable is should be Pin to Pin so a simple
+   continuity test on each pin should identify what has broken 
+
+
+   To Put the Roll Axis into Open Loop
+   Have you got PeWin working now??
+   Using Pewin backup the config for the DCM and send it to me please.
+
+A lot of the cable swapping Graeme called for was to try to isolate a
+bad connection.  The connection between read-head and motor controller
+is rather lengthy, with a vacuum feedthrough, a feedtrough on the side
+of the service box, and two connections to the interpolators inside
+the service box.
+
+Following the steps laid out by Graeme, I isolated the problem to
+being inside the vacuum vessel.  Drat! Using the `old MC02
+configuration
+<https://github.com/NSLS-II-BMM/BMM-beamline-configuration/blob/master/MCS8/mc02-11Jan2018.cfg>`__
+I saved to a file, Graeme made some edits as described below and sent
+me `a new configuration file
+<https://github.com/NSLS-II-BMM/BMM-beamline-configuration/blob/master/MCS8/mc02-12Jan2018.cfg>`__.
+
+.. code-block:: text
+
+   Hi Bruce
+   I have modified the config file to now not use the encoder for
+   position feedback. I have tested that it downloads with no errors 
+
+   Details of the mods are listed at the top of the file and below, I
+   have marked all modifications with either GRE+ (for added code) or
+   GRE- (for commented code) 
+
+   In PLC1
+   P446=0  this disables encoder loss detection for axis4
+
+
+   In the Ivars
+   I430=700        changed to default stepper gain for no encoder
+   I432=0          changed to default value for no encoder
+   I7040=8 this forces the system to use steps for feedback
+
+   Use restore config from the backup menu in PEWin to install this
+   CHECK that the box at the bottom reports NO ERRORS,
+   in the terminal window you will need to "SAVE" and "$$$".
+
+   You will now find that the position scaling will be completely
+   different now that you are not using the encoder. This means that
+   your jog speeds will also be different 
+
+   I strongly suggest NOT trying to use EPICS imediately.
+
+   Use the PeWin terminal (or the Jog Ribbon) to move axis 4 to the -ve
+   limit ("#4j-") at the -ve limit type "#4HMZ" to zero the postion
+   display and then to the +ve limit ("#4j+"). 
+
+   This will tell you how many steps there are between the limits.
+
+   Using this info and the data for the encoded version you should be
+   able to move th axis to approximately the correct location. 
+
+   I have noticed that in PLC14 (the homing PLC for axis 4) that even
+   when the axis was using the encoder the home routine was not using
+   the encoder home refernce. 
+
+   It is moving to the -ve limit then moving off 51926 encoder counts,
+   then setting this to be HOME  -  search for GRE*** in the file. 
+
+   This will not be correct now the system is using steps and might
+   actually be more than you have measured as the range in steps. 
+
+   You will need to change this value before you can use EPICS to home the axis.
+
+   Once all this is working in PeWin you can test the homing routine
+   by entering M1416=1 in the Pewin terminal. 
+
+Following this set of instructions, I found that there are 1,218,299
+steps between the two limits on the 2\ :sup:`nd` crystal roll motor.
+It would seem that there are about 10 or 12 steps per encoder count.
+The homing procedure works in the sense of finding the negative limit,
+then moving to a home position.  But that home position seems to be
+about 1/10 of the way between the negative limit and the
+home-using-encoder-counts.
