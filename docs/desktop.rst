@@ -18,8 +18,8 @@ BMM's Desktop
 This section provides an explanation of how to recover BMM's data
 collection workspace after restarting the computer.
 
-This is made a hair easier if a couple of symbolic links are made in
-``~/bin/``.  Do this:
+This is made a bit easier if a couple of symbolic links are made in
+``~/bin/``.  If not already done, do this at the command line:
 
 .. code-block:: sh
 
@@ -30,8 +30,8 @@ Monitoring
 ----------
 
 To have eyeballs on the operation of the beamline, we want ``Phoebus``
-for engineering screen and the ``cadashboard`` application for the
-heads-up overview of
+for engineering screens and the ``cadashboard`` application for the
+heads-up overview of the state of the beamline.
 
 Phoebus (engineering screens)
   There are two ways to start Phoebus.
@@ -127,3 +127,6 @@ experiment:
 + Slack
 + A dolphin (file browser) window with a tab open to the current
   experiment 
+
+Note that there are buttons on the icon bar at the bottom of the
+screen for Athena and Hephaestus.

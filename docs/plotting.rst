@@ -4,10 +4,10 @@
 Plotting via Kafka at BMM
 =========================
 
-For years, plotting at BMM has made use of `a BlueSky preprocessor
+For years, plotting at BMM used a `BlueSky preprocessor
 <htps://github.com/bluesky/bluesky/blob/master/bluesky/preprocessors.py#L333>`__
 and specially constructed functions for extracting data from Bluesky
-event documents.  This has been fine, providing useful real-time views
+event documents.  That was fine and provided useful real-time views
 of data for our users.
 
 The problem with using these modified BlueSky `LivePlots
@@ -18,8 +18,8 @@ As BMM began to use `BlueSky queueserver
 typically `not` run on the same machine as ``bsui``, this plotting
 scheme stopped being helpful.  
 
-The solution adopted was to move all plotting chores out of the main
-data collection profile and into a Kafka consumer.  Using the
+The solution was to move all plotting chores out of the main data
+collection profile and into a Kafka consumer.  Using the
 `bluesky-kafka producer and consumer
 <https://github.com/bluesky/bluesky-kafka>`__ and with the help of
 DSSI, the beamline computers were given access to the same Kafka
@@ -263,7 +263,7 @@ bottom left, and plot of the transmission |mu| (E) of the reference
 material on the bottom right.
 
 For a scan not using the fluorescence detector, the plot is a 3x1 grid
-of transmission |mu| (E), I0, and the reference spectrum.
+of transmission |mu| (E), I\ :sub:`0`, and the reference spectrum.
 
 
 .. _fig-xafs_live_view:
@@ -273,6 +273,14 @@ of transmission |mu| (E), I0, and the reference spectrum.
    :align: center
 
    An example of the XAFS live plot made for a fluorescence XAFS scan.
+
+.. note:: I\ :sub:`0` is now normalized by the dwell time, thus is
+	  plotting in units of amperes rather than ampere*seconds,
+	  as shown.
+
+	  Also, as of January 2024, the live plot at the end of the
+	  scan sequence is posted to Slack and included in the
+	  :numref:`dossier (Section %s) <dossier>`.
 
 
 .. _xafssequence:

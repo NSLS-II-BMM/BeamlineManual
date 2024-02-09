@@ -57,6 +57,17 @@ TL;DR
    <start_consumer>`
 
 
+Essential links
+---------------
+
+:NSLS-II:  https://www.bnl.gov/nsls2/
+:BMM's page:  https://www.bnl.gov/nsls2/beamlines/beamline.php?r=6-BM
+:Operations schedule:  https://www.bnl.gov/nsls2/schedule/
+:Beamtime schedule:  https://scheduler.nsls2.bnl.gov/
+:NSLS Status:  https://www.bnl.gov/nsls2/operating-status.php
+:BMM's at Github:  https://github.com/NSLS-II-BMM
+
+
 The user experience
 -------------------
 
@@ -283,8 +294,12 @@ BMM and Building 743
 --------------------
 
 
-BMM is on the south side of the NSLS-II building.  You should park at
-building 743 and enter through the main entrance of 743.
+BMM is on the south side of the NSLS-II building: `what3words:
+///width.corrugated.support
+<https://what3words.com/width.corrugated.support>`__
+
+You should park at building 743 and enter through the main entrance
+of 743.
 
 .. _fig-sitemap:
 .. figure::  _images/map.png
@@ -400,8 +415,8 @@ written by Bruce.  But this would not have happened without the help
 of several members of NSLS-II's DSSI program.  In particular, I want
 to thank Dan Allan, Tom Caswell, Josh Lynch, Max Rakitin, Dmitri
 Gavrilov, Stuart Campbell, Abby Giles, and Garrett Bishof.  And I need
-to thank every BMM user |nd| being a BMM user means being a bug tester
-for this software!
+to thank every BMM user |nd| being a BMM user and being a beta tester
+for the beamline software are the same thing!
 
 BMM makes use of `lots of great python tools
 <https://speakerdeck.com/jakevdp/the-unexpected-effectiveness-of-python-in-science?slide=52>`__.

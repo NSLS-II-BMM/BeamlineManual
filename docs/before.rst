@@ -63,7 +63,7 @@ on sample processing and any safety measures necessary.
 
 .. caution:: An approved SAF is required on the first day of beamtime.
 	     Without enough time for approval, you may lose your
-	     beamtime beamtime.
+	     beamtime.
 
 To submit a SAF: https://pass.bnl.gov
 

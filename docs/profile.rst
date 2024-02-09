@@ -29,6 +29,19 @@ At Dan Allan's suggestion, we took a different approach.
 The startup folder
 ------------------
 
+The startup folder is a symlink to a folder on Lustre where BMM's
+profile is kept.  If bsui does not start with BMM's profile, make that
+symlink by doing the following:
+
+.. code-block:: sh
+
+   cd ~/.ipython
+   ln -s /nsls2/data3/bmm/shared/config/bluesky/profile_collection
+
+If a folder called ``profile_collection`` already exists at that
+location |nd| which would be the case if you have already used bsui
+or ipython |nd| go ahead and rename or delete that folder.
+
 The top folder of the profile contains a single python file.  It
 follows the old convention in that it is named
 ``00-populate-namespace.py`` and is read as soon as IPython starts.

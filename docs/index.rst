@@ -11,7 +11,16 @@
 BMM Users Manual
 ================
 
-BMM is NIST's Beamline for Materials Measurement
+BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
+
+.. _fig-bananagrams:
+.. figure:: _images/Beamline-bananagrams.jpg
+   :target: _images/Beamline-bananagrams.jpg
+   :width: 50%
+   :align: left
+
+   BMM at a glance!
+
 				
 **Contents:**
 
