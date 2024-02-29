@@ -677,6 +677,10 @@ Provision a new beamline computer
 This is a list of notes on how to finish the provisioning of a new
 beamline computer.
 
+Firstly, make sure that ``/nsls2/data`` is a symlink to
+``/nsls2/data3``.  If it is not, ask for help from DSSI.
+
+
 install additional packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -684,7 +688,6 @@ install additional packages
 + redis (essential for operation of bsui)
 + most (used as the pager in BMM's bsui profile)
 + ag (powerful ack-like grep alternative)
-+ sddm (also just ... better)
 + fswebcam (used to capture analog pinhole camera)
 + demeter and perl-Graphics-GnuplotIF (something silly, no doubt)
 + slack (communications)
@@ -695,7 +698,7 @@ To install these, do:
 
 .. code-block:: sh
 
-   dzdo dnf install redis most ag sddm fswebcam demeter perl-Graphics-GnuplotIF slack ark
+   dzdo dnf install redis most ag fswebcam demeter perl-Graphics-GnuplotIF slack ark
    dzdo dnf install --skip-broken --nobest @kde-desktop
 
 The second command installs the KDE metapackage, skipping missing

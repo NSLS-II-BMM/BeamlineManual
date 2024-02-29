@@ -12,11 +12,15 @@
 Beamline automation
 ===================
 
+.. caution:: Spreadsheets with version number earlier 13 **will not
+	     work** as of 1 March, 2024.
+
+
+
 BMM currently supports five categories of spreadsheet-based automation:
 
-#. Sample wheels, both single (`spreadsheet
+#. Sample wheels (`spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/wheel.xlsx>`__)
-   and double (`spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/doublewheel.xlsx>`__) ring  
 #. Linkam stage temperature control (`spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/linkam.xlsx>`__)
 #. LakeShore 331 controller for Displex cryostat (`spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/lakeshore.xlsx>`__)
@@ -43,9 +47,12 @@ differences in the columns corresponding to the different instruments.
 
 Make sure you are using the most up-to-date version of the spreadsheet.
 
-.. note:: The current spreadsheet version is **12**, as of 26
-          January, 2024.  You should *always* use a current
+.. note:: The current spreadsheet version is **13**, as of 29
+          February, 2024.  You should *always* use a current
           spreadsheet.
+
+.. caution:: Spreadsheets with version number earlier 13 **will not
+	     work** as of 1 March, 2024.
 
 
 Common features
@@ -99,6 +106,27 @@ spreadsheet tab.
    spreadsheet. This is different from the column labeled
    "repetitions", which specifies the number of repeated XAS scans of
    the sample in that row of the spreadsheet.  
+
+Fine tuning sample position and slits
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On the right hand side of each spreadsheet, there are columns for
+specifying specific positions for sample X and Y and for slit width
+and height.  This allows you to fine tune the sample position and beam
+size on a per-sample basis.
+
+The motor grid spreadsheet offers three columns for specifying motor
+positions.  The motors associated with those columns are
+user-select-able.  In this way, a grid over any beamline motor can
+programmed. 
+
+The glancing angle spreadsheet has the columns for specifying slit
+width and height.  It also has columns for specifying sample Y and
+pitch (X and pitch when in perpendicular mode) when manual alignment
+rather than automated alignment is selected.  There is no column for
+specifying the X position (or Y when in perpendicular mode) as use of
+the glancing angle stage presumes that all the samples are mounted at
+the centers of the spinners.
 
 
 Selecting a spreadsheet
@@ -184,7 +212,7 @@ with the name of the spreadsheet file.  If the tab in the spreadsheet
 was called :file:`mysamples`, the new BlueSky command is called
 ``mysamples_macro()``.
 
-.. todo::
+.. admonition:: Future Tech!
 
    Convert spreadsheets to Bluesky queueserver input.
 
@@ -194,25 +222,20 @@ was called :file:`mysamples`, the new BlueSky command is called
 Sample wheel automation
 -----------------------
 
-The standard *ex situ* sample holder at BMM is a plastic wheel that
-get mounted on a rotation stage.  Examples are shown in figures
-:numref:`fig-wheels`.  The rotation stage is mounted on an XY stage,
-so when one slot on the sample wheel is aligned, all the slots are
-aligned.
+The standard *ex situ* sample holder at BMM is a plastic wheel mounted
+on a rotation stage.  Examples are shown in figures
+:numref:`fig-doublewheel`.  The rotation stage is mounted on an XY
+stage, so when one slot on the sample wheel is aligned, all the slots
+are aligned.
 
-.. subfigure::  AB
-   :layout-sm: AB
-   :gap: 8px
-   :subcaptions: above
-   :name: fig-wheels
-   :class-grid: outline
 
-   .. image:: _images/Samplewheel.jpg
+.. _fig-doublewheel:
+.. figure:: _images/double_wheel_sm.jpg
+   :target: _images/double_wheel_sm.jpg
+   :width: 50%
+   :align: center
 
-   .. image:: _images/double_wheel_sm.jpg
-
-   (Left) A single-ring sample wheel with 24 sample positions.
-   (Right) Double-ring sample wheels with 48 sample positions.  There
+   Double-ring sample wheels with 48 sample positions.  There
    are options for both wheel styles with 13mm x 3 mm slots or 13mm
    diameter holes.  The rings on the double wheel are 26 mm apart
    (center to center of slots/holes).
@@ -223,7 +246,7 @@ carries one parameter of the XAFS scan.
 
 
 .. _fig-doublewheel-spreadsheet:
-.. figure::  _images/doublewheel_spreadsheet.png
+.. figure:: _images/doublewheel_spreadsheet.png
    :target: _images/doublewheel_spreadsheet.png
    :width: 70%
    :align: center
@@ -238,14 +261,6 @@ If you have read :numref:`Section %s <ini>` about the INI file, then
 most of the columns in this spreadsheet will be quite familiar.  Most
 of the columns are used to specify the same set of parameters as in
 the INI file |nd| file name, element, edge, and so on.
-
-.. note:: February 2020
-
-   The E\ :sub:`0` column is no longer used.  E\ :sub:`0` is now
-   always taken from the tabulated value for ``element`` and
-   ``edge``. Some effort is made to read spreadsheets from before
-   Feb. 2020, but they are deprecated and no longer guaranteed to
-   work.
 
 The green cell in the first row is used to input the names of all the
 people involved in the experiment, as explained above.
@@ -276,10 +291,10 @@ values for element and/or edge in a row.  When specified
 and different from the previous row, a call to the ``change_edge()``
 command (:numref:`Section {number} <pds>`) is inserted into the macro.
 
-Not shown in :numref:`Figure %s <fig-wheel-spreadsheet>` are columns for
-tweaking the ``xafs_x`` and ``xafs_y`` positions, adjusting the
-horizontal size of :numref:`slits3 (see Section %s) <slits3>`, and
-adjusting the fluorescence detector position.
+Not shown in :numref:`Figure %s <fig-wheel-spreadsheet>` are columns
+for tweaking the ``xafs_x`` and ``xafs_y`` positions, adjusting the
+horizontal and vertical size of :numref:`slits3 (see Section %s)
+<slits3>`, and adjusting the fluorescence detector position.
 
 
 Again, assuming the tab in the spreadsheet was called ``mysamples``,
@@ -528,3 +543,6 @@ spreadsheet is identical to the *ex situ* sample wheel spreadsheet.
    to the `motor grid spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/grid.xlsx>`_.
 
+
+.. caution:: Spreadsheets with version number earlier 13 **will not
+	     work** as of 1 March, 2024.

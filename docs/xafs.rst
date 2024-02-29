@@ -80,7 +80,7 @@ Here is a complete explanation of the contents of the INI file.
 
 ``element`` (line 5)
    The one- or two-letter symbol for the element.  The edge energy,
-   ``e0``, will be determined from ``element`` and ``edge``.
+   ``e0``, will be looked up using ``element`` and ``edge``.
 
 ``edge`` (line 6)
    The symbol (``K``, ``L3``, ``L2``, ``L1``) of the edge being
@@ -130,11 +130,6 @@ Here is a complete explanation of the contents of the INI file.
 
 Comments begin with the hash (``#``) character and are ignored.
 
-.. note:: 
-
-   The E\ :sub:`0` keyword in the INI file is no longer used in normal
-   operations.  E\ :sub:`0` by default determined from ``element`` and
-   ``edge``. (February 2020)
 
 
 Scan regions
@@ -758,6 +753,15 @@ elsewhere is captured in the output XDI file.
 .. todo:: Document use of ``XDI_record`` dictionary to control which
 	  xafs motors and/or temperatures get recorded in the XDI header
 
+.. admonition:: New as of 27 February, 2024
+
+		There is a new XDI header in use in BMM's datafiles:
+		``Scan.hdf5file``.  This captures the name of the
+		associated HDF5 file for fluorescence XAS measurements.
+
+		The path and file name are given relative to the assets
+		location on central storage: ``/nsls2/data3/bmm/assets/xspress3/``.
+
 .. code-block:: text
 
    # XDI/1.0 BlueSky/1.3.0
@@ -894,7 +898,7 @@ items in the list above.  For a spreadsheet, all applicable items from
 the list are added together for each row of the spreadsheet.  The
 times for each row are added up.
 
-.. caution:: The time estimate is a good faith estimate.  It should be
+.. warning:: The time estimate is a good faith estimate.  It should be
 	     used as a decent suggestion, but high accuracy should not
 	     be expected! 
 
@@ -1001,6 +1005,8 @@ one of the following:
 + a positive integer (smaller than the first energy value in the
   scan), the energy point that many steps from the *beginning* of the
   scan will be used
++ a list of any of the above, resulting in XRF spectra from each
+  energy in the list being over-plotted.
 
 For example,
 
@@ -1055,6 +1061,14 @@ spectra and displaying on a log scale on the y-axis:
 While tiny, this Mn contamination had a noticeable impact on the
 measured EXAFS data.  This sort of forensic work is enabled by the
 ``xrfat`` command.
+
+The plots shown in :numref:`Ndsample` can be overplotted using the
+list argument of ``energy``, like so:
+
+.. sourcecode:: python
+
+   xrfat(uid, [6510, 6560])
+
 
 The full signature of this function is
 

@@ -64,9 +64,11 @@ chores are managed.  In each case, the document is a simple dictionary
 which the consumer parses to perform a plotting chore using
 `matplotlib <https://matplotlib.org/>`__.
 
-.. todo:: Would a browser-y solution like `Bokeh
-          <https://docs.bokeh.org/en/latest/index.html>`__ be an
-          alternative?
+.. admonition:: Future Tech!
+
+   Would a browser-y solution like `Bokeh
+   <https://docs.bokeh.org/en/latest/index.html>`__ be an
+   alternative?
 
 The dictionary sent as the document is not structured like a BlueSky
 document.  There is no schema.  The dictionary simply contains
@@ -219,8 +221,10 @@ linescan plots, but with some additional considerations:
    energy calibration standard, and a view of the raw I0 spectrum (to
    keep an eye on monochromator glitches and other issues).
 
-.. todo:: Panel for live |chi|\ (k) plots, begin plotting this panel,
-          say, 60 eV above the edge.
+.. admonition:: Future Tech!
+
+   Panel for live |chi|\ (k) plots, begin plotting this panel, say, 60
+   eV above the edge.
 
 Like with the linescan, the plot begins with a message issued to tell
 the consumer to begin preparing for an XAFS plot and providing enough
