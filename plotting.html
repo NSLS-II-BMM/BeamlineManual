@@ -1,0 +1,796 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>3. Plotting via Kafka at BMM &#8212; BMM Beamline Manual 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'plotting';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Managing ion chamber signal chains" href="ionchambers.html" />
+    <link rel="prev" title="2. An overview of BMM’s profile" href="profile.html" />
+
+    <link rel="stylesheet" type="text/css" href="_static/demeter.css" />
+    <link rel="stylesheet" type="text/css" href="_static/keys.css" />
+    <link rel="stylesheet" type="text/css" href="_static/program.css" />
+    <link rel="stylesheet" type="text/css" href="_static/color.css" />
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/floor_mat.png" class="logo__image only-light" alt="BMM Beamline Manual 0.1 documentation - Home"/>
+    <script>document.write(`<img src="_static/floor_mat.png" class="logo__image only-dark" alt="BMM Beamline Manual 0.1 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running the beamline</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to BMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="before.html">2. Before your Beamtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instruments.html">3. Beamline instrumentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motors.html">4. Moving and querying motors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pds.html">5. Photon Delivery System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linescans.html">6. Sample position scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xafs.html">7. XAFS scans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="automation.html">8. Beamline automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">9. Experimental Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">10. Managing the beamline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commonchores.html">11. Common chores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">12. Command cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">13. Troubleshooting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer documentation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">A. BMM’s Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="profile.html">B. An overview of BMM’s profile</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">C. Plotting via Kafka at BMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ionchambers.html">D. Managing ion chamber signal chains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">E. Instrumentation Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">F. To Do List</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NSLS-II-BMM/BeamlineManual" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NSLS-II-BMM/BeamlineManual/issues/new?title=Issue%20on%20page%20%2Fplotting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/plotting.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Plotting via Kafka at BMM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-the-kafka-consumer">C.1. Starting the Kafka consumer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#various-types-of-plots">C.2. Various types of plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-linescan-plots">C.2.1. Live linescan plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-timescan-plots">C.2.2. Live timescan plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-areascan-plots">C.2.3. Live areascan plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-plots">C.2.4. Alignment plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-xafs-plots">C.2.5. Live XAFS plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scan-sequence-data-reduction">C.2.6. Scan sequence data reduction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up-the-screen">C.3. Cleaning up the screen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="plotting-via-kafka-at-bmm">
+<span id="plotting"></span><h1><span class="section-number">C. </span>Plotting via Kafka at BMM<a class="headerlink" href="#plotting-via-kafka-at-bmm" title="Permalink to this heading">#</a></h1>
+<p>For years, plotting at BMM used a <a class="reference external" href="htps://github.com/bluesky/bluesky/blob/master/bluesky/preprocessors.py#L333">BlueSky preprocessor</a>
+and specially constructed functions for extracting data from Bluesky
+event documents.  That was fine and provided useful real-time views
+of data for our users.</p>
+<p>The problem with using these modified BlueSky <a class="reference external" href="https://blueskyproject.io/bluesky/callbacks.html#liveplot-for-scalar-data">LivePlots</a>
+is that they are tied to the machine which is running the Run Engine.
+As BMM began to use <a class="reference external" href="https://blueskyproject.io/bluesky-queueserver/">BlueSky queueserver</a>, which is
+typically <span class="incremental">not</span> run on the same machine as <code class="docutils literal notranslate"><span class="pre">bsui</span></code>, this plotting
+scheme stopped being helpful.</p>
+<p>The solution was to move all plotting chores out of the main data
+collection profile and into a Kafka consumer.  Using the
+<a class="reference external" href="https://github.com/bluesky/bluesky-kafka">bluesky-kafka producer and consumer</a> and with the help of
+DSSI, the beamline computers were given access to the same Kafka
+server used by BlueSky to orchestrate it’s communications.  We were
+also given a private Kafka topic over which to send BMM-specific
+messages intended for use by a BMM-specific consumer.</p>
+<section id="starting-the-kafka-consumer">
+<span id="start-consumer"></span><h2><span class="section-number">C.1. </span>Starting the Kafka consumer<a class="headerlink" href="#starting-the-kafka-consumer" title="Permalink to this heading">#</a></h2>
+<p>In the <code class="docutils literal notranslate"><span class="pre">consumer/</span></code> folder, there is a bash script called
+<code class="docutils literal notranslate"><span class="pre">run-consumer</span></code>.  This script establishes the correct shell and conda
+environments for running the data plotter.  It then starts an ipython
+instance, loads <code class="docutils literal notranslate"><span class="pre">consumer/consume_measurement.py</span></code>, and starts the
+Kafka consumer.</p>
+<p>For ease of use, <code class="docutils literal notranslate"><span class="pre">run-consumer</span></code> can be copied into <code class="docutils literal notranslate"><span class="pre">$HOME/bin</span></code> so
+that it is in the execution path.</p>
+<p>Bruce’s preference for this is to open a new terminal window on a
+virtual desktop that is not the main desktop.  In that terminal
+window, run <code class="docutils literal notranslate"><span class="pre">run-consumer</span></code>.</p>
+<figure class="align-center" id="id2">
+<span id="fig-consumer"></span><a class="reference external image-reference" href="_images/consumer.png"><img alt="_images/consumer.png" src="_images/consumer.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. C.1 </span><span class="caption-text">A terminal window in which the Kafka consumer has just been started.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="various-types-of-plots">
+<h2><span class="section-number">C.2. </span>Various types of plots<a class="headerlink" href="#various-types-of-plots" title="Permalink to this heading">#</a></h2>
+<p>Communicating over the <code class="docutils literal notranslate"><span class="pre">bmm-test</span></code> topic, two sorts of plotting
+chores are managed.  In each case, the document is a simple dictionary
+which the consumer parses to perform a plotting chore using
+<a class="reference external" href="https://matplotlib.org/">matplotlib</a>.</p>
+<div class="admonition-future-tech admonition">
+<p class="admonition-title">Future Tech!</p>
+<p>Would a browser-y solution like <a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">Bokeh</a> be an
+alternative?</p>
+</div>
+<p>The dictionary sent as the document is not structured like a BlueSky
+document.  There is no schema.  The dictionary simply contains
+keywords which the consumer is programmed to recognize.</p>
+<p>Over time, more plotting chores will be added to the consumer.  At the
+time of this writing, these plotting chores are supported.  The
+explanation here will hopefully lower the barrier of understanding how
+plotting via Kafka consumer works at BMM.  It is, admittedly, a rather
+baroque system using a lot of infrastructure.</p>
+<section id="live-linescan-plots">
+<span id="liveline"></span><h3><span class="section-number">C.2.1. </span>Live linescan plots<a class="headerlink" href="#live-linescan-plots" title="Permalink to this heading">#</a></h3>
+<p>At BMM, <a class="reference internal" href="linescans.html#linescan"><span class="std std-numref">a linescan (Sec 6)</span></a> is a scan where a
+motor is moved and a signal is plotted.  A linescan begins by issuing
+a message telling the consumer to start a new plot and to begin
+looking for BlueSky event documents:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;linescan&#39;</span> <span class="p">:</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;motor&#39;</span>    <span class="p">:</span> <span class="s1">&#39;xafs_x&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;detector&#39;</span> <span class="p">:</span> <span class="s1">&#39;I0&#39;</span><span class="p">,}</span>
+</pre></div>
+</div>
+<p>Those event documents will be parsed to obtain the result of the most
+recently measured data point.  The new data point is added to the plot
+and the plot is redrawn.</p>
+<p>When the linescan finishes, a <em>stop</em> message is issued:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;linescan&#39;</span><span class="p">:</span> <span class="s1">&#39;end&#39;</span><span class="p">,}</span>
+</pre></div>
+</div>
+<p>This replicates very closely how the BlueSky <a class="reference external" href="https://blueskyproject.io/bluesky/callbacks.html#liveplot-for-scalar-data">LivePlot</a>
+has been used to display linescsan data.</p>
+</section>
+<section id="live-timescan-plots">
+<span id="livetime"></span><h3><span class="section-number">C.2.2. </span>Live timescan plots<a class="headerlink" href="#live-timescan-plots" title="Permalink to this heading">#</a></h3>
+<p>With the BMM plotter, a timescan and a line scan are made with the
+same code.  The only difference is that no motor is given for a
+timescan and the X-axis is plotted as the time stamp of the current
+point minus the time stamp of the first point.  Thus the X-axis is in
+units of seconds.  The signal plotted on the Y-axis is determined the
+same as for a linescan and all the internal mechanics of the time plot
+are the same as for a motor plot.</p>
+</section>
+<section id="live-areascan-plots">
+<span id="livearea"></span><h3><span class="section-number">C.2.3. </span>Live areascan plots<a class="headerlink" href="#live-areascan-plots" title="Permalink to this heading">#</a></h3>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Make and document live areascan plots.  Currently, a
+LivePlot is used when running <code class="docutils literal notranslate"><span class="pre">areascan()</span></code> and the Kafka
+consumer replicates the plot afterwards.  The replicated
+plot has the correct axes and is saved in the dossier.</p>
+<p>This (along with the <code class="docutils literal notranslate"><span class="pre">%xrf</span></code> plot) is the only remaining
+plot not yet made via the Kafka consumer.</p>
+</div>
+</section>
+<section id="alignment-plots">
+<span id="livealignment"></span><h3><span class="section-number">C.2.4. </span>Alignment plots<a class="headerlink" href="#alignment-plots" title="Permalink to this heading">#</a></h3>
+<p>Various alignment chores at the beamline – for example, aligning a
+slot on a <a class="reference internal" href="instruments.html#sample-wheel"><span class="std std-numref">sample wheel (Sec 3.3)</span></a> or aligning
+the <a class="reference internal" href="instruments.html#glancing-angle-stage"><span class="std std-numref">glancing angle stage (Sec 3.6)</span></a>
+– involve a series of <a class="reference internal" href="linescans.html#linescan"><span class="std std-numref">linescans (Sec 6)</span></a>, each
+of which is plotted in real time – as shown <a class="reference internal" href="#liveline"><span class="std std-numref">below (Sec C.2.1)</span></a> – followed by a plot summarizing the result of the
+alignment.</p>
+<p>Using the sample wheel alignment as an example, the sequence is
+initiated by this document:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;align_wheel&#39;</span> <span class="p">:</span> <span class="s1">&#39;start&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>As each linescan in the alignment procedure is completed, some
+automated analysis is performed to determine the optimal position of
+the motor axis being scanned.  The results of this analysis are issued
+in a document like this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;align_wheel&#39;</span> <span class="p">:</span> <span class="s1">&#39;find_slot&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;motor&#39;</span>       <span class="p">:</span> <span class="s1">&#39;xafs_x&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;detector&#39;</span>    <span class="p">:</span> <span class="s1">&#39;it&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;xaxis&#39;</span>       <span class="p">:</span> <span class="n">list_of_axis_positions</span><span class="p">,</span>
+ <span class="s1">&#39;data&#39;</span>        <span class="p">:</span> <span class="n">list_of_signal_values</span><span class="p">,</span>
+ <span class="s1">&#39;best_fit&#39;</span>    <span class="p">:</span> <span class="n">list_of_fitted_values</span><span class="p">,</span>
+ <span class="s1">&#39;center&#39;</span>      <span class="p">:</span> <span class="n">midpoint_value</span><span class="p">,</span>
+ <span class="s1">&#39;amplitude&#39;</span>   <span class="p">:</span> <span class="n">amplitude_value</span><span class="p">,</span>
+ <span class="s1">&#39;uid&#39;</span>         <span class="p">:</span> <span class="n">uid</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>From this a plot showing the measured data and the results of the
+analysis is made.</p>
+<p>Once all parts of the alignment procedure are finished, this document
+is issued:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;align_wheel&#39;</span> <span class="p">:</span> <span class="s1">&#39;end&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This tells the consumer to create a plot summarizing the results of
+the alignment.</p>
+<p>The alignment of the glancing angle stage works in much the same
+manner.</p>
+<figure class="align-center" id="id3">
+<span id="fig-find-slot"></span><a class="reference external image-reference" href="_images/find_slot.png"><img alt="_images/find_slot.png" src="_images/find_slot.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. C.2 </span><span class="caption-text">An example of the final plot for an alignment of the <em>ex situ</em>
+sample wheel. The green X marks shows the aligned positions in
+<code class="docutils literal notranslate"><span class="pre">xafs_x</span></code> and <code class="docutils literal notranslate"><span class="pre">xafs_y</span></code>.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="live-xafs-plots">
+<span id="livexafs"></span><h3><span class="section-number">C.2.5. </span>Live XAFS plots<a class="headerlink" href="#live-xafs-plots" title="Permalink to this heading">#</a></h3>
+<p>The problem of making live XAFS plots is quite similar to live
+linescan plots, but with some additional considerations:</p>
+<ol class="arabic simple">
+<li><p>It is common to make multiple repetitions of XAFS scans, thus
+successive scans should be overplotted.</p></li>
+<li><p>There are various interesting views of the XAFS data, including
+both transmission and fluorescence of the data, transmission of the
+energy calibration standard, and a view of the raw I0 spectrum (to
+keep an eye on monochromator glitches and other issues).</p></li>
+</ol>
+<div class="admonition-future-tech admonition">
+<p class="admonition-title">Future Tech!</p>
+<p>Panel for live χ(k) plots, begin plotting this panel, say, 60
+eV above the edge.</p>
+</div>
+<p>Like with the linescan, the plot begins with a message issued to tell
+the consumer to begin preparing for an XAFS plot and providing enough
+information to make that plot.  This <code class="docutils literal notranslate"><span class="pre">start</span></code> message is issued at
+the beginning of the entire scan sequence.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;xafsscan&#39;</span>   <span class="p">:</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;element&#39;</span>    <span class="p">:</span> <span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;edge&#39;</span>       <span class="p">:</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;mode&#39;</span>       <span class="p">:</span> <span class="s1">&#39;fluorescence&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;filename&#39;</span>   <span class="p">:</span> <span class="s1">&#39;example&#39;</span>
+ <span class="s1">&#39;repetitions&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+ <span class="s1">&#39;sample&#39;</span>     <span class="p">:</span> <span class="s1">&#39;Fe sample&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;reference_material&#39;</span><span class="p">:</span> <span class="s1">&#39;Fe foil&#39;</span><span class="p">,</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>At the beginning of each individual repetition, a <code class="docutils literal notranslate"><span class="pre">next</span></code> message is
+sent, telling the consumer to prepare to add a new set of traces to
+the plot for the repetition about to begin.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;xafsscan&#39;</span><span class="p">:</span> <span class="s1">&#39;next&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally, a message is sent telling the consumer that the sequence of
+scans has finished, putting the consumer back into a state where it is
+ready to receive the next sequence of messages for the next plot.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;xafsscan&#39;</span><span class="p">:</span> <span class="s1">&#39;end&#39;</span><span class="p">,}</span>
+</pre></div>
+</div>
+<p>The plot that is made for an XAFS scan depends on whether fluorescence
+measurement is available.  If so, a 2x2 grid is shown with the
+transmission and fluorescence μ(E) on the top, a plot of I0 on the
+bottom left, and plot of the transmission μ(E) of the reference
+material on the bottom right.</p>
+<p>For a scan not using the fluorescence detector, the plot is a 3x1 grid
+of transmission μ(E), I<sub>0</sub>, and the reference spectrum.</p>
+<figure class="align-center" id="id4">
+<span id="fig-xafs-live-view"></span><a class="reference external image-reference" href="_images/XAFS_live_view.png"><img alt="_images/XAFS_live_view.png" src="_images/XAFS_live_view.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. C.3 </span><span class="caption-text">An example of the XAFS live plot made for a fluorescence XAFS scan.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I<sub>0</sub> is now normalized by the dwell time, thus is
+plotting in units of amperes rather than ampere*seconds,
+as shown.</p>
+<p>Also, as of January 2024, the live plot at the end of the
+scan sequence is posted to Slack and included in the
+<a class="reference internal" href="log.html#dossier"><span class="std std-numref">dossier (Section 9.4)</span></a>.</p>
+</div>
+</section>
+<section id="scan-sequence-data-reduction">
+<span id="xafssequence"></span><h3><span class="section-number">C.2.6. </span>Scan sequence data reduction<a class="headerlink" href="#scan-sequence-data-reduction" title="Permalink to this heading">#</a></h3>
+<p>At the end of a scan sequence, we show the user a 3-panel plot showing
+μ(E), χ(k), and χ(R).  (This is the same 3-panel plot
+that is written to the <a class="reference internal" href="log.html#dossier"><span class="std std-numref">dossier (Section 9.4)</span></a>.  This
+plot is of the merge of the scans measured in the scan sequence.
+Behind the scenes, Larch is used to make the merge, remove the
+background function, and perform the Fourier transform.  Additionally,
+every time an individual repetition in the scan sequence is finished,
+this 3-panel plot is made from the merge of the scans measured thus far.</p>
+<p>At the beginning of a scan sequence, a Kafka document with a payload
+like this is issued:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;xafs_sequence&#39;</span> <span class="p">:</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;element&#39;</span>       <span class="p">:</span> <span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;edge&#39;</span>          <span class="p">:</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;folder&#39;</span>        <span class="p">:</span> <span class="n">BMMuser</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span>
+ <span class="s1">&#39;repetitions&#39;</span>   <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+ <span class="s1">&#39;mode&#39;</span>          <span class="p">:</span> <span class="s1">&#39;fluorescence&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The presence of the <code class="docutils literal notranslate"><span class="pre">xafs_sequence</span></code> key tells the Kafka consumer to
+interpret this document as relevant to the creation of the 3-panel
+plot.  The value of <code class="docutils literal notranslate"><span class="pre">start</span></code> tells the consumer to prepare for making
+this plot from data under the conditions specified by the remainder of
+the keywords.</p>
+<p>As each scan finishes, the following document is issued.  This tells
+the consumer that a repetition finished and supplies the UID of the
+just-completed scan.  <a class="reference external" href="https://github.com/bluesky/tiled">Tiled</a> is
+used to grab the data from the just-completed scan.  This triggers a
+recalculation of the merge and the recreation of the 3-panel plot.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;xafs_sequence&#39;</span> <span class="p">:</span><span class="s1">&#39;add&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;uid&#39;</span>           <span class="p">:</span> <span class="n">uid</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally, at the end of the scan sequence, this document is issued:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;xafs_sequence&#39;</span> <span class="p">:</span> <span class="s1">&#39;stop&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;filename&#39;</span>      <span class="p">:</span> <span class="s1">&#39;/path/to/dossier/image&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This tells the consumer to make the final version of the 3-panel plot
+using all the data and to save a png image of the plot for use in the
+dossier.</p>
+<figure class="align-center" id="id5">
+<span id="fig-triplot"></span><a class="reference external image-reference" href="_images/triplot.png"><img alt="_images/triplot.png" src="_images/triplot.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. C.4 </span><span class="caption-text">An example of a 3-panel plot created by the Kafka consumer.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This motif of issuing a <code class="docutils literal notranslate"><span class="pre">start</span></code> message to begin crafting a plot,
+messages to <code class="docutils literal notranslate"><span class="pre">add</span></code> to the plot, and a message to <code class="docutils literal notranslate"><span class="pre">stop</span></code> the plot is
+the common thread to how BMM uses Kafka to make plots, both static and
+real-time plots.</p>
+</section>
+</section>
+<section id="cleaning-up-the-screen">
+<h2><span class="section-number">C.3. </span>Cleaning up the screen<a class="headerlink" href="#cleaning-up-the-screen" title="Permalink to this heading">#</a></h2>
+<p>Most of the plotting options from the Kafka consumer are good about
+closing the last plot before starting a new one.  However, linescans,
+in general, do not clean up prior plots.</p>
+<p>You can close some or all of the plots made by the Kafka consumer by
+issuing a suitable message, either at the command line or in a plan.</p>
+<p>This will close all plots on screen made by the consumer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kafka_message</span><span class="p">({</span><span class="s1">&#39;close&#39;</span><span class="p">:</span> <span class="s1">&#39;all&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>This will close all plots associated with linescans, but not close
+plots associated with XAFS scans:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kafka_message</span><span class="p">({</span><span class="s1">&#39;close&#39;</span><span class="p">:</span> <span class="s1">&#39;line&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>And this will close the most recent plot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kafka_message</span><span class="p">({</span><span class="s1">&#39;close&#39;</span><span class="p">:</span> <span class="s1">&#39;last&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+
+<br>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="profile.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>An overview of BMM’s profile</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ionchambers.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Managing ion chamber signal chains</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-the-kafka-consumer">C.1. Starting the Kafka consumer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#various-types-of-plots">C.2. Various types of plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-linescan-plots">C.2.1. Live linescan plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-timescan-plots">C.2.2. Live timescan plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-areascan-plots">C.2.3. Live areascan plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-plots">C.2.4. Alignment plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-xafs-plots">C.2.5. Live XAFS plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scan-sequence-data-reduction">C.2.6. Scan sequence data reduction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up-the-screen">C.3. Cleaning up the screen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bruce Ravel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
