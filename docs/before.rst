@@ -12,6 +12,20 @@
 Before your Beamtime
 ====================
 
+This page is a check list of things each user must do before beamtime
+at BMM.  Several tasks on this page are called out in caution boxes
+that look like this:
+
+.. caution::
+
+   This is a caution box.
+
+The tl;dr for this page is: *do all the things in all the caution
+boxes.*
+
+Failure to do all the tasks in caution boxes will result in delay or
+cancellation of your experiment.
+
 Register for BNL Site Access
 ----------------------------
 
@@ -138,11 +152,15 @@ Training
 --------
 
 Please complete all required online user training at least one week
-before the starting date.  Failure to complete training will result in a
-delay starting your experiment.
+before the starting date.  
 
 To complete your training, follow the training instructions at:
-https://www.bnl.gov/ps/userguide/beforearrival.php
+https://www.bnl.gov/nsls2/userguide/before-arrival.php#step2
+
+.. caution::
+
+   Failure to complete training will result in a delay starting your
+   experiment.
 
 
 Electrical Equipment
@@ -150,38 +168,44 @@ Electrical Equipment
 
 Any equipment with an electrical cable including low-voltage
 instruments and sample holderss are considered electrical equipment
-(laptop computers are excluded). 
+(laptop computers are excluded) and are subject to an electrical
+equipment inspection (EEI).
 
-If you plan to bring electrical equipment for your experiment, please
-contact Jerome Malley, Electrical Equipment Inspection (EEI) Manager
-at malley@bnl.gov as soon as practical and at least two weeks before
-the start of your experiment.  Be prepared to provide manuals, photos,
-electrical diagrams, and schematics.
+If you plan to bring electrical equipment for your experiment, go to
+http://bit.ly/m/eei to fill out the EEI request form.
 
-Please include beamline staff (Bruce Ravel <bravel@bnl.gov> for all
-experiments; Vesna Stanic <vstanic@bnl.gov> & Jean Jordan-Sweet
-<jlj@bnl.gov> for XRD experiments) in your communication as some
-pre-approved electrical equipment (e.g., potentiostat, heaters,
-temperature meters, and controllers) may be available at the beamline.
+The EEI request form includes questions describing the user supplied
+equipment, thus is a chore better suited for the user who has
+knowledge of the equipment coming to the beamline.
 
-.. note:: Failure to comply with EEI will result in a delay to your
-	  experiment.  Equipment that cannot pass EEI may not be used
-	  at NSLS-II.
+.. caution:: Failure to schedule an EEI will result in a delay to your
+	     experiment.  Equipment that cannot pass EEI may not be used
+	     at NSLS-II.
+
+Note that some pre-approved electrical equipment (e.g., potentiostat,
+heaters, temperature meters, and controllers) is available at the
+beamline.
+
 
 Research Equipment Pool
 -----------------------
 
-Many experimental tools are available from `the NSLS-II Research
+Some experimental tools are available from `the NSLS-II Research
 Equipment Pool
 <https://public.bnl.gov/sites/rep/SitePages/Home.aspx>`__.  If you
 wish to use any items from equipment pool, contact `Bruce Ravel
 <mailto:bravel@bnl.gov>`__ well ahead of your experiment.
 
+If you wish to use a potentiostat in lab 4L-L09 to pre-condition
+battery or other electrochemical samples, contact `Bruce
+<mailto:bravel@bnl.gov>`__ to have a potentiostat from the equipment
+pool reserved for you.
+
 
 Shipping things to the beamline
 -------------------------------
 
-Things should be shipped to
+Packages should be shipped to
 
 .. code-block:: none
 
@@ -189,6 +213,12 @@ Things should be shipped to
    Building 740
    Brookhaven National Laboratory
    Upton NY 11973
+
+If shipping radiological materials, **do not ship samples directly to
+the beamline**.  Follow the `instructions for radiological materials
+transport
+<https://www.bnl.gov/nsls2/userguide/shipping.php#tabs-2>`__.
+
 
 The Day of your Experiment
 --------------------------

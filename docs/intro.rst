@@ -65,7 +65,7 @@ Essential links
 :Operations schedule:  https://www.bnl.gov/nsls2/schedule/
 :Beamtime schedule:  https://scheduler.nsls2.bnl.gov/
 :NSLS Status:  https://www.bnl.gov/nsls2/operating-status.php
-:BMM's at Github:  https://github.com/NSLS-II-BMM
+:BMM at Github:  https://github.com/NSLS-II-BMM
 
 
 The user experience
@@ -106,7 +106,7 @@ CA Dashboard
 ~~~~~~~~~~~~
 
 At the top of the some screens, you see a crude-but-handy beamline
-monitor.  It looks like this:
+monitor.  It looks something like this:
 
 .. _fig-cadashboard:
 .. figure::  _images/cadashboard.png
@@ -116,22 +116,28 @@ monitor.  It looks like this:
 
    The CA dashboard beamline monitor
 
-This provides a (very) concise overview of the state of the beamline.
+This provides a concise (but rather color-blind-unfriendly) overview of
+the state of the beamline.
 
 **Top line**
    In short, if the top line has no red text, the beamline is all ready to go.
 
-   + BMM is enabled (green) or disabled (gray)
-   + The BM, FE, & user photon shutters are open (green) or closed (gray)
+   + BMM is enabled (:green:`green`) or disabled (:gray:`gray`)
+   + The BM, FE, & user photon shutters are open (:green:`green`) or closed (:gray:`gray`)
    + Indicators that the temperature sensors in the racks are in range
-     (green) or running hot (red)
-   + The state of vacuum sections 1 through 7 |nd| green means vacuum
-     level is OK, red means vacuum level is high
+     (:green:`green`) or running hot (:red:`red`)
+   + The state of vacuum sections 1 through 7 |nd| :green:`green` means vacuum
+     level is OK, :red:`red` means vacuum level is high
    + The state of the in-vacuum motors, 4 on the DCM, 2 on the
-     focusing mirror, 2 on the harmonic rejection mirror |nd| green
-     means temperature is OK, red means temperature is high
-   + The open (green) or closed (red) state of the 3 front end gate
+     focusing mirror, 2 on the harmonic rejection mirror |nd| :green:`green`
+     means temperature is OK, :red:`red` means temperature is high
+   + The open (:green:`green`) or closed (:red:`red`) state of the 3 front end gate
      valves and the 6 beamline gate valves
+
+.. role:: hlyellow
+.. role:: hlcyan
+.. role:: hlmagenta
+.. role:: hlblue
 
 **Middle line**
    + The energy position of the monochromator
@@ -140,8 +146,10 @@ This provides a (very) concise overview of the state of the beamline.
    + The signals on the I\ :sub:`0`, I\ :sub:`t`, and I\ :sub:`r` ion
      chambers, measured in nanoamps
    + The current operation at the beamline, options are: idle (white),
-     XAFS scan (pink), line scan (cyan), area scan (yellow), or time
-     scan (blue)
+     XAFS scan (:hlmagenta:`pink`), line scan (:hlcyan:`cyan`), area scan (:hlyellow:`yellow`), or time
+     scan (:hlblue:`blue`)
+
+.. role:: brown
 
 **Bottom line**
    + Positions of common sample motors
@@ -149,12 +157,10 @@ This provides a (very) concise overview of the state of the beamline.
    + the element currently in the reference position
    + the state of the instrument being used |nd| in this example, *the
      ex-situ* sample wheel
-   + the brown block at the end is a heartbeat monitor to visually
+   + the :brown:`brown` block at the end is a heartbeat monitor to visually
      verify that the dashboard is functioning correctly
 
-For more information about this tool, `follow this link
-<https://wiki-nsls2.bnl.gov/beamline6BM/index.php/Cadashboard>`_.
-
+.. todo:: Document cadashboard in appendix of this manual.
 
 .. _slack:
 
@@ -405,18 +411,22 @@ about 300 |mu| m by 250 |mu| m.
 Acknowledgements
 ----------------
 
-This documentation project uses the lovely `{book}theme
+This documentation project uses `Sphinx
+<https://www.sphinx-doc.org/en/master/index.html>`__ and the lovely
+`{book}theme
 <https://sphinx-book-theme.readthedocs.io/en/latest/index.html>`__
 from the `The Executable Book Project
-<https://ebp.jupyterbook.org/>`__.  Appendices are numbered properly using the ``appendix.py`` extension from https://github.com/heig-tin-info/handout.
+<https://ebp.jupyterbook.org/>`__.  Appendices are numbered properly
+using the ``appendix.py`` extension from
+https://github.com/heig-tin-info/handout.
 
 BMM's `Bluesky <https://blueskyproject.io/>`__ profile was mostly
 written by Bruce.  But this would not have happened without the help
 of several members of NSLS-II's DSSI program.  In particular, I want
 to thank Dan Allan, Tom Caswell, Josh Lynch, Max Rakitin, Dmitri
-Gavrilov, Stuart Campbell, Abby Giles, and Garrett Bishof.  And I need
-to thank every BMM user |nd| being a BMM user and being a beta tester
-for the beamline software are the same thing!
+Gavrilov, Stuart Campbell, Abby Giles, Garrett Bishof, and Ryan
+Jaskiel.  And I need to thank every BMM user |nd| being a BMM user and
+being a beta tester for the beamline software are the same thing!
 
 BMM makes use of `lots of great python tools
 <https://speakerdeck.com/jakevdp/the-unexpected-effectiveness-of-python-in-science?slide=52>`__.
@@ -425,7 +435,7 @@ to process every XAS scan that gets measured and Matt's `lmfit
 <https://lmfit.github.io/lmfit-py/>`__ is used for many alignment
 chores.
 
-This project uses a GitHub action to build and deploy `(see details
+This manual uses a GitHub action to build and deploy `(see details
 here)
 <https://github.com/marketplace/actions/sphinx-docs-to-github-pages>`__
 this document whenever a ``git push`` happens.  We are grateful to the

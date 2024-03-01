@@ -1093,6 +1093,7 @@ where
    Specify the maximum energy plotted on the x-axis in units of energy
    above the measured fluorescence line energy
 
+.. _reference-wheel:
 
 Reference spectra
 -----------------
@@ -1145,34 +1146,40 @@ sample being measured, of course).
 .. |Reoxide| replace:: ReO\ :sub:`2`
 .. |Ruoxide| replace:: RuO\ :sub:`2`
 
-============   ========        ===================     ============    ========        ===============
- Ring / slot    Element         Material                Ring / slot     Element         Material        
-============   ========        ===================     ============    ========        ===============
- Outer 1         empty           for alignment           Inner 1         Cs              |Csnitrate|
- Outer 2         Ti              foil                    Inner 2         La              |Lahydroxide|
- Outer 3         V               foil                    Inner 3         Ce              |Ceoxide|
- Outer 4         Cr              foil                    Inner 4         Pr              |Proxide|
- Outer 5         Mn              metal powder            Inner 5         Nd              |Ndoxide|
- Outer 6         Fe              foil                    Inner 6         Sm              |Smoxide|
- Outer 7         Co              foil                    Inner 7         Eu              |Euoxide|
- Outer 8         Ni              foil                    Inner 8         Gd              |Gdoxide|
- Outer 9         Cu              foil                    Inner 9         Tb              |Tboxide|
- Outer 10        Zn              foil                    Inner 10        Dy              |Dyoxide|
- Outer 11        Ga              |Gaoxide|               Inner 11        Ho              |Hooxide|
- Outer 12        Ge              |Geoxide|               Inner 12        Er              |Eroxide|
- Outer 13        As              |Asoxide|               Inner 13        Tm              |Tmoxide|
- Outer 14        Se              metal powder            Inner 14        Yb              |Yboxide|
- Outer 15        Br              bromophenol blue        Inner 15        Lu              |Luoxide|
- Outer 16        Zr              foil                    Inner 16        Rb              |Rbcarbonate|
- Outer 17        Nb              foil                    Inner 17        Ba              *<absent>*
- Outer 18        Mo              foil                    Inner 18        Hf              |Hfoxide|
- Outer 19        Pt              foil                    Inner 19        Ta              |Taoxide|
- Outer 20        Au              foil                    Inner 20        W               *<absent>*
- Outer 21        Pb              foil                    Inner 21        Re              |Reoxide|
- Outer 22        Bi              |Bioxide|               Inner 22        Os              *<absent>*
- Outer 23        Sr              |Srtitanate|            Inner 23        Sc              metal powder
- Outer 24        Y               |Yoxide|                Inner 24        Ru              |Ruoxide|
-============   ========        ===================     ============    ========        ===============
+
+
+.. table:: Reference wheel contents
+   :name:  tab-reference-wheel
+   :align: left
+
+   ============   ========        ===================     ============    ========        ===============
+    Ring / slot    Element         Material                Ring / slot     Element         Material        
+   ============   ========        ===================     ============    ========        ===============
+   Outer 1         empty           for alignment           Inner 1         Cs              |Csnitrate|
+   Outer 2         Ti              foil                    Inner 2         La              |Lahydroxide|
+   Outer 3         V               foil                    Inner 3         Ce              |Ceoxide|
+   Outer 4         Cr              foil                    Inner 4         Pr              |Proxide|
+   Outer 5         Mn              metal powder            Inner 5         Nd              |Ndoxide|
+   Outer 6         Fe              foil                    Inner 6         Sm              |Smoxide|
+   Outer 7         Co              foil                    Inner 7         Eu              |Euoxide|
+   Outer 8         Ni              foil                    Inner 8         Gd              |Gdoxide|
+   Outer 9         Cu              foil                    Inner 9         Tb              |Tboxide|
+   Outer 10        Zn              foil                    Inner 10        Dy              |Dyoxide|
+   Outer 11        Ga              |Gaoxide|               Inner 11        Ho              |Hooxide|
+   Outer 12        Ge              |Geoxide|               Inner 12        Er              |Eroxide|
+   Outer 13        As              |Asoxide|               Inner 13        Tm              |Tmoxide|
+   Outer 14        Se              metal powder            Inner 14        Yb              |Yboxide|
+   Outer 15        Br              bromophenol blue        Inner 15        Lu              |Luoxide|
+   Outer 16        Zr              foil                    Inner 16        Rb              |Rbcarbonate|
+   Outer 17        Nb              foil                    Inner 17        Ba              *<absent>*
+   Outer 18        Mo              foil                    Inner 18        Hf              |Hfoxide|
+   Outer 19        Pt              foil                    Inner 19        Ta              |Taoxide|
+   Outer 20        Au              foil                    Inner 20        W               *<absent>*
+   Outer 21        Pb              foil                    Inner 21        Re              |Reoxide|
+   Outer 22        Bi              |Bioxide|               Inner 22        Os              *<absent>*
+   Outer 23        Sr              |Srtitanate|            Inner 23        Sc              metal powder
+   Outer 24        Y               |Yoxide|                Inner 24        Ru              |Ruoxide|
+   ============   ========        ===================     ============    ========        ===============
 
 + For Th L3: Bi will be used (outer 20)
 + For U L3: Y will be used (outer 24)

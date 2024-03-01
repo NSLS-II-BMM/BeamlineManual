@@ -47,7 +47,7 @@ If using the focusing mirror, do this:
    RE(change_edge('Fe', focus=True))
 
 Excluding the ``focus`` argument |nd| or setting it to False |nd|
-indicates setup for unfocused beam.
+indicates setup for collimated beam.
 
 This edge change can be put into a :numref:`macro (see Section %s)
 <macro>` like so:
@@ -72,9 +72,11 @@ Automating reference foil changes
 A wheel is used to hold and switch between reference foils and stable
 oxides.  The standard reference wheel has most of the elements
 accessible at BMM, including all the lanthanides (except Pm!).  A
-double wheel (:numref:`see Figure %s <fig-doublewheel>`) is used
-to hold the standards.  The wheel is mounted on a rotation stage which
-is, in turn, mounted on an XY stage for alignment.
+double wheel (:numref:`see Figure %s <fig-doublewheel>`) is used to
+hold the standards.  The wheel is mounted on a rotation stage which
+is, in turn, mounted on an XY stage for alignment.  See
+:numref:`Table %s <tab-reference-wheel>` for the contents of reference
+wheel.
 
 .. _fig-ref_wheel:
 .. figure::  _images/ref_wheel.jpg
@@ -106,7 +108,7 @@ translating to the correct ring on the wheel.
 The ``change_edge()`` command does this automatically, so long as the
 target edge is available on the reference holder.
 
-The foil holder interface is configured as a python dictionary.  See
+The reference wheel content is configured as a python dictionary.  See
 ``xafs_ref.mapping``.
 
 This dictionary identifies the positions in ``xafs_ref`` and
@@ -120,9 +122,7 @@ reference wheel, do ``%se``.
 <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__ in
 BMM's collection.
 
-
-.. _roichannels:
-
+  
 ..
   Automating fluorescence ROI changes
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -168,7 +168,7 @@ where,
 
 ``focus``
   ``True``: set up for using the focusing mirror, modes A, B, C;
-  ``False``: unfocused beam, modes D, E, F.  Default is ``False``.
+  ``False``: collimated beam, modes D, E, F.  Default is ``False``.
 
 ``edge``
   If not specified, use K or L3, as appropriate for the energy range
@@ -196,9 +196,14 @@ where,
   Default is 300.
 
 
-Most of those parameters are rarely used, except for ``edge`` and
-``focus``.  If you need to set up for measuring an L\ :sub:`2` or L\
-:sub:`1` edge, you must specify ``edge``.
+Except for ``edge`` and ``focus``, most of those parameters are rarely
+used.  If you need to set up for measuring an L\ :sub:`2` or L\
+:sub:`1` edge, you must specify ``edge``.  For example:
+
+.. code-block:: python
+
+   RE(change_edge('Pt', edge='L1'))
+
 
 
 For all the details about the individual parts of the photon delivery
