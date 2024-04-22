@@ -12,7 +12,7 @@
 Beamline automation
 ===================
 
-.. caution:: Spreadsheets with version number earlier 13 **will not
+.. caution:: Spreadsheets with version number earlier than 13 **will not
 	     work** as of 1 March, 2024.
 
 
@@ -26,7 +26,7 @@ BMM currently supports five categories of spreadsheet-based automation:
 #. LakeShore 331 controller for Displex cryostat (`spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/lakeshore.xlsx>`__)
 #. Glancing angle stage (`spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/glancing_angle.xlsx>`__)
-#. Generic XY grids (`spreadsheet
+#. Generic XY and XYZ grids (`spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/grid.xlsx>`__)
 
 The latest spreadsheets for each of these can always be found at
