@@ -424,9 +424,10 @@ BMM's `Bluesky <https://blueskyproject.io/>`__ profile was mostly
 written by Bruce.  But this would not have happened without the help
 of several members of NSLS-II's DSSI program.  In particular, I want
 to thank Dan Allan, Tom Caswell, Josh Lynch, Max Rakitin, Dmitri
-Gavrilov, Stuart Campbell, Abby Giles, Garrett Bishof, and Ryan
-Jaskiel.  And I need to thank every BMM user |nd| being a BMM user and
-being a beta tester for the beamline software are the same thing!
+Gavrilov, Stuart Campbell, Abby Giles, Garrett Bishof, Nate Maytan,
+Matt Snyder, and Ryan Jaskiel.  And I need to thank every BMM user
+|nd| being a BMM user and being a beta tester for the beamline
+software are the same thing!
 
 BMM makes use of `lots of great python tools
 <https://speakerdeck.com/jakevdp/the-unexpected-effectiveness-of-python-in-science?slide=52>`__.

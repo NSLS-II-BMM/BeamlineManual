@@ -31,11 +31,13 @@ BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
 
    intro.rst
    before.rst
+   data.rst
    instruments.rst
    motors.rst
    pds.rst
    linescans.rst
    xafs.rst
+   other.rst
    automation.rst
    log.rst
    manage.rst
@@ -50,7 +52,7 @@ BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
 
    desktop.rst
    profile.rst
-   plotting.rst
+   kafka.rst
    ionchambers.rst
    details.rst
    restore.rst

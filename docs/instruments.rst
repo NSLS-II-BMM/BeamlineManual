@@ -277,3 +277,18 @@ more typical application is a simple glancing angle measurement in
 which the point of the shallow angle is to spread the beam out over
 the full length of the sample.  This significantly increases the
 number of atoms involved in the measurement.
+
+.. _tilt-stage:
+
+Tilt and rotation stages
+------------------------
+
+`Huber 2-Circle Segment 5203.10 <https://www.xhuber.com/en/products/1-components/12-rotation/2-circle-segments/520310/>`__
+
+Tilt stage mechanical drawing: :download:`PDF <_static/5203_10--32263_131839.pdf>`
+
+
+`Newmark RT-2 Motorized Rotary Stage
+<https://www.newmarksystems.com/rotary-positioners/rt-2-motorized-rotary-stage/>`__
+
+Rotation stage mechanical drawing: :download:`JPG <_static/RT-2-11-DIMENSIONS.JPG>`
