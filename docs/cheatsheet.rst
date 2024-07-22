@@ -49,10 +49,10 @@ Most common commands
   Move TO an energy value
 
 ``RE(mv(xafs_y, <value>))``
-  Move any named motor TO a position (``xafs_y`` is an example)
+  Move any named motor TO a position (``xafs_y`` is an example,see :numref:`Section %s <sample_stages>`)
 
 ``RE(mvr(xafs_y, <value>))``
-  Move any named motor BY an amount (``xafs_y`` is an example)
+  Move any named motor BY an amount (``xafs_y`` is an example, see :numref:`Section %s <sample_stages>`)
 
 ``RE(change_edge('Xx'))``
   setup beamline for an absorption edge, ``Xx`` = 1- or 2-letter symbol,
@@ -185,9 +185,11 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | |mquad| |mquad| |mquad| |mquad| |mquad| **Glancing angle stage**                                                      |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | ``RE(ga.to(N))``                         |    move glancing angle stage to sample N (1 |le| N |le| 8) + start spinner |
+   | ``RE(ga.to(N))``                         |    move stage to sample N (1 |le| N |le| 8) + start spinner                |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(ga.auto_align(pitch))``             |    automatically align glancing angle stage and move to pitch              |
+   +------------------------------------------+----------------------------------------------------------------------------+
+   | ``RE(ga.flatten())``                     |    return to the flat position found during ``auto_align()``               |
    +------------------------------------------+----------------------------------------------------------------------------+
    | |mquad| |mquad| |mquad| |mquad| |mquad| **Linkam stage**                                                              |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -213,7 +215,7 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | |mquad| |mquad| |mquad| |mquad| |mquad| **Reference wheel**                                                           |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | ``RE(reference('Xx'))``                  |    Move to reference 'Xx'                                                  |
+   | ``RE(reference('Xx'))``                  |    Move to reference element 'Xx'                                          |
    +------------------------------------------+----------------------------------------------------------------------------+
    | |mquad| |mquad| |mquad| |mquad| |mquad| **Get help**                                                                  |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -267,9 +269,8 @@ Vertical center
   ``slits3.vcenter`` (nominally 0 mm)
 
   The vertical center should never be changed.  Instead, align the
-  slits using ``dm3_bct`` and the ``slit_height()`` plan
+  slits by moving ``dm3_bct`` or running the ``slit_height()`` plan
   (:numref:`Section %s <special-linescans>`)
-
 
 
 Example movement: ``RE(mv(slits3.vsize, 0.5))``

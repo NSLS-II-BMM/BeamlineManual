@@ -25,7 +25,7 @@ Starting and ending an experiment
 
 When a new experiment begins, run the command::
 
-  BMMuser.start_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321)
+  BMMuser.begin_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321)
 
 This will create that data folder and populate it with an
 :numref:`experimental log (Section %s) <log>`, write a template for a
@@ -35,13 +35,6 @@ experiment, set the GUP and SAF numbers as metadata for output files,
 set up :numref:`snapshot (Section %s) <snap>` and :numref:`dossier
 (Section %s) <dossier>` folders, and perform other experiment start-up
 chores.
-
-.. note::
-
-   In the near future, the ``start_experiment()`` command will grab
-   metadata from PASS (or UPS, or whatever) and set access permissions
-   on data.  When that happens, the only argument needed will be the
-   SAF number.
 
 The ``name`` should be the PI's full name, preferably transliterated
 into normal ASCII.  The ``date`` should be the starting day of the
@@ -549,18 +542,8 @@ Starting the virtual machine
 Transferring echem data
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The VM is on the INST network, thus data must be transferred to a
-machine on the INST network. This means an IOC server needs to be used
-for data transfer. Here is how this can be done using the bravel
-account.
-
-+ Open a CMD window on the VM
-+ cd to the location of the current user's Echem data
-+ do something like ``scp * bravel@10.68.42.26:/nsls2/users/bravel/temp_folder``
-+ on IOC2, zip up the temp_folder and transfer the file to the xf06bm
-  user via the ``/tmp/`` folder. 
-
-Obviously, this needs streamlining. 
+.. todo:: Document connecting VM to central storage in the
+          post-data-sec era
 
 
 Calibrate the mono
@@ -731,23 +714,19 @@ Things to install from git
 
 Also do ``cd ~/bin`` and ``ln -s ~/.ipython/profile_collection/startup/consumer/run-consumer``
 
-Data collection folders
-~~~~~~~~~~~~~~~~~~~~~~~
+Workspace folders
+~~~~~~~~~~~~~~~~~
 
 Make the local data collection folders.  The
-:numref:`BMMuser.start_experiment() command (Section %s) <start_end>`
+:numref:`BMMuser.begin_experiment() command (Section %s) <start_end>`
 will make symlinks under those folders to the correct place on central
 storage.
 
 .. code-block:: text
 
-   mkdir ~/Data
-   mkdir ~/Data/Visitors
-   mkdir ~/Data/Staff
+   mkdir ~/Workspace
+   mkdir ~/Workspace/Visitors
+   mkdir ~/Workspace/Staff
 
-Next need to recreate historical symlinks using the correct tool.
-
-.. todo:: capture the ``make_links.py`` script and the ``ls-lR``
-   files.  Also need to automate generating the ``ls-lR`` files.
 
 

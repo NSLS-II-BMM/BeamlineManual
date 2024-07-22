@@ -59,9 +59,10 @@ the bsui command line.  Here is an example:
 Sample stages
 -------------
 
-These stages sit on top of the XAFS optical table.  The nickname is a
-short string that can be used in the ``linescan()`` plan and certain
-other places instead of writing out the BlueSky name for the motor.
+.. |widdershins| replace:: `widdershins <https://en.wiktionary.org/wiki/widdershins>`__
+
+
+These stages sit on top of the XAFS optical table.  
 
 .. table:: XAFS sample stages
    :name:  xafs-stages
@@ -73,14 +74,14 @@ other places instead of writing out the BlueSky name for the motor.
    ``xafs_x``     linear       mm         main sample stage        |plus| outboard, - inboard
    ``xafs_y``     linear       mm         main sample stage        |plus| up, - down
    ``xafs_det``   linear       mm         detector mount           |plus| away from sample, - closer
-   ``xafs_wheel`` rotary       degrees    *ex situ* sample wheel   |plus| clockwise, - widdershins
+   ``xafs_wheel`` rotary       degrees    *ex situ* sample wheel   |plus| clockwise, - |widdershins|
    ``xafs_linxs`` linear       mm         ref wheel vertical       |plus| up, - down
-   ``xafs_ref``   rotary       degrees    reference stage          |plus| clockwise, - widdershins
+   ``xafs_ref``   rotary       degrees    reference stage          |plus| clockwise, - |widdershins|
    ``xafs_refx``  linear       mm         reference stage          |plus| outboard, - inboard
    ``xafs_refy``  linear       mm         reference stage          |plus| up, - down
    ``xafs_pitch`` tilt         degrees    Huber tilt stage         |plus| more positive
    ``xafs_roll``  tilt         degrees    Huber tilt stage         |plus| more positive
-   ``xafs_rots``  rotary       degrees    small rotary stage   
+   ``xafs_rots``  rotary       degrees    small rotary stage       |plus| clockwise, - |widdershins|
    ============== ===========  =========  =======================  =====================================
 
 Configuration and position of the motors can be queried easily.  In
@@ -88,7 +89,7 @@ the following examples, the ``xafs_y`` motor is used.  The commands
 are the same for all sample stage motors.
 
 **Querying position**
-   The position of any motor can be queried with a command line like ::
+   The position of a motor can be queried with a command line like ::
 
      %w xafs_y 
 
@@ -111,7 +112,7 @@ are the same for all sample stage motors.
    is the absolute move command.  The numerical argument is the
    position to which the motor will move.
 
-   All movements are logged in the :numref:`experimental log (Section %s) <logfile>`
+..   All movements are logged in the :numref:`experimental log (Section %s) <logfile>`
 
 **Moving to a new position in a plan**
    To move a sample stage as part of a :numref:`macro (Section %s)
@@ -157,6 +158,8 @@ are the same for all sample stage motors.
 
    (A few of these |nd| Ba, Os, Ir |nd| are missing as of 2
    November, 2023.  We are working to obtain the missing ones.)
+
+   :numref:`See Section %s for a full explanation of the the reference wheel contents. <reference-wheel>`
 
    `Here is a complete list of standards
    <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__

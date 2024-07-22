@@ -175,7 +175,7 @@ More options
 
 There are several aspects of the XAFS scan plan that can be enabled or
 disabled from the INI file.  The sample INI file written by the
-:numref:`BMMuser.start_experiment() command (Section %s) <start_end>`
+:numref:`BMMuser.begin_experiment() command (Section %s) <start_end>`
 does not include these options, but they can be added to the INI file
 if needed.
 
@@ -253,9 +253,10 @@ second integration at k=10).
 
 .. code-block:: ini
 
-   bounds = -200    -30   -2      15.5    25,      '14k'
-   steps  =     10      2     0.3     0.3     '0.05k'
-   times  =     0.5     0.5   0.5    '0.25k'  '0.25k'
+   # 1/2 sec base, k/4 time
+   bounds = -200  -30  -2   15.5  25   14k
+   steps  =     10   2    0.3  0.3    0.05k
+   times  =     0.5  0.5  0.5  0.25k  0.25k
 
 Here are parameters for a 1 second base integration time transitioning
 into k-weighted integration multiplied by 1/4 (e.g. 2.5 second
@@ -265,9 +266,10 @@ between good statistics and reasonable scan time (about 17 minutes).
 
 .. code-block:: ini
 
-   bounds = -200    -30   -2      25      61       '14k'
-   steps  =     10       2    0.3    '0.05k'  '0.05k'
-   times  =     1        1    1       1       '0.25k'
+   # 1 sec base, k/2 time
+   bounds = -200  -30  -2  25  61 14k
+   steps  =    10  2  0.3  0.05k  0.05k
+   times  =    1   1  1    1      0.25k
 
 Here are parameters for a 1/2 second base integration time
 transitioning into k-weighted integration multiplied by 1/2 (e.g. 5
@@ -277,9 +279,10 @@ low-concentration or otherwise noisy EXAFS data..
 
 .. code-block:: ini
 
-   bounds = -200    -30   -2      3.81    25      '14k'
-   steps  =     10       2    0.3     0.3     '0.05k'
-   times  =     0.5      0.5  0.5    '0.5k'   '0.5k'
+   # 1/2 sec base, k/2 time
+   bounds = -200 -30  -2  3.81  25   14k
+   steps  =   10   2    0.3  0.3   0.05k
+   times  =   0.5  0.5  0.5  0.5k  0.5k
 
 Here are parameters for a 1 second base integration time transitioning
 into k-weighted integration multiplied by 1/2 (e.g. 5 second
@@ -289,9 +292,10 @@ otherwise noisy EXAFS data..
 
 .. code-block:: ini
 
-   bounds = -200    -30   -2      15.3    25      '14k'
-   steps  =     10       2    0.3     0.3     '0.05k'
-   times  =     1        1    1      '0.5k'   '0.5k'
+   # 1 sec base, k/2 time
+   bounds = -200 -30 -2 15.3 25  14k
+   steps  =   10  2  0.3  0.3   0.05k
+   times  =   1   1  1    0.5k  0.5k
 
 
 
@@ -572,6 +576,10 @@ BlueSky
 Revisit an XAFS scan
 --------------------
 
+.. admonition:: Needs to be verified
+
+   Does this still work post-data-security?
+
 Grab a database entry and write it to an XDI file::
 
   db2xdi('/path/to/data/file', '<id>')
@@ -753,14 +761,14 @@ elsewhere is captured in the output XDI file.
 .. todo:: Document use of ``XDI_record`` dictionary to control which
 	  xafs motors and/or temperatures get recorded in the XDI header
 
-.. admonition:: New as of 27 February, 2024
+.. admonition:: New as of 27 February, 2024 (broken 22 July)
 
-		There is a new XDI header in use in BMM's datafiles:
-		``Scan.hdf5file``.  This captures the name of the
-		associated HDF5 file for fluorescence XAS measurements.
+   There is a new XDI header in use in BMM's datafiles:
+   ``Scan.hdf5file``.  This captures the name of the associated HDF5
+   file for fluorescence XAS measurements.
 
-		The path and file name are given relative to the assets
-		location on central storage: ``/nsls2/data3/bmm/assets/xspress3/``.
+   The path and file name are given relative to the assets location on
+   central storage: ``/nsls2/data3/bmm/assets/xspress3/``.
 
 .. code-block:: text
 
@@ -1119,32 +1127,32 @@ sample being measured, of course).
 
    The reference wheel at BMM
 
-.. |Gaoxide| replace:: Ga\ :sub:`2`\ O\ :sub:`3`
-.. |Geoxide| replace:: GeO\ :sub:`2`
-.. |Asoxide| replace:: As\ :sub:`2`\ O\ :sub:`3`
-.. |Bioxide| replace:: BiO\ :sub:`2`
-.. |Yoxide|  replace:: Y\ :sub:`2`\ O\ :sub:`3`
-.. |Srtitanate| replace:: SrTiO\ :sub:`3`
-.. |Csnitrate| replace:: CsNO\ :sub:`3`
+.. |Gaoxide|     replace:: Ga\ :sub:`2`\ O\ :sub:`3`
+.. |Geoxide|     replace:: GeO\ :sub:`2`
+.. |Asoxide|     replace:: As\ :sub:`2`\ O\ :sub:`3`
+.. |Bioxide|     replace:: BiO\ :sub:`2`
+.. |Yoxide|      replace:: Y\ :sub:`2`\ O\ :sub:`3`
+.. |Srtitanate|  replace:: SrTiO\ :sub:`3`
+.. |Csnitrate|   replace:: CsNO\ :sub:`3`
 .. |Lahydroxide| replace:: La(OH)\ :sub:`3`
-.. |Ceoxide| replace:: Ce\ :sub:`2`\ O\ :sub:`3`
-.. |Proxide| replace:: Pr\ :sub:`6`\ O\ :sub:`11`
-.. |Ndoxide| replace:: Nd\ :sub:`2`\ O\ :sub:`3`
-.. |Smoxide| replace:: Sm\ :sub:`2`\ O\ :sub:`3`
-.. |Euoxide| replace:: Eu\ :sub:`2`\ O\ :sub:`3`
-.. |Gdoxide| replace:: Gd\ :sub:`2`\ O\ :sub:`3`
-.. |Tboxide| replace:: Tb\ :sub:`4`\ O\ :sub:`9`
-.. |Dyoxide| replace:: Dy\ :sub:`2`\ O\ :sub:`3`
-.. |Hooxide| replace:: Ho\ :sub:`2`\ O\ :sub:`3`
-.. |Eroxide| replace:: Er\ :sub:`2`\ O\ :sub:`3`
-.. |Tmoxide| replace:: Tm\ :sub:`2`\ O\ :sub:`3`
-.. |Yboxide| replace:: Yb\ :sub:`2`\ O\ :sub:`3`
-.. |Luoxide| replace:: Lu\ :sub:`2`\ O\ :sub:`3`
+.. |Ceoxide|     replace:: Ce\ :sub:`2`\ O\ :sub:`3`
+.. |Proxide|     replace:: Pr\ :sub:`6`\ O\ :sub:`11`
+.. |Ndoxide|     replace:: Nd\ :sub:`2`\ O\ :sub:`3`
+.. |Smoxide|     replace:: Sm\ :sub:`2`\ O\ :sub:`3`
+.. |Euoxide|     replace:: Eu\ :sub:`2`\ O\ :sub:`3`
+.. |Gdoxide|     replace:: Gd\ :sub:`2`\ O\ :sub:`3`
+.. |Tboxide|     replace:: Tb\ :sub:`4`\ O\ :sub:`9`
+.. |Dyoxide|     replace:: Dy\ :sub:`2`\ O\ :sub:`3`
+.. |Hooxide|     replace:: Ho\ :sub:`2`\ O\ :sub:`3`
+.. |Eroxide|     replace:: Er\ :sub:`2`\ O\ :sub:`3`
+.. |Tmoxide|     replace:: Tm\ :sub:`2`\ O\ :sub:`3`
+.. |Yboxide|     replace:: Yb\ :sub:`2`\ O\ :sub:`3`
+.. |Luoxide|     replace:: Lu\ :sub:`2`\ O\ :sub:`3`
 .. |Rbcarbonate| replace:: RbCO\ :sub:`3`
-.. |Hfoxide| replace:: HfO\ :sub:`2`
-.. |Taoxide| replace:: Ta\ :sub:`2`\ O\ :sub:`5`
-.. |Reoxide| replace:: ReO\ :sub:`2`
-.. |Ruoxide| replace:: RuO\ :sub:`2`
+.. |Hfoxide|     replace:: HfO\ :sub:`2`
+.. |Taoxide|     replace:: Ta\ :sub:`2`\ O\ :sub:`5`
+.. |Reoxide|     replace:: ReO\ :sub:`2`
+.. |Ruoxide|     replace:: RuO\ :sub:`2`
 
 
 

@@ -187,13 +187,19 @@ where,
   ``True``: optimize slit height; ``False``: skip ``slit_hight()``
   scan.  Default is ``True``.  Skipping this is rarely a good idea.
 
+``no_ref``
+  ``True``: skip moving to the correct reference foil.  Default is
+  ``False``.  Used when the reference stages have been repurposed 
+  for other use in an experiment.
+
 ``calibrating``
   ``True``: used when performing beamline maintenance.  Default is
   ``False``.  Rarely used.
 
 ``target``
   The energy above e0 at which to perform the rocking curve scan.
-  Default is 300.
+  Default is 300.  Care is taken not to exceed an L\ :sub:`2` edge 
+  energy (or L\ :sub:`1` when measuring L\ :sub:`2`).
 
 
 Except for ``edge`` and ``focus``, most of those parameters are rarely

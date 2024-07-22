@@ -34,16 +34,7 @@ this::
 The arguments are:
 
 #. The motor axis to be scanned.  This can be either the motor's
-   BlueSky name or the nickname string from :numref:`Table %s
-   <xafs-stages>`.  So, these are equivalent::
-
-     RE(linescan('x', 'it', -4, 4, 81))
-     RE(linescan('xafs', it_x, -4, 4, 81))
-
-   For a motor that does not have a nickname, you must use the ophyd
-   symbol, as in::
-
-     RE(linescan(slits3.outboard, 'i0', -1, 1, 21))
+   name in Bluesky.
 
 #. A string indicating the detector for the plotted signal.  The
    choices are:
@@ -71,12 +62,16 @@ will sort it out for you.  These are equivalent::
 
 At the end of the scan, you are prompted with the following question::
 
-    Pluck motor position from the plot? [Yn]
+    Pluck motor position from the plot? yes: y the Enter (or just Enter), no: n then Enter
 
 If you answer :key:`y` then :key:`Enter`, or simply hit
 :key:`Enter`, you will be prompted to single click the left mouse
-button :mark:`leftclick,.` on the plot.  The motor that was scanned
-will then move to the motor position you clicked on.
+button :mark:`leftclick,.` on the plot.  
+
+You will then be prompted a second time with the value you selected.
+
+The motor that was scanned will then move to the motor position you
+clicked on.
 
 You can skip the "click for motor position" step by typing
 :key:`n` and hitting :key:`Enter`.
@@ -101,6 +96,10 @@ subsequent motion on the most recent plot.
 
 Revisit a line scan
 ~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: Needs to be verified
+
+   Does this still work post-data-security?
 
 Retrieve data from the database using the database key or scan ID::
 
@@ -287,6 +286,10 @@ then do a movement command::
 
 Revisit an area scan
 ~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: Needs to be verified
+
+   Does this still work post-data-security?
 
 Retrieve data from the database using the database key or scan ID::
 

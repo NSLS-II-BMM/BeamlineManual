@@ -325,6 +325,7 @@ explicit arguments for the filled-in spreadsheet cells.
    yield from xafs('MnFewheel.ini', filename='Fe-Spessartine', sample='Mn3Al2(SiO4)3', comment='Grants Mining District; New Mexico')
    close_last_plot()
 
+.. _auto_linkam:
 
 Linkam stage automation
 -----------------------
@@ -374,6 +375,8 @@ names.
    Example spreadsheet for running a temperature-dependent experiment
    using the Linkam stage.  Link to the `Linkam spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/linkam.xlsx>`_
+
+.. _auto_lakeshore:
 
 LakeShore/Displex automation
 ----------------------------
@@ -437,6 +440,8 @@ cryostat.  There are three power settings.
 
    The CSS screen for the LakeShore 331.
 
+
+.. _auto_ga:
 
 Glancing angle stage automation
 -------------------------------

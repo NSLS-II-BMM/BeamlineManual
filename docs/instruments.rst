@@ -78,15 +78,19 @@ is available.
 
 Please note:
 
-+ BMM offers only limited integration of data output into the beamline
-  workflow.
++ BMM offers only limited integration of data output into the XAS end
+  station workflow.
 + BMM has limited options for mounting and integrating the Pilatus
   into your experiments.
 + This Pilatus has a rather small detection area and a rather large
   pixel size (about 170 microns).
 
-BMM does not have access to a larger/better/faster detector and has no
-plans of getting a new area detector in the near future.
+BMM does not currently have access to a larger/better/faster detector.
+
+Using CHIPS Act funding, we are in the process of procuring a new
+large area detector for use with the XRD end station.  This detector
+will eventually become available for experiments at the XAS end
+station, perhaps by 2026.
 
 
 .. _sample-wheel:
@@ -151,6 +155,12 @@ from a glove box during sample preparation.
 
 
 
+We consider these *ex situ* holders to be consumable items.  We will
+happily mail several of them to you prior to your experiment so that
+you can arrive with samples pre-mounted and ready to be measured.  You
+may keep the sample holders to use again the next time you visit BMM.
+
+
 
 Electrochemistry
 ----------------
@@ -172,14 +182,22 @@ into and out of the beam.
    The BioLogic VSP-300 Potentiostat
 
 We run the vendor-supplied control software on a Windows 10 instance
-running in a virtual container.
+running in a virtual container.  Your electrochemical data will be
+saved to the ``assets/vsp300-1/`` folder in your :numref:`proposal
+folder (Section %s) <data>`.
 
-We do not, at this time, have full EPICS-level control of the
-potentiostat, limiting the level of automation and integration with
-the rest of the beamline.
+.. note::
 
-Also, BMM does not provide electrochemical cells.  The user is
-expected to bring their own cells.
+   We do not, at this time, have EPICS-level control of the
+   potentiostat.  This limits the level of automation and integration
+   with the rest of the beamline.
+
+   We hope to implement external triggering and collection of current
+   and voltage values over the August 2024 shutdown.  This may become
+   available in the 2024-3 cycle.
+
+BMM does not provide electrochemical cells.  The user is expected to
+bring their own cells.
 
 
 Temperature control
@@ -218,6 +236,9 @@ about 14 hours and is the standard choice.  The advantage of the
 smaller dewar is that it is smaller and might be needed for
 complicated setups were space is at a premium.
 
+Extensive :numref:`automation (Section %s) <auto_linkam>` is available
+for the Linkam stage.
+
 Displex Cryostat
 ~~~~~~~~~~~~~~~~
 
@@ -248,20 +269,23 @@ due to the construction of the vacuum shroud.
    used to control temperature for the cryostat shown to the left.
 
 
+Extensive :numref:`automation (Section %s) <auto_lakeshore>` is available
+for the Displex using the LakeShore 331 temperature controller..
 
 .. _glancing-angle-stage:
 
 Glancing angle and thin film stage
 ----------------------------------
 
-We use this glancing angle stage for high throughput studies of thin
+We use this glancing angle stage for high-throughput studies of thin
 film and other flat samples.  The apparatus shown below rests on a
 rotation stage for moving up to 8 samples into and out of the beam.
 The rotation stage sits on a tilt stage, allowing fine control of the
 incident angle.  Each sample position is a spinner, which is used to
 suppress diffraction from the substrate.
-In most cases, sample translation and sample alignment is fully
-automated.
+
+In most cases, sample translation and sample alignment is
+:numref:`fully automated (Section %s) <auto_ga>`
 
 .. _fig-glancinganglestageINST:
 .. figure::  _images/glancing_angle_stage.jpg
@@ -278,17 +302,36 @@ which the point of the shallow angle is to spread the beam out over
 the full length of the sample.  This significantly increases the
 number of atoms involved in the measurement.
 
+
 .. _tilt-stage:
 
 Tilt and rotation stages
 ------------------------
 
-`Huber 2-Circle Segment 5203.10 <https://www.xhuber.com/en/products/1-components/12-rotation/2-circle-segments/520310/>`__
+Also available are a `Huber pitch and roll stage
+<https://www.xhuber.com/en/products/1-components/12-rotation/2-circle-segments/520310/>`__
+in the form of an Eulerian cradle and a `compact rotary stage
+<https://www.newmarksystems.com/rotary-positioners/rt-2-motorized-rotary-stage/>`__.
 
-Tilt stage mechanical drawing: :download:`PDF <_static/5203_10--32263_131839.pdf>`
+.. subfigure::  AB
+   :layout-sm: AB
+   :subcaptions: above
+   :gap: 8px
+   :name: fig-pitchroll_rotation
+   :class-grid: outline
+
+   .. image:: _images/dummy.png
+
+   .. image:: _images/dummy.png
+
+   (Left) The pitch and roll stage.  (Right) The small rotation stage
 
 
-`Newmark RT-2 Motorized Rotary Stage
-<https://www.newmarksystems.com/rotary-positioners/rt-2-motorized-rotary-stage/>`__
+Here are mechanical drawings, including bolt hole patterns.  Consult
+these if designing an instrument intended to be mounted for rotation,
+pitch, or roll.
 
-Rotation stage mechanical drawing: :download:`JPG <_static/RT-2-11-DIMENSIONS.JPG>`
++ Tilt stage mechanical drawing: :download:`PDF <_static/5203_10--32263_131839.pdf>`
+
++ Rotation stage mechanical drawing: :download:`JPG <_static/RT-2-11-DIMENSIONS.JPG>`
+

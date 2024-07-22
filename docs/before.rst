@@ -182,9 +182,9 @@ knowledge of the equipment coming to the beamline.
 	     experiment.  Equipment that cannot pass EEI may not be used
 	     at NSLS-II.
 
-Note that some pre-approved electrical equipment (e.g., potentiostat,
-heaters, temperature meters, and controllers) is available at the
-beamline.
+Note that some already-approved electrical equipment (e.g.,
+potentiostat, heaters, cryostats, temperature controllers, sample
+spinners, and more) is available at the beamline.
 
 
 Research Equipment Pool

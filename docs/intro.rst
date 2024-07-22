@@ -196,7 +196,7 @@ physically at the beamline.
 The measured data along with the entire contents of the 
 :numref:`measurement dossier (Section %s) <dossier>` will be synched
 to Google Drive.  At the beginning of the experiment (in fact, when
-the ``start_experiment()`` command described in the next session is
+the ``begin_experiment()`` command described in the next session is
 run), a folder for the experiment will be created on Google Drive.
 The contents of the user's data folder will be synched frequently to
 that folder throughout the course of the experiment, including
@@ -224,7 +224,7 @@ an invitation to share the Google Drive.
   electrochemistry experiments using the BioLogic potentiostat.  When
   starting a new experiment, do this::
 
-    BMMuser.start_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321, echem=True)
+    BMMuser.begin_experiment(name='Betty Cooper', date='2019-02-29', gup=123456, saf=654321, echem=True)
 
   The ``echem`` argument, when set to ``True`` tells the system to look
   for data from the potentiostat in the appropriate place on the Windows

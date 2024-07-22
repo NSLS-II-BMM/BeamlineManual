@@ -30,7 +30,7 @@ Log file
 
 At the beginning of a user experiment, run something like this command::
 
-  BMMuser.start_experiment('Betty Cooper', date='2019-02-28', gup=123456, saf=654321)
+  BMMuser.begin_experiment('Betty Cooper', date='2019-02-28', gup=123456, saf=654321)
 
 Among other things, this instruments the logger to maintain a log file
 specifically for the current experiment.  The logger also maintains a
@@ -141,7 +141,7 @@ function for each available camera.  These are recorded to the scan's
 Recording videos
 ----------------
 
-.. todo:: Does this actually work?
+.. caution:: Does this actually work?
 
 The USB cameras can be used to record short videos of whatever they
 are pointing at.  The resulting video will be saved to a `.avi
