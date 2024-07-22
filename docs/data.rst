@@ -44,7 +44,7 @@ You will need an sftp client.
   WinSCP package.
 
 + **Mac users:** Other options are `Termius
-  <https://apps.apple.com/us/app/termius-ssh-sftp-client/id1176074088?mt=12>`__
+  <https://termius.com/download/macos>`__
   and `Flow <http://fivedetails.com/flow/>`__.
 
 + **Linux users:** Your desktop file manager likely has an sftp client
