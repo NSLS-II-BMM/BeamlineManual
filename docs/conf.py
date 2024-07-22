@@ -38,11 +38,10 @@ extensions = ['sphinx_math_dollar', 'sphinx.ext.mathjax',
 ]
 extensions.extend([#'fix_equation_ref',
     'sphinx_subfigure', 'numsec', 'figtable',
-    'singlehtml_toc', 'singletext', 'demeterdocs', 'appendix',
-    'sphinxcontrib.bibtex'
+    'singlehtml_toc', 'singletext', 'demeterdocs', 'appendix'
 ])
 
-bibtex_bibfiles = ['references.bib']
+#bibtex_bibfiles = ['references.bib']
 
 mathjax3_config = {
     'tex2jax': {
