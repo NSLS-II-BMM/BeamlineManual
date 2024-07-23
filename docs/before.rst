@@ -20,8 +20,7 @@ that look like this:
 
    This is a caution box.
 
-The tl;dr for this page is: *do all the things in all the caution
-boxes.*
+The tl;dr for this page is: *read all the caution boxes.*
 
 Failure to do all the tasks in caution boxes will result in delay or
 cancellation of your experiment.
@@ -33,12 +32,22 @@ Upon receipt of notification of your beamtime, verify that all
 the team members attending your experiment have a valid BNL Guest
 registration. 
 
+An experimenter who is not listed on the original proposal (for
+example, a student who recently joined the research group), will not
+receive reminder emails about the need for a BNL appointment.  So, be
+sure **everyone** coming to the beamline has a valid appointment.
+
 .. note::
 
    + New registration requests as well as extension requests for
      expired registrations should be submitted as soon as possible.
-   + Approvals for guest registrations require two months for non-US
-     citizens and longer for certain nationalities.
+   + Time required for approval of a guest registrations:
+
+     + **US citizens**: 7 days
+     + **Citizens of non-sensitive countries**: 14 days
+     + **Citizens of sensitive countries**: 45 days
+
+   + `Definition of sensitive country <https://www.state.gov/countries-of-particular-concern-special-watch-list-countries-entities-of-particular-concern/>`__
 
 Apply for a BNL Guest appointment: https://www.bnl.gov/ps/userguide/beforearrival.php 
 
