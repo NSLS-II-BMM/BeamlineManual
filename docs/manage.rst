@@ -730,3 +730,34 @@ storage.
 
 
 
+Manage Silicon Drift Detectors
+------------------------------
+
+.. note::
+   Thanks to funding from the CHIPS Act, BMM is
+   procuring a new 7-element SDD!  Look for that in late 2024 or
+   early 2025. 
+
+The assumption is that one of the three detectors will be the primary
+detector in an experiment.  At the bsui command line (or in queue
+server) the ``xs`` symbol should point at the correct detector.  Also,
+a parameter is set in Redis allowing other processes (such as the
+Kafka plotting agent) to know which detector to be paying attention to.
+
+
+.. code-block:: python
+
+   xs = xspress3_set_detector(4)
+
+where the argument to ``xspress3_set_detector`` is 1, 4, or 7
+
+This sets ``xs`` to the selected detector object |nd| ``xs1``,
+``xs4``, or ``xs7``.  The default at startup is to use the 4-element
+detector.  That will change soon to the new 7-element.
+
+Also set is the Redis parameter ``BMM:xspress3``, which is set to 1,
+4, or 7 (and represented as a b-string).
+
+.. code-block:: python
+
+   int(rkvs.get('BMM:xspress3'))

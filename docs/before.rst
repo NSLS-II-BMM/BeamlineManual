@@ -20,10 +20,10 @@ that look like this:
 
    This is a caution box.
 
-The tl;dr for this page is: *read all the caution boxes.*
-
-Failure to do all the tasks in caution boxes will result in delay or
+Failure to do the tasks in caution boxes will result in delay or
 cancellation of your experiment.
+
+:TL;DR: *read all the caution boxes.*
 
 Register for BNL Site Access
 ----------------------------
@@ -70,7 +70,8 @@ account in order to unlock the computers at the beamline.
 
 .. caution:: Without an active account, a known password, and DUO
 	     Federal two-factor authentication, you will be unable to
-	     perform your experiment.
+	     perform your experiment or to access the data from the
+	     experiment.
 
 Safety Approval Form
 --------------------
@@ -141,6 +142,7 @@ Electrochemistry and battery science
   Request Lab 4L-L09.
 
 .. admonition:: Radiological samples
+   :class: important
 
    Radionuclide samples must be prepared and properly contained at the
    home institution.  NSLS-II has no lab available for work on
@@ -165,6 +167,17 @@ before the starting date.
 
 To complete your training, follow the training instructions at:
 https://www.bnl.gov/nsls2/userguide/before-arrival.php#step2
+
+Links to specific course:
+
++ `Cyber Security Training (GE-CYBERSEC) <https://training.bnl.gov/portal/GE-CYBERSEC>`__
++ `Computer Use Agreement (GE-COMPUSE-AGREE) <https://training.bnl.gov/portal/GE-COMPUSE-AGREE>`__
++ `General Employee Radiation Training (TQ-GERT) <https://training.bnl.gov/portal/TQ-GERT>`__
++ `NSLS-II Safety Module (PS-NSLS-II-USER-MOD) <https://training.bnl.gov/portal/PS-NSLS-II-USER-MOD>`__
++ `Guest Site Orientation (TQ-GSO) <https://training.bnl.gov/portal/TQ-GSO>`__
+
+Returning users can `check training status online <https://www.bnl.gov/training/>`__.
+
 
 .. caution::
 
@@ -241,3 +254,12 @@ training.
 
 Please consult `NSLS-II user guide <https://www.bnl.gov/ps/userguide/>`__
 or contact BMM beamline staff for more information.
+
+.. ADMONITION:: **NSLS-II Attire** 
+   :class: caution
+
+   At a minimum, all users are required to wear long pants or
+   skirt/dress that extends to the ankle, short-sleeve or long sleeve
+   shirts, and shoes that enclose the entire foot for entry to NSLS-II
+   non-office areas, which includes the experimental floor and sample
+   preparation laboratories.

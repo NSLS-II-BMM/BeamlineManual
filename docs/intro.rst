@@ -51,11 +51,6 @@ TL;DR
 **Details, details, details**
    :numref:`Command cheatsheet, Section {number} <cheatsheet>`
 
-**Start the live plotting utility**
-   At a command line (but not the bsui command line),
-   ``run-consumer``, see :numref:`{name}, Section {number}
-   <start_consumer>`
-
 
 Essential links
 ---------------
@@ -187,11 +182,9 @@ physically at the beamline.
 
 .. attention::
    
-   In the 2024-1 cycle, BMM is no longer synching data automatically
-   to Google Drive, although data will be manually transferred to a
-   Google Drive for the time being.  Soon, data will be available to
-   users via sftp with proper integration into new data storage and
-   authentication services in the 2024-2 cycle.
+   As of the 2024-1 cycle, BMM is no longer syncing data
+   automatically to Google Drive.  Data are now available to users via
+   sftp with proper authentication.  See :numref:`Data Access (Section %s) <data>`.
 
 The measured data along with the entire contents of the 
 :numref:`measurement dossier (Section %s) <dossier>` will be synched
@@ -423,11 +416,11 @@ https://github.com/heig-tin-info/handout.
 BMM's `Bluesky <https://blueskyproject.io/>`__ profile was mostly
 written by Bruce.  But this would not have happened without the help
 of several members of NSLS-II's DSSI program.  In particular, I want
-to thank Dan Allan, Tom Caswell, Josh Lynch, Max Rakitin, Dmitri
-Gavrilov, Stuart Campbell, Abby Giles, Garrett Bishof, Nate Maytan,
-Matt Snyder, and Ryan Jaskiel.  And I need to thank every BMM user
-|nd| being a BMM user and being a beta tester for the beamline
-software are the same thing!
+to thank Dan Allan, Tom Caswell, Josh Lynch, Jakub Wlodek, Max
+Rakitin, Dmitri Gavrilov, Stuart Campbell, Abby Giles, Garrett Bishof,
+Nate Maytan, Matt Snyder, and Ryan Jaskiel.  And I need to thank every
+BMM user |nd| being a BMM user and being a beta tester for the
+beamline software are the same thing!
 
 BMM makes use of `lots of great python tools
 <https://speakerdeck.com/jakevdp/the-unexpected-effectiveness-of-python-in-science?slide=52>`__.

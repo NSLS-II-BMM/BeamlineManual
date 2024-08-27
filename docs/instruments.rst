@@ -55,9 +55,21 @@ photons, this versatility of setup is occasionally very helpful.
 
 
 .. note::
-   Thanks to funding from the CHIPS Act, BMM is the process of
+   Thanks to funding from the CHIPS Act, BMM is 
    procuring a new 7-element SDD!  Look for that in late 2024 or
    early 2025. 
+
+   It arrived on 23 August, 2024!  Installation and commissioning to
+   start soon!  Still waiting on the new XYZ stage.
+
+   .. _fig-7element:
+   .. figure:: _images/7element.jpg
+      :target: _images/7element.jpg
+      :width: 50%
+      :align: center
+
+
+
 
 
 Area detector
@@ -320,9 +332,9 @@ in the form of an Eulerian cradle and a `compact rotary stage
    :name: fig-pitchroll_rotation
    :class-grid: outline
 
-   .. image:: _images/dummy.png
+   .. image:: _images/tilt_stage.jpg
 
-   .. image:: _images/dummy.png
+   .. image:: _images/small_rotation_stage.jpg
 
    (Left) The pitch and roll stage.  (Right) The small rotation stage
 

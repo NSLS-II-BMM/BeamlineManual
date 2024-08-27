@@ -21,9 +21,9 @@ With the advent of BMM's use of `BlueSky queueserver
 had to rethink how plots were made.
 
 In short, a Kafka client was developed to manage real-time
-visualization.  This client is subscribed to two topiss, a private
+visualization.  This client is subscribed to two topics, a private
 BMM-only topic and the same topic used by Bluesky to distribute
-event documents to databroker.  
+event documents to databroker.
 
 Messages on the private topic tell the worker what kind of plot is
 requested.  The worker then parses event documents and adds data
@@ -31,7 +31,7 @@ points to the real-time plots.
 
 In May 2024, data security upgrades were implemented at BMM.  The
 upshot of this new data security regime is that the bsui or qs process
-is not able to write data to the secure proposal directory on central
+is not able to write data to the proposal directory on central
 storage.  Moving all data file output from the bsui profile to a new
 Kafka worker gave us a path forward.  The workers can be run with
 adequate privilege to write to central storage.
@@ -95,7 +95,7 @@ It is convenient to make symlinks to each of the shell scripts in a
 folder in the execution path.  ``~/bin/`` makes sense.
 
 To start, run the ``open-tabs.sh`` script to make a Konsole window
-with three tabs.  Each tab is named something evokative of what will
+with three tabs.  Each tab is named something evocative of what will
 be running in it.
 
 #. In the tab labeled "Visual plot manager", do ``run-filemanager`` as
@@ -139,7 +139,7 @@ applications that generate messages and applications that want to
 consume those messages and act upon them.
 
 This works via subscription topics.  An application can subscribe to
-a topic as a producers.  That means it can say "I just did something
+a topic as a producer.  That means it can say "I just did something
 and here is information about what I did."  It will post that message
 to Kafka, then move on.
 
@@ -518,18 +518,44 @@ the common thread to how BMM uses Kafka to make plots, both static and
 real-time plots.
 
 
-.. todo:: there are more plot actions that need top be documented.
+.. todo:: there are more plot actions that need to be documented.
 
 Headless and visualization workers
 ----------------------------------
 
-.. todo:: explain why there are two, explain what each does
+There are two plotting workers that share code and behave almost
+identically.  This seems redundant, so merits a few words of
+explanation.
+
+The visualization worker is run as the beamline operator |nd|
+``xf06bm``.  The beamline operator owns the screen and is able to make
+plots of data to the screen.  However, the beamline operator does not
+have permission to write data and png images to the proposal
+directory.  The visualization worker can be run on any machine on the
+local network at BMM |nd| even on multiple machines!
+
+The headless worker does not make visible plot visualization.
+Instead, it writes plots to a virtual device which can then be saved
+as png images to the proposal directory.  It is also able to write
+data files to the proposal directory.  For example, the XRD data file
+measured before each scan sequence is written by the visualization
+worker.
+
+In short, the visualization worker is for the benefit of the humans at
+the beamline while the headless worker is responsible for writing
+files for the data record of the experiment.
+
+Credit goes to Dan Allan for suggesting running two instances of the
+plot worker using the QtAgg and Agg `matplotlib backends
+<https://matplotlib.org/stable/users/explain/figure/backends.html>`__.
 
 
 File management
 ---------------
 
-*Explain all the file management actions with example dicts.*
+.. todo::
+
+   Explain all the file management actions with example dicts.
 
 
 Cleaning up the screen

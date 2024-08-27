@@ -469,6 +469,15 @@ For the harmonic rejection mirror, use ``%w m3``
         roll     =   0.000 mrad         XU  =  15.001
         yaw      =   0.001 mrad         XD  =  15.001
 
+The front-end collimating mirror, the focusing mirror, and one stripe
+of the harmonic rejection mirror are coated with 5 nm of Rh deposited
+on 30 nm of Pt on silicon.  See `MA Marcus, et
+al., J. Synch. Radiat. (2004) 11, 239-247 DOI:
+10.1107/S0909049504005837
+<https://doi.org/10.1107/S0909049504005837>`__ for an explanation of
+the advantages of this coating scheme.
+
+
 .. _slits3:
 
 End station slits
