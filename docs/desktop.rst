@@ -47,7 +47,7 @@ Phoebus (engineering screens)
   If you first opened a new window or tab, you can safely close it.
 
   There should be an icon for Phoebus on the icon bar at the bottom of
-  the screen.  It looks like a red eyeball.  Click on it.
+  the lower, left screen.  It looks like a red eyeball.  Click on it.
 
   Once Phoebus is open, if the layout was not restored, click on the
   "Window" menu, then on "Load Layout", then select "Two cameras".
@@ -63,7 +63,7 @@ cadashboard
 
   Resize the height to just cover the three lines of the dashboard.
   Move the terminal to the very top of the top screen.  You can hide
-  the window decoration by using :key:`Windows`-\ :mark:`rightclick,.`
+  the window decoration by using :key:`Windows`-\ :mark:`leftclick,.`
   to position the terminal window.
 
 
@@ -82,38 +82,26 @@ cadashboard
 Data collection and visualization
 ---------------------------------
 
-The easiest way to manage data collection and visualization is to have
-a terminal window with 3 tabs.  One tab is used for ``bsui``, the data
-acquisition program.  A second tab is for the Kafka consumer which
-handles most data visualization chores.  The third tab is just a
-normal bash command line, which is always handy to have available.
+Data collection and visualization are separate things and should be
+managed separately.  
 
-Once you have a three-tab setup, go to the tab for ``bsui``.  At the
+On the main virtual desktop, open a terminal window for bsui.  At the
 command line type ``bsui``.  ``bsui`` startup at BMM is rather
 time-consuming, but after a couple minutes it is ready to go.
 
 
-Now go to the tab for the Kafka consumer.  At the command line, type
-``run-consumer``.  This will take a minute or so to start, eventually
-saying ``Ready to receive documents...``.  At this point, scans will
-generate plots.
+On the right-most virtual desktop, you will setup the Kafka file and
+plot workers as explained in :numref:`the section on Kafka workers
+(Section %s) <start_consumer>`.
 
 
-.. subfigure::  AB
-   :layout-sm: AB
-   :subcaptions: above
-   :name: startup
-   :class-grid: outline
+.. figure:: _images/bsui_startup2.png
+   :target: _images/bsui_startup2.png
+   :width: 80%
+   :align: center
 
-   .. image:: _images/bsui_startup2.png
-
-   .. image:: _images/consumer_startup.png
-
-   (Right) The tail end of the ``bsui`` startup messages and the
-   command prompt in the ``bsui`` tab.  (Left) The Kafka plotting
-   consumer in its tab awaiting commands from ``bsui``.
-
-
+   The tail end of the ``bsui`` startup messages and the
+   command prompt.
 
 
 All the rest
@@ -126,7 +114,23 @@ experiment:
   %s) <cheatsheet>` and the XAS webcam.
 + Slack
 + A dolphin (file browser) window with a tab open to the current
-  experiment 
+  Workspace folder
 
-Note that there are buttons on the icon bar at the bottom of the
-screen for Athena and Hephaestus.
+Note that there is a button on the icon bar at the bottom of the
+screen for Hephaestus.
+
+In the new data security regime, launching Athena as the beamline
+account (``xf06bm``) is not very helpful given that it cannot access
+the data.  
+
+If data are accessed by opening a terminal window and doing
+``su - <username>`` followed by authentication with password and DUO,
+first ``cd`` to the proposal directory, the start Athena with this
+command: 
+
+.. code-block:: bash
+
+   dathena > /dev/null 2>&1 &  
+
+That will open Athena and suppress the large stream of uniteresting
+warning messages from the graphics tool kit.

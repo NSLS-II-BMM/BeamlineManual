@@ -120,15 +120,15 @@ queue-server and begin collecting data.
 
 
 .. _fig-consumer:
-.. figure::  _images/consumer.png
-   :target: _images/consumer.png
+.. figure::  _images/consumer_startup.png
+   :target: _images/consumer_startup.png
    :width: 70%
    :align: center
 
-   A terminal window in which the Kafka consumer has just been started.
+   A terminal window in which the Kafka consumers have been started.
 
+.. todo:: Update this figure
 
-.. todo:: update the figure above
 
 
 A few words about Kafka

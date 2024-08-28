@@ -60,3 +60,9 @@ div.admonition-note {
 /* code, pre { */
 /*   padding: 0; */
 /* } */
+
+/* The disappears the damn "Back to top" button from Pydata */
+/* which is not otherwise configurable using html_theme_options */
+button.rounded-pill {
+    display: none !important;
+}
