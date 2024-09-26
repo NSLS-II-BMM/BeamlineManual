@@ -41,16 +41,18 @@ There are a number of peripherals attached to ``xf06bm-ws5``:
 + A screen. This is the rather large screen mounted in the corner of
   the hutch. It can be moved around somewhat for better viewing.
 
-+ A reasonably loud speaker. This is the Nylavee sitting on top of the
-  DIODE box above the beampipe next to the teddy bear in soldier
-  clothing. 
++ A reasonably loud speaker.  This is the black ball-shaped item
+  sitting on the frame of the upstream portion of the diagnostic
+  module.
 
-+ A good microphone. This is the Blue Yeti on stand above the IT
-  chamber on the XAS table. It has good noise cancellation so the din
-  from the XSpress3 should not effect voice quality.
++ A good microphone. This is the Blue Yeti on stand above the I\
+  :sub:`t` chamber on the XAS table. It has good noise cancellation so
+  the din from the XSpress3 should not effect voice quality.  It is,
+  however, important that the speaker face the microphone rather than
+  the screen.
 
 + A decent camera. This is the Nexigo mounted overhead next to the
-  Axis webcam.
+  Axis webcam and looking at the table.
 
 
 While these devices are all connected to ``xf06bm-ws5`` and powered
@@ -63,13 +65,6 @@ screen.
 support, Bruce will usually initiate the Zoom call and have the hutch
 computer join in.
 
-Note that the speaker is a Bluetooth speaker.  It shows up as SK100
-when you go into Settings and run a Bluetooth probe.  The USB cable is
-for power only.
-
-.. note:: To connect the speaker, select it in Settings then the
-	  volume button on the right end of the speaker must be
-	  pressed twice.
 
 
 
@@ -109,7 +104,10 @@ below 5 keV or above 21 keV, it is a poor use of time to make changes
 to the gas content of the ion chambers.  This is because it takes
 quite some time for the volume of the ion chamber to equillibrate.
 
-N\ :sub:`2` is adequate for almost all experiments at BMM.
+N\ :sub:`2` is adequate for almost all experiments at BMM.  For Tc or
+Ru, it is helpful to use about 20% Ar.  For Sc or lower, 50% He might
+be helpful.  But remember that purging the ion chambers takes
+**hours**.
 
 
    
@@ -187,7 +185,33 @@ pointed to in databroker.  See:
 Pilatus 100K
 ------------
 
-.. todo:: Need to verify what's on the wiki page.
+How files saving works
+~~~~~~~~~~~~~~~~~~~~~~
+
++ tiff files to /disk2
++ /disk2 is mounted on xf06bm-ioc1
++ tiff and hdf5 AD plugins write files to proposal directories
++ in bsui, there are pilatus and pilatus_tiff objects.  normally use
+  pilatus, puilatus_tiff is helpful for testing tiff file writing,
+  which is used by IBM
+
+
+
+Moving the detector between end stations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++ power cables (strip and detector)
++ ethernet cables
++ GN2 line
++ grounding line
+
+The NFS server might need to be restarted after rebooting.  As root on
+xf06bm-pilatus100k, do
+
+.. code:: bash
+
+   /etc/init.d/nfsserver restart
+
 
 
 
@@ -333,6 +357,10 @@ temperature.
 <https://www.aps.anl.gov/files/download/DET/Detector-Pool/Spectroscopic-Detectors/Vortex_SDD/Vortex_ME4/Vtx-ME4%20Multi-El%20User%20Manual%20Rev.4.pdf>`__
 (link to copy at APS detector pool).
 
+There is a copy of the Vortex manual at BMM.  Look in ``/nsls2/data3/bmm/legacy/products/ME7/``,
+the file is called ``Vtx-Multi-El User Manual Rev 15.0_Oct 16, 2023.pdf``.
+
+
 DM3 CAT6 Patch Panel
 --------------------
 
@@ -418,6 +446,8 @@ Logitech controller
 .. todo::
 
    Explain how to configure buttons in CSS
+
+.. todo::  Left joystick will be used for detector YZ.  Not X!
 
 
 Motor controllers

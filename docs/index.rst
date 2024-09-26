@@ -30,6 +30,7 @@ BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
    :caption: Running the beamline
 
    intro.rst
+   proposal.rst
    before.rst
    data.rst
    instruments.rst
