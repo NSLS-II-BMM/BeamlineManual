@@ -517,19 +517,17 @@ and interacting with the the VM.
 Starting the virtual machine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+ At a command line, do ``rdesktop xf06bm-srv2``
++ At a command line, do ``rdesktop xf06bm-srv2 &``
 + This will open a new window and display a Windows login
-  screen. Normal credentials do not work. Log in as xf06bm using the
-  password provided by beamline staff.
-+ The Windows desktop will start with a full-screen management
+  screen. Normal BNL credentials do not work. Log in as user
+  ``xf06bm`` using the password known by beamline staff.
++ The Windows desktop might start with a full-screen management
   application that looks like the figure below. You can close
   or minimize that window.
 + Double-click on the EC-lab icon.
-+ Start doing electrochemistry.
-+ Save your data to the Echem folder on the Windows desktop. In that
-  folder you will find a folder with the name of the PI for the
-  experiment. In that, you will find a folder with the start dat of
-  the experiment. Save your data in that folder. 
++ Do some electrochemistry.
++ Save your electrochemistry data to the assets folder as explained
+  below.
 
 .. _fig-winvm:
 .. figure:: _images/Winvm_startup.png
@@ -539,11 +537,92 @@ Starting the virtual machine
 
    VM management window. You can minimize or close this.
 
-Transferring echem data
-~~~~~~~~~~~~~~~~~~~~~~~
+Storing echem data
+~~~~~~~~~~~~~~~~~~
 
-.. todo:: Document connecting VM to central storage in the
-          post-data-sec era
+The Windows VM has permission to connect to central storage with
+permissions to write files from EC-lab to the correct location.
+
+To start a new experiment, you first have to disconnect the old drive
+(if connected).  This is likely mounted as the ``Z:`` drive.
+
+.. _fig-winstaledrive:
+.. figure:: _images/Windows/stale_folder.png
+   :target: _images/Windows/stale_folder.png
+   :width: 70%
+   :align: center
+
+   An example of a stale folder from a previous experiment mounted as
+   the ``Z:`` drive.
+
+Disconnect the stale ``Z:`` drive by right clicking on its entry in
+the side bar and selecting "Disconnect".
+
+.. _fig-windisconnect:
+.. figure:: _images/Windows/disconnect.png
+   :target: _images/Windows/disconnect.png
+   :width: 70%
+   :align: center
+
+   Disconnect the stale ``Z:`` drive.
+
+Next, click on "This PC" in the sidebar, then click on the button that
+says "Map network drive".
+
+.. _fig-winmapnewdrive:
+.. figure:: _images/Windows/map_new_drive.png
+   :target: _images/Windows/map_new_drive.png
+   :width: 70%
+   :align: center
+
+   Map a new network drive to the VM.
+
+On the "Map Network Drive" page, you need to fill in the path to the
+current experiment's proposal folder.  Suppose the current cycle is
+2024-3 and the current proposal number is 316832.  Using ``Z:`` as the
+drive letter, enter the following as the "Folder" 
+
+.. code-block:: none
+
+   \\data3.nsls2.bnl.gov\bmm\proposals\2024-3\pass-316832
+
+Note that the backslashes are important.  Also substitute the correct
+cycle and proposal numbers.
+
+Be sure to leave "Reconnect at sign-in" checked.  Note that "Connect
+using different credentials" should be unchecked.
+
+
+.. _fig-winspecifynewdrive:
+.. figure:: _images/Windows/specify_new_drive.png
+   :target: _images/Windows/specify_new_drive.png
+   :width: 70%
+   :align: center
+
+   Map a new network drive to the VM.
+
+Click the finish button.  The connection will take several seconds,
+but then the new entry will show up in the side bar.
+
+The new network drive can now be clicked into.
+
+Configure EC-lab to write its data files into the
+``assets\vsp300-1`` folder.
+
+.. _fig-winsassetsfolder:
+.. figure:: _images/Windows/assets_folder.png
+   :target: _images/Windows/assets_folder.png
+   :width: 70%
+   :align: center
+
+   The ``assets\vsp300-1`` folder is the correct place for data from
+   EC-lab to be written.
+
+By following this procedure, the electrochemistry data from EC-lab
+will be available to the user in the 
+:numref:`same manner as their XAS data (Section %s) <data>`.
+
+
 
 
 Calibrate the mono
