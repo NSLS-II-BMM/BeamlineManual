@@ -44,7 +44,7 @@ beamline staff how you intend to use your beamtime effectively.
   emasurements are required.
 + Make sensible estimates about your time requirements.  Be prepared
   to prioritize your samples if you are unable to get the full time
-  your request.
+  you request.
 
 .. admonition:: Ask questions early!
    :class: note
@@ -113,3 +113,96 @@ route your work through the review system correctly.
    A proposal requesting both XAS and XRD at BMM will be denied at
    feasibility and a link to this web page with be given as the
    reason.
+
+NIST Partner User Proposals
+---------------------------
+
+.. note::
+
+   This section only applies to NIST employees visiting BMM.  
+
+.. caution::
+
+   If you are not a NIST employee, **do not** submit a PU-P proposal.  It
+   will be deleted without further communication.
+
+As of the 2024-2 cycle, NIST staff must use the new **Partner User -
+Project** proposal type.  This new proposal type is necessary to
+accommodate :numref:`the new data access and security policies
+(Section %s) <data>`.  Writing this proposal is a *requirement*.  It
+is no longer possible to access the beamline via the main partner user
+proposal.
+
+Happily, this proposal is mostly an administrative exercise.  It will
+not be evaluated by the normal proposal review panel nor by anyone
+else.  While it is necessary to document what you plan to do with your
+beamtime, the text fields do not have to be as complete as they would
+for a normally evaluated proposal.
+
+When filling out your PU-P proposal, be sure to
+
+#. List all experiments on the "Experimenters" tab.  *This is required
+   so that all the people that will need access to the data will get
+   access.*
+#. Answer all the research screening questions on the "Research" tab.
+   *This is required to comply with DOE export control regulations.*
+#. Make a time request for the appropriate cycle on the "Time Request"
+   tab.  *This is required so that the beamtime can be allocated.*
+
+As for the text fields on the "Research" tab, you cannot leave them
+blank.  Briefly describing your experiment |nd| a sentence or two |nd|
+is adequate.
+
+To start, go to https:/pass.bnl.gov and authenticate yourself using
+your BNL password and DUO two-factor authentication.  Once on the
+landing page, start a new proposal as shown in :numref:`Figure %s
+<fig-pup-start>`.
+
+.. _fig-pup-start:
+.. figure:: _images/pup-start.png
+   :target: _images/pup-start.png
+   :width: 50%
+   :align: center
+
+   Getting started on a new proposal.
+
+
+When asked for the proposal type, select "Partner User - Project", as
+shown in :numref:`Figure %s <fig-pup-select>`.
+
+
+.. _fig-pup-select:
+.. figure:: _images/pup-select.png
+   :target: _images/pup-select.png
+   :width: 50%
+   :align: center
+
+   Getting started on a new proposal.
+
+
+To make a time request |nd| either against your new proposal or
+against an existing PU-P proposal |nd| go to the "Time Request" tab
+and click the "Create New Time Request" button, as
+shown in :numref:`Figure %s <fig-pup-btr>`.
+
+.. _fig-pup-btr:
+.. figure:: _images/pup-btr.png
+   :target: _images/pup-btr.png
+   :width: 50%
+   :align: center
+
+   Making a beam time request.
+
+Next, select the cycle in which you will do the experiment, as shown
+in :numref:`Figure %s <fig-pup-cycle>`.  Then fill in the text fields
+with a sentence or two.
+
+.. _fig-pup-cycle:
+.. figure:: _images/pup-cycle.png
+   :target: _images/pup-cycle.png
+   :width: 50%
+   :align: center
+
+   Selecting the cycle for the beam time request.
+
+Any questions?  Contact `Bruce <mailto:bravel@bnl.gov>`__.
