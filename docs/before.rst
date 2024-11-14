@@ -252,6 +252,11 @@ to the first day of the beamtime to check in at `the GUV Center
 <https://www.bnl.gov/guv/>`__ and to complete beamline specific
 training.
 
+The GUV Center opens at `7 a.m. on weekdays
+<https://www.bnl.gov/guv/check-in.php>`__, so it is possible to obtain
+badges and access cards prior to the 8 a.m. start date of your
+experiment.
+
 Please consult `NSLS-II user guide <https://www.bnl.gov/ps/userguide/>`__
 or contact BMM beamline staff for more information.
 

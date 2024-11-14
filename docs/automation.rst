@@ -47,8 +47,8 @@ differences in the columns corresponding to the different instruments.
 
 Make sure you are using the most up-to-date version of the spreadsheet.
 
-.. note:: The current spreadsheet version is **13**, as of 29
-          February, 2024.  You should *always* use a current
+.. note:: The current spreadsheet version is **14**, as of 14
+          November, 2024.  You should *always* use a current
           spreadsheet.
 
 .. caution:: Spreadsheets with version number earlier 13 **will not
@@ -68,19 +68,31 @@ indicated measurements.  In :numref:`Figure %s
 green background.  All rows underneath the green line are used to
 describe individual measurements.
 
-For an individual measurement, if a white cell is left blank, the
-default value from the corresponding green cell will be used.  If a
-white cell is filled in, that value will be used for that measurement.
+For each individual measurement:
+
++ If a white cell is left blank, the default value from the
+  corresponding green cell will be used.  
++ If a white cell is filled in, that value will be used for that
+  measurement.
 
 Experimenters
 ~~~~~~~~~~~~~
 
-The other green part of the spreadsheet is a cell for entering the
-names of all the experimenters involved in the measurement.
+.. note::
 
-This should **always** be filled in.  Doing so allows for the
-possibility of searching BMM's master database for data associated
-with a particular user.
+   As of summer 2024, with the implementation of data security, the
+   beamline now has access to some information about the proposal and
+   SAF.  It is no longer necessary to specify the names of the
+   experimenters.  All names on the proposal will be put in the
+   metadata of every scan.
+
+..
+  The other green part of the spreadsheet is a cell for entering the
+  names of all the experimenters involved in the measurement.
+
+  This should **always** be filled in.  Doing so allows for the
+  possibility of searching BMM's master database for data associated
+  with a particular user.
 
 .. _spreadsheet_options:
 
@@ -91,14 +103,11 @@ Beneath the experimenter cell, there are three drop-down menus for
 setting aspects of the sequence of measurements described on the
 spreadsheet tab.
 
-#. A yes/no menu for forcing Bluesky to run the ``change_edge()``
-   command at the beginning of the measurement sequence.
-
 #. A yes/no menu for telling Bluesky to close the shutter at the end
    of the measurement sequence.
 
 #. A menu of options for modifying filenames to contain information
-   about things like absorber element, edge symbol, LInkam stage
+   about things like absorber element, edge symbol, Linkam stage
    temperature, and so on.  This simplifies data entry into the
    ``filename`` column of the spreadsheet.
 
@@ -106,6 +115,21 @@ spreadsheet tab.
    spreadsheet. This is different from the column labeled
    "repetitions", which specifies the number of repeated XAS scans of
    the sample in that row of the spreadsheet.  
+
+Detector position
+~~~~~~~~~~~~~~~~~
+
+On the right hand side of each spreadsheet, there is a column for
+specifying the position of the fluorescence detector.  A smaller value
+is closer to the sample.
+
+The detector position is set on a sample-by-sample basis, allowing the
+best possible measurement |nd| not saturating the detector while
+maximizing the signal for samples of different absorber concentrations
+|nd| for each sample.  For many experiments, most of the set up work
+involves moving from sample to sample and setting the values of this
+column.
+
 
 Fine tuning sample position and slits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,7 +154,7 @@ the centers of the spinners.
 
 
 Selecting a spreadsheet
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 All spreadsheets are imported using the :file:`xlsx()` command.  The
 spreadsheets are self-identifying.  Every spreadsheet has an
@@ -139,6 +163,9 @@ pink background.
 
 .. caution:: **Never** change the text in the pink cell or your
              spreadsheet will likely be interpreted incorrectly.
+
+Import a spreadsheet
+~~~~~~~~~~~~~~~~~~~~
 
 To convert a spreadsheet into a macro then run the macro, do the
 following:
@@ -240,9 +267,9 @@ are aligned.
    diameter holes.  The rings on the double wheel are 26 mm apart
    (center to center of slots/holes).
 
-The automation concept is that each slot on the sample wheel is
-described by a row in the spreadsheet.  Each column of the spreadsheet
-carries one parameter of the XAFS scan.  
+The automation concept is that a measurement at an edge on a slot on
+the sample wheel is described by a row in the spreadsheet.  Each
+column of the spreadsheet carries one parameter of the XAFS scan.
 
 
 .. _fig-doublewheel-spreadsheet:
@@ -265,8 +292,8 @@ the INI file |nd| file name, element, edge, and so on.
 The green cell in the first row is used to input the names of all the
 people involved in the experiment, as explained above.
 
-As explained above, row 6, row with an entirely green background, is
-used to specify the default values for all the parameters.  The
+As explained above, row 6, the row with the lime-green background,
+is used to specify the default values for all the parameters.  The
 concept here is to try to avoid having to input repetitive
 information.  For instance, in this case, all measurements will be
 made at the Fe K edge.  The element and edge are all specified in the
@@ -324,6 +351,8 @@ explicit arguments for the filled-in spreadsheet cells.
    yield from slot(3)
    yield from xafs('MnFewheel.ini', filename='Fe-Spessartine', sample='Mn3Al2(SiO4)3', comment='Grants Mining District; New Mexico')
    close_last_plot()
+
+   ## and so on....
 
 .. _auto_linkam:
 
@@ -418,7 +447,9 @@ measurement.  And there is a column for specifying the holding time
 after arriving at temperature before beginning the XAFS measurement.
 
 There is a column for specifying the power level of the heater in the
-cryostat.  There are three power settings.
+cryostat.  There are three power settings.  You probably want to use
+the high power setting.  The controller is pretty well tuned for the
+cryostat.  It is unlikely to overshoot the when raising temperature.
 
 .. _fig-lakeshore-spreadsheet:
 .. figure::  _images/lakeshore_spreadsheet.png
@@ -549,5 +580,15 @@ spreadsheet is identical to the *ex situ* sample wheel spreadsheet.
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/grid.xlsx>`_.
 
 
-.. caution:: Spreadsheets with version number earlier 13 **will not
-	     work** as of 1 March, 2024.
+.. admonition:: Future Tech!
+
+   Spreadsheets for:
+
+   + Electrochemistry experiments using the BioLogic potentiostat
+   + Chemistry experiments using the gas cart, including its mass flow
+     controllers, valves, temperature controller, and mass spectrometer.
+
+
+
+.. caution:: Spreadsheets with version number earlier than 13 **will
+	     not work** as of 1 March, 2024.

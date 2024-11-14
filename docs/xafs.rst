@@ -761,14 +761,14 @@ elsewhere is captured in the output XDI file.
 .. todo:: Document use of ``XDI_record`` dictionary to control which
 	  xafs motors and/or temperatures get recorded in the XDI header
 
-.. admonition:: New as of 27 February, 2024 (broken 22 July)
+.. admonition:: New as of Fall 2024
 
    There is a new XDI header in use in BMM's datafiles:
-   ``Scan.hdf5file``.  This captures the name of the associated HDF5
-   file for fluorescence XAS measurements.
+   ``Scan.xspress3_hdf5_file``.  This captures the name of the
+   associated HDF5 file for fluorescence XAS measurements.
 
-   The path and file name are given relative to the assets location on
-   central storage: ``/nsls2/data3/bmm/assets/xspress3/``.
+   The value is the path to the asset location beneath the current
+   proposal folder.
 
 .. code-block:: text
 
@@ -1186,14 +1186,14 @@ sample being measured, of course).
    Outer 21        Pb              foil                    Inner 21        Re              |Reoxide|
    Outer 22        Bi              |Bioxide|               Inner 22        Os              *<absent>*
    Outer 23        Sr              |Srtitanate|            Inner 23        Sc              metal powder
-   Outer 24        Y               |Yoxide|                Inner 24        Ru              |Ruoxide|
+   Outer 24        Y               foil                    Inner 24        Ru              |Ruoxide|
    ============   ========        ===================     ============    ========        ===============
 
-+ For Th L3: Bi will be used (outer 20)
-+ For U L3: Y will be used (outer 24)
-+ For Pu L3: Zr will be used (outer 16)
++ For Th L\ :sub:`3`: Bi\ :sub:`1` will be used (outer 22)
++ For U L\ :sub:`3`: Y K will be used (outer 24)
++ For Pu L\ :sub:`3`: Zr K will be used (outer 16)
 
-The missing elements (Ba, W, & Os, Ir) will be added when they are acquired.
+Four elements are missing: Ba, W, & Os, and Ir.
 
 See also `BMM's complete list of standard materials
 <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__.

@@ -151,14 +151,6 @@ are the same for all sample stage motors.
    To see the available foils, do ``%se`` or look at the value of
    ``xafs_ref.mapping``.
 
-   BMM has foils or stable oxides for each of these elements::
-
-      Sc Ti V  Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Zr Nb Mo Pt Au Pb Bi Sr Y
-      Cs La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Rb Ba Hf Ta W  Re Os Ir Ru
-
-   (A few of these |nd| Ba, Os, Ir |nd| are missing as of 2
-   November, 2023.  We are working to obtain the missing ones.)
-
    :numref:`See Section %s for a full explanation of the the reference wheel contents. <reference-wheel>`
 
    `Here is a complete list of standards

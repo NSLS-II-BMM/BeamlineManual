@@ -54,13 +54,15 @@ photons, this versatility of setup is occasionally very helpful.
    silicon drift detector.
 
 
-.. note::
-   Thanks to funding from the CHIPS Act, BMM is 
-   procuring a new 7-element SDD!  Look for that in late 2024 or
-   early 2025. 
+.. note:: 
+   Thanks to funding from the CHIPS Act, BMM now has a new
+   7-element SDD!
 
-   It arrived on 23 August, 2024!  Installation and commissioning to
-   start soon!  Still waiting on the new XYZ stage.
+   It has been calibrated and fully integrated into the Bluesky data
+   acquisition system.
+
+   The new XYZ stage has also arrived and will be integrated during
+   the 2024-2025 winter shutdown.
 
    .. _fig-7element:
    .. figure:: _images/7element.jpg
@@ -69,7 +71,17 @@ photons, this versatility of setup is occasionally very helpful.
       :align: center
 
 
+Electron yield detector
+-----------------------
 
+.. todo::
+
+   Document this!
+
+.. todo::
+
+   Better scheme in Bluesky for specifying that the yield detector is
+   in use and that its signal should be plotted in real time.
 
 
 Area detector
@@ -204,18 +216,21 @@ folder (Section %s) <data>`.
    potentiostat.  This limits the level of automation and integration
    with the rest of the beamline.
 
-   We hope to implement external triggering and collection of current
-   and voltage values over the August 2024 shutdown.  This may become
-   available in the 2024-3 cycle.
+   DSSI has implemented external triggering and collection of current
+   and voltage using the `Quantum Detectors PandABox
+   <https://quantumdetectors.com/products/pandabox/>`__.  This may
+   become available to BMM users sometime in 2025.
 
 BMM does not provide electrochemical cells.  The user is expected to
-bring their own cells.
+bring their own cells.  Ideally, the electrochemistry has been tested
+in the cells intended for use at the beamline and are known to produce
+reliable electrochemical results.
 
 
 Temperature control
 -------------------
 
-BMM has two options for experiments as elevated or reduced temperature.
+BMM has two options for experiments at elevated or reduced temperature.
 
 
 Linkam stage

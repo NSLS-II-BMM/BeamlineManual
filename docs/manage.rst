@@ -38,15 +38,15 @@ chores.
 
 The ``name`` should be the PI's full name, preferably transliterated
 into normal ASCII.  The ``date`` should be the starting day of the
-experiment in the ``YYYY-MM-DD`` format.  The ```GUP`` and ``SAF``
+experiment in the ``YYYY-MM-DD`` format.  The ``GUP`` and ``SAF``
 numbers can be found on the posted safety approval form.
 
 Once the experiment is finished, run this command::
 
   BMMuser.end_experiment()
 
-This will reset the logger and the ``DATA`` variable and unset the GUP
-and SAF numbers.
+This will reset the logger and the ``BMMuser.folder`` variable and
+unset the GUP and SAF numbers.
 
 
 
