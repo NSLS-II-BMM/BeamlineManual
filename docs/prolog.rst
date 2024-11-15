@@ -45,7 +45,7 @@
 .. |plus|    unicode:: U+002B .. PLUS SIGN
 .. |checkmark| unicode:: U+2713 .. CHECK MARK
 .. |xmark|     unicode:: U+2717 .. BALLOT X
-.. |harr|      unicode:: U+02194 .. LEFT RIGHT ARROW
+.. |larr|      unicode:: U+02192 .. LEFT ARROW
 .. |ast|       unicode:: U+002A .. ASTERISK
 .. |verbar|    unicode:: U+007C .. VERTICAL LINE
 .. |mquad|    unicode:: U+2001 .. EM QUAD

@@ -24,7 +24,8 @@ Search the Hutch
 
 The buttons on the hutch interlock panel are labeled with black
 stickers with white numbers.  Those labels correspond to the numbering
-in these lists:
+in these lists.  Note that there is no step #4 when opening the hutch
+and no step #2 when closing.
 
 To OPEN the hutch
 ~~~~~~~~~~~~~~~~~
@@ -47,6 +48,7 @@ the buttons.  The serach **is not** a team sport!
 
 1. Complete the hutch search 
 
+   + Wait for others to exit the hutch
    + Look in the mirror to see that no one is behind the table
    + Press search button 1
    + Visually inspect the length of the hutch, verifying that it is empty of people
@@ -78,7 +80,7 @@ Change energy and prepare for fluorescence measurements
 -------------------------------------------------------
 
 In this example, we are using Fe as the example.  That is, we assume
-your are moving the beamline to the state in which it is ready to
+you are moving the beamline to the state in which it is ready to
 measure at the Fe K edge.  For any other edge, simply change ``Fe`` to
 the appropriate element in the following example.
 
@@ -100,7 +102,7 @@ Once the hutch is secured and you are back at the computer:
    with ``xafs_det.limits``.
 
 #. Measure an XRF spectra: ``%xrf``. Remember that you want the OCR
-   (total count rate) to be 200,000 or less on each of the four
+   (total count rate) to be 200,000 or less on each of the seven
    channels.
 
 #. Adjust the detector position ``RE(mv(xafs_det, <value>))``.
@@ -137,8 +139,8 @@ Align the *ex situ* sample wheel
 
 The attractive feature of the *ex situ* sample wheel is that it makes
 it easy to move from sample to sample.  Once the wheel is properly
-aligned in the beam, the command ``RE(slot(#))``,
-``RE(xafs_wheel.inner())``, and ``RE(xafs_wheel.inner())`` are all
+aligned in the beam, the commands ``RE(slot(#))``,
+``RE(xafs_wheel.inner())``, and ``RE(xafs_wheel.outer())`` are all
 that's needed to move from sample to sample.
 
 For this to work, the wheel has to be properly aligned in the frist
@@ -146,8 +148,8 @@ place.
 
 Once the rotation stage is in place and a wheel is mounted on the
 stage, place a phosphor screen in front of any slot *on the outer
-ring*.  It is essential that the initial alignment be done of the
-outer ring.
+ring*.  The alignment procedure assumes that the initial alignment be
+done of the outer ring.
 
 #. Rotate the wheel such that the phosphor screen is in the beam path
    using ``RE(slot(#))``, where # is between 1 and 24.
@@ -160,12 +162,11 @@ outer ring.
    beam on the phosphor screen when looking through one of the
    cameras.  Use ``RE(mvr(xafs_x, <amount>))`` and ``RE(mvr(xafs_y,
    <amount>))`` to move the stage in X and Y.  ``<amount>`` is a
-   *number* |nd| some sensible distance in millimeters, something like
-   5 is often a good choice.
+   *number* |nd| some sensible distance in millimeters.
 
 #. Using ``RE(mvr(xafs_x, <amount>))`` and ``RE(mvr(xafs_y,
    <amount>))``, move the stage such that the beam is approximately in
-   position to go through a slot on the outer ring.
+   position to go through the middle of a slot on the outer ring.
 
 #. Rotate the stage to an empty slot using ``RE(slot(#))``.
 
@@ -183,8 +184,6 @@ outer ring.
    An example of the final plot for an alignment of the *ex situ*
    sample wheel. The green X marks shows the aligned positions in
    ``xafs_x`` and ``xafs_y``.
-
-
 
 
 This procedure sets a parameter specifying the ``xafs_x`` position of
@@ -336,7 +335,7 @@ Filling the 25 liter LN2 dewar
 #. Do not remove glasses, face shield, lab coat, or gloves from the
    hutch.
 
-#. Open main LN2 valve.  Use the button on the "06BM utilities" CSS
+#. Close main LN2 valve.  Use the button on the "06BM utilities" CSS
    screen or at the bsui command line do ``ln2.close()``.
 
 #. Press the :green:`Front Right Maglock` button. The green light should be

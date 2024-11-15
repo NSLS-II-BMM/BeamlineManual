@@ -204,16 +204,16 @@ that you started at with the other crystal set and run a rocking curve
 scan.
 
 Note that some of these motions can be a bit surprising in the sense
-that the monochromator will end up outside the normal operating range
-of the beamline.  They will, however, eventually return to sensible
-places.
+that the monochromator will briefly report itself as being outside the
+normal operating range of the beamline.  They will, however,
+eventually return to sensible places.
 
 
-Change XAS |harr| XRD
+Change XAS |larr| XRD
 ---------------------
 
-Begin this transition by leaving the I0 chamber in place to monitor
-the incidence flux.  In most cases, this should do the trick:
+To move the photon delivery system to delivery of focused beam to the
+goniometer:
 
 .. code-block:: python
 
@@ -238,17 +238,18 @@ To do all of that by hand, you would do the follow commands:
    RE(slit_height())
 
 This change of mode should have the beam in good focus at the position
-of the goniometer.  8000 eV is the nominal operating energy for the
+of the goniometer.  8600 eV is the nominal operating energy for the
 goniometer.  If a higher energy is required, substitute the correct
 energy for ``8600`` in the second line.
+
+.. note:: The I\ :sub:`0` chamber should be left in place.  This will
+          facilitate changing energy while doing scattering
+          experiments. The flight path can be put in place at any time.
 
 .. todo:: Determine look-up table for lower energy operations using
 	  both M2 and M3.  This will require a new XAFS table and
 	  adjustments to the limit switches on ``m3_ydo`` and
 	  ``m3_ydi``.
-
-Once the photon delivery system is set, remove the ion chambers and
-insert the XRD flight path into its place.
 
 
 .. _use333:
@@ -511,8 +512,13 @@ We use the `BioLogic EC_lab software
 the `VSP-300 potentiostat
 <https://www.biologic.net/products/vsp-300/>`__.  Since there is not a
 dedicated Windows machine at BMM, EC-Lab is run on a virtual machine
-that is spun up when needed.  Here are the instructions for starting
-and interacting with the the VM.
+that is spun up when needed.  
+
+Similarly, Hiden's control software is a Window's only produce.  It is
+run on the same firtual machine.
+
+Here are the instructions for starting and interacting with the
+the VM.
 
 Starting the virtual machine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -524,10 +530,10 @@ Starting the virtual machine
 + The Windows desktop might start with a full-screen management
   application that looks like the figure below. You can close
   or minimize that window.
-+ Double-click on the EC-lab icon.
-+ Do some electrochemistry.
-+ Save your electrochemistry data to the assets folder as explained
-  below.
++ Double-click on the EC-lab or Hiden icon.
++ Do some electrochemistry or mass spectrometry.
++ Save your electrochemistry or mass spectrometry data to the assets
+  folder as explained below.
 
 .. _fig-winvm:
 .. figure:: _images/Winvm_startup.png
@@ -537,11 +543,12 @@ Starting the virtual machine
 
    VM management window. You can minimize or close this.
 
-Storing echem data
-~~~~~~~~~~~~~~~~~~
+Storing electrochemistry or mass spectrometry data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Windows VM has permission to connect to central storage with
-permissions to write files from EC-lab to the correct location.
+permissions to write files from EC-lab or the Hiden software to the
+correct location.
 
 To start a new experiment, you first have to disconnect the old drive
 (if connected).  This is likely mounted as the ``Z:`` drive.
@@ -609,6 +616,9 @@ The new network drive can now be clicked into.
 Configure EC-lab to write its data files into the
 ``assets\vsp300-1`` folder.
 
+Configure the Hiden software to write its data files into the
+``assets\hpr20-1`` folder.
+
 .. _fig-winsassetsfolder:
 .. figure:: _images/Windows_assets_folder.png
    :target: _images/Windows_assets_folder.png
@@ -616,11 +626,12 @@ Configure EC-lab to write its data files into the
    :align: center
 
    The ``assets\vsp300-1`` folder is the correct place for data from
-   EC-lab to be written.
+   EC-lab to be written.  The ``assets\hpr20-1`` folder is the correct
+   place for data from the Hiden to be written.
 
-By following this procedure, the electrochemistry data from EC-lab
-will be available to the user in the 
-:numref:`same manner as their XAS data (Section %s) <data>`.
+By following this procedure, the electrochemistry data from EC-lab and
+mass spectrometry data from the Hiden will be available to the user in
+the :numref:`same manner as their XAS data (Section %s) <data>`.
 
 
 
@@ -812,31 +823,27 @@ storage.
 Manage Silicon Drift Detectors
 ------------------------------
 
-.. note::
-   Thanks to funding from the CHIPS Act, BMM is
-   procuring a new 7-element SDD!  Look for that in late 2024 or
-   early 2025. 
-
-The assumption is that one of the three detectors will be the primary
-detector in an experiment.  At the bsui command line (or in queue
-server) the ``xs`` symbol should point at the correct detector.  Also,
-a parameter is set in Redis allowing other processes (such as the
-Kafka plotting agent) to know which detector to be paying attention to.
+The assumption in the data acquisition system is that one of the three
+silicon drift detectors will be the primary detector in an experiment.
+At the bsui command line (or in queue server) the ``xs`` symbol should
+point at the correct detector.  Also, a parameter is set in Redis
+allowing other processes (such as the Kafka plotting agent) to know
+which detector to be paying attention to.
 
 
 .. code-block:: python
 
-   xs = xspress3_set_detector(4)
+   xs = xspress3_set_detector(7)
 
-where the argument to ``xspress3_set_detector`` is 1, 4, or 7
+where the argument to ``xspress3_set_detector`` is 1, 4, or 7.  Since
+October 2024, use of the seven element detector is the default.
 
 This sets ``xs`` to the selected detector object |nd| ``xs1``,
-``xs4``, or ``xs7``.  The default at startup is to use the 4-element
-detector.  That will change soon to the new 7-element.
+``xs4``, or ``xs7``.  
 
 Also set is the Redis parameter ``BMM:xspress3``, which is set to 1,
 4, or 7 (and represented as a b-string).
 
 .. code-block:: python
 
-   int(rkvs.get('BMM:xspress3'))
+   n_elements = int(rkvs.get('BMM:xspress3'))
