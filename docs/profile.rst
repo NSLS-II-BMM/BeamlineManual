@@ -30,7 +30,7 @@ The startup folder
 ------------------
 
 The startup folder is a symlink to a folder on Lustre where BMM's
-profile is kept.  If bsui does not start with BMM's profile, make that
+profile is kept.  If |bsui| does not start with BMM's profile, make that
 symlink by doing the following:
 
 .. code-block:: sh
@@ -39,56 +39,73 @@ symlink by doing the following:
    ln -s /nsls2/data3/bmm/shared/config/bluesky/profile_collection
 
 If a folder called ``profile_collection`` already exists at that
-location |nd| which would be the case if you have already used bsui
+location |nd| which would be the case if you have already used |bsui|
 or ipython |nd| go ahead and rename or delete that folder.
 
 The top folder of the profile contains a single python file.  It
 follows the old convention in that it is named
 ``00-populate-namespace.py`` and is read as soon as IPython starts.
 
+There are three files in the ``startup`` folder:
+
+``00-populate-namespace.py``
+   This is the first file ipython loads as it starts |bsui|.
+   :numref:`See Section %s <namespace>`.
+
+``rois.json``
+   This is a small database of ROI definitions used by the XSpress3
+   configuration.
+
+``user_group_permissions.yaml``
+   This is a configuration file used by |qs| to grant access to plans
+   according to authentication
+
+
+
 Beneath the ``startup`` folder, there are several sub-folders:
 
-``BMM`` 
+``BMM/`` 
    the bulk of the code used for data acquisition.
 
-``consumer``
+``consumer/``
    the code used by the process that captures Kafka messages and
    generates plots for real-time and other data visualization
    :numref:`(Section %s) <plotting>`
 
-``BMM_common``
+``BMM_common/``
    code shared by data acquisition and the Kafka consumer
 
-``lookup_table``
+``lookup_table/``
    the spreadsheet with the look up table of motor positions used by
    the ``change_edge()`` command :numref:`(Section %s) <pds>`
 
-``standards``
+``standards/``
    the spreadsheet for working with `BMM's collection of measurement
    standards <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__
 
-``ML``
+``ML/``
    the data used for the machine learning data evaluation
    model :numref:`(Section %s) <dataevaluation>`
 
-``telemetry``
+``telemetry/``
    the data used for the time estimates of XAFS and other
    scans :numref:`(Section %s) <telemetry>`
 
-``dossier``
+``dossier/``
    files used to construct dossiers :numref:`(Section %s) <dossier>`
 
-``tmpl``
-   template files used for dossiers files, INI files, and other
+``tmpl/``
+   template files used for dossiers, INI files, and other
    templated materials
 
-``xlsx``
+``xlsx/``
    empty spreadsheet examples for the various forms of
    automation :numref:`(Section %s) <automation>`
 
-.. todo:: Explain other three files in top folder.  Explain folder
-	  above top folder.
 
+
+
+.. _namespace:
 
 The IPython namespace
 ---------------------
@@ -133,8 +150,8 @@ makes for code that is more robust and more readily maintainable and
 extensible.
 
 
-Managing *bsui* and *queueserver*
----------------------------------
+Managing |bsui| and |qs|
+------------------------
 
 A common motif found in many files, including
 ``BMM/user_ns/__init__.py``, looks like this:
@@ -148,14 +165,14 @@ A common motif found in many files, including
           return False
 
 This is used to allow a plan or some other bit of code to know whether
-it is being run under *bsui* or *queueserver.*
+it is being run under |bsui| or |qs|.
 
-*bsui* is, by design, run on the same workstation with which the
-experimenter is interacting.  *queueserver* is, by design, run on a
+|bsui| is, by design, run on the same workstation with which the
+experimenter is interacting.  |qs| is, by design, run on a
 remote server.  Having a way to distinguish the two is essential.  For
-example, there are many plans which, when run with *bsui*, stop to
+example, there are many plans which, when run with |bsui|, stop to
 prompt for an interaction from the user.  Such prompts need to be
-disabled when running under *queueserver*.
+disabled when running under |qs|.
 
 
 Profile start-up as a narrative
@@ -185,7 +202,7 @@ similar in concept, it is a bit more suited to our purpose.
    :width: 80%
    :align: center
 
-   Screen messages during *bsui* start-up.
+   Screen messages during |bsui| start-up.
 
 
 For one thing, it applies consistent coloring to the text.  In that
@@ -274,7 +291,7 @@ the bluesky ecosystem:
 
 + `nslsii.configure_base()
   <https://github.com/NSLS-II/nslsii/blob/55fad71851d61eb7dbae9823d216296b072344fd/nslsii/__init__.py#L29>`__
-  is called appropriately for *bsui* or *queueserver*
+  is called appropriately for |bsui| or |qs|
 
 + Some configuration of best effort callbacks is done
 
@@ -301,7 +318,7 @@ Here's a brief summary of every module in the BMM profile.
     ``db.py``                      utilities for working with *DataBroker*
     ``dcm.py``                     define monochromator ophyd objects
     ``dcm_parameters.py``          mono calibration parameters
-    ``demeter.py``                 Athena and Hephaestus integration
+    ``demeter.py``                 |athena| and |hephaestus| integration
     ``derivedplot.py``             deprecated plotting capabilities
     ``desc_string.py``             fix epics motor ``DESC`` fields for CSS
     ``detector_mount.py``          deprecated tools for ``xafs_det``

@@ -129,6 +129,16 @@
     text-decoration: line-through;
 }
 
+.bolditalic {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.smallcaps {
+  font-variant: small-caps;
+  color: #8f4800;
+}
+
 .it {
     font-style: italic;
 }

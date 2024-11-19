@@ -241,7 +241,7 @@ was called :file:`mysamples`, the new BlueSky command is called
 
 .. admonition:: Future Tech!
 
-   Convert spreadsheets to Bluesky queueserver input.
+   Convert spreadsheets to Bluesky |qs| input.
 
 
 .. _sample_wheel_automation:

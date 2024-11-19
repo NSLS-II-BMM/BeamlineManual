@@ -34,14 +34,15 @@ beamline staff how you intend to use your beamtime effectively.
 + If you are measuring a dopant, state the concentration of the dopant.
 + If you are measuring a low concentration sample |nd| for example the
   amount of arsenic in a natural sample |nd| provide an estimate of
-  the concentration.  Even better, do elemental analysis of an aloquat
+  the concentration.  Even better, do elemental analysis of an aliquot
   in the electron microscope or with ICP.
-+ If you are measuring a thin film sample, state the thickness of the
-  sample and the areal dimensions of the sample.
++ If you are measuring a thin film sample, state the substrate
+  material, the thickness of the sample, and the areal dimensions of
+  the sample.
 + If you have a matrix of sample conditions |nd| for example a range
   of dopants, a range of absorption edges, and a range of annealing
   conditions |nd| do the math.  Tell the reader how many XAS
-  emasurements are required.
+  measurements are required.
 + Make sensible estimates about your time requirements.  Be prepared
   to prioritize your samples if you are unable to get the full time
   you request.
@@ -100,9 +101,9 @@ However, asking for XAS and XRD in a single proposal at BMM is an
 edge-case for the NSLS-II multi-modal program.
 
 It turns out that there is no way to request a multi-modal proposal
-where *different* measurement techniques are performed at the *same*
-beamline.  Thus, there is no way to send both parts of the multi-modal
-proposal to the relevant proposal review panels.
+where :maroon:`different` measurement techniques are performed at the
+:maroon:`same` beamline.  Thus, there is no way to send both parts of the
+multi-modal proposal to the relevant proposal review panels.
 
 As a result, if you wish to request both spectroscopy and scattering
 at BMM, you need to write **two proposals**.  That is the only way to
@@ -129,7 +130,7 @@ NIST Partner User Proposals
 As of the 2024-2 cycle, NIST staff must use the new **Partner User -
 Project** proposal type.  This new proposal type is necessary to
 accommodate :numref:`the new data access and security policies
-(Section %s) <data>`.  Writing this proposal is a *requirement*.  It
+(Section %s) <data>`.  Writing this proposal is a :red:`requirement`.  It
 is no longer possible to access the beamline via the main partner user
 proposal.
 

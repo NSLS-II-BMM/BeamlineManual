@@ -51,3 +51,17 @@
 .. |mquad|    unicode:: U+2001 .. EM QUAD
 .. |circle|   unicode:: U+25CB .. WHITE CIRCLE
 .. |elementof|   unicode:: U+2208 .. ELEMENT OF
+
+.. role:: bolditalic
+  :class: bolditalic
+
+.. |bsui| replace:: :bolditalic:`bsui`
+.. |qs| replace:: :bolditalic:`queueserver`
+
+.. role:: smallcaps
+  :class: smallcaps
+
+.. |athena| replace:: :smallcaps:`athena`
+.. |artemis| replace:: :smallcaps:`artemis`
+.. |hephaestus| replace:: :smallcaps:`hephaestus`
+

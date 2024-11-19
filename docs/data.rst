@@ -230,7 +230,8 @@ Accessing data from the beamline computers
 Under the new data security regime, the beamline computer does not
 have normal access to your data.  This is because all users run their
 experiment as the beamline operator.  If the beamline operator |nd|
-``xf06bm`` |nd| could see data, than any could look at anyone's data.
+``xf06bm`` |nd| could see data, than any user could look at any other
+user's data.
 
 Instead, data are stored on central storage with read permission
 granted to everyone named on the user proposal.  In this way, data are
@@ -241,7 +242,7 @@ To look at your data while at the beamline, do the following
 
 + Open a terminal window.  Normally a terminal window with a white
   background is open on screen and intended for this purpose.
-  ``bsui`` is typically run from a window with a black background, so
+  |bsui| is typically run from a window with a black background, so
   the white background is meant as a visual cue indicating that it is
   the place for data access.
 
@@ -258,7 +259,7 @@ To look at your data while at the beamline, do the following
   ``2024-2`` with the cycle of your visit and ``123456`` with your
   proposal number.
 
-Athena can be launched from the command line.  The best way to do this
+|athena| can be launched from the command line.  The best way to do this
 is to type
 
 .. code-block:: bash
@@ -266,8 +267,8 @@ is to type
    dathena 2&>1 &
 
 at the command line.  That incantation will suppress spurious screen
-messages and put Athena into the background so you can continue using
-the command line.  From there, simply use `Athena's File menu
+messages and put |athena| into the background so you can continue using
+the command line.  From there, simply use |athena|'s `File menu
 <https://bruceravel.github.io/demeter/documents/Athena/import/index.html>`__
 to load data from your proposal folder.
 
@@ -282,3 +283,24 @@ Accessing data via Jupyter
 --------------------------
 
 .. todo:: Details needed
+
+Why is data security important?
+-------------------------------
+
+For those who have been coming to NSLS-II over the last decade, this
+new emphasis on data security might be a bit surprising.  In short,
+the new data security model is consistent with Department of Energy
+data policies.
+
+Recently, there were a pair of incidents involving accidental leaks of
+sensitive synchrotron data to unauthorized parties.  This sort of
+violation of DOE policy can have an impact on the authorization to
+operate NSLS-II as a user facility.  Safe operations of the facility
+includes data security.
+
+As a result, our Data Science and Systems Integration team at NSLS-II
+has been begun moving the beamlines to a data acquisition model that
+includes sounds data security practices.  BMM volunteered to be an
+early adopter of the new data security practices.  We now provide an
+excellent user experience at BM that includes secure data management.
+

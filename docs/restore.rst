@@ -57,7 +57,7 @@ Operations at BMM require that a redis server is running on
 xf06bm-ioc2. For whatever reason, the redis server never starts
 correctly after a reboot.  
 
-This will become apparent when bsui and cadashboard fail to start,
+This will become apparent when |bsui| and cadashboard fail to start,
 complaining about ``Connection refused`` with ``xf06bm-ioc2:6379``.
 6379 is the port that redis uses for communication.
 
@@ -77,17 +77,14 @@ To re-power the Xspress3 and its associated server:
 #. Verify that the power button on the back of the Xspress3 unit is
    switched on.  It should be glowing red.
 #. Press the front power button.
-#. Once running, reboot xf06bm-xspress3
-
-.. note:: In the near future, the Xspress3 IOC will be moving away
-	  from xf06bm-xspress3, which is an old, vendor-supplied
-	  CentOS 7 machine.
+#. Once running, restart the relevant IOC on ``xf06bm-ioc2``.  For the
+   seven element detector, use ``xs3-7-1``.
 
 
 Other IOCs
 ----------
 
-The startup acceptance tests in the bsui profile may eventually fail
+The startup acceptance tests in the |bsui| profile may eventually fail
 when trying to connect to instruments.  For example, this:
 
 .. code-block:: text
@@ -118,20 +115,29 @@ on:
 
    dzdo manage-iocs report
 
-Here is a list of all the IOCs and what they do:
 
-================  =============================================
+IOCs on xf06bm-ioc2
+~~~~~~~~~~~~~~~~~~~
+
+``xf06bm-ioc2`` is the main IOC server at BMM.  It is a much beefier
+machine than ``xf06bm-ioc1``.
+
+Here is a list of all the IOCs on ``xf06bm-ioc2`` and what they do:
+
+================  =================================================
 IOC name           purpose
-================  =============================================
+================  =================================================
+ axis-caproto5     XRD Axis web camera
+ axis-caproto6     XAS Axis web camera
  cam01             Prosilica camera #1 (DM1)
  cam02             Prosilica camera #1 (DM2)
  cam03             Prosilica camera #3 (DM3)
- cam04             ??
- cam07             ??
- cas-switch        enables cahnnel access security management
+ cam04             :silver:`??`
+ cam07             :silver:`??`
+ cas-switch        enables channel access security management
  dante             Dante controller for Ge detector
  diode             DIODE controller (filters, spinner stage)
- EigerTest1        ??
+ EigerTest1        :silver:`placeholder`
  F460              FMBO current monitor (not in use)
  flag1             Front end flag (not in use)
  I400              FMBO electrometer (not in use)
@@ -144,8 +150,8 @@ IOC name           purpose
  MC04              Focusing mirror
  MC05              Harmonic rejection mirror and DM1 filters
  MC06              DM3 diagnostics and slits3
- MC07              xafs_8 motors
- MC08              xafs_8 motors
+ MC07              xafs_* motors
+ MC08              xafs_* motors
  MC11              goniometer motors
  MC12              goniometer motors
  MC13              goniometer motors
@@ -163,9 +169,26 @@ IOC name           purpose
  simDetector       ??
  va-1              Vacuum controllers and gauges
  xf06bmAlarmIOC    Alarm server
-================  =============================================
+ xs3-8ch           :silver:`deprecated XSpress3 server, do not run`
+ xs3-7-1           XSpress3 server for use with 7-element detector
+ xs3-4-1           XSpress3 server for use with 4-element detector
+================  =================================================
 
+IOCs on xf06bm-ioc1
+~~~~~~~~~~~~~~~~~~~
 
+Additionally, there is one IOC that regularly runs on ``xf06bm-ioc1``.
+
+================  =================================================
+IOC name           purpose
+================  =================================================
+ Pilatus100K       Pilatus 100k
+================  =================================================
+
+This IOC does a lot of file I/O, so it seemed like a good idea to
+isolate it from the other IOCs.
+
+All other IOCs on ``xf06bm-ioc1`` must be in the ``stopped`` state.
 
 
 Motor controllers
@@ -182,7 +205,7 @@ Restore power to the motor controllers.  It should not necessary to
 restart the IOCs (MC02 through MC06), but do so if motors are not
 moving after powering up the controllers.
 
-The steps below are the commands in bsui for homing sets of axes.  The
+The steps below are the commands in |bsui| for homing sets of axes.  The
 ``ks.cycle()`` steps are not, strictly speaking, necessary.  But it is
 a good idea to be sure the amplifiers are in a good state.  If any
 amplifier faults trigger upon starting the homing process, the motors
@@ -258,7 +281,7 @@ XRD position is around 107,000.
 Homing MSC8s via PEWIN
 ~~~~~~~~~~~~~~~~~~~~~~
 
-If homing from the bsui command line fails, your best bet is to find
+If homing from the |bsui| command line fails, your best bet is to find
 the laptop with PEWIN and connect to the motor controller with a USB
 cable.
 

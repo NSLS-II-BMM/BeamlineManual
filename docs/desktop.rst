@@ -85,8 +85,8 @@ Data collection and visualization
 Data collection and visualization are separate things and should be
 managed separately.  
 
-On the main virtual desktop, open a terminal window for bsui.  At the
-command line type ``bsui``.  ``bsui`` startup at BMM is rather
+On the main virtual desktop, open a terminal window for |bsui|.  At the
+command line type ``bsui``.  |bsui| startup at BMM is rather
 time-consuming, but after a couple minutes it is ready to go.
 
 
@@ -100,7 +100,7 @@ plot workers as explained in :numref:`the section on Kafka workers
    :width: 80%
    :align: center
 
-   The tail end of the ``bsui`` startup messages and the
+   The tail end of the |bsui| startup messages and the
    command prompt.
 
 
@@ -117,20 +117,20 @@ experiment:
   Workspace folder
 
 Note that there is a button on the icon bar at the bottom of the
-screen for Hephaestus.
+screen for |hephaestus|.
 
-In the new data security regime, launching Athena as the beamline
+In the new data security regime, launching |athena| as the beamline
 account (``xf06bm``) is not very helpful given that it cannot access
 the data.  
 
-If data are accessed by opening a terminal window and doing
-``su - <username>`` followed by authentication with password and DUO,
-first ``cd`` to the proposal directory, the start Athena with this
-command: 
+If data are accessed by opening a terminal window and doing ``su -
+<username>`` followed by authentication with password and DUO (see
+:numref:`section %s <data>`), first ``cd`` to the proposal directory,
+then start |athena| with this command:
 
 .. code-block:: bash
 
    dathena > /dev/null 2>&1 &  
 
-That will open Athena and suppress the large stream of uniteresting
+That will open |athena| and suppress the large stream of uniteresting
 warning messages from the graphics tool kit.

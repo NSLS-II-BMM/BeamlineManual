@@ -15,7 +15,7 @@ Introduction to BMM
 BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
 
 At the unix command line, type ``bsui`` to start the BlueSky user
-interface.  bsui is simply an `Ipython shell <https://ipython.org/>`_
+interface.  |bsui| is simply an `Ipython shell <https://ipython.org/>`_
 with some customizations specific to BlueSky.  On top of that, there
 are a number of customizations specific to BMM.
 
@@ -66,7 +66,7 @@ Essential links
 The user experience
 -------------------
 
-The Ipython/bsui prompt at BMM is modified to provide at-a-glance
+The Ipython/|bsui| prompt at BMM is modified to provide at-a-glance
 information about the state of the beamline.
 
 .. _fig-prompt:
@@ -86,7 +86,7 @@ information about the state of the beamline.
   Si(111) monochromator (Section %s) <change-crystals>` is in use.
 
 * The green number in square brackets is an incremented count of how
-  many commands have been issued since ``bsui`` was started.
+  many commands have been issued since |bsui| was started.
 
 * If the prompt starts with three red exclamation points |nd| something like 
 

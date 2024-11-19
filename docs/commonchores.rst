@@ -120,7 +120,7 @@ Once the hutch is secured and you are back at the computer:
    samples: ``RE(xafs_wheel.inner())`` and ``RE(xafs_wheel.outer())``.
    For other sample holders, move the appropriate sample stages.
 
-#. To import the spreadsheet into bsui (the data acquisition program):
+#. To import the spreadsheet into |bsui| (the data acquisition program):
    ``xlsx()`` You will be presented with a list of .xlsx file choices,
    pick the correct one by number and hit :key:`Enter`. You will then be
    presented with a list of tabs in the spreadsheet file, pick the
@@ -130,7 +130,7 @@ Once the hutch is secured and you are back at the computer:
 #. The output of the ``xlsx()`` command will display the command for
    reviewing the file (the one with ``??``) and the command for
    running the measurement sequence (the one with ``RE(
-   ... )``). Check to make sure it looks like ``bsui`` correctly
+   ... )``). Check to make sure it looks like |bsui| correctly
    imported the information from the spreadsheet (you did remember to
    save the spreadsheet, yes...?), then start the measurements.
 
@@ -285,7 +285,7 @@ Filling the 25 liter LN2 dewar
    the HMI panel. Push the door open manually.
 
 #. Open main LN2 valve.  Use the button on the "06BM utilities" CSS
-   screen or at the bsui command line do ``ln2.open()``.
+   screen or at the |bsui| command line do ``ln2.open()``.
 
    .. _fig-utilities:
    .. figure::  _images/BMM_utilities.png
@@ -336,7 +336,7 @@ Filling the 25 liter LN2 dewar
    hutch.
 
 #. Close main LN2 valve.  Use the button on the "06BM utilities" CSS
-   screen or at the bsui command line do ``ln2.close()``.
+   screen or at the |bsui| command line do ``ln2.close()``.
 
 #. Press the :green:`Front Right Maglock` button. The green light should be
    on. Manually close the right hutch door.

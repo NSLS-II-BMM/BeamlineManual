@@ -669,7 +669,7 @@ calibration.
    file.  Edge appropriate command line parameters will be added by
    the ``calibrate()`` plan.
 
-#. Examine the data in Athena. Make sure E\ :sub:`0` is selected
+#. Examine the data in |athena|. Make sure E\ :sub:`0` is selected
    correctly for all 10 edges. Copy those values into the first column
    of :file:`edges111.ini` (or :file:`edges311.ini`). 
 
@@ -727,7 +727,7 @@ calibration.
 
       dcm.set_crystal()
 
-   Or simply restart ``bsui``, which is usually the easier thing.
+   Or simply restart |bsui|, which is usually the easier thing.
 
 #. Finally, do 
 
@@ -758,8 +758,8 @@ install additional packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 + plasma-desktop (just ... better)
-+ redis (essential for operation of bsui)
-+ most (used as the pager in BMM's bsui profile)
++ redis (essential for operation of |bsui|)
++ most (used as the pager in BMM's |bsui| profile)
 + ag (powerful ack-like grep alternative)
 + fswebcam (used to capture analog pinhole camera)
 + demeter and perl-Graphics-GnuplotIF (something silly, no doubt)
@@ -825,7 +825,7 @@ Manage Silicon Drift Detectors
 
 The assumption in the data acquisition system is that one of the three
 silicon drift detectors will be the primary detector in an experiment.
-At the bsui command line (or in queue server) the ``xs`` symbol should
+At the |bsui| command line (or in |qs|) the ``xs`` symbol should
 point at the correct detector.  Also, a parameter is set in Redis
 allowing other processes (such as the Kafka plotting agent) to know
 which detector to be paying attention to.

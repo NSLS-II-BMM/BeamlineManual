@@ -17,7 +17,7 @@ visualization.  Prior to that, BMM was using a modified version of
 Bluesky's `LivePlot
 <https://blueskyproject.io/bluesky/callbacks.html#liveplot-for-scalar-data>`__.
 With the advent of BMM's use of `BlueSky queueserver
-<https://blueskyproject.io/bluesky-queueserver/>`__ alongside bsui, we
+<https://blueskyproject.io/bluesky-queueserver/>`__ alongside |bsui|, we
 had to rethink how plots were made.
 
 In short, a Kafka client was developed to manage real-time
@@ -30,9 +30,9 @@ requested.  The worker then parses event documents and adds data
 points to the real-time plots.
 
 In May 2024, data security upgrades were implemented at BMM.  The
-upshot of this new data security regime is that the bsui or qs process
+upshot of this new data security regime is that the |bsui| or qs process
 is not able to write data to the proposal directory on central
-storage.  Moving all data file output from the bsui profile to a new
+storage.  Moving all data file output from the |bsui| profile to a new
 Kafka worker gave us a path forward.  The workers can be run with
 adequate privilege to write to central storage.
 
@@ -115,8 +115,8 @@ Note that you must be beamline staff to run the system services.  A
 beamline user will not be able to execute the second and third steps
 above.
 
-Once all three workers are running, you are ready to start bsui or
-queue-server and begin collecting data.
+Once all three workers are running, you are ready to start |bsui| or
+|qs| and begin collecting data.
 
 
 .. _fig-consumer:
@@ -152,26 +152,25 @@ Many applications can subscribe as producers and many applications can
 subscribe as consumers.  
 
 In the case of BMM, there are two possible producers of messages |nd|
-bsui and queue-server.  At BMM, there are three consumers |nd| the
+|bsui| and |qs|.  At BMM, there are three consumers |nd| the
 three listed above.  The consumers are in separate processes, thus can
 act upon messages in parallel.
 
 Because the Kakfa message bus is involved, actions can be taken by
 consumers on messages asynchronously with the producer of the
-messages.  This means, for instance, that bsui can carry on with data
+messages.  This means, for instance, that |bsui| can carry on with data
 collection and let the file worker take care of the details of writing
 files.
 
-This is, admittedly, a lot more complicated than just having bsui
+This is, admittedly, a lot more complicated than just having |bsui|
 handle all those chores by itself.  But this complication pays off in
 two very significant ways:
 
-#. The plot worker makes plots regardless of whether bsui or
-   queue-server is running the experiment.  Since queue-server is
-   probably not running on the beamline workstation, that is very
-   handy.
+#. The plot worker makes plots regardless of whether |bsui| or |qs| is
+   running the experiment.  Since |qs| is probably not running on the
+   beamline workstation, that is very handy.
 #. The workers run as systemd processes are able to write files to the
-   secure proposal directory.  Neither bsui nor queue-server are run
+   secure proposal directory.  Neither |bsui| nor |qs| are run
    with adequate privilege for that.
 
 
@@ -276,6 +275,11 @@ the output data file.
 Live areascan plots
 ~~~~~~~~~~~~~~~~~~~
 
+.. todo::
+
+   Explain this in words.  Explain how the contour plot is made at the
+   end of the scan.
+
 .. code-block:: python
 
         kafka_message({'areascan'     : 'start',
@@ -363,7 +367,7 @@ manner.
    :align: center
 
    An example of the final plot for an alignment of the *ex situ*
-   sample wheel. The green X marks shows the aligned positions in
+   sample wheel. The green X marks show the aligned positions in
    ``xafs_x`` and ``xafs_y``.
 
 
@@ -386,6 +390,11 @@ linescan plots, but with some additional considerations:
 
    Panel for live |chi|\ (k) plots, begin plotting this panel, say, 60
    eV above the edge.
+
+
+.. admonition:: Future Tech!
+
+   Plot electron yield data in a consistent, maintainable manner.
 
 Like with the linescan, the plot begins with a message issued to tell
 the consumer to begin preparing for an XAFS plot and providing enough
@@ -438,14 +447,12 @@ of transmission |mu| (E), I\ :sub:`0`, and the reference spectrum.
    :align: center
 
    An example of the XAFS live plot made for a fluorescence XAFS scan.
+   This is a somewhat old example. I\ :sub:`0` is now normalized by
+   the dwell time, thus is plotting in units of nanoamperes rather than
+   nanoampere*seconds, as shown (but labeled incorrectly).
 
-.. note:: I\ :sub:`0` is now normalized by the dwell time, thus is
-	  plotting in units of amperes rather than ampere*seconds,
-	  as shown.
-
-	  Also, as of January 2024, the live plot at the end of the
-	  scan sequence is posted to Slack and included in the
-	  :numref:`dossier (Section %s) <dossier>`.
+The live plot at the end of the scan sequence is posted to Slack and
+included in the :numref:`dossier (Section %s) <dossier>`.
 
 
 .. _xafssequence:

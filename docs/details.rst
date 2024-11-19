@@ -16,6 +16,44 @@ This section is a scattershot assortment of details about things at
 the beamline.  This is basically an attempt to capture institutional
 knowledge ... someplace.
 
+Network configuration
+---------------------
+
+When introducing a new device to the beamline network:
+
++ Open a Jira ticket to request a new IP address and device name for
+  DNS.  As an example, a new Moxa terminal server was introduced.  In
+  the Jira ticket, we requested an IP address of 10.68.42.83 and a DNS
+  entry of ``xf06bm-tsrv13`` (full name:
+  ``xf06bm-tsrv13.nsls2.bnl.local``). 
+
++ In the case of a device that one in s series of similar devices, be
+  sure that the name matches the similar devices and that the number
+  is incremented.  In the case of the new Moxa server, there are 12
+  others at the beamline.  The numbers were incremented correctly for
+  both the name and the IP address
+
++ Identify a port on one of the servers that is available and
+  configured for the correct network.  The networks are:
+
+  + **SCI** (650): 10.68.40.xxx
+  + **CAM** (651): 10.68.41.xxx
+  + **INST** (652): 10.68.42.xxx
+  + **EPICS** (653): 10.68.43.xxx
+
+When configuring an individual device, here are the network configurations:
+
++ The gateway address on each network is ``xz.yy.zz.2``.  For example,
+  the gateway on the SCI network is 10.68.40.2. 
+
+* The netmask is ``255.255.255.0``.
+
++ There are two DNS servers:
+
+  + DNS1: 10.65.2.25
+  + DNS2: 10.65.2.26
+
+
 xf06bm-ws5, in-hutch Zoom calls
 -------------------------------
 
@@ -89,6 +127,13 @@ Inert Gas Plumbing
 Needle valves are mounted on the outboard side of DM3. Quick connect
 outlets for the gases are mounted on the upstream/inboard corner of
 the XAFS table.  
+
+.. admonition::  Gaseous nitrogen supply
+   :class: note
+   
+   BMM no longer uses a nitrogen cylinder as the supply of N\ :sub:`2`
+   for the ion chambers.  The house GN2 supplies N\ :sub:`2` to the
+   needle valves.
 
 .. _fig-inertgas:
 .. figure:: _images/Gas_handling.png
@@ -185,13 +230,15 @@ pointed to in databroker.  See:
 Pilatus 100K
 ------------
 
+.. todo::  Need to flesh this out with explanatory text and screenshots
+
 How files saving works
 ~~~~~~~~~~~~~~~~~~~~~~
 
 + tiff files to /disk2
 + /disk2 is mounted on xf06bm-ioc1
 + tiff and hdf5 AD plugins write files to proposal directories
-+ in bsui, there are pilatus and pilatus_tiff objects.  normally use
++ in |bsui|, there are pilatus and pilatus_tiff objects.  normally use
   pilatus, puilatus_tiff is helpful for testing tiff file writing,
   which is used by IBM
 

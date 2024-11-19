@@ -41,8 +41,8 @@ To resume BlueSky, type the command ``fg`` and hit ``Enter``.
 You will find yourself back at the BlueSky prompt and can carry on
 normally.
 
-Exiting or crashing bsui
-------------------------
+Exiting or crashing |bsui|
+--------------------------
 
 Another possibility is that BlueSky has exited entirely |nd| possibly
 because something has happened to put the program into an unworkable
@@ -59,10 +59,10 @@ fault is shown here:
    :width: 100%
    :align: center
 
-   An example of bsui crashing with a segfault
+   An example of |bsui| crashing with a segfault
 
-The previous bsui session cannot be recovered at this point.  You will
-have to restart bsui and restart your data collection.
+The previous |bsui| session cannot be recovered at this point.  You will
+have to restart |bsui| and restart your data collection.
 
 In this case, at the command line,  type ``bsui`` and hit ``Enter``.
 

@@ -16,7 +16,7 @@ Moving and querying motors
 ==========================
 
 To get an overview of the state of the beamline motors, do ``%m`` at
-the bsui command line.  Here is an example:
+the |bsui| command line.  Here is an example:
 
 .. code-block:: text
 
