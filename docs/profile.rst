@@ -307,9 +307,9 @@ Everything in the BMM folder
 
 Here's a brief summary of every module in the BMM profile.
 
-   ============================   =============================================
+   ============================   ===================================================
     file                           purpose
-   ============================   =============================================
+   ============================   ===================================================
     ``actuators.py``               define shutters and valves
     ``agent_plans.py``             BMM-specific ML agents
     ``areascan.py``                define an area scan plan
@@ -330,7 +330,7 @@ Here's a brief summary of every module in the BMM profile.
     ``fmbo.py``                    FMBO motor controller tools
     ``frontend.py``                ophyd objects for front-end devices
     ``functions.py``               miscellaneous utilities
-    ``gdrive.py``                  interact with Google drive
+    ``gdrive.py``                  :silver:`interact with Google drive (deprecated)`
     ``glancing_angle.py``          define glancing angle stage + automation
     ``grid.py``                    generic grid automation
     ``handler.py``                 DataBroker handler for images
@@ -375,6 +375,7 @@ Here's a brief summary of every module in the BMM profile.
     ``xafs_functions.py``          XAFS-related tools
     ``xdi.py``                     XDI formatting tools
     ``xspress3.py``                XSpress3 tools
-    ``xspress3_1element.py``       customizations for 4 element detector
-    ``xspress3_4element.py``       customizations for 1 element detector
-   ============================   =============================================
+    ``xspress3_1element.py``       customizations for 1 element detector
+    ``xspress3_4element.py``       customizations for 4 element detector
+    ``xspress3_7element.py``       customizations for 7 element detector
+   ============================   ===================================================

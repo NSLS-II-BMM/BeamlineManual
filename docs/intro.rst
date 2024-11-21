@@ -159,8 +159,8 @@ the state of the beamline.
 
 .. _slack:
 
-Slack and Google Drive
-~~~~~~~~~~~~~~~~~~~~~~
+Slack and Data Access
+~~~~~~~~~~~~~~~~~~~~~
 
 At the beginning of your experiment, you will be invited to the BMM
 Slack workspace.  There you can follow along with the progress of the
@@ -182,25 +182,11 @@ physically at the beamline.
 
 .. attention::
    
-   As of the 2024-1 cycle, BMM is no longer syncing data
-   automatically to Google Drive.  Data are now available to users via
-   sftp with proper authentication.  See :numref:`Data Access (Section %s) <data>`.
+   As of the 2024-1 cycle, BMM is no longer syncing data automatically
+   to Google Drive.  Data are now available to users via sftp with
+   proper authentication.  See :numref:`Data Access (Section %s)
+   <data>`.
 
-The measured data along with the entire contents of the 
-:numref:`measurement dossier (Section %s) <dossier>` will be synched
-to Google Drive.  At the beginning of the experiment (in fact, when
-the ``begin_experiment()`` command described in the next session is
-run), a folder for the experiment will be created on Google Drive.
-The contents of the user's data folder will be synched frequently to
-that folder throughout the course of the experiment, including
-every time an individual XAFS scan finishes.
-
-This allows a remote user to examine the data being measured in
-almost-real time.  The data will be available on Google Drive within a
-few seconds of the end of each scan.
-
-Along with an invitation to the Slack workspace, the user will receive
-an invitation to share the Google Drive.
 
 
 
@@ -418,9 +404,9 @@ written by Bruce.  But this would not have happened without the help
 of several members of NSLS-II's DSSI program.  In particular, I want
 to thank Dan Allan, Tom Caswell, Josh Lynch, Jakub Wlodek, Max
 Rakitin, Dmitri Gavrilov, Stuart Campbell, Abby Giles, Garrett Bishof,
-Nate Maytan, Matt Snyder, and Ryan Jaskiel.  And I need to thank every
-BMM user |nd| being a BMM user and being a beta tester for the
-beamline software are the same thing!
+Nate Maytan, Matt Snyder, Oksana Ivashkevych, and Ryan Jaskiel.  And I
+need to thank every BMM user |nd| being a BMM user means being a beta
+tester for the beamline software!
 
 BMM makes use of `lots of great python tools
 <https://speakerdeck.com/jakevdp/the-unexpected-effectiveness-of-python-in-science?slide=52>`__.
