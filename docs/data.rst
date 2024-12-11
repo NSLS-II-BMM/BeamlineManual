@@ -218,10 +218,35 @@ re-authenticate yourself.
 Your data is now on your computer.  Yay!
 
 
-Using the VDI virtual Desktop
------------------------------
+Accessing data with Globus
+--------------------------
 
-.. todo:: Details needed
+Data volumes at BMM are such that sftp is usually easier and more
+efficient than using `Globus <https://www.globus.rog>`__.  We
+recommend that you use sftp to access your data.  However,
+Globus is an option.
+
+To use Globus, you must transfer data to a Globus endpoint at your
+institution to which you have access.  Alternately, you can run
+`Globus Connect Personal (GCP)
+<https://app.globus.org/collections/gcp>`__ on your own computer.
+Follow the download and installation instructions and start an
+instance of GCP on your computer.
+
+Once you have identified either an institutional endpoint or you have
+GCP running, point your web browser at http://globus.nsls2.bnl.gov/.
+
+In the remote panel on the left side of the page, navigate to your
+proposal directory, which will be something like
+``/nsls2/data/bmm/proposals/2024-3/pass-123456``, where you would
+replace ``2024-3`` with the operations cycle of your visit to BMM and
+replace ``123456`` with your experiments proposal number.
+
+In the local panel on the right side of the page, navigate to the
+location to which you want to download your data.
+
+Select the data (or data folder) you wish to download and hit the
+start button above the remote folder.
 
 
 Accessing data from the beamline computers
@@ -273,6 +298,11 @@ the command line.  From there, simply use |athena|'s `File menu
 to load data from your proposal folder.
 
 
+Using the VDI virtual Desktop
+-----------------------------
+
+.. todo:: Details needed
+
 
 Accessing data via Tiled
 ------------------------
@@ -302,5 +332,6 @@ As a result, our Data Science and Systems Integration team at NSLS-II
 has been begun moving the beamlines to a data acquisition model that
 includes sounds data security practices.  BMM volunteered to be an
 early adopter of the new data security practices.  We now provide an
-excellent user experience at BM that includes secure data management.
+excellent user experience at BMM that also includes secure data
+management.
 

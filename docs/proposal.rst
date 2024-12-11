@@ -106,10 +106,11 @@ where :maroon:`different` measurement techniques are performed at the
 multi-modal proposal to the relevant proposal review panels.
 
 As a result, if you wish to request both spectroscopy and scattering
-at BMM, you need to write **two proposals**.  That is the only way to
+at BMM, you must write **two proposals**.  That is the only way to
 route your work through the review system correctly.
 
-.. caution::
+.. admonition:: Note
+   :class: caution
 
    A proposal requesting both XAS and XRD at BMM will be denied at
    feasibility and a link to this web page with be given as the
@@ -118,14 +119,15 @@ route your work through the review system correctly.
 NIST Partner User Proposals
 ---------------------------
 
-.. note::
+.. admonition:: Note
+   :class: caution
 
    This section only applies to NIST employees visiting BMM.  
 
-.. caution::
-
-   If you are not a NIST employee, **do not** submit a PU-P proposal.  It
-   will be deleted without further communication.
+   If you are not a NIST employee registered in PASS with a nist.gov
+   email address or a member of the Synchrotron Science Group with a
+   duty station at BNL, **do not** submit a PU-P proposal.  It will
+   be deleted without further communication.
 
 As of the 2024-2 cycle, NIST staff must use the new **Partner User -
 Project** proposal type.  This new proposal type is necessary to

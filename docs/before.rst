@@ -86,8 +86,9 @@ be identified and described in the SAF.  Provide detailed information
 on sample processing and any safety measures necessary.
 
 .. caution:: An approved SAF is required on the first day of beamtime.
-	     Without enough time for approval, you may lose your
-	     beamtime.
+	     An experiment cannot begin without an approved SAF.  If
+	     you do not allow adequate time for approval, you may lose
+	     your beamtime.
 
 To submit a SAF: https://pass.bnl.gov
 
@@ -168,7 +169,7 @@ before the starting date.
 To complete your training, follow the training instructions at:
 https://www.bnl.gov/nsls2/userguide/before-arrival.php#step2
 
-Links to specific course:
+Links to specific courses:
 
 + `Cyber Security Training (GE-CYBERSEC) <https://training.bnl.gov/portal/GE-CYBERSEC>`__
 + `Computer Use Agreement (GE-COMPUSE-AGREE) <https://training.bnl.gov/portal/GE-COMPUSE-AGREE>`__
@@ -215,7 +216,7 @@ Research Equipment Pool
 Some experimental tools are available from `the NSLS-II Research
 Equipment Pool
 <https://public.bnl.gov/sites/rep/SitePages/Home.aspx>`__.  If you
-wish to use any items from equipment pool, contact `Bruce Ravel
+wish to use any items from the equipment pool, contact `Bruce Ravel
 <mailto:bravel@bnl.gov>`__ well ahead of your experiment.
 
 If you wish to use a potentiostat in lab 4L-L09 to pre-condition
@@ -241,6 +242,19 @@ the beamline**.  Follow the `instructions for radiological materials
 transport
 <https://www.bnl.gov/nsls2/userguide/shipping.php#tabs-2>`__.
 
+Allow sufficient time for your samples to arrive before your
+experiment begins.  Plan for shipping delays.  Be aware that the
+transport company will report a package as "delivered" when it arrives
+at BNL shipping and receiving.  It takes additional time for a package
+to arrive at the beamline.
+
+While samples cannot be stored after your experiment, it is OK for
+samples to arrive a few days prior to your experiment.  The same is
+true for radiological samples.  The radiological control technicians
+can hold onto samples for a few days before delivery to the beamline.
+
+You will not compensated for beamtime lost to delays in sample delivery.
+
 
 The Day of your Experiment
 --------------------------
@@ -254,7 +268,7 @@ training.
 
 The GUV Center opens at `7 a.m. on weekdays
 <https://www.bnl.gov/guv/check-in.php>`__, so it is possible to obtain
-badges and access cards prior to the 8 a.m. start date of your
+badges and access cards prior to the 8 a.m. start time of your
 experiment.
 
 Please consult `NSLS-II user guide <https://www.bnl.gov/ps/userguide/>`__
@@ -268,3 +282,5 @@ or contact BMM beamline staff for more information.
    shirts, and shoes that enclose the entire foot for entry to NSLS-II
    non-office areas, which includes the experimental floor and sample
    preparation laboratories.
+
+   Pants with extensive ripping do not meet this PPE requirement.
