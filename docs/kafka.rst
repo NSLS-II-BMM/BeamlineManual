@@ -120,14 +120,13 @@ Once all three workers are running, you are ready to start |bsui| or
 
 
 .. _fig-consumer:
-.. figure::  _images/consumer_startup.png
-   :target: _images/consumer_startup.png
-   :width: 70%
+.. figure::  _images/kafka_consumers.png
+   :target: _images/kafka_consumers.png
+   :width: 80%
    :align: center
 
    A terminal window in which the Kafka consumers have been started.
 
-.. todo:: Update this figure
 
 
 

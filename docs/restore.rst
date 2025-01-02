@@ -78,7 +78,8 @@ To re-power the Xspress3 and its associated server:
    switched on.  It should be glowing red.
 #. Press the front power button.
 #. Once running, restart the relevant IOC on ``xf06bm-ioc2``.  For the
-   seven element detector, use ``xs3-7-1``.
+   seven element detector, use ``xs3-7-1``.  For the four element
+   detector, use ``xs3-4-1``.
 
 
 Other IOCs
@@ -155,7 +156,7 @@ IOC name           purpose
  MC11              goniometer motors
  MC12              goniometer motors
  MC13              goniometer motors
- mythen1k          Mythen (in use??)
+ mythen1k          Mythen (not in use. Nonfunctional, according to Oksana)
  omega_i_series    ??
  onewire           1Wire temerature sensors near mono
  piE625-M2         M2 piezo controller
@@ -269,7 +270,7 @@ XRD position is around 107,000.
 
 .. note:: 
 
-   Never home M1, the collimating mirror.  It is close enough to the
+   **Never** home M1, the collimating mirror.  It is close enough to the
    right position and should never be moved.  In fact, there is no
    reason to power up the motor controller.
 

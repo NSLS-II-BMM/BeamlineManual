@@ -226,14 +226,28 @@ pointed to in databroker.  See:
 + `BMM/user_ns/detectors.py <https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/user_ns/detectors.py#L253>`__
 + `BMM/camera_device.py <https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/camera_device.py#L62-L164>`__
 
+While this resembles a properly integrated camera and counting on the
+``anacam`` object will get recorded in the database, the resource file
+|nd| the jpeg image |nd| gets written to the local machine, thus is
+not recoverable via Tiled.  A future todo would be to make a caproto
+IOC as a wrapper around ``fswebcam`` and give it proper authority to
+write to storage.
+
+.. admonition:: Update
+   :class: note
+
+   As of December 2024, this has been captured in BMM's ansible
+   configuration.  Thus xf06bm-ws3 should always have this udev rule
+   available, even after a system upgrade or installation.
+
+
 
 Pilatus 100K
 ------------
 
 .. todo::  Need to flesh this out with explanatory text and screenshots
 
-How files saving works
-~~~~~~~~~~~~~~~~~~~~~~
+How files saving works:
 
 + tiff files to /disk2
 + /disk2 is mounted on xf06bm-ioc1
@@ -242,14 +256,17 @@ How files saving works
   pilatus, puilatus_tiff is helpful for testing tiff file writing,
   which is used by IBM
 
+Visualization:
+
++ Set two ROIs named "specular" (ROI1) and "yoneda" (ROI2)
++ XDI header to identify HDF5 file
 
 
-Moving the detector between end stations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Moving the detector between end stations:
 
 + power cables (strip and detector)
-+ ethernet cables
-+ GN2 line
++ ethernet cable
++ GN2 line, note flow rate on meter in rack
 + grounding line
 
 The NFS server might need to be restarted after rebooting.  As root on
@@ -259,6 +276,7 @@ xf06bm-pilatus100k, do
 
    /etc/init.d/nfsserver restart
 
+.. todo:: Could this be in a smaller package.  The rack is kinda huge.
 
 
 
@@ -396,16 +414,20 @@ table in the snapshot below.
  -10                     5E-6 
 ======================  ==========
 
+Note that the voltages are positive on the 7-element and negative on
+the 4-element.
 
-Temperature reading should be 1.5 V when the TEC is at proper
-temperature. 
+Temperature reading on the 4-element should be 1.5 V when the TEC is
+at proper temperature.  Temperature should be 0.6 V on the 7-element
+detector.
 
 `Vortex SDD manual
 <https://www.aps.anl.gov/files/download/DET/Detector-Pool/Spectroscopic-Detectors/Vortex_SDD/Vortex_ME4/Vtx-ME4%20Multi-El%20User%20Manual%20Rev.4.pdf>`__
 (link to copy at APS detector pool).
 
-There is a copy of the Vortex manual at BMM.  Look in ``/nsls2/data3/bmm/legacy/products/ME7/``,
-the file is called ``Vtx-Multi-El User Manual Rev 15.0_Oct 16, 2023.pdf``.
+There is a copy of the Vortex manual at BMM.  Look in
+``/nsls2/data3/bmm/legacy/products/ME7/``, the file is called
+``Vtx-Multi-El User Manual Rev 15.0_Oct 16, 2023.pdf``.
 
 
 DM3 CAT6 Patch Panel
@@ -904,3 +926,96 @@ The homing procedure works in the sense of finding the negative limit,
 then moving to a home position.  But that home position seems to be
 about 1/10 of the way between the negative limit and the
 home-using-encoder-counts.
+
+MC09 patch panel
+----------------
+
+Photo and explain...
+
+
+.. _holding_current:
+
+XAFS table holding current
+--------------------------
+
+The controller axes for the vertical motion of the XAFS table were
+originally configured  without a holding current.  Over time, we
+noticed that the XAFS table would lose its position by a couple
+millimeters over the course of months.  In an effort to combat this
+drift, a holding current was applied to those three axes in
+January 2025. 
+
+The three vertical table axes are channels 1, 2, and 3 on MC07, which
+is a Geobrick Power PMAC.
+
+This turned out to be a little complicated.  It turns out that the
+holding current is controlled by PLC7 in the Geobrick Power PMAC
+controllers.  That PLC uses several P-variables on the controller, as
+explained in `the comment block at the top of the PLC code
+<https://code.nsls2.bnl.gov/xf/06bm/iocs/xf06bm-ioc/mc07/-/blob/master/tpmacApp/pmc/xf06bma-mc07-plc07-power-down.pmc>`__.
+(Note: that link requires logging onto the BNL VPN.)
+
+Here is the text of that comment:
+
+.. code-block:: text
+
+   ; Note1: Geobrick coontrollers when killed effectively short the motor cables together providing an
+   ; brake due to back EMF when the motor is rotated. Most axis can be safely killed without losing 
+   ; position, this is certainly the case for most lead screw drives (ball screws may require a 
+   ; holding current).
+   ; 
+   ; Note2: When using this PLC make sure the standard kill PLC (usually PLC7, sometimes PLC3) is removed from the geobrick.
+   ; 
+   ; Settings: 
+   ; P701-P708
+   ;   Define timeout period in milliseconds after which the axis will be powered 
+   ;   down provided it has been idle for the whole period (note clock resolution below).
+   ;   Set to zero to leave the amp powered continously. 
+   ;   Set to one for (almost) immediate power down on motor stop.
+   ;   Set to number of milliseconds for delayed power down after motor stops.
+   ;   Typically this should be set to a few seconds.
+   ; P733-740
+   ;   Drive current & percentage for each axis.
+   ;   Set to zero for axis that are to be killed or if controller is not a geobrick (i.e. does not support Ixx77 amp current).
+   ;   For axis requiring a reduced holding current this contains ' normal_drive_current * 100 + power_down_percentage '
+   ;   Note the drive current is defined in milliamps.
+   ;   e.g. For motor axis 1 with 2000 milliamp drive current and 33% holding
+   ;   current define P733 as 200033
+
+OK!  So how do we make all that happen?  Firing up PEWIN on the
+Windows laptop connected to MC07, open the windows for viewing the
+I-variables and the P-variables.
+
+All the relevant parameters were set in PEWIN as shown in the figures
+below.  MC07 was then power cycled.  After power cycling, those three
+axes have a good strong holding current in place.
+
+A holding current of 30% of drive current was selected because the
+table is rather heavy.  Jakub Wlodek's suggestion was "I usually go
+with 10% unless it is lifting something heavy".  
+
+
+.. subfigure::  ABC
+   :layout-sm: ABC
+   :subcaptions: above
+   :gap: 8px
+   :name: fig-holding-current
+   :class-grid: outline
+
+   .. image:: _images/timeout.png
+
+   .. image:: _images/holding_current.png
+
+   .. image:: _images/drive_current.png
+
+   (Left) The P-variables window showing parameters P701-708.  The
+   values P701, P702, and P703 are for axes 1, 2, and 3.  The value of
+   5000 |nd| disable amplifier 5000 ms after a move |nd| are changed
+   to the value of 0, thus leaving the amplifiers enabled.  (Middle)
+   The P-variables window showing parameters P733-740.  The values
+   P733, P734, and P735 are for axes 1, 2, and 3.  These are set to
+   supply a holding current of 30% of the drive current using the
+   specified formula.  (Right) The I-variables window showing the
+   relevant parameter for axis 1.  The I177 parameters is set to 1800
+   mA, as are I277 and I377.  This value was used to compute the value
+   of the P733 - 735 parameters.
