@@ -7,6 +7,9 @@
 
    See the LICENSE file for details.
 
+.. role:: strike
+    :class: strike
+
 .. _details:
 
 Instrumentation Details
@@ -670,38 +673,75 @@ XF:06BM-BI{BPM:1-Ax:Y}Mtr       dm3_bpm       NanoBPM                MC06 (RGC1)
 XAFS Table
 ~~~~~~~~~~
 
-===============================  ============  ====================  ======================  ==============
-PV                               alias         Motor Description     controller              motor number
-===============================  ============  ====================  ======================  ==============
-XF:06BMA-BI{XAFS-Ax:Tbl_YU}Mtr   xafs_yu       xafs table y us        MC07 (RGC1)             1
-XF:06BMA-BI{XAFS-Ax:Tbl_YDO}Mtr  xafs_ydo      xafs table y ds ob     MC07 (RGC1)             2
-XF:06BMA-BI{XAFS-Ax:Tbl_YDI}Mtr  xafs_ydi      xafs table y ds ib     MC07 (RGC1)             3
-XF:06BMA-BI{XAFS-Ax:Tbl_XU}Mtr   xafs_xu       xafs table x us        MC07 (RGC1)             4
-XF:06BMA-BI{XAFS-Ax:Tbl_XD}Mtr   xafs_xd       xafs table x ds        MC07 (RGC1)             5
-===============================  ============  ====================  ======================  ==============
+========================================  ====================  ========================= ======================  ==============
+PV                                        alias                 Motor Description         controller              motor number
+========================================  ====================  ========================= ======================  ==============
+XF:06BMA-BI{XAFS-Ax:Tbl_YU}Mtr            xafs_yu               xafs table y us            MC07 (RGC1)             1
+XF:06BMA-BI{XAFS-Ax:Tbl_YDO}Mtr           xafs_ydo              xafs table y ds ob         MC07 (RGC1)             2
+XF:06BMA-BI{XAFS-Ax:Tbl_YDI}Mtr           xafs_ydi              xafs table y ds ib         MC07 (RGC1)             3
+:strike:`XF:06BMA-BI{XAFS-Ax:Tbl_XU}Mtr`  :strike:`xafs_xu`     :strike:`xafs table x us`  :strike:`MC07 (RGC1)`   :strike:`4`
+XF:06BMA-BI{XAFS-Ax:Tbl_XD}Mtr            :red:`xafs_detx`      xafs detector stage x      MC07 (RGC1)             5
+========================================  ====================  ========================= ======================  ==============
+
+.. note::
+
+   As part of a problem in 2024 involving a shorted motor coil on the
+   ``xafs_detx`` stage, the table horizontal motors got repurposed.
+   Axis 4 suffered a damaged amplifier.  After replacing the motor,
+   the ``xafs_detx`` was placed on axis 5.
+
+   Axis 4 on MC07 is out of service. ``xafs_xu`` and ``xafs_xd`` have
+   been moved to MC09, axes 4 and 5
 
 
 XAFS Stages
 ~~~~~~~~~~~
 
-.. todo:: This table needs attention
+
+XAFS stages on MC08
+*******************
+
+======================================  ==================  ===============================  ======================  ==============
+PV                                      alias               Motor Description                controller              motor number
+======================================  ==================  ===============================  ======================  ==============
+XF:06BMA-BI{XAFS-Ax:LinY}Mtr            xafs_liny           xafs sample y                    MC08 (RGC1)             1
+XF:06BMA-BI{XAFS-Ax:LinX}Mtr            xafs_linx           xafs sample x                    MC08 (RGC1)             2
+:strike:`XF:06BMA-BI{XAFS-Ax:LinS}Mtr`  :strike:`xafs_det`  :strike:`xafs reference stage`   :strike:`MC08 (RGC1)`   :strike:`3`
+XF:06BMA-BI{XAFS-Ax:LinXS}Mtr           xafs_refy           xafs reference y                 MC08 (RGC1)             4
+XF:06BMA-BI{XAFS-Ax:Pitch}Mtr           xafs_pitch          xafs pitch stage                 MC08 (RGC1)             5
+XF:06BMA-BI{XAFS-Ax:Roll}Mtr            xafs_roll           xafs tilt stage                  MC08 (RGC1)             6
+XF:06BMA-BI{XAFS-Ax:Ref}Mtr             xafs_ref            xafs reference wheel             MC08 (RGC1)             7
+XF:06BMA-BI{XAFS-Ax:Mtr8}Mtr            xafs_garot          glancing rotation                MC08 (RGC1)             8
+======================================  ==================  ===============================  ======================  ==============
+
+XAFS stages on MC07
+*******************
+
+======================================  ==================  ===============================  ======================  ==============
+PV                                      alias               Motor Description                controller              motor number
+======================================  ==================  ===============================  ======================  ==============
+XF:06BMA-BI{XAFS-Ax:Tbl_RefX}Mtr        xafs_refx           xafs reference x                 MC07 (RGC1)             6
+XF:06BMA-BI{XAFS-Ax:Tbl_RotB}Mtr        xafs_wheel          xafs wheel stage                 MC07 (RGC1)             7
+XF:06BMA-BI{XAFS-Ax:Tbl_RotS}Mtr        xafs_rots           xafs small rot stage             MC07 (RGC1)             8
+======================================  ==================  ===============================  ======================  ==============
+
+.. note::
+   In cabinet 4, there are two useful stages that are unused.  One is
+   a Huber theta/2theta stage.  The other is a set of 4-axis slits.
 
 
-================================  ============  ====================  ======================  ==============
-PV                                alias         Motor Description     controller              motor number
-================================  ============  ====================  ======================  ==============
-XF:06BMA-BI{XAFS-Ax:LinY}Mtr      xafs_liny     xafs sample y          MC08 (RGC1)             1
-XF:06BMA-BI{XAFS-Ax:LinX}Mtr      xafs_linx     xafs sample x          MC08 (RGC1)             2
-XF:06BMA-BI{XAFS-Ax:LinS}Mtr      xafs_lins     xafs sample small      MC08 (RGC1)             3
-XF:06BMA-BI{XAFS-Ax:LinXS}Mtr     xafs_linxs    xafs reference         MC08 (RGC1)             4
-XF:06BMA-BI{XAFS-Ax:Pitch}Mtr     xafs_pitch    xafs pitch stage       MC08 (RGC1)             5
-XF:06BMA-BI{XAFS-Ax:Roll}Mtr      xafs_roll     xafs tilt stage        MC08 (RGC1)             6
-.                                 .             xafs reference wheel   MC08 (RGC1)             7
-.                                 .             glancing rotation      MC08 (RGC1)             8
-XF:06BMA-BI{XAFS-Ax:Tbl_RotH}Mtr  xafs_roth     xafs Huber             MC07 (RGC1)             6
-XF:06BMA-BI{XAFS-Ax:Tbl_RotB}Mtr  xafs_rotb     xafs black rot stage   MC07 (RGC1)             7
-XF:06BMA-BI{XAFS-Ax:Tbl_RotS}Mtr  xafs_rots     xafs small rot stage   MC07 (RGC1)             8
-================================  ============  ====================  ======================  ==============
+XAFS stages on MC09
+*******************
+
+======================================  ==================  ===============================  ======================  ==============
+PV                                      alias               Motor Description                controller              motor number
+======================================  ==================  ===============================  ======================  ==============
+XF:06BMA-BI{MC:09-Ax:1}Mtr              xafs_dety           xafs detector stage y            MC09 (RGC1)             1
+XF:06BMA-BI{MC:09-Ax:2}Mtr              xafs_detz           xafs detector stage z            MC09 (RGC1)             2
+XF:06BMA-BI{MC:09-Ax:3}Mtr              xafs_spare          spare xafs stage                 MC09 (RGC1)             3
+XF:06BMA-BI{MC:09-Ax:4}Mtr              xafs_xu             xafs detector stage y            MC09 (RGC1)             4
+XF:06BMA-BI{MC:09-Ax:5}Mtr              xafs_xd             xafs detector stage y            MC09 (RGC1)             5
+======================================  ==================  ===============================  ======================  ==============
 
 Gonimeter circles
 ~~~~~~~~~~~~~~~~~
@@ -1019,3 +1059,15 @@ with 10% unless it is lifting something heavy".
    relevant parameter for axis 1.  The I177 parameters is set to 1800
    mA, as are I277 and I377.  This value was used to compute the value
    of the P733 - 735 parameters.
+
+.. note::
+
+   To effect this change in the holding current, it seems you have to
+   press the "Upload To Editor" button at the top of the P-variables
+   window.  In truth, I am not 100% sure about that step, but it seems
+   as though the changes to the P-variables and the subsequent changes
+   to the PLC do not take effect without that step.
+
+   Maybe this could be revisited by someone with more knowledge of how
+   PEWIN and the Power PMAC actually work...
+
