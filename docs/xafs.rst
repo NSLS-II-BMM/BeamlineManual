@@ -185,22 +185,10 @@ if needed.
    tabulated value determined from ``element`` and ``edge`` will be
    used.  This can be specified to override the tabulated value.
 
-``usbstick``
-   ``True`` will examine the user-supplied filename for characters
-   that cannot be part of a `filename
-   <https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words>`_
-   on a standard USB memory stick.  If any are found, the filename
-   will be modified in a way that retains the meaning of the replaced
-   characters, but which can be successfully written to a memory
-   stick.  Since this is mostly an issue with Windows file systems,
-   users who want to do  their data analysis on a Windows computer
-   should use this option.  :numref:`See Section %s <usbsafe>`.
-   Default: ``True``
-
 ``snapshots``
    ``True`` to take :numref:`snapshots (Section %s) <snap>` from the
-   XAS webcam and analog camera before beginning the scan sequence.
-   ``False`` to skip the snapshots.  Default: ``True``
+   XAS webcam, USB cameras, and analog camera before beginning the
+   scan sequence.  ``False`` to skip the snapshots.  Default: ``True``
 
 ``channelcut``
   ``True`` to measure XAFS with the monochromator in pseudo-channelcut
@@ -224,15 +212,29 @@ if needed.
   ``True`` to measure with :numref:`Si(333) reflection (Section %s)
   <use333>` of the Si(111) monochromator .  Default: ``False``
 
+.. 
+  ``usbstick``
+     ``True`` will examine the user-supplied filename for characters
+     that cannot be part of a `filename
+     <https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words>`_
+     on a standard USB memory stick.  If any are found, the filename
+     will be modified in a way that retains the meaning of the replaced
+     characters, but which can be successfully written to a memory
+     stick.  Since this is mostly an issue with Windows file systems,
+     users who want to do  their data analysis on a Windows computer
+     should use this option.  :numref:`See Section %s <usbsafe>`.
+     Default: ``True``
 
-You can explicitly specify a destination folder for the data and other
-output files.  This is not a great idea, but might be useful in
-special situations.  The output folder is usually specified
-:numref:`when starting an experiment (Section %s) <start_end>` and
-rarely needs to be changed during the course of an experiment.
 
-``folder``
-   The fully resolved path to the data folder
+
+   You can explicitly specify a destination folder for the data and other
+   output files.  This is not a great idea, but might be useful in
+   special situations.  The output folder is usually specified
+   :numref:`when starting an experiment (Section %s) <start_end>` and
+   rarely needs to be changed during the course of an experiment.
+   
+   ``folder``
+      The fully resolved path to the data folder
 
 
 k-weighted integration times
@@ -244,58 +246,60 @@ scan boundaries and integration times that do not result in a
 discontinuity in integration time at the transition into the EXAFS
 region.
 
-Here are some suggestions for scan parameters that transition smoothly
-between the XANES and EXAFS regions:
+At the bluesky command line, use the ``bounds()`` tool to help come up
+with scan parameters that have approximately continuous dwell times as
+the scan transitions into the k-weighted region.
 
-Here are parameters for a 1/2 second base integration time
-transitioning into k-weighted integration multiplied by 1/4 (e.g. 2.5
-second integration at k=10).
+For example, consider a scan with a 1 second base time, transitioning
+into dwell times of k/4 in the EXAFS regions:
 
-.. code-block:: ini
+.. code-block:: python
 
-   # 1/2 sec base, k/4 time
-   bounds = -200  -30  -2   15.5  25   14k
-   steps  =     10   2    0.3  0.3    0.05k
-   times  =     0.5  0.5  0.5  0.25k  0.25k
+   > bounds(base=1, coef=1/4)
 
-Here are parameters for a 1 second base integration time transitioning
-into k-weighted integration multiplied by 1/4 (e.g. 2.5 second
-integration at k=10).  This is Bruce's favorite suggestion for an
-experiment needing k-weighted integration time.  It's a good balance
-between good statistics and reasonable scan time (about 17 minutes).
+   # base dwell time = 1.00 seconds, 0.25k weighting
+   # transition energy = 61.0 eV above the edge
 
-.. code-block:: ini
+   bounds = -200   -30   -2    25    61.0    14k
+   steps  =     10    2     0.30  0.05k  0.05k
+   times  =     1.00  1.00  1.00  0.25k  0.25k
 
-   # 1 sec base, k/2 time
-   bounds = -200  -30  -2  25  61 14k
-   steps  =    10  2  0.3  0.05k  0.05k
-   times  =    1   1  1    1      0.25k
+Another example, a scan with a 1/2 second base time, transitioning
+into dwell times of k/2 in the EXAFS regions:
 
-Here are parameters for a 1/2 second base integration time
-transitioning into k-weighted integration multiplied by 1/2 (e.g. 5
-second integration at k=10).  This results in quite long integration
-times by the end of the scan, which may be useful for
-low-concentration or otherwise noisy EXAFS data..
+.. code-block:: text
 
-.. code-block:: ini
+   > bounds(1/2, 1/2)
 
-   # 1/2 sec base, k/2 time
-   bounds = -200 -30  -2  3.81  25   14k
-   steps  =   10   2    0.3  0.3   0.05k
-   times  =   0.5  0.5  0.5  0.5k  0.5k
+   # base dwell time = 0.50 seconds, 0.50k weighting
+   # transition energy = 3.8 eV above the edge
 
-Here are parameters for a 1 second base integration time transitioning
-into k-weighted integration multiplied by 1/2 (e.g. 5 second
-integration at k=10).  This results in quite long integration times by
-the end of the scan, which may be useful for low-concentration or
-otherwise noisy EXAFS data..
+   bounds = -200   -30   -2    3.8    25    14k
+   steps  =     10    2     0.30  0.30   0.05k
+   times  =     0.50  0.50  0.50  0.50k  0.50k
 
-.. code-block:: ini
+The strings for ``bounds``, ``steps``, and ``times`` can then be
+cut-n-pasted into an :numref:`automation spreadsheet (Section %s)
+<automation>` or an :numref:`INI file (Section %s) <ini>`.
 
-   # 1 sec base, k/2 time
-   bounds = -200 -30 -2 15.3 25  14k
-   steps  =   10  2  0.3  0.3   0.05k
-   times  =   1   1  1    0.5k  0.5k
+Arguments of the ``bounds()`` tool:
+
+
+``base`` 
+      (float) The base integration time in seconds, usually 0.5 or 1
+      second.  The default is a half second -- that is, the dwell
+      times leading up to the k-weighted region will be a half second.
+
+``coef`` 
+      (float) The coefficient of k to use for the k-weighted dwell
+      times.  The default is a k coefficient of 1/4.
+
+``end`` 
+      (string of int or float) The end value of the bounds list.  The
+      default is ``'14k'``. 
+
+``edge`` 
+      (float) The step size through the end in eV.  The default is 0.3 eV.
 
 
 
@@ -498,25 +502,21 @@ So that is completely equivalent to::
 
   RE(xafs('myscan.ini'))
 
-For instance, if the user's directory (``DATA``) is
-``/home/bravel/BMM_Data/303303/``, then the scan plan will look for
-the file ``/home/bravel/BMM_Data/303303/scan.ini``.  This is
-equivalent to::
-
-  RE(xafs(DATA + 'scan.ini'))
-
-where ``+`` is the python string concatenation operator.
+For instance, if the user's worksapce folder is
+``/home/xf06bm/Workspace/Visitors/Jane Doe/2025-01-30``, then the scan
+plan will look for the file ``/home/xf06bm/Workspace/Visitors/Jane
+Doe/2025-01-30/scan.ini``.
 
 You can also explicitly state where your INI file is located, as in::
 
-  RE(xafs('/home/bravel/BMM_Data/303303/scan.ini'))
+  RE(xafs('/home/xf06bm/someplace/else/scan.ini'))
 
 In that case, the explicit location of the INI file will be used.
 
-The ``DATA`` variable is set when the ``new_experiment()`` command is
+The workspace folder is set when the ``new_experiment()`` command is
 run at the beginning of the experiment (:numref:`see Section %s
-<start_end>`).  To know the value of the ``DATA`` variable, simply
-type ``DATA`` at the command line and hit :key:`Enter`.
+<start_end>`).  To know the locations of the workspace folder, simply
+type ``BMMuser.workspace`` at the command line and hit :key:`Enter`.
 
 
 .. _interrupt:
@@ -1200,5 +1200,5 @@ See also `BMM's complete list of standard materials
 
 Here is a `spreadsheet
 <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/standards/standards.xlsx>`__
-for :numref:`automation (see Section %s) <sample_wheel_automation>`
-with the content of standards wheel.
+containing a sheet for for :numref:`automated (see Section %s) <sample_wheel_automation>`
+measurements of  the content of standards wheel.

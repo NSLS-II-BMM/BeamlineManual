@@ -275,7 +275,7 @@ To look at your data while at the beamline, do the following
 
   .. code-block:: bash
 
-     ``su - <username>``
+     su - <username>
 
   replacing ``<username>`` with your actual user name. Enter your
   password and respond to DUO push.
@@ -289,7 +289,7 @@ is to type
 
 .. code-block:: bash
 
-   dathena 2&>1 &
+   dathena > /dev/null 2&>1 &
 
 at the command line.  That incantation will suppress spurious screen
 messages and put |athena| into the background so you can continue using

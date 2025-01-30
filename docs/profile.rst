@@ -321,7 +321,7 @@ Here's a brief summary of every module in the BMM profile.
     ``demeter.py``                 |athena| and |hephaestus| integration
     ``derivedplot.py``             deprecated plotting capabilities
     ``desc_string.py``             fix epics motor ``DESC`` fields for CSS
-    ``detector_mount.py``          deprecated tools for ``xafs_det``
+    ``detector_mount.py``          mostly deprecated tools for ``xafs_detx``
     ``dossier.py``                 manage writing of dossier files
     ``dwelltime.py``               coordinate dwell time across detectors
     ``edge.py``                    change edge

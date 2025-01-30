@@ -86,7 +86,7 @@ the appropriate element in the following example.
 
 When you change samples, don’t forget to put the detector in a safe
 state before swapping out the sample wheel. Move the detector all the
-way back – ``RE(mv(xafs_det, 205))`` – then put the cap back on the
+way back – ``RE(mv(xafs_detx, 205))`` – then put the cap back on the
 detector. Once you have secured the new sample wheel, remove the cap
 before searching the hutch.
 
@@ -96,20 +96,20 @@ Once the hutch is secured and you are back at the computer:
    to finish and return to the command line. (See :numref:`{name},
    Section {number} <pds>` for details.)
 
-#. Move the detector to middle position, say, 100: ``RE(mv(xafs_det,
+#. Move the detector to middle position, say, 100: ``RE(mv(xafs_detx,
    100))`` The range of positions for that motor is 205 (farthest back)
    to about 20 (very close to sample).  You can check the lower limit
-   with ``xafs_det.limits``.
+   with ``xafs_detx.limits``.
 
 #. Measure an XRF spectra: ``%xrf``. Remember that you want the OCR
    (total count rate) to be 200,000 or less on each of the seven
    channels.
 
-#. Adjust the detector position ``RE(mv(xafs_det, <value>))``.
+#. Adjust the detector position ``RE(mv(xafs_detx, <value>))``.
    Remeasure ``%xrf``.  Iterate on the detector position until you get
    a sensible signal on the detector.
 
-#. Record the detector position (``xafs_det.position`` or the number
+#. Record the detector position (``xafs_detx.position`` or the number
    next to ``det:`` in the :numref:`display (Section %s)
    <cadashboard>` at the top of the top screen) for the current sample
    in the spreadsheet.

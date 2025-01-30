@@ -65,7 +65,9 @@
 .hlyellow {
     background-color: yellow;
 }
-
+.darkyellow {
+    color: #cccc00;
+}
 .lime {
     color: lime;
 }

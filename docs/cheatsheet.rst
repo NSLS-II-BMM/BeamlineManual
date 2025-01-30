@@ -91,7 +91,10 @@ See :numref:`Section %s <sample_stages>` for the full list of
    ============== ===========  =========  =======================  ==================================
    ``xafs_x``     linear       mm         main sample stage        |plus| outboard, - inboard
    ``xafs_y``     linear       mm         main sample stage        |plus| up, - down
-   ``xafs_det``   linear       mm         detector mount           |plus| away from sample, - closer
+   ``xafs_pitch`` linear       deg        sample tilt stage        |plus| face towards beam
+   ``xafs_detx``  linear       mm         detector mount           |plus| away from sample, - closer
+   ``xafs_dety``  linear       mm         detector mount           |plus| up, - down
+   ``xafs_detz``  linear       mm         detector mount           |plus| upstream, - downstream
    ============== ===========  =========  =======================  ==================================
 
 

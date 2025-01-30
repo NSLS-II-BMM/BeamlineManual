@@ -23,9 +23,9 @@ experimental options, contact the beamline staff.
 Fluorescence detectors
 ----------------------
 
-The standard fluorescence detector at BMM is a `four element silicon
+The standard fluorescence detector at BMM is a `seven element silicon
 drift detector
-<https://www.hitachi-hightech.com/us/en/products/analytical-systems/sdd/vortex-me4.html>`__
+<https://www.hitachi-hightech.com/us/en/products/analytical-systems/sdd/vortex-me7.html>`__
 with an `Xspress3 <https://quantumdetectors.com/products/xspress3/>`_
 readout.  This normally sits on a linear stage so that distance to the
 sample can be user-controlled and incorporated into :numref:`beamline
@@ -35,7 +35,7 @@ We also have a `single element silicon drift detector
 <https://www.hitachi-hightech.com/us/en/products/analytical-systems/sdd/vortex-90ex.html>`__
 which is useful in certain situations.  If your experimental setup
 requires placing the detector in an unusual orientation, the single
-element detector can be used.  Unlike the 4-element detector, the
+element detector can be used.  Unlike the 7-element detector, the
 single element is not required to remain in an upright orientation
 during operation.  While the single element detector sees fewer
 photons, this versatility of setup is occasionally very helpful.
@@ -48,29 +48,59 @@ photons, this versatility of setup is occasionally very helpful.
    :name: fig-XRFINST
    :class-grid: outline
 
-   .. image:: _images/4element.jpg
+   .. image:: _images/7element.jpg
 
    .. image:: _images/1element.jpg
 
-   (Left) Four element silicon drift detector.  (Right) One element
+   (Left) Seven element silicon drift detector.  (Right) One element
    silicon drift detector.
 
 
-.. note:: 
-   Thanks to funding from the CHIPS Act, BMM now has a new
-   7-element SDD!
+BMM has an elderly 4-element SDD as a back-up detector.
 
-   It has been calibrated and fully integrated into the Bluesky data
-   acquisition system.
+The 7-element detector sits on an XYZ stage for alignment with the beam.
 
-   The new XYZ stage has also arrived and will be integrated during
-   the 2024-2025 winter shutdown.
+==============  ===============================
+ axis            purpose
+==============  ===============================
+``xafs_detx``    proximity to sample
+``xafs_dety``    vertical position
+``xafs_detz``    uypstream/downstream position
+==============  ===============================
 
-   .. _fig-7element:
-   .. figure:: _images/7element.jpg
-      :target: _images/7element.jpg
-      :width: 50%
-      :align: center
+The ``xafs_detx`` stage is fully retracted at a position of 205.  The
+closest position is often something close to 0, but that depends on
+the details of the sample stage and will be set as a soft limit at the
+beginning of an experiment. To
+fully retract the stage, do
+
+.. code:: python
+
+   RE(mv(xafs_detx, 205))
+
+The ``xafs_dety`` stage is normally at position 0.  Position 0 is
+chosen to have the beam at the height of the center element of the
+detector.  When using the :numref:`glancing angle stage (Section %s)
+<glancing-angle-stage>` in the parallel orientation, move ``xafs_dety``
+to position 20.
+
+.. code:: python
+
+   RE(mv(xafs_dety, 20))
+
+The ``xafs_detz`` stage moves the detector upstream or downstream
+according to the details of the sample mount.  It is usually good
+enough to align this by eye.  A more careful alignment can be made
+with a :numref:`linescan (Section %s) <linescan>`:
+
+.. code:: python
+
+   RE(linescan(xafs_detz, 'if', -10, 10, 51))
+
+Note that this scan will optimize the signal in the ROI, but may not
+serve to minimize elastic scattering or to balance signal between the
+sides of the detector.
+
 
 
 Electron yield detector

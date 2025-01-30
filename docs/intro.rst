@@ -114,6 +114,8 @@ monitor.  It looks something like this:
 This provides a concise (but rather color-blind-unfriendly) overview of
 the state of the beamline.
 
+.. role:: darkyellow
+
 **Top line**
    In short, if the top line has no red text, the beamline is all ready to go.
 
@@ -121,13 +123,17 @@ the state of the beamline.
    + The BM, FE, & user photon shutters are open (:green:`green`) or closed (:gray:`gray`)
    + Indicators that the temperature sensors in the racks are in range
      (:green:`green`) or running hot (:red:`red`)
-   + The state of vacuum sections 1 through 7 |nd| :green:`green` means vacuum
-     level is OK, :red:`red` means vacuum level is high
+   + The state of vacuum sections 1 through 7 |nd| :green:`green`
+     means vacuum level is OK, :darkyellow:`yellow` means vacuum level is
+     not great but not a problem, :red:`red` means vacuum level is
+     high
    + The state of the in-vacuum motors, 4 on the DCM, 2 on the
      focusing mirror, 2 on the harmonic rejection mirror |nd| :green:`green`
      means temperature is OK, :red:`red` means temperature is high
    + The open (:green:`green`) or closed (:red:`red`) state of the 3 front end gate
      valves and the 6 beamline gate valves
+   + The open (:blue:`blue`) or closed (:gray:`gray`) state of the liquid nitrogen
+     valve on the roof of the hitch
 
 .. role:: hlyellow
 .. role:: hlcyan
@@ -147,12 +153,12 @@ the state of the beamline.
 .. role:: brown
 
 **Bottom line**
-   + Positions of common sample motors
-   + size of sample slits
-   + the element currently in the reference position
-   + the state of the instrument being used |nd| in this example, *the
+   + The positions of several common sample motors
+   + The size of the sample slits
+   + The element currently in the reference position
+   + The state of the instrument being used |nd| in this example, *the
      ex-situ* sample wheel
-   + the :brown:`brown` block at the end is a heartbeat monitor to visually
+   + The :brown:`brown` block at the end is a heartbeat monitor to visually
      verify that the dashboard is functioning correctly
 
 .. todo:: Document cadashboard in appendix of this manual.

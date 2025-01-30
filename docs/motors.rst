@@ -73,7 +73,9 @@ These stages sit on top of the XAFS optical table.
    ============== ===========  =========  =======================  =====================================
    ``xafs_x``     linear       mm         main sample stage        |plus| outboard, - inboard
    ``xafs_y``     linear       mm         main sample stage        |plus| up, - down
-   ``xafs_det``   linear       mm         detector mount           |plus| away from sample, - closer
+   ``xafs_detx``  linear       mm         detector mount           |plus| away from sample, - closer
+   ``xafs_dety``  linear       mm         detector mount           |plus| uo, - down
+   ``xafs_detz``  linear       mm         detector mount           |plus| downstream, - upstream
    ``xafs_wheel`` rotary       degrees    *ex situ* sample wheel   |plus| clockwise, - |widdershins|
    ``xafs_linxs`` linear       mm         ref wheel vertical       |plus| up, - down
    ``xafs_ref``   rotary       degrees    reference stage          |plus| clockwise, - |widdershins|
@@ -383,6 +385,18 @@ The lateral table motors |nd| and its yaw |nd| are normally disabled.
 **Querying table position**
    The position of any motor can be queried with a command line like
    ``%w xafs_table``.
+
+**Coordinated table movement**
+   + ``RE(table_height(mode='A'))``: Move the table to its position
+     for a specified mode, the modes :numref:`(see Section %s)
+     <change-mode>` are ``'A'``, ``'B'``, ``'C'``, ``'D'``, ``'E'``,
+     and ``'F'``.
+   + ``RE(table_height(by=amount))``: Move the table vertically by an
+     amount. This moves the three vertical motors the same amount.
+   + ``RE(table_height(pitch=adjustment))``: Move the front by the
+     specified amount, move the back the same in the opposite
+     direction.  I.e. adjust the pitch of the table, except that the
+     adjustment is in mm units, not degrees.
 
 **Moving table motors**
    The normal movement commands work on the real and virtual motors,

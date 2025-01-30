@@ -23,7 +23,7 @@ that look like this:
 Failure to do the tasks in caution boxes will result in delay or
 cancellation of your experiment.
 
-:TL;DR: *read all the caution boxes.*
+:TL;DR: *pay attention to the caution boxes.*
 
 Register for BNL Site Access
 ----------------------------
@@ -66,7 +66,8 @@ If you need to request an account, go to https://www.bnl.gov/accounts/
 and click the button that says "Submit account registration form".
 
 Enabling your BNL account is non-optional. You must have an active
-account in order to unlock the computers at the beamline. 
+account in order to unlock the computers at the beamline or to access
+your data.
 
 .. caution:: Without an active account, a known password, and DUO
 	     Federal two-factor authentication, you will be unable to
