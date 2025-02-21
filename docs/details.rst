@@ -16,149 +16,11 @@ Instrumentation Details
 =======================
 
 This section is a scattershot assortment of details about things at
-the beamline.  This is basically an attempt to capture institutional
-knowledge ... someplace.
+the beamline, presented in no special order.  Subsection titles have
+been alphebtized to make them a bit easier to find when reading this
+page.  This is basically an attempt to capture institutional knowledge
+... someplace.
 
-Network configuration
----------------------
-
-When introducing a new device to the beamline network:
-
-+ Open a Jira ticket to request a new IP address and device name for
-  DNS.  As an example, a new Moxa terminal server was introduced.  In
-  the Jira ticket, we requested an IP address of 10.68.42.83 and a DNS
-  entry of ``xf06bm-tsrv13`` (full name:
-  ``xf06bm-tsrv13.nsls2.bnl.local``). 
-
-+ In the case of a device that one in s series of similar devices, be
-  sure that the name matches the similar devices and that the number
-  is incremented.  In the case of the new Moxa server, there are 12
-  others at the beamline.  The numbers were incremented correctly for
-  both the name and the IP address
-
-+ Identify a port on one of the servers that is available and
-  configured for the correct network.  The networks are:
-
-  + **SCI** (650): 10.68.40.xxx
-  + **CAM** (651): 10.68.41.xxx
-  + **INST** (652): 10.68.42.xxx
-  + **EPICS** (653): 10.68.43.xxx
-
-When configuring an individual device, here are the network configurations:
-
-+ The gateway address on each network is ``xz.yy.zz.2``.  For example,
-  the gateway on the SCI network is 10.68.40.2. 
-
-* The netmask is ``255.255.255.0``.
-
-+ There are two DNS servers:
-
-  + DNS1: 10.65.2.25
-  + DNS2: 10.65.2.26
-
-
-xf06bm-ws5, in-hutch Zoom calls
--------------------------------
-
-``xf06bm-ws5`` (``10.68.40.225``) is the System 76 Meerkat mounted on
-the upstream wall of the end station. This machine is intended to
-allow the users in the hutch to join a Zoom chat from within the
-hutch. This helps Bruce provide user support from home.
-
-.. _fig-ws5:
-.. figure:: _images/Xf06bm-ws5.jpg
-   :target: _images/Xf06bm-ws5.jpg
-   :width: 70%
-   :align: center
-
-
-There are a number of peripherals attached to ``xf06bm-ws5``:
-
-+ A wireless mouse and keyboard clearly labeled as being for this
-  computer. These are normally tucked away on the ledge formed by the
-  panel seam on the upstream wall. I usually place these on the long
-  table when I want to use them
-
-+ A screen. This is the rather large screen mounted in the corner of
-  the hutch. It can be moved around somewhat for better viewing.
-
-+ A reasonably loud speaker.  This is the black ball-shaped item
-  sitting on the frame of the upstream portion of the diagnostic
-  module.
-
-+ A good microphone. This is the Blue Yeti on stand above the I\
-  :sub:`t` chamber on the XAS table. It has good noise cancellation so
-  the din from the XSpress3 should not effect voice quality.  It is,
-  however, important that the speaker face the microphone rather than
-  the screen.
-
-+ A decent camera. This is the Nexigo mounted overhead next to the
-  Axis webcam and looking at the table.
-
-
-While these devices are all connected to ``xf06bm-ws5`` and powered
-on, there are no long running processes that connect to the camera or
-microphone. You are not being spied upon while in the hutch -- unless
-you are on a Zoom call, in which case the Zoom session will be on
-screen.
-
-``xf06bm-ws5`` is available via Guacamole.  When needed for remote
-support, Bruce will usually initiate the Zoom call and have the hutch
-computer join in.
-
-
-
-
-
-BNC Cable Map
--------------
-
-Here is an explanation of the BNC and SHV patch panels going between
-rack D at the control station, Rack C on the roof of the hutch, and
-the in-hutch patch panel.
-
-
-.. _fig-bncpatch:
-.. figure:: _images/Bnc_map.png
-   :target: _images/Bnc_map.png
-   :width: 100%
-   :align: center
-
-Inert Gas Plumbing
-------------------
-
-Needle valves are mounted on the outboard side of DM3. Quick connect
-outlets for the gases are mounted on the upstream/inboard corner of
-the XAFS table.  
-
-.. admonition::  Gaseous nitrogen supply
-   :class: note
-   
-   BMM no longer uses a nitrogen cylinder as the supply of N\ :sub:`2`
-   for the ion chambers.  The house GN2 supplies N\ :sub:`2` to the
-   needle valves.
-
-.. _fig-inertgas:
-.. figure:: _images/Gas_handling.png
-   :target: _images/Gas_handling.png
-   :width: 100%
-   :align: center
-
-Vendor link for quick-disconnect fixture: https://www.mcmaster.com/5012K122/
-
-In practice, the H\ :sub:`2`/N\ :sub:`2` and N\ :sub:`2`/Ar mixing
-channels are not much used.  Unless measuring with the incident beam
-below 5 keV or above 21 keV, it is a poor use of time to make changes
-to the gas content of the ion chambers.  This is because it takes
-quite some time for the volume of the ion chamber to equillibrate.
-
-N\ :sub:`2` is adequate for almost all experiments at BMM.  For Tc or
-Ru, it is helpful to use about 20% Ar.  For Sc or lower, 50% He might
-be helpful.  But remember that purging the ion chambers takes
-**hours**.
-
-
-   
 Analog Video Capture
 --------------------
 
@@ -244,42 +106,114 @@ write to storage.
    available, even after a system upgrade or installation.
 
 
+Beamline maintenance tools
+--------------------------
 
-Pilatus 100K
-------------
+(Copied verbatim from wiki page.  Links and other information should
+be verified.  February 2025)
 
-.. todo::  Need to flesh this out with explanatory text and screenshots
+Motor Controllers
+~~~~~~~~~~~~~~~~~
 
-How files saving works:
+On the Windows Laptop, use PEWIN.  PMAC User's Manual
 
-+ tiff files to /disk2
-+ /disk2 is mounted on xf06bm-ioc1
-+ tiff and hdf5 AD plugins write files to proposal directories
-+ in |bsui|, there are pilatus and pilatus_tiff objects.  normally use
-  pilatus, puilatus_tiff is helpful for testing tiff file writing,
-  which is used by IBM
+The motor controllers are 10.6.130.81, .82, etc.  You can communicate
+using PEWIN with the laptop on the 10.6.130.X network, with the laptop
+plugged into a DHCP port (it's address will be 10.6.128.213), or using
+a USB cable.  Unplug the network adapter from the Delta Tau before
+plugging in the USB cable. The USB cable is the sort with an A-type
+plug on one end and a B-type on the other end.  
 
-Visualization:
+.. _fig_USB:
+.. figure:: _images/USB.png
+   :target: _images/USB.png
+   :width: 30%
+   :align: center
 
-+ Set two ROIs named "specular" (ROI1) and "yoneda" (ROI2)
-+ XDI header to identify HDF5 file
+
+MOXA Configuration
+~~~~~~~~~~~~~~~~~~
+
+On the Windows Laptop, use the NPort Admin Suite.  It is pretty
+self-explanatory.  Put the computer on the 10.6.130.X network, then
+ask the suite to do a search.  When it finds a MOXA device (they
+should be 10.6.130.51, .52, etc), click on the configure button.  It
+will query the device, then give a fairly self-explanatory set of tabs
+for configuring things on the device.
+
+`NPort5200 User Manual
+<https://www.moxa.com/doc/manual/nport/5200/NPort5200_v1.pdf>`__ --
+The small Moxa devices supplied by FMBO are in this series. 
+
+.. note:: The 5200 series is an end of life Moxa product.
+
+Camera Configuration
+~~~~~~~~~~~~~~~~~~~~
+
+On the Windows Laptop, Vimba is the tool for the Allied Vision cameras
+supplied by FMBO (also the Prosilica GC in use at the XRD end station)
+for looking at the fluorescence screens in DM1, DM2, and end station
+FS.
+
+Vimba can also be installed on a Linux machine. From the Quick Start
+document:
+
+.. code-block:: text
+
+   Installing Vimba SDK on Linux Necessary runtime libraries for
+   executing Vimba Viewer are available with the Vimba download.
+
+   + Vimba ships as a tarball. Uncompress the archive with the command
+     ``tar -xf ./AVTVimba.tgz`` to a directory you have writing
+     privileges for. This creates a directory named ``AVTVimba``.
+
+   + Navigate to ``AVTVimba/AVTGigETL`` and execute the shell script
+     Install.sh with root privileges (for example ``dzdo
+     ./Install.sh``).
+
+   + Vimba Viewer is now ready to use, and it can be found in
+     ``Vimba/Viewer/Bin``.
+
+The second step is essential or the viewer will be unable to find the cameras on the network.
+
++ `Allied Vision homepage <https://www.alliedvision.com/en/products/software.html>`__
++ `Prosilica GC technical documentation
+  <https://www.alliedvision.com/en/support/technical-documentation/prosilica-gc-documentation.html>`__
 
 
-Moving the detector between end stations:
 
-+ power cables (strip and detector)
-+ ethernet cable
-+ GN2 line, note flow rate on meter in rack
-+ grounding line
+BNC Cable Map
+-------------
 
-The NFS server might need to be restarted after rebooting.  As root on
-xf06bm-pilatus100k, do
+Here is an explanation of the BNC and SHV patch panels going between
+rack D at the control station, Rack C on the roof of the hutch, and
+the in-hutch patch panel.
 
-.. code:: bash
 
-   /etc/init.d/nfsserver restart
+.. _fig-bncpatch:
+.. figure:: _images/Bnc_map.png
+   :target: _images/Bnc_map.png
+   :width: 100%
+   :align: center
 
-.. todo:: Could this be in a smaller package.  The rack is kinda huge.
+DCM 1st Xtal Equilibration
+--------------------------
+
+The temperature of the first crystal is measured by a K type
+thermocouple pressed against the crystal by .... (verify how this is done)
+
+With the front end slits set to 8 mm x 1.5 mm, the DCM first crystal
+saturates at about 30.5 C from the base cooling water temperature of
+about 28 C.
+
+This takes about 50 minutes. 
+
+.. _fig-dcm1stxtal:
+.. figure:: _images/dcm1stxtal.png
+   :target: _images/dcm1stxtal.png
+   :width: 70%
+   :align: center
+
 
 
 
@@ -394,45 +328,6 @@ showing the re-enable behavior.  This made that motor tricky to
 operate in bluesky. Setting ``P302=0`` and ``P305=1`` did the trick.
 
 
-Vortex pressure
----------------
-
-Using a probe to measure the voltage on the IP port of the Vortex ME4.
-This reading will tell you the internal pressure according to the
-table in the snapshot below.  
-
-.. _fig-votexpressure:
-.. figure:: _images/Vortex_pressure.jpeg
-   :target: _images/Vortex_pressure.jpeg
-   :width: 40%
-   :align: center
-
-
-======================  ==========
- IP reading (Voltage)    Pressure
-======================  ==========
- -0.01                   5E-9
- -0.1                    5E-8
- -1                      5E-7
- -10                     5E-6 
-======================  ==========
-
-Note that the voltages are positive on the 7-element and negative on
-the 4-element.
-
-Temperature reading on the 4-element should be 1.5 V when the TEC is
-at proper temperature.  Temperature should be 0.6 V on the 7-element
-detector.
-
-`Vortex SDD manual
-<https://www.aps.anl.gov/files/download/DET/Detector-Pool/Spectroscopic-Detectors/Vortex_SDD/Vortex_ME4/Vtx-ME4%20Multi-El%20User%20Manual%20Rev.4.pdf>`__
-(link to copy at APS detector pool).
-
-There is a copy of the Vortex manual at BMM.  Look in
-``/nsls2/data3/bmm/legacy/products/ME7/``, the file is called
-``Vtx-Multi-El User Manual Rev 15.0_Oct 16, 2023.pdf``.
-
-
 DM3 CAT6 Patch Panel
 --------------------
 
@@ -505,6 +400,187 @@ Some photos of the patch panel:
    the CAT6 cables in the DM3 patch panel
 
 
+
+Encoder loss second crystal roll
+--------------------------------
+
+On 9 January, 2018, when attempting to home the mono motors following
+the schduled power outage in December, the 2\ :sup:`nd` crystal roll
+motor moved to its negative limit, then reported an encoder loss.
+With Graeme Elliner's (an FMB-O controls engineer) help, I came to a
+resolution of the problem.  It has left that axis in an unusual state
+that needs to be documented.
+
+Executive summary: that axis does not use its encoder.  It homes by
+running to its negative limit, then running back to it's home
+position.  It does this by counting controller pulses rather than
+encoder 
+
+Here are a couple of useful emails from Graeme to me from January 11
+and 12, 2018.
+
+.. code-block:: text
+
+   Hi Bruce
+
+   We now need to work out where the problem is.
+   NOTE you will not be able to drive anything while you're doing this or you potentially can break more.
+   1: Unplug the Disable Plug from the back of the DCM (this will
+      force all motors to be disabled) - it’s the small black connector
+      (bottom right as you look at the back) 
+   2: Disconnect PL102 & SK102 from IF2
+   3: Disconnect PL103 & SK103 from IF3
+   4: Connect PL103 & SK103 to IF2
+   5: Connect PL102 & SK102 to IF3
+
+   IF the Red light on the Interpolator stayed with IF3 then there is
+   a problem with Interpolator - Need to put motor into Open Loop 
+
+   IF the Red light on the Interpolator has moved to IF2 then the
+   Interpolator is fine and it is cabling somewhere - GOTO STEP 6 
+
+   6: SWAP PL102 and PL103
+
+   IF the red light has moved back to IF3 then the problem is between
+   PL103 to the read head on the Xtal2 Roll stage - GOTO STEP 7 
+
+   IF the red light has stayed with IF2 then the problem is between SK103 to the MCS8
+   
+   This cabling is Pin to Pin so a simple continuity test on each pin should identify what has broken
+
+   7: SWAP SK102 and SK103. The cabling should now be back to the original layout
+   8: SWAP SK203-2 and SK203-3 at the feedthroughs on the DCM (FD3-2 & FD3-3 respectively)
+
+   IF the red light has moved to IF2 then the problem is INSIDE the
+   DCM vessel - Need to put motor into Open Loop (and ultimately open
+   the vessel to find it) 
+
+   If the red light has stayed on IF3 then there is a problem with the
+   cable to the DCM. This cable is should be Pin to Pin so a simple
+   continuity test on each pin should identify what has broken 
+
+
+   To Put the Roll Axis into Open Loop
+   Have you got PeWin working now??
+   Using Pewin backup the config for the DCM and send it to me please.
+
+A lot of the cable swapping Graeme called for was to try to isolate a
+bad connection.  The connection between read-head and motor controller
+is rather lengthy, with a vacuum feedthrough, a feedtrough on the side
+of the service box, and two connections to the interpolators inside
+the service box.
+
+Following the steps laid out by Graeme, I isolated the problem to
+being inside the vacuum vessel.  Drat! Using the `old MC02
+configuration
+<https://github.com/NSLS-II-BMM/BMM-beamline-configuration/blob/master/MCS8/mc02-11Jan2018.cfg>`__
+I saved to a file, Graeme made some edits as described below and sent
+me `a new configuration file
+<https://github.com/NSLS-II-BMM/BMM-beamline-configuration/blob/master/MCS8/mc02-12Jan2018.cfg>`__.
+
+.. code-block:: text
+
+   Hi Bruce
+   I have modified the config file to now not use the encoder for
+   position feedback. I have tested that it downloads with no errors 
+
+   Details of the mods are listed at the top of the file and below, I
+   have marked all modifications with either GRE+ (for added code) or
+   GRE- (for commented code) 
+
+   In PLC1
+   P446=0  this disables encoder loss detection for axis4
+
+
+   In the Ivars
+   I430=700        changed to default stepper gain for no encoder
+   I432=0          changed to default value for no encoder
+   I7040=8 this forces the system to use steps for feedback
+
+   Use restore config from the backup menu in PEWin to install this
+   CHECK that the box at the bottom reports NO ERRORS,
+   in the terminal window you will need to "SAVE" and "$$$".
+
+   You will now find that the position scaling will be completely
+   different now that you are not using the encoder. This means that
+   your jog speeds will also be different 
+
+   I strongly suggest NOT trying to use EPICS imediately.
+
+   Use the PeWin terminal (or the Jog Ribbon) to move axis 4 to the -ve
+   limit ("#4j-") at the -ve limit type "#4HMZ" to zero the postion
+   display and then to the +ve limit ("#4j+"). 
+
+   This will tell you how many steps there are between the limits.
+
+   Using this info and the data for the encoded version you should be
+   able to move th axis to approximately the correct location. 
+
+   I have noticed that in PLC14 (the homing PLC for axis 4) that even
+   when the axis was using the encoder the home routine was not using
+   the encoder home refernce. 
+
+   It is moving to the -ve limit then moving off 51926 encoder counts,
+   then setting this to be HOME  -  search for GRE*** in the file. 
+
+   This will not be correct now the system is using steps and might
+   actually be more than you have measured as the range in steps. 
+
+   You will need to change this value before you can use EPICS to home the axis.
+
+   Once all this is working in PeWin you can test the homing routine
+   by entering M1416=1 in the Pewin terminal. 
+
+Following this set of instructions, I found that there are 1,218,299
+steps between the two limits on the 2\ :sup:`nd` crystal roll motor.
+It would seem that there are about 10 or 12 steps per encoder count.
+The homing procedure works in the sense of finding the negative limit,
+then moving to a home position.  But that home position seems to be
+about 1/10 of the way between the negative limit and the
+home-using-encoder-counts.
+
+Inert Gas Plumbing
+------------------
+
+Needle valves are mounted on the outboard side of DM3. Quick connect
+outlets for the gases are mounted on the upstream/inboard corner of
+the XAFS table.  
+
+.. admonition::  Gaseous nitrogen supply
+   :class: note
+   
+   BMM no longer uses a nitrogen cylinder as the supply of N\ :sub:`2`
+   for the ion chambers.  The house GN2 supplies N\ :sub:`2` to the
+   needle valves.
+
+.. _fig-inertgas:
+.. figure:: _images/Gas_handling.png
+   :target: _images/Gas_handling.png
+   :width: 100%
+   :align: center
+
+Vendor link for quick-disconnect fixture: https://www.mcmaster.com/5012K122/
+
+In practice, the H\ :sub:`2`/N\ :sub:`2` and N\ :sub:`2`/Ar mixing
+channels are not much used.  Unless measuring with the incident beam
+below 5 keV or above 21 keV, it is a poor use of time to make changes
+to the gas content of the ion chambers.  This is because it takes
+quite some time for the volume of the ion chamber to equillibrate.
+
+N\ :sub:`2` is adequate for almost all experiments at BMM.  For Tc or
+Ru, it is helpful to use about 20% Ar.  For Sc or lower, 50% He might
+be helpful.  But remember that purging the ion chambers takes
+**hours**.
+
+
+
+
+
+
+
+
+
+
 Logitech controller
 -------------------
 
@@ -520,6 +596,35 @@ Logitech controller
    Explain how to configure buttons in CSS
 
 .. todo::  Left joystick will be used for detector YZ.  Not X!
+
+
+M2 Bender
+---------
+
+The homing sequence on the bender (MC04, channel 6) seems to have the
+wrong parity.  Instead of moving to the negative limit, it moves to
+the positive limit.
+
+Rather than running the homing procedure, step to the negative limit.
+This can be done via EPICS or by issuing the ``#6j-`` command in the
+PEWIN terminal.  Adam Young from FMBO indicated that the home marker
+is about +6000 steps from the negative limit, so move there and zero
+out the display |nd| ``#6HMZ`` in PEWIN.  This will leave the bender
+reporting to EPICS that it is not homed, but it can be moved sensibly
+to a bend value.
+
+=============  ========================== 
+ End station    Bender position in steps
+=============  ========================== 
+ XAS            212225
+ XRD            107240 
+=============  ========================== 
+
+MC09 patch panel
+----------------
+
+Photo and explain...
+
 
 
 Motor controllers
@@ -829,148 +934,103 @@ FE:C06B-OP{Slt:2-Ax:B}Mtr                    Slit 2 Y bottom         geobrick (m
 ================================  =========  ======================  ======================  ==============
 
 
-Encoder loss second crystal roll
---------------------------------
 
-On 9 January, 2018, when attempting to home the mono motors following
-the schduled power outage in December, the 2\ :sup:`nd` crystal roll
-motor moved to its negative limit, then reported an encoder loss.
-With Graeme Elliner's (an FMB-O controls engineer) help, I came to a
-resolution of the problem.  It has left that axis in an unusual state
-that needs to be documented.
 
-Executive summary: that axis does not use its encoder.  It homes by
-running to its negative limit, then running back to it's home
-position.  It does this by counting controller pulses rather than
-encoder 
 
-Here are a couple of useful emails from Graeme to me from January 11
-and 12, 2018.
 
-.. code-block:: text
 
-   Hi Bruce
 
-   We now need to work out where the problem is.
-   NOTE you will not be able to drive anything while you're doing this or you potentially can break more.
-   1: Unplug the Disable Plug from the back of the DCM (this will
-      force all motors to be disabled) - it’s the small black connector
-      (bottom right as you look at the back) 
-   2: Disconnect PL102 & SK102 from IF2
-   3: Disconnect PL103 & SK103 from IF3
-   4: Connect PL103 & SK103 to IF2
-   5: Connect PL102 & SK102 to IF3
 
-   IF the Red light on the Interpolator stayed with IF3 then there is
-   a problem with Interpolator - Need to put motor into Open Loop 
 
-   IF the Red light on the Interpolator has moved to IF2 then the
-   Interpolator is fine and it is cabling somewhere - GOTO STEP 6 
+Network configuration
+---------------------
 
-   6: SWAP PL102 and PL103
+When introducing a new device to the beamline network:
 
-   IF the red light has moved back to IF3 then the problem is between
-   PL103 to the read head on the Xtal2 Roll stage - GOTO STEP 7 
++ Open a Jira ticket to request a new IP address and device name for
+  DNS.  As an example, a new Moxa terminal server was introduced.  In
+  the Jira ticket, we requested an IP address of 10.68.42.83 and a DNS
+  entry of ``xf06bm-tsrv13`` (full name:
+  ``xf06bm-tsrv13.nsls2.bnl.local``). 
 
-   IF the red light has stayed with IF2 then the problem is between SK103 to the MCS8
++ In the case of a device that one in s series of similar devices, be
+  sure that the name matches the similar devices and that the number
+  is incremented.  In the case of the new Moxa server, there are 12
+  others at the beamline.  The numbers were incremented correctly for
+  both the name and the IP address
+
++ Identify a port on one of the servers that is available and
+  configured for the correct network.  The networks are:
+
+  + **SCI** (650): 10.68.40.xxx
+  + **CAM** (651): 10.68.41.xxx
+  + **INST** (652): 10.68.42.xxx
+  + **EPICS** (653): 10.68.43.xxx
+
+When configuring an individual device, here are the network configurations:
+
++ The gateway address on each network is ``xz.yy.zz.2``.  For example,
+  the gateway on the SCI network is 10.68.40.2. 
+
+* The netmask is ``255.255.255.0``.
+
++ There are two DNS servers:
+
+  + DNS1: 10.65.2.25
+  + DNS2: 10.65.2.26
+
+
+
+
    
-   This cabling is Pin to Pin so a simple continuity test on each pin should identify what has broken
 
-   7: SWAP SK102 and SK103. The cabling should now be back to the original layout
-   8: SWAP SK203-2 and SK203-3 at the feedthroughs on the DCM (FD3-2 & FD3-3 respectively)
+Pilatus 100K
+------------
 
-   IF the red light has moved to IF2 then the problem is INSIDE the
-   DCM vessel - Need to put motor into Open Loop (and ultimately open
-   the vessel to find it) 
+.. todo::  Need to flesh this out with explanatory text and screenshots
 
-   If the red light has stayed on IF3 then there is a problem with the
-   cable to the DCM. This cable is should be Pin to Pin so a simple
-   continuity test on each pin should identify what has broken 
+Starting the systm:
 
-
-   To Put the Roll Axis into Open Loop
-   Have you got PeWin working now??
-   Using Pewin backup the config for the DCM and send it to me please.
-
-A lot of the cable swapping Graeme called for was to try to isolate a
-bad connection.  The connection between read-head and motor controller
-is rather lengthy, with a vacuum feedthrough, a feedtrough on the side
-of the service box, and two connections to the interpolators inside
-the service box.
-
-Following the steps laid out by Graeme, I isolated the problem to
-being inside the vacuum vessel.  Drat! Using the `old MC02
-configuration
-<https://github.com/NSLS-II-BMM/BMM-beamline-configuration/blob/master/MCS8/mc02-11Jan2018.cfg>`__
-I saved to a file, Graeme made some edits as described below and sent
-me `a new configuration file
-<https://github.com/NSLS-II-BMM/BMM-beamline-configuration/blob/master/MCS8/mc02-12Jan2018.cfg>`__.
-
-.. code-block:: text
-
-   Hi Bruce
-   I have modified the config file to now not use the encoder for
-   position feedback. I have tested that it downloads with no errors 
-
-   Details of the mods are listed at the top of the file and below, I
-   have marked all modifications with either GRE+ (for added code) or
-   GRE- (for commented code) 
-
-   In PLC1
-   P446=0  this disables encoder loss detection for axis4
++ make sure NFS is working as expected on xfo6bm-pilatus100k and xf06bm-ioc2
++ start camserver on xfo6bm-pilatus100k
++ start the IOC on xf06bm-ioc2
 
 
-   In the Ivars
-   I430=700        changed to default stepper gain for no encoder
-   I432=0          changed to default value for no encoder
-   I7040=8 this forces the system to use steps for feedback
 
-   Use restore config from the backup menu in PEWin to install this
-   CHECK that the box at the bottom reports NO ERRORS,
-   in the terminal window you will need to "SAVE" and "$$$".
+How files saving works:
 
-   You will now find that the position scaling will be completely
-   different now that you are not using the encoder. This means that
-   your jog speeds will also be different 
++ tiff files to /disk2
++ /disk2 is mounted on xf06bm-ioc1
++ tiff and hdf5 AD plugins write files to proposal directories
++ in |bsui|, there are pilatus and pilatus_tiff objects.  normally use
+  pilatus, puilatus_tiff is helpful for testing tiff file writing,
+  which is used by IBM
 
-   I strongly suggest NOT trying to use EPICS imediately.
+Visualization:
 
-   Use the PeWin terminal (or the Jog Ribbon) to move axis 4 to the -ve
-   limit ("#4j-") at the -ve limit type "#4HMZ" to zero the postion
-   display and then to the +ve limit ("#4j+"). 
++ Set two ROIs named "specular" (ROI1) and "yoneda" (ROI2)
++ XDI header to identify HDF5 file
 
-   This will tell you how many steps there are between the limits.
 
-   Using this info and the data for the encoded version you should be
-   able to move th axis to approximately the correct location. 
+Moving the detector between end stations:
 
-   I have noticed that in PLC14 (the homing PLC for axis 4) that even
-   when the axis was using the encoder the home routine was not using
-   the encoder home refernce. 
++ power cables (strip and detector)
++ ethernet cable
++ GN2 line, note flow rate on meter in rack
++ grounding line
 
-   It is moving to the -ve limit then moving off 51926 encoder counts,
-   then setting this to be HOME  -  search for GRE*** in the file. 
+The NFS server might need to be restarted after rebooting.  As root on
+xf06bm-pilatus100k, do
 
-   This will not be correct now the system is using steps and might
-   actually be more than you have measured as the range in steps. 
+.. code:: bash
 
-   You will need to change this value before you can use EPICS to home the axis.
+   /etc/init.d/nfsserver restart
 
-   Once all this is working in PeWin you can test the homing routine
-   by entering M1416=1 in the Pewin terminal. 
+.. todo:: Could this be in a smaller package.  The rack is kinda huge.
 
-Following this set of instructions, I found that there are 1,218,299
-steps between the two limits on the 2\ :sup:`nd` crystal roll motor.
-It would seem that there are about 10 or 12 steps per encoder count.
-The homing procedure works in the sense of finding the negative limit,
-then moving to a home position.  But that home position seems to be
-about 1/10 of the way between the negative limit and the
-home-using-encoder-counts.
 
-MC09 patch panel
-----------------
 
-Photo and explain...
+
 
 
 .. _holding_current:
@@ -1070,4 +1130,96 @@ with 10% unless it is lifting something heavy".
 
    Maybe this could be revisited by someone with more knowledge of how
    PEWIN and the Power PMAC actually work...
+
+
+Vortex pressure
+---------------
+
+Using a probe to measure the voltage on the IP port of the Vortex ME4.
+This reading will tell you the internal pressure according to the
+table in the snapshot below.  
+
+.. _fig-votexpressure:
+.. figure:: _images/Vortex_pressure.jpeg
+   :target: _images/Vortex_pressure.jpeg
+   :width: 40%
+   :align: center
+
+
+======================  ==========
+ IP reading (Voltage)    Pressure
+======================  ==========
+ -0.01                   5E-9
+ -0.1                    5E-8
+ -1                      5E-7
+ -10                     5E-6 
+======================  ==========
+
+Note that the voltages are positive on the 7-element and negative on
+the 4-element.
+
+Temperature reading on the 4-element should be 1.5 V when the TEC is
+at proper temperature.  Temperature should be 0.6 V on the 7-element
+detector.
+
+`Vortex SDD manual
+<https://www.aps.anl.gov/files/download/DET/Detector-Pool/Spectroscopic-Detectors/Vortex_SDD/Vortex_ME4/Vtx-ME4%20Multi-El%20User%20Manual%20Rev.4.pdf>`__
+(link to copy at APS detector pool).
+
+There is a copy of the Vortex manual at BMM.  Look in
+``/nsls2/data3/bmm/legacy/products/ME7/``, the file is called
+``Vtx-Multi-El User Manual Rev 15.0_Oct 16, 2023.pdf``.
+
+
+
+
+Zoom calls in the hutch
+-----------------------
+
+``xf06bm-ws5`` (``10.68.40.225``) is the System 76 Meerkat mounted on
+the inboard wall of the end station behind the XAS table. This machine
+is intended to allow the users in the hutch to join a Zoom chat from
+within the hutch. This helps Bruce provide user support from home.
+
+.. todo::  Need a new photo
+
+.. _fig-ws5:
+.. figure:: _images/Xf06bm-ws5.jpg
+   :target: _images/Xf06bm-ws5.jpg
+   :width: 70%
+   :align: center
+
+
+There are a number of peripherals attached to ``xf06bm-ws5``:
+
++ A wireless mouse and keyboard clearly labeled as being for this
+  computer. These are normally sitting near the end of the XAS table.
+
++ A screen. This is the screen mounted in the back wall of
+  the hutch using an articulated arm.
+
++ A reasonably loud speaker.  This is the black ball-shaped item
+  which usually sits underneath the reference ion chamber.
+
++ A good microphone. This is the Blue Yeti on a boom above the I\
+  :sub:`r` chamber. It has good noise cancellation so the din from the
+  XSpress3 should not effect voice quality.  It is, however, important
+  that the speaker face the microphone rather than the screen.
+
++ A decent camera. This is the Nexigo mounted on the inboard wall to t
+  he right of the screen.
+
+
+While these devices are all connected to ``xf06bm-ws5`` and powered
+on, there are no long running processes that connect to the camera or
+microphone. You are not being spied upon while in the hutch -- unless
+you are on a Zoom call, in which case the Zoom session will be on
+screen.
+
+``xf06bm-ws5`` is available via Guacamole.  When needed for remote
+support, Bruce will initiate the Zoom call and have the hutch computer
+join in.
+
+
+
 
