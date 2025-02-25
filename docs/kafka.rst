@@ -98,7 +98,7 @@ To start, run the ``open-tabs.sh`` script to make a Konsole window
 with three tabs.  Each tab is named something evocative of what will
 be running in it.
 
-#. In the tab labeled "Visual plot manager", do ``run-filemanager`` as
+#. In the tab labeled "Visual plot manager", do ``run-plotmanager`` as
    the beamline operator.
 
 #. In the table labeled "File manager", do ``su - <username>`` to
@@ -108,7 +108,7 @@ be running in it.
 
 #. In the table labeled "Headless plot manager", do ``su -
    <username>`` to become youself rather than the beamline operator,
-   then do ``xafs_services file``.  You will be prompted for your
+   then do ``xafs_services plot``.  You will be prompted for your
    password and then sent a DUO push.
 
 Note that you must be beamline staff to run the system services.  A

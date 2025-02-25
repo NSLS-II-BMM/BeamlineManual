@@ -27,7 +27,7 @@ BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
 .. toctree::
    :maxdepth: 2
    :numbered:
-   :caption: Running the beamline
+   :caption: User documentation
 
    intro.rst
    proposal.rst
@@ -49,7 +49,7 @@ BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
 .. appendix::
    :maxdepth: 2
    :numbered:
-   :caption: Developer documentation
+   :caption: Staff documentation
 
    desktop.rst
    profile.rst
@@ -57,4 +57,5 @@ BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
    ionchambers.rst
    details.rst
    restore.rst
+   photos.rst
    todo.rst
