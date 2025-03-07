@@ -989,46 +989,122 @@ Pilatus 100K
 
 .. todo::  Need to flesh this out with explanatory text and screenshots
 
-Starting the systm:
+The Pilatus camserver is running on ``xf06bm-pilatus100k-651``, which
+is in the rack on wheels in the hutch.  ``xf06bm-pilatus100k-651`` si
+``10.68.41.29`` and must be on the CAM network.  The network cable
+should be plugged into the port on the left on the back of the server
+in the rack.
 
-+ make sure NFS is working as expected on xfo6bm-pilatus100k and xf06bm-ioc2
-+ start camserver on xfo6bm-pilatus100k
-+ start the IOC on xf06bm-ioc2
+The IOC for the pilatus is running on ``xf06bm-ioc1``.  Note that this
+is the only IOC running on ``xf06bm-ioc1``.
+
+
+Starting the system
+-------------------
+
++ Start the NFS server on ``xf06bm-pilatus100k-651``.  This can be
+  done with the YAST GUI or by ``/etc/init.d/nfsserver restart``
++ Make sure that ``/disk2`` on ``xf06bm-pilatus100k-651`` is mounted
+  by ``xf06bm-ioc1`` at ``/disk2`` on that machine.  That mount should
+  happen at boot and be available as long as the Pilatus server is on
+  the network.
++ Start camserver on ``xf06bm-pilatus100k-651``.  This is done in a
+  terminal by ``start-camserver``.
++ Start (or restart) the IOC on ``xf06bm-ioc1`` by doing ``dzdo
+  manage-iocs restart Pilatus100k``
+
+Overview of file saving
+-----------------------
+
++ The camserver writes tiff files to ``/disk2`` on ``xf06bm-pilatus100k-651``.
++ That folder is NFS mounted on ``xf06bm-ioc1`` as ``/disk2``.
++ The tiff and hdf5 AD plugins read individual images from that
+  location and write tiff or hdf5 files to proposal directories.
++ In |bsui|, there are ``pilatus`` and ``pilatus_tiff`` objects.  We
+  normally use ``pilatus``, which writes images to HDF5 files.  The
+  ``pilatus_tiff`` object is helpful for testing tiff file writing,
+  which is used by IBM.
+
+Configuring the tiff and pilatus AD plugins
+-------------------------------------------
+
+
+In CSS, configure the pilatus plugin parameters highlighted in yellow.
+Note that in Bluesky all of this is handled automagically by the ophyd
+object.
+
+The file path **must** be set to ``/disk2``.
+
+The file name needs to be something, but is unimportant.  TThese
+images will be copied by the IOC to the proposal folder or written by
+the IOC to an HDF5 file in the proposal folder.
+
+Make sure the auto increment is set to Yes and that the filename
+format is identical to the format used on the tiff plugin screen.
+``%s%s_%3.3d.tiff`` is a good choice.
+
+.. _fig-pilatus_plugin:
+.. figure:: _images/pilatus_plugin.png
+   :target: _images/pilatus_plugin.png
+   :width: 70%
+   :align: center
+
+   Pilatus plugin configuration screen
+
+
+On the tiff plugin configuration screen, several of the parameters
+must be set for any measurement.
+
+The file path must be a location in the user's proposal folder on
+shared storage.  Thus, the path must be something like 
+
+.. code-block:: text
+
+   /nsls2/data/bmm/proposals/2025-1/pass-123456/assets/pilatus100k-1
+
+where you would replace the cycle number (``2025-1`` in this example)
+with the current cycle number and the proposal number (``123456`` in
+this example) with the user's proposal number.
+
+The IOC is only capable of writing to a location in the ``assets``
+folder.  By good practice, it will write to the folder under
+``assets`` created for it.  In the case of our Pilatus 100K, that
+would be ``pilatus100k-1``.
+
+The filename format **must** be the same as on the pilatus plugin
+screen.  ``%s%s_%3.3d.tiff`` is a good choice.
+
+The write mode **must** be ``stream`` and auto save **must** be
+``yes``.
+
+Much of this is handled in Bluesky by the ophyd object.
+
+.. _fig-tiff_plugin:
+.. figure:: _images/tiff_plugin.png
+   :target: _images/tiff_plugin.png
+   :width: 70%
+   :align: center
+
+   Tiff plugin configuration screen
 
 
 
-How files saving works:
 
-+ tiff files to /disk2
-+ /disk2 is mounted on xf06bm-ioc1
-+ tiff and hdf5 AD plugins write files to proposal directories
-+ in |bsui|, there are pilatus and pilatus_tiff objects.  normally use
-  pilatus, puilatus_tiff is helpful for testing tiff file writing,
-  which is used by IBM
 
-Visualization:
+Visualization in bluesky
+------------------------
 
 + Set two ROIs named "specular" (ROI1) and "yoneda" (ROI2)
 + XDI header to identify HDF5 file
 
 
-Moving the detector between end stations:
+Moving the detector between end stations
+----------------------------------------
 
 + power cables (strip and detector)
 + ethernet cable
 + GN2 line, note flow rate on meter in rack
 + grounding line
-
-The NFS server might need to be restarted after rebooting.  As root on
-xf06bm-pilatus100k, do
-
-.. code:: bash
-
-   /etc/init.d/nfsserver restart
-
-.. todo:: Could this be in a smaller package.  The rack is kinda huge.
-
-
 
 
 

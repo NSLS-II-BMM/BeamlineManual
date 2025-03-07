@@ -101,12 +101,12 @@ be running in it.
 #. In the tab labeled "Visual plot manager", do ``run-plotmanager`` as
    the beamline operator.
 
-#. In the table labeled "File manager", do ``su - <username>`` to
+#. In the tab labeled "File manager", do ``su - <username>`` to
    become youself rather than the beamline operator, then do
    ``xafs_services file``.  You will be prompted for your password and
    then sent a DUO push.
 
-#. In the table labeled "Headless plot manager", do ``su -
+#. In the tab labeled "Headless plot manager", do ``su -
    <username>`` to become youself rather than the beamline operator,
    then do ``xafs_services plot``.  You will be prompted for your
    password and then sent a DUO push.
