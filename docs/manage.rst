@@ -209,6 +209,8 @@ normal operating range of the beamline.  They will, however,
 eventually return to sensible places.
 
 
+.. _xas-to-xrd:
+
 Change XAS |larr| XRD
 ---------------------
 

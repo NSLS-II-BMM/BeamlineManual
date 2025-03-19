@@ -12,8 +12,72 @@
 Photon Delivery System
 ======================
 
-Configure the Photon Delivery System
-------------------------------------
+Overview
+--------
+
+
+.. _fig-bmm-schematic:
+.. figure:: _images/bmm-schematic.png
+   :target: _images/bmm-schematic.png
+   :width: 100%
+   :align: center
+
+   Beamline optics layout for BMM.  Thanks to Tiffany Bowman for
+   the design of this beamline schematic.
+
+Source
+  The source at BMM is an `NSLS-II three-pole wiggler (TPW)
+  <https://doi.org/10.1016/j.nima.2023.169008>`__.  This device has a
+  spectrum that resembles a bending magnet, but shifted to higher
+  energy compared to the NSLS-II bending magnet.
+
+Collimating Mirror
+  The first optical component is a paraboloid collimating mirror.
+  This device is 5 nm of Rh on 30 nm of Pt on a silicon substrate.
+  This fixed-angle, fixed-figure device corrects the dispersion of the
+  TPW source and directs the collimated beam toward the ratchet wall
+  aperture.
+
+  .. danger:: There is never a reason to move the first mirror.  It
+     is in the correct orientation for collimation and delivery of
+     beam through the ratchet wall.  
+
+     **Moving any first mirror motor runs the risk of leaving the
+     first mirror in a non-functional state.**
+
+Monochromator
+  The collimated beam then hits the double crystal monochromator
+  (DCM).  BMM has pairs of Si(111) and Si(311) crystals, accessibly by
+  lateral translation of the DCM vacuum vessel.  This is a fixed-exit
+  monochromator which moves the second crystal parallel and
+  perpendicular to the crystal surfaces to direct the monochromatic
+  beam towards a small aperture in the pink beam mask and
+  Bremsstrahlung shield.
+
+Focusing and harmonic rejection mirrors
+  Downstream of the monochromator are a torroidal focusing mirror
+  (TFM) and a flat harmonic rejection mirror (HRM).  The TFM is coated
+  with 5 nm of Rh on 30 nm of Pt.  The HRM has a Rh/Pt stripe and a
+  bare silicon stripe.  The bare silicon stripe is used below 8 keV
+  for improved harmonic rejection.
+
+  The angle and bend of the TFM can be adjusted to deliver focused
+  beam either to the XAS end station or to the center of the
+  goniometer.
+
+  At high energies, either the TFM or the HRM is in the beam path.  At
+  low energies, the HRM or both mirrors are in use.  See
+  :numref:`Section %s <change-mode>` for details of the mirror
+  configuration modes.
+
+See `MA Marcus, et al., J. Synch. Radiat. (2004) 11, 239-247 
+<https://doi.org/10.1107/S0909049504005837>`__ for an explanation of
+the Pt/Rh coating scheme.
+
+
+
+Configure for an Absorption Edge
+--------------------------------
 
 Configuring the photon delivery system for a specific measurement is
 usually quite simple.  When moving to a new absorption edge, do the
@@ -178,7 +242,12 @@ where,
 ``energy``
   Use an E0 value that is not obtained from the look-up table.
   Default is unspecified, i.e. use ``element`` and look-up table.
-  This is rarely necessary, except when setting up for XRD.
+  This is rarely necessary, except when :numref:`setting up for XRD
+  (Section %s) <xas-to-xrd>`.
+
+``insist``
+  ``True``: Force movement of M2 motors; ``False``: decide normally
+  whether to move M2 motors.  Default is ``False``.
 
 ``tune``
   ``True``: optimize DCM second crystal pitch; ``False``: skip ``rocking_curve()``
@@ -204,8 +273,8 @@ where,
 
 
 Except for ``edge`` and ``focus``, most of those parameters are rarely
-used.  If you need to set up for measuring an L\ :sub:`2` or L\
-:sub:`1` edge, you must specify ``edge``.  For example:
+used.  If you need to measure an L\ :sub:`2` or L\ :sub:`1` edge, you
+must specify ``edge``.  For example:
 
 .. code-block:: python
 
@@ -380,7 +449,11 @@ Post-mono slits
 After the mono, before the focusing mirror, in Diagnostic Module 2,
 there is a four-blade slit system.  These are used to define the beam
 size on the mirrors and to refine energy resolution for the focused
-beam..
+beam.
+
+The typical size of the post-mono slits is 18 mm in the horizontal and
+1.3 mm in the vertical.
+
 
 
 .. table:: Post mono slit motors
@@ -440,11 +513,14 @@ Outside of the use of the ``change_mode()`` command, it should not be
 necessary for users to move the mirror motors.  It is **very easy** to
 lose the beam entirely when moving mirror motors.  Without a clear
 understanding of how the optics work, re-finding the beam can be quite
-challenging.  If you loose the beam by moving motors, the best
-solution is probably to rerun the ``change_mode()`` command.
+challenging.  
 
-That said, if you want to know the current positions of the motors on
-the focusing mirror, use ``%w m2``
+.. attention:: If you loose the beam by moving mirror motors, the
+   easiest solution is to rerun the ``change_mode()`` command,
+   possibly with the ``insist=True`` argument.
+
+If you want to know the current positions of the motors on the
+focusing mirror, use ``%w m2``
 
 
 .. code-block:: text
