@@ -88,10 +88,9 @@ motor to the click-upon point, do::
 This will enable the left mouse :mark:`leftclick,.` click and
 subsequent motion on the most recent plot.  
 
-.. warning::
-   The ``pluck()`` command works on any plot made through the Kafka
-   plotter.  Be sure you are clicking on the plot you intend to pluck
-   from!
+.. warning:: The ``pluck()`` command works on any plot made through
+   the :numref:`Kafka plotter (Section %s) <plotting>`.  Be sure you
+   are clicking on the plot you intend to pluck from!
 
 
 Revisit a line scan
@@ -131,10 +130,10 @@ arguments that they have special names.
 
    does a scan of the pitch of the second mono crystal and plots the
    signal on I0.  At the end of the scan, it moves to the position of
-   the center of mass of the rocking curve.  This scan is useful after
-   a large change of energy.  It also opens the slits to 3 mm in
-   vertical size before starting the scan, then returns the slits to
-   their original height after the scan.
+   the peak of the rocking curve.  This scan is useful after a large
+   change of energy.  It also opens the slits to 3 mm in vertical size
+   before starting the scan, then returns the slits to their original
+   height after the scan.
 
    You can put this scan in a macro using::
 
@@ -152,8 +151,8 @@ arguments that they have special names.
    are in the correct orientation for the delivery of beam from the
    mirrors.
 
-   Optionally, the scan will move to the center of mass of the
-   measurement, skipping the prompt and plot interaction::
+   Optionally, the scan will move to the peak of the measurement,
+   skipping the prompt and plot interaction::
 
      RE(slit_height(move=True))
 

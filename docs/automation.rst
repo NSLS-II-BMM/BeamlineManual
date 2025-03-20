@@ -47,8 +47,8 @@ differences in the columns corresponding to the different instruments.
 
 Make sure you are using the most up-to-date version of the spreadsheet.
 
-.. note:: The current spreadsheet version is **14**, as of 14
-          November, 2024.  You should *always* use a current
+.. note:: The current spreadsheet version is **15**, as of 30
+          January, 2025.  You should *always* use a current
           spreadsheet.
 
 .. caution:: Spreadsheets with version number earlier 13 **will not
@@ -587,7 +587,7 @@ spreadsheet is identical to the *ex situ* sample wheel spreadsheet.
    + Electrochemistry experiments using the BioLogic potentiostat
    + Chemistry experiments using the gas cart, including its mass flow
      controllers, valves, temperature controller, and mass spectrometer.
-
+   + Anton-Parr
 
 
 .. caution:: Spreadsheets with version number earlier than 13 **will
