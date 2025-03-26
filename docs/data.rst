@@ -307,7 +307,93 @@ Using the VDI virtual Desktop
 Accessing data via Tiled
 ------------------------
 
-.. todo:: Details needed
+First off, here is the `Tiled documentation
+<https://blueskyproject.io/tiled/index.html>`__ .
+
+To start, you must first `install Tiled
+<https://blueskyproject.io/tiled/tutorials/installation.html>`__ on
+your computer:
+
+.. code-block:: shell
+
+   python3 -m pip install "tiled[all]"
+
+To upgrade from an earlier version of Tiled:
+
+.. code-block:: shell
+
+   python3 -m pip install --upgrade "tiled[all]"
+
+In a python program, jupyter notebook, or ipython session, do this:
+
+.. code-block:: python
+
+   from tiled.client import from_uri
+   client = from_uri('https://tiled.nsls2.bnl.gov/api/v1/metadata/bmm/raw')
+
+You will be prompted for your BNL username and password.  A DUO push
+will be sent to your phone (the DUO push may happen silently ... if
+things appear to be hung, check your phone to see if a DUO push has
+arrived). 
+
+At this point you have access to data from BMM.  To interact with the
+data, you will need scan UIDs.  For example:
+
+.. code-block:: text
+
+   In [8]: client['5b3b526c-f3d4-4bac-86a5-394835fe06a7']['primary']['data']
+   Out[8]: <DatasetClient ['time', 'It', 'dcm_energy', 
+		'dcm_energy_setpoint', 'I0', 
+		'7-element SDD_channel01_xrf', 'Hf1', 
+		'7-element SDD_channel02_xrf', 'Hf2', 
+		'7-element SDD_channel03_xrf', 'Hf3',
+		'7-element SDD_channel04_xrf', 'Hf4',
+		'7-element SDD_channel05_xrf', 'Hf5',
+		'7-element SDD_channel06_xrf', 'Hf6',
+		'7-element SDD_channel07_xrf', 'Hf7',
+		'dwti_dwell_time', 'dwti_dwell_time_setpoint', 'Ir']>
+
+The measurement in this example was fluorescence XAS using the
+7-element detector.  So |mu|\ (E) data can be plotted like so:
+
+.. code-block:: python
+
+   import matplotlib.pyplot as plt
+   uid = '5b3b526c-f3d4-4bac-86a5-394835fe06a7'
+   dataset = client[uid]['primary']['data']
+   energy = dataset['dcm_energy']
+   i0 = dataset['I0']
+   ifluo = (dataset['Hf1'] + dataset['Hf2'] + dataset['Hf3'] +
+            dataset['Hf4'] + dataset['Hf5'] + dataset['Hf6'] + dataset['Hf7'])
+   plt.plot(energy, ifluo/i0)
+
+
+The ion chamber signals will always be called ``I0``, ``It``, and
+``Ir``.  The fluorescence signals will always be the one- or
+two-letter symbol of the element being measured followed by the
+detector channel number.
+
+You can know the element being measured in any XAS record by checking
+the metadata:
+
+.. code-block:: python
+
+   client[uid].metadata['start']['XDI']['Element']['symbol']
+
+
+You can find the UID of a scan by examining the header of an
+:numref:`XAS data file (see Section %s) <xdiexample>`.  Look for
+the line that starts ``# Scan.uid:``.
+
+.. Admonition:: Searching
+
+   #. Need an explanation of doing datetime searches to get data
+      from a specific experiment.
+
+   #. Need an example of searching for a specific GUP or SAF to
+      get data from a specific experiment.
+
+
 
 Accessing data via Jupyter
 --------------------------
