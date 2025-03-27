@@ -156,10 +156,10 @@ As for the text fields on the "Research" tab, you cannot leave them
 blank.  Briefly describing your experiment |nd| a sentence or two |nd|
 is adequate.
 
-To start, go to https:/pass.bnl.gov and authenticate yourself using
-your BNL password and DUO two-factor authentication.  Once on the
-landing page, start a new proposal as shown in :numref:`Figure %s
-<fig-pup-start>`.
+To start, go to `https:/pass.bnl.gov <https:/pass.bnl.gov>`__ and
+authenticate yourself using your BNL password and DUO two-factor
+authentication.  Once on the landing page, start a new proposal as
+shown in :numref:`Figure %s <fig-pup-start>`.
 
 .. _fig-pup-start:
 .. figure:: _images/pup-start.png
