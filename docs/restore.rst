@@ -9,8 +9,8 @@
 
 .. _restore:
 
-Restore beamline after a power outage
-=====================================
+Power outage recovery
+=====================
 
 .. note::
 

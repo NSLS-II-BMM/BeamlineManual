@@ -43,38 +43,38 @@ Most common commands
 
 
 ``shb.open()`` / ``shb.close()``
-  Open / close the photon shutter
+  Open / close the photon shutter |harr| :numref:`Section %s <shutters>`
 
 ``RE(mv(dcm.energy, <value>))``
-  Move TO an energy value
+  Move TO an energy value |harr| :numref:`Section %s <dcm>`
 
 ``RE(mv(xafs_y, <value>))``
-  Move any named motor TO a position (``xafs_y`` is an example,see :numref:`Section %s <sample_stages>`)
+  Move any named motor TO a position (``xafs_y`` is an example) |harr| :numref:`Section %s <sample_stages>`
 
 ``RE(mvr(xafs_y, <value>))``
-  Move any named motor BY an amount (``xafs_y`` is an example, see :numref:`Section %s <sample_stages>`)
+  Move any named motor BY an amount (``xafs_y`` is an example) |harr| :numref:`Section %s <sample_stages>`
 
 ``RE(change_edge('Xx'))``
   setup beamline for an absorption edge, ``Xx`` = 1- or 2-letter symbol,
-  e.g. ``Cu`` or ``Y``.
+  e.g. ``Cu`` or ``Y``.  |harr| :numref:`Section %s <change_edge>`
 
 ``RE(slot(<N>))``
-  Move sample wheel to slot #N (1 |le| N |le| 24)
+  Move sample wheel to slot #N (1 |le| N |le| 24) |harr| :numref:`Section %s <wheel>`
 
 ``RE(xafs_wheel.outer())`` / ``RE(xafs_wheel.inner())``
-  move the *ex situ* wheel sample holder to the outer/inner ring
+  move the *ex situ* wheel sample holder to the outer/inner ring :numref:`Section %s <wheel>`
 
 ``%xrf``
-  measure and display an XRF spectrum
+  measure and display an XRF spectrum |harr| :numref:`Section %s <xrf>`
 
 ``RE(linescan(<motor>, <detector>, <start>, <stop>, <N>))``
-  move a motor, plot a signal
+  move a motor, plot a signal |harr| :numref:`Section %s <linescan>`
 
 ``RE(pluck())``
-  Select a point from a plot on screen and move that motor to that position
+  Select a point from a plot on screen and move that motor to that position |harr| :numref:`Section %s <pluck>`
 
 ``xlsx()``
-  import a spreadsheet
+  import a spreadsheet |harr| :numref:`Section %s <xlsx>`
 
 ``RE(xanes())``
   quick-n-dirty XANES scan at the current element and edge
@@ -99,8 +99,8 @@ See :numref:`Section %s <sample_stages>` for the full list of
 
 
 
-Full list of commands
----------------------
+Larger list of commands
+-----------------------
 
 Note that some command must be run through the run engine, other do
 not.  The use of ``RE()`` is called explicitly in :numref:`Table %s
@@ -120,11 +120,11 @@ engine will complain with this hint:
    :align: left
 
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Shutter commands**                                                          |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Shutter commands** |harr| :numref:`Section %s <shutters>`                   |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``shb.open()`` / ``shb.close()``         |    Open / close the photon shutter                                         | 
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Mono tuning commands**                                                      |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Mono tuning commands** |harr| :numref:`Section %s <dcm>`                    |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(rocking_curve())``                  |    Measure the 2nd crystal rocking curve                                   |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -132,11 +132,11 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``TUNE_STEP=0.004``                      |    Tuning step size – 0.004 is good for Si(111), 0.002 for Si(311)         |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Import an automation spreadsheet**                                          |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Import an automation spreadsheet** |harr| :numref:`Section %s <xlsx>`       |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``xlsx()``                               |    Select an existing spreadsheet from a list                              |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Mono movement commands**                                                    |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Mono movement commands** |harr| :numref:`Section %s <dcm>`                  |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(mv(dcm.energy, <value>))``          |    Move TO an energy value                                                 |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -146,13 +146,13 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(mvr(dcm.energy, <value>))``         |    Move BY an energy step                                                  |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Motor movement commands**                                                   |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Motor movement commands** |harr| :numref:`Section %s <sample_stages>`       |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(mv(xafs_y, <value>))``              |    Move any named motor TO a position (``xafs_y`` is an example)           |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(mvr(xafs_y, <value>))``             |    Move any named motor BY an amount (``xafs_y`` is an example)            |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Where are things?**                                                         |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Where are things?** |harr| :numref:`Section %s <sample_stages>`             |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``%w dcm``                               |    where's the mono?                                                       |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -164,7 +164,7 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``%w xafs_table``                        |    where's the XAFS table?                                                 |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Change edge and mono crystal**                                              |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Change edge and mono crystal** |harr| :numref:`Section %s <manage>`         |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(change_edge('Xx'))``                |    setup beamline for an absorption edge, 1- or 2-letter symbol            |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -176,7 +176,7 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(dark_current())``                   |    measure electrometer dark currents                                      |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **ex situ sample stage**                                                      |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **ex situ sample stage** |harr| :numref:`Section %s <wheel>`                  |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(slot(<N>))``                        |    Move sample wheel to slot #N (1 |le| N |le| 24)                         |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -186,7 +186,7 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(xafs_wheel.inner())``               |    move the *ex situ* wheel sample holder to the inner ring                |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Glancing angle stage**                                                      |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Glancing angle stage** |harr| :numref:`Section %s <ga_stage>`               |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(ga.to(N))``                         |    move stage to sample N (1 |le| N |le| 8) + start spinner                |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -194,7 +194,7 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(ga.flatten())``                     |    return to the flat position found during ``auto_align()``               |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Linkam stage**                                                              |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Linkam stage** |harr| :numref:`Section %s <linkam>`                         |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(mv(linkam, T))``                    |    move Linkam stage to temperature T                                      |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -204,7 +204,7 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``linkam.on()`` / ``linkam.off()``       |    turn Linkam on or off                                                   |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **LakeShore temperature controller**                                          |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **LakeShore temperature controller** |harr| :numref:`Section %s <lakeshore>`  |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(lakeshore.to(T, power))``           |    move cryostat to temperature T with heater at ``power``                 |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -216,7 +216,7 @@ engine will complain with this hint:
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(mv(lakeshore.power,0))``            |    turn heater off                                                         |
    +------------------------------------------+----------------------------------------------------------------------------+
-   | |mquad| |mquad| |mquad| |mquad| |mquad| **Reference wheel**                                                           |
+   | |mquad| |mquad| |mquad| |mquad| |mquad| **Reference wheel**  |harr| :numref:`Section %s <reference-wheel>`            |
    +------------------------------------------+----------------------------------------------------------------------------+
    | ``RE(reference('Xx'))``                  |    Move to reference element 'Xx'                                          |
    +------------------------------------------+----------------------------------------------------------------------------+
@@ -236,6 +236,8 @@ engine will complain with this hint:
 Photon delivery system modes
 ----------------------------
 
+See :numref:`Section %s <photon_delivery_modes>`.
+
 .. table:: Photon delivery system modes
    :name:  pds-mode-table
 
@@ -254,6 +256,8 @@ Photon delivery system modes
 
 Slits3 coordinated motions
 --------------------------
+
+See :numref:`Section %s <slits>`.
 
 These coordinated motions behave just like single motors and can be
 used with the motor movement commands in :numref:`Table %s <command-list>`.
@@ -285,6 +289,8 @@ Individual slits are named ``slits3.top``, ``slits3.bottom``,
 Motor positions and limits
 --------------------------
 
+See :numref:`Section %s <motors>`.
+
 These commands work on any named motor (:numref:`Table %s <xafs-stages>`).
 
 Where is a sample motor?
@@ -299,6 +305,8 @@ Set a soft limit:
 
 Line scans
 ----------
+
+See :numref:`Section %s <linescan>`.
 
 .. code-block:: python
 
@@ -328,6 +336,8 @@ to repeat that on the current plot.
 
 Energy scans
 ------------
+
+See :numref:`Section %s <xafs>`.
 
 Start an XAFS scan, prompting for an :numref:`INI file (section %s) <ini>` 
 

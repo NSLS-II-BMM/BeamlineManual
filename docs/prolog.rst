@@ -65,3 +65,6 @@
 .. |artemis| replace:: :smallcaps:`artemis`
 .. |hephaestus| replace:: :smallcaps:`hephaestus`
 
+.. |cirarr| unicode:: U+2B8A .. RIGHTWARDS BLACK CIRCLED WHITE ARROW
+.. |harr| unicode:: U+1F846 .. RIGHTWARDS HEAVY ARROW
+.. |download| unicode:: U+2398 .. NEXT PAGE

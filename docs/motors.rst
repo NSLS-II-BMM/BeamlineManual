@@ -161,6 +161,8 @@ are the same for all sample stage motors.
    and stored in the hutch for ready access by users.
 
 
+.. _wheel:
+
 Sample wheel
 ------------
 

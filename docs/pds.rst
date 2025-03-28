@@ -74,7 +74,7 @@ See `MA Marcus, et al., J. Synch. Radiat. (2004) 11, 239-247
 <https://doi.org/10.1107/S0909049504005837>`__ for an explanation of
 the Pt/Rh coating scheme.
 
-
+.. _change_edge:
 
 Configure for an Absorption Edge
 --------------------------------
@@ -442,6 +442,7 @@ facilitating any actions a user should ever need.
    the monochromator is moved back to the center of the angular range
    and the monochromator is returned to fixed-exit mode.
 
+.. _slits:
 
 Post-mono slits
 ---------------

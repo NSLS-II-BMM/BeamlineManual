@@ -77,6 +77,8 @@ You can skip the "click for motor position" step by typing
 :key:`n` and hitting :key:`Enter`.
 
 
+.. _pluck:
+
 Plucking a point from a line scan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -160,7 +162,9 @@ arguments that they have special names.
 
      yield from slit_height()
 
+
 **Align ex situ sample holder** 
+
    If the *ex situ* sample wheel is in approximately the right
    position such that X-rays are passing through a slot on the outer
    ring, you can center the slot around the beam with::

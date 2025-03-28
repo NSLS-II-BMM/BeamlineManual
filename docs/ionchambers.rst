@@ -1,8 +1,8 @@
 
 .. _ionchambers:
 
-Managing ion chamber signal chains
-==================================
+Ion chamber signal chains
+=========================
 
 In the 2023-3 and 2024-1 cycles, BMM went through a transition in how
 direct beam signals (I\ :sub:`0`, I\ :sub:`t`, I\ :sub:`r`) are

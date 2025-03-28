@@ -19,14 +19,15 @@ Beamline automation
 
 BMM currently supports five categories of spreadsheet-based automation:
 
-#. Sample wheels (`spreadsheet
+#. Sample wheels (|download| `spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/wheel.xlsx>`__)
-#. Linkam stage temperature control (`spreadsheet
+#. Linkam stage temperature control (|download| `spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/linkam.xlsx>`__)
-#. LakeShore 331 controller for Displex cryostat (`spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/lakeshore.xlsx>`__)
-#. Glancing angle stage (`spreadsheet
+#. LakeShore 331 controller for Displex cryostat (|download| `spreadsheet
+   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/lakeshore.xlsx>`__)
+#. Glancing angle stage (|download| `spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/glancing_angle.xlsx>`__)
-#. Generic XY and XYZ grids (`spreadsheet
+#. Generic XY and XYZ grids (|download| `spreadsheet
    <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/grid.xlsx>`__)
 
 The latest spreadsheets for each of these can always be found at
@@ -153,6 +154,8 @@ the glancing angle stage presumes that all the samples are mounted at
 the centers of the spinners.
 
 
+.. _xlsx:
+
 Selecting a spreadsheet
 -----------------------
 
@@ -229,7 +232,7 @@ file generated called :file:`<tab>_macro.py` and an INI file called
 :file:`<tab>.ini`, where :file:`<tab>` is the name of the tab from
 which the instructions were read.
 
-It is, therefor, a very good idea to give your tabs names that
+It is, therefore, a good idea to give your tabs names that
 indicate something about the experiment being described on that tab.
 
 The INI file (:numref:`Section %s <ini>`) contains the default values
@@ -253,7 +256,7 @@ The standard *ex situ* sample holder at BMM is a plastic wheel mounted
 on a rotation stage.  Examples are shown in figures
 :numref:`fig-doublewheel`.  The rotation stage is mounted on an XY
 stage, so when one slot on the sample wheel is aligned, all the slots
-are aligned.
+are aligned.  Alignment details |harr| :numref:`Section %s <special-linescans>`
 
 
 .. _fig-doublewheel:
