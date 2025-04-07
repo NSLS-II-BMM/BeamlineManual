@@ -101,3 +101,44 @@ device. This is what I found.
 
 **Solution**: Rethread lead screw through upper carriage. Reinsert
 into coupler. Tighten coupler.
+
+
+.. _tpw:
+
+Three-Pole Wiggler
+------------------
+
+Here are some photos of BMM's three-pole wiggler.
+
+.. subfigure::  AB
+   :layout-sm: AB
+   :gap: 8px
+   :subcaptions: above
+   :name: fig-3pw
+   :class-grid: outline
+
+   .. image:: _images/3PW/3PW_1.jpg
+
+   .. image:: _images/3PW/3PW_5.jpg
+
+   (Left) Outboard side of three-pole wiggler.  (Right) Inboard side
+   of three-pole wiggler.
+
+
+
+.. subfigure::  ABC
+   :layout-sm: ABC
+   :gap: 8px
+   :subcaptions: above
+   :name: fig-3pw2
+   :class-grid: outline
+
+   .. image:: _images/3PW/3PW_2.jpg
+
+   .. image:: _images/3PW/3PW_3.jpg
+
+   .. image:: _images/3PW/3PW_4.jpg
+
+   (Left) View from downstream.  3PW is just upstream of the bend
+   magnet. (Middle) Close up view of the jaws.  (Right) View from
+   upstream.

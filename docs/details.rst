@@ -982,15 +982,14 @@ When configuring an individual device, here are the network configurations:
 
 
 
-   
+.. _pilatus:   
 
 Pilatus 100K
 ------------
 
-.. todo::  Need to flesh this out with explanatory text and screenshots
 
 The Pilatus camserver is running on ``xf06bm-pilatus100k-651``, which
-is in the rack on wheels in the hutch.  ``xf06bm-pilatus100k-651`` si
+is in the rack on wheels in the hutch.  ``xf06bm-pilatus100k-651`` is
 ``10.68.41.29`` and must be on the CAM network.  The network cable
 should be plugged into the port on the left on the back of the server
 in the rack.
@@ -1000,7 +999,7 @@ is the only IOC running on ``xf06bm-ioc1``.
 
 
 Starting the system
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 + Start the NFS server on ``xf06bm-pilatus100k-651``.  This can be
   done with the YAST GUI or by ``/etc/init.d/nfsserver restart``
@@ -1014,7 +1013,7 @@ Starting the system
   manage-iocs restart Pilatus100k``
 
 Overview of file saving
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 + The camserver writes tiff files to ``/disk2`` on ``xf06bm-pilatus100k-651``.
 + That folder is NFS mounted on ``xf06bm-ioc1`` as ``/disk2``.
@@ -1026,7 +1025,7 @@ Overview of file saving
   which is used by IBM.
 
 Configuring the tiff and pilatus AD plugins
--------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 In CSS, configure the pilatus plugin parameters highlighted in yellow.
@@ -1088,24 +1087,141 @@ Much of this is handled in Bluesky by the ophyd object.
    Tiff plugin configuration screen
 
 
+Setting ROIs
+~~~~~~~~~~~~
+
+To set and use ROIs, the ROI and Stats plugins must be enabled in the
+IOC.  This can be done on the appropriate CSS screen, but all
+necessary plugins should become enabled when bsui starts and the
+pilatus object is instantiated.
+
+
+.. _fig-roi1:
+.. figure:: _images/pilatus_rois_1.png
+   :target: _images/pilatus_rois_1.png
+   :width: 70%
+   :align: center
+
+   Initial configuration of the ROIs.  In this example, ROIs 1 and 2
+   are being set to a subsection of the full image.
+
+To interact with the ROIs, their visualization must be enabled by
+clicking the corresponding buttons near the bottom of the CSS screen,
+as shown in the figure below.  With those buttons clicked, the ROIs
+will be outlined on the image.
+
+
+.. _fig-roi2:
+.. figure:: _images/pilatus_rois_2.png
+   :target: _images/pilatus_rois_2.png
+   :width: 70%
+   :align: center
+	   
+   ROIs are displayed on top of the Pilatus image on the CSS screen.
+
+You can then click on the outline in the image to move or resize the ROI.
 
 
 
-Visualization in bluesky
-------------------------
+Measurements with the Pilatus in bluesky
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+ Set two ROIs named "specular" (ROI1) and "yoneda" (ROI2)
-+ XDI header to identify HDF5 file
+In bsui, the total-counts statistic (from the STATS plugin) for ROI2
+is called ``diffuse`` and is hinted.  This means that the total count
+rate in the ROI will be recorded as a scalar in Tiled and that the
+count rate will be reported in the best effort callback table printed
+to the screen during the scan.
+
+Similarly, the total count rate in ROI3 is called ``specular`` and is
+hinted.  
+
+Those names are chosen as mnemonics for obvious parts of the
+scattering signal.
+
+The header of the output XAFS scan file contains a metadata line
+identifying the location of the HDF5 file containing the Pilatus image
+stack for the scan.
 
 
 Moving the detector between end stations
-----------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+ power cables (strip and detector)
-+ ethernet cable
-+ GN2 line, note flow rate on meter in rack
-+ grounding line
+The Pilatus and its rack typically live in the downstream, outboard
+corner of the hutch, near the XRD end station.  For use on the XAS
+table, it is convenient to move the entire rack closer to the XAS table.
 
+You will need to power down the server, the rack-mount computer in the
+rack.  Then:
+
+#. Unplug the power cables to the power strip
+#. Disconnect the network cable from the back of the server
+#. Valve off the GN2 supply at the wall, then disconnect the purple
+   polyflow tube
+#. Remove the green grounding line from the back wall.
+
+Now the rack can be moved.
+
+There is a power outlet and an GN2 supply fixture on the back wall,
+near the end of the XAS table.  There is also a copper grounding strip
+near the floor that the green grounding cable can be clipped to.  Also
+in that area is a blue network cable with a label that says "Pilatus @
+XAS".  Plug that into the back of the server.
+
+At the downstream network patch panel, unplug the network cable used
+when the rack is in its m=normal location.  Search around for the
+other end of the "Pilatus @ XAS" cable and plu it into the patch
+panel.
+
+Open flow of GN2 to the detector.  Power up the server.  Make sure the
+power switch for the detector is on.
+
+Once you have logged into the server as the ``det`` user, open a
+terminal window and do ``../start_camserver`` to power up the
+detector.
+
+Make sure the time is correct on the Pilatus server
+
+On ``xf06bm-ioc1``, restart the ``Pilatus100K`` IOC with
+
+.. code-block:: bash
+
+   dzdo manage-iocs restart Pilatus100K
+
+You should be good to go.
+
+Time synchronization
+~~~~~~~~~~~~~~~~~~~~
+
+Although the Pilatus server is configured to use an NTP server, it is
+(as of April 2025) unable to connect.  As a result, the system time is
+likely to be quite wrong, possibly by several minutes.
+
+The part of the IOC that moves images from ``/disk2`` and saves them
+on central storage either as HDF5 or tiff files requires that the
+system times on the two machines be no more than a few seconds apart.
+
+To synchronize the system time on ``xf06bm-pilatus100k-651`` with
+``xf06bm-ioc1`` do this:
+
+#. On an ``xf06bm-ioc1`` command line, enter ``date``.  This will
+   print a string like so:
+
+   .. code-block:: text
+
+      Wed Apr  2 07:35:49 PM EDT 2025
+
+   Copy that string.
+
+#. On a command line on ``xf06bm-pilatus100k-651``, do this command:
+
+   .. code-block:: text
+
+      date -s "Wed Apr  2 07:35:49 PM EDT 2025"
+
+   replacing that string with the correct date and time from
+   ``xf06bm-ioc1``.
+
+That should do it.
 
 
 

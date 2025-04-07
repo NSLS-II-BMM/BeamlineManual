@@ -170,7 +170,11 @@ Slack and Data Access
 
 At the beginning of your experiment, you will be invited to the BMM
 Slack workspace.  There you can follow along with the progress of the
-experiment in the #beamtime channel.
+experiment in the ``#pass-123456-bmm channel``, where ``123456`` will
+be the proposal number of your experiment.
+
+There is also a channel called ``#pass-123456`` which is for use as a
+discussion channel.
 
 Throughout the course of the experiment, messages and figures will be
 automatically posted to that channel.  This allows someone to keep
@@ -192,6 +196,9 @@ physically at the beamline.
    to Google Drive.  Data are now available to users via sftp with
    proper authentication.  See :numref:`Data Access (Section %s)
    <data>`.
+
+   As of the 2025-2 cycle, BMM is using the NSLS-II Slack channels.
+   The old BMM Slack with the ``#beamtime`` channel has been retired.
 
 
 

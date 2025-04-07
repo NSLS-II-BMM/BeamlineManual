@@ -52,6 +52,10 @@ There are three files in the ``startup`` folder:
    This is the first file ipython loads as it starts |bsui|.
    :numref:`See Section %s <namespace>`.
 
+``BMM_configuration.ini``
+   This windows-style INI file contains configuration information for
+   the instrumentation and network services at the beamlines.
+
 ``rois.json``
    This is a small database of ROI definitions used by the XSpress3
    configuration.
@@ -103,6 +107,47 @@ Beneath the ``startup`` folder, there are several sub-folders:
    automation :numref:`(Section %s) <automation>`
 
 
+.. _config_ini:
+
+BMM_configuration.ini
+---------------------
+
+This files controls configuration details for measurement
+instrumentation and network services.  The concept is that this file
+is edited prior to starting bsui to reflect the current state of the
+beamline and the needs of the current experiment.
+
+Much of this file consists of flags for turning specific instruments
+on and off when starting bsui.  For example, this section is used to
+enable or disable the use of the Pilatus 100K area detector and the
+Dante readout for the NSLS-II germanium detector in XAS experiments.
+
+.. code-block:: ini
+
+   [detectors]
+   # use Pilatus 100K as an available detector
+   pilatus = False
+   # use the DANTE at xf06bm-edxd1
+   dante   = False
+
+
+Additionally, there are sections with flags for controlling
+
++ electrometer use for ion chambers and the
+  electron yield detector
++ which silicon drift detectors are in use
++ which cameras (usb, analog, web) are in use
++ special instrumentation needs, e.g. Linkam stage, Lakeshore
+  temperature controller, or radiological enclosure
+
+Additional sections control configuration for
+
++ the network addresses of various services or disk locations
+  containing files and folders needed for proper operation of bsui at
+  BMM
+
++ for both the new NSLS-II Slack workspace and the older, deprecated
+  BMM Slack workspace
 
 
 .. _namespace:
@@ -319,7 +364,7 @@ Here's a brief summary of every module in the BMM profile.
     ``dcm.py``                     define monochromator ophyd objects
     ``dcm_parameters.py``          mono calibration parameters
     ``demeter.py``                 |athena| and |hephaestus| integration
-    ``derivedplot.py``             deprecated plotting capabilities
+    ``derivedplot.py``             :silver:`deprecated plotting capabilities`
     ``desc_string.py``             fix epics motor ``DESC`` fields for CSS
     ``detector_mount.py``          mostly deprecated tools for ``xafs_detx``
     ``dossier.py``                 manage writing of dossier files
@@ -353,12 +398,12 @@ Here's a brief summary of every module in the BMM profile.
     ``pilatus.py``                 Pilatus tools
     ``plans.py``                   simple plans, power cycle recovery plans
     ``prompt.py``                  customize IPython prompts
-    ``purpose.py``                 deprecated
+    ``purpose.py``                 :silver:`deprecated`
     ``raster.py``                  areascan measurement + dossier
     ``resting_state.py``           put beamline in a defined resting state
-    ``rois.py``                    deprecated
+    ``rois.py``                    :silver:`deprecated, struck tools`
     ``slits.py``                   ophyd objects and tools for BL slits
-    ``struck.py``                  deprecated |nd| interact with Struck
+    ``struck.py``                  :silver:`deprecated |nd| interact with Struck`
     ``suspenders.py``              define suspenders
     ``telemetry.py``               tools for scan telemetry and time estimates
     ``timescan.py``                time sequence plan
@@ -367,7 +412,7 @@ Here's a brief summary of every module in the BMM profile.
     ``utilities.py``               inetract with BL EPS and utilities
     ``video.py``                   record videos from USB cameras
     ``wafer.py``                   tools for wafer samples
-    ``wdywtd.py``                  deprecated user help tools
+    ``wdywtd.py``                  :silver:`deprecated user help tools`
     ``webcam_device.py``           interact with Axis webcams
     ``wheel.py``                   tools for *ex situ* sample wheel
     ``workspace.py``               acceptance tests for working environment

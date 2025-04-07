@@ -23,13 +23,14 @@ Overview
    :align: center
 
    Beamline optics layout for BMM.  Thanks to Tiffany Bowman for
-   the design of this beamline schematic.
+   this lovely beamline schematic.
 
 Source
   The source at BMM is an `NSLS-II three-pole wiggler (TPW)
-  <https://doi.org/10.1016/j.nima.2023.169008>`__.  This device has a
-  spectrum that resembles a bending magnet, but shifted to higher
-  energy compared to the NSLS-II bending magnet.
+  <https://doi.org/10.1016/j.nima.2023.169008>`__.  (See
+  :numref:`Section %s <tpw>` for some photos of the source device.)
+  This device has a spectrum that resembles a bending magnet, but
+  shifted to higher energy compared to the NSLS-II bending magnet.
 
 Collimating Mirror
   The first optical component is a paraboloid collimating mirror.

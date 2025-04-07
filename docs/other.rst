@@ -166,14 +166,100 @@ are the relevant commands:
 Linkam stage
 ------------
 
-.. todo:: Document linkam commands
+Here are the main commands for interacting with the linkam stage.
+
+``linkam.on()``
+   Turn the heater on, enable temperature feedback.
+
+``linkam.off()``
+   Turn the heater off, disable temperature feedback.
+
+``linkam.temperature()``
+   Return the current temperature of the stage.
+
+``linkam.status()``
+   Write a nicely formatted status summary to the screen.
+
+``RE(mv(linkam, TEMP))``
+   Change linkam temparature with a progress bar printed on screen.
+
+``RE(mv(busy, TIME))``
+   Wait for an equilibrium time with a progress bar printed on screen/
+
+Note that the controls are not complete.  When using the linkam stage
+as an LN2 cryostat, you need to manually turn the pump on and off
+using the CSS screen.
+
+.. admonition:: Future tech
+
+   Implement something using ``linkam.lnp_speed`` to control the pump.
+
+
+Other parts of the beamline manual related to the Linkam stage:
+
++  See :numref:`Section %s <auto_linkam>` for details about Linkam
+   automation using a spreadsheet.
+
++  See :numref:`Section %s <restart_linkam>` for instructions on
+   stopping and unmounting the Linkam stage and instructions for
+   remounting and restarting the stage.
+
++  See :numref:`Section %s <ln2_fill>` for the procedure for refilling
+   the 25L liquid nitrogen dewar.
+
++  A discussion of the homebrewed Ophyd object for the linkam stage:
+   https://nsls-ii-bmm.github.io/bluesky-by-example/linkam.html
+
+
 
 .. _lakeshore:
 
 Lakeshore controller and Displex
 --------------------------------
 
-.. todo:: Document Lakeshore commands
+
+
+Here are the main commands for interacting with the linkam stage.
+
+``lakeshore.on()``
+   Turn the heater on, enable temperature feedback.
+
+``lakeshore.off()``
+   Turn the heater off, disable temperature feedback.
+
+``lakeshore.readback.get()``
+   Return the current temperature of the stage.
+
+``lakeshore.setpoint.get()``
+   Return the current setpoint of the stage.
+
+``lakeshore.status()``
+   Write a nicely formatted status summary to the screen.
+
+``lakeshore.to(TEMP)``
+   Move to the indicated temperature with a progress bar that will
+   count down the approximate time required to make this change.  This
+   works much more reliably in the heating direction than in the
+   cooling direction.
+
+``lakeshore.units(UNIT)``
+   Switch between C and K units on the CSS screen.
+
+``lakeshore.level(POWER_LEVEL)``
+   Switch the four heater output levels.  ``low`` means that 100 mA
+   will be available for the heater.  ``medium`` is 300 mA.  ``high``
+   is 1 amp.  Any other string will be interpreted as turning the
+   heater off.  ``high`` is almost always the correct choice.
+
+
+Other parts of the beamline manual related to the Lakeshore controller
+and the Displex cryostat:
+
++ See :numref:`Section %s <auto_lakeshore>` for details about
+  Lakeshore automation using a spreadsheet.
+
++ See :numref:`Figure %s <fig-hoist-cryo>` to see how to set the
+  hoisting straps for lifting the cryostat onto the ``xafs_y`` stage.
 
 .. _wafers:
 

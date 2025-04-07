@@ -71,8 +71,8 @@ your data.
 
 .. caution:: Without an active account, a known password, and DUO
 	     Federal two-factor authentication, you will be unable to
-	     perform your experiment or to access the data from the
-	     experiment.
+	     perform your experiment and unable to access the data
+	     from the experiment.
 
 Safety Approval Form
 --------------------
@@ -93,11 +93,17 @@ on sample processing and any safety measures necessary.
 
 To submit a SAF: https://pass.bnl.gov
 
-If your experiment requires chemicals, compressed gases, lab access,
-or other equipment, please contact `Bruce Ravel
+If your experiment requires **chemicals, compressed gases, lab access,
+or other equipment**, please contact `Bruce Ravel
 <mailto:bravel@bnl.gov>`__ well ahead of your expriment.
 Transportation of hazardous materials related to your experiment to
 the BNL site and back to the home institution is your responsibility.
+
+If your experiment involves **radiological materials** (including
+depleted uranium), it is essential that you submit your SAF as early
+as possible to allow plenty of time for safety review. The SAF should
+include an attachment that clearly itemizes isotopes present including
+masses and activities for each isotope.
 
 
 Support Laboratories

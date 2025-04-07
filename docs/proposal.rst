@@ -144,7 +144,7 @@ for a normally evaluated proposal.
 
 When filling out your PU-P proposal, be sure to
 
-#. List all experiments on the "Experimenters" tab.  *This is required
+#. List all experimenters on the "Experimenters" tab.  *This is required
    so that all the people that will need access to the data will get
    access.*
 #. Answer all the research screening questions on the "Research" tab.

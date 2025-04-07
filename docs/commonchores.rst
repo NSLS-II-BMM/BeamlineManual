@@ -191,6 +191,8 @@ the outer ring.  The inner ring is known to be 26 mm away.  Thus, the
 positions of both rings are set.  This is why it is important to run 
 ``RE(find_slot())`` on an outer ring slot.
 
+.. _restart_linkam:
+
 Restart the Linkam stage
 ------------------------
 
@@ -276,6 +278,8 @@ Remount
 
 You are now ready to begin using the Linkam stage.
 
+
+.. _ln2_fill:
 
 Filling the 25 liter LN2 dewar
 ------------------------------
