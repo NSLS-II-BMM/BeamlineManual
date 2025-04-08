@@ -15,7 +15,7 @@ Proposal Writing for BMM
 XAS Experiments
 ---------------
 
-`Bruce Ravel <mailto:bravel@bnl.gov>`__ supports XAS experiments at
+Bruce Ravel (bravel@bnl.gov) supports XAS experiments at
 BMM.  If you have any questions about the capabilities of the beamline
 for XAS experiments or questions about an XAS proposal, contact him.
 
@@ -58,10 +58,10 @@ beamline staff how you intend to use your beamtime effectively.
 XRD Experiments
 ---------------
 
-`Vesna Stanic <mailto:vstanic@bnl.gov>`__ and `Jean Jordan-Sweet
-<jlj@bnl.gov>`__ support scattering experiments at BMM.  If you have
-any questions about the capabilities of the beamline for scattering
-experiments or questions about a scattering proposal, contact them.
+Vesna Stanic (vstanic@bnl.gov) and Jean Jordan-Sweet (jlj@bnl.gov)
+support scattering experiments at BMM.  If you have any questions
+about the capabilities of the beamline for scattering experiments or
+questions about a scattering proposal, contact them.
 
 BMM is equipped with a 6-circle psi goniometer, a strip detector, a
 small area detector, and point detectors.  This installation supports
@@ -208,4 +208,4 @@ with a sentence or two.
 
    Selecting the cycle for the beam time request.
 
-Any questions?  Contact `Bruce <mailto:bravel@bnl.gov>`__.
+Any questions?  Contact Bruce (bravel@bnl.gov).

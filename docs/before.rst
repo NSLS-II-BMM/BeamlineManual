@@ -94,10 +94,10 @@ on sample processing and any safety measures necessary.
 To submit a SAF: https://pass.bnl.gov
 
 If your experiment requires **chemicals, compressed gases, lab access,
-or other equipment**, please contact `Bruce Ravel
-<mailto:bravel@bnl.gov>`__ well ahead of your expriment.
-Transportation of hazardous materials related to your experiment to
-the BNL site and back to the home institution is your responsibility.
+or other equipment**, please contact Bruce Ravel (bravel@bnl.gov) well
+ahead of your expriment.  Transportation of hazardous materials
+related to your experiment to the BNL site and back to the home
+institution is your responsibility.
 
 If your experiment involves **radiological materials** (including
 depleted uranium), it is essential that you submit your SAF as early
@@ -223,12 +223,12 @@ Research Equipment Pool
 Some experimental tools are available from `the NSLS-II Research
 Equipment Pool
 <https://public.bnl.gov/sites/rep/SitePages/Home.aspx>`__.  If you
-wish to use any items from the equipment pool, contact `Bruce Ravel
-<mailto:bravel@bnl.gov>`__ well ahead of your experiment.
+wish to use any items from the equipment pool, contact Bruce Ravel
+(bravel@bnl.gov) well ahead of your experiment.
 
 If you wish to use a potentiostat in lab 4L-L09 to pre-condition
-battery or other electrochemical samples, contact `Bruce
-<mailto:bravel@bnl.gov>`__ to have a potentiostat from the equipment
+battery or other electrochemical samples, contact Bruce
+(bravel@bnl.gov) to have a potentiostat from the equipment
 pool reserved for you.
 
 

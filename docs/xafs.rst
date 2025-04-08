@@ -529,7 +529,7 @@ XAFS scan.
 
 Pause a scan and *resume*
   You can pause a scan at any time by
-  hitting :key:`Ctrl`-:key:`C` twice.  This will return you to
+  hitting :key:`Ctrl`-:key:`C`  :red:`twice`.  This will return you to
   the command line, leaving the scan in a paused state.  To *resume*
   the scan, do::
 
@@ -539,7 +539,7 @@ Pause a scan and *resume*
 
 *Stop* a scan
   You can pause a scan at any time by hitting
-  :key:`Ctrl`-:key:`C` twice.  This will return you to the
+  :key:`Ctrl`-:key:`C`   :red:`twice`.  This will return you to the
   command line, leaving the scan in a paused state.  To *end* the
   scan, do::
 
@@ -1162,45 +1162,46 @@ table below for the available elements.
 .. |Taoxide|     replace:: Ta\ :sub:`2`\ O\ :sub:`5`
 .. |Reoxide|     replace:: ReO\ :sub:`2`
 .. |Ruoxide|     replace:: RuO\ :sub:`2`
-
+.. |Brblue|      replace:: C\ :sub:`19`\ H\ :sub:`10`\ Br\ :sub:`4`\ O\ :sub:`5`\ S
 
 
 .. table:: Reference wheel contents
    :name:  tab-reference-wheel
    :align: left
 
-   ============   ========        ===================     ============    ========        ===============
-    Ring / slot    Element         Material                Ring / slot     Element         Material        
-   ============   ========        ===================     ============    ========        ===============
-   Outer 1         empty           for alignment           Inner 1         Cs              |Csnitrate|
-   Outer 2         Ti              foil                    Inner 2         La              |Lahydroxide|
-   Outer 3         V               foil                    Inner 3         Ce              |Ceoxide|
-   Outer 4         Cr              foil                    Inner 4         Pr              |Proxide|
-   Outer 5         Mn              metal powder            Inner 5         Nd              |Ndoxide|
-   Outer 6         Fe              foil                    Inner 6         Sm              |Smoxide|
-   Outer 7         Co              foil                    Inner 7         Eu              |Euoxide|
-   Outer 8         Ni              foil                    Inner 8         Gd              |Gdoxide|
-   Outer 9         Cu              foil                    Inner 9         Tb              |Tboxide|
-   Outer 10        Zn              foil                    Inner 10        Dy              |Dyoxide|
-   Outer 11        Ga              |Gaoxide|               Inner 11        Ho              |Hooxide|
-   Outer 12        Ge              |Geoxide|               Inner 12        Er              |Eroxide|
-   Outer 13        As              |Asoxide|               Inner 13        Tm              |Tmoxide|
-   Outer 14        Se              metal powder            Inner 14        Yb              |Yboxide|
-   Outer 15        Br              bromophenol blue        Inner 15        Lu              |Luoxide|
-   Outer 16        Zr              foil                    Inner 16        Rb              |Rbcarbonate|
-   Outer 17        Nb              foil                    Inner 17        Ba              *<absent>*
-   Outer 18        Mo              foil                    Inner 18        Hf              |Hfoxide|
-   Outer 19        Pt              foil                    Inner 19        Ta              |Taoxide|
-   Outer 20        Au              foil                    Inner 20        W               *<absent>*
-   Outer 21        Pb              foil                    Inner 21        Re              |Reoxide|
-   Outer 22        Bi              |Bioxide|               Inner 22        Os              *<absent>*
-   Outer 23        Sr              |Srtitanate|            Inner 23        Sc              metal powder
-   Outer 24        Y               foil                    Inner 24        Ru              |Ruoxide|
-   ============   ========        ===================     ============    ========        ===============
+   =============      ========        ===================     ==============      ========        ===============
+    Ring / slot       Element         Material                Ring / slot         Element         Material        
+   =============      ========        ===================     ==============      ========        ===============
+   **Outer 1**         empty           for alignment           **Inner 1**         Cs              |Csnitrate|
+   **Outer 2**         Ti              foil                    **Inner 2**         La              |Lahydroxide|
+   **Outer 3**         V               foil                    **Inner 3**         Ce              |Ceoxide|
+   **Outer 4**         Cr              foil                    **Inner 4**         Pr              |Proxide|
+   **Outer 5**         Mn              metal powder            **Inner 5**         Nd              |Ndoxide|
+   **Outer 6**         Fe              foil                    **Inner 6**         Sm              |Smoxide|
+   **Outer 7**         Co              foil                    **Inner 7**         Eu              |Euoxide|
+   **Outer 8**         Ni              foil                    **Inner 8**         Gd              |Gdoxide|
+   **Outer 9**         Cu              foil                    **Inner 9**         Tb              |Tboxide|
+   **Outer 10**        Zn              foil                    **Inner 10**        Dy              |Dyoxide|
+   **Outer 11**        Ga              |Gaoxide|               **Inner 11**        Ho              |Hooxide|
+   **Outer 12**        Ge              |Geoxide|               **Inner 12**        Er              |Eroxide|
+   **Outer 13**        As              |Asoxide|               **Inner 13**        Tm              |Tmoxide|
+   **Outer 14**        Se              metal powder            **Inner 14**        Yb              |Yboxide|
+   **Outer 15**        Br              bromophenol blue        **Inner 15**        Lu              |Luoxide|
+   **Outer 16**        Zr              foil                    **Inner 16**        Rb              |Rbcarbonate|
+   **Outer 17**        Nb              foil                    **Inner 17**        Ba              *<absent>*
+   **Outer 18**        Mo              foil                    **Inner 18**        Hf              |Hfoxide|
+   **Outer 19**        Pt              foil                    **Inner 19**        Ta              |Taoxide|
+   **Outer 20**        Au              foil                    **Inner 20**        W               *<absent>*
+   **Outer 21**        Pb              foil                    **Inner 21**        Re              |Reoxide|
+   **Outer 22**        Bi              |Bioxide|               **Inner 22**        Os              *<absent>*
+   **Outer 23**        Sr              |Srtitanate|            **Inner 23**        Sc              metal powder
+   **Outer 24**        Y               foil                    **Inner 24**        Ru              |Ruoxide|
+   =============      ========        ===================     ==============      ========        ===============
 
 + For Th L\ :sub:`3`: Bi\ :sub:`1` will be used (outer 22)
 + For U L\ :sub:`3`: Y K will be used (outer 24)
 + For Pu L\ :sub:`3`: Zr K will be used (outer 16)
++ Bromophenol blue: |Brblue|
 
 Four elements are missing: Ba, W, & Os, and Ir.
 

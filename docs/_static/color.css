@@ -40,6 +40,11 @@
     color: red;
 }
 
+.boldred {
+    color: #bd162c;
+    font-weight: bold;
+}
+
 .magenta {
     color: magenta;
 }

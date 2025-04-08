@@ -7,6 +7,8 @@
 
    See the LICENSE file for details.
 
+.. role:: boldred
+
 .. _pds:
 
 Photon Delivery System
@@ -43,8 +45,8 @@ Collimating Mirror
      is in the correct orientation for collimation and delivery of
      beam through the ratchet wall.  
 
-     **Moving any first mirror motor runs the risk of leaving the
-     first mirror in a non-functional state.**
+     :boldred:`Moving any first mirror motor runs the risk of leaving the
+     first mirror in a non-functional state!`
 
 Monochromator
   The collimated beam then hits the double crystal monochromator
