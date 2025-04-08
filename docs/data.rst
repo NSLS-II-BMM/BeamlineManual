@@ -50,7 +50,7 @@ You will need an sftp client.
 + **Linux users:** Your desktop file manager likely has an sftp client
   built in.  Try typing
   ``sftp://<username>@sftp.nsls2.bnl.gov`` into your file
-  manager or creat a new network drive using ``ssh`` and
+  manager or create a new network drive using ``ssh`` and
   ``sftp.nsls2.bnl.gov``.
 
   `sshfs <https://github.com/libfuse/sshfs>`__ is an
@@ -227,8 +227,9 @@ recommend that you use sftp to access your data.  However,
 Globus is an option.
 
 To use Globus, you must transfer data to a Globus endpoint at your
-institution to which you have access.  Alternately, you can run
-`Globus Connect Personal (GCP)
+institution to which you have access.  
+
+Alternately, you can run `Globus Connect Personal (GCP)
 <https://app.globus.org/collections/gcp>`__ on your own computer.
 Follow the download and installation instructions and start an
 instance of GCP on your computer.
@@ -240,7 +241,7 @@ In the remote panel on the left side of the page, navigate to your
 proposal directory, which will be something like
 ``/nsls2/data/bmm/proposals/2024-3/pass-123456``, where you would
 replace ``2024-3`` with the operations cycle of your visit to BMM and
-replace ``123456`` with your experiments proposal number.
+replace ``123456`` with the proposal number of your experiment.
 
 In the local panel on the right side of the page, navigate to the
 location to which you want to download your data.
@@ -302,6 +303,20 @@ Using the VDI virtual Desktop
 -----------------------------
 
 .. todo:: Details needed
+
+Outline:
+
++ Point your browser at https://vdi.nsls2.bnl.gov/
++ Either download the client app or use the browser.  These are the
+  two choices offered on the landing page.
++ Open an N2SN linux desktop
++ In terminal or with file browser, can navigate to
+  ``/nsls2/data/bmm/proposals/<cycle>/pass-123456``.
+
+Issues:
+
++ Need to give advice on navigating linux desktop
++ Seems to be no Athena
 
 
 Accessing data via Tiled
@@ -416,7 +431,7 @@ includes data security.
 
 As a result, our Data Science and Systems Integration team at NSLS-II
 has been begun moving the beamlines to a data acquisition model that
-includes sounds data security practices.  BMM volunteered to be an
+includes sound data security practices.  BMM volunteered to be an
 early adopter of the new data security practices.  We now provide an
 excellent user experience at BMM that also includes secure data
 management.
