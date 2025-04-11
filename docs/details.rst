@@ -1225,6 +1225,63 @@ That should do it.
 
 
 
+.. _table_height:
+
+Setting the table height
+------------------------
+
+This section outlines how the table height settings in the `Modes
+lookup table
+<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/lookup_table/Modes.xlsx>`__
+were found. 
+
+For starters, the positions of ``dm3_bct`` in each of the modes were
+established.  This was done at 300 eV above the Pt L3 edge for modes
+A, D, and E; the Fe K edge for mode C, and the Cr K edge for mode F.
+
+Armed with set ``dm3_bct`` positions, the setup shown in
+:numref:`Figure %s <fig-tableheightmeasurement>` was used to find the positions
+of the XAFS table jacks.
+
+
+.. _fig-tableheightmeasurement:
+.. figure:: _images/slits_table_height.jpg
+   :target: _images/slits_table_height.jpg
+   :width: 100%
+   :align: center
+
+   Table height measurement.
+
+The I\ :sub:`r` detector is moved downstream of the two downstream
+jacks on the XAFS table.  The I\ :sub:`t` detector is moved downstream
+slightly to the other side of the upstream jack.
+
+The manual slit assembly is mounted such that the opening is about 1/4
+mm tall and centered in its housing.  The height of the slit opening
+is carefully set to be at the same height as the centers of all the
+ion chambers.
+
+With the slits in front of I\ :sub:`t`, do a scan of the ``xafs_yu``
+motor looking at the signal on I\ :sub:`t`.  Move to the peak of this
+scan.
+
+With the slits in front of the I\ :sub:`r` detector, adjust
+``xafs_ydo`` and ``xafs_ydi`` in unison to optimize the signal on I\
+:sub:`r`. 
+
+Move the slits back to the first position and verify that the
+``xafs_yu`` position still maximized the signal.
+
+Record these positions in the `Modes lookup table
+<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/lookup_table/Modes.xlsx>`__.
+
+For the lower energy edges, insert the flight path borrowed from the
+XRD end station in between I\ :sub:`t`  and I\ :sub:`r`.  Run He
+through to reduce the attenuation of the beam at lower energies.
+
+
+
+
 .. _holding_current:
 
 XAFS table holding current

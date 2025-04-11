@@ -150,6 +150,7 @@ Click OK to finish this configuration, then connect to the host.
 Connecting to the NSLS2 SFTP host will open up the password entry dialog.
 
 
+
 .. _fig-fz-password:
 .. figure:: _images/filezilla_password.png
    :target: _images/filezilla_password.png
@@ -299,6 +300,8 @@ the command line.  From there, simply use |athena|'s `File menu
 to load data from your proposal folder.
 
 
+.. _using_vdi:
+
 Using the VDI virtual Desktop
 -----------------------------
 
@@ -436,3 +439,95 @@ early adopter of the new data security practices.  We now provide an
 excellent user experience at BMM that also includes secure data
 management.
 
+
+Map of the data server
+----------------------
+
+Each beamline has a storage location.  In the case of BMM, the data
+are at ``/nsls2/data/bmm/proposals``.  As show in the right of
+:numref:`Figure %s <datastorage>`, the proposals folder has
+folders for each cycle.  In each cycle folder, there are folders for
+the experiments in that cycle.
+
+The permissions in the cycle folder,
+e.g. ``/nsls2/data/bmm/proposals/2025-1``, are such that no one can
+write files, although anyone is able to see the list of experiment
+folders.
+
+The permissions in an experiment folder,
+e.g. ``/nsls2/data/bmm/proposals/2025-1/pass-316886``, are such that
+anyone listed on the proposal can read and write.  Beamline staff are
+also able to read and write in all experiment folders.  This extends
+to making new folders, which will inherit the same permissions.  Thus,
+the user is able to organize their data as they wish.  New files |nd|
+|athena| project files, spreadsheets, PowerPoint files, whatever |nd|
+can also be written to this folder.
+
+.. attention::
+
+   The beamline user, ``xf06bm``, **cannot** read or write in the
+   experiment folder.  To interact with the contents of the experiment
+   folder, users must authenticate themselves.  This can be done with
+   :numref:`VDI (see Section %s) <using_vdi>` or by using the ``su``
+   command in a terminal window.
+
+
+
+.. subfigure::  ABC
+   :layout-sm: ABC
+   :gap: 8px
+   :subcaptions: above
+   :name: datastorage
+   :class-grid: outline
+
+   .. image:: _images/datasec/proposals.png
+
+   .. image:: _images/datasec/cycle.png
+
+   .. image:: _images/datasec/data.png
+
+   (Left) The beamline proposals folder contains a folder for every
+   cycle since 2014-3, when NSLS-II started.  (Middle) Each cycle
+   folder contains a folder for each experiment that cycle. (Right)
+   The experiment folder is where your data are written.
+
+
+In each experiment folder is a folder called ``assets``.  The
+permissions in the assets folder and all its subfolders are such that
+users and beamline staff can read files, but cannot write, modify, or
+delete files.
+
+In the asstes folder, there is one folder for each instrument at the
+beamline.  Each instrument is configured to write its data into its
+assets folder.  Because this is raw, unprocessed, uninterpreted data,
+it is considered a sort of ground truth of the measurement.  That is
+the reason for the restrictive permissions on the assets folder.  Any
+interpretation of assets data by the user should be written elsewhere
+in the experiments folder.
+
+For example, the HDF5 files containing the XRF spectra from the
+Xspress3 at each point in an XAFS scan are written to the
+``xspress3-1`` folder.
+
+
+
+.. subfigure::  AB
+   :layout-sm: AB
+   :gap: 8px
+   :subcaptions: above
+   :name: assetsfolder
+   :class-grid: outline
+
+   .. image:: _images/datasec/assets.png
+
+   .. image:: _images/datasec/dated.png
+
+   (Left) Assets folder contains one folder for each instrument at the
+   beamline. (Right) Instrument folders often have dated subfolders.
+   The Ophyd objects interacting with these instruments are often
+   configured to use the dated folders automatically.
+
+
+.. note::
+
+   The data folders for all beamlines work as described here.
