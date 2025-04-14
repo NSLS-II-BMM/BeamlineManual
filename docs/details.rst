@@ -1043,8 +1043,8 @@ format is identical to the format used on the tiff plugin screen.
 ``%s%s_%3.3d.tiff`` is a good choice.
 
 .. _fig-pilatus_plugin:
-.. figure:: _images/pilatus_plugin.png
-   :target: _images/pilatus_plugin.png
+.. figure:: _images/Pilatus/pilatus_plugin.png
+   :target: _images/Pilatus/pilatus_plugin.png
    :width: 70%
    :align: center
 
@@ -1079,8 +1079,8 @@ The write mode **must** be ``stream`` and auto save **must** be
 Much of this is handled in Bluesky by the ophyd object.
 
 .. _fig-tiff_plugin:
-.. figure:: _images/tiff_plugin.png
-   :target: _images/tiff_plugin.png
+.. figure:: _images/Pilatus/tiff_plugin.png
+   :target: _images/Pilatus/tiff_plugin.png
    :width: 70%
    :align: center
 
@@ -1097,8 +1097,8 @@ pilatus object is instantiated.
 
 
 .. _fig-roi1:
-.. figure:: _images/pilatus_rois_1.png
-   :target: _images/pilatus_rois_1.png
+.. figure:: _images/Pilatus/pilatus_rois_1.png
+   :target: _images/Pilatus/pilatus_rois_1.png
    :width: 70%
    :align: center
 
@@ -1112,8 +1112,8 @@ will be outlined on the image.
 
 
 .. _fig-roi2:
-.. figure:: _images/pilatus_rois_2.png
-   :target: _images/pilatus_rois_2.png
+.. figure:: _images/Pilatus/pilatus_rois_2.png
+   :target: _images/Pilatus/pilatus_rois_2.png
    :width: 70%
    :align: center
 	   

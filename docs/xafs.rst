@@ -1129,8 +1129,8 @@ where ``Xx`` is the one- or two-letter symbol of the element.  See the
 table below for the available elements.
 
 .. _fig-refwheel:
-.. figure:: _images/Ref_wheel.jpg
-   :target: _images/Ref_wheel.jpg
+.. figure:: _images/stages/ref_wheel.jpg
+   :target: _images/stages/ref_wheel.jpg
    :width: 70%
    :align: center
 

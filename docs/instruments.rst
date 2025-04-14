@@ -124,8 +124,8 @@ An older model of the `Pilatus 100K
 is available.
 
 .. _fig-pilatusINST:
-.. figure::  _images/pilatus.jpg
-   :target: _images/pilatus.jpg
+.. figure:: _images/Pilatus/pilatus.jpg
+   :target: _images/Pilatus/pilatus.jpg
    :width: 50%
    :align: center
 
@@ -167,8 +167,8 @@ the sample holder to the incident beam.
 
 
 .. _fig-wheel_stageINST:
-.. figure::  _images/wheel_stage.jpg
-   :target: _images/wheel_stage.jpg
+.. figure:: _images/stages/wheel_stage.jpg
+   :target: _images/stages/wheel_stage.jpg
    :width: 70%
    :align: center
 
@@ -379,9 +379,9 @@ in the form of an Eulerian cradle and a `compact rotary stage
    :name: fig-pitchroll_rotation
    :class-grid: outline
 
-   .. image:: _images/tilt_stage.jpg
+   .. image:: _images/stages/tilt_stage.jpg
 
-   .. image:: _images/small_rotation_stage.jpg
+   .. image:: _images/stages/small_rotation_stage.jpg
 
    (Left) The pitch and roll stage.  (Right) The small rotation stage
 

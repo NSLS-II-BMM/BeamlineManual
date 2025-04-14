@@ -104,16 +104,16 @@ Here are some photos identifying these axes:
 
 
 .. _fig-xy:
-.. figure:: _images/samplexy_stages.jpg
-   :target: _images/samplexy_stages.jpg
+.. figure:: _images/stages/samplexy_stages.jpg
+   :target: _images/stages/samplexy_stages.jpg
    :width: 50%
    :align: center
 
    The two-axis main sample stage: ``xafs_x`` and ``xafs_y``.
 
 .. _fig-det_xyz:
-.. figure::  _images/det_xyz.jpg
-   :target: _images/det_xyz.jpg
+.. figure::  _images/stages/det_xyz.jpg
+   :target: _images/stages/det_xyz.jpg
    :width: 70%
    :align: center
 
@@ -121,8 +121,8 @@ Here are some photos identifying these axes:
    ``xafs_detx``, ``xafs_dety``, and ``xafs_detz``.
 
 .. _fig-detref:
-.. figure:: _images/reference_stages.jpg
-   :target: _images/reference_stages.jpg
+.. figure:: _images/stages/reference_stages.jpg
+   :target: _images/stages/reference_stages.jpg
    :width: 50%
    :align: center
 
@@ -137,16 +137,16 @@ Here are some photos identifying these axes:
    :name: fig-pr_rots
    :class-grid: outline
 
-   .. image:: _images/tilt_stage.jpg
+   .. image:: _images/stages/tilt_stage.jpg
 
-   .. image:: _images/small_rotation_stage.jpg
+   .. image:: _images/stages/small_rotation_stage.jpg
 
    (Left) The pitch and roll stage: ``xafs_pitch`` and ``xafs_roll``.
    (Right) The small rotation stage: ``xafs_rots``
 
 .. _fig-garot:
-.. figure:: _images/xafs_garot.jpg
-   :target: _images/xafs_garot.jpg
+.. figure:: _images/stages/xafs_garot.jpg
+   :target: _images/stages/xafs_garot.jpg
    :width: 70%
    :align: center
 
@@ -154,8 +154,8 @@ Here are some photos identifying these axes:
    and roll stage: ``xafs_garot``.
 
 .. _fig-spare:
-.. figure:: _images/xafs_spare.jpg
-   :target: _images/xafs_spare.jpg
+.. figure:: _images/stages/xafs_spare.jpg
+   :target: _images/stages/xafs_spare.jpg
    :width: 70%
    :align: center
 

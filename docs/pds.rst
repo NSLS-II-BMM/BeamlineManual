@@ -146,8 +146,8 @@ is, in turn, mounted on an XY stage for alignment.  See
 wheel.
 
 .. _fig-ref_wheel:
-.. figure::  _images/ref_wheel.jpg
-   :target: _images/ref_wheel.jpg
+.. figure:: _images/stages/ref_wheel.jpg
+   :target: _images/stages/ref_wheel.jpg
    :width: 50%
    :align: center
 

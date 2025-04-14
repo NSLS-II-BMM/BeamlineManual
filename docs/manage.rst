@@ -538,8 +538,8 @@ Starting the virtual machine
   folder as explained below.
 
 .. _fig-winvm:
-.. figure:: _images/Winvm_startup.png
-   :target: _images/Winvm_startup.png
+.. figure:: _images/WinVM/Winvm_startup.png
+   :target: _images/WinVM/Winvm_startup.png
    :width: 70%
    :align: center
 
@@ -556,8 +556,8 @@ To start a new experiment, you first have to disconnect the old drive
 (if connected).  This is likely mounted as the ``Z:`` drive.
 
 .. _fig-winstaledrive:
-.. figure:: _images/Windows_stale_folder.png
-   :target: _images/Windows_stale_folder.png
+.. figure:: _images/WinVM/Windows_stale_folder.png
+   :target: _images/WinVM/Windows_stale_folder.png
    :width: 70%
    :align: center
 
@@ -568,8 +568,8 @@ Disconnect the stale ``Z:`` drive by right clicking on its entry in
 the side bar and selecting "Disconnect".
 
 .. _fig-windisconnect:
-.. figure:: _images/Windows_disconnect.png
-   :target: _images/Windows_disconnect.png
+.. figure:: _images/WinVM/Windows_disconnect.png
+   :target: _images/WinVM/Windows_disconnect.png
    :width: 70%
    :align: center
 
@@ -579,8 +579,8 @@ Next, click on "This PC" in the sidebar, then click on the button that
 says "Map network drive".
 
 .. _fig-winmapnewdrive:
-.. figure:: _images/Windows_map_new_drive.png
-   :target: _images/Windows_map_new_drive.png
+.. figure:: _images/WinVM/Windows_map_new_drive.png
+   :target: _images/WinVM/Windows_map_new_drive.png
    :width: 70%
    :align: center
 
@@ -603,8 +603,8 @@ using different credentials" should be unchecked.
 
 
 .. _fig-winspecifynewdrive:
-.. figure:: _images/Windows_specify_new_drive.png
-   :target: _images/Windows_specify_new_drive.png
+.. figure:: _images/WinVM/Windows_specify_new_drive.png
+   :target: _images/WinVM/Windows_specify_new_drive.png
    :width: 70%
    :align: center
 
@@ -622,8 +622,8 @@ Configure the Hiden software to write its data files into the
 ``assets\hpr20-1`` folder.
 
 .. _fig-winsassetsfolder:
-.. figure:: _images/Windows_assets_folder.png
-   :target: _images/Windows_assets_folder.png
+.. figure:: _images/WinVM/Windows_assets_folder.png
+   :target: _images/WinVM/Windows_assets_folder.png
    :width: 70%
    :align: center
 
