@@ -64,7 +64,7 @@ Sample stages
 
 These stages sit on top of the XAFS optical table.  
 
-.. table:: XAFS sample stages
+.. table:: XAFS experimental stages
    :name:  xafs-stages
    :align: left
 
@@ -84,7 +84,88 @@ These stages sit on top of the XAFS optical table.
    ``xafs_pitch`` tilt         degrees    Huber tilt stage         |plus| more positive
    ``xafs_roll``  tilt         degrees    Huber tilt stage         |plus| more positive
    ``xafs_rots``  rotary       degrees    small rotary stage       |plus| clockwise, - |widdershins|
+   ``xafs_garot`` rotary       degrees    g.a. rotary stage        |plus| clockwise, - |widdershins|
+   ``xafs_yu``    linear       mm         u.s table jack           |plus| up, - down
+   ``xafs_ydo``   linear       mm         d.s o.b. table jack      |plus| up, - down
+   ``xafs_ydi``   linear       mm         d.s i.b. table jack      |plus| up, - down
+   ``xafs_spare`` linear       mm         spare linear stage       
    ============== ===========  =========  =======================  =====================================
+
+g.a. = glancing angle |blackcircle|
+o.b. = outboard  |blackcircle|
+i.b. = inboard  |blackcircle|
+u.s. = upstream  |blackcircle|
+d.s. = downstream
+
+----
+
+
+Here are some photos identifying these axes:
+
+
+.. _fig-xy:
+.. figure:: _images/samplexy_stages.jpg
+   :target: _images/samplexy_stages.jpg
+   :width: 50%
+   :align: center
+
+   The two-axis main sample stage: ``xafs_x`` and ``xafs_y``.
+
+.. _fig-det_xyz:
+.. figure::  _images/det_xyz.jpg
+   :target: _images/det_xyz.jpg
+   :width: 70%
+   :align: center
+
+   The three-axis stage holding the fluorescence detector:
+   ``xafs_detx``, ``xafs_dety``, and ``xafs_detz``.
+
+.. _fig-detref:
+.. figure:: _images/reference_stages.jpg
+   :target: _images/reference_stages.jpg
+   :width: 50%
+   :align: center
+
+   The three-axis stage holding the reference wheel: ``xafs_ref``,
+   ``xafs_refx``, and ``xafs_refy``.
+
+
+.. subfigure::  AB
+   :layout-sm: AB
+   :subcaptions: above
+   :gap: 8px
+   :name: fig-pr_rots
+   :class-grid: outline
+
+   .. image:: _images/tilt_stage.jpg
+
+   .. image:: _images/small_rotation_stage.jpg
+
+   (Left) The pitch and roll stage: ``xafs_pitch`` and ``xafs_roll``.
+   (Right) The small rotation stage: ``xafs_rots``
+
+.. _fig-garot:
+.. figure:: _images/xafs_garot.jpg
+   :target: _images/xafs_garot.jpg
+   :width: 70%
+   :align: center
+
+   The glancing angle rotary stage, here sitting on top of the pitch
+   and roll stage: ``xafs_garot``.
+
+.. _fig-spare:
+.. figure:: _images/xafs_spare.jpg
+   :target: _images/xafs_spare.jpg
+   :width: 70%
+   :align: center
+
+   The spare linear stage: ``xafs_spare``.
+
+
+
+Basic motor commands
+--------------------
+
 
 Configuration and position of the motors can be queried easily.  In
 the following examples, the ``xafs_y`` motor is used.  The commands
@@ -339,8 +420,8 @@ error function to the ``xafs_y`` scan versus It, selecting the peak of
 the pitch scan, then selecting the peak of the ``xafs_y`` scan versus
 fluorescence.
 
-.. _fig-ga_alignment:
-.. figure::  _images/spinner-alignment.png
+.. _fig-ga_alignment_plot:
+.. figure:: _images/spinner-alignment.png
    :target: _images/spinner-alignment.png
    :width: 50%
    :align: center

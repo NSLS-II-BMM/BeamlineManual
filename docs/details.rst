@@ -1426,15 +1426,15 @@ Zoom calls in the hutch
 -----------------------
 
 ``xf06bm-ws5`` (``10.68.40.225``) is the System 76 Meerkat mounted on
-the inboard wall of the end station behind the XAS table. This machine
-is intended to allow the users in the hutch to join a Zoom chat from
-within the hutch. This helps Bruce provide user support from home.
+the inboard wall of the end station behind the XAS table and just
+below the lower, right corner of the screen.  This machine is intended
+to allow the users in the hutch to join a Zoom chat from within the
+hutch.  This allows staff to provide user support from home.
 
-.. todo::  Need a new photo
 
 .. _fig-ws5:
-.. figure:: _images/Xf06bm-ws5.jpg
-   :target: _images/Xf06bm-ws5.jpg
+.. figure:: _images/xf06bm-ws5.jpg
+   :target: _images/xf06bm-ws5.jpg
    :width: 70%
    :align: center
 
@@ -1447,16 +1447,16 @@ There are a number of peripherals attached to ``xf06bm-ws5``:
 + A screen. This is the screen mounted in the back wall of
   the hutch using an articulated arm.
 
-+ A reasonably loud speaker.  This is the black ball-shaped item
-  which usually sits underneath the reference ion chamber.
++ A reasonably loud speaker.  This is the black ball-shaped item which
+  usually sits underneath the I\ :sub:`r` chamber.  Could be louder...
 
 + A good microphone. This is the Blue Yeti on a boom above the I\
-  :sub:`r` chamber. It has good noise cancellation so the din from the
+  :sub:`r` chamber.  It has good noise cancellation so the din from the
   XSpress3 should not effect voice quality.  It is, however, important
-  that the speaker face the microphone rather than the screen.
+  that the speaker face the microphone when speaking.
 
-+ A decent camera. This is the Nexigo mounted on the inboard wall to t
-  he right of the screen.
++ A decent camera. This is the Nexigo mounted on the inboard wall to 
+  the right of the screen.
 
 
 While these devices are all connected to ``xf06bm-ws5`` and powered
