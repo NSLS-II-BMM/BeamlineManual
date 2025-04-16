@@ -1224,6 +1224,42 @@ To synchronize the system time on ``xf06bm-pilatus100k-651`` with
 That should do it.
 
 
+.. _rack_cabinets:
+
+Shelving Units and Cabinets
+---------------------------
+
+===============    =======    ======================================================
+ Storage unit       Short      Purpose
+===============    =======    ======================================================
+ Shelf 1            S-1        Outside hutch |nd| this n that
+ Shelf 2            S-2        Outside hutch |nd| BioLogic, Linkam, cat6 cables
+ Shelf 3            S-3        Inside hutch |nd| experiment supplies
+ Cabinet 1          C-1        IBM storage
+ Cabinet 2          C-2        IBM storage
+ Cabinet 3          C-3        IBM storage
+ Cabinet 4          C-4        Cryostat parts, mono & mirror parts, yield detector
+ Cabinet 5          C-5        Samples, old stuff
+ Cabinet 6          C-6        Old instruments, Poly-Flo tubing, misc. cables
+ Cabinet 7          C-7        IBM storage
+ Cabinet 8          C-8        Books, games, office supplies, USB & video cables
+===============    =======    ======================================================
+
+
+
+.. _fig-racks_and_cabinets:
+.. figure:: _images/racks_cabinets.png
+   :target: _images/racks_cabinets.png
+   :width: 100%
+   :align: center
+
+   Shelf and cabinet locations
+
+
+
+
+
+
 
 .. _table_height:
 
@@ -1240,8 +1276,8 @@ established.  This was done at 300 eV above the Pt L3 edge for modes
 A, D, and E; the Fe K edge for mode C, and the Cr K edge for mode F.
 
 Armed with set ``dm3_bct`` positions, the setup shown in
-:numref:`Figure %s <fig-tableheightmeasurement>` was used to find the positions
-of the XAFS table jacks.
+:numref:`Figure %s <fig-tableheightmeasurement>` was used to find the
+positions of the XAFS table jacks.
 
 
 .. _fig-tableheightmeasurement:
@@ -1308,7 +1344,7 @@ Here is the text of that comment:
 
 .. code-block:: text
 
-   ; Note1: Geobrick coontrollers when killed effectively short the motor cables together providing an
+   ; Note1: Geobrick controllers when killed effectively short the motor cables together providing an
    ; brake due to back EMF when the motor is rotated. Most axis can be safely killed without losing 
    ; position, this is certainly the case for most lead screw drives (ball screws may require a 
    ; holding current).

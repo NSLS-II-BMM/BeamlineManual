@@ -20,7 +20,7 @@ that look like this:
 
    This is a caution box.
 
-Failure to do the tasks in caution boxes will result in delay or
+Failure to do the tasks on this page will result in delay or
 cancellation of your experiment.
 
 :TL;DR: *pay attention to the caution boxes.*
@@ -53,6 +53,11 @@ Apply for a BNL Guest appointment: https://www.bnl.gov/ps/userguide/beforearriva
 
 .. caution::  Without an active appointment, you will not be allowed
 	      on site and will be turned away at the main gate. 
+
+.. note:: When you arrive at BNL, you must have proper identification.
+	  Here is guidance on the identification requirements:
+	  https://www.bnl.gov/guv/id.php
+
 
 BNL Domain Account
 ------------------
@@ -154,10 +159,10 @@ Electrochemistry and battery science
 
    Radionuclide samples must be prepared and properly contained at the
    home institution.  NSLS-II has no lab available for work on
-   radiological materials.  Samples with depleted uranium and uranium
-   at low or environmentally relevant concentrations **are**
-   considered to be radiological samples at NSLS-II and must be
-   treated as such.
+   radiological materials.  Samples with depleted uranium, uranium at
+   low or environmentally relevant concentrations, or naturally
+   occurring uranium or thorium **are** considered to be radiological
+   samples at NSLS-II and must be treated as such.
 
 Requests for using gloveboxes should be discussed prior to submitting
 the SAF, contact Bruce Ravel (bravel@bnl.gov) and/or Syed Khalid
