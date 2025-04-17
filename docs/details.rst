@@ -191,8 +191,8 @@ the in-hutch patch panel.
 
 
 .. _fig-bncpatch:
-.. figure:: _images/Bnc_map.png
-   :target: _images/Bnc_map.png
+.. figure:: _images/infrastructure/Bnc_map.png
+   :target: _images/infrastructure/Bnc_map.png
    :width: 100%
    :align: center
 
@@ -242,11 +242,11 @@ delivery to the mono and the filter assemblies.
    :name: fig-diwater
    :class-grid: outline
 
-   .. image:: _images/Water_flow_CSS.png
+   .. image:: _images/infrastructure/Water_flow_CSS.png
 
-   .. image:: _images/Water_flow_valves_1.jpg
+   .. image:: _images/infrastructure/Water_flow_valves_1.jpg
 
-   .. image:: _images/Water_flow_valves_2.jpg
+   .. image:: _images/infrastructure/Water_flow_valves_2.jpg
 
    (Left) The CSS utilities screen where the water valve controls are
    found.  (Middle) A view into the FOE.  (Right) The inboard wall
@@ -392,9 +392,9 @@ Some photos of the patch panel:
    :name: fig-dm3cat6
    :class-grid: outline
 
-   .. image:: _images/DM3_patch_panel.jpg
+   .. image:: _images/infrastructure/DM3_patch_panel.jpg
 
-   .. image:: _images/DM3_first_cat6.jpg
+   .. image:: _images/infrastructure/DM3_first_cat6.jpg
 
    (Left) CAT6 patch panel at DM3.  (Right) Lowest numbered label on
    the CAT6 cables in the DM3 patch panel
@@ -554,8 +554,8 @@ the XAFS table.
    needle valves.
 
 .. _fig-inertgas:
-.. figure:: _images/Gas_handling.png
-   :target: _images/Gas_handling.png
+.. figure:: _images/infrastructure/Gas_handling.png
+   :target: _images/infrastructure/Gas_handling.png
    :width: 100%
    :align: center
 
@@ -585,8 +585,8 @@ Logitech controller
 -------------------
 
 .. _fig-logitech:
-.. figure:: _images/Logitech.png
-   :target: _images/Logitech.png
+.. figure:: _images/instrumentation/Logitech.png
+   :target: _images/instrumentation/Logitech.png
    :width: 100%
    :align: center
 
@@ -1248,8 +1248,8 @@ Shelving Units and Cabinets
 
 
 .. _fig-racks_and_cabinets:
-.. figure:: _images/racks_cabinets.png
-   :target: _images/racks_cabinets.png
+.. figure:: _images/infrastructure/racks_cabinets.png
+   :target: _images/infrastructure/racks_cabinets.png
    :width: 100%
    :align: center
 
@@ -1387,11 +1387,11 @@ with 10% unless it is lifting something heavy".
    :name: fig-holding-current
    :class-grid: outline
 
-   .. image:: _images/timeout.png
+   .. image:: _images/infrastructure/timeout.png
 
-   .. image:: _images/holding_current.png
+   .. image:: _images/infrastructure/holding_current.png
 
-   .. image:: _images/drive_current.png
+   .. image:: _images/infrastructure/drive_current.png
 
    (Left) The P-variables window showing parameters P701-708.  The
    values P701, P702, and P703 are for axes 1, 2, and 3.  The value of
@@ -1425,8 +1425,8 @@ This reading will tell you the internal pressure according to the
 table in the snapshot below.  
 
 .. _fig-votexpressure:
-.. figure:: _images/Vortex_pressure.jpeg
-   :target: _images/Vortex_pressure.jpeg
+.. figure:: _images/detectors/Vortex_pressure.jpeg
+   :target: _images/detectors/Vortex_pressure.jpeg
    :width: 40%
    :align: center
 

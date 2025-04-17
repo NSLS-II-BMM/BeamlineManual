@@ -38,8 +38,8 @@ Each of the spreadsheets looks much like this, although there are some
 differences in the columns corresponding to the different instruments.
 
 .. _fig-wheel-spreadsheet:
-.. figure::  _images/wheel_spreadsheet.png
-   :target: _images/wheel_spreadsheet.png
+.. figure:: _images/spreadsheets/wheel_spreadsheet.png
+   :target: _images/spreadsheets/wheel_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -276,8 +276,8 @@ column of the spreadsheet carries one parameter of the XAFS scan.
 
 
 .. _fig-doublewheel-spreadsheet:
-.. figure:: _images/doublewheel_spreadsheet.png
-   :target: _images/doublewheel_spreadsheet.png
+.. figure:: _images/spreadsheets/doublewheel_spreadsheet.png
+   :target: _images/spreadsheets/doublewheel_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -399,8 +399,8 @@ names.
 
 
 .. _fig-linkam-spreadsheet:
-.. figure::  _images/linkam_spreadsheet.png
-   :target: _images/linkam_spreadsheet.png
+.. figure:: _images/spreadsheets/linkam_spreadsheet.png
+   :target: _images/spreadsheets/linkam_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -455,8 +455,8 @@ the high power setting.  The controller is pretty well tuned for the
 cryostat.  It is unlikely to overshoot the when raising temperature.
 
 .. _fig-lakeshore-spreadsheet:
-.. figure::  _images/lakeshore_spreadsheet.png
-   :target: _images/lakeshore_spreadsheet.png
+.. figure:: _images/spreadsheets/lakeshore_spreadsheet.png
+   :target: _images/spreadsheets/lakeshore_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -486,8 +486,8 @@ vertically, allowing measurement of in- or out-of-plane strain in thin
 films.
 
 .. _fig-glancinganglestage:
-.. figure::  _images/glancing_angle_stage.jpg
-   :target: _images/glancing_angle_stage.jpg
+.. figure:: _images/instrumentation/glancing_angle_stage.jpg
+   :target: _images/instrumentation/glancing_angle_stage.jpg
    :width: 50%
    :align: center
 
@@ -509,8 +509,8 @@ specified on each row.  There is also a yes/no menu for specifying
 whether the sample spins during measurement.
 
 .. _fig-glancingangle-spreadsheet:
-.. figure::  _images/glancingangle_spreadsheet.png
-   :target: _images/glancingangle_spreadsheet.png
+.. figure:: _images/spreadsheets/glancingangle_spreadsheet.png
+   :target: _images/spreadsheets/glancingangle_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -573,8 +573,8 @@ In all other ways |nd| except for the ``slot`` column |nd| this
 spreadsheet is identical to the *ex situ* sample wheel spreadsheet.
 
 .. _fig-grid-spreadsheet:
-.. figure::  _images/grid_spreadsheet.png
-   :target: _images/grid_spreadsheet.png
+.. figure:: _images/spreadsheets/grid_spreadsheet.png
+   :target: _images/spreadsheets/grid_spreadsheet.png
    :width: 70%
    :align: center
 

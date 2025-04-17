@@ -56,7 +56,8 @@ Apply for a BNL Guest appointment: https://www.bnl.gov/ps/userguide/beforearriva
 
 .. note:: When you arrive at BNL, you must have proper identification.
 	  Here is guidance on the identification requirements:
-	  https://www.bnl.gov/guv/id.php
+	  https://www.bnl.gov/guv/id.php. In short, you need a Real-ID
+	  drivers license or a passport.
 
 
 BNL Domain Account

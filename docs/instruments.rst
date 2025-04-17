@@ -48,9 +48,9 @@ photons, this versatility of setup is occasionally very helpful.
    :name: fig-XRFINST
    :class-grid: outline
 
-   .. image:: _images/7element.jpg
+   .. image:: _images/detectors/7element.jpg
 
-   .. image:: _images/1element.jpg
+   .. image:: _images/detectors/1element.jpg
 
    (Left) Seven element silicon drift detector.  (Right) One element
    silicon drift detector.
@@ -347,8 +347,8 @@ In most cases, sample translation and sample alignment is
 :numref:`fully automated (Section %s) <auto_ga>`
 
 .. _fig-glancinganglestageINST:
-.. figure::  _images/glancing_angle_stage.jpg
-   :target: _images/glancing_angle_stage.jpg
+.. figure:: _images/instrumentation/glancing_angle_stage.jpg
+   :target: _images/instrumentation/glancing_angle_stage.jpg
    :width: 50%
    :align: center
 

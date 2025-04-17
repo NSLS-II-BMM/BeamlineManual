@@ -292,8 +292,8 @@ Filling the 25 liter LN2 dewar
    screen or at the |bsui| command line do ``ln2.open()``.
 
    .. _fig-utilities:
-   .. figure:: _images/BMM_utilities.png
-      :target: _images/BMM_utilities.png
+   .. figure:: _images/infrastructure/BMM_utilities.png
+      :target: _images/infrastructure/BMM_utilities.png
       :width: 60%
       :align: center
 

@@ -333,8 +333,8 @@ independently.  The spinning allows spurious diffraction from a
 crystalline substrate into the fluorescence detector to be suppressed.
 
 .. _fig-gastage:
-.. figure::  _images/glancing_angle_stage.jpg
-   :target: _images/glancing_angle_stage.jpg
+.. figure:: _images/instrumentation/glancing_angle_stage.jpg
+   :target: _images/instrumentation/glancing_angle_stage.jpg
    :width: 50%
    :align: center
 

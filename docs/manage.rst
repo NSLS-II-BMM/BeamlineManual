@@ -452,8 +452,8 @@ this can be redeployed easily.
 
 
 .. _fig-killswitches:
-.. figure:: _images/Kill_switches.jpg
-   :target: _images/Kill_switches.jpg
+.. figure:: _images/infrastructure/Kill_switches.jpg
+   :target: _images/infrastructure/Kill_switches.jpg
    :width: 70%
    :align: center
 
@@ -497,8 +497,8 @@ And here is the wiring diagram.  Short the prongs on the side opposite
 to the alignment groove.
 
 .. _fig-killswitcheconnector:
-.. figure:: _images/Kill_switch_connector.png
-   :target: _images/Kill_switch_connector.png
+.. figure:: _images/infrastructure/Kill_switch_connector.png
+   :target: _images/infrastructure/Kill_switch_connector.png
    :width: 30%
    :align: center
 

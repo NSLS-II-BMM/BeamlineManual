@@ -107,8 +107,8 @@ message.  Should work....
   the motors again.
 
   .. _fig-killswitch:
-  .. figure::  _images/Kill_switches.jpg
-     :target: _images/Kill_switches.jpg
+  .. figure::  _images/infrastructure/Kill_switches.jpg
+     :target: _images/infrastructure/Kill_switches.jpg
      :width: 70%
      :align: center
 
