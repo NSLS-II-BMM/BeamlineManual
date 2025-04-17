@@ -73,7 +73,7 @@ continuous scanning on the monochromator.
 
 .. _fig-new_IC:
 .. figure:: _images/instrumentation/new_IC.jpg
-   :target: _images/instrumentation/new_IC.jpg
+   :target: _images/new_IC.jpg
    :width: 70%
    :align: center
 

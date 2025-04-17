@@ -27,7 +27,7 @@ returning you to the Unix command line.  It looks like this:
 
 .. _fig-ctrlz:
 .. figure:: _images/software/ctrl-z.jpg
-   :target: _images/software/ctrl-z.jpg
+   :target: _images/ctrl-z.jpg
    :width: 70%
    :align: center
 
@@ -55,7 +55,7 @@ fault is shown here:
 
 .. _fig-segfault:
 .. figure:: _images/software/segfault.png
-   :target: _images/software/segfault.png
+   :target: _images/segfault.png
    :width: 100%
    :align: center
 
@@ -108,7 +108,7 @@ message.  Should work....
 
   .. _fig-killswitch:
   .. figure::  _images/infrastructure/Kill_switches.jpg
-     :target: _images/infrastructure/Kill_switches.jpg
+     :target: _images/Kill_switches.jpg
      :width: 70%
      :align: center
 
@@ -134,7 +134,7 @@ is what that looks like:
 
 .. _fig-hdmi:
 .. figure:: _images/instrumentation/hdmi.jpg
-   :target: _images/instrumentation/hdmi.jpg
+   :target: _images/hdmi.jpg
    :width: 70%
    :align: center
 

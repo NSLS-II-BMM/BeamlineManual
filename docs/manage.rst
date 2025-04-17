@@ -301,7 +301,7 @@ This will produce a plot that looks something like this:
 
 .. _fig-rocking333:
 .. figure:: _images/software/rocking_curve_333_E=3716.png
-   :target: _images/software/rocking_curve_333_E=3716.png
+   :target: _images/rocking_curve_333_E=3716.png
    :width: 70%
    :align: center
 
@@ -453,7 +453,7 @@ this can be redeployed easily.
 
 .. _fig-killswitches:
 .. figure:: _images/infrastructure/Kill_switches.jpg
-   :target: _images/infrastructure/Kill_switches.jpg
+   :target: _images/Kill_switches.jpg
    :width: 70%
    :align: center
 
@@ -498,7 +498,7 @@ to the alignment groove.
 
 .. _fig-killswitcheconnector:
 .. figure:: _images/infrastructure/Kill_switch_connector.png
-   :target: _images/infrastructure/Kill_switch_connector.png
+   :target: _images/Kill_switch_connector.png
    :width: 30%
    :align: center
 
@@ -539,7 +539,7 @@ Starting the virtual machine
 
 .. _fig-winvm:
 .. figure:: _images/WinVM/Winvm_startup.png
-   :target: _images/WinVM/Winvm_startup.png
+   :target: _images/Winvm_startup.png
    :width: 70%
    :align: center
 
@@ -557,7 +557,7 @@ To start a new experiment, you first have to disconnect the old drive
 
 .. _fig-winstaledrive:
 .. figure:: _images/WinVM/Windows_stale_folder.png
-   :target: _images/WinVM/Windows_stale_folder.png
+   :target: _images/Windows_stale_folder.png
    :width: 70%
    :align: center
 
@@ -569,7 +569,7 @@ the side bar and selecting "Disconnect".
 
 .. _fig-windisconnect:
 .. figure:: _images/WinVM/Windows_disconnect.png
-   :target: _images/WinVM/Windows_disconnect.png
+   :target: _images/Windows_disconnect.png
    :width: 70%
    :align: center
 
@@ -580,7 +580,7 @@ says "Map network drive".
 
 .. _fig-winmapnewdrive:
 .. figure:: _images/WinVM/Windows_map_new_drive.png
-   :target: _images/WinVM/Windows_map_new_drive.png
+   :target: _images/Windows_map_new_drive.png
    :width: 70%
    :align: center
 
@@ -604,7 +604,7 @@ using different credentials" should be unchecked.
 
 .. _fig-winspecifynewdrive:
 .. figure:: _images/WinVM/Windows_specify_new_drive.png
-   :target: _images/WinVM/Windows_specify_new_drive.png
+   :target: _images/Windows_specify_new_drive.png
    :width: 70%
    :align: center
 
@@ -623,7 +623,7 @@ Configure the Hiden software to write its data files into the
 
 .. _fig-winsassetsfolder:
 .. figure:: _images/WinVM/Windows_assets_folder.png
-   :target: _images/WinVM/Windows_assets_folder.png
+   :target: _images/Windows_assets_folder.png
    :width: 70%
    :align: center
 
@@ -708,7 +708,7 @@ calibration.
 
    .. _fig-calibrate:
    .. figure:: _images/software/Calibration_111.png
-      :target: _images/software/Calibration_111.png
+      :target: _images/Calibration_111.png
       :width: 70%
       :align: center
 

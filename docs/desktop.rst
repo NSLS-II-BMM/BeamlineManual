@@ -70,7 +70,7 @@ cadashboard
 
 .. _fig-monitoring:
 .. figure:: _images/software/monitoring.png
-   :target: _images/software/monitoring.png
+   :target: _images/monitoring.png
    :width: 80%
    :align: center
 
@@ -96,7 +96,7 @@ plot workers as explained in :numref:`the section on Kafka workers
 
 
 .. figure:: _images/software/bsui_startup2.png
-   :target: _images/software/bsui_startup2.png
+   :target: _images/bsui_startup2.png
    :width: 80%
    :align: center
 

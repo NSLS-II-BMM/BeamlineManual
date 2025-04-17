@@ -47,7 +47,7 @@ Here are some notes on heavy things get hoisted at BMM.
 
 .. _fig-hoist-cryo:
 .. figure:: _images/galleries/hoisting/Hoist_cryostat.jpg
-   :target: _images/galleries/hoisting/Hoist_cryostat.jpg
+   :target: _images/hoisting/Hoist_cryostat.jpg
    :width: 70%
    :align: center
 

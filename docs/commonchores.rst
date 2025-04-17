@@ -177,7 +177,7 @@ done of the outer ring.
 
    .. _fig-find_slot_chore:
    .. figure:: _images/software/find_slot.png
-      :target: _images/software/find_slot.png
+      :target: _images/find_slot.png
       :width: 50%
       :align: center
 
@@ -216,7 +216,7 @@ Dismount
 
    .. _fig-linkam_chore:
    .. figure:: _images/instrumentation/linkam.jpg
-      :target: _images/instrumentation/linkam.jpg
+      :target: _images/linkam.jpg
       :width: 50%
       :align: center
 
@@ -246,7 +246,7 @@ Remount
 
       .. _fig-linkam_main:
       .. figure:: _images/instrumentation/Linkam_main.png
-	 :target: _images/instrumentation/Linkam_main.png
+	 :target: _images/Linkam_main.png
 	 :width: 50%
 	 :align: center
 
@@ -255,7 +255,7 @@ Remount
 
       .. _fig-linkam_info:
       .. figure:: _images/instrumentation/Linkam_info.png
-	 :target: _images/instrumentation/Linkam_info.png
+	 :target: _images/Linkam_info.png
 	 :width: 50%
 	 :align: center
 
@@ -264,7 +264,7 @@ Remount
 
       .. _fig-linkam_reboot:
       .. figure:: _images/instrumentation/Linkam_reboot.png
-	 :target: _images/instrumentation/Linkam_reboot.png
+	 :target: _images/Linkam_reboot.png
 	 :width: 50%
 	 :align: center
 
@@ -293,7 +293,7 @@ Filling the 25 liter LN2 dewar
 
    .. _fig-utilities:
    .. figure:: _images/infrastructure/BMM_utilities.png
-      :target: _images/infrastructure/BMM_utilities.png
+      :target: _images/BMM_utilities.png
       :width: 60%
       :align: center
 
@@ -302,7 +302,7 @@ Filling the 25 liter LN2 dewar
 
    .. _fig-25ldewar:
    .. figure:: _images/instrumentation/25ldewar.jpg
-      :target: _images/instrumentation/25ldewar.jpg
+      :target: _images/25ldewar.jpg
       :width: 60%
       :align: center
 

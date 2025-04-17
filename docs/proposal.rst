@@ -163,7 +163,7 @@ shown in :numref:`Figure %s <fig-pup-start>`.
 
 .. _fig-pup-start:
 .. figure:: _images/PUP/pup-start.png
-   :target: _images/PUP/pup-start.png
+   :target: _images/pup-start.png
    :width: 50%
    :align: center
 
@@ -176,7 +176,7 @@ shown in :numref:`Figure %s <fig-pup-select>`.
 
 .. _fig-pup-select:
 .. figure:: _images/PUP/pup-select.png
-   :target: _images/PUP/pup-select.png
+   :target: _images/pup-select.png
    :width: 50%
    :align: center
 
@@ -190,7 +190,7 @@ shown in :numref:`Figure %s <fig-pup-btr>`.
 
 .. _fig-pup-btr:
 .. figure:: _images/PUP/pup-btr.png
-   :target: _images/PUP/pup-btr.png
+   :target: _images/pup-btr.png
    :width: 50%
    :align: center
 
@@ -202,7 +202,7 @@ with a sentence or two.
 
 .. _fig-pup-cycle:
 .. figure:: _images/PUP/pup-cycle.png
-   :target: _images/PUP/pup-cycle.png
+   :target: _images/pup-cycle.png
    :width: 50%
    :align: center
 

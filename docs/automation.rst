@@ -39,7 +39,7 @@ differences in the columns corresponding to the different instruments.
 
 .. _fig-wheel-spreadsheet:
 .. figure:: _images/spreadsheets/wheel_spreadsheet.png
-   :target: _images/spreadsheets/wheel_spreadsheet.png
+   :target: _images/wheel_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -261,7 +261,7 @@ are aligned.  Alignment details |harr| :numref:`Section %s <special-linescans>`
 
 .. _fig-doublewheel:
 .. figure:: _images/instrumentation/double_wheel_sm.jpg
-   :target: _images/instrumentation/double_wheel_sm.jpg
+   :target: _images/double_wheel_sm.jpg
    :width: 50%
    :align: center
 
@@ -277,7 +277,7 @@ column of the spreadsheet carries one parameter of the XAFS scan.
 
 .. _fig-doublewheel-spreadsheet:
 .. figure:: _images/spreadsheets/doublewheel_spreadsheet.png
-   :target: _images/spreadsheets/doublewheel_spreadsheet.png
+   :target: _images/doublewheel_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -400,7 +400,7 @@ names.
 
 .. _fig-linkam-spreadsheet:
 .. figure:: _images/spreadsheets/linkam_spreadsheet.png
-   :target: _images/spreadsheets/linkam_spreadsheet.png
+   :target: _images/linkam_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -456,7 +456,7 @@ cryostat.  It is unlikely to overshoot the when raising temperature.
 
 .. _fig-lakeshore-spreadsheet:
 .. figure:: _images/spreadsheets/lakeshore_spreadsheet.png
-   :target: _images/spreadsheets/lakeshore_spreadsheet.png
+   :target: _images/lakeshore_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -468,7 +468,7 @@ cryostat.  It is unlikely to overshoot the when raising temperature.
 ..
   .. _fig-lakeshoreCSS:
   .. figure::  _images/instrumentation/lakeshoreCSS.png
-     :target: _images/instrumentation/lakeshoreCSS.png
+     :target: _images/lakeshoreCSS.png
      :width: 30%
      :align: center
 
@@ -487,7 +487,7 @@ films.
 
 .. _fig-glancinganglestage:
 .. figure:: _images/instrumentation/glancing_angle_stage.jpg
-   :target: _images/instrumentation/glancing_angle_stage.jpg
+   :target: _images/glancing_angle_stage.jpg
    :width: 50%
    :align: center
 
@@ -510,7 +510,7 @@ whether the sample spins during measurement.
 
 .. _fig-glancingangle-spreadsheet:
 .. figure:: _images/spreadsheets/glancingangle_spreadsheet.png
-   :target: _images/spreadsheets/glancingangle_spreadsheet.png
+   :target: _images/glancingangle_spreadsheet.png
    :width: 70%
    :align: center
 
@@ -543,7 +543,7 @@ The result of this fully automated sequence is shown in
 
 .. _fig-spinner_alignment:
 .. figure:: _images/software/spinner-alignment.png
-   :target: _images/software/spinner-alignment.png
+   :target: _images/spinner-alignment.png
    :width: 50%
    :align: center
 
@@ -574,7 +574,7 @@ spreadsheet is identical to the *ex situ* sample wheel spreadsheet.
 
 .. _fig-grid-spreadsheet:
 .. figure:: _images/spreadsheets/grid_spreadsheet.png
-   :target: _images/spreadsheets/grid_spreadsheet.png
+   :target: _images/grid_spreadsheet.png
    :width: 70%
    :align: center
 

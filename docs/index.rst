@@ -15,7 +15,7 @@ BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
 
 .. _fig-bananagrams:
 .. figure:: _images/Beamline-bananagrams.jpg
-   :target: _images/Beamline-bananagrams.jpg
+   :target: _images/bananagrams.jpg
    :width: 50%
    :align: left
 

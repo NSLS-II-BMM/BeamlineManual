@@ -147,7 +147,7 @@ wheel.
 
 .. _fig-ref_wheel:
 .. figure:: _images/stages/ref_wheel.jpg
-   :target: _images/stages/ref_wheel.jpg
+   :target: _images/ref_wheel.jpg
    :width: 50%
    :align: center
 

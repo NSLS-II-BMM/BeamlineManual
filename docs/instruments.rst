@@ -125,7 +125,7 @@ is available.
 
 .. _fig-pilatusINST:
 .. figure:: _images/Pilatus/pilatus.jpg
-   :target: _images/Pilatus/pilatus.jpg
+   :target: _images/pilatus.jpg
    :width: 50%
    :align: center
 
@@ -168,7 +168,7 @@ the sample holder to the incident beam.
 
 .. _fig-wheel_stageINST:
 .. figure:: _images/stages/wheel_stage.jpg
-   :target: _images/stages/wheel_stage.jpg
+   :target: _images/wheel_stage.jpg
    :width: 70%
    :align: center
 
@@ -231,7 +231,7 @@ into and out of the beam.
 
 .. _fig-biologiclINST:
 .. figure:: _images/instrumentation/biologic.png
-   :target: _images/instrumentation/biologic.png
+   :target: _images/biologic.png
    :width: 50%
    :align: center
 
@@ -348,7 +348,7 @@ In most cases, sample translation and sample alignment is
 
 .. _fig-glancinganglestageINST:
 .. figure:: _images/instrumentation/glancing_angle_stage.jpg
-   :target: _images/instrumentation/glancing_angle_stage.jpg
+   :target: _images/glancing_angle_stage.jpg
    :width: 50%
    :align: center
 

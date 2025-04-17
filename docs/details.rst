@@ -126,7 +126,7 @@ plug on one end and a B-type on the other end.
 
 .. _fig_USB:
 .. figure:: _images/infrastructure/USB.png
-   :target: _images/infrastructure/USB.png
+   :target: _images/USB.png
    :width: 30%
    :align: center
 
@@ -192,7 +192,7 @@ the in-hutch patch panel.
 
 .. _fig-bncpatch:
 .. figure:: _images/infrastructure/Bnc_map.png
-   :target: _images/infrastructure/Bnc_map.png
+   :target: _images/Bnc_map.png
    :width: 100%
    :align: center
 
@@ -210,7 +210,7 @@ This takes about 50 minutes.
 
 .. _fig-dcm1stxtal:
 .. figure:: _images/instrumentation/dcm1stxtal.png
-   :target: _images/instrumentation/dcm1stxtal.png
+   :target: _images/dcm1stxtal.png
    :width: 70%
    :align: center
 
@@ -555,7 +555,7 @@ the XAFS table.
 
 .. _fig-inertgas:
 .. figure:: _images/infrastructure/Gas_handling.png
-   :target: _images/infrastructure/Gas_handling.png
+   :target: _images/Gas_handling.png
    :width: 100%
    :align: center
 
@@ -586,7 +586,7 @@ Logitech controller
 
 .. _fig-logitech:
 .. figure:: _images/instrumentation/Logitech.png
-   :target: _images/instrumentation/Logitech.png
+   :target: _images/Logitech.png
    :width: 100%
    :align: center
 
@@ -1044,7 +1044,7 @@ format is identical to the format used on the tiff plugin screen.
 
 .. _fig-pilatus_plugin:
 .. figure:: _images/Pilatus/pilatus_plugin.png
-   :target: _images/Pilatus/pilatus_plugin.png
+   :target: _images/pilatus_plugin.png
    :width: 70%
    :align: center
 
@@ -1080,7 +1080,7 @@ Much of this is handled in Bluesky by the ophyd object.
 
 .. _fig-tiff_plugin:
 .. figure:: _images/Pilatus/tiff_plugin.png
-   :target: _images/Pilatus/tiff_plugin.png
+   :target: _images/tiff_plugin.png
    :width: 70%
    :align: center
 
@@ -1098,7 +1098,7 @@ pilatus object is instantiated.
 
 .. _fig-roi1:
 .. figure:: _images/Pilatus/pilatus_rois_1.png
-   :target: _images/Pilatus/pilatus_rois_1.png
+   :target: _images/pilatus_rois_1.png
    :width: 70%
    :align: center
 
@@ -1113,7 +1113,7 @@ will be outlined on the image.
 
 .. _fig-roi2:
 .. figure:: _images/Pilatus/pilatus_rois_2.png
-   :target: _images/Pilatus/pilatus_rois_2.png
+   :target: _images/pilatus_rois_2.png
    :width: 70%
    :align: center
 	   
@@ -1249,7 +1249,7 @@ Shelving Units and Cabinets
 
 .. _fig-racks_and_cabinets:
 .. figure:: _images/infrastructure/racks_cabinets.png
-   :target: _images/infrastructure/racks_cabinets.png
+   :target: _images/racks_cabinets.png
    :width: 100%
    :align: center
 
@@ -1282,7 +1282,7 @@ positions of the XAFS table jacks.
 
 .. _fig-tableheightmeasurement:
 .. figure:: _images/stages/slits_table_height.jpg
-   :target: _images/stages/slits_table_height.jpg
+   :target: _images/slits_table_height.jpg
    :width: 100%
    :align: center
 
@@ -1426,7 +1426,7 @@ table in the snapshot below.
 
 .. _fig-votexpressure:
 .. figure:: _images/detectors/Vortex_pressure.jpeg
-   :target: _images/detectors/Vortex_pressure.jpeg
+   :target: _images/Vortex_pressure.jpeg
    :width: 40%
    :align: center
 
@@ -1470,7 +1470,7 @@ hutch.  This allows staff to provide user support from home.
 
 .. _fig-ws5:
 .. figure:: _images/infrastructure/xf06bm-ws5.jpg
-   :target: _images/infrastructure/xf06bm-ws5.jpg
+   :target: _images/xf06bm-ws5.jpg
    :width: 70%
    :align: center
 

@@ -71,7 +71,7 @@ information about the state of the beamline.
 
 .. _fig-prompt:
 .. figure:: _images/software/prompt.png
-   :target: _images/software/prompt.png
+   :target: _images/prompt.png
    :width: 40%
    :align: center
 
@@ -105,7 +105,7 @@ monitor.  It looks something like this:
 
 .. _fig-cadashboard:
 .. figure:: _images/software/cadashboard.png
-   :target: _images/software/cadashboard.png
+   :target: _images/cadashboard.png
    :width: 100%
    :align: center
 
@@ -183,7 +183,7 @@ physically at the beamline.
 
 .. _fig-slack:
 .. figure:: _images/software/slack.png
-   :target: _images/gsoftware/slack.png
+   :target: _images/slack.png
    :width: 50%
    :align: center
 
@@ -301,7 +301,7 @@ of 743.
 
 .. _fig-sitemap:
 .. figure:: _images/location/map.png
-   :target: _images/location/map.png
+   :target: _images/map.png
    :width: 60%
    :align: center
 
@@ -337,7 +337,7 @@ BMM's staff have offices on the outer hallway of Building 743.
 
 .. _fig-lob3:
 .. figure:: _images/location/LOB-3.png
-   :target: _images/location/LOB-3.png
+   :target: _images/LOB-3.png
    :width: 90%
    :align: center
 

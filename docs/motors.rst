@@ -105,7 +105,7 @@ Here are some photos identifying these axes:
 
 .. _fig-xy:
 .. figure:: _images/stages/samplexy_stages.jpg
-   :target: _images/stages/samplexy_stages.jpg
+   :target: _images/samplexy_stages.jpg
    :width: 50%
    :align: center
 
@@ -113,7 +113,7 @@ Here are some photos identifying these axes:
 
 .. _fig-det_xyz:
 .. figure::  _images/stages/det_xyz.jpg
-   :target: _images/stages/det_xyz.jpg
+   :target: _images/det_xyz.jpg
    :width: 70%
    :align: center
 
@@ -122,7 +122,7 @@ Here are some photos identifying these axes:
 
 .. _fig-detref:
 .. figure:: _images/stages/reference_stages.jpg
-   :target: _images/stages/reference_stages.jpg
+   :target: _images/reference_stages.jpg
    :width: 50%
    :align: center
 
@@ -146,7 +146,7 @@ Here are some photos identifying these axes:
 
 .. _fig-garot:
 .. figure:: _images/stages/xafs_garot.jpg
-   :target: _images/stages/xafs_garot.jpg
+   :target: _images/xafs_garot.jpg
    :width: 70%
    :align: center
 
@@ -155,7 +155,7 @@ Here are some photos identifying these axes:
 
 .. _fig-spare:
 .. figure:: _images/stages/xafs_spare.jpg
-   :target: _images/stages/xafs_spare.jpg
+   :target: _images/xafs_spare.jpg
    :width: 70%
    :align: center
 
@@ -334,7 +334,7 @@ crystalline substrate into the fluorescence detector to be suppressed.
 
 .. _fig-gastage:
 .. figure:: _images/instrumentation/glancing_angle_stage.jpg
-   :target: _images/instrumentation/glancing_angle_stage.jpg
+   :target: _images/glancing_angle_stage.jpg
    :width: 50%
    :align: center
 
@@ -422,7 +422,7 @@ fluorescence.
 
 .. _fig-ga_alignment_plot:
 .. figure:: _images/software/spinner-alignment.png
-   :target: _images/software/spinner-alignment.png
+   :target: _images/spinner-alignment.png
    :width: 50%
    :align: center
 

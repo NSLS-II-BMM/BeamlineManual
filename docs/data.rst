@@ -109,7 +109,7 @@ FileZilla, click on the File menu, then click on Site Manager.
 
 .. _fig-fz-startup:
 .. figure:: _images/filezilla/filezilla_startup.png
-   :target: _images/filezilla/filezilla_startup.png
+   :target: _images/filezilla_startup.png
    :width: 50%
    :align: center
 
@@ -128,7 +128,7 @@ FileZilla to prompt you for both user name and two-factor authentication.
 
 .. _fig-fz-site_manager:
 .. figure:: _images/filezilla/filezilla_site_manager.png
-   :target: _images/filezilla/filezilla_site_manager.png
+   :target: _images/filezilla_site_manager.png
    :width: 50%
    :align: center
 
@@ -140,7 +140,7 @@ Click OK to finish this configuration, then connect to the host.
 
 .. _fig-fz-connect:
 .. figure:: _images/filezilla/filezilla_connect.png
-   :target: _images/filezilla/filezilla_connect.png
+   :target: _images/filezilla_connect.png
    :width: 50%
    :align: center
 
@@ -153,7 +153,7 @@ Connecting to the NSLS2 SFTP host will open up the password entry dialog.
 
 .. _fig-fz-password:
 .. figure:: _images/filezilla/filezilla_password.png
-   :target: _images/filezilla/filezilla_password.png
+   :target: _images/filezilla_password.png
    :width: 50%
    :align: center
 
@@ -171,7 +171,7 @@ the remote site.  Click your way to ``/nsls2/data/bmm/`` as shown below.
 
 .. _fig-fz-remote:
 .. figure:: _images/filezilla/filezilla_remote.png
-   :target: _images/filezilla/filezilla_remote.png
+   :target: _images/filezilla_remote.png
    :width: 50%
    :align: center
 
@@ -184,7 +184,7 @@ number:
 
 .. _fig-fz-folder:
 .. figure:: _images/filezilla/filezilla_folder.png
-   :target: _images/filezilla/filezilla_folder.png
+   :target: _images/filezilla_folder.png
    :width: 50%
    :align: center
 
@@ -196,7 +196,7 @@ multiple files or even entire folders.
 
 .. _fig-fz-queue:
 .. figure:: _images/filezilla/filezilla_queue.png
-   :target: _images/filezilla/filezilla_queue.png
+   :target: _images/filezilla_queue.png
    :width: 50%
    :align: center
 
@@ -209,7 +209,7 @@ re-authenticate yourself.
 
 .. _fig-fz-transfer:
 .. figure:: _images/filezilla/filezilla_transfer.png
-   :target: _images/filezilla/filezilla_transfer.png
+   :target: _images/filezilla_transfer.png
    :width: 50%
    :align: center
 

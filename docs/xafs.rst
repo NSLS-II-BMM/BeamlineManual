@@ -1058,7 +1058,7 @@ spectra and displaying on a log scale on the y-axis:
 
 .. _fig-Ndcompare:
 .. figure:: _images/software/Nd-compare.png
-   :target: _images/software/Nd-compare.png
+   :target: _images/Nd-compare.png
    :width: 70%
    :align: center
 
@@ -1130,7 +1130,7 @@ table below for the available elements.
 
 .. _fig-refwheel:
 .. figure:: _images/stages/ref_wheel.jpg
-   :target: _images/stages/ref_wheel.jpg
+   :target: _images/ref_wheel.jpg
    :width: 70%
    :align: center
 

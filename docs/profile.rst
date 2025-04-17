@@ -243,7 +243,7 @@ similar in concept, it is a bit more suited to our purpose.
 
 .. _fig-bsui_startup:
 .. figure:: _images/software/bsui_startup.png
-   :target: _images/software/bsui_startup.png
+   :target: _images/bsui_startup.png
    :width: 80%
    :align: center
 

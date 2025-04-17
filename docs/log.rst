@@ -204,7 +204,7 @@ provided by the user and gleaned from beamline instrumentation.
 
 .. _fig-dossier:
 .. figure:: _images/software/dossier.png
-   :target: _images/software/dossier.png
+   :target: _images/dossier.png
    :width: 70%
    :align: center
 
