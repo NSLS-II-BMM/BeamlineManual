@@ -95,8 +95,8 @@ plot workers as explained in :numref:`the section on Kafka workers
 (Section %s) <start_consumer>`.
 
 
-.. figure:: _images/bsui_startup2.png
-   :target: _images/bsui_startup2.png
+.. figure:: _images/software/bsui_startup2.png
+   :target: _images/software/bsui_startup2.png
    :width: 80%
    :align: center
 

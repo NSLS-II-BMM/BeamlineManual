@@ -125,8 +125,8 @@ plugging in the USB cable. The USB cable is the sort with an A-type
 plug on one end and a B-type on the other end.  
 
 .. _fig_USB:
-.. figure:: _images/USB.png
-   :target: _images/USB.png
+.. figure:: _images/infrastructure/USB.png
+   :target: _images/infrastructure/USB.png
    :width: 30%
    :align: center
 
@@ -1469,8 +1469,8 @@ hutch.  This allows staff to provide user support from home.
 
 
 .. _fig-ws5:
-.. figure:: _images/xf06bm-ws5.jpg
-   :target: _images/xf06bm-ws5.jpg
+.. figure:: _images/infrastructure/xf06bm-ws5.jpg
+   :target: _images/infrastructure/xf06bm-ws5.jpg
    :width: 70%
    :align: center
 

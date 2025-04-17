@@ -70,8 +70,8 @@ The Ipython/|bsui| prompt at BMM is modified to provide at-a-glance
 information about the state of the beamline.
 
 .. _fig-prompt:
-.. figure::  _images/prompt.png
-   :target: _images/prompt.png
+.. figure:: _images/software/prompt.png
+   :target: _images/software/prompt.png
    :width: 40%
    :align: center
 
@@ -104,8 +104,8 @@ At the top of the some screens, you see a crude-but-handy beamline
 monitor.  It looks something like this:
 
 .. _fig-cadashboard:
-.. figure::  _images/cadashboard.png
-   :target: _images/cadashboard.png
+.. figure:: _images/software/cadashboard.png
+   :target: _images/software/cadashboard.png
    :width: 100%
    :align: center
 
@@ -182,8 +182,8 @@ track of progress and to keep an eye on data quality without being
 physically at the beamline.
 
 .. _fig-slack:
-.. figure::  _images/slack.png
-   :target: _images/slack.png
+.. figure:: _images/software/slack.png
+   :target: _images/gsoftware/slack.png
    :width: 50%
    :align: center
 
@@ -300,8 +300,8 @@ You should park at building 743 and enter through the main entrance
 of 743.
 
 .. _fig-sitemap:
-.. figure::  _images/map.png
-   :target: _images/map.png
+.. figure:: _images/location/map.png
+   :target: _images/location/map.png
    :width: 60%
    :align: center
 
@@ -318,11 +318,11 @@ floor.  BMM is just across the walk way from the doors to the 743 lobby.
    :name: fig-BMMlocation
    :class-grid: outline
 
-   .. image:: _images/743lobby.jpg
+   .. image:: _images/location/743lobby.jpg
 
-   .. image:: _images/corridor.jpg
+   .. image:: _images/location/corridor.jpg
 
-   .. image:: _images/BMMcontrolstation.jpg
+   .. image:: _images/location/BMMcontrolstation.jpg
 
    (Left) Approaching the floor through the lobby of
    Building 743. (Center) BMM is just across the corridor from the
@@ -336,8 +336,8 @@ BMM's staff have offices on the outer hallway of Building 743.
 
 
 .. _fig-lob3:
-.. figure::  _images/LOB-3.png
-   :target: _images/LOB-3.png
+.. figure:: _images/location/LOB-3.png
+   :target: _images/location/LOB-3.png
    :width: 90%
    :align: center
 

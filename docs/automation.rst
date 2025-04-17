@@ -467,8 +467,8 @@ cryostat.  It is unlikely to overshoot the when raising temperature.
 
 ..
   .. _fig-lakeshoreCSS:
-  .. figure::  _images/lakeshoreCSS.png
-     :target: _images/lakeshoreCSS.png
+  .. figure::  _images/instrumentation/lakeshoreCSS.png
+     :target: _images/instrumentation/lakeshoreCSS.png
      :width: 30%
      :align: center
 
@@ -542,8 +542,8 @@ The result of this fully automated sequence is shown in
 :numref:`Figure %s <fig-spinner_alignment>`.
 
 .. _fig-spinner_alignment:
-.. figure::  _images/spinner-alignment.png
-   :target: _images/spinner-alignment.png
+.. figure:: _images/software/spinner-alignment.png
+   :target: _images/software/spinner-alignment.png
    :width: 50%
    :align: center
 

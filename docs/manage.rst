@@ -707,8 +707,8 @@ calibration.
    to use the new calibration values.
 
    .. _fig-calibrate:
-   .. figure:: _images/Calibration_111.png
-      :target: _images/Calibration_111.png
+   .. figure:: _images/software/Calibration_111.png
+      :target: _images/software/Calibration_111.png
       :width: 70%
       :align: center
 

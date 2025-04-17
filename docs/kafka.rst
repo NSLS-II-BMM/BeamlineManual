@@ -120,8 +120,8 @@ Once all three workers are running, you are ready to start |bsui| or
 
 
 .. _fig-consumer:
-.. figure::  _images/kafka_consumers.png
-   :target: _images/kafka_consumers.png
+.. figure:: _images/software/kafka_consumers.png
+   :target: _images/software/kafka_consumers.png
    :width: 80%
    :align: center
 
@@ -360,8 +360,8 @@ manner.
 
 
 .. _fig-find_slot:
-.. figure::  _images/find_slot.png
-   :target: _images/find_slot.png
+.. figure:: _images/software/find_slot.png
+   :target: _images/software/find_slot.png
    :width: 50%
    :align: center
 
@@ -440,8 +440,8 @@ of transmission |mu| (E), I\ :sub:`0`, and the reference spectrum.
 
 
 .. _fig-xafs_live_view:
-.. figure::  _images/XAFS_live_view.png
-   :target: _images/XAFS_live_view.png
+.. figure:: _images/software/XAFS_live_view.png
+   :target: _images/software/XAFS_live_view.png
    :width: 80%
    :align: center
 
@@ -509,8 +509,8 @@ using all the data and to save a png image of the plot for use in the
 dossier.
 
 .. _fig-triplot:
-.. figure::  _images/triplot.png
-   :target: _images/triplot.png
+.. figure:: _images/software/triplot.png
+   :target: _images/software/triplot.png
    :width: 50%
    :align: center
 

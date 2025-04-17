@@ -176,8 +176,8 @@ done of the outer ring.
    look like something like this:
 
    .. _fig-find_slot_chore:
-   .. figure::  _images/find_slot.png
-      :target: _images/find_slot.png
+   .. figure:: _images/software/find_slot.png
+      :target: _images/software/find_slot.png
       :width: 50%
       :align: center
 
@@ -245,8 +245,8 @@ Remount
    #. Click the "Info" button on the Linkam screen:
 
       .. _fig-linkam_main:
-      .. figure::  _images/Linkam_main.png
-	 :target: _images/Linkam_main.png
+      .. figure:: _images/instrumentation/Linkam_main.png
+	 :target: _images/instrumentation/Linkam_main.png
 	 :width: 50%
 	 :align: center
 
@@ -254,8 +254,8 @@ Remount
       screen 
 
       .. _fig-linkam_info:
-      .. figure::  _images/Linkam_info.png
-	 :target: _images/Linkam_info.png
+      .. figure:: _images/instrumentation/Linkam_info.png
+	 :target: _images/instrumentation/Linkam_info.png
 	 :width: 50%
 	 :align: center
 
@@ -263,8 +263,8 @@ Remount
       page. 
 
       .. _fig-linkam_reboot:
-      .. figure::  _images/Linkam_reboot.png
-	 :target: _images/Linkam_reboot.png
+      .. figure:: _images/instrumentation/Linkam_reboot.png
+	 :target: _images/instrumentation/Linkam_reboot.png
 	 :width: 50%
 	 :align: center
 

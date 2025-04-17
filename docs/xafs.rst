@@ -942,9 +942,9 @@ where it might be seen by the user or the beamline staff.
    :name: dataeval
    :class-grid: outline
 
-   .. image:: _images/good_evaluation.png
+   .. image:: _images/software/good_evaluation.png
 
-   .. image:: _images/bad_evaluation.png
+   .. image:: _images/software/bad_evaluation.png
 
    Examples of data being evaluated as good (left) and bad (right) XAS
    data.  The data on the left has an obvious edge step followed by
@@ -1046,9 +1046,9 @@ Here are the plots from below and above the Mn K edge:
    :name: Ndsample
    :class-grid: outline
 
-   .. image:: _images/Nd-6510.png
+   .. image:: _images/software/Nd-6510.png
 
-   .. image:: _images/Nd-6560.png
+   .. image:: _images/software/Nd-6560.png
 
    (Left) The XRF spectra from the Nd-bearing sample measured at 6510 eV.
    (Right) The XRF spectra from the Nd-bearing sample measured at 6560 eV.
@@ -1057,8 +1057,8 @@ Those don't look very different.  However, overplotting the two
 spectra and displaying on a log scale on the y-axis:
 
 .. _fig-Ndcompare:
-.. figure::  _images/Nd-compare.png
-   :target: _images/Nd-compare.png
+.. figure:: _images/software/Nd-compare.png
+   :target: _images/software/Nd-compare.png
    :width: 70%
    :align: center
 

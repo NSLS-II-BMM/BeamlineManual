@@ -119,13 +119,13 @@ function for each available camera.  These are recorded to the scan's
    :name: fig-snapshots
    :class-grid: outline
 
-   .. image:: _images/analog.jpg
+   .. image:: _images/infrastructure/analog.jpg
 
-   .. image:: _images/XASwebcam.jpg
+   .. image:: _images/infrastructure/XASwebcam.jpg
 
-   .. image:: _images/usbcam1.jpg
+   .. image:: _images/infrastructure/usbcam1.jpg
 
-   .. image:: _images/usbcam2.jpg
+   .. image:: _images/infrastructure/usbcam2.jpg
 
    Snapshots from an experiment using the Linkam stage.  Note that
    each snapshot is annotated along the bottom, visually displaying
@@ -203,8 +203,8 @@ summaries of all the information relevant to the scan sequence
 provided by the user and gleaned from beamline instrumentation.
 
 .. _fig-dossier:
-.. figure::  _images/dossier.png
-   :target: _images/dossier.png
+.. figure:: _images/software/dossier.png
+   :target: _images/software/dossier.png
    :width: 70%
    :align: center
 

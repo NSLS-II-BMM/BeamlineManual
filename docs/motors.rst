@@ -421,8 +421,8 @@ the pitch scan, then selecting the peak of the ``xafs_y`` scan versus
 fluorescence.
 
 .. _fig-ga_alignment_plot:
-.. figure:: _images/spinner-alignment.png
-   :target: _images/spinner-alignment.png
+.. figure:: _images/software/spinner-alignment.png
+   :target: _images/software/spinner-alignment.png
    :width: 50%
    :align: center
 
