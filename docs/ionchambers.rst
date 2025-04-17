@@ -34,9 +34,9 @@ communicates with the QuadEM device via a cat6 cable.
    :name: old_IC
    :class-grid: outline
 
-   .. image:: _images/old_IC.jpg
+   .. image:: _images/instrumentation/old_IC.jpg
 
-   .. image:: _images/quadem.jpg
+   .. image:: _images/instrumentation/quadem.jpg
 
    (Left) The old I\ :sub:`r` detector.  (Right) The quadem
    electrometer used to measure the three old-style ion chambers.
@@ -72,8 +72,8 @@ continuous scanning on the monochromator.
 
 
 .. _fig-new_IC:
-.. figure::  _images/new_IC.jpg
-   :target: _images/new_IC.jpg
+.. figure:: _images/instrumentation/new_IC.jpg
+   :target: _images/instrumentation/new_IC.jpg
    :width: 70%
    :align: center
 
@@ -83,37 +83,31 @@ continuous scanning on the monochromator.
 Configuration in bsui profile
 -----------------------------
 
-I am trying to make it easy to configure ``bsui`` to switch easily
-between ion chambers and electrometers.  This is a work in progress.
-Here I document the current, slightly awkward, state of affairs.
+It is intended to be easy to configure ``bsui`` to switch easily
+between ion chambers and electrometers.
 
-In `BMM/user_ns/dwelltime
-<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/user_ns/dwelltime.py#L26>`__
-three boolean parameters are set: ``with_ic0``, ``with_ic1``, and
-``with_ic2``.
+In `BMM_configuration.ini
+<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM_configuration.ini>`__
+there are boolean parameters for setting the various electrometer
+signal chains.  These, in turn, set internal parameters in the bsui
+profile or enabling the different signal chains.
 
-These are used to synchronize setting integration times across the
-various signal chains via the `LockedDwellTimes
+Editing the INI refile will require restarting ``bsui``.
+
+These internal parameters are used to synchronize setting
+integration times across the various signal chains via the
+`LockedDwellTimes
 <https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/dwelltime.py#L40>`__
 object.
 
 Each new ion chamber in use needs to have its flag set to ``True``.
-
-The detectors themselves need to be configured correctly in `this file
-<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/user_ns/detectors.py>`__
-using the flag values.
 
 The QuadEM and each individual ion chamber will be configured if
 available on the network.  If the network connection cannot be
 established, a ``noisy_det`` from ``ophyd.sim`` is created with the
 same name.
 
-Notes:
-
-#. If the ion chamber device can be made, it will be made even if its
-   flag is set to ``False``.  This allows interaction with an ion
-   chamber even if it is not expected to be used in a scan.
-#. Once all 3 new ion chambers are in place and in use, the QuadEM
-   device will still be made.  This will allow use of electron yield
-   and other detectors as well as measurement of any other current
-   signals. 
+.. note:: Even with all 3 new ion chambers in place and in use,
+   the QuadEM device will still be made.  This will allow use of
+   electron yield and other detectors as well as measurement of any
+   other current signals.

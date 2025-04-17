@@ -230,8 +230,8 @@ into and out of the beam.
 
 
 .. _fig-biologiclINST:
-.. figure::  _images/biologic.png
-   :target: _images/biologic.png
+.. figure:: _images/instrumentation/biologic.png
+   :target: _images/instrumentation/biologic.png
    :width: 50%
    :align: center
 
@@ -282,9 +282,9 @@ transmission XAFS.
    :name: fig-linkamstageINST
    :class-grid: outline
 
-   .. image:: _images/linkam.jpg
+   .. image:: _images/instrumentation/linkam.jpg
 
-   .. image:: _images/dewar.jpg
+   .. image:: _images/instrumentation/dewar.jpg
 
    (Left) The Linkham stage mounted for transmission on the sample
    stage.  (Right) The 25 L dewar used for cooling the Linkam stage.
@@ -318,9 +318,9 @@ due to the construction of the vacuum shroud.
    :name: fig-displexINST
    :class-grid: outline
 
-   .. image:: _images/cryostat.jpg
+   .. image:: _images/instrumentation/cryostat.jpg
 
-   .. image:: _images/lakeshore331.png
+   .. image:: _images/instrumentation/lakeshore331.png
 
    (Left) The Displex cryostat and it's compressor.  (Right) The
    `LakeShore 331 controller

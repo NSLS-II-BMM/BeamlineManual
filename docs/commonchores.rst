@@ -215,8 +215,8 @@ Dismount
    photo.
 
    .. _fig-linkam_chore:
-   .. figure::  _images/linkam.jpg
-      :target: _images/linkam.jpg
+   .. figure:: _images/instrumentation/linkam.jpg
+      :target: _images/instrumentation/linkam.jpg
       :width: 50%
       :align: center
 
@@ -292,7 +292,7 @@ Filling the 25 liter LN2 dewar
    screen or at the |bsui| command line do ``ln2.open()``.
 
    .. _fig-utilities:
-   .. figure::  _images/BMM_utilities.png
+   .. figure:: _images/BMM_utilities.png
       :target: _images/BMM_utilities.png
       :width: 60%
       :align: center
@@ -301,8 +301,8 @@ Filling the 25 liter LN2 dewar
    cart.
 
    .. _fig-25ldewar:
-   .. figure::  _images/25ldewar.jpg
-      :target: _images/25ldewar.jpg
+   .. figure:: _images/instrumentation/25ldewar.jpg
+      :target: _images/instrumentation/25ldewar.jpg
       :width: 60%
       :align: center
 

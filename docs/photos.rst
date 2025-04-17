@@ -27,11 +27,11 @@ beam approximately level with the floor.
    :name: fig-hrm
    :class-grid: outline
 
-   .. image:: _images/HRM1.jpg
+   .. image:: _images/galleries/hrm/HRM1.jpg
 
-   .. image:: _images/HRM_top.jpg
+   .. image:: _images/galleries/hrm/HRM_top.jpg
 
-   .. image:: _images/HRM_bottom.jpg
+   .. image:: _images/galleries/hrm/HRM_bottom.jpg
 
    (Left) The HRM with the vacuum vessel removed.  (Middle) The top of
    the silicon block of the mirror.  This is the **non-reflecting**
@@ -46,8 +46,8 @@ Hoisting
 Here are some notes on heavy things get hoisted at BMM.
 
 .. _fig-hoist-cryo:
-.. figure:: _images/Hoist_cryostat.jpg
-   :target: _images/Hoist_cryostat.jpg
+.. figure:: _images/galleries/hoisting/Hoist_cryostat.jpg
+   :target: _images/galleries/hoisting/Hoist_cryostat.jpg
    :width: 70%
    :align: center
 
@@ -61,9 +61,9 @@ Here are some notes on heavy things get hoisted at BMM.
    :name: fig-hoist-m3
    :class-grid: outline
 
-   .. image:: _images/Hoist_m3.jpg
+   .. image:: _images/galleries/hoisting/Hoist_m3.jpg
 
-   .. image:: _images/Strap_length_m3.jpg
+   .. image:: _images/galleries/hoisting/Strap_length_m3.jpg
 
    Two 5-foot straps + rotating rings at the mount points. 
 
@@ -87,11 +87,11 @@ device. This is what I found.
    :name: fig-bct
    :class-grid: outline
 
-   .. image:: _images/BCT3.jpg
+   .. image:: _images/galleries/bct/BCT3.jpg
 
-   .. image:: _images/BCT2.jpg
+   .. image:: _images/galleries/bct/BCT2.jpg
 
-   .. image:: _images/BCT1.jpg
+   .. image:: _images/galleries/bct/BCT1.jpg
 
    The threaded rod had slipped free of the coupler connecting it to
    the DM3 BCT motor.  Once uncoupled, it wound it's way through the
@@ -117,9 +117,9 @@ Here are some photos of BMM's three-pole wiggler.
    :name: fig-3pw
    :class-grid: outline
 
-   .. image:: _images/3PW/3PW_1.jpg
+   .. image:: _images/galleries/3PW/3PW_1.jpg
 
-   .. image:: _images/3PW/3PW_5.jpg
+   .. image:: _images/galleries/3PW/3PW_5.jpg
 
    (Left) Outboard side of three-pole wiggler.  (Right) Inboard side
    of three-pole wiggler.
@@ -133,11 +133,11 @@ Here are some photos of BMM's three-pole wiggler.
    :name: fig-3pw2
    :class-grid: outline
 
-   .. image:: _images/3PW/3PW_2.jpg
+   .. image:: _images/galleries/3PW/3PW_2.jpg
 
-   .. image:: _images/3PW/3PW_3.jpg
+   .. image:: _images/galleries/3PW/3PW_3.jpg
 
-   .. image:: _images/3PW/3PW_4.jpg
+   .. image:: _images/galleries/3PW/3PW_4.jpg
 
    (Left) View from downstream.  3PW is just upstream of the bend
    magnet. (Middle) Close up view of the jaws.  (Right) View from

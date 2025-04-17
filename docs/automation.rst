@@ -1,4 +1,4 @@
-..
+.
    This document was developed primarily by a NIST employee. Pursuant
    to title 17 United States Code Section 105, works of NIST employees
    are not subject to copyright protection in the United States. Thus
@@ -376,9 +376,9 @@ XY stage.
    :name: fig-linkamstage
    :class-grid: outline
 
-   .. image:: _images/linkam.jpg
+   .. image:: _images/instrumentation/linkam.jpg
 
-   .. image:: _images/dewar.jpg
+   .. image:: _images/instrumentation/dewar.jpg
 
    (Left) The Linkham stage mounted for transmission on the sample
    stage.  (Right) The 25 L dewar used for cooling the Linkam stage.
@@ -435,9 +435,9 @@ samples.
    :name: fig-displex
    :class-grid: outline
 
-   .. image:: _images/cryostat.jpg
+   .. image:: _images/instrumentation/cryostat.jpg
 
-   .. image:: _images/lakeshore331.png
+   .. image:: _images/instrumentation/lakeshore331.png
 
    (Left) The Displex cryostat and it's compressor.  (Right) The
    LakeShore 331 controller, used to control temperature for the
