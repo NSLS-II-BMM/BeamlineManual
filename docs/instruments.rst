@@ -197,11 +197,11 @@ from a glove box during sample preparation.
    :name: fig-wheelINST
    :class-grid: outline
 
-   .. image:: _images/Samplewheel.jpg
+   .. image:: _images/instrumentation/Samplewheel.jpg
 
-   .. image:: _images/double_wheel_sm.jpg
+   .. image:: _images/instrumentation/double_wheel_sm.jpg
 
-   .. image:: _images/halfwheel.jpg
+   .. image:: _images/instrumentation/halfwheel.jpg
 
    (Left) A single-ring sample wheel with 24 sample positions.
    (Center) Double-ring sample wheels with 48 sample positions.  For

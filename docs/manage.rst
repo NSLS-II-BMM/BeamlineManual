@@ -300,8 +300,8 @@ Now, run a rocking curve scan:
 This will produce a plot that looks something like this:
 
 .. _fig-rocking333:
-.. figure::  _images/rocking_curve_333_E=3716.png
-   :target: _images/rocking_curve_333_E=3716.png
+.. figure:: _images/software/rocking_curve_333_E=3716.png
+   :target: _images/software/rocking_curve_333_E=3716.png
    :width: 70%
    :align: center
 

@@ -26,8 +26,8 @@ to ``Ctrl-c``.
 returning you to the Unix command line.  It looks like this:
 
 .. _fig-ctrlz:
-.. figure::  _images/ctrl-z.jpg
-   :target: _images/ctrl-z.jpg
+.. figure:: _images/software/ctrl-z.jpg
+   :target: _images/software/ctrl-z.jpg
    :width: 70%
    :align: center
 
@@ -54,8 +54,8 @@ above.  Other times, there may simply be a message about a
 fault is shown here:
 
 .. _fig-segfault:
-.. figure:: _images/segfault.png
-   :target: _images/segfault.png
+.. figure:: _images/software/segfault.png
+   :target: _images/software/segfault.png
    :width: 100%
    :align: center
 
@@ -133,8 +133,8 @@ failure by printing a message in yellow text on the HDMI screen.  Here
 is what that looks like:
 
 .. _fig-hdmi:
-.. figure::  _images/hdmi.jpg
-   :target: _images/hdmi.jpg
+.. figure:: _images/instrumentation/hdmi.jpg
+   :target: _images/instrumentation/hdmi.jpg
    :width: 70%
    :align: center
 

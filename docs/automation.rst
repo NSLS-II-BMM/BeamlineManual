@@ -260,8 +260,8 @@ are aligned.  Alignment details |harr| :numref:`Section %s <special-linescans>`
 
 
 .. _fig-doublewheel:
-.. figure:: _images/double_wheel_sm.jpg
-   :target: _images/double_wheel_sm.jpg
+.. figure:: _images/instrumentation/double_wheel_sm.jpg
+   :target: _images/instrumentation/double_wheel_sm.jpg
    :width: 50%
    :align: center
 

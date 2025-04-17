@@ -209,8 +209,8 @@ about 28 C.
 This takes about 50 minutes. 
 
 .. _fig-dcm1stxtal:
-.. figure:: _images/dcm1stxtal.png
-   :target: _images/dcm1stxtal.png
+.. figure:: _images/instrumentation/dcm1stxtal.png
+   :target: _images/instrumentation/dcm1stxtal.png
    :width: 70%
    :align: center
 
@@ -1281,8 +1281,8 @@ positions of the XAFS table jacks.
 
 
 .. _fig-tableheightmeasurement:
-.. figure:: _images/slits_table_height.jpg
-   :target: _images/slits_table_height.jpg
+.. figure:: _images/stages/slits_table_height.jpg
+   :target: _images/stages/slits_table_height.jpg
    :width: 100%
    :align: center
 

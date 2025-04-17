@@ -69,8 +69,8 @@ cadashboard
 
 
 .. _fig-monitoring:
-.. figure:: _images/monitoring.png
-   :target: _images/monitoring.png
+.. figure:: _images/software/monitoring.png
+   :target: _images/software/monitoring.png
    :width: 80%
    :align: center
 
