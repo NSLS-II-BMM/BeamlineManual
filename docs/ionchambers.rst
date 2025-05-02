@@ -87,7 +87,7 @@ It is intended to be easy to configure ``bsui`` to switch easily
 between ion chambers and electrometers.
 
 In `BMM_configuration.ini
-<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM_configuration.ini>`__
+<https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/BMM_configuration.ini>`__
 there are boolean parameters for setting the various electrometer
 signal chains.  These, in turn, set internal parameters in the bsui
 profile or enabling the different signal chains.
@@ -97,7 +97,7 @@ Editing the INI refile will require restarting ``bsui``.
 These internal parameters are used to synchronize setting
 integration times across the various signal chains via the
 `LockedDwellTimes
-<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/dwelltime.py#L40>`__
+<https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/BMM/dwelltime.py#L40>`__
 object.
 
 Each new ion chamber in use needs to have its flag set to ``True``.

@@ -1,7 +1,7 @@
 # BMM Beamline Manual
 
-Compiled doucument at
-https://nsls-ii-bmm.github.io/BeamlineManual/
+Compiled document at
+https://nsls2.github.io/bmm-beamline-manual/
 
 The *docs/* folder contains the sphinx source of the manual. 
 
