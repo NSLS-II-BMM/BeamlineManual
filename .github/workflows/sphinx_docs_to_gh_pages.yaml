@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    types: [closed]
+    branches:
+      - master
 
 # workflow_dispatch:        # Un comment line if you also want to trigger action manually
 permissions:
@@ -11,6 +15,7 @@ permissions:
 
 jobs:
   sphinx_docs_to_gh-pages:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     name: Sphinx docs to gh-pages
     steps:
