@@ -85,7 +85,7 @@ Beneath the ``startup`` folder, there are several sub-folders:
 
 ``standards/``
    the spreadsheet for working with `BMM's collection of measurement
-   standards <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__
+   standards <https://nsls2.github.io/bmm-standards/BMM-standards.html>`__
 
 ``ML/``
    the data used for the machine learning data evaluation

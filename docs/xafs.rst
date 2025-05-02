@@ -1206,9 +1206,9 @@ table below for the available elements.
 Four elements are missing: Ba, W, & Os, and Ir.
 
 See also `BMM's complete list of standard materials
-<https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__.
+<https://nsls2.github.io/bmm-standards/BMM-standards.html>`__.
 
 Here is a `spreadsheet
-<https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/standards/standards.xlsx>`__
+<https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/standards/standards.xlsx>`__
 containing a sheet for for :numref:`automated (see Section %s) <sample_wheel_automation>`
 measurements of  the content of standards wheel.
