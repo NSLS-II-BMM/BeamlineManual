@@ -15,7 +15,7 @@ Introduction to BMM
 BMM is NIST's :red:`B`\ eamline for :red:`M`\ aterials :red:`M`\ easurement.
 
 At the unix command line, type ``bsui`` to start the BlueSky user
-interface.  |bsui| is simply an `Ipython shell <https://ipython.org/>`_
+interface.  |bsui| is simply an `IPython shell <https://ipython.org/>`_
 with some customizations specific to BlueSky.  On top of that, there
 are a number of customizations specific to BMM.
 
