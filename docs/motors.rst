@@ -237,7 +237,7 @@ are the same for all sample stage motors.
    :numref:`See Section %s for a full explanation of the the reference wheel contents. <reference-wheel>`
 
    `Here is a complete list of standards
-   <https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__
+   <https://nsls2.github.io/bmm-standards/BMM-standards.html>`__
    in BMM's collection.  These standards are mounted on sample wheels
    and stored in the hutch for ready access by users.
 

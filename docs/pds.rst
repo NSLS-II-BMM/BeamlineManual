@@ -187,7 +187,7 @@ To see the available reference materials and their positions on the
 reference wheel, do ``%se``.
 
 `Here is a complete list of standards
-<https://nsls-ii-bmm.github.io/bmm-standards/BMM-standards.html>`__ in
+<https://nsls2.github.io/bmm-standards/BMM-standards.html>`__ in
 BMM's collection.
 
   

@@ -800,8 +800,8 @@ Things to install from git
 
 + BMM stuff: ``git clone git@github.com:NSLS-II-BMM/BMM-beamline-configuration.git``
   + then, ``cd ~/bin`` and ``ln -s ~/git/BMM-beamline-configuration/tools/run-cadashboard``
-+ BMM user manual: ``git clone git@github.com:NSLS-II-BMM/BeamlineManual.git``
-+ BMM standards: ``git clone git@github.com:NSLS-II-BMM/bmm-standards.git``
++ BMM user manual: ``git clone git@github.com:NSLS2/bmm-beamline-manual.git``
++ BMM standards: ``git clone git@github.com:NSLS2/bmm-standards.git``
 + Switch visualization: ``git clone git@github.com:NSLS-II-BMM/switch-pretty-printer.git``
 
 Also do ``cd ~/bin`` and ``ln -s ~/.ipython/profile_collection/startup/consumer/run-consumer``
