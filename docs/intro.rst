@@ -66,7 +66,7 @@ Essential links
 The user experience
 -------------------
 
-The Ipython/|bsui| prompt at BMM is modified to provide at-a-glance
+The IPython/|bsui| prompt at BMM is modified to provide at-a-glance
 information about the state of the beamline.
 
 .. _fig-prompt:
