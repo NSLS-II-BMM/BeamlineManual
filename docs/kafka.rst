@@ -71,7 +71,7 @@ Starting the Kafka consumer
 ---------------------------
 
 In the ``consumer/bin/`` folder of the `beamline profile
-<https://github.com/NSLS-II-BMM/profile_collection/tree/master/startup>`__
+<https://github.com/NSLS2/bmm-profile-collection/tree/main/startup>`__
 there are several files used to manage the workers.
 
 :run-filemanager: a shell script for launching the file manager worker

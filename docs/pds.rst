@@ -177,7 +177,7 @@ target edge is available on the reference holder.
 
 The reference wheel content is configured as a python dictionary.  See
 ``xafs_ref.mapping``, `defined here
-<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/user_ns/instruments.py#L323>`__.
+https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/BMM/user_ns/instruments.py#L323>`__.
 
 This dictionary identifies the positions in ``xafs_ref`` and
 ``xafs_refx`` for each reference sample.  It also identifies the form

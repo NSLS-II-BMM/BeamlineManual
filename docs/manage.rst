@@ -378,7 +378,7 @@ circuit. Two-conductor cable is run from each motor controller to a
 remote DIODE box mounted on the inboard wall of the end station.
 
 The Bluesky interface is defined `here
-<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/killswitch.py>`__
+<https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/BMM/killswitch.py>`__
 
 
 

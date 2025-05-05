@@ -1,4 +1,4 @@
-.
+..
    This document was developed primarily by a NIST employee. Pursuant
    to title 17 United States Code Section 105, works of NIST employees
    are not subject to copyright protection in the United States. Thus
@@ -20,18 +20,18 @@ Beamline automation
 BMM currently supports five categories of spreadsheet-based automation:
 
 #. Sample wheels (|download| `spreadsheet
-   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/wheel.xlsx>`__)
+   <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/wheel.xlsx>`__)
 #. Linkam stage temperature control (|download| `spreadsheet
-   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/linkam.xlsx>`__)
+   <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/linkam.xlsx>`__)
 #. LakeShore 331 controller for Displex cryostat (|download| `spreadsheet
-   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/lakeshore.xlsx>`__)
+   <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/lakeshore.xlsx>`__)
 #. Glancing angle stage (|download| `spreadsheet
-   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/glancing_angle.xlsx>`__)
+   <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/glancing_angle.xlsx>`__)
 #. Generic XY and XYZ grids (|download| `spreadsheet
-   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/grid.xlsx>`__)
+   <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/grid.xlsx>`__)
 
 The latest spreadsheets for each of these can always be found at
-https://github.com/NSLS-II-BMM/profile_collection/tree/master/startup/xlsx
+https://github.com/NSLS2/bmm-profile-collection/tree/main/startup/xlsx
 
 
 Each of the spreadsheets looks much like this, although there are some
@@ -282,9 +282,8 @@ column of the spreadsheet carries one parameter of the XAFS scan.
    :align: center
 
    Example spreadsheet for running an experiment from a wheel with a
-   two sample rings.  Links: `single wheel spreadsheet
-   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/wheel.xlsx>`_
-   and `double wheel spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/doublewheel.xlsx>`_.
+   two sample rings.  Link: `wheel spreadsheet
+   <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/wheel.xlsx>`__.
 
 
 If you have read :numref:`Section %s <ini>` about the INI file, then
@@ -406,7 +405,7 @@ names.
 
    Example spreadsheet for running a temperature-dependent experiment
    using the Linkam stage.  Link to the `Linkam spreadsheet
-   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/linkam.xlsx>`_
+   <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/linkam.xlsx>`_
 
 .. _auto_lakeshore:
 
@@ -462,7 +461,7 @@ cryostat.  It is unlikely to overshoot the when raising temperature.
 
    Example spreadsheet for running a temperature-dependent experiment
    using the Displex cryostat and the LakeShore 331. Link to the
-   `LakeShore spreadsheet <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/lakeshore.xlsx>`_.
+   `LakeShore spreadsheet <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/lakeshore.xlsx>`_.
 
 
 ..
@@ -516,7 +515,7 @@ whether the sample spins during measurement.
 
    Example spreadsheet for running an experiment using the glancing
    angle stage.  Link to the `glancing angle spreadsheet
-   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/glancing_angle.xlsx>`_.
+   <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/glancing_angle.xlsx>`_.
 
 Not shown in :numref:`Figure %s <fig-glancingangle-spreadsheet>` are
 columns for specifying how sample alignment is handled.  The default
@@ -580,7 +579,7 @@ spreadsheet is identical to the *ex situ* sample wheel spreadsheet.
 
    Example spreadsheet for running an experiment on an XY grid.  Link
    to the `motor grid spreadsheet
-   <https://github.com/NSLS-II-BMM/profile_collection/raw/master/startup/xlsx/grid.xlsx>`_.
+   <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/xlsx/grid.xlsx>`_.
 
 
 .. admonition:: Future Tech!
