@@ -2,17 +2,25 @@ name: Sphinx docs to gh-pages
 
 on:
   push:
-    branches:
-      - master
+  workflow_dispatch:
+  #   branches:
+  #     - master
+  # pull_request:
+  #   types: [closed]
+  #   branches:
+  #     - master
 
 # workflow_dispatch:        # Un comment line if you also want to trigger action manually
+# permissions:
+#   contents: write
 
 jobs:
   sphinx_docs_to_gh-pages:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     name: Sphinx docs to gh-pages
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Make conda environment
