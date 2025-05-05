@@ -60,7 +60,7 @@ Essential links
 :Operations schedule:  https://www.bnl.gov/nsls2/schedule/
 :Beamtime schedule:  https://scheduler.nsls2.bnl.gov/
 :NSLS Status:  https://www.bnl.gov/nsls2/operating-status.php
-:BMM at Github:  https://github.com/NSLS-II-BMM
+:BMM at Github:  https://github.com/orgs/NSLS2/teams/bmm/repositories
 
 
 The user experience
@@ -441,7 +441,7 @@ A note about copyright
 ----------------------
 
 This document and `the BlueSky data collection profile
-<https://github.com/NSLS-II-BMM/profile_collection>`__ it covers was
+<https://github.com/NSLS2/bmm-profile-collection>`__ it covers was
 developed primarily by a NIST employee. Pursuant to title 17 United
 States Code Section 105, works of NIST employees are not subject to
 copyright protection in the United States. Thus this repository may
@@ -449,5 +449,5 @@ not be licensed under the same terms as Bluesky itself or its
 documentation.
 
 See the `LICENSE file
-<https://raw.githubusercontent.com/NSLS-II-BMM/BeamlineManual/master/LICENSE>`__
+<https://github.com/NSLS2/bmm-profile-collection/blob/main/LICENSE>`__
 for details.

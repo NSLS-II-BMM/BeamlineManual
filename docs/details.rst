@@ -88,8 +88,8 @@ Bluesky. The heart of the implementation is a system call to
 ``fswebcam``. From there, the image is saved as an asset and correctly
 pointed to in databroker.  See:
 
-+ `BMM/user_ns/detectors.py <https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/user_ns/detectors.py#L253>`__
-+ `BMM/camera_device.py <https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/BMM/camera_device.py#L62-L164>`__
++ `BMM/user_ns/detectors.py <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/BMM/user_ns/detectors.py#L253>`__
++ `BMM/camera_device.py <https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/BMM/camera_device.py#L62-L164>`__
 
 While this resembles a properly integrated camera and counting on the
 ``anacam`` object will get recorded in the database, the resource file
@@ -1268,8 +1268,8 @@ Setting the table height
 
 This section outlines how the table height settings in the `Modes
 lookup table
-<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/lookup_table/Modes.xlsx>`__
-were found. 
+<https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/lookup_table/Modes.xlsx>`__
+were found.
 
 For starters, the positions of ``dm3_bct`` in each of the modes were
 established.  This was done at 300 eV above the Pt L3 edge for modes
@@ -1309,7 +1309,7 @@ Move the slits back to the first position and verify that the
 ``xafs_yu`` position still maximized the signal.
 
 Record these positions in the `Modes lookup table
-<https://github.com/NSLS-II-BMM/profile_collection/blob/master/startup/lookup_table/Modes.xlsx>`__.
+<https://github.com/NSLS2/bmm-profile-collection/blob/main/startup/lookup_table/Modes.xlsx>`__.
 
 For the lower energy edges, insert the flight path borrowed from the
 XRD end station in between I\ :sub:`t`  and I\ :sub:`r`.  Run He
