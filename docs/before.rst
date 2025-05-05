@@ -274,6 +274,14 @@ The Day of your Experiment
 
 .. note:: Unless told otherwise, your experiment starts at 8 am.  
 
+.. admonition:: As of May 2025
+   :class: note
+
+   First time visitors to BNL should now check in at the new SUSC
+   building, building 101. Take a right at the roundabout before
+   reaching the main gate.  The visitor and badging offices which used
+   to be in Building 400 are now located at SUSC.
+		
 You should consider having all team members arrive the afternoon prior
 to the first day of the beamtime to check in at `the GUV Center
 <https://www.bnl.gov/guv/>`__ and to complete beamline specific
