@@ -10,6 +10,9 @@
 .. role:: strike
     :class: strike
 
+.. role:: key
+    :class: key
+
 .. _details:
 
 Instrumentation Details
@@ -343,7 +346,7 @@ chambers are on EPICS ports. The difference is that the ion chambers
 are running their own on-board IOCs, making them more like IOC servers
 than instruments.
 
-
+.. todo:: Update me!
 
 
 +-----------+----------+--------------------+----------------+---------------------+-------------------+
@@ -398,6 +401,82 @@ Some photos of the patch panel:
 
    (Left) CAT6 patch panel at DM3.  (Right) Lowest numbered label on
    the CAT6 cables in the DM3 patch panel
+
+
+.. eiger_
+
+Eiger2 Si 4M
+------------
+
+.. |br| raw:: html
+
+      <br>
+
+.. _fig-eiger:
+.. figure:: _images/detectors/eiger.jpg
+   :target: _images/eiger.jpg
+   :width: 70%
+   :align: center
+
+   The Eiger2 Si 4M detector with the front panel off, revealing the
+   aluminized myler sheet protecting the detector surface.
+
+:Coolling water:
+
+   The detector requires that the chiller is running continuously.
+   Connect the chiller lines by attaching the quick-connect fixtures.
+   Note that the chiller should be filled with 2/3 water and 1/3
+   ethylene glycol.  Dectris recommends `MotorX M5.0 coolant
+   <https://www.motorexusa.com/products/coolant-m5-0-ready-to-use>`__
+   as it also has corrosion protection chemicals in its formulation.
+   That product is a 50/50 mix of water and ethylene glycol, so it
+   needs to be diluted with 1 bottle-full of water for every two
+   bottles of coolant.
+
+   |br|
+   
+:Dry nitrogen:
+
+   The detector also requires dry nitrogen flowing into the air fixture
+   on the back of the box.  This protects the space around the detector
+   from humidity by floding it with dry gas.
+
+   |br|
+   
+:Lifting:
+
+   When lifting the detector into position on the XAS table or
+   goniometer, it is a good idea to use the hoist.  The hook can be
+   connected directly to the eyebolt on the top of the detector.
+
+   |br|
+   
+:Uncover:
+
+   To remove the cover from the front of the detector, use a 2.5 mm
+   hex driver in the two small holes about 1/3 from the top on each
+   side.  These are a bit surprising.  Turn the screws `inward` to
+   disengage the cover.  When replacing the cover, turn the screws
+   outward.  This seems opposite to my intution, at least!  Take care
+   not to apply much force on the screws |nd| simply turn them all the
+   way in or out without applying any force at the end of the range of
+   travel.
+   
+**To start the detector:**
+   
+#. Turn on the power switch on the power supply for the Eiger.  Once
+   the green light on the back of the box begins blinking, press in the
+   blue button on the back.
+#. At a beamline computer, point a browser at http://xf06bm-eiger1.nsls2.bnl.local/#/system
+#. Click the :key:`Reboot` button to restart the camera server.
+#. Verify connections with the :key:`Check connections` button.
+#. Click the :key:`Initialize detector` button.
+#. Restart the Eiger ioc on ``xf06bm-det-ioc``.  This can be done by
+   clicking the :key:`Reboot` button on the Eiger CSS screen.
+#. Edit the ``BMM_configuration.ini`` file to enable the Eiger Ophyd
+   object.  Restart bsui.
+
+   
 
 
 

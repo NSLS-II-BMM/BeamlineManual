@@ -278,7 +278,7 @@ The Day of your Experiment
    :class: note
 
    First time visitors to BNL should now check in at the new Science
-   and User Support Center (SUSC) building, building 101.  Take a
+   and User Support Center (SUSC), building 101.  Take a
    right at the roundabout before reaching the main gate.  The visitor
    and badging offices which used to be in Building 400 are now
    located at SUSC.
